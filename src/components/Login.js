@@ -20,6 +20,14 @@ function Login() {
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [otpCountdown, setOtpCountdown] = useState(10); //Adjust time accordingly in seconds
   const [showOtpInput, setShowOtpInput] = useState(false);
+  const [emailLoginLoader, setEmailLoginLoader] = useState(false);
+  const [otpSubmitLoader, setOtpSubmitLoader] = useState(false);
+  const [phoneError, setPhoneError] = useState(false); // Error flag for user's phone
+
+  //Funstion to check for phone number validity
+  const validatePhoneNumber = (phoneNumber) => {
+    return phoneNumber && !isValidPhoneNumber(phoneNumber);
+  };
 
   // Generic input change handler
   const handleInputChange = (event) => {
@@ -37,6 +45,14 @@ function Login() {
   const handleSendOtp = async (event) => {
     event.preventDefault();
     const { phone } = formInputs;
+
+    //Check for phone validity
+    const isUserPhoneValid = !validatePhoneNumber(phone);
+    setPhoneError(!isUserPhoneValid);
+    if (!isUserPhoneValid) {
+      return;
+    }
+
     setIsOtpSent(true); // Disable the button initially
     try {
       const createSession = await account.createPhoneSession("unique()", phone);
@@ -70,10 +86,12 @@ function Login() {
 
     try {
       if (loginMethod === "email") {
+        setEmailLoginLoader(true);
         const session = await account.createEmailSession(email, password);
         console.log("Email login successful", session);
         // TODO: Redirect to dashboard or user area
       } else if (loginMethod === "phone") {
+        setOtpSubmitLoader(true);
         if (!userId) {
           console.error("User ID is not available for OTP verification.");
           return;
@@ -86,6 +104,8 @@ function Login() {
       console.error("Login failed:", error);
       // TODO: Handle errors such as showing an error message to the user
     }
+    setEmailLoginLoader(false);
+    setOtpSubmitLoader(false);
   };
 
   return (
@@ -115,7 +135,7 @@ function Login() {
                   <label htmlFor="email">Email Address</label>
                   <input
                     type="email"
-                    className="form-control"
+                    className="form-control mb-3"
                     id="email"
                     name="email"
                     placeholder="Enter email"
@@ -123,12 +143,12 @@ function Login() {
                     onChange={handleInputChange}
                     required
                   />
-                  <label htmlFor="password" className="form-label mt-3">
+                  <label htmlFor="password" className="form-label">
                     Password
                   </label>
                   <input
                     type="password"
-                    className="form-control"
+                    className="form-control mb-3"
                     id="password"
                     name="password"
                     placeholder="Enter password"
@@ -136,19 +156,34 @@ function Login() {
                     onChange={handleInputChange}
                     required
                   />
-                  <button
-                    id="emailLoginButton"
-                    type="submit"
-                    className="btn btn-primary mt-3"
-                  >
-                    Login
-                  </button>
+                  {emailLoginLoader ? (
+                    <button
+                      className="btn btn-primary mb-3"
+                      type="button"
+                      disabled
+                    >
+                      <span
+                        className="spinner-grow spinner-grow-sm mb-3"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      Signing in...
+                    </button>
+                  ) : (
+                    <button
+                      id="emailLoginButton"
+                      type="submit"
+                      className="btn btn-primary mb-3"
+                    >
+                      Login
+                    </button>
+                  )}
                 </>
               ) : (
                 <>
                   <label htmlFor="phone">Phone Number</label>
                   <PhoneInput
-                    className="form-control"
+                    className="form-control mb-3"
                     id="phone"
                     name="phone"
                     placeholder="Enter phone number"
@@ -161,9 +196,14 @@ function Login() {
                     }
                     required
                   />
+                  {phoneError && (
+                    <div className="invalid-feedback d-block mb-3">
+                      Invalid phone number
+                    </div>
+                  )}
                   <button
                     type="button"
-                    className="btn btn-primary mt-3"
+                    className="btn btn-primary mb-3"
                     onClick={handleSendOtp}
                     disabled={isOtpSent} // Button disabled only while OTP is being sent
                   >
@@ -188,17 +228,32 @@ function Login() {
                   onChange={handleInputChange}
                   required
                 />
-                <button
-                  type="submit"
-                  className="btn btn-primary mt-2"
-                  id="otpSubmitButton"
-                >
-                  Login
-                </button>
+                {otpSubmitLoader ? (
+                  <button
+                    className="btn btn-primary mb-3"
+                    type="button"
+                    disabled
+                  >
+                    <span
+                      className="spinner-grow spinner-grow-sm mb-3"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    Signing in...
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    className="btn btn-primary mb-3"
+                    id="otpSubmitButton"
+                  >
+                    Login
+                  </button>
+                )}
               </div>
             )}
           </form>
-          <p className="text-end mt-3">
+          <p className="text-end mb-3">
             Forgot <Link to="/forget-password">password?</Link>
           </p>
         </div>

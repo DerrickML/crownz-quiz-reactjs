@@ -1,4 +1,3 @@
-// import "../styles/form.css";
 import "react-phone-number-input/style.css";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import PhoneInput from "react-phone-number-input";
@@ -17,6 +16,7 @@ function SignUp() {
   const [signupMethod, setSignupMethod] = useState("email");
   const [kinSignupMethod, setKinSignupMethod] = useState("email");
   const [nextOfKinActive, setNextOfKinActive] = useState(false);
+  const [signupLoader, setSignupLoader] = useState(false);
 
   // State hooks for each input field
   const [email, setEmail] = useState("");
@@ -37,6 +37,16 @@ function SignUp() {
     kinLastName: "",
     // ... other kin-related fields ...
   });
+
+  const [studId, setStudId] = useState(null);
+  const [kinId, setKinId] = useState(null);
+  const [phoneError, setPhoneError] = useState(false); // Error flag for user's phone
+  const [kinPhoneError, setKinPhoneError] = useState(false); // Error flag for kin's phone
+
+  // Generalized phone number validation function
+  const validatePhoneNumber = (phoneNumber) => {
+    return phoneNumber && !isValidPhoneNumber(phoneNumber);
+  };
 
   // Handles the change of the signup method (email or phone)
   const handleMethodChange = (e) => {
@@ -94,87 +104,117 @@ function SignUp() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Construct the user details object
-    const studentDetails = {
-      email,
-      phone,
-      password,
-      firstName,
-      lastName,
-      otherName,
-      gender,
-      classGrade,
-      schoolName,
-      schoolAddress,
-      // ... include other fields ...
-    };
+    setSignupLoader(true);
 
-    //Console logs phone validity (FOR DEBUGGING PURPOSES ONLY)
-    console.log("Phone Number", phone);
-    signupMethod === "phone"
-      ? console.log("Correct phone number? ", isValidPhoneNumber(phone))
-      : console.log("Email is: ", email);
+    // Validate phone numbers
+    const isUserPhoneValid = !validatePhoneNumber(phone);
+    setPhoneError(!isUserPhoneValid);
 
-    let userResponse, labelResponse;
-
-    // Perform the signup using Appwrite SDK
-    try {
-      if (signupMethod === "email") {
-        const userEmail = email;
-        userResponse = await emailSignup(userEmail, password, firstName);
-        console.log(userResponse);
-
-        labelResponse = await studentLabel(userResponse.$id);
-        console.log("label response: ", labelResponse);
-      } else {
-        const phoneNumber = phone;
-        userResponse = await phoneSignup(phoneNumber);
-        console.log(userResponse);
-
-        labelResponse = await studentLabel(userResponse.userId);
-        console.log("label response: ", labelResponse);
-      }
-
-      // Redirect the user or show a success message
-      // navigate("/sign-in");
-    } catch (error) {
-      console.error("Signup failed:", error);
-      // Handle errors such as showing an error message to the user
+    let isKinPhoneValid = true;
+    if (nextOfKinActive) {
+      isKinPhoneValid = !validatePhoneNumber(nextOfKin.kinPhone);
+      setKinPhoneError(!isKinPhoneValid);
     }
 
-    // Check if next of kin details should be included
-    if (nextOfKinActive) {
-      // TODO: Implement the logic to create next of kin if account does not exist, and link next of kin using Appwrite SDK
+    if (!isUserPhoneValid || !isKinPhoneValid) {
+      setSignupLoader(false);
+      return;
+    }
+
+    try {
+      // Construct the user details object
+      const studentDetails = {
+        email,
+        phone,
+        password,
+        firstName,
+        lastName,
+        otherName,
+        gender,
+        classGrade,
+        schoolName,
+        schoolAddress,
+        // ... include other fields ...
+      };
+
+      let userResponse, labelResponse;
+
+      // Perform the signup using Appwrite SDK
       try {
-        const kinDetails = {
-          email: nextOfKin.kinEmail,
-          phone: nextOfKin.kinPhone,
-          firstName: nextOfKin.kinFirstName,
-          studentName: firstName,
-        };
+        if (signupMethod === "email") {
+          try {
+            const userEmail = email;
+            userResponse = await emailSignup(userEmail, password, firstName);
+            console.log(userResponse);
 
-        const response = await fetch(
-          "https://2wkvf7-3000.csb.app/create-next-of-kin",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(kinDetails),
+            setStudId(userResponse.$id);
+            // labelResponse = await studentLabel();
+            // console.log("label response: ", labelResponse);
+          } catch (error) {
+            console.error("Failed to Create Account:\n", error);
+            throw error;
           }
-        );
+        } else {
+          try {
+            const phoneNumber = phone;
+            userResponse = await phoneSignup(phoneNumber);
+            console.log(userResponse);
 
-        console.log("Kin Account Details: ", response);
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+            setStudId(userResponse.userId);
+            labelResponse = await studentLabel();
+            console.log("label response: ", labelResponse);
+          } catch (error) {
+            console.error("Failed to Create Account:\n", error);
+            throw error;
+          }
         }
 
-        return await response.json();
+        // Redirect the user or show a success message
+        // navigate("/sign-in");
       } catch (error) {
-        console.error("Error creating Next of Kin account:", error);
-        throw error;
+        console.error("Signup failed:", error);
+        return; // Early exit on failure
+        // Handle errors such as showing an error message to the user
       }
+
+      // Check if next of kin details should be included
+      if (nextOfKinActive) {
+        // TODO: Implement the logic to create next of kin if account does not exist, and link next of kin using Appwrite SDK
+        console.log("Next of Kin toggled: ", nextOfKinActive);
+        try {
+          let linkingResponse, createKinAcc;
+
+          let kinExists = await searchForExistingKinAccount(
+            kinSignupMethod === "email"
+              ? nextOfKin.kinEmail
+              : nextOfKin.kinPhone
+          );
+
+          // Check if next of kin account exists
+          // kinEmail, kinPhone, kinFirstName, studName, kinLastName;
+          let kinIdToUse = kinExists;
+          if (!kinExists) {
+            kinIdToUse = await createKinAccount(
+              nextOfKin.kinEmail,
+              nextOfKin.kinPhone,
+              nextOfKin.kinFirstName,
+              firstName,
+              nextOfKin.kinLastName
+            );
+            // kinExists = setKinId(kinResponse.$Id);
+          }
+
+          await linkKinToUser(kinIdToUse); // Pass the kinId directly
+        } catch (error) {
+          console.error("Error handling next of kin:", error);
+        }
+      }
+
+      setSignupLoader(false);
+    } catch (error) {
+      setSignupLoader(false);
+      console.error("Error Creating Account at Submission:", error);
+      throw error;
     }
   };
 
@@ -197,19 +237,21 @@ function SignUp() {
   async function phoneSignup(phoneNumber) {
     // Perform the signup using Appwrite SDK
     try {
-      if (isValidPhoneNumber(phoneNumber))
-        return await account.createPhoneSession("unique()", phoneNumber);
-      else return console.error("You Entered a wrong number");
+      // if (isValidPhoneNumber(phoneNumber))
+      return await account.createPhoneSession("unique()", phoneNumber);
+      // else return console.error("You Entered a wrong number");
     } catch (error) {
       console.error("Signup failed:", error);
       return error.message;
       // Handle errors such as showing an error message to the user
     }
   }
-  async function studentLabel(userID) {
+
+  //Asssign a label to a student account
+  async function studentLabel() {
     try {
       const paylaod = {
-        userId: userID,
+        userId: studId,
         labels: ["student"],
       };
 
@@ -222,6 +264,7 @@ function SignUp() {
       });
 
       console.log("Kin Account Details: ", response);
+      setKinId(response.$id);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -230,6 +273,119 @@ function SignUp() {
       return await response.json();
     } catch (error) {
       console.error("Error applying label:", error);
+      throw error;
+    }
+  }
+
+  // Create a kin account
+  async function createKinAccount(
+    kinEmail,
+    kinPhone,
+    kinFirstName,
+    studName,
+    kinLastName
+  ) {
+    try {
+      const kinDetails = {
+        email: kinEmail || null,
+        phone: kinPhone || null,
+        firstName: kinFirstName,
+        lastName: kinLastName || null,
+        studentName: studName,
+      };
+
+      const response = await fetch(
+        "https://2wkvf7-3000.csb.app/create-next-of-kin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(kinDetails),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const responseData = await response.json(); // Parse the JSON response
+      console.log("Kin Account Details: ", responseData.kinId);
+      return responseData.kinId;
+    } catch (error) {
+      console.error("Error creating Next of Kin account:", error);
+      throw error;
+    }
+  }
+
+  // Checking for existing kin account
+  async function searchForExistingKinAccount(value) {
+    try {
+      let query = [];
+      if (kinSignupMethod === "email") {
+        query.push(Query.equal("email", value));
+      } else {
+        query.push(Query.equal("phone", value));
+      }
+
+      const response = await databases.listDocuments(
+        database_id,
+        nextOfKinTable_id,
+        query
+      );
+
+      if (response.documents.length > 0) {
+        // Assuming you want to return the kinID of the first document found
+        console.log(
+          "Next of Kin exists. Proceeding to link with student ...",
+          response
+        );
+        const kinID = response.documents[0].kinID;
+        setKinId(kinID); // Setting the kinId state
+
+        return kinID;
+      } else {
+        console.log(
+          "Kin does not exist. Proceeding to create account, and link with student ...",
+          response
+        );
+        return false;
+      }
+    } catch (error) {
+      console.error("Error checking Next of Kin:", error);
+      throw error;
+    }
+  }
+
+  async function linkKinToUser(kinId) {
+    // Implement logic to link next of kin to the user
+    console.log("Linking next of kin to user");
+
+    try {
+      // Create a new document with user and Next of Kin details. Placing the kinID in the studentTable as a link between the student and the kin
+      const userDocResponse = await databases.createDocument(
+        database_id,
+        studentTable_id, // students collection id
+        "unique()", // Generates a unique ID via appwrite
+        {
+          studID: studId,
+          kinID: kinId || null,
+          email: email || null, // Include email if provided
+          phone: phone || null, // Include phone if provided
+          firstName: firstName,
+          lastName: lastName,
+          otherName: otherName || null,
+          gender: gender,
+          class: classGrade, //userDetails.classGrade
+          schoolName: schoolName || null,
+          schoolAddress: schoolAddress || null,
+        }
+      );
+
+      console.log("User document linked to Next of Kin:", userDocResponse);
+      return userDocResponse;
+    } catch (error) {
+      console.error("Error linking user to Next of Kin:", error);
       throw error;
     }
   }
@@ -254,7 +410,6 @@ function SignUp() {
                 <option value="phone">Phone</option>
               </select>
             </div>
-
             {/* Dynamic Field for Email or Phone based on the chosen signup method */}
             {signupMethod === "email" ? (
               <>
@@ -282,7 +437,7 @@ function SignUp() {
                     required
                   />
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 form-group">
                   <div className="phone-input">
                     <label htmlFor="phone">Phone Number (Optional)</label>
                     <PhoneInput
@@ -291,14 +446,18 @@ function SignUp() {
                       value={phone}
                       onChange={setPhone}
                       placeholder="Enter phone number"
-                      required
                     />
                   </div>
+                  {phoneError && (
+                    <div className="invalid-feedback d-block">
+                      Invalid phone number
+                    </div>
+                  )}
                 </div>
               </>
             ) : (
               <>
-                <div className="mb-3">
+                <div className="mb-3 form-group">
                   <div className="phone-input">
                     <label htmlFor="phone">Phone Number</label>
                     <PhoneInput
@@ -310,6 +469,11 @@ function SignUp() {
                       required
                     />
                   </div>
+                  {phoneError && (
+                    <div className="invalid-feedback d-block">
+                      Invalid phone number
+                    </div>
+                  )}
                 </div>
                 <div className="mb-3">
                   <label htmlFor="email">Email Address (Optional)</label>
@@ -324,7 +488,6 @@ function SignUp() {
                 </div>
               </>
             )}
-
             {/* Personal Details Section */}
             <div className="row">
               <div className="col-md-6 mb-3">
@@ -366,7 +529,6 @@ function SignUp() {
                 />
               </div>
             </div>
-
             <div className="mb-3">
               <label htmlFor="gender" className="form-label">
                 Gender
@@ -383,7 +545,6 @@ function SignUp() {
                 <option value="Female">Female</option>
               </select>
             </div>
-
             {/* School Details Section */}
             <div className="mb-3">
               <label htmlFor="classGrade" className="form-label">
@@ -405,7 +566,6 @@ function SignUp() {
                 </option>
               </select>
             </div>
-
             <div className="row">
               <div className="col-md-6 mb-3">
                 <label htmlFor="schoolName" className="form-label">
@@ -432,13 +592,11 @@ function SignUp() {
                 />
               </div>
             </div>
-
             <input
               type="hidden"
               id="nextOfKinActive"
               value={nextOfKinActive.toString()}
             />
-
             <div className="mb-3 form-check">
               <input
                 type="checkbox"
@@ -450,10 +608,9 @@ function SignUp() {
                 Add Next of Kin?
               </label>
             </div>
-
             {/* Next of Kin Section */}
             {nextOfKinActive && (
-              <div className="collapse show" id="nextOfKinSection">
+              <div className="collapse show mb-3" id="nextOfKinSection">
                 <div className="card card-body">
                   {/* Next of Kin Sign-up Method */}
                   <div className="mb-3">
@@ -487,7 +644,7 @@ function SignUp() {
                             required
                           />
                         </div>
-                        <div className="mb-3">
+                        <div className="mb-3 form-group">
                           <div className="phone-input">
                             <label htmlFor="optionalKinPhone">
                               Phone Number (Optional)
@@ -506,11 +663,16 @@ function SignUp() {
                               required={kinSignupMethod === "phone"}
                             />
                           </div>
+                          {kinPhoneError && (
+                            <div className="invalid-feedback d-block">
+                              Invalid phone number
+                            </div>
+                          )}
                         </div>
                       </>
                     ) : (
                       <>
-                        <div className="mb-3">
+                        <div className="mb-3 form-group">
                           <div className="phone-input">
                             <label htmlFor="optionalKinPhone">
                               Phone Number (Optional)
@@ -529,6 +691,11 @@ function SignUp() {
                               required={kinSignupMethod === "phone"}
                             />
                           </div>
+                          {kinPhoneError && (
+                            <div className="invalid-feedback d-block">
+                              Invalid phone number
+                            </div>
+                          )}
                         </div>
                         <div className="mb-3">
                           <label htmlFor="optionalKinEmail">
@@ -576,11 +743,30 @@ function SignUp() {
                 </div>
               </div>
             )}
-
-            <button type="submit" className="btn btn-primary" id="signupButton">
-              Sign Up
-            </button>
-            <p>
+            {!signupLoader ? (
+              <button
+                type="submit"
+                className="btn btn-primary mb-3"
+                id="signupButton"
+              >
+                Sign Up
+              </button>
+            ) : (
+              <button className="mb-3 btn btn-secondary" type="button" disabled>
+                <span
+                  className="spinner-grow spinner-grow-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                Signing-up...
+              </button>
+            )}
+            {(phoneError || kinPhoneError) && (
+              <div className="invalid-feedback d-block mb-3">
+                Check for any invalid inputs
+              </div>
+            )}
+            <p className="mb-3">
               Already have an account? <Link to="/sign-in">Log in here</Link>
             </p>
           </form>
