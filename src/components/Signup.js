@@ -3,6 +3,7 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import PhoneInput from "react-phone-number-input";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { showToast } from "../utilities/toastUtil.js";
 import {
   account,
   databases,
@@ -38,8 +39,6 @@ function SignUp() {
     // ... other kin-related fields ...
   });
 
-  const [studId, setStudId] = useState(null);
-  const [kinId, setKinId] = useState(null);
   const [phoneError, setPhoneError] = useState(false); // Error flag for user's phone
   const [kinPhoneError, setKinPhoneError] = useState(false); // Error flag for kin's phone
 
@@ -107,6 +106,7 @@ function SignUp() {
     setSignupLoader(true);
 
     // Validate phone numbers
+    let studentID;
     const isUserPhoneValid = !validatePhoneNumber(phone);
     setPhoneError(!isUserPhoneValid);
 
@@ -134,7 +134,6 @@ function SignUp() {
         classGrade,
         schoolName,
         schoolAddress,
-        // ... include other fields ...
       };
 
       let userResponse, labelResponse;
@@ -143,13 +142,29 @@ function SignUp() {
       try {
         if (signupMethod === "email") {
           try {
-            const userEmail = email;
-            userResponse = await emailSignup(userEmail, password, firstName);
-            console.log(userResponse);
+            const userEmail = studentDetails.email;
+            console.log("Signing up student using Email: " + userEmail);
+            userResponse = await emailSignup(
+              userEmail,
+              password,
+              firstName,
+              phone
+            );
+            if (!userResponse) {
+              setSignupLoader(false);
+              return; // Stop execution if signup failed
+            }
 
-            setStudId(userResponse.$id);
-            // labelResponse = await studentLabel();
-            // console.log("label response: ", labelResponse);
+            studentID = userResponse.$id;
+            console.log("Email student ID: ", studentID);
+
+            labelResponse = await studentLabel(studentID);
+            if (!labelResponse) {
+              setSignupLoader(false);
+              return; // Stop execution if signup failed
+            }
+
+            console.log("label response: ", labelResponse);
           } catch (error) {
             console.error("Failed to Create Account:\n", error);
             throw error;
@@ -158,14 +173,24 @@ function SignUp() {
           try {
             const phoneNumber = phone;
             userResponse = await phoneSignup(phoneNumber);
-            console.log(userResponse);
+            if (!userResponse) {
+              setSignupLoader(false);
+              return; // Stop execution if signup failed
+            }
 
-            setStudId(userResponse.userId);
-            labelResponse = await studentLabel();
+            studentID = userResponse.userId;
+            console.log("Phone student ID: ", studentID);
+
+            labelResponse = await studentLabel(studentID);
+            if (!labelResponse) {
+              setSignupLoader(false);
+              return; // Stop execution if signup failed
+            }
+
             console.log("label response: ", labelResponse);
           } catch (error) {
             console.error("Failed to Create Account:\n", error);
-            throw error;
+            return;
           }
         }
 
@@ -178,59 +203,124 @@ function SignUp() {
       }
 
       // Check if next of kin details should be included
+      let linkKinResponse;
       if (nextOfKinActive) {
         // TODO: Implement the logic to create next of kin if account does not exist, and link next of kin using Appwrite SDK
         console.log("Next of Kin toggled: ", nextOfKinActive);
         try {
-          let linkingResponse, createKinAcc;
-
           let kinExists = await searchForExistingKinAccount(
             kinSignupMethod === "email"
               ? nextOfKin.kinEmail
               : nextOfKin.kinPhone
           );
 
-          // Check if next of kin account exists
-          // kinEmail, kinPhone, kinFirstName, studName, kinLastName;
-          let kinIdToUse = kinExists;
-          if (!kinExists) {
-            kinIdToUse = await createKinAccount(
-              nextOfKin.kinEmail,
-              nextOfKin.kinPhone,
-              nextOfKin.kinFirstName,
-              firstName,
-              nextOfKin.kinLastName
-            );
-            // kinExists = setKinId(kinResponse.$Id);
+          let kinIdToUse;
+
+          console.log("Kin exists? " + kinExists);
+
+          if (kinExists === false) {
+            try {
+              const createKin = await createKinAccount(
+                nextOfKin.kinEmail,
+                nextOfKin.kinPhone,
+                nextOfKin.kinFirstName,
+                firstName,
+                nextOfKin.kinLastName
+              );
+              kinIdToUse = createKin;
+              console.log("Kin ID on account NOT exist: " + createKin);
+            } catch (error) {
+              setSignupLoader(false);
+              return; // Stop execution if kin account creation failed
+            }
+          } else {
+            kinIdToUse = kinExists;
           }
 
-          await linkKinToUser(kinIdToUse); // Pass the kinId directly
+          linkKinResponse = await linkKinToUser(kinIdToUse, studentID); // Pass the kinId directly
+          if (!linkKinResponse) {
+            setSignupLoader(false);
+            return; // Stop execution if signup failed
+          }
         } catch (error) {
           console.error("Error handling next of kin:", error);
+          return;
+        }
+      } else if (!nextOfKinActive) {
+        linkKinResponse = await linkKinToUser(null, studentID); // Pass a null value for the kinID
+        if (!linkKinResponse) {
+          setSignupLoader(false);
+          return; // Stop execution if signup failed
         }
       }
 
+      showToast("Account Created Successfully", "success");
+
       setSignupLoader(false);
     } catch (error) {
       setSignupLoader(false);
+      showToast("Error Creating Account at Submission", "error");
       console.error("Error Creating Account at Submission:", error);
-      throw error;
+      return;
     }
   };
 
-  async function emailSignup(emailAddress, userPassword, userName) {
-    // Perform the signup using Appwrite SDK
+  async function emailSignup(
+    emailAddress,
+    userPassword,
+    userName,
+    phoneNumber
+  ) {
     try {
-      return await account.create(
-        "unique()",
-        emailAddress,
-        userPassword,
-        userName
+      const payload = {
+        email: emailAddress,
+        password: userPassword,
+        userName: userName,
+        phone: phoneNumber || null,
+      };
+
+      const response = await fetch(
+        "https://2wkvf7-3000.csb.app/create-student",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
       );
+
+      if (!response.ok) {
+        const errorDetails = await response.text();
+        throw new Error(
+          `HTTP error! Status: ${response.status} - ${errorDetails}`
+        );
+      }
+
+      const responseData = await response.json();
+      console.log("Student created server-side response: ", responseData);
+      return responseData;
+      // return await account.create(
+      //   "unique()",
+      //   emailAddress,
+      //   userPassword,
+      //   userName
+      // );
     } catch (error) {
-      console.error("Signup failed:", error);
-      return error.message;
-      // Handle errors such as showing an error message to the user
+      if (!navigator.onLine) {
+        showToast(
+          "Network error. Please check your internet connection.",
+          "error"
+        );
+      } else {
+        console.error("Email Signup failed: ", error.message);
+        showToast(
+          "Failed to sign up with email address: " + error.message,
+          "error"
+        );
+      }
+
+      return null;
     }
   }
 
@@ -241,17 +331,18 @@ function SignUp() {
       return await account.createPhoneSession("unique()", phoneNumber);
       // else return console.error("You Entered a wrong number");
     } catch (error) {
-      console.error("Signup failed:", error);
-      return error.message;
+      console.error("Phone Signup failed:", error.code);
+      showToast("Faile to signup with phone number", "error");
+      return null;
       // Handle errors such as showing an error message to the user
     }
   }
 
   //Asssign a label to a student account
-  async function studentLabel() {
+  async function studentLabel(stud_Id) {
     try {
       const paylaod = {
-        userId: studId,
+        userId: stud_Id,
         labels: ["student"],
       };
 
@@ -263,8 +354,7 @@ function SignUp() {
         body: JSON.stringify(paylaod),
       });
 
-      console.log("Kin Account Details: ", response);
-      setKinId(response.$id);
+      console.log("FROM FUNCTION: Label Response: ", response);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -272,8 +362,17 @@ function SignUp() {
 
       return await response.json();
     } catch (error) {
-      console.error("Error applying label:", error);
-      throw error;
+      if (!navigator.onLine) {
+        showToast(
+          "Network error. Please check your internet connection.",
+          "error"
+        );
+      } else {
+        // showToast("An error occurred while fetching data.", "error");
+        console.error("Error applying label:", error);
+      }
+
+      return null;
     }
   }
 
@@ -291,6 +390,7 @@ function SignUp() {
         phone: kinPhone || null,
         firstName: kinFirstName,
         lastName: kinLastName || null,
+        signupMethod: kinSignupMethod,
         studentName: studName,
       };
 
@@ -309,12 +409,22 @@ function SignUp() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
+      console.log("Kin response details: " + response);
+
       const responseData = await response.json(); // Parse the JSON response
-      console.log("Kin Account Details: ", responseData.kinId);
-      return responseData.kinId;
+      console.log("Kin Account Details: ", responseData.$id);
+      return responseData.$id;
     } catch (error) {
-      console.error("Error creating Next of Kin account:", error);
-      throw error;
+      if (!navigator.onLine) {
+        showToast(
+          "Network error. Please check your internet connection.",
+          "error"
+        );
+      } else {
+        // showToast("An error occurred while fetching data.", "error");
+        console.error("Error creating Next of Kin account:", error);
+      }
+      return;
     }
   }
 
@@ -335,13 +445,16 @@ function SignUp() {
       );
 
       if (response.documents.length > 0) {
-        // Assuming you want to return the kinID of the first document found
+        // Will return the kinID of the first document found
         console.log(
           "Next of Kin exists. Proceeding to link with student ...",
           response
         );
+        showToast(
+          "Next of kin account already exists, proceeding to link with student",
+          "info"
+        );
         const kinID = response.documents[0].kinID;
-        setKinId(kinID); // Setting the kinId state
 
         return kinID;
       } else {
@@ -353,11 +466,11 @@ function SignUp() {
       }
     } catch (error) {
       console.error("Error checking Next of Kin:", error);
-      throw error;
+      return null;
     }
   }
 
-  async function linkKinToUser(kinId) {
+  async function linkKinToUser(kinId, studID) {
     // Implement logic to link next of kin to the user
     console.log("Linking next of kin to user");
 
@@ -368,7 +481,7 @@ function SignUp() {
         studentTable_id, // students collection id
         "unique()", // Generates a unique ID via appwrite
         {
-          studID: studId,
+          studID: studID || null,
           kinID: kinId || null,
           email: email || null, // Include email if provided
           phone: phone || null, // Include phone if provided
@@ -376,9 +489,10 @@ function SignUp() {
           lastName: lastName,
           otherName: otherName || null,
           gender: gender,
-          class: classGrade, //userDetails.classGrade
+          educationLevel: classGrade, //userDetails.classGrade
           schoolName: schoolName || null,
           schoolAddress: schoolAddress || null,
+          accountStatus: "Active",
         }
       );
 
@@ -386,7 +500,7 @@ function SignUp() {
       return userDocResponse;
     } catch (error) {
       console.error("Error linking user to Next of Kin:", error);
-      throw error;
+      return null;
     }
   }
 
@@ -394,6 +508,50 @@ function SignUp() {
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-md-8">
+          {/* Signup Error Toast */}
+          <div
+            className="toast"
+            id="emailToastError"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+            display="true"
+          >
+            <div className="toast-header">
+              <strong className="me-auto">Email Error</strong>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="toast-body">
+              This Email is already in use. Please use a different email.
+            </div>
+          </div>
+          {/* Network Error Toast */}
+          <div
+            className="toast"
+            id="networkToastError"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div className="toast-header">
+              <strong className="me-auto">Network Error</strong>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="toast-body">
+              Network error. Please check your internet connection.
+            </div>
+          </div>
+
           <form id="signupForm" onSubmit={handleSubmit}>
             {/* Signup Method Selection */}
             <div className="mb-3">
@@ -555,6 +713,7 @@ function SignUp() {
                 id="classGrade"
                 value={classGrade}
                 onChange={handleInputChange}
+                required
               >
                 <option value="">Select Education Level</option>
                 <option value="PLE">Primary Leaving Examination (PLE)</option>
@@ -577,6 +736,7 @@ function SignUp() {
                   id="schoolName"
                   value={schoolName}
                   onChange={handleInputChange}
+                  required={classGrade === "PLE"}
                 />
               </div>
               <div className="col-md-6 mb-3">
@@ -589,6 +749,7 @@ function SignUp() {
                   id="schoolAddress"
                   value={schoolAddress}
                   onChange={handleInputChange}
+                  required={classGrade === "PLE"}
                 />
               </div>
             </div>
@@ -770,6 +931,26 @@ function SignUp() {
               Already have an account? <Link to="/sign-in">Log in here</Link>
             </p>
           </form>
+          <div
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+            className="toast"
+            data-bs-autohide="false"
+          >
+            <div className="toast-header">
+              <small>11 mins ago</small>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="toast-body">
+              Hello, world! This is a toast message.
+            </div>
+          </div>
         </div>
       </div>
     </div>
