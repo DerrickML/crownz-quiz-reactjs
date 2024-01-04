@@ -25,6 +25,7 @@ import SignUp from "./components/Signup";
 import ForgetPassword from "./components/ForgetPassword";
 import Testing from "./components/Testing";
 import Home from "./components/Home";
+import Profile from "./components/Profile";
 
 function App() {
   // Check Network Status
@@ -84,7 +85,7 @@ function App() {
       phone: userData.phone,
       email: userData.email,
       gender: userData.gender,
-      shoolName: userData.shoolName,
+      schoolName: userData.schoolName,
       schoolAddress: userData.schoolAddress,
       educationLevel: userData.educationLevel,
       labels: userData.labels,
@@ -130,6 +131,10 @@ function App() {
                   <Navigate to="/sign-in" />
                 )
               }
+            />
+            <Route
+              path="/profile"
+              element={sessionInfo ? <Profile /> : <Navigate to="/sign-in" />}
             />
             <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
             <Route path="/sign-up" element={<SignUp />} />

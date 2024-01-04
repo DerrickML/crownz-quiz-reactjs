@@ -17,9 +17,9 @@ const CustomNavbar = ({ sessionInfo, onLogout }) => {
                 <Nav.Link as={NavLink} to="/">
                   Home
                 </Nav.Link>
-                <Nav.Link as={NavLink} to="/profile">
+                <NavLink className="nav-link" to="/profile">
                   Profile
-                </Nav.Link>
+                </NavLink>
                 <Nav.Link onClick={onLogout} as={NavLink} to="/sign-in">
                   Logout
                 </Nav.Link>
