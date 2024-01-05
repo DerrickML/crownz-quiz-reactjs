@@ -1,5 +1,6 @@
 // Home.js
 import React, { useState, useEffect, useRef } from "react"; // Import useState
+import { NavLink } from "react-router-dom";
 import {
   Container,
   Row,
@@ -54,6 +55,8 @@ function Home({ sessionInfo, onLogout }) {
     examResults = UCE_Results;
   } else if (userInfo.educationLevel === "UACE") {
     examResults = UACE_Results;
+  } else {
+    examResults = PLE_Results;
   }
 
   // State to track the open state of each subject
@@ -195,9 +198,11 @@ function Home({ sessionInfo, onLogout }) {
                     <Button
                       variant="outline-secondary"
                       size="sm"
-                      href="/profile"
+                      // href="/profile"
                     >
-                      Edit Profile
+                      <NavLink className="nav-link" to="/profile">
+                        Edit Profile
+                      </NavLink>
                     </Button>
                   </div>
                 </div>

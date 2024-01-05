@@ -67,22 +67,25 @@ function Login(props) {
   const handleSendOtp = async (event) => {
     event.preventDefault();
 
-    setIsOtpSent(true); // Disable the button initially
     const { phone } = formInputs;
 
-    //Check for phone validity
+    // Check for phone validity
     const isUserPhoneValid = !validatePhoneNumber(phone);
     setPhoneError(!isUserPhoneValid);
 
     if (!isUserPhoneValid) {
+      setIsOtpSent(false); // Reset OTP sent status
+      setOtpCountdown(10); // Reset OTP countdown
       return;
     }
+
+    setIsOtpSent(true); // Disable the button initially
 
     // Check if account already exists
     if ((await searchForExistingAccount(phone)) === false) {
       setAccountCheck(true);
       console.log("Account does not exist");
-      setIsOtpSent(false); // Enable the button initially
+      setIsOtpSent(false); // Enable the button if account doesn't exist
       return;
     } else {
       setAccountCheck(false);
@@ -93,8 +96,8 @@ function Login(props) {
       setUserId(createSession.userId); // Save the userId in state
       console.log(createSession);
 
-      setIsOtpSent(true); // Disable the button initially
       setShowOtpInput(true); // Show the OTP input field
+      setIsOtpSent(false); //re-enable the login button
 
       // Start countdown
       let counter = otpCountdown;
@@ -104,13 +107,13 @@ function Login(props) {
         if (counter <= 0) {
           clearInterval(interval);
           setIsOtpSent(false); // Re-enable the button after countdown
-          // Don't hide the OTP input field
           setOtpCountdown(10); // Reset countdown
         }
       }, 1000);
     } catch (error) {
       console.error("OTP sending failed:", error);
       setIsOtpSent(false); // Ensure the button is re-enabled if there's an error
+      setOtpCountdown(10); // Reset countdown
     }
   };
 
@@ -308,6 +311,7 @@ function Login(props) {
                       placeholder="Enter password"
                       value={formInputs.password}
                       onChange={handleInputChange}
+                      autoComplete="current-password"
                       required
                     />
                     {/* Display any email errors */}
@@ -341,85 +345,73 @@ function Login(props) {
                     )}
                   </>
                 ) : (
-                  <>
-                    <label htmlFor="phone">Phone Number</label>
-                    <PhoneInput
-                      className="form-control mb-3"
-                      id="phone"
-                      name="phone"
-                      placeholder="Enter phone number"
-                      value={formInputs.phone}
-                      onChange={(value) =>
-                        setFormInputs((prevState) => ({
-                          ...prevState,
-                          phone: value,
-                        }))
-                      }
-                      required
-                    />
-                    {phoneError && (
-                      <div className="invalid-feedback d-block mb-3">
-                        Invalid phone number
-                      </div>
-                    )}
-                    {accountCheck && (
-                      <div className="invalid-feedback d-block mb-3">
-                        No account found with this phone number. Please check
-                        your number or <Link to="/sign-up">sign up</Link> for a
-                        new account.
-                      </div>
-                    )}
-                    <button
-                      type="button"
-                      className="btn btn-primary mb-3"
-                      onClick={handleSendOtp}
-                      disabled={isOtpSent} // Button disabled only while OTP is being sent
-                    >
-                      {isOtpSent && otpCountdown > 0
-                        ? `Resend OTP in ${otpCountdown}s`
-                        : "Send OTP"}
-                    </button>
-                  </>
+                  loginMethod === "phone" && (
+                    <>
+                      <label htmlFor="phone">Phone Number</label>
+                      <PhoneInput
+                        className="form-control mb-3"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter phone number"
+                        value={formInputs.phone}
+                        onChange={(value) =>
+                          setFormInputs((prevState) => ({
+                            ...prevState,
+                            phone: value,
+                          }))
+                        }
+                        required
+                      />
+                      {phoneError && (
+                        <div className="invalid-feedback d-block mb-3">
+                          Invalid phone number
+                        </div>
+                      )}
+                      {accountCheck && (
+                        <div className="invalid-feedback d-block mb-3">
+                          No account found with this phone number. Please check
+                          your number or <Link to="/sign-up">sign up</Link> for
+                          an account.
+                        </div>
+                      )}
+                      <button
+                        type="button"
+                        className="btn btn-primary mb-3"
+                        onClick={handleSendOtp}
+                        disabled={isOtpSent} // Button disabled only while OTP is being sent
+                      >
+                        {isOtpSent && otpCountdown > 0
+                          ? `Resend OTP in ${otpCountdown}s`
+                          : "Send OTP"}
+                      </button>
+
+                      {showOtpInput && (
+                        <div id="otpSection" className="mb-3">
+                          <label htmlFor="otpInput">Enter OTP</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="otpInput"
+                            name="otp"
+                            placeholder="Enter OTP"
+                            value={formInputs.otp}
+                            onChange={handleInputChange}
+                            required
+                          />
+                          <button
+                            type="submit"
+                            className="btn btn-primary mb-3"
+                            id="otpSubmitButton"
+                            disabled={!showOtpInput || otpSubmitLoader} // Disable the button if OTP input is not shown or if OTP is being submitted
+                          >
+                            Login
+                          </button>
+                        </div>
+                      )}
+                    </>
+                  )
                 )}
               </div>
-
-              {showOtpInput && (
-                <div id="otpSection" className="mb-3">
-                  <label htmlFor="otpInput">Enter OTP</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="otpInput"
-                    name="otp"
-                    placeholder="Enter OTP"
-                    value={formInputs.otp}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  {otpSubmitLoader ? (
-                    <button
-                      className="btn btn-primary mb-3"
-                      type="button"
-                      disabled
-                    >
-                      <span
-                        className="spinner-grow spinner-grow-sm mb-3"
-                        role="status"
-                        aria-hidden="true"
-                      ></span>
-                      Signing in...
-                    </button>
-                  ) : (
-                    <button
-                      type="submit"
-                      className="btn btn-primary mb-3"
-                      id="otpSubmitButton"
-                    >
-                      Login
-                    </button>
-                  )}
-                </div>
-              )}
             </form>
             {loginMethod === "email" ? (
               <p className="text-end mb-3">

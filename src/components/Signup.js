@@ -299,13 +299,8 @@ function SignUp() {
 
       const responseData = await response.json();
       console.log("Student created server-side response: ", responseData);
+
       return responseData;
-      // return await account.create(
-      //   "unique()",
-      //   emailAddress,
-      //   userPassword,
-      //   userName
-      // );
     } catch (error) {
       if (!navigator.onLine) {
         showToast(

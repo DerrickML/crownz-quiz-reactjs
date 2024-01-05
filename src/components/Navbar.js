@@ -4,7 +4,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 
 const CustomNavbar = ({ sessionInfo, onLogout }) => {
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" className="shadow">
+    <Navbar bg="dark" variant="dark" expand="lg" className="shadow" fixed="top">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
           CrownzCom
