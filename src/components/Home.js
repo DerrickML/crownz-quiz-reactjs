@@ -1,6 +1,6 @@
 // Home.js
 import React, { useState, useEffect, useRef } from "react"; // Import useState
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   Container,
   Row,
@@ -21,6 +21,8 @@ import {
 
 function Home({ sessionInfo, onLogout }) {
   // Receive sessionInfo & onLogout as a prop
+
+  const navigate = useNavigate();
 
   //Fetch sessionInfo from localStorage
   const userInfo = storageUtil.getItem("userInfo");
@@ -46,89 +48,83 @@ function Home({ sessionInfo, onLogout }) {
     // ... more students
   ];
 
+  // State for recent scores
+  const [recentScores, setRecentScores] = useState([]);
+
   // Dummy data for exam results
-  let examResults;
+  // Function to get the most recent 5 scores for a specific education level
+  const getRecentFiveScoresForLevel = (level) => {
+    let results;
+    switch (level) {
+      case "PLE":
+        results = PLE_Results;
+        break;
+      case "UCE":
+        results = UCE_Results;
+        break;
+      case "UACE":
+        results = UACE_Results;
+        break;
+      default:
+        results = [];
+    }
 
-  if (userInfo.educationLevel === "PLE") {
-    examResults = PLE_Results;
-  } else if (userInfo.educationLevel === "UCE") {
-    examResults = UCE_Results;
-  } else if (userInfo.educationLevel === "UACE") {
-    examResults = UACE_Results;
-  } else {
-    examResults = PLE_Results;
-  }
-
-  // State to track the open state of each subject
-  const [openSubjects, setOpenSubjects] = useState({});
-
-  // Function to handle subject card click
-  const handleSubjectClick = (subject) => {
-    setOpenSubjects((prevState) => ({
-      ...prevState,
-      [subject]: !prevState[subject], // Toggle the open state for the clicked subject
-    }));
+    return results
+      .flatMap((subject) =>
+        subject.attempts.map((attempt) => ({
+          ...attempt,
+          subject: subject.subject,
+        }))
+      )
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 5);
   };
 
-  const renderStudentDashboard = () => (
-    <Row>
-      {examResults.map((result, index) => {
-        const isOpen = openSubjects[result.subject];
-        const maxHeight = isOpen ? "1000px" : "0px"; // Adjust '1000px' based on your content
+  // Use useEffect to set recent scores
+  useEffect(() => {
+    if (userInfo && userInfo.educationLevel) {
+      setRecentScores(getRecentFiveScoresForLevel(userInfo.educationLevel));
+    }
+  }, [userInfo]);
 
-        return (
-          <Col md={6} key={index} className="mb-3">
-            <Card className="shadow-sm">
-              <Card.Header
-                className="bg-transparent border-0 d-flex justify-content-between align-items-center"
-                onClick={() => handleSubjectClick(result.subject)}
-                style={{ cursor: "pointer" }}
-              >
-                <h3 className="mb-0">{result.subject}</h3>
-                <Badge bg="secondary" pill>
-                  {result.attempts.length}/5 Attempted
-                </Badge>
-              </Card.Header>
-              <div
-                style={{ maxHeight: maxHeight }}
-                className="card-body-collapsible"
-              >
-                {isOpen && (
-                  <Card.Body className="pt-0">
-                    <Table responsive="sm" className="align-middle mb-0">
-                      <thead>
-                        <tr>
-                          <th>Date</th>
-                          <th>Score</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {result.attempts.map((attempt, idx) => (
-                          <tr key={idx}>
-                            <td>{attempt.date}</td>
-                            <td>{attempt.score}</td>
-                            <td>
-                              <Button
-                                variant="outline-success"
-                                size="sm"
-                                className="rounded-pill"
-                              >
-                                View Results
-                              </Button>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </Table>
-                  </Card.Body>
-                )}
-              </div>
-            </Card>
-          </Col>
-        );
-      })}
-    </Row>
+  // Function to render the recent scores
+  const renderRecentScores = () => (
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Date</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {recentScores.map((score, idx) => (
+          <tr key={idx}>
+            <td>{score.subject}</td>
+            <td>{score.date}</td>
+            <td>{score.score}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  );
+
+  const renderStudentDashboard = () => (
+    <>
+      <Row>
+        <Col lg={12}>
+          <h3 className="mb-4">Recent Scores</h3>
+          {renderRecentScores()}
+          <Button
+            variant="primary"
+            className="mt-3"
+            onClick={() => navigate("/all-results")}
+          >
+            View All Results
+          </Button>
+        </Col>
+      </Row>
+    </>
   );
 
   const renderNextOfKinDashboard = () => (
@@ -155,7 +151,11 @@ function Home({ sessionInfo, onLogout }) {
                     <td>{student.recentScore}</td>
                     <td>{student.lastExamDate}</td>
                     <td>
-                      <Button variant="primary" size="sm">
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        onClick={() => navigate("/all-results")}
+                      >
                         View Details
                       </Button>
                     </td>
@@ -195,13 +195,9 @@ function Home({ sessionInfo, onLogout }) {
                     </p>
                   </div>
                   <div className="ms-auto">
-                    <Button
-                      variant="outline-secondary"
-                      size="sm"
-                      // href="/profile"
-                    >
+                    <Button variant="outline-secondary" size="sm">
                       <NavLink className="nav-link" to="/profile">
-                        Edit Profile
+                        Profile
                       </NavLink>
                     </Button>
                   </div>

@@ -100,6 +100,29 @@ const Profile = () => {
     </div>
   );
 
+  const renderNextOfKinDetails = () => (
+    <div className="card">
+      <div className="card-body">
+        <h5 className="card-title">Next of Kin</h5>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item">
+            <i className="bi bi-building me-2"></i>
+            <strong>Name:</strong> John Doe
+          </li>
+          <li className="list-group-item">
+            <i className="bi bi-geo-alt me-2"></i>
+            <strong>Email Address:</strong> johndoe@mail.com
+          </li>
+          <li className="list-group-item">
+            <i className="bi bi-bookmark me-2"></i>
+            <strong>Telephone:</strong> +256 (0) 712345678
+          </li>
+          {/* Additional student-specific content */}
+        </ul>
+      </div>
+    </div>
+  );
+
   return (
     <div className="container my-4">
       <div className="profile-header card bg-primary text-white text-center p-4 mb-4">
@@ -122,15 +145,26 @@ const Profile = () => {
           </a>
         </li>
         {isStudent && (
-          <li className="nav-item">
-            <a
-              className="nav-link"
-              href="#educationDetails"
-              data-bs-toggle="tab"
-            >
-              Education Details
-            </a>
-          </li>
+          <>
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                href="#educationDetails"
+                data-bs-toggle="tab"
+              >
+                Education Details
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                href="#nextOfKinDetails"
+                data-bs-toggle="tab"
+              >
+                Next of Kin Details
+              </a>
+            </li>
+          </>
         )}
         {isNextOfKin && (
           <li className="nav-item">
@@ -164,9 +198,14 @@ const Profile = () => {
         </div>
 
         {isStudent && (
-          <div className="tab-pane" id="educationDetails">
-            {renderStudentProfile()}
-          </div>
+          <>
+            <div className="tab-pane" id="educationDetails">
+              {renderStudentProfile()}
+            </div>
+            <div className="tab-pane" id="nextOfKinDetails">
+              {renderNextOfKinDetails()}
+            </div>
+          </>
         )}
 
         {isNextOfKin && (
