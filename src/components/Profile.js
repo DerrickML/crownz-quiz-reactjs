@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"; // Import useState
 import useLinkedStudents from "../hooks/useLinkedStudents";
+import { Button } from "react-bootstrap";
 import storageUtil from "../utilities/storageUtil";
 
 const Profile = () => {
@@ -105,19 +106,31 @@ const Profile = () => {
       <div className="card-body">
         <h5 className="card-title">Next of Kin</h5>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            <i className="bi bi-building me-2"></i>
-            <strong>Name:</strong> John Doe
-          </li>
-          <li className="list-group-item">
-            <i className="bi bi-geo-alt me-2"></i>
-            <strong>Email Address:</strong> johndoe@mail.com
-          </li>
-          <li className="list-group-item">
-            <i className="bi bi-bookmark me-2"></i>
-            <strong>Telephone:</strong> +256 (0) 712345678
-          </li>
-          {/* Additional student-specific content */}
+          {userInfo.kinID ? (
+            <>
+              <li className="list-group-item">
+                <i className="bi bi-building me-2"></i>
+                <strong>Name:</strong> John Doe ({userInfo.kinID})
+              </li>
+              <li className="list-group-item">
+                <i className="bi bi-geo-alt me-2"></i>
+                <strong>Email Address:</strong> johndoe@mail.com
+              </li>
+              <li className="list-group-item">
+                <i className="bi bi-bookmark me-2"></i>
+                <strong>Telephone:</strong> +256 (0) 712345678
+              </li>
+            </>
+          ) : (
+            <Button
+              variant="primary"
+              className="mt-3"
+              //   onClick={() => navigate("/exam-view")}
+            >
+              Add Next of Kin
+            </Button>
+          )}
+          {/* Additional kin-specific content */}
         </ul>
       </div>
     </div>

@@ -90,6 +90,7 @@ function App() {
       schoolAddress: userData.schoolAddress,
       educationLevel: userData.educationLevel,
       labels: userData.labels,
+      kinID: userData.kinID,
     };
     console.log("User details on login", userDetails); //Debugging purposes only
     setUserInfo(userDetails);
