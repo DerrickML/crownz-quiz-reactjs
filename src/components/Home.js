@@ -81,9 +81,18 @@ function Home({ sessionInfo, onLogout }) {
   };
 
   // Use useEffect to set recent scores
+  // useEffect(() => {
+  //   if (userInfo && userInfo.educationLevel) {
+  //     setRecentScores(getRecentFiveScoresForLevel(userInfo.educationLevel));
+  //   }
+  // }, [userInfo]);
+
+  const hasSetScores = useRef(false);
+
   useEffect(() => {
-    if (userInfo && userInfo.educationLevel) {
+    if (userInfo && userInfo.educationLevel && !hasSetScores.current) {
       setRecentScores(getRecentFiveScoresForLevel(userInfo.educationLevel));
+      hasSetScores.current = true;
     }
   }, [userInfo]);
 
