@@ -27,6 +27,7 @@ import Testing from "./components/Testing";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import AllResults from "./components/AllResults";
+import PasswordReset from "./components/PasswordReset";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import "./App.css";
 
@@ -123,7 +124,7 @@ function App() {
       <div className="App">
         <Navbar sessionInfo={sessionInfo} onLogout={handleLogout} />
 
-        <div className="py-5">
+        <div className="py-5 main-content">
           <Routes>
             <Route
               exact
@@ -153,6 +154,7 @@ function App() {
             <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
+            <Route path="/password-reset" element={<PasswordReset />} />
             <Route exact path="/testing" element={<Testing />} />
           </Routes>
         </div>
