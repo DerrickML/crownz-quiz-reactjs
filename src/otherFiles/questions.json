@@ -1,0 +1,70 @@
+{
+    "sections": [
+        {
+            "section": "objectives",
+            "questions": [
+                {
+                    "question": "How <input type='text' id='textInput'> does a bottle of soda cost?",
+                    "answers": {
+                        "options": [
+                            "A state management library",
+                            "A CSS framework",
+                            "A JavaScript library for building user interfaces",
+                            "A database",
+                            "A programming language"
+                        ],
+                        "correct_answer": "A JavaScript library for building user interfaces"
+                    }
+                },
+                {
+                    "question": "Who maintains React?",
+                    "answers": {
+                        "options": [
+                            "Microsoft",
+                            "Google",
+                            "Facebook",
+                            "Amazon",
+                            "Apple"
+                        ],
+                        "correct_answer": "Facebook"
+                    }
+                }
+            ]
+        },
+        {
+            "section": "reconstruct sentence",
+            "questions": [
+                {
+                    "question": [
+                        "there",
+                        "?",
+                        "is",
+                        "Who"
+                    ],
+                    "correct_answer": [
+                        "Who",
+                        "is",
+                        "there",
+                        "?"
+                    ]
+                },
+                {
+                    "question": [
+                        "a",
+                        "person",
+                        ".",
+                        "am",
+                        "I"
+                    ],
+                    "correct_answer": [
+                        "I",
+                        "am",
+                        "a",
+                        "person",
+                        "."
+                    ]
+                }
+            ]
+        }
+    ]
+}

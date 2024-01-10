@@ -27,6 +27,8 @@ import Testing from "./components/Testing";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import AllResults from "./components/AllResults";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import "./App.css";
 
 function App() {
   // Check Network Status

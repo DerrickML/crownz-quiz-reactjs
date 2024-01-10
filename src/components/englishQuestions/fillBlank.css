@@ -1,0 +1,6 @@
+.inline-input {
+    width: auto;
+    display: inline-block !important;
+    margin: 0 5px;
+    vertical-align: middle;
+}

@@ -2,7 +2,7 @@ import "react-phone-number-input/style.css";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import PhoneInput from "react-phone-number-input";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { showToast } from "../utilities/toastUtil.js";
 import {
   account,
@@ -14,6 +14,8 @@ import {
 } from "../appwriteConfig.js";
 
 function SignUp() {
+  const navigate = useNavigate();
+
   const [signupMethod, setSignupMethod] = useState("email");
   const [kinSignupMethod, setKinSignupMethod] = useState("email");
   const [nextOfKinActive, setNextOfKinActive] = useState(false);
@@ -195,7 +197,7 @@ function SignUp() {
         }
 
         // Redirect the user or show a success message
-        // navigate("/sign-in");
+        navigate("/sign-in");
       } catch (error) {
         console.error("Signup failed:", error);
         return; // Early exit on failure

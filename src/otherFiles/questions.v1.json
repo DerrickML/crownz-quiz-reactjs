@@ -1,0 +1,28 @@
+[
+    {
+        "question": "What is React?",
+        "answers": {
+            "options": [
+                "A state management library",
+                "A CSS framework",
+                "A JavaScript library for building user interfaces",
+                "A database",
+                "A programming language"
+            ],
+            "correct_answer": "A JavaScript library for building user interfaces"
+        }
+    },
+    {
+        "question": "Who maintains React?",
+        "answers": {
+            "options": [
+                "Microsoft",
+                "Google",
+                "Facebook",
+                "Amazon",
+                "Apple"
+            ],
+            "correct_answer": "Facebook"
+        }
+    }
+]

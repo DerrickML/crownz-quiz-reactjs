@@ -1,0 +1,223 @@
+import React, { useState } from "react";
+import questionsData from "../otherFiles/questions";
+
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
+/*OBJECTIVES QUESTIONS*/
+function ObjectiveQuestion({
+  question,
+  handleOptionChange,
+  userAnswers,
+  submitted,
+}) {
+  const selectedOption = userAnswers[question.question];
+  const isCorrect = selectedOption === question.answers.correct_answer;
+
+  return (
+    <div>
+      <h3>{question.question}</h3>
+      {question.answers.options.map((option, index) => {
+        const isSelected = option === selectedOption;
+        let color = "";
+        if (submitted && isSelected) {
+          color = isCorrect ? "green" : "red";
+        }
+
+        return (
+          <div key={index} style={{ color: color }}>
+            <input
+              type="radio"
+              value={option}
+              checked={isSelected}
+              onChange={(e) =>
+                handleOptionChange(question.question, e.target.value)
+              }
+            />
+            {option}
+          </div>
+        );
+      })}
+      {submitted && !isCorrect && (
+        <div style={{ color: "green" }}>
+          Correct Answer: {question.answers.correct_answer}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/*SENTENCE CONSTRUCTION*/
+const initialSentences = [
+  {
+    id: "sentence-1",
+    words: ["The", "quick", "brown", "fox"],
+    correctOrder: ["The", "quick", "brown", "fox"],
+    userOrder: [],
+  },
+  {
+    id: "sentence-2",
+    words: ["Jumps", "over", "the", "lazy", "dog"],
+    correctOrder: ["Jumps", "over", "the", "lazy", "dog"],
+    userOrder: [],
+  },
+  // Add more sentences as needed
+];
+
+// Reorder function
+const reorder = (list, startIndex, endIndex) => {
+  const result = Array.from(list);
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+  return result;
+};
+
+/*TEST COMPONENT*/
+function Testing() {
+  const [sentences, setSentences] = useState(initialSentences);
+
+  const onDragEnd = (result) => {
+    if (!result.destination) {
+      return;
+    }
+
+    const [sentencePrefix, sentenceIndex, wordIndex] =
+      result.draggableId.split("-");
+    const sentenceId = `${sentencePrefix}-${sentenceIndex}`;
+    const sentence = sentences.find((s) => s.id === sentenceId);
+
+    const words = reorder(
+      sentence.words,
+      result.source.index,
+      result.destination.index
+    );
+
+    setSentences(
+      sentences.map((s) => {
+        if (s.id === sentence.id) {
+          return { ...s, words };
+        }
+        return s;
+      })
+    );
+  };
+
+  const checkOrder = (sentence) => {
+    return (
+      JSON.stringify(sentence.words) === JSON.stringify(sentence.correctOrder)
+    );
+  };
+
+  /**
+   * ********************************
+   */
+  const [userAnswers, setUserAnswers] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleOptionChange = (question, option) => {
+    setUserAnswers({ ...userAnswers, [question]: option });
+  };
+
+  const handleSubmit = () => {
+    setSubmitted(true);
+  };
+
+  const calculateScore = () => {
+    return questionsData.sections[0].questions.reduce((score, question) => {
+      return (
+        score +
+        (userAnswers[question.question] === question.answers.correct_answer
+          ? 1
+          : 0)
+      );
+    }, 0);
+  };
+
+  return (
+    <div>
+      {/* Render Objective Questions */}
+      {questionsData.sections[0].questions.map((q, index) => (
+        <ObjectiveQuestion
+          key={index}
+          question={q}
+          handleOptionChange={handleOptionChange}
+          userAnswers={userAnswers}
+          submitted={submitted}
+        />
+      ))}
+      <button onClick={handleSubmit}>Submit objectives</button>
+      {submitted && (
+        <div>
+          <p>
+            Your Score: {calculateScore()}/
+            {questionsData.sections[0].questions.length}
+          </p>
+        </div>
+      )}
+
+      {/* sentence construction */}
+      <DragDropContext onDragEnd={onDragEnd}>
+        {sentences.map((sentence, index) => (
+          <Droppable
+            droppableId={sentence.id}
+            key={sentence.id}
+            direction="horizontal"
+          >
+            {(provided) => (
+              <div ref={provided.innerRef} {...provided.droppableProps}>
+                <h2>Sentence {index + 1}</h2>
+                <div style={{ display: "flex" }}>
+                  {sentence.words.map((word, idx) => (
+                    <Draggable
+                      key={`${sentence.id}-word-${idx}`}
+                      draggableId={`${sentence.id}-word-${idx}`}
+                      index={idx}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          style={{
+                            userSelect: "none",
+                            padding: 8,
+                            margin: "0 4px",
+                            background: snapshot.isDragging
+                              ? "lightgreen"
+                              : "grey",
+                            ...provided.draggableProps.style,
+                          }}
+                        >
+                          {word}
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                </div>
+                {provided.placeholder}
+                <div style={{ marginTop: "8px" }}>
+                  {sentence.userOrder.length > 0 && (
+                    <p>{checkOrder(sentence) ? "Correct!" : "Incorrect"}</p>
+                  )}
+                </div>
+              </div>
+            )}
+          </Droppable>
+        ))}
+      </DragDropContext>
+      <button
+        onClick={() =>
+          setSentences(
+            sentences.map((sentence) => ({
+              ...sentence,
+              userOrder: [...sentence.words],
+            }))
+          )
+        }
+      >
+        Submit
+      </button>
+    </div>
+  );
+}
+
+export default Testing;
