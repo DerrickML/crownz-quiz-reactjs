@@ -4,22 +4,14 @@ import {
   Routes,
   Route,
   Navigate,
-  NavLink,
 } from "react-router-dom";
-import {
-  account,
-  databases,
-  database_id,
-  studentTable_id,
-  nextOfKinTable_id,
-  Query,
-} from "./appwriteConfig.js";
+import { account } from "./appwriteConfig.js";
 import useNetworkStatus from "./hooks/useNetworkStatus";
 import { showToast } from "./utilities/toastUtil.js";
 import storageUtil from "./utilities/storageUtil";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Navbar from "./components/Navbar";
+import CustomNavbar from "./components/Navbar";
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
 import ForgetPassword from "./components/ForgetPassword";
@@ -28,10 +20,11 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import AllResults from "./components/AllResults";
 import PasswordReset from "./components/PasswordReset";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import "./App.css";
 
 function App() {
+  const [navbarHeight, setNavbarHeight] = useState(0);
+
   // Check Network Status
   const isOnline = useNetworkStatus();
   const initialLoad = useRef(true);
@@ -94,6 +87,10 @@ function App() {
       educationLevel: userData.educationLevel,
       labels: userData.labels,
       kinID: userData.kinID,
+      kinFirstName: userData.kinFirstName,
+      kinLastName: userData.kinLastName,
+      kinEmail: userData.kinEmail,
+      kinPhone: userData.kinPhone,
     };
     console.log("User details on login", userDetails); //Debugging purposes only
     setUserInfo(userDetails);
@@ -122,9 +119,13 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar sessionInfo={sessionInfo} onLogout={handleLogout} />
-
-        <div className="py-5 main-content">
+        <CustomNavbar
+          sessionInfo={sessionInfo}
+          onLogout={handleLogout}
+          setNavbarHeight={setNavbarHeight}
+        />
+        {/* Adjust the padding-top dynamically based on the navbar height */}
+        <div className="py-5 main-content" style={{ paddingTop: navbarHeight }}>
           <Routes>
             <Route
               exact

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react"; // Import useState
 import useLinkedStudents from "../hooks/useLinkedStudents";
-import { Button } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import storageUtil from "../utilities/storageUtil";
+import KinSignup from "./KinSignup";
 
 const Profile = () => {
   //Fetch sessionInfo from localStorage
@@ -10,6 +11,12 @@ const Profile = () => {
   const sessionData = storageUtil.getItem("sessionInfo");
   const kinId = sessionData.userId;
   const linkedStudents = useLinkedStudents(kinId);
+
+  //Hook to manage modal visibility
+  const [showModal, setShowModal] = useState(false);
+
+  //Function to handle modal toggle
+  const toggleModal = () => setShowModal(!showModal);
 
   //Check user type
   const isStudent = userInfo.labels.includes("student");
@@ -83,18 +90,29 @@ const Profile = () => {
       <div className="card-body">
         <h5 className="card-title">Education & School Details</h5>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            <i className="bi bi-building me-2"></i>
-            <strong>School Name:</strong> {userInfo.schoolName}
-          </li>
-          <li className="list-group-item">
-            <i className="bi bi-geo-alt me-2"></i>
-            <strong>School Address:</strong> {userInfo.schoolAddress}
-          </li>
+          {userInfo.schoolName ? (
+            <>
+              <li className="list-group-item">
+                <i className="bi bi-building me-2"></i>
+                <strong>School Name:</strong> {userInfo.schoolName}
+              </li>
+            </>
+          ) : null}
+
+          {userInfo.schoolAddress ? (
+            <>
+              <li className="list-group-item">
+                <i className="bi bi-geo-alt me-2"></i>
+                <strong>School Address:</strong> {userInfo.schoolAddress}
+              </li>
+            </>
+          ) : null}
+
           <li className="list-group-item">
             <i className="bi bi-bookmark me-2"></i>
             <strong>Education Level:</strong> {userInfo.educationLevel}
           </li>
+
           {/* Additional student-specific content */}
         </ul>
       </div>
@@ -110,23 +128,33 @@ const Profile = () => {
             <>
               <li className="list-group-item">
                 <i className="bi bi-building me-2"></i>
-                <strong>Name:</strong> John Doe ({userInfo.kinID})
+                <strong>First Name:</strong> {userInfo.kinFirstName}
               </li>
               <li className="list-group-item">
-                <i className="bi bi-geo-alt me-2"></i>
-                <strong>Email Address:</strong> johndoe@mail.com
+                <i className="bi bi-building me-2"></i>
+                <strong>Last Name:</strong> {userInfo.kinLastName}
               </li>
-              <li className="list-group-item">
-                <i className="bi bi-bookmark me-2"></i>
-                <strong>Telephone:</strong> +256 (0) 712345678
-              </li>
+
+              {userInfo.kinEmail ? (
+                <>
+                  <li className="list-group-item">
+                    <i className="bi bi-geo-alt me-2"></i>
+                    <strong>Email Address:</strong> {userInfo.kinEmail}
+                  </li>
+                </>
+              ) : null}
+
+              {userInfo.kinPhone ? (
+                <>
+                  <li className="list-group-item">
+                    <i className="bi bi-bookmark me-2"></i>
+                    <strong>Telephone:</strong> {userInfo.kinPhone}
+                  </li>
+                </>
+              ) : null}
             </>
           ) : (
-            <Button
-              variant="primary"
-              className="mt-3"
-              //   onClick={() => navigate("/exam-view")}
-            >
+            <Button variant="primary" className="mt-3" onClick={toggleModal}>
               Add Next of Kin
             </Button>
           )}
@@ -194,16 +222,28 @@ const Profile = () => {
             <div className="card-body">
               <h5 className="card-title">Contact Information</h5>
               <p className="card-text">
-                <strong>Email:</strong> {userInfo.email}
+                {userInfo.email ? (
+                  <>
+                    <strong>Email:</strong> {userInfo.email}
+                  </>
+                ) : null}
               </p>
               {userInfo.phone && (
                 <p className="card-text">
-                  <strong>Phone:</strong> {userInfo.phone}
+                  {userInfo.phone ? (
+                    <>
+                      <strong>Phone:</strong> {userInfo.phone}
+                    </>
+                  ) : null}
                 </p>
               )}
               {isStudent && (
                 <p className="card-text">
-                  <strong>Gender:</strong> {userInfo.gender}
+                  {userInfo.gender ? (
+                    <>
+                      <strong>Gender:</strong> {userInfo.gender}
+                    </>
+                  ) : null}
                 </p>
               )}
             </div>
@@ -227,6 +267,14 @@ const Profile = () => {
           </div>
         )}
       </div>
+      <Modal show={showModal} onHide={toggleModal} size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>Add Next of Kin</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <KinSignup />
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };

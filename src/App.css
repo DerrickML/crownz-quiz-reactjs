@@ -2,3 +2,10 @@
     padding-top: 80px;
     /* Adjust this value as needed */
 }
+
+@media (max-width: 768px) {
+    .main-content {
+        padding-top: 100px;
+        /* Adjust this value based on the actual height of the collapsed navbar */
+    }
+}

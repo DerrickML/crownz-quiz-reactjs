@@ -195,9 +195,6 @@ function SignUp() {
             return;
           }
         }
-
-        // Redirect the user or show a success message
-        navigate("/sign-in");
       } catch (error) {
         console.error("Signup failed:", error);
         return; // Early exit on failure
@@ -259,6 +256,8 @@ function SignUp() {
       showToast("Account Created Successfully", "success");
 
       setSignupLoader(false);
+      // Redirect the user or show a success message
+      navigate("/sign-in");
     } catch (error) {
       setSignupLoader(false);
       showToast("Error Creating Account at Submission", "error");
