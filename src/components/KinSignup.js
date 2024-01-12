@@ -1,7 +1,10 @@
 import "react-phone-number-input/style.css";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import PhoneInput from "react-phone-number-input";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Button, ButtonGroup } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import useUpdateUserInfo from "../hooks/useUpdateUserInfo.js";
 import { showToast } from "../utilities/toastUtil.js";
 import storageUtil from "../utilities/storageUtil";
 
@@ -14,14 +17,29 @@ import {
 } from "../appwriteConfig.js";
 
 const KinSignup = () => {
+  const navigate = useNavigate();
+
   //Fetch sessionInfo from localStorage
   const userInfo = storageUtil.getItem("userInfo");
   const sessionData = storageUtil.getItem("sessionInfo");
-
+  const [kinSuccess, setKinSuccess] = useState("true");
   const studentID = sessionData.userId;
 
+  //Check whether has next of kin
+  useEffect(() => {
+    if (userInfo && userInfo.kinID) {
+      console.log("Kin exists");
+      setKinSuccess(true);
+    } else {
+      console.log("No Kin exists");
+      setKinSuccess(false);
+    }
+  }, [userInfo]); // Dependency array to trigger effect when userInfo changes
+
+  //For updating user info
+  const updateUserInfo = useUpdateUserInfo();
+
   const [kinSignupMethod, setKinSignupMethod] = useState("email");
-  const [signupLoader, setSignupLoader] = useState(false);
 
   // State hooks for each input field
   const [nextOfKin, setNextOfKin] = useState({
@@ -32,7 +50,37 @@ const KinSignup = () => {
     // ... other kin-related fields ...
   });
 
+  // State for linking to an existing kin account
+  const [linkKinSignupMethod, setLinkKinSignupMethod] = useState("email");
+  const [linkKinContact, setLinkKinContact] = useState("");
+
+  const [signupLoader, setSignupLoader] = useState(false);
   const [kinPhoneError, setKinPhoneError] = useState(false); // Error flag for kin's phone
+  const [activeTab, setActiveTab] = useState("link");
+
+  const toggleTab = (tab) => {
+    setActiveTab(tab);
+  };
+
+  /**
+   * Validates a given phone number. Returns true if the phone number is invalid.
+   * @param {string} phoneNumber - The phone number to be validated.
+   * @returns {boolean} - True if the phone number is invalid, false otherwise.
+   */
+  const validatePhoneNumber = (phoneNumber) => {
+    return phoneNumber && !isValidPhoneNumber(phoneNumber);
+  };
+
+  // Handles input changes
+  const handleInputChange = (event) => {
+    const { id, value } = event.target;
+    if (id.startsWith("kin")) {
+      setNextOfKin({ ...nextOfKin, [id]: value });
+    } else {
+      // Use dynamic key names to update state based on the input id
+      showToast("Setter Map function at handleInputChange", "error");
+    }
+  };
 
   /**
    * Handles the form submission. Validates the phone number, creates or finds the next of kin account,
@@ -56,6 +104,7 @@ const KinSignup = () => {
       console.log("Linking with next of kin");
       try {
         let kinExists = await searchForExistingKinAccount(
+          kinSignupMethod,
           kinSignupMethod === "email" ? nextOfKin.kinEmail : nextOfKin.kinPhone
         );
 
@@ -79,7 +128,7 @@ const KinSignup = () => {
             return; // Stop execution if kin account creation failed
           }
         } else {
-          kinIdToUse = kinExists;
+          kinIdToUse = kinExists.kinID;
         }
 
         linkKinResponse = await linkKinToUser(kinIdToUse); // Pass the kinId directly
@@ -107,29 +156,54 @@ const KinSignup = () => {
     }
   };
 
-  /**
-   * Validates a given phone number. Returns true if the phone number is invalid.
-   * @param {string} phoneNumber - The phone number to be validated.
-   * @returns {boolean} - True if the phone number is invalid, false otherwise.
-   */
-  const validatePhoneNumber = (phoneNumber) => {
-    return phoneNumber && !isValidPhoneNumber(phoneNumber);
+  //Links kin
+  const handleLinkKin = async (event) => {
+    event.preventDefault();
+
+    setSignupLoader(true);
+
+    try {
+      let linkMethod =
+        linkKinSignupMethod === "email"
+          ? nextOfKin.kinEmail
+          : nextOfKin.kinPhone;
+
+      console.log("Link Method is: ", linkMethod + ": " + linkKinContact);
+
+      //Check if kin exists
+      const checkKin = await searchForExistingKinAccount(
+        linkKinSignupMethod,
+        linkKinContact
+      );
+
+      if (!checkKin) {
+        showToast("Kin account not found", "error");
+        setSignupLoader(false);
+        return;
+      }
+
+      const linkinKin = await linkKinToUser(checkKin.kinID);
+      updateUserInfo({
+        kinID: checkKin.kinID,
+        kinFirstName: checkKin.kinFirstName,
+        kinLastName: checkKin.kinLastName,
+        kinEmail: checkKin.kinEmail,
+        kinPhone: checkKin.kinPhone,
+      });
+
+      console.log("Next of Kin Linked\n", checkKin);
+      setSignupLoader(false);
+      navigate("/profile");
+    } catch (e) {
+      setSignupLoader(false);
+      console.error("Error Linking next of kin:", e);
+      showToast("Failed to link with kin", "error");
+    }
   };
 
   // Handles the change of the next of kin's signup method (email or phone)
   const kinHandleMethodChange = (e) => {
     setKinSignupMethod(e.target.value);
-  };
-
-  // Handles input changes
-  const handleInputChange = (event) => {
-    const { id, value } = event.target;
-    if (id.startsWith("kin")) {
-      setNextOfKin({ ...nextOfKin, [id]: value });
-    } else {
-      // Use dynamic key names to update state based on the input id
-      showToast("Setter Map function at handleInputChange", "error");
-    }
   };
 
   /**
@@ -197,10 +271,10 @@ const KinSignup = () => {
   }
 
   // Checking for existing kin account ---Returns KinId or False----
-  async function searchForExistingKinAccount(value) {
+  async function searchForExistingKinAccount(kinSearchMethod, value) {
     try {
       let query = [];
-      if (kinSignupMethod === "email") {
+      if (kinSearchMethod === "email") {
         query.push(Query.equal("email", value));
       } else {
         query.push(Query.equal("phone", value));
@@ -222,9 +296,16 @@ const KinSignup = () => {
           "Next of kin account already exists, proceeding to link with student",
           "info"
         );
-        const kinID = response.documents[0].kinID;
+        // const kinID = response.documents[0].kinID;
+        const kinDetails = {
+          kinID: response.documents[0].kinID,
+          kinFirstName: response.documents[0].firstName,
+          kinLastName: response.documents[0].lastName,
+          kinEmail: response.documents[0].email,
+          kinPhone: response.documents[0].phone,
+        };
 
-        return kinID;
+        return kinDetails;
       } else {
         console.log(
           "Kin does not exist. Proceeding to create account, and link with student ...",
@@ -284,213 +365,280 @@ const KinSignup = () => {
     }
   }
 
-  return (
+  const renderForm = () => {
+    if (activeTab === "link") {
+      return (
+        <form onSubmit={handleLinkKin}>
+          {/* Sign-up Method Selection for Linking */}
+          <div className="mb-3">
+            <label htmlFor="linkKinSignupMethod" className="form-label">
+              Link Using
+            </label>
+            <select
+              className="form-select"
+              id="linkKinSignupMethod"
+              value={linkKinSignupMethod}
+              onChange={(e) => setLinkKinSignupMethod(e.target.value)}
+            >
+              <option value="email">Email</option>
+              <option value="phone">Phone</option>
+            </select>
+          </div>
+
+          {/* Dynamic Email or Phone Field for Linking */}
+          {linkKinSignupMethod === "email" ? (
+            <div className="mb-3">
+              <label htmlFor="linkKinEmail">Email Address</label>
+              <input
+                type="email"
+                className="form-control"
+                id="linkKinEmail"
+                value={linkKinContact}
+                onChange={(e) => setLinkKinContact(e.target.value)}
+                placeholder="Enter email"
+                required
+              />
+            </div>
+          ) : (
+            <div className="mb-3 form-group">
+              <label htmlFor="linkKinPhone">Phone Number</label>
+              <PhoneInput
+                className="form-control"
+                id="linkKinPhone"
+                value={linkKinContact}
+                onChange={setLinkKinContact}
+                placeholder="Enter phone number"
+                required
+              />
+            </div>
+          )}
+
+          {!signupLoader ? (
+            <Button variant="dark" type="submit" className="btn btn-primary">
+              Link Next of Kin
+            </Button>
+          ) : (
+            <Button
+              variant="dark"
+              className="mb-3 btn btn-secondary"
+              type="button"
+              disabled
+            >
+              <span
+                className="spinner-grow spinner-grow-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              Adding Next-of-Kin...
+            </Button>
+          )}
+        </form>
+      );
+    } else {
+      return (
+        <form id="signupForm" onSubmit={handleSubmit}>
+          {/* Next of Kin Section */}
+
+          <div className="collapse show mb-3" id="nextOfKinSection">
+            <div className="card card-body">
+              {/* Next of Kin Sign-up Method */}
+              <div className="mb-3">
+                <label htmlFor="kinSignupMethod" className="form-label">
+                  Signup Using
+                </label>
+                <select
+                  className="form-select"
+                  id="kinSignupMethod"
+                  value={kinSignupMethod}
+                  onChange={kinHandleMethodChange}
+                >
+                  <option value="email">Email</option>
+                  <option value="phone">Phone</option>
+                </select>
+              </div>
+
+              {/* Dynamic Email or Phone Field */}
+              <div id="kinEmailOrPhoneFieldSignup" className="mb-3">
+                {kinSignupMethod === "email" ? (
+                  <>
+                    <div className="mb-3">
+                      <label htmlFor="kinEmail">Email Address</label>
+                      <input
+                        type="email"
+                        className="form-control"
+                        id="kinEmail"
+                        value={nextOfKin.kinEmail}
+                        onChange={handleInputChange}
+                        placeholder="Enter email"
+                        required
+                      />
+                    </div>
+                    <div className="mb-3 form-group">
+                      <div className="phone-input">
+                        <label htmlFor="optionalKinPhone">
+                          Phone Number (Optional)
+                        </label>
+                        <PhoneInput
+                          className="form-control"
+                          id="kinPhone"
+                          value={nextOfKin.kinPhone}
+                          onChange={(value) =>
+                            setNextOfKin({
+                              ...nextOfKin,
+                              kinPhone: value || "",
+                            })
+                          }
+                          placeholder="Enter phone number"
+                          required={kinSignupMethod === "phone"}
+                        />
+                      </div>
+                      {kinPhoneError && (
+                        <div className="invalid-feedback d-block">
+                          Invalid phone number
+                        </div>
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="mb-3 form-group">
+                      <div className="phone-input">
+                        <label htmlFor="optionalKinPhone">
+                          Phone Number (Optional)
+                        </label>
+                        <PhoneInput
+                          className="form-control"
+                          id="kinPhone"
+                          value={nextOfKin.kinPhone}
+                          onChange={(value) =>
+                            setNextOfKin({
+                              ...nextOfKin,
+                              kinPhone: value || "",
+                            })
+                          }
+                          placeholder="Enter phone number"
+                          required={kinSignupMethod === "phone"}
+                        />
+                      </div>
+                      {kinPhoneError && (
+                        <div className="invalid-feedback d-block">
+                          Invalid phone number
+                        </div>
+                      )}
+                    </div>
+                    <div className="mb-3">
+                      <label htmlFor="optionalKinEmail">
+                        Email Address (Optional)
+                      </label>
+                      <input
+                        type="email"
+                        className="form-control"
+                        id="kinEmail"
+                        value={nextOfKin.kinEmail}
+                        onChange={handleInputChange}
+                        placeholder="Enter Email Address"
+                      />
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {/* First and Last Name Fields for Next of Kin */}
+              <div className="mb-3">
+                <label htmlFor="kinFirstName" className="form-label">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="kinFirstName"
+                  value={nextOfKin.kinFirstName}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="kinLastName" className="form-label">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="kinLastName"
+                  value={nextOfKin.kinLastName}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+          </div>
+          {!signupLoader ? (
+            <Button
+              variant="dark"
+              type="submit"
+              className="btn btn-primary mb-3"
+              id="signupButton"
+            >
+              Add Next of Kin
+            </Button>
+          ) : (
+            <Button
+              variant="dark"
+              className="mb-3 btn btn-secondary"
+              type="button"
+              disabled
+            >
+              <span
+                className="spinner-grow spinner-grow-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              Adding Next-of-Kin...
+            </Button>
+          )}
+          {kinPhoneError && (
+            <div className="invalid-feedback d-block mb-3">
+              Check for any invalid inputs
+            </div>
+          )}
+        </form>
+      );
+    }
+  };
+
+  return kinSuccess ? (
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">Next of Kin Successfully Linked!</h5>
+        <p class="card-text">
+          Your next of kin is now connected and can actively participate in
+          monitoring your educational journey. They'll have access to track your
+          academic progress and achievements.
+        </p>
+        {/* <a href="/" class="btn btn-primary">
+          View Dashboard
+        </a> */}
+      </div>
+    </div>
+  ) : (
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-md-8">
-          {/* Signup Error Toast */}
-          <div
-            className="toast"
-            id="emailToastError"
-            role="alert"
-            aria-live="assertive"
-            aria-atomic="true"
-            display="true"
-          >
-            <div className="toast-header">
-              <strong className="me-auto">Email Error</strong>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="toast"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="toast-body">
-              This Email is already in use. Please use a different email.
-            </div>
-          </div>
-          {/* Network Error Toast */}
-          <div
-            className="toast"
-            id="networkToastError"
-            role="alert"
-            aria-live="assertive"
-            aria-atomic="true"
-          >
-            <div className="toast-header">
-              <strong className="me-auto">Network Error</strong>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="toast"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="toast-body">
-              Network error. Please check your internet connection.
-            </div>
-          </div>
-
-          <form id="signupForm" onSubmit={handleSubmit}>
-            {/* Next of Kin Section */}
-
-            <div className="collapse show mb-3" id="nextOfKinSection">
-              <div className="card card-body">
-                {/* Next of Kin Sign-up Method */}
-                <div className="mb-3">
-                  <label htmlFor="kinSignupMethod" className="form-label">
-                    Signup Using
-                  </label>
-                  <select
-                    className="form-select"
-                    id="kinSignupMethod"
-                    value={kinSignupMethod}
-                    onChange={kinHandleMethodChange}
-                  >
-                    <option value="email">Email</option>
-                    <option value="phone">Phone</option>
-                  </select>
-                </div>
-
-                {/* Dynamic Email or Phone Field */}
-                <div id="kinEmailOrPhoneFieldSignup" className="mb-3">
-                  {kinSignupMethod === "email" ? (
-                    <>
-                      <div className="mb-3">
-                        <label htmlFor="kinEmail">Email Address</label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          id="kinEmail"
-                          value={nextOfKin.kinEmail}
-                          onChange={handleInputChange}
-                          placeholder="Enter email"
-                          required
-                        />
-                      </div>
-                      <div className="mb-3 form-group">
-                        <div className="phone-input">
-                          <label htmlFor="optionalKinPhone">
-                            Phone Number (Optional)
-                          </label>
-                          <PhoneInput
-                            className="form-control"
-                            id="kinPhone"
-                            value={nextOfKin.kinPhone}
-                            onChange={(value) =>
-                              setNextOfKin({
-                                ...nextOfKin,
-                                kinPhone: value || "",
-                              })
-                            }
-                            placeholder="Enter phone number"
-                            required={kinSignupMethod === "phone"}
-                          />
-                        </div>
-                        {kinPhoneError && (
-                          <div className="invalid-feedback d-block">
-                            Invalid phone number
-                          </div>
-                        )}
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="mb-3 form-group">
-                        <div className="phone-input">
-                          <label htmlFor="optionalKinPhone">
-                            Phone Number (Optional)
-                          </label>
-                          <PhoneInput
-                            className="form-control"
-                            id="kinPhone"
-                            value={nextOfKin.kinPhone}
-                            onChange={(value) =>
-                              setNextOfKin({
-                                ...nextOfKin,
-                                kinPhone: value || "",
-                              })
-                            }
-                            placeholder="Enter phone number"
-                            required={kinSignupMethod === "phone"}
-                          />
-                        </div>
-                        {kinPhoneError && (
-                          <div className="invalid-feedback d-block">
-                            Invalid phone number
-                          </div>
-                        )}
-                      </div>
-                      <div className="mb-3">
-                        <label htmlFor="optionalKinEmail">
-                          Email Address (Optional)
-                        </label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          id="kinEmail"
-                          value={nextOfKin.kinEmail}
-                          onChange={handleInputChange}
-                          placeholder="Enter Email Address"
-                        />
-                      </div>
-                    </>
-                  )}
-                </div>
-
-                {/* First and Last Name Fields for Next of Kin */}
-                <div className="mb-3">
-                  <label htmlFor="kinFirstName" className="form-label">
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="kinFirstName"
-                    value={nextOfKin.kinFirstName}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="kinLastName" className="form-label">
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="kinLastName"
-                    value={nextOfKin.kinLastName}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
-            </div>
-            {!signupLoader ? (
-              <button
-                type="submit"
-                className="btn btn-primary mb-3"
-                id="signupButton"
-              >
-                Add Next of Kin
-              </button>
-            ) : (
-              <button className="mb-3 btn btn-secondary" type="button" disabled>
-                <span
-                  className="spinner-grow spinner-grow-sm"
-                  role="status"
-                  aria-hidden="true"
-                ></span>
-                Signing-up...
-              </button>
-            )}
-            {kinPhoneError && (
-              <div className="invalid-feedback d-block mb-3">
-                Check for any invalid inputs
-              </div>
-            )}
-          </form>
+        <div className="col-md-12">
+          <ButtonGroup className="mb-2 col-12">
+            <Button
+              variant={activeTab === "link" ? "dark" : "outline-primary"}
+              onClick={() => toggleTab("link")}
+            >
+              Link to Existing Kin
+            </Button>
+            <Button
+              variant={activeTab === "create" ? "dark" : "outline-primary"}
+              onClick={() => toggleTab("create")}
+              className="ms-2"
+            >
+              Create New Kin
+            </Button>
+          </ButtonGroup>
+          {renderForm()}
         </div>
       </div>
     </div>

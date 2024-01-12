@@ -2,14 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { showToast } from "../utilities/toastUtil.js";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
-import {
-  account,
-  databases,
-  database_id,
-  studentTable_id,
-  nextOfKinTable_id,
-  Query,
-} from "../appwriteConfig.js";
+import { account } from "../appwriteConfig.js";
 
 import "./PasswordReset.css";
 
