@@ -100,7 +100,7 @@ function App() {
   const handleLogout = async () => {
     if (sessionInfo && sessionInfo.$id) {
       try {
-        await account.deleteSession(sessionInfo.$id); //Clears the session on Appwrite's side
+        await account.deleteSession(sessionInfo.$id); //Clears the session on Client's and Appwrite's side
         console.log("Logged out successfully");
       } catch (error) {
         console.error("Logout failed", error);
@@ -156,6 +156,8 @@ function App() {
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
             <Route path="/password-reset" element={<PasswordReset />} />
+
+            {/* Used to only test pages/routes/parts of the application */}
             <Route exact path="/testing" element={<Testing />} />
           </Routes>
         </div>
