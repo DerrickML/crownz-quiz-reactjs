@@ -92,7 +92,7 @@ function App() {
       kinEmail: userData.kinEmail,
       kinPhone: userData.kinPhone,
     };
-    console.log("User details on login", userDetails); //Debugging purposes only
+    console.log("User details on login", userDetails); //FOR Debugging purposes only
     setUserInfo(userDetails);
     storageUtil.setItem("userInfo", userDetails);
   };
