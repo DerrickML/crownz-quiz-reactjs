@@ -110,7 +110,7 @@ const Profile = () => {
 
           <li className="list-group-item">
             <i className="bi bi-bookmark me-2"></i>
-            <strong>Education Level:</strong> {userInfo.educationLevel}
+            <strong>Exam:</strong> {userInfo.educationLevel}
           </li>
 
           {/* Additional student-specific content */}
