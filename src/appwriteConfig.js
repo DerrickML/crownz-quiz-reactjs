@@ -16,6 +16,7 @@ const databases = new Databases(client);
 const database_id = "655f5a677fcf3b1d8b79";
 const studentTable_id = "657065f7dddd996bf19b";
 const nextOfKinTable_id = "65706739032c0962d0a9";
+const studentMarksTable_id = "6598050dbb628ae2216f";
 
 //Localhost - Appwrite
 // const database_id = '651c1d7b8872bb9d837d';
@@ -29,6 +30,7 @@ export {
   database_id,
   studentTable_id,
   nextOfKinTable_id,
+  studentMarksTable_id,
   Permission,
   Role,
   Query,

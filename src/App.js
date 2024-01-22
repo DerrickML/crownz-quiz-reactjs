@@ -4,6 +4,9 @@ import {
   Routes,
   Route,
   Navigate,
+  useParams,
+  Switch,
+  Link,
 } from "react-router-dom";
 import { account } from "./appwriteConfig.js";
 import useNetworkStatus from "./hooks/useNetworkStatus";
@@ -19,6 +22,8 @@ import Testing from "./components/Testing";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import AllResults from "./components/AllResults";
+import Exam from "./components/Exam";
+import ExamPage from "./components/ExamPage";
 import PasswordReset from "./components/PasswordReset";
 import "./App.css";
 
@@ -152,6 +157,26 @@ function App() {
                 )
               }
             />
+            <Route
+              path="/exam/:subject"
+              element={
+                sessionInfo ? (
+                  <ExamWithSubject userInfo={userInfo} />
+                ) : (
+                  <Navigate to="/sign-in" />
+                )
+              }
+            />
+            <Route
+              path="/exam-page"
+              element={
+                sessionInfo ? (
+                  <ExamPage userInfo={userInfo} />
+                ) : (
+                  <Navigate to="/sign-in" />
+                )
+              }
+            />
             <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
@@ -165,6 +190,12 @@ function App() {
       <ToastContainer position="top-center" />
     </Router>
   );
+}
+
+// Component to extract subject from URL and pass it to Exam
+function ExamWithSubject(props) {
+  let { subject } = useParams();
+  return <Exam subject={subject} {...props} />;
 }
 
 export default App;

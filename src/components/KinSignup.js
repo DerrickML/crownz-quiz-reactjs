@@ -16,14 +16,16 @@ import {
   Query,
 } from "../appwriteConfig.js";
 
-const KinSignup = () => {
+const KinSignup = ({ userInfoProp, studentIDProp, onCompletion }) => {
   const navigate = useNavigate();
 
-  //Fetch sessionInfo from localStorage
-  const userInfo = storageUtil.getItem("userInfo");
-  const sessionData = storageUtil.getItem("sessionInfo");
+  // Use props if available, otherwise use local storage
+  const localUserInfo = storageUtil.getItem("userInfo");
+  const userInfo = userInfoProp || localUserInfo;
+  const localStudentID = localUserInfo ? localUserInfo.userId : null;
+  const studentID = studentIDProp || localStudentID;
+
   const [kinSuccess, setKinSuccess] = useState("true");
-  const studentID = sessionData.userId;
 
   //Check whether has next of kin
   useEffect(() => {
@@ -57,6 +59,18 @@ const KinSignup = () => {
   const [signupLoader, setSignupLoader] = useState(false);
   const [kinPhoneError, setKinPhoneError] = useState(false); // Error flag for kin's phone
   const [activeTab, setActiveTab] = useState("link");
+
+  //================================================================
+  // Example: Function to call when kin linking/creation is successful
+  const handleSuccess = () => {
+    if (onCompletion) {
+      onCompletion(); // Call the passed in completion callback
+    } else {
+      // Default behavior if no callback is provided
+      navigate("/profile");
+    }
+  };
+  //================================================================
 
   const toggleTab = (tab) => {
     setActiveTab(tab);

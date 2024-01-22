@@ -1,0 +1,15 @@
+.exam-page-bg {
+    /* background: url('/path-to-your-background-image.jpg') no-repeat center center fixed; */
+    background-size: cover;
+    min-height: 100vh;
+    padding: 60px 0;
+}
+
+.subject-card {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.subject-card:hover {
+    transform: scale(1.05);
+}

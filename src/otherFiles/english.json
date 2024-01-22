@@ -58,6 +58,20 @@
                             3,
                             1
                         ]
+                    },
+                    {
+                        "words_to_drag": [
+                            "john",
+                            "daniel",
+                            "richard",
+                            "michael"
+                        ],
+                        "correctOrder": [
+                            1,
+                            0,
+                            3,
+                            2
+                        ]
                     }
                 ]
             }

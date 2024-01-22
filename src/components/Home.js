@@ -1,6 +1,12 @@
 // Home.js
 import React, { useState, useEffect, useRef } from "react"; // Import useState
 import { NavLink, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChartLine,
+  faEdit,
+  faUserCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   Container,
   Row,
@@ -18,6 +24,7 @@ import {
   UCE_Results,
   UACE_Results,
 } from "../otherFiles/education_results";
+import TestButton from "./TestButton"; // Import the TestButton component
 
 function Home({ sessionInfo, onLogout }) {
   // Receive sessionInfo & onLogout as a prop
@@ -80,13 +87,6 @@ function Home({ sessionInfo, onLogout }) {
       .slice(0, 5);
   };
 
-  // Use useEffect to set recent scores
-  // useEffect(() => {
-  //   if (userInfo && userInfo.educationLevel) {
-  //     setRecentScores(getRecentFiveScoresForLevel(userInfo.educationLevel));
-  //   }
-  // }, [userInfo]);
-
   const hasSetScores = useRef(false);
 
   useEffect(() => {
@@ -96,6 +96,11 @@ function Home({ sessionInfo, onLogout }) {
     }
   }, [userInfo]);
 
+  //Attempt exam
+  const attemptExam = () => {
+    navigate("/exam-page");
+  };
+
   // Function to render the recent scores
   const renderRecentScores = () => (
     <Table striped bordered hover>
@@ -104,6 +109,7 @@ function Home({ sessionInfo, onLogout }) {
           <th>Subject</th>
           <th>Date</th>
           <th>Score</th>
+          <th>View Results</th>
         </tr>
       </thead>
       <tbody>
@@ -112,6 +118,7 @@ function Home({ sessionInfo, onLogout }) {
             <td>{score.subject}</td>
             <td>{score.date}</td>
             <td>{score.score}</td>
+            <td></td>
           </tr>
         ))}
       </tbody>
@@ -124,13 +131,17 @@ function Home({ sessionInfo, onLogout }) {
         <Col lg={12}>
           <h3 className="mb-4">Recent Scores</h3>
           {renderRecentScores()}
-          <Button
-            variant="primary"
-            className="mt-3"
-            onClick={() => navigate("/all-results")}
-          >
-            View All Results
-          </Button>
+
+          <div className="d-flex justify-content-start mt-3 gap-3">
+            <Button variant="success" onClick={() => navigate("/all-results")}>
+              <FontAwesomeIcon icon={faChartLine} className="me-2" />
+              View All Results
+            </Button>
+            <Button variant="warning" onClick={attemptExam}>
+              <FontAwesomeIcon icon={faEdit} className="me-2" />
+              Attempt Exam
+            </Button>
+          </div>
         </Col>
       </Row>
     </>
@@ -179,46 +190,74 @@ function Home({ sessionInfo, onLogout }) {
   );
 
   return (
-    <>
-      <Container fluid className="my-4">
-        <h2 className="mb-4">
-          {isStudent ? "Student" : isNextOfKin ? "Next of Kin" : ""} Dashboard
-        </h2>
-        <Row className="mb-4">
-          <Col lg={12}>
-            <Card className="profile-card shadow-sm">
-              <Card.Body>
-                <div className="d-flex align-items-center">
-                  {/* Profile Picture Placeholder */}
-                  <div className="ms-3">
-                    <h5 className="card-title mb-0">
-                      {userInfo.firstName} {userInfo.lastName}
-                    </h5>
-                    {isStudent && (
-                      <p className="text-muted mb-0">
-                        Level: {userInfo.educationLevel}
-                      </p>
-                    )}
-                    <p className="card-text">
-                      <small>Last logged in: 3 hours ago</small>
+    <Container fluid className="my-4">
+      <Row className="mb-4">
+        <Col lg={12}>
+          <Card className="profile-card shadow">
+            <Card.Body>
+              <div className="d-flex align-items-center">
+                <FontAwesomeIcon
+                  icon={faUserCircle}
+                  size="3x"
+                  className="user-icon"
+                />
+                <div className="ms-3">
+                  <h5 className="card-title mb-0">
+                    {userInfo.firstName} {userInfo.lastName}
+                  </h5>
+                  {isStudent && (
+                    <p className="text-muted mb-0">
+                      Level: {userInfo.educationLevel}
                     </p>
-                  </div>
-                  <div className="ms-auto">
-                    <Button variant="outline-secondary" size="sm">
-                      <NavLink className="nav-link" to="/profile">
-                        Profile
-                      </NavLink>
-                    </Button>
-                  </div>
+                  )}
+                  <small>Last logged in: 3 hours ago</small>
                 </div>
+                <div className="ms-auto">
+                  <NavLink
+                    to="/profile"
+                    className="btn btn-outline-secondary btn-sm"
+                  >
+                    Profile
+                  </NavLink>
+                </div>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+
+      {isStudent && (
+        <Row>
+          <Col lg={6}>
+            <Card className="mb-4 shadow">
+              <Card.Body>
+                <Card.Title>Recent Scores</Card.Title>
+                {renderRecentScores()}
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col lg={6}>
+            <Card className="mb-4 shadow">
+              <Card.Body>
+                <Card.Title>Actions</Card.Title>
+                <Button
+                  variant="success"
+                  className="me-2"
+                  onClick={() => navigate("/all-results")}
+                >
+                  <FontAwesomeIcon icon={faChartLine} /> View All Results
+                </Button>
+                <Button variant="warning" onClick={attemptExam}>
+                  <FontAwesomeIcon icon={faEdit} /> Attempt Exam
+                </Button>
               </Card.Body>
             </Card>
           </Col>
         </Row>
-        {isStudent && renderStudentDashboard()}
-        {isNextOfKin && renderNextOfKinDashboard()}
-      </Container>
-    </>
+      )}
+
+      {isNextOfKin && renderNextOfKinDashboard()}
+    </Container>
   );
 }
 
