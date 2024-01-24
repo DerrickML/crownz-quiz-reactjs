@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Table,
   Container,
@@ -6,33 +6,51 @@ import {
   Col,
   Card,
   Button,
-  Accordion,
+  Alert,
+  Spinner,
 } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  PLE_Results,
-  UCE_Results,
-  UACE_Results,
-} from "../otherFiles/education_results";
+  faEye,
+  faBan,
+  faGraduationCap,
+  faChartLine,
+  faBookOpen,
+} from "@fortawesome/free-solid-svg-icons";
+import "./AllResults.css";
+import storageUtil from "../utilities/storageUtil";
+import {
+  fetchAndUpdateResults,
+  getTransformedResults,
+} from "../utilities/resultsUtil";
+import SelectExam from "./SelectExam";
+import HeroHeader from "./HeroHeader";
 
-const AllResults = ({ userInfo }) => {
+const AllResults = () => {
   // State to track the open state of each subject
   const [openSubjects, setOpenSubjects] = useState({});
+  const [results, setResults] = useState([]);
+  const [refreshResults, setRefreshResults] = useState(false);
+  const userInfo = storageUtil.getItem("userInfo");
+  const navigate = useNavigate();
 
-  // Determine which results to display based on education level
-  let results;
-  switch (userInfo.educationLevel) {
-    case "PLE":
-      results = PLE_Results;
-      break;
-    case "UCE":
-      results = UCE_Results;
-      break;
-    case "UACE":
-      results = UACE_Results;
-      break;
-    default:
-      results = [];
-  }
+  const viewResults = (resultDetails) => {
+    console.log("Results to be rendered\n", resultDetails);
+    navigate("/quiz-results", { state: { results: resultDetails } });
+  };
+
+  useEffect(() => {
+    const userId = userInfo?.userId;
+    console.log("User ID IN useEffect: " + userId);
+    if (userId) {
+      const transformedData = getTransformedResults(userId);
+      console.log("Transformed results in useEffect: " + transformedData);
+      if (JSON.stringify(transformedData) !== JSON.stringify(results)) {
+        setResults(transformedData);
+      }
+    }
+  }, [userInfo, results]); // Only re-run the effect if userInfo or results change
 
   // Function to toggle the open state of a subject
   const toggleSubject = (subject) => {
@@ -41,6 +59,58 @@ const AllResults = ({ userInfo }) => {
       [subject]: !prevOpenSubjects[subject],
     }));
   };
+
+  async function updateResults() {
+    setRefreshResults(true);
+    console.log("User ID: ", userInfo.userId);
+    await fetchAndUpdateResults(userInfo.userId);
+    setRefreshResults(false);
+    navigate("/all-results");
+  }
+
+  //Function to render the Hero-Header
+  const renderHeroHeader = () => (
+    <HeroHeader>
+      <h1 className="display-4">
+        <FontAwesomeIcon icon={faGraduationCap} className="me-2" /> Your Exam
+        Dashboard
+      </h1>
+      <p className="lead">
+        Ready to ace your exams? Track your progress and take on new challenges!
+      </p>
+      <Row className="justify-content-center">
+        <Col xs="auto">
+          <Button variant="light" onClick={() => navigate("/exam-page")}>
+            <FontAwesomeIcon icon={faBookOpen} className="me-2" />
+            Select an Exam
+          </Button>
+        </Col>
+        <Col xs="auto">
+          <Button
+            variant="secondary"
+            hidden
+            // onClick={() => navigate("/exam-page")} //Navigate to chart page
+          >
+            <FontAwesomeIcon icon={faChartLine} className="me-2" />
+            View Statistics
+          </Button>
+        </Col>
+        <Col xs="auto">
+          <Button
+            variant="dark"
+            onClick={updateResults}
+            disabled={refreshResults === true}
+          >
+            {refreshResults ? (
+              <Spinner animation="grow" variant="light" />
+            ) : (
+              "Refresh Results"
+            )}
+          </Button>
+        </Col>
+      </Row>
+    </HeroHeader>
+  );
 
   // Function to render results for each subject
   const renderResultsForSubject = (subjectResults) => (
@@ -66,13 +136,21 @@ const AllResults = ({ userInfo }) => {
                 <td>{attempt.date}</td>
                 <td>{attempt.score}</td>
                 <td>
-                  <Button
-                    variant="primary"
-                    className="mt-3"
-                    //   onClick={() => navigate("/exam-view")}
-                  >
-                    View Exam
-                  </Button>
+                  {attempt.resultDetails ? (
+                    <Button
+                      variant="primary"
+                      className="mt-3"
+                      onClick={() => viewResults(attempt.resultDetails)}
+                    >
+                      <FontAwesomeIcon icon={faEye} className="me-2" />
+                      View Exam
+                    </Button>
+                  ) : (
+                    <span className="text-muted">
+                      <FontAwesomeIcon icon={faBan} className="me-2" />
+                      No data
+                    </span>
+                  )}
                 </td>
               </tr>
             ))}
@@ -82,17 +160,53 @@ const AllResults = ({ userInfo }) => {
     </Card>
   );
 
+  // Check if there are no results
+  const noResultsAvailable = results.length === 0;
+
   return (
-    <Container fluid>
-      <Row>
-        <Col>
-          <h1 className="my-4">All Results</h1>
-          {results.map((subjectResults) =>
-            renderResultsForSubject(subjectResults)
+    <>
+      {renderHeroHeader()}
+      <Container fluid>
+        <Row>
+          {noResultsAvailable ? (
+            <>
+              <Alert variant="info">
+                <Alert.Heading>No Results Available</Alert.Heading>
+                <p>
+                  It looks like you haven't completed any exams yet.Select any
+                  of the exams below to seat for.
+                </p>
+                <hr />
+                <div className="d-flex justify-content-center"></div>
+              </Alert>
+              <Card>
+                <SelectExam />
+              </Card>
+            </>
+          ) : (
+            <>
+              <Col>
+                {
+                  results
+                    .filter((_, index) => index % 2 === 0)
+                    .map(renderResultsForSubject) // Render even indexed items
+                }
+              </Col>
+              <Col lg={6} md={12}>
+                {" "}
+                {/* Right Column for larger screens, full width for smaller screens */}
+                {
+                  !noResultsAvailable &&
+                    results
+                      .filter((_, index) => index % 2 !== 0)
+                      .map(renderResultsForSubject) // Render odd indexed items
+                }
+              </Col>
+            </>
           )}
-        </Col>
-      </Row>
-    </Container>
+        </Row>
+      </Container>
+    </>
   );
 };
 

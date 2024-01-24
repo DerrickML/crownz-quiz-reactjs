@@ -1,6 +1,6 @@
 // Home.js
 import React, { useState, useEffect, useRef } from "react"; // Import useState
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChartLine,
@@ -24,19 +24,19 @@ import {
   UCE_Results,
   UACE_Results,
 } from "../otherFiles/education_results";
-import TestButton from "./TestButton"; // Import the TestButton component
+import HeroHeader from "./HeroHeader";
+import "./Home.css";
+import RecentResults from "./RecentResults";
+import {
+  fetchAndUpdateResults,
+  getTransformedResults,
+} from "../utilities/resultsUtil";
 
 function Home({ sessionInfo, onLogout }) {
   // Receive sessionInfo & onLogout as a prop
 
+  const [results, setResults] = useState([]);
   const navigate = useNavigate();
-
-  //Fetch sessionInfo from localStorage
-  const userInfo = storageUtil.getItem("userInfo");
-
-  //Check user type
-  const isStudent = userInfo.labels.includes("student");
-  const isNextOfKin = userInfo.labels.includes("kin");
 
   // Dummy data for linked students (replace with real data fetching logic)
   const linkedStudents = [
@@ -55,46 +55,32 @@ function Home({ sessionInfo, onLogout }) {
     // ... more students
   ];
 
-  // State for recent scores
-  const [recentScores, setRecentScores] = useState([]);
+  //Fetch sessionInfo from localStorage
+  const userInfo = storageUtil.getItem("userInfo");
 
-  // Dummy data for exam results
-  // Function to get the most recent 5 scores for a specific education level
-  const getRecentFiveScoresForLevel = (level) => {
-    let results;
-    switch (level) {
-      case "PLE":
-        results = PLE_Results;
-        break;
-      case "UCE":
-        results = UCE_Results;
-        break;
-      case "UACE":
-        results = UACE_Results;
-        break;
-      default:
-        results = [];
-    }
+  //Check user type
+  const isStudent = userInfo.labels.includes("student");
+  const isNextOfKin = userInfo.labels.includes("kin");
 
-    return results
-      .flatMap((subject) =>
-        subject.attempts.map((attempt) => ({
-          ...attempt,
-          subject: subject.subject,
-        }))
-      )
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .slice(0, 5);
+  const viewResults = (resultDetails) => {
+    console.log("Results to be rendered\n", resultDetails);
+    navigate("/quiz-results", { state: { results: resultDetails } });
   };
 
-  const hasSetScores = useRef(false);
-
   useEffect(() => {
-    if (userInfo && userInfo.educationLevel && !hasSetScores.current) {
-      setRecentScores(getRecentFiveScoresForLevel(userInfo.educationLevel));
-      hasSetScores.current = true;
+    const userId = userInfo?.userId;
+    console.log("User ID IN useEffect: " + userId);
+    if (userId) {
+      const transformedData = getTransformedResults(userId);
+      console.log("Transformed results in useEffect: " + transformedData);
+      if (JSON.stringify(transformedData) !== JSON.stringify(results)) {
+        setResults(transformedData);
+      }
     }
-  }, [userInfo]);
+  }, [userInfo, results]); // Only re-run the effect if userInfo or results change
+
+  // Check if there are no results
+  const noResultsAvailable = results.length === 0;
 
   //Attempt exam
   const attemptExam = () => {
@@ -103,45 +89,36 @@ function Home({ sessionInfo, onLogout }) {
 
   // Function to render the recent scores
   const renderRecentScores = () => (
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>Subject</th>
-          <th>Date</th>
-          <th>Score</th>
-          <th>View Results</th>
-        </tr>
-      </thead>
-      <tbody>
-        {recentScores.map((score, idx) => (
-          <tr key={idx}>
-            <td>{score.subject}</td>
-            <td>{score.date}</td>
-            <td>{score.score}</td>
-            <td></td>
-          </tr>
-        ))}
-      </tbody>
-    </Table>
+    <RecentResults results={results} onViewResults={viewResults} />
   );
 
   const renderStudentDashboard = () => (
     <>
       <Row>
-        <Col lg={12}>
-          <h3 className="mb-4">Recent Scores</h3>
-          {renderRecentScores()}
-
-          <div className="d-flex justify-content-start mt-3 gap-3">
-            <Button variant="success" onClick={() => navigate("/all-results")}>
-              <FontAwesomeIcon icon={faChartLine} className="me-2" />
-              View All Results
-            </Button>
-            <Button variant="warning" onClick={attemptExam}>
-              <FontAwesomeIcon icon={faEdit} className="me-2" />
-              Attempt Exam
-            </Button>
-          </div>
+        <Col lg={6}>
+          <Card className="mb-4 shadow">
+            <Card.Body>
+              <Card.Title>Recent Scores</Card.Title>
+              {renderRecentScores()}
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col lg={6}>
+          <Card className="mb-4 shadow">
+            <Card.Body>
+              <Card.Title>Actions</Card.Title>
+              <Button
+                variant="success"
+                className="me-2"
+                onClick={() => navigate("/all-results")}
+              >
+                <FontAwesomeIcon icon={faChartLine} /> View All Results
+              </Button>
+              <Button variant="warning" onClick={attemptExam}>
+                <FontAwesomeIcon icon={faEdit} /> Attempt Exam
+              </Button>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
     </>
@@ -189,75 +166,44 @@ function Home({ sessionInfo, onLogout }) {
     </Row>
   );
 
+  const renderHeroHeader = () => (
+    <HeroHeader>
+      <h1 className="display-4">
+        Welcome to Your Dashboard, {userInfo.firstName}!
+      </h1>
+      <p className="lead">
+        {isStudent
+          ? "Explore your academic journey, track progress, and excel in your studies."
+          : "Stay informed about your child's academic journey, track their progress, and support their success."}
+      </p>
+      <div className="d-flex justify-content-center mt-4">
+        <Button
+          variant="light"
+          className="me-2"
+          onClick={() => navigate("/profile")}
+        >
+          <FontAwesomeIcon icon={faUserCircle} className="me-2" />
+          View Profile
+        </Button>
+        {isStudent && (
+          <Button variant="secondary" onClick={() => navigate("/exam-page")}>
+            <FontAwesomeIcon icon={faEdit} className="me-2" />
+            Attempt Exam
+          </Button>
+        )}
+      </div>
+    </HeroHeader>
+  );
+
   return (
-    <Container fluid className="my-4">
-      <Row className="mb-4">
-        <Col lg={12}>
-          <Card className="profile-card shadow">
-            <Card.Body>
-              <div className="d-flex align-items-center">
-                <FontAwesomeIcon
-                  icon={faUserCircle}
-                  size="3x"
-                  className="user-icon"
-                />
-                <div className="ms-3">
-                  <h5 className="card-title mb-0">
-                    {userInfo.firstName} {userInfo.lastName}
-                  </h5>
-                  {isStudent && (
-                    <p className="text-muted mb-0">
-                      Level: {userInfo.educationLevel}
-                    </p>
-                  )}
-                  <small>Last logged in: 3 hours ago</small>
-                </div>
-                <div className="ms-auto">
-                  <NavLink
-                    to="/profile"
-                    className="btn btn-outline-secondary btn-sm"
-                  >
-                    Profile
-                  </NavLink>
-                </div>
-              </div>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+    <>
+      {renderHeroHeader()}
+      <Container fluid>
+        {isStudent && renderStudentDashboard()}
 
-      {isStudent && (
-        <Row>
-          <Col lg={6}>
-            <Card className="mb-4 shadow">
-              <Card.Body>
-                <Card.Title>Recent Scores</Card.Title>
-                {renderRecentScores()}
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col lg={6}>
-            <Card className="mb-4 shadow">
-              <Card.Body>
-                <Card.Title>Actions</Card.Title>
-                <Button
-                  variant="success"
-                  className="me-2"
-                  onClick={() => navigate("/all-results")}
-                >
-                  <FontAwesomeIcon icon={faChartLine} /> View All Results
-                </Button>
-                <Button variant="warning" onClick={attemptExam}>
-                  <FontAwesomeIcon icon={faEdit} /> Attempt Exam
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      )}
-
-      {isNextOfKin && renderNextOfKinDashboard()}
-    </Container>
+        {isNextOfKin && renderNextOfKinDashboard()}
+      </Container>
+    </>
   );
 }
 

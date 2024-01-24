@@ -2,18 +2,17 @@ What to pass to the questions/quiz iframe:
 - student id
 - subject id or name
 
+iFrameComponent:
+-Props to pass
+*exam time
+*exam name/id
+*exam 
+
+--------------------
+*Provide practice exams
+--------------------
+
 
 ---code---
-<div
-style={{
-display: "flex",
-}}
->
-    <Button variant="primary" onClick={handleButtonClick}>
-        Attemp English
-    </Button>
-    <Button variant="primary" onClick={handleButtonClick}>
-        Attempt Science
-    </Button>
-</div>
+
 ----

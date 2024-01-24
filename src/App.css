@@ -1,6 +1,10 @@
+.App {
+    padding-top: var(--navbarHeight);
+}
+
 .main-content {
-    padding-top: 80px;
-    /* Adjust this value as needed */
+    margin-top: 0.2rem;
+    /* Or any other desired space */
 }
 
 @media (max-width: 768px) {

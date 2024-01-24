@@ -1,0 +1,19 @@
+.display-4 {
+    font-weight: bold;
+}
+
+.lead {
+    font-size: 1.25rem;
+}
+
+.profile-hero-buttons button {
+    font-size: 1rem;
+    padding: 10px 20px;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+    .hero-header {
+        padding: 40px 0;
+    }
+}

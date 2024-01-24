@@ -5,6 +5,452 @@ import QuizResults from "./english/QuizResults";
 import ExamPage from "./ExamPage";
 
 function Testing() {
+  const results2 = [
+    { marksObtained: 0, totalMarks: 50, type: "finalMarks" },
+    {
+      instruction:
+        "In each of the questions 1 to 5, fill in the blank space with a suitable word.",
+      category: "fillBlank",
+      questions: [
+        {
+          question:
+            'The letter "e" appears <input type=\'text\'> in the word "Wednesday".',
+          userAnswer: "",
+          correctAnswer: "twice",
+          marks: 0,
+        },
+        {
+          question:
+            "Mum's <input type='text'> took place in her home village last Saturday.",
+          userAnswer: "",
+          correctAnswer: "marriage",
+          marks: 0,
+        },
+        {
+          question:
+            "The dog <input type='text'> so loudly that everybody got scared.",
+          userAnswer: "",
+          correctAnswer: "barked",
+          marks: 0,
+        },
+        {
+          question: "<input type='text'> of these pens belongs to you?",
+          userAnswer: "",
+          correctAnswer: "Which",
+          marks: 0,
+        },
+        {
+          question:
+            "Our class teacher is such a kind man <input type='text'> we all love.",
+          userAnswer: "",
+          correctAnswer: "who",
+          marks: 0,
+        },
+      ],
+    },
+    {
+      instruction:
+        "In each of the questions 6 to 15, use the correct form of the word given in the brackets to complete the sentence.",
+      category: "givenBlank",
+      questions: [
+        {
+          question:
+            "He got lost because he had <input type='text'> the way to the clinic. (forget)",
+          userAnswer: "",
+          correctAnswer: "forgotten",
+          marks: 0,
+        },
+        {
+          question:
+            "Our class prefect is a very <input type='text'> girl. (beauty)",
+          userAnswer: "",
+          correctAnswer: "beautiful",
+          marks: 0,
+        },
+        {
+          question:
+            "The triplets opened the door by <input type='text'> .(them)",
+          userAnswer: "",
+          correctAnswer: "themselves",
+          marks: 0,
+        },
+        {
+          question: "John bought a <input type='text'> bed for himself. (wood)",
+          userAnswer: "",
+          correctAnswer: "wooden",
+          marks: 0,
+        },
+        {
+          question:
+            "There will be a <input type='text'> ceremony in our village tomorrow. (bury)",
+          userAnswer: "",
+          correctAnswer: "burial",
+          marks: 0,
+        },
+        {
+          question:
+            "The boy who got the <input type='text'> mark was not promoted to the next class. (little)",
+          userAnswer: "",
+          correctAnswer: "least",
+          marks: 0,
+        },
+        {
+          question:
+            "How many <input type='text'> did Mr. Bukenya have in his farm? (sheep)",
+          userAnswer: "",
+          correctAnswer: "sheep",
+          marks: 0,
+        },
+        {
+          question:
+            "Of the two boys, Tom is the <input type='text'> . (clever)",
+          userAnswer: "",
+          correctAnswer: "cleverer",
+          marks: 0,
+        },
+        {
+          question:
+            "The community member repaired the bridge <input type='text'> .(voluntary)",
+          userAnswer: "",
+          correctAnswer: "voluntarily",
+          marks: 0,
+        },
+        {
+          question:
+            "Warm clothes are <input type='text'> by people in cold areas. (wear)",
+          userAnswer: "",
+          correctAnswer: "worn",
+          marks: 0,
+        },
+      ],
+    },
+    {
+      instruction:
+        "In each of the questions 16 to 17, drag and drop the given words in alphabetical order.",
+      category: "alphabetical",
+      questions: [
+        {
+          question: "Arrange words: different, distance, difficult, diffuse",
+          userAnswer: "",
+          correctAnswer: "difficult, diffuse, different, distance",
+          marks: 0,
+        },
+        {
+          question: "Arrange words: turkey, dove, pigeon, eagle",
+          userAnswer: "",
+          correctAnswer: "dove, eagle, pigeon, turkey",
+          marks: 0,
+        },
+      ],
+    },
+    {
+      instruction:
+        "In each of the questions 18 to 20, give one word for the underlined group of words.",
+      category: "underlined",
+      questions: [
+        {
+          question: "The figure is <u> shaped in form of a circle. </u>",
+          userAnswer: "",
+          correctAnswer: "circular",
+          marks: 0,
+        },
+        {
+          question: "There were many <u> sick people </u> in the hospital.",
+          userAnswer: "",
+          correctAnswer: "patients",
+          marks: 0,
+        },
+        {
+          question:
+            "The class monitor has put up the <u> list of responsibilities to be done and the class members to do them. </u>",
+          userAnswer: "",
+          correctAnswer: "rotter",
+          marks: 0,
+        },
+      ],
+    },
+    {
+      instruction:
+        "In each of the questions 21 to 22, choose the sentence where the given word is used correctly.",
+      category: "multiple_choice",
+      questions: [
+        {
+          question: "brake",
+          userAnswer: "",
+          correctAnswer: "I need to brake for the stop sign.",
+          marks: 0,
+        },
+        {
+          question: "meat",
+          userAnswer: "",
+          correctAnswer: "Dad bought some fresh meat from the butcher.",
+          marks: 0,
+        },
+      ],
+    },
+    {
+      instruction:
+        "In each of the questions 23 to 24, write the full form of the given abbreviation.",
+      category: "abbreviation",
+      questions: [
+        { question: "vs", userAnswer: "", correctAnswer: "versus", marks: 0 },
+        {
+          question: "cc",
+          userAnswer: "",
+          correctAnswer: "carbon copy",
+          marks: 0,
+        },
+      ],
+    },
+    {
+      instruction:
+        "In each of the questions 25 to 26, drag and drop the given words to from a sentence.",
+      category: "sentence",
+      questions: [
+        {
+          question: "Arrange words: beautiful, sunset., I, a, see",
+          userAnswer: "see, sunset., beautiful, I, a",
+          correctAnswer: "I, see, a, beautiful, sunset.",
+          marks: 0,
+        },
+        {
+          question: "Arrange words: help., some, need, I",
+          userAnswer: "",
+          correctAnswer: "I, need, some, help.",
+          marks: 0,
+        },
+      ],
+    },
+    {
+      instruction:
+        "In each of the questions 27 to 28, give the opposite of the underlined word(s) or given word.",
+      category: "opposite",
+      questions: [
+        {
+          question: "The city is full of <u>ancient</u> buildings.",
+          userAnswer: "",
+          correctAnswer: "modern",
+          marks: 0,
+        },
+        {
+          question: "The <u>bestman</u> looked smart during the wedding.",
+          userAnswer: "",
+          correctAnswer: "matron",
+          marks: 0,
+        },
+      ],
+    },
+    {
+      instruction:
+        "In each of the questions 29 to 30, give the plural of the underlined or given word(s).",
+      category: "plural",
+      questions: [
+        { question: "hero", userAnswer: "", correctAnswer: "heroes", marks: 0 },
+        {
+          question: "ream of paper",
+          userAnswer: "",
+          correctAnswer: "reams of paper",
+          marks: 0,
+        },
+      ],
+    },
+    {
+      instruction:
+        "In each of the questions 31 to 50, select the sentence with the correct rewritten option according to the instruction provided in the brackets.",
+      category: "rewriteMultiplechoice",
+      questions: [
+        {
+          question:
+            "Playing netball is interesting. Playing football is very interesting. (Rewrite as one sentence using:….more….than…)",
+          userAnswer: "",
+          correctAnswer:
+            "Playing football is more interesting than playing netball.",
+          marks: 0,
+        },
+        {
+          question:
+            "I have to pass this examination highly. (Rewrite the sentence using ………………must …………………)",
+          userAnswer: "",
+          correctAnswer: "I must pass this examination highly.",
+          marks: 0,
+        },
+        {
+          question:
+            "The police didn't have handcuffs. The police didn't arrest the thief. (Rewrite as one sentence beginning: If………………)",
+          userAnswer: "",
+          correctAnswer:
+            "If  the police had had handcuffs, they would have arrested the thief.",
+          marks: 0,
+        },
+        {
+          question:
+            "The mechanic repaired my father’s car. (Rewrite the sentence and end: …………by the mechanic.)",
+          userAnswer: "",
+          correctAnswer: "My father’s car was repaired by the mechanic.",
+          marks: 0,
+        },
+        {
+          question:
+            "The priest will pray with the orphans. The priest will pray with the widow. (re-write as one sentence using…………both…………)",
+          userAnswer: "",
+          correctAnswer:
+            "The priest will pray with both the orphans and widow.",
+          marks: 0,
+        },
+        {
+          question:
+            "What children need is to observe rules and regulations. (Rewrite the sentence beginning: Children….)",
+          userAnswer: "",
+          correctAnswer: "Children should observe rules and regulations.",
+          marks: 0,
+        },
+        {
+          question:
+            "I am not a cat. I will not hunt for rats. (Rewrite as one sentence beginning: If….)",
+          userAnswer: "",
+          correctAnswer: "If I were a cat, I would hunt for rats.",
+          marks: 0,
+        },
+        {
+          question:
+            "Immediately mother reached home, the guest of honour had spoken. (Re-write sentence beginning: No sooner…………)",
+          userAnswer: "",
+          correctAnswer:
+            "The audience was excited after the guest of honor's speech.",
+          marks: 0,
+        },
+        {
+          question:
+            "Fighting fellow pupils is bad. (Rewrite the sentence beginning: To….)",
+          userAnswer: "",
+          correctAnswer: "To fight fellow pupils is bad.",
+          marks: 0,
+        },
+        {
+          question:
+            "There was no charcoal in the store. Mother managed to prepare supper. (Rewrite as one sentence using: Much as ....)",
+          userAnswer: "",
+          correctAnswer:
+            "Much as there was no charcoal in the store, Mother managed to prepare supper.",
+          marks: 0,
+        },
+        {
+          question:
+            "Nancy is a hard-working girl. Jane is also a hard-working girl.(Rewrite as one sentence using …………both……………)",
+          userAnswer: "",
+          correctAnswer: "Nancy and Jane are both hard-working girls.",
+          marks: 0,
+        },
+        {
+          question:
+            "Beda Junior was sewing. The needle pricked him. (Rewrite as one sentence using: …………while…………)",
+          userAnswer: "",
+          correctAnswer: "The needle pricked Benda junior while he was sewing.",
+          marks: 0,
+        },
+        {
+          question:
+            "Peter should wear a school uniform. He should tuck in his shirt. (Rewrite as one sentence beginning: Not only.....)",
+          userAnswer: "",
+          correctAnswer:
+            "Not only should Peter wear a school uniform, he should also tuck in his shirt.",
+          marks: 0,
+        },
+        {
+          question:
+            "Jatel has borrowed my mathematical set. (Rewrite the sentence beginning: I.......)",
+          userAnswer: "",
+          correctAnswer: "I have lent my mathematical set to Jatel.",
+          marks: 0,
+        },
+        {
+          question:
+            "The journalist needn’t have written false reports.(Rewrite the sentence using …………necessary………………)",
+          userAnswer: "",
+          correctAnswer:
+            "It was not necessary for the Journalist to write false report.",
+          marks: 0,
+        },
+        {
+          question:
+            "Here is the boy. His photograph appeared in the newspaper. (Rewrite as one sentence using: ....whose....)",
+          userAnswer: "",
+          correctAnswer:
+            "Here is the boy whose photograph appeared in the newspaper.",
+          marks: 0,
+        },
+        {
+          question:
+            "Jeremiah is a disciplined boy so is Jesse. (Re- write the sentence beginning Both…)",
+          userAnswer: "",
+          correctAnswer: "Both Jesse and Jeremiah are disciplined boys.",
+          marks: 0,
+        },
+        {
+          question:
+            "Jacob and James like biscuits more than buns. (Re-write sentence using …….prefer….)",
+          userAnswer: "",
+          correctAnswer: "Jacob and James prefer biscuit to burns.",
+          marks: 0,
+        },
+        {
+          question:
+            "None of the garments was clean. (Rewrite the sentence beginning: All………………)",
+          userAnswer: "",
+          correctAnswer: "All the garments were dirty.",
+          marks: 0,
+        },
+        {
+          question:
+            "My little sister is very ill. She can’t eat any food. (Rewrite as one sentence using: ………so……that………)",
+          userAnswer: "",
+          correctAnswer:
+            "My little sister is so ill that she can’t eat any food.",
+          marks: 0,
+        },
+      ],
+    },
+    {
+      type: "iframeResults",
+      data: [
+        [
+          {
+            story:
+              '\n   <div class="instruction">\n    Read the passage below and then answer the questions that follow in full sentences.\n   </div>\n   <div class="story">\n    <p>\n     Matilida is the daughter of Bulasio, the well known bicycle repairer in the village. She is the fourth child in the family. \n            In august this year. Matilida turned twelve; she is now in P.7.\n    </p>\n    <p>\n     Each day, during the school term. Matilida walks to school, a distance of nearly three kilometers from home.\n            She does so with many other children in the village. They have to walk fast and sometimes run to be in time \n            for the school compound. Matilida and her friends have begun each day like this since they were in P.1. \n            They do it without complaining because they know that general cleaning of the school is part of the\n     <u>\n      daily routine.\n     </u>\n    </p>\n    <p>\n     One day after school, Matilida and her friends started walking back home. They had just gone beyond the local market\n            when it started raining heavily, but they continued their journey home. They got worried about their books becoming \n            wet because each one of them carried her books in a small polythene bag. As it continued raining heavily, Matilida\n            and her friends started running. Matilida was ahead of the others, showing them where to pass on the wet ground.\n            As they passed near a small rock. Matilida slipped on one hidden in a pool of water and fell with all her books. \n            It was still raining heavily. Everyone stopped to help her. She was all covered in mud. She was lucky that the \n            polythene big was properly tied. Minutes later, it stopped raining.\n    </p>\n    <p>\n     They now decided to walk slowly and as they reached their village, each took the path to her home. When Matilida \n            reached home, her mother was unhappy to see her looking like a\n     <u>\n      ghost.\n     </u>\n     She helped her to change her clothes.\n    </p>\n    <p>\n     Afterwards Matilida pulled out everything from her polythene bag. She noticed that her pen and pencil were missing.\n            They must have fallen in the pool. Then she saw a hole in her polythene bag! Although it started raining heavily again. \n            Matilida decided to run back to the place where she had fallen in the pool of water.\n    </p>\n   </div>\n   <div class="questions-container">\n    <ol id="questions-list" type="a">\n    <li><span class="question-number"></span> How old is Matilida?<div><label><input type="radio" name="question-0" value="Matilida is ten years old.">Matilida is ten years old.</label><label><input type="radio" name="question-0" value="Matilida is eleven years old.">Matilida is eleven years old.</label><label><input type="radio" name="question-0" value="Matilida is twelve years old.">Matilida is twelve years old.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: Matilida is twelve years old.</span></li><li><span class="question-number"></span> How does Matilida get to school early?<div><label><input type="radio" name="question-1" value="Matilida is driven to school each day.">Matilida is driven to school each day.</label><label><input type="radio" name="question-1" value="Matilida walks to school each day.">Matilida walks to school each day.</label><label><input type="radio" name="question-1" value="Matilida rides to school each day.">Matilida rides to school each day.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: Matilida walks to school each day.</span></li><li><span class="question-number"></span> Give a reason why Matilida and her friends have to reach the school early.<div><label><input type="radio" name="question-2" value="They to reach school early because general cleaning of the school is part of their daily routine.">They to reach school early because general cleaning of the school is part of their daily routine.</label><label><input type="radio" name="question-2" value="They have to reach school early because she does not want to be late.">They have to reach school early because she does not want to be late.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: They to reach school early because general cleaning of the school is part of their daily routine.</span></li><li><span class="question-number"></span> Why did Matilida and her friends start running home after school?<div><label><input type="radio" name="question-3" value="They started running home after school because they did not want to get home early.">They started running home after school because they did not want to get home early.</label><label><input type="radio" name="question-3" value="They started running home after school because it started raining heavily.">They started running home after school because it started raining heavily.</label><label><input type="radio" name="question-3" value="They started running home after school because they were hurrying to watch cartoons.">They started running home after school because they were hurrying to watch cartoons.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: They started running home after school because it started raining heavily.</span></li><li><span class="question-number"></span> Why did Matilida fall into the pool of water?<div><label><input type="radio" name="question-4" value="Matilida fell into the pool of water because she wanted to swim.">Matilida fell into the pool of water because she wanted to swim.</label><label><input type="radio" name="question-4" value="Matilida fell into the pool of water because her friends pushed her.">Matilida fell into the pool of water because her friends pushed her.</label><label><input type="radio" name="question-4" value="Matilida fell into the pool of water because she slipped on a hidden rock.">Matilida fell into the pool of water because she slipped on a hidden rock.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: Matilida fell into the pool of water because she slipped on a hidden rock.</span></li><li><span class="question-number"></span> How did her friends show that they loved Matilida?<div><label><input type="radio" name="question-5" value="They stopped to help her when she fell.">They stopped to help her when she fell.</label><label><input type="radio" name="question-5" value="They shared their breakfast with her.">They shared their breakfast with her.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: They stopped to help her when she fell.</span></li><li><span class="question-number"></span> Suggest a suitable TITLE for this passage.<div><label><input type="radio" name="question-6" value="Matilida\'s Rainy Day.">Matilida\'s Rainy Day.</label><label><input type="radio" name="question-6" value="Friends">Friends</label><label><input type="radio" name="question-6" value="Rainy season.">Rainy season.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: Matilida\'s Rainy Day.</span></li><li class="main">Give another word or a group of words with the same meaning as each of the underlined words in the passage.<ul><li class="subs">daily routine.<input type="text" placeholder="Type your answer here"><span class="cross">✗</span><span class="correct-answer">Correct answers: regular habit, routine schedule, everyday practice</span></li><li class="subs">ghost<input type="text" placeholder="Type your answer here"><span class="cross">✗</span><span class="correct-answer">Correct answers: spirit, spook, apparition, specter</span></li></ul></li></ol>\n   </div>\n  ',
+            totalMarks: 0,
+          },
+        ],
+        [
+          {
+            story:
+              '\n        <div id="questionImage">\n            <div class="instruction">The information below shows a page of a p.3 class register of teacher Namiiro\n                Theopista,\n                Buzzy primary school. Study it carefully and then answer in full sentences the questions that follow.\n            </div>\n            <div class="image">\n                <img src=".\\image\\2014_52.png" alt="PLE">\n            </div>\n        </div>\n        <div class="questions-container">\n            <ol id="questions-list" type="a">\n            <li><span class="question-number"></span> Which teacher used the above register?<div><label><input type="radio" name="question-0" value="Teacher  Agaba Joseph used the above register.">Teacher  Agaba Joseph used the above register.</label><label><input type="radio" name="question-0" value="Teacher Namiiro Theopista used the above register.">Teacher Namiiro Theopista used the above register.</label><label><input type="radio" name="question-0" value="Apendi Stacy Theopista used the above register.">Apendi Stacy Theopista used the above register.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: Teacher Namiiro Theopista used the above register.</span></li><li><span class="question-number"></span> In which school was the register used?<input type="text" placeholder="Type your answer here"><span class="cross">✗</span><span class="correct-answer">Correct answer: Buzzy primary school</span></li><li><span class="question-number"></span> Who is the youngest boy in the class?<div><label><input type="radio" name="question-2" value="The youngest boy is Ichat Mark.">The youngest boy is Ichat Mark.</label><label><input type="radio" name="question-2" value="The youngest boy is Bazira Byron.">The youngest boy is Bazira Byron.</label><label><input type="radio" name="question-2" value="The youngest boy is Waiswa Bruno.">The youngest boy is Waiswa Bruno.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: The youngest boy is Waiswa Bruno.</span></li><li><span class="question-number"></span> Which pupil had the poorest attendance in class?<div><label><input type="radio" name="question-3" value="Bazira Byron has the poorest attendance in class.">Bazira Byron has the poorest attendance in class.</label><label><input type="radio" name="question-3" value="Walugonza Brian has the poorest attendance in class.">Walugonza Brian has the poorest attendance in class.</label><label><input type="radio" name="question-3" value="Namukuya Brenda has the poorest attendance in class.">Namukuya Brenda has the poorest attendance in class.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: Bazira Byron has the poorest attendance in class.</span></li><li><span class="question-number"></span> Who was absent in the morning but present in the afternoon?<div><label><input type="radio" name="question-4" value="Agaba Joseph was absent in the morning but present in the afternoon.">Agaba Joseph was absent in the morning but present in the afternoon.</label><label><input type="radio" name="question-4" value="Apendi Stacy was absent in the morning but present in the afternoon.">Apendi Stacy was absent in the morning but present in the afternoon.</label><label><input type="radio" name="question-4" value="Bazira Byron was absent in the morning but present in the afternoon.">Bazira Byron was absent in the morning but present in the afternoon.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: Apendi Stacy was absent in the morning but present in the afternoon.</span></li><li><span class="question-number"></span> On which day did the pupils go for holidays?<input type="text" placeholder="Type your answer here"><span class="cross">✗</span><span class="correct-answer">Correct answer: Friday</span></li><li><span class="question-number"></span> How many pupils were present on Monday of the first week?<div><label><input type="radio" name="question-6" value="Twelve pupils were present on Monday of the first week.">Twelve pupils were present on Monday of the first week.</label><label><input type="radio" name="question-6" value="Fourteen pupils were present on Monday of the first week.">Fourteen pupils were present on Monday of the first week.</label><label><input type="radio" name="question-6" value="Eleven pupils were present on Monday of the first week.">Eleven pupils were present on Monday of the first week.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: Twelve pupils were present on Monday of the first week.</span></li><li><span class="question-number"></span> Who is the last pupil shown in the register?<div><label><input type="radio" name="question-7" value="Bazira Byron is the last pupil shown in the register.">Bazira Byron is the last pupil shown in the register.</label><label><input type="radio" name="question-7" value="Mutasa Aggrey is the last pupil shown in the register.">Mutasa Aggrey is the last pupil shown in the register.</label><label><input type="radio" name="question-7" value="Walugonza Brian is the last pupil shown in the register.">Walugonza Brian is the last pupil shown in the register.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: Walugonza Brian is the last pupil shown in the register.</span></li><li><span class="question-number"></span> How many pupils were never absent?<div><label><input type="radio" name="question-8" value="Five pupils were never absent.">Five pupils were never absent.</label><label><input type="radio" name="question-8" value="Three pupils were never absent.">Three pupils were never absent.</label><label><input type="radio" name="question-8" value="Six pupils were never absent.">Six pupils were never absent.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: Three pupils were never absent.</span></li><li><span class="question-number"></span> On which day of the two weeks were all the pupils present?<div><label><input type="radio" name="question-9" value="They were all present on Tuesday.">They were all present on Tuesday.</label><label><input type="radio" name="question-9" value="They were all present on Friday.">They were all present on Friday.</label><label><input type="radio" name="question-9" value="They were all present on Wednesday.">They were all present on Wednesday.</label></div><span class="cross">✗</span><span class="correct-answer">Correct answer: They were all present on Tuesday.</span></li></ol>\n        </div>\n    ',
+            totalMarks: 0,
+          },
+        ],
+        [
+          {
+            story:
+              '\n   <div class="instruction">\n    Below is a short passage of two paragraphs. Choose the correct option with the correctly puctuated passage.\n   </div>\n   <div class="passage">\n    <p>\n     during Janes successful party held at the main hall may people got drunk. i personally\n            ate a lot of meat and there were so many other things to eat. Among the many things\n            fish was not the best for me i had terrible diarrhea which made me very weak and sick.\n    </p>\n    <p>\n     asiimwe, my friend came to check on me on the following day.\n    </p>\n   </div>\n   <div class="questions-container" id="questions-container">\n   <div class="option"><input type="radio" name="passageOption" value="0" id="option0"><label for="option0"><p>\n        During Jane’s successful party held at the main hall, many people got drunk. I personally ate a lot of \n        meat and there were so many other things to eat Among the many things fish was not the best for me; \n        I had terrible diarrhea which made me very weak and sick.\n    </p>\n    <p>\n        asiimwe, my friend came to check on me on the following day.\n    </p></label></div><div class="option"><input type="radio" name="passageOption" value="1" id="option1"><label for="option1"><p>\n        During Jane\'s successful party held at the main hall, many people got drunk. \n        I personally ate a lot of meat, and there were so many other things to eat. Among \n        the many things, fish was not the best for me. I had terrible diarrhea, which made\n        me very weak and sick.\n    </p>\n    <p>\n        Asiimwe, my friend, came to check on me on the following day.\n    </p></label></div><div class="option"><input type="radio" name="passageOption" value="2" id="option2"><label for="option2"><p>\n        During Jane\'s successful party held at the main hall many people got drunk. I personally ate a lot of meat, \n        and there were so many other things to eat. Among the many things, fish was not the best for me I had\n        terrible diarrhea, which made me very weak and sick\n    </p>\n    <p>\n        Asiimwe, my friend, came to check on me on the following day.\n    </p></label></div><div class="correct-answer"><p>Correct Answer:</p><p>\n                            During Jane\'s successful party held at the main hall, many people got drunk. \n                            I personally ate a lot of meat, and there were so many other things to eat. Among \n                            the many things, fish was not the best for me. I had terrible diarrhea, which made\n                            me very weak and sick.\n                        </p>\n                        <p>\n                            Asiimwe, my friend, came to check on me on the following day.\n                        </p></div></div>\n  ',
+            totalMarks: 0,
+          },
+        ],
+        [
+          {
+            story:
+              '\n   <div class="instruction">\n    The sentences below are not in the correct order. Drag and drop them\n      to form a short composition about “A health officer”\n   </div>\n   <div class="container">\n    <div class="drag-container" id="drag-container">\n    <div draggable="true" class="draggable-sentence" data-index="0">1. He requested the headteacher to allow him talk to the pupils about HIV/AIDS.</div><div draggable="true" class="draggable-sentence" data-index="1">2. The health officer explained to the pupils about the causes signs and symptoms of HIV/AIDS.</div><div draggable="true" class="draggable-sentence" data-index="2">3. Abstaining from sex and not sharing sharp objects was the answer he gave.</div><div draggable="true" class="draggable-sentence" data-index="3">4. Finally, the headboy thanked the health officer for the message on behalf of the pupils.</div><div draggable="true" class="draggable-sentence" data-index="4">5. One day, a health officer came to our school.</div><div draggable="true" class="draggable-sentence" data-index="5">6. He also advised pupils to avoid getting HIV/AIDS.</div><div draggable="true" class="draggable-sentence" data-index="6">7. And he went straight to the headteacher’s office.</div><div draggable="true" class="draggable-sentence" data-index="7">8. The headteacher welcomed him and gave him the visitor’s book to sign.</div><div draggable="true" class="draggable-sentence" data-index="8">9. She welcomed the health officer’s request and organized for an assembly.</div><div draggable="true" class="draggable-sentence" data-index="9">10. After his talk, one of the pupils asked him how HIV/AIDS could be avoided.</div></div>\n    <div class="drop-container" id="drop-container">\n    <div class="drop-placeholder">Drop the sentences here............</div></div>\n   </div>\n   <div class="result-container" id="result-container">Correct order: <div class="sentenceInOrder">1. One day, a health officer came to our school.</div><div class="sentenceInOrder">2. And he went straight to the headteacher’s office.</div><div class="sentenceInOrder">3. The headteacher welcomed him and gave him the visitor’s book to sign.</div><div class="sentenceInOrder">4. He requested the headteacher to allow him talk to the pupils about HIV/AIDS.</div><div class="sentenceInOrder">5. She welcomed the health officer’s request and organized for an assembly.</div><div class="sentenceInOrder">6. The health officer explained to the pupils about the causes signs and symptoms of HIV/AIDS.</div><div class="sentenceInOrder">7. He also advised pupils to avoid getting HIV/AIDS.</div><div class="sentenceInOrder">8. After his talk, one of the pupils asked him how HIV/AIDS could be avoided.</div><div class="sentenceInOrder">9. Abstaining from sex and not sharing sharp objects was the answer he gave.</div><div class="sentenceInOrder">10. This juncture marks the closure of one chapter and the commencement of another.</div></div>\n  ',
+            totalMarks: 0,
+          },
+        ],
+        [
+          {
+            story:
+              '\n   <div class="instruction">\n    Drag and drop these sentences to form a composition about your plans after the Primary Leaving Examination.\n   </div>\n   <div class="container">\n    <div class="drag-container" id="drag-container">\n    <div draggable="true" class="draggable-sentence" data-index="0">In short, after my PLE, I will thank my teachers, have a fun party, help at home, and plan for more school.</div><div draggable="true" class="draggable-sentence" data-index="1">In the future, I will talk to my family about what school to go to next.</div><div draggable="true" class="draggable-sentence" data-index="2">After I know my grades, I\'m going to help my mom and dad at home.</div><div draggable="true" class="draggable-sentence" data-index="3">I just finished my Primary Leaving Examination, and I want to say a big thank you to my head teacher and teachers for helping me.</div><div draggable="true" class="draggable-sentence" data-index="4">We will laugh and be happy because I finished primary school.</div><div draggable="true" class="draggable-sentence" data-index="5">MY PLANS AFTER PRIMARY LEAVING EXAMINATION.</div><div draggable="true" class="draggable-sentence" data-index="6">They are the best!</div><div draggable="true" class="draggable-sentence" data-index="7">When I get my results, I\'m going to have a big party with my family and friends.</div><div draggable="true" class="draggable-sentence" data-index="8">I hope I get good grades in my PLE, and that will make my family and teachers really happy.</div><div draggable="true" class="draggable-sentence" data-index="9">I want to make their work easier because they helped me a lot.</div></div>\n    <div class="drop-container" id="drop-container">\n    <div class="drop-placeholder">Drop the sentences here............</div></div>\n   </div>\n   <div class="result-container" id="result-container">Correct order: <div class="sentenceInOrder">MY PLANS AFTER PRIMARY LEAVING EXAMINATION.</div><div class="sentenceInOrder">I just finished my Primary Leaving Examination, and I want to say a big thank you to my head teacher and teachers for helping me.</div><div class="sentenceInOrder">They are the best!</div><div class="sentenceInOrder">I hope I get good grades in my PLE, and that will make my family and teachers really happy.</div><div class="sentenceInOrder">After I know my grades, I\'m going to help my mom and dad at home.</div><div class="sentenceInOrder">I want to make their work easier because they helped me a lot.</div><div class="sentenceInOrder">When I get my results, I\'m going to have a big party with my family and friends.</div><div class="sentenceInOrder">We will laugh and be happy because I finished primary school.</div><div class="sentenceInOrder">In the future, I will talk to my family about what school to go to next.</div><div class="sentenceInOrder">In short, after my PLE, I will thank my teachers, have a fun party, help at home, and plan for more school.</div></div>\n  ',
+            totalMarks: 0,
+          },
+        ],
+      ],
+    },
+  ];
   const results = [
     {
       marksObtained: 4,
@@ -468,15 +914,15 @@ function Testing() {
   return (
     <div>
       {/* <h1>Quiz Results</h1> */}
-      {/* {results.length > 0 ? (
-        <QuizResults results={results} />
+      {results.length > 0 ? (
+        <QuizResults results={results2} />
       ) : (
         <p>Loading results...</p>
-      )} */}
+      )}
 
       {/* <IframeComponent url="http://localhost:5173/" /> */}
 
-      <ExamPage></ExamPage>
+      {/* <ExamPage></ExamPage> */}
     </div>
   );
 }

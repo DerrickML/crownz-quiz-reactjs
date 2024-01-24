@@ -27,3 +27,23 @@
     align-items: center;
     z-index: 999;
 }
+
+.timer-card {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    /* To add some space at the top */
+}
+
+.timer-icon {
+    color: #007bff;
+    /* Bootstrap primary color */
+    margin-right: 10px;
+}
+
+.timer-text {
+    font-size: 1.2rem;
+    color: #333;
+}

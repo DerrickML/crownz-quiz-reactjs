@@ -1,78 +1,34 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Container, Row, Col, Card, Modal, Button } from "react-bootstrap";
+import React from "react";
+import { Button } from "react-bootstrap";
+import { faSearch, faBookReader } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faCalculator } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
+import HeroHeader from "./HeroHeader";
 import "./ExamPage.css"; // Import custom CSS
+import SelectExam from "./SelectExam";
 
-const subjects = [
-  {
-    name: "English",
-    icon: faBook,
-    description: "Dive into the depths of English literature and grammar.",
-  },
-  {
-    name: "Mathematics",
-    icon: faCalculator,
-    description: "Challenge yourself with numbers and equations.",
-  },
-  // Add more subjects here
-];
-
-function ExamPage() {
-  const [selectedSubject, setSelectedSubject] = useState(null);
-  const navigate = useNavigate();
-
-  const handleCardClick = (subject) => {
-    setSelectedSubject(subject);
-  };
-
-  const handleStartExam = () => {
-    navigate(`/exam/${selectedSubject.name.toLowerCase()}`);
-  };
+function ExamPage({ userInfo }) {
+  const ExamPageHeroHeader = () => (
+    <HeroHeader>
+      <h1 className="display-4">
+        <FontAwesomeIcon icon={faBookReader} className="me-2" /> Discover Your
+        Subjects
+      </h1>
+      <p className="lead">
+        Embark on a journey of knowledge. Choose your subject and challenge
+        yourself!
+      </p>
+      <Button variant="outline-light" className="mt-3">
+        <FontAwesomeIcon icon={faSearch} className="me-2" />
+        Explore Subjects
+      </Button>
+    </HeroHeader>
+  );
 
   return (
     <div className="exam-page-bg">
-      <Container className="py-5">
-        <h2 className="text-center mb-4">Select Your Exam Subject</h2>
-        <Row className="justify-content-center">
-          {subjects.map((subject, index) => (
-            <Col key={index} md={6} lg={4} className="mb-4">
-              <Card
-                className="subject-card h-100"
-                onClick={() => handleCardClick(subject)}
-              >
-                <Card.Body className="text-center">
-                  <FontAwesomeIcon icon={subject.icon} size="4x" />
-                  <Card.Title className="mt-3">{subject.name}</Card.Title>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-
-      <Modal
-        show={selectedSubject !== null}
-        onHide={() => setSelectedSubject(null)}
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>{selectedSubject?.name} Exam</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>{selectedSubject?.description}</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setSelectedSubject(null)}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleStartExam}>
-            Start Exam
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <ExamPageHeroHeader />
+      <SelectExam />
     </div>
   );
 }

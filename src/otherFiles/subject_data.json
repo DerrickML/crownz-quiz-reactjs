@@ -1,0 +1,163 @@
+{
+    "PLE": [
+        {
+            "name": "Science",
+            "description": "Explore the world of natural sciences and discover the principles of life.",
+            "icon": "faMicroscope"
+        },
+        {
+            "name": "Mathematics",
+            "description": "Engage with numbers and develop your mathematical problem-solving skills.",
+            "icon": "faCalculator"
+        },
+        {
+            "name": "Social Studies",
+            "description": "Understand the structure of society and learn about different cultures.",
+            "icon": "faGlobeAmericas"
+        },
+        {
+            "name": "English Language",
+            "description": "Dive into the depths of English literature and grammar.",
+            "icon": "faBookOpen"
+        }
+    ],
+    "UCE": [
+        {
+            "name": "English Language",
+            "description": "Master the global language and enhance your communication skills.",
+            "icon": "faBookOpen"
+        },
+        {
+            "name": "Mathematics",
+            "description": "Challenge yourself with numbers and equations.",
+            "icon": "faCalculator"
+        },
+        {
+            "name": "Biology",
+            "description": "Discover the science of life and living organisms.",
+            "icon": "faDna"
+        },
+        {
+            "name": "Chemistry",
+            "description": "Learn about substances, their properties, and reactions.",
+            "icon": "faFlask"
+        },
+        {
+            "name": "Physics",
+            "description": "Understand the fundamental principles governing the natural world.",
+            "icon": "faAtom"
+        },
+        {
+            "name": "History & Political Education",
+            "description": "Explore the events of the past and how they shape the future.",
+            "icon": "faLandmark"
+        },
+        {
+            "name": "Geography",
+            "description": "Study the Earth, its features, and its various inhabitants.",
+            "icon": "faMountain"
+        },
+        {
+            "name": "Commerce",
+            "description": "Learn the basics of trade, business, and economics.",
+            "icon": "faChartLine"
+        },
+        {
+            "name": "Art and Design",
+            "description": "Express your creativity and learn the principles of visual composition.",
+            "icon": "faPalette"
+        },
+        {
+            "name": "Agriculture",
+            "description": "Study the science of farming, including cultivation of soil for growing crops.",
+            "icon": "faSeedling"
+        },
+        {
+            "name": "Religious Education",
+            "description": "Explore the diverse religions of the world and their cultural impacts.",
+            "icon": "faPray"
+        },
+        {
+            "name": "Literature in English",
+            "description": "Delve into the rich world of English literature and analyze texts from different periods",
+            "icon": "faBookReader"
+        },
+        {
+            "name": "Foreign Languages",
+            "description": "Learn a new language and open up to a world of cultural experiences.",
+            "icon": "faLanguage"
+        },
+        {
+            "name": "Computer Studies",
+            "description": "Discover the world of computing, from software to hardware and networking.",
+            "icon": "faComputer"
+        },
+        {
+            "name": "Physical Education",
+            "description": "Improve your physical fitness and learn the importance of maintaining a healthy lifestyle.",
+            "icon": "faRunning"
+        }
+    ],
+    "UACE": [
+        {
+            "name": "History & Political Education",
+            "description": "Analyze and interpret significant historical events and eras.",
+            "icon": "faLandmark"
+        },
+        {
+            "name": "Geography",
+            "description": "Investigate the physical properties of Earth and its atmosphere.",
+            "icon": "faMountain"
+        },
+        {
+            "name": "Divinity",
+            "description": "Investigate the theological studies of religious beliefs and practices.",
+            "icon": "faBible"
+        },
+        {
+            "name": "Economics",
+            "description": "Understand the production, distribution, and consumption of goods and services.",
+            "icon": "faChartLine"
+        },
+        {
+            "name": "Literature in English",
+            "description": "Explore the profound depths of English literature and its historical contexts.",
+            "icon": "faBookReader"
+        },
+        {
+            "name": "Entrepreneurship",
+            "description": "Learn the essentials of starting a business and becoming a successful entrepreneur.",
+            "icon": "faLightbulb"
+        },
+        {
+            "name": "Music",
+            "description": "Study the art of music, including theory, performance, and history.",
+            "icon": "faMusic"
+        },
+        {
+            "name": "Physical Education",
+            "description": "Engage in physical activities and sports to promote health and fitness.",
+            "icon": "faFootballBall"
+        },
+        {
+            "name": "Mathematics",
+            "description": "Challenge your analytical skills with advanced mathematical concepts.",
+            "icon": "faSquareRootAlt"
+        },
+        {
+            "name": "Computer Studies",
+            "description": "Delve deeper into computer science, coding, and information technology.",
+            "icon": "faComputer"
+        },
+        {
+            "name": "Technical Drawing",
+            "description": "Develop drafting skills for creating detailed plans and drawings for buildings or machinery.",
+            "icon": "faPencilRuler"
+        },
+        {
+            "name": "General Paper",
+            "description": "",
+            "icon": "faSpellCheck"
+        }
+    ]
+}

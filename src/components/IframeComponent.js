@@ -1,12 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Iframe from "react-iframe";
-import { Container, Button, Spinner, Card, Modal } from "react-bootstrap";
+import {
+  Container,
+  Button,
+  Spinner,
+  Card,
+  Modal,
+  Row,
+  Col,
+} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
 import {
   databases,
   database_id,
   studentMarksTable_id,
 } from "../appwriteConfig.js";
+import { showToast } from "../utilities/toastUtil.js";
 import storageUtil from "../utilities/storageUtil";
 import "./IframeComponent.css";
 
@@ -16,6 +27,9 @@ const IframeComponent = ({ url }) => {
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [buttonClicked, setButtonClicked] = useState(false);
   const [showExitModal, setShowExitModal] = useState(false);
+  const [timer, setTimer] = useState(3600); // 1 hour in seconds for example --This will be a prop passed
+  const [capturedTime, setCapturedTime] = useState(null);
+  const timerIntervalRef = useRef(); // Ref for the timer interval
   const navigate = useNavigate();
 
   const urlWhitelist = [
@@ -34,6 +48,7 @@ const IframeComponent = ({ url }) => {
 
   // Modified sendMessageToIframe to only send message after confirmation
   const sendMessageToIframe = () => {
+    stopAndCaptureTimer();
     const iframe = document.getElementById("myIframe");
     if (iframe && iframe.contentWindow) {
       iframe.contentWindow.postMessage("callEvaluateAllAnswers", "*");
@@ -78,9 +93,11 @@ const IframeComponent = ({ url }) => {
         await createDocument({
           studID: studentID,
           marks: percentage,
-          subject: "english",
+          subject: "English",
           results: resultsString,
         });
+
+        console.log("Exam finished in: ", capturedTime);
 
         setButtonClicked(false); // Reset the flag
       }
@@ -110,20 +127,64 @@ const IframeComponent = ({ url }) => {
     setShowSubmitModal(false);
   };
 
+  // Timer controler
+  useEffect(() => {
+    timerIntervalRef.current = setInterval(() => {
+      setTimer((prevTime) => prevTime - 1);
+    }, 1000);
+
+    return () => clearInterval(timerIntervalRef.current);
+  }, []);
+
+  useEffect(() => {
+    if (timer === 0) {
+      showToast(
+        "Time's up! The exam is being submitted automatically.",
+        "info"
+      );
+      stopAndCaptureTimer();
+      confirmSubmit();
+    } else if (timer < 0) {
+      setTimer(0); // Ensure timer doesn't go below zero
+    }
+  }, [timer]);
+
+  const formatTime = () => {
+    const minutes = Math.floor(timer / 60);
+    const seconds = timer % 60;
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
+
+  const stopAndCaptureTimer = () => {
+    clearInterval(timerIntervalRef.current); // Stop the timer
+    setCapturedTime(timer); // Capture the current time
+  };
+
   return (
     <Container fluid="true" className="iframe-container">
       {canDisplayUrl ? (
         <>
+          <Row className="justify-content-center my-1">
+            <Col md={6} lg={4}>
+              <Card className="text-center timer-card">
+                <Card.Body>
+                  <FontAwesomeIcon icon={faClock} className="timer-icon" />
+                  <span className="timer-text">{formatTime()}</span>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
           <Card className="iframe-card">
             <Iframe src={url} id="myIframe" className="iframe-content" />
           </Card>
 
           {!isCompleted && (
-            <div className="exam-controls">
+            <div className="exam-controls bg-dark">
               <Button
                 variant="success"
                 onClick={handleConfirmSubmit}
                 disabled={isLoading}
+                className="w-25"
               >
                 {isLoading ? (
                   <Spinner as="span" animation="border" size="sm" />
@@ -131,7 +192,11 @@ const IframeComponent = ({ url }) => {
                   "Submit Exam"
                 )}
               </Button>
-              <Button variant="danger" onClick={handleExitExam}>
+              <Button
+                variant="danger"
+                onClick={handleExitExam}
+                className="w-25"
+              >
                 Exit Exam
               </Button>
             </div>

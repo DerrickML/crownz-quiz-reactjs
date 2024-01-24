@@ -1,8 +1,29 @@
-import React, { useState, useEffect, useRef } from "react"; // Import useState
+import React, { useState } from "react"; // Import useState
 import useLinkedStudents from "../hooks/useLinkedStudents";
-import { Modal, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import {
+  Container,
+  Modal,
+  Button,
+  Card,
+  Table,
+  Nav,
+  Tab,
+} from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUserEdit,
+  faUsers,
+  faEnvelope,
+  faPhone,
+  faVenusMars,
+  faSchool,
+  faHome,
+} from "@fortawesome/free-solid-svg-icons";
 import storageUtil from "../utilities/storageUtil";
 import KinSignup from "./KinSignup";
+import HeroHeader from "./HeroHeader";
+import "./Home.css";
 
 const Profile = () => {
   //Fetch sessionInfo from localStorage
@@ -11,6 +32,7 @@ const Profile = () => {
   const sessionData = storageUtil.getItem("sessionInfo");
   const kinId = sessionData.userId;
   const linkedStudents = useLinkedStudents(kinId);
+  const navigate = useNavigate();
 
   //Hook to manage modal visibility
   const [showModal, setShowModal] = useState(false);
@@ -33,15 +55,15 @@ const Profile = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const renderNextOfKinProfile = () => (
-    <div className="card">
-      <div className="card-body">
-        <h5 className="card-title">Linked Students</h5>
-        <table className="table table-hover">
+    <Card className="shadow-sm mb-4">
+      <Card.Body>
+        <Card.Title>Linked Students</Card.Title>
+        <Table hover>
           <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Education Level</th>
-              <th scope="col">Actions</th>
+              <th>Name</th>
+              <th>Education Level</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -50,39 +72,33 @@ const Profile = () => {
                 <td>{student.Name}</td>
                 <td>{student.educationLevel}</td>
                 <td>
-                  <button className="btn btn-primary btn-sm">
-                    View Details
-                  </button>
+                  <Button size="sm">View Details</Button>
                 </td>
               </tr>
             ))}
           </tbody>
-        </table>
-        <nav>
+        </Table>
+        <Nav aria-label="Page navigation">
           <ul className="pagination">
             {Array.from(
               { length: Math.ceil(linkedStudents.length / itemsPerPage) },
-              (_, i) => i + 1
-            ).map((number) => (
-              <li
-                key={number}
-                className={`page-item ${
-                  currentPage === number ? "active" : ""
-                }`}
-              >
-                <a
-                  onClick={() => paginate(number)}
-                  href="#"
-                  className="page-link"
+              (_, i) => (
+                <li
+                  key={i}
+                  className={`page-item ${
+                    currentPage === i + 1 ? "active" : ""
+                  }`}
                 >
-                  {number}
-                </a>
-              </li>
-            ))}
+                  <Button variant="link" onClick={() => paginate(i + 1)}>
+                    {i + 1}
+                  </Button>
+                </li>
+              )
+            )}
           </ul>
-        </nav>
-      </div>
-    </div>
+        </Nav>
+      </Card.Body>
+    </Card>
   );
 
   const renderStudentProfile = () => (
@@ -164,118 +180,141 @@ const Profile = () => {
     </div>
   );
 
-  return (
-    <div className="container my-4">
-      <div className="profile-header card bg-primary text-white text-center p-4 mb-4">
-        <h2 className="mb-0">
-          {userInfo.firstName} {userInfo.lastName}
-        </h2>
-        <p className="lead">{userInfo.labels[0]} Profile</p>
-        {/* Optional: Profile Image */}
-        {/* <img src="path_to_profile_image.jpg" className="card-img-top rounded-circle" alt="Profile" /> */}
-      </div>
-
-      <ul className="nav nav-tabs mb-4">
-        <li className="nav-item">
-          <a
-            className="nav-link active"
-            href="#personalDetails"
-            data-bs-toggle="tab"
+  // Hero Header
+  const renderHeroHeader = () => (
+    <HeroHeader>
+      <div className="text-center">
+        <h1 className="display-4">Hello, {userInfo.firstName}!</h1>
+        <p className="lead">Welcome to your Profile Dashboard</p>
+        <div className="profile-hero-buttons mt-4">
+          <Button
+            variant="outline-primary"
+            onClick={() => navigate("/edit-profile")}
           >
-            Personal Details
-          </a>
-        </li>
-        {isStudent && (
-          <>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href="#educationDetails"
-                data-bs-toggle="tab"
-              >
-                Education Details
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href="#nextOfKinDetails"
-                data-bs-toggle="tab"
-              >
-                Next of Kin Details
-              </a>
-            </li>
-          </>
-        )}
-        {isNextOfKin && (
+            <FontAwesomeIcon icon={faUserEdit} /> Edit Profile
+          </Button>
+          {isNextOfKin && (
+            <Button
+              variant="outline-success"
+              onClick={() => navigate("/linked-students")}
+            >
+              <FontAwesomeIcon icon={faUsers} /> Linked Students
+            </Button>
+          )}
+        </div>
+      </div>
+    </HeroHeader>
+  );
+
+  return (
+    <>
+      {renderHeroHeader()}
+      <Container>
+        <ul className="nav nav-tabs mb-4">
           <li className="nav-item">
-            <a className="nav-link" href="#linkedStudents" data-bs-toggle="tab">
-              Linked Students
+            <a
+              className="nav-link active"
+              href="#personalDetails"
+              data-bs-toggle="tab"
+            >
+              Personal Details
             </a>
           </li>
-        )}
-      </ul>
-
-      <div className="tab-content">
-        <div className="tab-pane active" id="personalDetails">
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">Contact Information</h5>
-              <p className="card-text">
-                {userInfo.email ? (
-                  <>
-                    <strong>Email:</strong> {userInfo.email}
-                  </>
-                ) : null}
-              </p>
-              {userInfo.phone && (
+          {isStudent && (
+            <>
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  href="#educationDetails"
+                  data-bs-toggle="tab"
+                >
+                  Education Details
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  href="#nextOfKinDetails"
+                  data-bs-toggle="tab"
+                >
+                  Next of Kin Details
+                </a>
+              </li>
+            </>
+          )}
+          {isNextOfKin && (
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                href="#linkedStudents"
+                data-bs-toggle="tab"
+              >
+                Linked Students
+              </a>
+            </li>
+          )}
+        </ul>
+        <div className="tab-content">
+          <div className="tab-pane active" id="personalDetails">
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">Contact Information</h5>
                 <p className="card-text">
-                  {userInfo.phone ? (
+                  {userInfo.email ? (
                     <>
-                      <strong>Phone:</strong> {userInfo.phone}
+                      <strong>Email:</strong> {userInfo.email}
                     </>
                   ) : null}
                 </p>
-              )}
-              {isStudent && (
-                <p className="card-text">
-                  {userInfo.gender ? (
-                    <>
-                      <strong>Gender:</strong> {userInfo.gender}
-                    </>
-                  ) : null}
-                </p>
-              )}
+                {userInfo.phone && (
+                  <p className="card-text">
+                    {userInfo.phone ? (
+                      <>
+                        <strong>Phone:</strong> {userInfo.phone}
+                      </>
+                    ) : null}
+                  </p>
+                )}
+                {isStudent && (
+                  <p className="card-text">
+                    {userInfo.gender ? (
+                      <>
+                        <strong>Gender:</strong> {userInfo.gender}
+                      </>
+                    ) : null}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
+
+          {isStudent && (
+            <>
+              <div className="tab-pane" id="educationDetails">
+                {renderStudentProfile()}
+              </div>
+              <div className="tab-pane" id="nextOfKinDetails">
+                {renderNextOfKinDetails()}
+              </div>
+            </>
+          )}
+
+          {isNextOfKin && (
+            <div className="tab-pane" id="linkedStudents">
+              {renderNextOfKinProfile()}
+            </div>
+          )}
         </div>
-
-        {isStudent && (
-          <>
-            <div className="tab-pane" id="educationDetails">
-              {renderStudentProfile()}
-            </div>
-            <div className="tab-pane" id="nextOfKinDetails">
-              {renderNextOfKinDetails()}
-            </div>
-          </>
-        )}
-
-        {isNextOfKin && (
-          <div className="tab-pane" id="linkedStudents">
-            {renderNextOfKinProfile()}
-          </div>
-        )}
-      </div>
-      <Modal show={showModal} onHide={toggleModal} size="lg">
-        <Modal.Header closeButton>
-          <Modal.Title>Add Next of Kin</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <KinSignup />
-        </Modal.Body>
-      </Modal>
-    </div>
+        <Modal show={showModal} onHide={toggleModal} size="lg">
+          <Modal.Header closeButton>
+            <Modal.Title>Add Next of Kin</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <KinSignup />
+          </Modal.Body>
+        </Modal>
+      </Container>
+    </>
   );
 };
 

@@ -1,8 +1,9 @@
 .exam-page-bg {
     /* background: url('/path-to-your-background-image.jpg') no-repeat center center fixed; */
+    /* background: linear-gradient(45deg, #330101, #6c757d00); */
     background-size: cover;
     min-height: 100vh;
-    padding: 60px 0;
+    /* padding: 60px 0; */
 }
 
 .subject-card {

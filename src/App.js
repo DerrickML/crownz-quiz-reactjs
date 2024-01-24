@@ -24,7 +24,9 @@ import Profile from "./components/Profile";
 import AllResults from "./components/AllResults";
 import Exam from "./components/Exam";
 import ExamPage from "./components/ExamPage";
+import QuizResults from "./components/english/QuizResults";
 import PasswordReset from "./components/PasswordReset";
+import { fetchAndUpdateResults } from "./utilities/resultsUtil";
 import "./App.css";
 
 function App() {
@@ -71,7 +73,7 @@ function App() {
     return storageUtil.getItem("userInfo");
   });
 
-  const handleLogin = (sessionData, userData) => {
+  const handleLogin = async (sessionData, userData) => {
     const sessionDetails = {
       $id: sessionData.$id,
       userId: sessionData.userId,
@@ -81,6 +83,7 @@ function App() {
     storageUtil.setItem("sessionInfo", sessionDetails);
 
     const userDetails = {
+      userId: sessionData.userId,
       firstName: userData.firstName,
       lastName: userData.lastName,
       otherName: userData.otherName,
@@ -100,6 +103,9 @@ function App() {
     console.log("User details on login", userDetails); //FOR Debugging purposes only
     setUserInfo(userDetails);
     storageUtil.setItem("userInfo", userDetails);
+    if (userDetails.labels.includes("student")) {
+      await fetchAndUpdateResults(sessionDetails.userId);
+    }
   };
 
   const handleLogout = async () => {
@@ -123,14 +129,13 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div className="App" style={{ "--navbarHeight": `${navbarHeight}px` }}>
         <CustomNavbar
           sessionInfo={sessionInfo}
           onLogout={handleLogout}
           setNavbarHeight={setNavbarHeight}
         />
-        {/* Adjust the padding-top dynamically based on the navbar height */}
-        <div className="py-5 main-content" style={{ paddingTop: navbarHeight }}>
+        <div className="main-content">
           <Routes>
             <Route
               exact
@@ -150,11 +155,7 @@ function App() {
             <Route
               path="/all-results"
               element={
-                sessionInfo ? (
-                  <AllResults userInfo={userInfo} />
-                ) : (
-                  <Navigate to="/sign-in" />
-                )
+                sessionInfo ? <AllResults /> : <Navigate to="/sign-in" />
               }
             />
             <Route
@@ -177,6 +178,7 @@ function App() {
                 )
               }
             />
+            <Route path="/quiz-results" element={<QuizResults />} />
             <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/forget-password" element={<ForgetPassword />} />

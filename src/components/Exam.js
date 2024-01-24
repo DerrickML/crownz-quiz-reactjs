@@ -5,27 +5,35 @@ import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Exam({ subject }) {
-  const [showModal, setShowModal] = useState(true);
+  const [showInstructionsModal, setShowInstructionsModal] = useState(true);
+  const [showUnavailableModal, setShowUnavailableModal] = useState(
+    subject !== "english-language_ple"
+  );
+
   const navigate = useNavigate();
 
   const handleProceed = () => {
-    setShowModal(false);
+    setShowInstructionsModal(false);
   };
 
   const handleCancel = () => {
-    navigate("/");
+    navigate(-1);
+  };
+
+  const handleCloseUnavailableModal = () => {
+    navigate(-1); // Go back to the previous page
   };
 
   return (
     <>
-      {subject === "english" ? (
+      {subject === "english-language_ple" ? (
         <>
-          <Modal show={showModal} onHide={() => {}} centered>
+          <Modal show={showInstructionsModal} onHide={() => {}} centered>
             <Modal.Header>
-              <Modal.Title>English Exam Instructions</Modal.Title>
+              <Modal.Title>Exam Instructions</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <p>Here are the instructions for your English exam:</p>
+              <p>Here are the instructions for your exam:</p>
               <ul>
                 <li>Read each question carefully.</li>
                 <li>Ensure you answer all questions.</li>
@@ -42,10 +50,27 @@ function Exam({ subject }) {
               </Button>
             </Modal.Footer>
           </Modal>
-          {!showModal && <IframeComponent url="http://localhost:5173/" />}
+          {!showInstructionsModal && (
+            <IframeComponent url="http://localhost:5173/" />
+          )}
         </>
       ) : (
-        "No subject selected"
+        <Modal show={showUnavailableModal} onHide={() => {}} centered>
+          <Modal.Header>
+            <Modal.Title>Exam Unavailable</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>
+              Currently, the exam for the selected subject is not available.
+              Please check back later.
+            </p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={handleCloseUnavailableModal}>
+              Go Back
+            </Button>
+          </Modal.Footer>
+        </Modal>
       )}
     </>
   );
