@@ -3,6 +3,10 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import PhoneInput from "react-phone-number-input";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import KinSignup from "./KinSignup"; // Import KinSignup component
 import { showToast } from "../utilities/toastUtil.js";
 import {
   account,
@@ -16,6 +20,11 @@ function Testing() {
 
   const [signupMethod, setSignupMethod] = useState("email");
   const [signupLoader, setSignupLoader] = useState(false);
+
+  // kin support states
+  const [showKinSignupModal, setShowKinSignupModal] = useState(false);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [newStudentId, setNewStudentId] = useState(null);
 
   // State hooks for each input field
   const [email, setEmail] = useState("");
@@ -105,68 +114,48 @@ function Testing() {
         schoolAddress,
       };
 
-      let userResponse, labelResponse, studentID;
+      let userResponse, labelResponse, studentID, addToStudTable;
 
       // Perform the signup using Appwrite SDK
-      try {
-        if (signupMethod === "email") {
-          try {
-            const userEmail = studentDetails.email;
-            console.log("Signing up student using Email: " + userEmail);
-            userResponse = await emailSignup(
-              userEmail,
-              password,
-              firstName,
-              phone
-            );
-            studentID = userResponse.$id;
-          } catch (error) {
-            console.error("Failed to Create Account:\n", error);
-            throw error;
-          }
-        } else {
-          try {
-            const phoneNumber = phone;
-            userResponse = await phoneSignup(phoneNumber);
-            if (!userResponse) {
-              setSignupLoader(false);
-              return; // Stop execution if signup failed
-            }
+      if (signupMethod === "email") {
+        const userEmail = studentDetails.email;
+        console.log("Signing up student using Email: " + userEmail);
+        userResponse = await emailSignup(userEmail, password, firstName, phone);
+        studentID = userResponse.$id;
+      } else {
+        const phoneNumber = phone;
+        userResponse = await phoneSignup(phoneNumber);
 
-            studentID = userResponse.userId;
-            console.log("Phone student ID: ", studentID);
-          } catch (error) {
-            console.error("Failed to Create Account:\n", error);
-            return;
-          }
-        }
-
-        //Assigning label to student account
-        labelResponse = await studentLabel(studentID);
-        if (!labelResponse) {
-          setSignupLoader(false);
-          return; // Stop execution if signup failed
-        }
-        console.log("label response: ", labelResponse);
-
-        //Adding student to student account table
-        await addToStudentTable(studentID);
-      } catch (error) {
-        console.error("Signup failed:", error);
-        return; // Early exit on failure
-        // Handle errors such as showing an error message to the user
+        studentID = userResponse.userId;
+        console.log("Phone student ID: ", studentID);
       }
 
-      showToast("Account Created Successfully", "success");
+      if (!userResponse) {
+        setSignupLoader(false);
+        return; // Stop execution if signup failed
+      }
+
+      //Assigning label to student account
+      labelResponse = await studentLabel(studentID);
+
+      //Adding student to student account table
+      addToStudTable = await addToStudentTable(studentID);
+
+      // Check if the signup was successful
+      if (userResponse && labelResponse && addToStudTable) {
+        setNewStudentId(studentID); // Save the new student ID
+        setShowConfirmationModal(true); // Show confirmation modal after signup
+        showToast("Account Created Successfully", "success");
+      } else {
+        // Handle signup failure
+        showToast("Error Creating Account", "error");
+      }
 
       setSignupLoader(false);
-      // Redirect the user or show a success message
-      navigate("/sign-in");
     } catch (error) {
       setSignupLoader(false);
       showToast("Error Creating Account at Submission", "error");
       console.error("Error Creating Account at Submission:", error);
-      return;
     }
   };
 
@@ -306,6 +295,23 @@ function Testing() {
       return null;
     }
   }
+
+  // Function to handle 'Add Next of Kin' option
+  const handleAddNextOfKin = () => {
+    setShowConfirmationModal(false);
+    setShowKinSignupModal(true);
+  };
+
+  // Function to handle 'No' option at Kin addition
+  const handleNoNextOfKin = () => {
+    navigate("/sign-in"); // Redirect to sign-in page
+  };
+
+  // Function to close KinSignup modal and redirect
+  const closeKinSignupModal = () => {
+    setShowKinSignupModal(false);
+    navigate("/sign-in"); // Redirect to sign-in page
+  };
 
   return (
     <div className="container">
@@ -606,6 +612,41 @@ function Testing() {
           </div>
         </div>
       </div>
+      <Modal
+        show={showConfirmationModal}
+        onHide={() => setShowConfirmationModal(false)}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Add Next of Kin</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Would you like to add a Next of Kin?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleNoNextOfKin}>
+            No
+          </Button>
+          <Button variant="primary" onClick={handleAddNextOfKin}>
+            Yes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* KinSignup Modal */}
+      <Modal show={showKinSignupModal} onHide={closeKinSignupModal} size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>Next of Kin Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <KinSignup
+            userInfoProp={{
+              userId: newStudentId,
+              firstName: firstName,
+              lastName: lastName,
+            }}
+            onCompletion={closeKinSignupModal}
+            studSignUp={true}
+          />
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }
