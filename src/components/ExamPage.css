@@ -14,3 +14,7 @@
 .subject-card:hover {
     transform: scale(1.05);
 }
+
+.select-exam {
+    /* background-color: #11726d !important; */
+}

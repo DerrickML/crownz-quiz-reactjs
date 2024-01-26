@@ -12,13 +12,11 @@ import {
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUserEdit,
   faUsers,
-  faEnvelope,
-  faPhone,
-  faVenusMars,
   faSchool,
-  faHome,
+  faUserCircle,
+  faEdit,
+  faPlusCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import storageUtil from "../utilities/storageUtil";
 import KinSignup from "./KinSignup";
@@ -26,6 +24,7 @@ import HeroHeader from "./HeroHeader";
 import "./Home.css";
 
 const Profile = () => {
+  console.log("Profile Fire Check");
   //Fetch sessionInfo from localStorage
   const userInfo = storageUtil.getItem("userInfo");
 
@@ -55,7 +54,11 @@ const Profile = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const renderNextOfKinProfile = () => (
-    <Card className="shadow-sm mb-4">
+    <Card className="shadow-sm mb-4 profile-card">
+      <Card.Header>
+        <FontAwesomeIcon icon={faUsers} className="me-2" />
+        Linked Students
+      </Card.Header>
       <Card.Body>
         <Card.Title>Linked Students</Card.Title>
         <Table hover>
@@ -102,9 +105,12 @@ const Profile = () => {
   );
 
   const renderStudentProfile = () => (
-    <div className="card">
-      <div className="card-body">
-        <h5 className="card-title">Education & School Details</h5>
+    <Card className="shadow-sm mb-4 profile-card">
+      <Card.Header>
+        <FontAwesomeIcon icon={faSchool} className="me-2" />
+        Education & School Details
+      </Card.Header>
+      <Card.Body>
         <ul className="list-group list-group-flush">
           {userInfo.schoolName ? (
             <>
@@ -131,14 +137,18 @@ const Profile = () => {
 
           {/* Additional student-specific content */}
         </ul>
-      </div>
-    </div>
+      </Card.Body>
+    </Card>
   );
 
   const renderNextOfKinDetails = () => (
-    <div className="card">
-      <div className="card-body">
-        <h5 className="card-title">Next of Kin</h5>
+    <Card className="shadow-sm mb-4 profile-card">
+      <Card.Header>
+        {" "}
+        <FontAwesomeIcon icon={faUserCircle} className="me-2" />
+        Next of Kin
+      </Card.Header>
+      <Card.Body>
         <ul className="list-group list-group-flush">
           {userInfo.kinID ? (
             <>
@@ -170,14 +180,19 @@ const Profile = () => {
               ) : null}
             </>
           ) : (
-            <Button variant="primary" className="mt-3" onClick={toggleModal}>
+            <Button
+              variant="outline-primary"
+              className="mt-3"
+              onClick={toggleModal}
+            >
+              <FontAwesomeIcon icon={faPlusCircle} className="me-2" />
               Add Next of Kin
             </Button>
           )}
           {/* Additional kin-specific content */}
         </ul>
-      </div>
-    </div>
+      </Card.Body>
+    </Card>
   );
 
   // Hero Header
@@ -188,10 +203,11 @@ const Profile = () => {
         <p className="lead">Welcome to your Profile Dashboard</p>
         <div className="profile-hero-buttons mt-4">
           <Button
-            variant="outline-primary"
+            variant="outline-light"
+            className="me-2"
             onClick={() => navigate("/edit-profile")}
           >
-            <FontAwesomeIcon icon={faUserEdit} /> Edit Profile
+            <FontAwesomeIcon icon={faEdit} /> Edit Profile
           </Button>
           {isNextOfKin && (
             <Button
@@ -210,7 +226,7 @@ const Profile = () => {
     <>
       {renderHeroHeader()}
       <Container>
-        <ul className="nav nav-tabs mb-4">
+        <Nav variant="tabs" defaultActiveKey="personalDetails">
           <li className="nav-item">
             <a
               className="nav-link active"
@@ -253,8 +269,8 @@ const Profile = () => {
               </a>
             </li>
           )}
-        </ul>
-        <div className="tab-content">
+        </Nav>
+        <Tab.Content>
           <div className="tab-pane active" id="personalDetails">
             <div className="card">
               <div className="card-body">
@@ -304,16 +320,16 @@ const Profile = () => {
               {renderNextOfKinProfile()}
             </div>
           )}
-        </div>
-        <Modal show={showModal} onHide={toggleModal} size="lg">
-          <Modal.Header closeButton>
-            <Modal.Title>Add Next of Kin</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <KinSignup />
-          </Modal.Body>
-        </Modal>
+        </Tab.Content>
       </Container>
+      <Modal show={showModal} onHide={toggleModal} size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>Add Next of Kin</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <KinSignup />
+        </Modal.Body>
+      </Modal>
     </>
   );
 };

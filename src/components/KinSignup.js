@@ -334,7 +334,7 @@ const KinSignup = ({ userInfoProp, studentIDProp, onCompletion }) => {
   }
 
   async function linkKinToUser(kinId) {
-    // Implement logic to link next of kin to the user
+    //Logic to link next of kin to the user
     console.log("Linking next of kin to user");
 
     try {

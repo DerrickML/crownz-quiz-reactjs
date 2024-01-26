@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Table, Card, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faBan } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faBan, faBookOpen } from "@fortawesome/free-solid-svg-icons";
 
 const RecentResults = ({ results, onViewResults }) => {
+  const navigate = useNavigate();
   // Extract the most recent five attempts
   const mostRecentAttempts = results
     .flatMap((subject) => subject.attempts)
@@ -13,41 +15,61 @@ const RecentResults = ({ results, onViewResults }) => {
   return (
     <Card className="mb-4">
       <Card.Header>Most Recent Results</Card.Header>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Subject</th>
-            <th>Date</th>
-            <th>Score</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {mostRecentAttempts.map((attempt, idx) => (
-            <tr key={idx}>
-              <td>{attempt.subject}</td>
-              <td>{attempt.date}</td>
-              <td>{attempt.score}</td>
-              <td>
-                {attempt.resultDetails ? (
-                  <Button
-                    variant="primary"
-                    onClick={() => onViewResults(attempt.resultDetails)}
-                  >
-                    <FontAwesomeIcon icon={faEye} className="me-2" />
-                    View Exam
-                  </Button>
-                ) : (
-                  <span className="text-muted">
-                    <FontAwesomeIcon icon={faBan} className="me-2" />
-                    No data
-                  </span>
-                )}
-              </td>
+      {results.length !== 0 ? (
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Date</th>
+              <th>Score</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {mostRecentAttempts.map((attempt, idx) => (
+              <tr key={idx}>
+                <td>{attempt.subject}</td>
+                <td>{attempt.date}</td>
+                <td>{attempt.score}</td>
+                <td>
+                  {attempt.resultDetails ? (
+                    <Button
+                      variant="primary"
+                      onClick={() => onViewResults(attempt.resultDetails)}
+                    >
+                      <FontAwesomeIcon icon={faEye} className="me-2" />
+                      View Exam
+                    </Button>
+                  ) : (
+                    <span className="text-muted">
+                      <FontAwesomeIcon icon={faBan} className="me-2" />
+                      No data
+                    </span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      ) : (
+        <Card.Body>
+          <div className="text-center">
+            <FontAwesomeIcon
+              icon={faBookOpen}
+              size="3x"
+              className="text-muted"
+            />
+            <h5 className="mt-3">No Recent Attempts Found</h5>
+            <p>
+              Looks like you haven't attempted any exams recently. Ready to
+              challenge yourself?
+            </p>
+            <Button variant="primary" onClick={() => navigate("/exam-page")}>
+              Attempt an Exam
+            </Button>
+          </div>
+        </Card.Body>
+      )}
     </Card>
   );
 };

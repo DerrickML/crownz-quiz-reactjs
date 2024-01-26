@@ -92,9 +92,17 @@ function SelectExam() {
               <Card
                 className="subject-card h-100"
                 onClick={() => handleCardClick(subject)}
+                style={{ borderColor: subject.color || "#000" }}
               >
-                <Card.Body className="text-center">
-                  <FontAwesomeIcon icon={iconMapping[subject.icon]} size="4x" />
+                <Card.Body
+                  className="text-center"
+                  style={{ color: subject.color || "#000" }}
+                >
+                  <FontAwesomeIcon
+                    icon={iconMapping[subject.icon]}
+                    size="4x"
+                    style={{ color: subject.color || "#000" }}
+                  />
                   <Card.Title className="mt-3">{subject.name}</Card.Title>
                 </Card.Body>
               </Card>
@@ -106,6 +114,9 @@ function SelectExam() {
           show={selectedSubject !== null}
           onHide={() => setSelectedSubject(null)}
           centered
+          style={{
+            borderColor: selectedSubject?.color || "rgb(6, 63, 90) ",
+          }}
         >
           <Modal.Header closeButton>
             <Modal.Title>{selectedSubject?.name} Exam</Modal.Title>
@@ -120,7 +131,15 @@ function SelectExam() {
             >
               Close
             </Button>
-            <Button variant="primary" onClick={handleStartExam}>
+            {/* <Button variant="primary" onClick={handleStartExam}>
+              Start Exam
+            </Button> */}
+            <Button
+              onClick={handleStartExam}
+              style={{
+                backgroundColor: selectedSubject?.color || "rgb(6, 63, 90) ",
+              }}
+            >
               Start Exam
             </Button>
           </Modal.Footer>

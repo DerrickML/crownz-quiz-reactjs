@@ -1,5 +1,5 @@
 // Home.js
-import React, { useState, useEffect, useRef } from "react"; // Import useState
+import React, { useState, useEffect } from "react"; // Import useState
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,30 +7,13 @@ import {
   faEdit,
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Table,
-  Button,
-  Badge,
-  Accordion,
-} from "react-bootstrap";
+import { Container, Row, Col, Card, Table, Button } from "react-bootstrap";
 import storageUtil from "../utilities/storageUtil";
 import "../animations.css";
-import {
-  PLE_Results,
-  UCE_Results,
-  UACE_Results,
-} from "../otherFiles/education_results";
 import HeroHeader from "./HeroHeader";
 import "./Home.css";
 import RecentResults from "./RecentResults";
-import {
-  fetchAndUpdateResults,
-  getTransformedResults,
-} from "../utilities/resultsUtil";
+import { getTransformedResults } from "../utilities/resultsUtil";
 
 function Home({ sessionInfo, onLogout }) {
   // Receive sessionInfo & onLogout as a prop
@@ -58,6 +41,8 @@ function Home({ sessionInfo, onLogout }) {
   //Fetch sessionInfo from localStorage
   const userInfo = storageUtil.getItem("userInfo");
 
+  console.log("label: " + userInfo.labels);
+
   //Check user type
   const isStudent = userInfo.labels.includes("student");
   const isNextOfKin = userInfo.labels.includes("kin");
@@ -78,9 +63,6 @@ function Home({ sessionInfo, onLogout }) {
       }
     }
   }, [userInfo, results]); // Only re-run the effect if userInfo or results change
-
-  // Check if there are no results
-  const noResultsAvailable = results.length === 0;
 
   //Attempt exam
   const attemptExam = () => {
@@ -151,7 +133,7 @@ function Home({ sessionInfo, onLogout }) {
                       <Button
                         variant="primary"
                         size="sm"
-                        onClick={() => navigate("/all-results")}
+                        onClick={() => navigate("#")}
                       >
                         View Details
                       </Button>
