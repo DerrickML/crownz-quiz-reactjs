@@ -1,6 +1,6 @@
 .exam-page-bg {
     /* background: url('/path-to-your-background-image.jpg') no-repeat center center fixed; */
-    /* background: linear-gradient(45deg, #330101, #6c757d00); */
+    background: linear-gradient(45deg, #adadad, #acd0f000);
     background-size: cover;
     min-height: 100vh;
     /* padding: 60px 0; */

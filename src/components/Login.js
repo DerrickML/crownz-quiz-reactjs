@@ -3,6 +3,23 @@ import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Use Link from react-router-dom for navigation
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  Card,
+  Alert,
+  Spinner,
+} from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSignInAlt,
+  faEnvelope,
+  faLock,
+  faMobileAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import { showToast } from "../utilities/toastUtil.js";
 import {
   account,
@@ -12,6 +29,7 @@ import {
   nextOfKinTable_id,
   Query,
 } from "../appwriteConfig.js";
+import "./Login.css";
 
 function Login(props) {
   const navigate = useNavigate();
@@ -265,163 +283,145 @@ function Login(props) {
   }
 
   return (
-    <>
-      <div className="container my-5">
-        <div className="row justify-content-center">
-          <div className="col-md-8">
-            <h3 className="text-center mb-4">Sign In</h3>
-            <form id="loginForm" onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label htmlFor="loginMethod" className="form-label">
-                  Login Using
-                </label>
-                <select
-                  className="form-select"
-                  id="loginMethod"
-                  value={loginMethod}
-                  onChange={handleMethodChange}
-                >
-                  <option value="email">Email</option>
-                  <option value="phone">Phone</option>
-                </select>
-              </div>
+    <div className="login-background">
+      <Container className="my-5">
+        <Row className="justify-content-center">
+          <Col md={6} lg={5}>
+            <Card className="shadow">
+              <Card.Body>
+                <h3 className="text-center text-primary mb-4">
+                  <FontAwesomeIcon icon={faSignInAlt} /> Sign In
+                </h3>
+                <Form id="loginForm" onSubmit={handleSubmit}>
+                  {/* Login Method Selection */}
+                  <Form.Group className="mb-3">
+                    <Form.Label>Login Using</Form.Label>
+                    <Form.Select
+                      id="loginMethod"
+                      value={loginMethod}
+                      onChange={handleMethodChange}
+                    >
+                      <option value="email">Email</option>
+                      <option value="phone">Phone</option>
+                    </Form.Select>
+                  </Form.Group>
 
-              <div id="emailOrPhoneFieldLogin" className="mb-3">
-                {loginMethod === "email" ? (
-                  <>
-                    <label htmlFor="email">Email Address</label>
-                    <input
-                      type="email"
-                      className="form-control mb-3"
-                      id="email"
-                      name="email"
-                      placeholder="Enter email"
-                      value={formInputs.email}
-                      onChange={handleInputChange}
-                      required
-                    />
-                    <label htmlFor="password" className="form-label">
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      className="form-control mb-3"
-                      id="password"
-                      name="password"
-                      placeholder="Enter password"
-                      value={formInputs.password}
-                      onChange={handleInputChange}
-                      autoComplete="current-password"
-                      required
-                    />
-                    {/* Display any email errors */}
-                    {emailError && (
-                      <div className="invalid-feedback d-block mb-3">
-                        {emailError}
-                      </div>
-                    )}
-
-                    {emailLoginLoader ? (
-                      <button
-                        className="btn btn-primary mb-3"
-                        type="button"
-                        disabled
-                      >
-                        <span
-                          className="spinner-grow spinner-grow-sm mb-3"
-                          role="status"
-                          aria-hidden="true"
-                        ></span>
-                        Signing in...
-                      </button>
-                    ) : (
-                      <button
-                        id="emailLoginButton"
-                        type="submit"
-                        className="btn btn-primary mb-3"
-                      >
-                        Login
-                      </button>
-                    )}
-                  </>
-                ) : (
-                  loginMethod === "phone" && (
+                  {/* Dynamic Email or Phone Input */}
+                  {loginMethod === "email" ? (
                     <>
-                      <label htmlFor="phone">Phone Number</label>
-                      <PhoneInput
-                        className="form-control mb-3"
-                        id="phone"
-                        name="phone"
-                        placeholder="Enter phone number"
-                        value={formInputs.phone}
-                        onChange={(value) =>
-                          setFormInputs((prevState) => ({
-                            ...prevState,
-                            phone: value,
-                          }))
-                        }
-                        required
-                      />
-                      {phoneError && (
-                        <div className="invalid-feedback d-block mb-3">
-                          Invalid phone number
-                        </div>
+                      <Form.Group className="mb-3">
+                        <Form.Label>
+                          <FontAwesomeIcon icon={faEnvelope} /> Email Address
+                        </Form.Label>
+                        <Form.Control
+                          type="email"
+                          id="email"
+                          name="email"
+                          placeholder="Enter email"
+                          value={formInputs.email}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label>
+                          <FontAwesomeIcon icon={faLock} /> Password
+                        </Form.Label>
+                        <Form.Control
+                          type="password"
+                          id="password"
+                          name="password"
+                          placeholder="Enter password"
+                          value={formInputs.password}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </Form.Group>
+                      {emailError && (
+                        <Alert variant="danger">{emailError}</Alert>
                       )}
-                      {accountCheck && (
-                        <div className="invalid-feedback d-block mb-3">
-                          No account found with this phone number. Please check
-                          your number or <Link to="/sign-up">sign up</Link> for
-                          an account.
-                        </div>
-                      )}
-                      <button
-                        type="button"
-                        className="btn btn-primary mb-3"
-                        onClick={handleSendOtp}
-                        disabled={isOtpSent} // Button disabled only while OTP is being sent
+                      <Button
+                        variant="primary"
+                        type="submit"
+                        disabled={emailLoginLoader}
                       >
-                        {isOtpSent && otpCountdown > 0
-                          ? `Resend OTP in ${otpCountdown}s`
-                          : "Send OTP"}
-                      </button>
-
-                      {showOtpInput && (
-                        <div id="otpSection" className="mb-3">
-                          <label htmlFor="otpInput">Enter OTP</label>
-                          <input
-                            type="text"
+                        {emailLoginLoader ? (
+                          <Spinner as="span" animation="border" size="sm" />
+                        ) : (
+                          "Login"
+                        )}
+                      </Button>
+                    </>
+                  ) : (
+                    loginMethod === "phone" && (
+                      <>
+                        <Form.Group className="mb-3">
+                          <Form.Label>
+                            <FontAwesomeIcon icon={faMobileAlt} /> Phone Number
+                          </Form.Label>
+                          <PhoneInput
                             className="form-control"
-                            id="otpInput"
-                            name="otp"
-                            placeholder="Enter OTP"
-                            value={formInputs.otp}
-                            onChange={handleInputChange}
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter phone number"
+                            value={formInputs.phone}
+                            onChange={(value) =>
+                              setFormInputs((prevState) => ({
+                                ...prevState,
+                                phone: value,
+                              }))
+                            }
                             required
                           />
-                          <button
-                            type="submit"
-                            className="btn btn-primary mb-3"
-                            id="otpSubmitButton"
-                            disabled={!showOtpInput || otpSubmitLoader} // Disable the button if OTP input is not shown or if OTP is being submitted
-                          >
-                            Login
-                          </button>
-                        </div>
-                      )}
-                    </>
-                  )
+                        </Form.Group>
+                        {phoneError && (
+                          <Alert variant="danger">Invalid phone number</Alert>
+                        )}
+                        {accountCheck && (
+                          <Alert variant="warning">
+                            No account found with this phone number. Please
+                            check your number or{" "}
+                            <Link to="/sign-up">sign up</Link> for an account.
+                          </Alert>
+                        )}
+                        <Button
+                          variant="primary"
+                          onClick={handleSendOtp}
+                          disabled={isOtpSent}
+                        >
+                          {isOtpSent && otpCountdown > 0
+                            ? `Resend OTP in ${otpCountdown}s`
+                            : "Send OTP"}
+                        </Button>
+                        {showOtpInput && (
+                          <Form.Group className="mb-3">
+                            <Form.Label>Enter OTP</Form.Label>
+                            <Form.Control
+                              type="text"
+                              id="otpInput"
+                              name="otp"
+                              placeholder="Enter OTP"
+                              value={formInputs.otp}
+                              onChange={handleInputChange}
+                              required
+                            />
+                          </Form.Group>
+                        )}
+                      </>
+                    )
+                  )}
+                </Form>
+                {loginMethod === "email" && (
+                  <div className="text-end mt-3">
+                    Forgot <Link to="/forget-password">password?</Link>
+                  </div>
                 )}
-              </div>
-            </form>
-            {loginMethod === "email" ? (
-              <p className="text-end mb-3">
-                Forgot <Link to="/forget-password">password?</Link>
-              </p>
-            ) : null}
-          </div>
-        </div>
-      </div>
-    </>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 

@@ -32,6 +32,7 @@ const Profile = () => {
   const kinId = sessionData.userId;
   const linkedStudents = useLinkedStudents(kinId);
   const navigate = useNavigate();
+  let noOfStuds = 1;
 
   //Hook to manage modal visibility
   const [showModal, setShowModal] = useState(false);
@@ -53,6 +54,7 @@ const Profile = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const startIndex = (currentPage - 1) * itemsPerPage + 1;
   const renderNextOfKinProfile = () => (
     <Card className="shadow-sm mb-4 profile-card">
       <Card.Header>
@@ -64,14 +66,16 @@ const Profile = () => {
         <Table hover>
           <thead>
             <tr>
+              <th>No.</th>
               <th>Name</th>
               <th>Education Level</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {currentItems.map((student) => (
+            {currentItems.map((student, index) => (
               <tr key={student.studID}>
+                <td>{startIndex + index}</td>
                 <td>{student.Name}</td>
                 <td>{student.educationLevel}</td>
                 <td>

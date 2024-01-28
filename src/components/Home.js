@@ -117,6 +117,7 @@ function Home({ sessionInfo, onLogout }) {
             <Table striped bordered hover>
               <thead>
                 <tr>
+                  <th>No.</th>
                   <th>Student Name</th>
                   <th>Recent Score</th>
                   <th>Last Exam Date</th>
@@ -124,8 +125,9 @@ function Home({ sessionInfo, onLogout }) {
                 </tr>
               </thead>
               <tbody>
-                {linkedStudents.map((student) => (
+                {linkedStudents.map((student, index) => (
                   <tr key={student.id}>
+                    <td>{index + 1}</td>
                     <td>{student.name}</td>
                     <td>{student.recentScore}</td>
                     <td>{student.lastExamDate}</td>

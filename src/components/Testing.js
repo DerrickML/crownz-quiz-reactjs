@@ -3,9 +3,19 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import PhoneInput from "react-phone-number-input";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Modal, Button } from "react-bootstrap";
+import {
+  Modal,
+  Button,
+  Form,
+  Row,
+  Col,
+  Container,
+  Card,
+  Spinner,
+  Alert,
+} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { faTimesCircle, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import KinSignup from "./KinSignup"; // Import KinSignup component
 import { showToast } from "../utilities/toastUtil.js";
 import {
@@ -14,6 +24,11 @@ import {
   database_id,
   studentTable_id,
 } from "../appwriteConfig.js";
+import EmailSignupFields from "./formComponents/EmailSignupFields";
+import PhoneSignupFields from "./formComponents/PhoneSignupFields";
+import PersonalDetails from "./formComponents/PersonalDetails.js";
+import ConfirmationModal from "./formComponents/ConfirmationModal.js";
+import KinModal from "./formComponents/KinModal.js";
 
 function Testing() {
   const navigate = useNavigate();
@@ -314,340 +329,129 @@ function Testing() {
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-md-8">
-          {/* Signup Error Toast */}
-          <div
-            className="toast"
-            id="emailToastError"
-            role="alert"
-            aria-live="assertive"
-            aria-atomic="true"
-            display="true"
-          >
-            <div className="toast-header">
-              <strong className="me-auto">Email Error</strong>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="toast"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="toast-body">
-              This Email is already in use. Please use a different email.
-            </div>
-          </div>
-          {/* Network Error Toast */}
-          <div
-            className="toast"
-            id="networkToastError"
-            role="alert"
-            aria-live="assertive"
-            aria-atomic="true"
-          >
-            <div className="toast-header">
-              <strong className="me-auto">Network Error</strong>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="toast"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="toast-body">
-              Network error. Please check your internet connection.
-            </div>
-          </div>
+    <Container className="my-5 container">
+      <Row className="justify-content-center">
+        <Col md={8}>
+          <Card className="shadow-lg p-4">
+            <Card.Body>
+              <FontAwesomeIcon
+                icon={faUserPlus}
+                size="2x"
+                className="text-primary mb-3"
+              />
+              <h3 className="text-center mb-4">Create Account</h3>
+              <Form id="signupForm" onSubmit={handleSubmit}>
+                {/* Signup Method Selection */}
+                <Form.Group as={Row} className="mb-3">
+                  <Form.Label column sm="3">
+                    Signup Using
+                  </Form.Label>
+                  <Col sm="9">
+                    <Form.Select
+                      aria-label="Signup method"
+                      value={signupMethod}
+                      onChange={handleMethodChange}
+                    >
+                      <option value="email">Email</option>
+                      <option value="phone">Phone</option>
+                    </Form.Select>
+                  </Col>
+                </Form.Group>
 
-          <form id="signupForm" onSubmit={handleSubmit}>
-            {/* Signup Method Selection */}
-            <div className="mb-3">
-              <label htmlFor="signupMethod" className="form-label">
-                Signup Using
-              </label>
-              <select
-                className="form-select"
-                id="signupMethod"
-                value={signupMethod}
-                onChange={handleMethodChange}
-              >
-                <option value="email">Email</option>
-                <option value="phone">Phone</option>
-              </select>
-            </div>
-            {/* Dynamic Field for Email or Phone based on the chosen signup method */}
-            {signupMethod === "email" ? (
-              <>
-                <div className="mb-3">
-                  <label htmlFor="email">Email Address</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    value={email}
-                    onChange={handleInputChange}
-                    placeholder="Enter email"
-                    required
+                {/* Dynamic Fields based on signup method */}
+                {signupMethod === "email" ? (
+                  <EmailSignupFields
+                    email={email}
+                    setEmail={setEmail}
+                    password={password}
+                    setPassword={setPassword}
+                    phone={phone}
+                    setPhone={setPhone}
+                    phoneError={phoneError}
                   />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="password">Provide a Strong Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    value={password}
-                    onChange={handleInputChange}
-                    placeholder="Enter your password"
-                    required
+                ) : (
+                  <PhoneSignupFields
+                    phone={phone}
+                    setPhone={setPhone}
+                    phoneError={phoneError}
+                    email={email}
+                    setEmail={setEmail}
                   />
-                </div>
-                <div className="mb-3 form-group">
-                  <div className="phone-input">
-                    <label htmlFor="phone">Phone Number (Optional)</label>
-                    <PhoneInput
-                      className="form-control"
-                      id="phone"
-                      value={phone}
-                      onChange={setPhone}
-                      placeholder="Enter phone number"
-                    />
-                  </div>
-                  {phoneError && (
-                    <div className="invalid-feedback d-block">
-                      Invalid phone number
-                    </div>
-                  )}
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="mb-3 form-group">
-                  <div className="phone-input">
-                    <label htmlFor="phone">Phone Number</label>
-                    <PhoneInput
-                      className="form-control"
-                      id="phone"
-                      value={phone}
-                      onChange={setPhone}
-                      placeholder="Enter phone number"
-                      required
-                    />
-                  </div>
-                  {phoneError && (
-                    <div className="invalid-feedback d-block">
-                      Invalid phone number
-                    </div>
-                  )}
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="email">Email Address (Optional)</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    value={email}
-                    onChange={handleInputChange}
-                    placeholder="Enter email"
-                  />
-                </div>
-              </>
-            )}
-            {/* Personal Details Section */}
-            <div className="row">
-              <div className="col-md-6 mb-3">
-                <label htmlFor="firstName" className="form-label">
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="firstName"
-                  value={firstName}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="col-md-6 mb-3">
-                <label htmlFor="lastName" className="form-label">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="lastName"
-                  value={lastName}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="col-md-6 mb-3">
-                <label htmlFor="otherName" className="form-label">
-                  Other Name
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="otherName"
-                  value={otherName}
-                  onChange={handleInputChange}
-                />
-              </div>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="gender" className="form-label">
-                Gender
-              </label>
-              <select
-                className="form-select"
-                id="gender"
-                value={gender}
-                onChange={handleInputChange}
-                required
-              >
-                <option value="">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-            </div>
-            {/* School Details Section */}
-            <div className="mb-3">
-              <label htmlFor="classGrade" className="form-label">
-                Education Level
-              </label>
-              <select
-                className="form-select"
-                id="classGrade"
-                value={classGrade}
-                onChange={handleInputChange}
-                required
-              >
-                <option value="">Select Education Level</option>
-                <option value="PLE">Primary Leaving Examination (PLE)</option>
-                <option value="UCE">
-                  Uganda Certificate of Education (UCE)
-                </option>
-                <option value="UACE">
-                  Uganda Advanced Certificate of Education (UACE)
-                </option>
-              </select>
-            </div>
-            <div className="row">
-              <div className="col-md-6 mb-3">
-                <label htmlFor="schoolName" className="form-label">
-                  School Name
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="schoolName"
-                  value={schoolName}
-                  onChange={handleInputChange}
-                  required={classGrade === "PLE"}
-                />
-              </div>
-              <div className="col-md-6 mb-3">
-                <label htmlFor="schoolAddress" className="form-label">
-                  School Address
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="schoolAddress"
-                  value={schoolAddress}
-                  onChange={handleInputChange}
-                  required={classGrade === "PLE"}
-                />
-              </div>
-            </div>
+                )}
 
-            {!signupLoader ? (
-              <button
-                type="submit"
-                className="btn btn-primary mb-3"
-                id="signupButton"
-              >
-                Sign Up
-              </button>
-            ) : (
-              <button className="mb-3 btn btn-secondary" type="button" disabled>
-                <span
-                  className="spinner-grow spinner-grow-sm"
-                  role="status"
-                  aria-hidden="true"
-                ></span>
-                Signing-up...
-              </button>
-            )}
-            {phoneError && (
-              <div className="invalid-feedback d-block mb-3">
-                Check for any invalid inputs
-              </div>
-            )}
-            <p className="mb-3">
-              Already have an account? <Link to="/sign-in">Log in here</Link>
-            </p>
-          </form>
-          <div
-            role="alert"
-            aria-live="assertive"
-            aria-atomic="true"
-            className="toast"
-            data-bs-autohide="false"
-          >
-            <div className="toast-header">
-              <small>11 mins ago</small>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="toast"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="toast-body">
-              Hello, world! This is a toast message.
-            </div>
-          </div>
-        </div>
-      </div>
-      <Modal
+                {/* Personal and School Details Section */}
+                <PersonalDetails
+                  firstName={firstName}
+                  setFirstName={setFirstName}
+                  lastName={lastName}
+                  setLastName={setLastName}
+                  otherName={otherName}
+                  setOtherName={setOtherName}
+                  gender={gender}
+                  setGender={setGender}
+                  classGrade={classGrade}
+                  setClassGrade={setClassGrade}
+                  schoolName={schoolName}
+                  setSchoolName={setSchoolName}
+                  schoolAddress={schoolAddress}
+                  setSchoolAddress={setSchoolAddress}
+                />
+
+                {/* Signup Button */}
+                {!signupLoader ? (
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    className="w-100 mt-3"
+                  >
+                    Sign Up
+                  </Button>
+                ) : (
+                  <Button variant="secondary" disabled className="w-100 mt-3">
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />{" "}
+                    Signing Up...
+                  </Button>
+                )}
+
+                {phoneError && (
+                  <Alert variant="danger" className="mt-3">
+                    Check for any invalid inputs
+                  </Alert>
+                )}
+
+                <div className="mt-3 text-center">
+                  Already have an account?{" "}
+                  <Link to="/sign-in">Log in here</Link>
+                </div>
+              </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Confirmation Modal */}
+      <ConfirmationModal
         show={showConfirmationModal}
         onHide={() => setShowConfirmationModal(false)}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Add Next of Kin</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Would you like to add a Next of Kin?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleNoNextOfKin}>
-            No
-          </Button>
-          <Button variant="primary" onClick={handleAddNextOfKin}>
-            Yes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        handleAddNextOfKin={handleAddNextOfKin}
+        handleNoNextOfKin={handleNoNextOfKin}
+      />
 
       {/* KinSignup Modal */}
-      <Modal show={showKinSignupModal} onHide={closeKinSignupModal} size="lg">
-        <Modal.Header closeButton>
-          <Modal.Title>Next of Kin Details</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <KinSignup
-            userInfoProp={{
-              userId: newStudentId,
-              firstName: firstName,
-              lastName: lastName,
-            }}
-            onCompletion={closeKinSignupModal}
-            studSignUp={true}
-          />
-        </Modal.Body>
-      </Modal>
-    </div>
+      <KinModal
+        show={showKinSignupModal}
+        onHide={closeKinSignupModal}
+        newStudentId={newStudentId}
+        firstName={firstName}
+        lastName={lastName}
+      />
+    </Container>
   );
 }
 
