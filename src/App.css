@@ -11,7 +11,7 @@
 .main-content {
     flex: 1;
     /* This will allow the main content to grow */
-    margin-top: 0.2rem;
+    margin-top: 0.009rem;
     /* Maintain your desired space */
 }
 

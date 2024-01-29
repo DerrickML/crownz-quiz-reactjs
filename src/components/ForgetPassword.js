@@ -1,70 +1,97 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { showToast } from "../utilities/toastUtil.js";
-import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  Container,
+  Row,
+  Col,
+  Alert,
+  Card,
+} from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { account } from "../appwriteConfig.js";
-
-import "./PasswordReset.css";
+import "./PasswordReset.css"; // Make sure this CSS file contains your desired styles
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [hideButton, setHideButton] = useState(false);
 
-  //Link to be redirected to when password reset is initiated
-  const resetLink = "http://localhost:3000/password-reset";
+  const resetLink = "http://localhost:3000/password-reset"; // Adjust accordingly
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
-    // Here, you would normally integrate with your backend to send the reset link
+
     try {
+      setHideButton(true);
       const promise = account.createRecovery(email, resetLink);
       showToast(
         "Email reset link sent successfully. Please check your email",
         "success"
       );
       console.log("Reset link sent to:", email);
+      setHideButton(false);
     } catch (error) {
       console.log(error); // Failure
+      setHideButton(false);
       throw new Error();
     }
-    console.log("Reset link sent to:", email);
   };
 
   return (
-    <Container className="mt-5 resetPassword">
-      <Row className="justify-content-md-center">
-        <Col md={6}>
-          <h2 className="text-center mb-4">Password Reset</h2>
-          <p>
-            Enter your email address and we'll send you a link to reset your
-            password.
-          </p>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </Form.Group>
+    <div className="passFgt-background">
+      <Container className="mt-5 resetPassword">
+        <Row className="justify-content-center">
+          <Col md={6}>
+            <Card className="border-0 rounded-lg shadow">
+              <Card.Body>
+                <div className="text-center mb-4">
+                  <FontAwesomeIcon
+                    icon={faLock}
+                    size="3x"
+                    className="text-primary"
+                  />
+                  <h2>Password Reset</h2>
+                  <p className="text-muted">
+                    Enter your email address to receive a reset link.
+                  </p>
+                </div>
 
-            <Button variant="primary" type="submit">
-              Send Reset Link
-            </Button>
-          </Form>
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group className="mb-4" controlId="formBasicEmail">
+                    <Form.Control
+                      type="email"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
 
-          {submitted && (
-            <Alert variant="success" className="mt-3">
-              A password reset link has been sent to your email.
-            </Alert>
-          )}
-        </Col>
-      </Row>
-    </Container>
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    className="w-100"
+                    hidden={hideButton}
+                  >
+                    Send Reset Link
+                  </Button>
+                </Form>
+
+                {submitted && (
+                  <Alert variant="success" className="mt-4">
+                    Check your email for the reset link.
+                  </Alert>
+                )}
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 

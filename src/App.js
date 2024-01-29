@@ -5,8 +5,6 @@ import {
   Route,
   Navigate,
   useParams,
-  Switch,
-  Link,
 } from "react-router-dom";
 import { account } from "./appwriteConfig.js";
 import useNetworkStatus from "./hooks/useNetworkStatus";
@@ -26,7 +24,9 @@ import Exam from "./components/Exam";
 import ExamPage from "./components/ExamPage";
 import QuizResults from "./components/english/QuizResults";
 import PasswordReset from "./components/PasswordReset";
+import StudentDetails from "./components/StudentDetails";
 import { fetchAndUpdateResults } from "./utilities/resultsUtil";
+import { fetchAndProcessStudentData } from "./utilities/fetchStudentData";
 import "./App.css";
 
 function App() {
@@ -100,11 +100,17 @@ function App() {
       kinEmail: userData.kinEmail,
       kinPhone: userData.kinPhone,
     };
+
     console.log("User details on login", userDetails); //FOR Debugging purposes only
     setUserInfo(userDetails);
     storageUtil.setItem("userInfo", userDetails);
     if (userDetails.labels.includes("student")) {
-      await fetchAndUpdateResults(sessionDetails.userId);
+      await fetchAndUpdateResults(userDetails.userId);
+    }
+
+    //Fetch all students' results linked to the next-of-kin and save to local storage
+    if (userDetails.labels.includes("kin")) {
+      await fetchAndProcessStudentData(userDetails.userId);
     }
   };
 
@@ -179,6 +185,7 @@ function App() {
               }
             />
             <Route path="/quiz-results" element={<QuizResults />} />
+            <Route path="/student-details" element={<StudentDetails />} />
             <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/forget-password" element={<ForgetPassword />} />

@@ -13,18 +13,20 @@ function PasswordReset() {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password !== repeatPassword) {
-      setPasswordsMatch(false);
-      return;
-    }
-    setPasswordsMatch(true);
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get("userId");
-    const secret = urlParams.get("secret");
     try {
+      if (password !== repeatPassword) {
+        setPasswordsMatch(false);
+        return;
+      }
+      setPasswordsMatch(true);
+      const urlParams = new URLSearchParams(window.location.search);
+      const userId = urlParams.get("userId");
+      const secret = urlParams.get("secret");
+
       // Handle password reset logic here
       const promise = account.updateRecovery(
         userId,
@@ -34,9 +36,10 @@ function PasswordReset() {
       );
       showToast("Password has been successfully reset", "success");
       console.log(email, password, repeatPassword);
-      navigate("/sign-in"); //Redirect to login page
+      setSuccess(true);
     } catch (error) {
       console.log(error); // Failure
+      setSuccess(false);
       throw error;
     }
   };
@@ -89,6 +92,17 @@ function PasswordReset() {
                 The passwords you entered do not match.
               </Alert>
             )}
+
+            {success ? (
+              <Alert variant="success">
+                <div className="text-center mt-3">
+                  Password has been successfully set.{" "}
+                  <p>
+                    <Link to="/sign-in">Login here</Link>
+                  </p>
+                </div>
+              </Alert>
+            ) : null}
 
             <Button variant="primary" type="submit">
               Reset Password

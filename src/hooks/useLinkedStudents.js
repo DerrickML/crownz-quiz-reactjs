@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import storageUtil from "../utilities/storageUtil";
 import {
   databases,
   database_id,

@@ -1,5 +1,4 @@
-import React, { useState } from "react"; // Import useState
-import useLinkedStudents from "../hooks/useLinkedStudents";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Container,
@@ -29,10 +28,15 @@ const Profile = () => {
   const userInfo = storageUtil.getItem("userInfo");
 
   const sessionData = storageUtil.getItem("sessionInfo");
-  const kinId = sessionData.userId;
-  const linkedStudents = useLinkedStudents(kinId);
   const navigate = useNavigate();
-  let noOfStuds = 1;
+  const [linkedStudents, setLinkedStudents] = useState([]);
+
+  useEffect(() => {
+    const studentData = storageUtil.getItem("studentData");
+    if (studentData) {
+      setLinkedStudents(studentData);
+    }
+  }, []);
 
   //Hook to manage modal visibility
   const [showModal, setShowModal] = useState(false);
@@ -48,13 +52,13 @@ const Profile = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5; // Adjust as needed
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = linkedStudents.slice(indexOfFirstItem, indexOfLastItem);
-
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const startIndex = (currentPage - 1) * itemsPerPage + 1;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const paginatedStudents = linkedStudents.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
   const renderNextOfKinProfile = () => (
     <Card className="shadow-sm mb-4 profile-card">
       <Card.Header>
@@ -73,13 +77,20 @@ const Profile = () => {
             </tr>
           </thead>
           <tbody>
-            {currentItems.map((student, index) => (
+            {paginatedStudents.map((student, index) => (
               <tr key={student.studID}>
-                <td>{startIndex + index}</td>
-                <td>{student.Name}</td>
+                <td>{startIndex + index + 1}</td>
+                <td>{student.studName}</td>
                 <td>{student.educationLevel}</td>
                 <td>
-                  <Button size="sm">View Details</Button>
+                  <Button
+                    size="sm"
+                    onClick={() =>
+                      navigate("/student-details", { state: { student } })
+                    }
+                  >
+                    View Details
+                  </Button>
                 </td>
               </tr>
             ))}
@@ -193,7 +204,6 @@ const Profile = () => {
               Add Next of Kin
             </Button>
           )}
-          {/* Additional kin-specific content */}
         </ul>
       </Card.Body>
     </Card>
