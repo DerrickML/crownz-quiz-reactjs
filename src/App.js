@@ -25,6 +25,7 @@ import ExamPage from "./components/ExamPage";
 import QuizResults from "./components/english/QuizResults";
 import PasswordReset from "./components/PasswordReset";
 import StudentDetails from "./components/StudentDetails";
+import LinkedStudents from "./components/LinkedStudents";
 import { fetchAndUpdateResults } from "./utilities/resultsUtil";
 import { fetchAndProcessStudentData } from "./utilities/fetchStudentData";
 import "./App.css";
@@ -186,6 +187,7 @@ function App() {
             />
             <Route path="/quiz-results" element={<QuizResults />} />
             <Route path="/student-details" element={<StudentDetails />} />
+            <Route path="/linked-students" element={<LinkedStudents />} />
             <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/forget-password" element={<ForgetPassword />} />

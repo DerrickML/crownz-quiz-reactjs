@@ -131,9 +131,6 @@ function SelectExam() {
             >
               Close
             </Button>
-            {/* <Button variant="primary" onClick={handleStartExam}>
-              Start Exam
-            </Button> */}
             <Button
               onClick={handleStartExam}
               style={{

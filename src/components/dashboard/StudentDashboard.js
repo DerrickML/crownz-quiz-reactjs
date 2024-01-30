@@ -12,16 +12,13 @@ const StudentDashboard = ({ userInfo }) => {
   const navigate = useNavigate();
 
   const viewResults = (resultDetails) => {
-    console.log("Results to be rendered\n", resultDetails);
     navigate("/quiz-results", { state: { results: resultDetails } });
   };
 
   useEffect(() => {
     const userId = userInfo?.userId;
-    console.log("User ID IN useEffect: " + userId);
     if (userId) {
       const transformedData = getTransformedResults(userId);
-      console.log("Transformed results in useEffect: " + transformedData);
       if (JSON.stringify(transformedData) !== JSON.stringify(results)) {
         setResults(transformedData);
       }

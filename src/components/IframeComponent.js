@@ -33,10 +33,13 @@ const IframeComponent = ({ url }) => {
   const navigate = useNavigate();
 
   const urlWhitelist = [
+    window.location.origin,
     "http://localhost:5173/",
     "https://derrickml.com",
     "https://exams.crownz.derrickml.com/public/",
     "http://127.0.0.1:5500/",
+    "http://127.0.0.1:5501/",
+    "http://127.0.0.1:5500/english_ple/",
     // Add other URLs here
   ];
 
@@ -99,7 +102,7 @@ const IframeComponent = ({ url }) => {
 
         console.log("Exam finished in: ", capturedTime);
 
-        setButtonClicked(false); // Reset the flag
+        setButtonClicked(false);
       }
     };
 
@@ -108,7 +111,7 @@ const IframeComponent = ({ url }) => {
     return () => {
       window.removeEventListener("message", receiveMessage);
     };
-  }, [buttonClicked]); // Add buttonClicked to the dependency array
+  }, [buttonClicked]);
 
   const handleExitExam = () => {
     setShowExitModal(true);
