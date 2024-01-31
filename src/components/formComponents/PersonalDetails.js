@@ -24,7 +24,7 @@ const PersonalDetails = ({
     {/* Personal Details */}
     <Row>
       <Col md={6} className="mb-3">
-        <Form.Label>First Name</Form.Label>
+        <Form.Label>First Name*</Form.Label>
         <Form.Control
           type="text"
           value={firstName}
@@ -33,7 +33,7 @@ const PersonalDetails = ({
         />
       </Col>
       <Col md={6} className="mb-3">
-        <Form.Label>Last Name</Form.Label>
+        <Form.Label>Last Name*</Form.Label>
         <Form.Control
           type="text"
           value={lastName}
@@ -52,7 +52,7 @@ const PersonalDetails = ({
     </Row>
     <Row>
       <Col md={6} className="mb-3">
-        <Form.Label>Gender</Form.Label>
+        <Form.Label>Gender*</Form.Label>
         <Form.Select
           value={gender}
           onChange={(e) => setGender(e.target.value)}
@@ -64,7 +64,7 @@ const PersonalDetails = ({
         </Form.Select>
       </Col>
       <Col md={6} className="mb-3">
-        <Form.Label>Education Level</Form.Label>
+        <Form.Label>Education Level*</Form.Label>
         <Form.Select
           value={classGrade}
           onChange={(e) => setClassGrade(e.target.value)}
@@ -83,7 +83,7 @@ const PersonalDetails = ({
     {/* School Details */}
     <Row>
       <Col md={6} className="mb-3">
-        <Form.Label>School Name</Form.Label>
+        <Form.Label>School Name{classGrade === "PLE" ? "*" : null}</Form.Label>
         <Form.Control
           type="text"
           value={schoolName}
@@ -92,7 +92,9 @@ const PersonalDetails = ({
         />
       </Col>
       <Col md={6} className="mb-3">
-        <Form.Label>School Address</Form.Label>
+        <Form.Label>
+          School Address{classGrade === "PLE" ? "*" : null}
+        </Form.Label>
         <Form.Control
           type="text"
           value={schoolAddress}

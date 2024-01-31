@@ -13,7 +13,7 @@ const PhoneSignupFields = ({
 }) => (
   <>
     <Form.Group className="mb-3">
-      <Form.Label>Phone Number</Form.Label>
+      <Form.Label>Phone Number*</Form.Label>
       <div className="phone-input-container">
         <PhoneInput
           className={`form-control ${

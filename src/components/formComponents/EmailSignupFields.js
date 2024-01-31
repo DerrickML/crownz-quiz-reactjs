@@ -14,7 +14,7 @@ const EmailSignupFields = ({
 }) => (
   <>
     <Form.Group className="mb-3">
-      <Form.Label>Email Address</Form.Label>
+      <Form.Label>Email Address*</Form.Label>
       <Form.Control
         type="email"
         value={email}
@@ -24,12 +24,12 @@ const EmailSignupFields = ({
       />
     </Form.Group>
     <Form.Group className="mb-3">
-      <Form.Label>Provide a Strong Password</Form.Label>
+      <Form.Label>Password*</Form.Label>
       <Form.Control
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder="Enter your password"
+        placeholder="Provide a Strong Password"
         required
       />
     </Form.Group>
