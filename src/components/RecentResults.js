@@ -29,7 +29,7 @@ const RecentResults = ({ results, onViewResults }) => {
             {mostRecentAttempts.map((attempt, idx) => (
               <tr key={idx}>
                 <td>{attempt.subject}</td>
-                <td>{attempt.date}</td>
+                <td>{attempt.dateTime}</td>
                 <td>{attempt.score}</td>
                 <td>
                   {attempt.resultDetails ? (

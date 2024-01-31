@@ -132,6 +132,9 @@ function App() {
 
     setUserInfo(null);
     storageUtil.removeItem("userInfo"); // Clear user info from localStorage on the clients side
+
+    storageUtil.removeItem("examResults"); //Clear exam results from localStorage on the clients side
+    storageUtil.removeItem("studentData"); //Clear student data from localStorage on the clients side
   };
 
   return (

@@ -136,13 +136,13 @@ const StudentDetails = () => {
                   {student.Results.map((result, index) => (
                     <tr key={index}>
                       <td>{result.subject}</td>
-                      <td>{result.marks}%</td>
+                      <td>{result.score}%</td>
                       <td>{result.dateTime}</td>
                       <td>
                         <Button
                           variant="primary"
                           size="sm"
-                          onClick={() => viewResults(result.results)}
+                          onClick={() => viewResults(result.resultDetails)}
                         >
                           Exam Results
                         </Button>

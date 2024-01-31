@@ -8,6 +8,7 @@ import {
   Button,
   Alert,
   Spinner,
+  Pagination,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,10 +29,11 @@ import SelectExam from "./SelectExam";
 import HeroHeader from "./HeroHeader";
 
 const AllResults = () => {
-  // State to track the open state of each subject
-  const [openSubjects, setOpenSubjects] = useState({});
+  const [openSubjects, setOpenSubjects] = useState({}); // State to track the open state of each subject
   const [results, setResults] = useState([]);
   const [refreshResults, setRefreshResults] = useState(false);
+  const [currentPage, setCurrentPage] = useState({});
+  const itemsPerPage = 5; // Number of results per page
   const userInfo = storageUtil.getItem("userInfo");
   const navigate = useNavigate();
 
@@ -43,18 +45,49 @@ const AllResults = () => {
     const userId = userInfo?.userId;
     if (userId) {
       const transformedData = getTransformedResults(userId);
+      console.log("TransformedResults:\n", transformedData);
       if (JSON.stringify(transformedData) !== JSON.stringify(results)) {
         setResults(transformedData);
       }
     }
   }, [userInfo, results]); // Only re-run the effect if userInfo or results change
 
-  // Function to toggle the open state of a subject
+  // Toggle the open state of a subject and reset its pagination
   const toggleSubject = (subject) => {
     setOpenSubjects((prevOpenSubjects) => ({
       ...prevOpenSubjects,
       [subject]: !prevOpenSubjects[subject],
     }));
+    setCurrentPage((prevCurrentPage) => ({
+      ...prevCurrentPage,
+      [subject]: 1, // Reset to first page
+    }));
+  };
+
+  // Pagination for a specific subject
+  const paginate = (subject, pageNumber) => {
+    setCurrentPage((prevCurrentPage) => ({
+      ...prevCurrentPage,
+      [subject]: pageNumber,
+    }));
+  };
+
+  // Render pagination for a specific subject
+  const renderPagination = (subject, totalItems) => {
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    let items = [];
+    for (let number = 1; number <= totalPages; number++) {
+      items.push(
+        <Pagination.Item
+          key={number}
+          active={number === currentPage[subject]}
+          onClick={() => paginate(subject, number)}
+        >
+          {number}
+        </Pagination.Item>
+      );
+    }
+    return <Pagination>{items}</Pagination>;
   };
 
   async function updateResults() {
@@ -109,52 +142,73 @@ const AllResults = () => {
   );
 
   // Function to render results for each subject
-  const renderResultsForSubject = (subjectResults) => (
-    <Card className="mb-4" key={subjectResults.subject}>
-      <Card.Header
-        onClick={() => toggleSubject(subjectResults.subject)}
-        style={{ cursor: "pointer" }}
-      >
-        {subjectResults.subject}
-      </Card.Header>
-      {openSubjects[subjectResults.subject] && (
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Score</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {subjectResults.attempts.map((attempt, idx) => (
-              <tr key={idx}>
-                <td>{attempt.date}</td>
-                <td>{attempt.score}</td>
-                <td>
-                  {attempt.resultDetails ? (
-                    <Button
-                      variant="primary"
-                      className="mt-3"
-                      onClick={() => viewResults(attempt.resultDetails)}
-                    >
-                      <FontAwesomeIcon icon={faEye} className="me-2" />
-                      View Exam
-                    </Button>
-                  ) : (
-                    <span className="text-muted">
-                      <FontAwesomeIcon icon={faBan} className="me-2" />
-                      No data
-                    </span>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      )}
-    </Card>
-  );
+  const renderResultsForSubject = (subjectResults) => {
+    console.log("ALll Results:\n", subjectResults);
+    const totalResults = subjectResults.attempts.length;
+    const indexOfLastResult =
+      (currentPage[subjectResults.subject] || 1) * itemsPerPage;
+    const indexOfFirstResult = indexOfLastResult - itemsPerPage;
+    const currentSubjectResults = subjectResults.attempts.slice(
+      indexOfFirstResult,
+      indexOfLastResult
+    );
+
+    return (
+      <Card className="mb-4" key={subjectResults.subject}>
+        <Card.Header
+          onClick={() => toggleSubject(subjectResults.subject)}
+          style={{ cursor: "pointer" }}
+        >
+          {subjectResults.subject}
+        </Card.Header>
+        {openSubjects[subjectResults.subject] && (
+          <>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Date</th>
+                  <th>Score</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {currentSubjectResults.map((attempt, idx) => {
+                  // Calculate the absolute number based on the current page and items per page
+                  const absoluteNumber = indexOfFirstResult + idx + 1;
+                  return (
+                    <tr key={idx}>
+                      <td>{absoluteNumber}</td>
+                      <td>{attempt.dateTime}</td>
+                      <td>{attempt.score}</td>
+                      <td>
+                        {attempt.resultDetails ? (
+                          <Button
+                            variant="primary"
+                            className="mt-3"
+                            onClick={() => viewResults(attempt.resultDetails)}
+                          >
+                            <FontAwesomeIcon icon={faEye} className="me-2" />
+                            View Exam
+                          </Button>
+                        ) : (
+                          <span className="text-muted">
+                            <FontAwesomeIcon icon={faBan} className="me-2" />
+                            No data
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
+            {renderPagination(subjectResults.subject, totalResults)}
+          </>
+        )}
+      </Card>
+    );
+  };
 
   // Check if there are no results
   const noResultsAvailable = results.length === 0;

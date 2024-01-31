@@ -74,7 +74,7 @@ function Login(props) {
   const handleMethodChange = (e) => {
     setLoginMethod(e.target.value);
     setShowOtpInput(false); // Reset OTP input visibility
-    setIsOtpSent(false); // Reset OTP sent status
+    // setIsOtpSent(false); // Reset OTP sent status
     setOtpCountdown(10); // Reset OTP countdown
     setAccountCheck(false); // Reset account check status
     setPhoneError(false); // Reset phone error
@@ -86,24 +86,18 @@ function Login(props) {
     event.preventDefault();
 
     const { phone } = formInputs;
-
-    // Check for phone validity
     const isUserPhoneValid = !validatePhoneNumber(phone);
     setPhoneError(!isUserPhoneValid);
 
     if (!isUserPhoneValid) {
-      setIsOtpSent(false); // Reset OTP sent status
-      setOtpCountdown(10); // Reset OTP countdown
-      return;
+      return; // Exit the function if the phone number is invalid
     }
 
-    setIsOtpSent(true); // Disable the button initially
+    setIsOtpSent(true); // Disable the button
 
-    // Check if account already exists
     if ((await searchForExistingAccount(phone)) === false) {
       setAccountCheck(true);
-      console.log("Account does not exist");
-      setIsOtpSent(false); // Enable the button if account doesn't exist
+      setIsOtpSent(false); // Re-enable the button if account doesn't exist
       return;
     } else {
       setAccountCheck(false);
@@ -112,10 +106,8 @@ function Login(props) {
     try {
       const createSession = await account.createPhoneSession("unique()", phone);
       setUserId(createSession.userId); // Save the userId in state
-      console.log(createSession);
 
       setShowOtpInput(true); // Show the OTP input field
-      setIsOtpSent(false); //re-enable the login button
 
       // Start countdown
       let counter = otpCountdown;
@@ -130,8 +122,7 @@ function Login(props) {
       }, 1000);
     } catch (error) {
       console.error("OTP sending failed:", error);
-      setIsOtpSent(false); // Ensure the button is re-enabled if there's an error
-      setOtpCountdown(10); // Reset countdown
+      setIsOtpSent(false); // Re-enable the button in case of error
     }
   };
 
@@ -343,7 +334,7 @@ function Login(props) {
                       <Button
                         variant="primary"
                         type="submit"
-                        disabled={emailLoginLoader}
+                        disabled={emailLoginLoader || loginMethod === "phone"}
                       >
                         {emailLoginLoader ? (
                           <Spinner as="span" animation="border" size="sm" />
@@ -394,18 +385,37 @@ function Login(props) {
                             : "Send OTP"}
                         </Button>
                         {showOtpInput && (
-                          <Form.Group className="mb-3">
-                            <Form.Label>Enter OTP</Form.Label>
-                            <Form.Control
-                              type="text"
-                              id="otpInput"
-                              name="otp"
-                              placeholder="Enter OTP"
-                              value={formInputs.otp}
-                              onChange={handleInputChange}
-                              required
-                            />
-                          </Form.Group>
+                          <>
+                            <Form.Group className="mb-3">
+                              <Form.Label>Enter OTP</Form.Label>
+                              <Form.Control
+                                type="text"
+                                id="otpInput"
+                                name="otp"
+                                placeholder="Enter OTP"
+                                value={formInputs.otp}
+                                onChange={handleInputChange}
+                                required
+                              />
+                            </Form.Group>
+                            <Button
+                              variant="primary"
+                              type="submit"
+                              disabled={
+                                otpSubmitLoader || loginMethod === "email"
+                              }
+                            >
+                              {otpSubmitLoader ? (
+                                <Spinner
+                                  as="span"
+                                  animation="border"
+                                  size="sm"
+                                />
+                              ) : (
+                                "Login"
+                              )}
+                            </Button>
+                          </>
                         )}
                       </>
                     )

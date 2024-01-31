@@ -13,9 +13,9 @@ export async function fetchAndUpdateResults(userId) {
     const response = await databases.listDocuments(
       database_id,
       studentMarksTable_id,
-      [Query.equal("studID", userId)]
+      [Query.equal("studID", userId), Query.limit(100)]
     );
-    // console.log("Refreshed Results fetched:\n", response);
+    console.log("Refreshed Results fetched:\n", response);
     // Update local storage with new results
     storageUtil.setItem("examResults", "");
     storageUtil.setItem("examResults", response.documents);
@@ -42,12 +42,11 @@ const formatDate = (dateTime) => {
 
 export const getTransformedResults = (studentId) => {
   const userResults = storageUtil.getItem("examResults") || [];
-
   const resultsMap = new Map();
 
   userResults.forEach((doc) => {
     const subject = doc.subject;
-    const date = formatDate(doc.$createdAt);
+    const dateTime = formatDate(doc.$createdAt);
     const score = doc.marks + "%";
 
     if (!resultsMap.has(subject)) {
@@ -55,13 +54,19 @@ export const getTransformedResults = (studentId) => {
     }
 
     resultsMap.get(subject).attempts.push({
-      date,
+      dateTime,
       score,
       subject,
       resultDetails: doc.results,
     });
   });
 
+  // Sort each subject's attempts by date in descending order
+  resultsMap.forEach((subjectData) => {
+    subjectData.attempts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  });
+
   return Array.from(resultsMap.values());
 };
+
 /*=========END TRANSFORMS THE RESULTS=========*/

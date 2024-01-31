@@ -34,8 +34,8 @@ export const fetchAndProcessStudentData = async (kinID) => {
           schoolAddress: student.schoolAddress,
           Results: results.map((result) => ({
             subject: result.subject,
-            marks: result.marks,
-            results: result.results,
+            score: result.marks,
+            resultDetails: result.results,
             dateTime: formatDate(result.$createdAt),
           })),
         };

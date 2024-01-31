@@ -21,8 +21,8 @@ const NextOfKinDashboard = () => {
     });
 
     return {
-      recentScore: `${mostRecent.marks}%`,
-      results: mostRecent.results,
+      recentScore: `${mostRecent.score}%`,
+      results: mostRecent.resultDetails,
       lastExamDateTime: new Date(mostRecent.dateTime).toLocaleString("en-US", {
         year: "numeric",
         month: "short",

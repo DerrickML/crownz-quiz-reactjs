@@ -17,14 +17,7 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faLink,
-  faUserPlus,
-  faPhone,
-  faEnvelope,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
-
+import { faLink, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import {
   databases,
   database_id,
@@ -34,101 +27,76 @@ import {
 } from "../appwriteConfig.js";
 
 const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
-  console.log("Check component initialization");
-
   const navigate = useNavigate();
 
-  // Use props if available, otherwise use local storage
-  const localUserInfo = storageUtil.getItem("userInfo"); //When already logged in
-  const userInfo = studSignUp ? userInfoProp : localUserInfo; //At signup
-
+  const localUserInfo = storageUtil.getItem("userInfo");
+  const userInfo = studSignUp ? userInfoProp : localUserInfo;
   const studentID = studSignUp ? userInfoProp.userId : localUserInfo.userId;
 
   const [kinSuccess, setKinSuccess] = useState("true");
 
-  //Check whether has next of kin
   useEffect(() => {
     if (userInfo && userInfo.kinID) {
-      console.log("Kin exists");
       setKinSuccess(true);
     } else {
-      console.log("No Kin exists");
       setKinSuccess(false);
     }
-  }, [userInfo]); // Dependency array to trigger effect when userInfo changes
+  }, [userInfo]);
 
-  //For updating user info
   const updateUserInfo = useUpdateUserInfo();
 
-  const [kinSignupMethod, setKinSignupMethod] = useState("email");
+  const [linkKinSignupMethod, setLinkKinSignupMethod] = useState("email");
+  const [createKinSignupMethod, setCreateKinSignupMethod] = useState("phone");
 
-  // State hooks for each input field
   const [nextOfKin, setNextOfKin] = useState({
     kinEmail: "",
     kinPhone: "",
     kinFirstName: "",
     kinLastName: "",
-    // ... other kin-related fields ...
   });
 
-  // State for linking to an existing kin account
-  const [linkKinSignupMethod, setLinkKinSignupMethod] = useState("email");
   const [linkKinContact, setLinkKinContact] = useState("");
 
   const [signupLoader, setSignupLoader] = useState(false);
-  const [kinPhoneError, setKinPhoneError] = useState(false); // Error flag for kin's phone
+  const [kinPhoneError, setKinPhoneError] = useState(false);
   const [activeTab, setActiveTab] = useState("link");
 
-  //================================================================
-  // Example: Function to call when kin linking/creation is successful
   const handleSuccess = () => {
     if (onCompletion) {
-      onCompletion(); // Call the passed in completion callback
+      onCompletion();
     } else {
-      // Default behavior if no callback is provided
       navigate("/profile");
     }
   };
-  //================================================================
 
   const toggleTab = (tab) => {
     setActiveTab(tab);
   };
 
-  /**
-   * Validates a given phone number. Returns true if the phone number is invalid.
-   * @param {string} phoneNumber - The phone number to be validated.
-   * @returns {boolean} - True if the phone number is invalid, false otherwise.
-   */
   const validatePhoneNumber = (phoneNumber) => {
     return phoneNumber && !isValidPhoneNumber(phoneNumber);
   };
 
-  // Handles input changes
   const handleInputChange = (event) => {
     const { id, value } = event.target;
     if (id.startsWith("kin")) {
       setNextOfKin({ ...nextOfKin, [id]: value });
     } else {
-      // Use dynamic key names to update state based on the input id
       showToast("Setter Map function at handleInputChange", "error");
     }
   };
 
-  /**
-   * Handles the form submission. Validates the phone number, creates or finds the next of kin account,
-   * links it to the user, and navigates to the profile page upon successful completion.
-   * Displays appropriate error messages in case of any failures.
-   */
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     setSignupLoader(true);
 
-    // Validate phone numbers
-    let isKinPhoneValid = true;
-    isKinPhoneValid = !validatePhoneNumber(nextOfKin.kinPhone);
+    let isKinPhoneValid = !validatePhoneNumber(nextOfKin.kinPhone);
     setKinPhoneError(!isKinPhoneValid);
+
+    if (!isKinPhoneValid) {
+      setSignupLoader(false);
+      return;
+    }
 
     try {
       let linkKinResponse;
@@ -137,8 +105,14 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
       console.log("Linking with next of kin");
       try {
         let kinExists = await searchForExistingKinAccount(
-          kinSignupMethod,
-          kinSignupMethod === "email" ? nextOfKin.kinEmail : nextOfKin.kinPhone
+          activeTab === "link" ? linkKinSignupMethod : createKinSignupMethod,
+          activeTab === "link"
+            ? linkKinSignupMethod === "email"
+              ? nextOfKin.kinEmail
+              : nextOfKin.kinPhone
+            : createKinSignupMethod === "email"
+            ? nextOfKin.kinEmail
+            : nextOfKin.kinPhone
         );
 
         let kinIdToUse;
@@ -189,10 +163,8 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
     }
   };
 
-  //Links kin
   const handleLinkKin = async (event) => {
     event.preventDefault();
-
     setSignupLoader(true);
 
     try {
@@ -231,14 +203,9 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
       navigate("/profile");
     } catch (e) {
       setSignupLoader(false);
-      console.error("Error Linking next of kin:", e);
       showToast("Failed to link with kin", "error");
+      console.error("Error Linking next of kin:", e);
     }
-  };
-
-  // Handles the change of the next of kin's signup method (email or phone)
-  const kinHandleMethodChange = (e) => {
-    setKinSignupMethod(e.target.value);
   };
 
   /**
@@ -264,7 +231,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
         phone: kinPhone || null,
         firstName: kinFirstName,
         lastName: kinLastName || null,
-        signupMethod: kinSignupMethod,
+        signupMethod: createKinSignupMethod, // Replaced kinSignupMethod with createKinSignupMethod
         studentName: studName,
       };
 
@@ -396,6 +363,14 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
     }
   }
 
+  const kinHandleMethodChange = (e) => {
+    if (activeTab === "link") {
+      setLinkKinSignupMethod(e.target.value);
+    } else {
+      setCreateKinSignupMethod(e.target.value);
+    }
+  };
+
   const renderForm = () => {
     return (
       <Form onSubmit={activeTab === "link" ? handleLinkKin : handleSubmit}>
@@ -407,12 +382,10 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
             id={
               activeTab === "link" ? "linkKinSignupMethod" : "kinSignupMethod"
             }
-            value={activeTab === "link" ? linkKinSignupMethod : kinSignupMethod}
-            onChange={(e) =>
-              activeTab === "link"
-                ? setLinkKinSignupMethod(e.target.value)
-                : setKinSignupMethod(e.target.value)
+            value={
+              activeTab === "link" ? linkKinSignupMethod : createKinSignupMethod
             }
+            onChange={kinHandleMethodChange}
           >
             <option value="email">Email</option>
             <option value="phone">Phone</option>
@@ -422,18 +395,35 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
         {/* Email or Phone Input */}
         <Form.Group className="mb-3">
           <Form.Label>
-            {activeTab === "link" ? "Email Address" : "Phone Number"}
+            {activeTab === "link"
+              ? linkKinSignupMethod === "email"
+                ? "Email Address"
+                : "Phone Number"
+              : createKinSignupMethod === "email"
+              ? "Email Address"
+              : "Phone Number"}
           </Form.Label>
           {activeTab === "link" ? (
-            <Form.Control
-              type="email"
-              id="linkKinEmail"
-              placeholder="Enter email"
-              value={linkKinContact}
-              onChange={(e) => setLinkKinContact(e.target.value)}
-              required
-            />
-          ) : (
+            linkKinSignupMethod === "email" ? (
+              <Form.Control
+                type="email"
+                id="linkKinEmail"
+                placeholder="Enter email"
+                value={linkKinContact}
+                onChange={(e) => setLinkKinContact(e.target.value)}
+                required
+              />
+            ) : (
+              <PhoneInput
+                className="form-control"
+                id="linkKinPhone"
+                placeholder="Enter phone number"
+                value={linkKinContact}
+                onChange={(value) => setLinkKinContact(value || "")}
+                required
+              />
+            )
+          ) : createKinSignupMethod === "phone" ? (
             <PhoneInput
               className="form-control"
               id="kinPhone"
@@ -442,7 +432,18 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
               onChange={(value) =>
                 setNextOfKin({ ...nextOfKin, kinPhone: value || "" })
               }
-              required={kinSignupMethod === "phone"}
+              required={createKinSignupMethod === "phone"}
+            />
+          ) : (
+            <Form.Control
+              type="email"
+              id="kinEmail"
+              placeholder="Enter email"
+              value={nextOfKin.kinEmail}
+              onChange={(e) =>
+                setNextOfKin({ ...nextOfKin, kinEmail: e.target.value })
+              }
+              required={createKinSignupMethod === "email"}
             />
           )}
         </Form.Group>
