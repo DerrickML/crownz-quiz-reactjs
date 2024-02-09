@@ -5,15 +5,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { Container, Button } from "react-bootstrap";
 import storageUtil from "../utilities/storageUtil";
+import { useAuth } from "../context/AuthContext";
 import "../animations.css";
 import HeroHeader from "./HeroHeader";
 import "./Home.css";
 import StudentDashboard from "./dashboard/StudentDashboard";
 import NextOfKinDashboard from "./dashboard/NextOfKinDashboard";
 
-function Home({ sessionInfo, onLogout }) {
+function Home() {
   const navigate = useNavigate();
-  const userInfo = storageUtil.getItem("userInfo");
+  const { userInfo } = useAuth();
+  // const userInfo = storageUtil.getItem("userInfo");
   const isStudent = userInfo.labels.includes("student");
   const isNextOfKin = userInfo.labels.includes("kin");
 
@@ -50,7 +52,7 @@ function Home({ sessionInfo, onLogout }) {
     <>
       {renderHeroHeader()}
       <Container fluid>
-        {isStudent && <StudentDashboard userInfo={userInfo} />}
+        {isStudent && <StudentDashboard />}
         {isNextOfKin && <NextOfKinDashboard />}
       </Container>
     </>

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { showToast } from "../utilities/toastUtil.js";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
 import { account } from "../appwriteConfig.js";
+import PasswordStrengthIndicator from "./formComponents/PasswordStrengthIndicator";
 
 import "./PasswordReset.css";
 
@@ -13,10 +14,38 @@ function PasswordReset() {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const [passwordStrength, setPasswordStrength] = useState(0);
   const [success, setSuccess] = useState(false);
+
+  // Password strength calculation
+  const calculatePasswordStrength = (password) => {
+    let strength = 0;
+    if (password.length >= 8) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[0-9]/.test(password)) strength++;
+    if (/[^A-Za-z0-9]/.test(password)) strength++;
+    return strength;
+  };
+
+  const handlePasswordChange = (newPassword) => {
+    setPassword(newPassword);
+    setPasswordStrength(calculatePasswordStrength(newPassword));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (password !== repeatPassword) {
+      setPasswordsMatch(false);
+      return;
+    }
+
+    if (passwordStrength < 3) {
+      showToast("Please ensure your password is strong enough", "error");
+      return;
+    }
+
+    setPasswordsMatch(true);
+
     try {
       if (password !== repeatPassword) {
         setPasswordsMatch(false);
@@ -67,9 +96,14 @@ function PasswordReset() {
                 type="password"
                 placeholder="Password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => handlePasswordChange(e.target.value)}
                 required
               />
+              <PasswordStrengthIndicator strength={passwordStrength} />
+              <Form.Text className="text-muted">
+                Use 8 or more characters with a mix of letters, numbers &
+                symbols.
+              </Form.Text>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicRepeatPassword">

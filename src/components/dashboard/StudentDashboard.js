@@ -6,10 +6,13 @@ import { faChartLine, faEdit } from "@fortawesome/free-solid-svg-icons";
 import RecentResults from "../RecentResults";
 import { useNavigate } from "react-router-dom";
 import { getTransformedResults } from "../../utilities/resultsUtil";
+import { useAuth } from "../../context/AuthContext";
 
-const StudentDashboard = ({ userInfo }) => {
-  const [results, setResults] = useState([]);
+
+const StudentDashboard = () => {
   const navigate = useNavigate();
+  const { userInfo } = useAuth();
+  const [results, setResults] = useState([]);
 
   const viewResults = (resultDetails) => {
     navigate("/quiz-results", { state: { results: resultDetails } });

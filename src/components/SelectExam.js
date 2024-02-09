@@ -29,7 +29,7 @@ import {
   faAtom,
 } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
-import storageUtil from "../utilities/storageUtil";
+import { useAuth } from '../context/AuthContext';
 import "./ExamPage.css"; // Import custom CSS
 
 import subjectData from "../otherFiles/subject_data.json"; // Import the subject data
@@ -63,11 +63,10 @@ const iconMapping = {
 };
 
 function SelectExam() {
-  const [selectedSubject, setSelectedSubject] = useState(null);
-
-  //Fetch sessionInfo from localStorage
-  const userInfo = storageUtil.getItem("userInfo");
+  const { userInfo } = useAuth();
   const navigate = useNavigate();
+
+  const [selectedSubject, setSelectedSubject] = useState(null);
 
   // Get the subjects for the user's education level
   const subjects = subjectData[userInfo.educationLevel] || [];

@@ -26,53 +26,55 @@ function Exam({ subject }) {
 
   return (
     <>
-      {subject === "english-language_ple" ? (
-        <>
-          <Modal show={showInstructionsModal} onHide={() => {}} centered>
+      {
+        subject === "english-language_ple" ? (
+          <>
+            <Modal show={showInstructionsModal} onHide={() => { }} centered>
+              <Modal.Header>
+                <Modal.Title>Exam Instructions</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <p>Here are the instructions for your exam:</p>
+                <ul>
+                  <li>Read each question carefully.</li>
+                  <li>Ensure you answer all questions.</li>
+                  <li>Do not refresh the page during the exam.</li>
+                  {/* Add more instructions as needed */}
+                </ul>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleCancel}>
+                  Cancel
+                </Button>
+                <Button variant="primary" onClick={handleProceed}>
+                  Proceed to Exam
+                </Button>
+              </Modal.Footer>
+            </Modal>
+            {!showInstructionsModal && (
+              <IframeComponent url="http://localhost:5173/" />
+              // <IframeComponent url="http://127.0.0.1:5500/english_ple/" />
+            )}
+          </>
+        ) : (
+          <Modal show={showUnavailableModal} onHide={() => { }} centered>
             <Modal.Header>
-              <Modal.Title>Exam Instructions</Modal.Title>
+              <Modal.Title>Exam Unavailable</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <p>Here are the instructions for your exam:</p>
-              <ul>
-                <li>Read each question carefully.</li>
-                <li>Ensure you answer all questions.</li>
-                <li>Do not refresh the page during the exam.</li>
-                {/* Add more instructions as needed */}
-              </ul>
+              <p>
+                Currently, the exam for the selected subject is not available.
+                Please check back later.
+              </p>
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={handleCancel}>
-                Cancel
-              </Button>
-              <Button variant="primary" onClick={handleProceed}>
-                Proceed to Exam
+              <Button variant="primary" onClick={handleCloseUnavailableModal}>
+                Go Back
               </Button>
             </Modal.Footer>
           </Modal>
-          {!showInstructionsModal && (
-            <IframeComponent url="http://localhost:5173/" />
-            // <IframeComponent url="http://127.0.0.1:5500/english_ple/" />
-          )}
-        </>
-      ) : (
-        <Modal show={showUnavailableModal} onHide={() => {}} centered>
-          <Modal.Header>
-            <Modal.Title>Exam Unavailable</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>
-              Currently, the exam for the selected subject is not available.
-              Please check back later.
-            </p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={handleCloseUnavailableModal}>
-              Go Back
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      )}
+        )
+      }
     </>
   );
 }

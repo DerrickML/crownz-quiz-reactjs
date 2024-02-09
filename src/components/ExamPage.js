@@ -4,10 +4,10 @@ import { faSearch, faBookReader } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HeroHeader from "./HeroHeader";
-import "./ExamPage.css"; // Import custom CSS
+import "./ExamPage.css";
 import SelectExam from "./SelectExam";
 
-function ExamPage({ userInfo }) {
+function ExamPage() {
   const ExamPageHeroHeader = () => (
     <HeroHeader>
       <h1 className="display-4">

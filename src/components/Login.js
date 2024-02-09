@@ -21,6 +21,9 @@ import {
   faMobileAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { showToast } from "../utilities/toastUtil.js";
+import { useAuth } from "../context/AuthContext.js";
+import { fetchAndUpdateResults } from "../utilities/resultsUtil";
+import { fetchAndProcessStudentData } from "../utilities/fetchStudentData";
 import {
   account,
   databases,
@@ -31,7 +34,8 @@ import {
 } from "../appwriteConfig.js";
 import "./Login.css";
 
-function Login(props) {
+function Login() {
+  const { handleLogin } = useAuth();
   const navigate = useNavigate();
 
   //User ID
@@ -143,10 +147,21 @@ function Login(props) {
         const userInfo = await userData(session.userId);
         console.log("User info: ", userInfo); //Debugging purposes
 
-        props.onLogin(session, userInfo); // Pass the session data to App.js
+        handleLogin(session, userInfo); // Pass the session data to App.js
+
+        //Fetch of student(s) results
+        if (userInfo.labels.includes("student")) {
+          await fetchAndUpdateResults(session.userId);
+        }
+
+        //Fetch all students' results linked to the next-of-kin and save to local storage
+        if (userInfo.labels.includes("kin")) {
+          await fetchAndProcessStudentData(session.userId);
+        }
 
         // Redirect to home page
         navigate("/");
+        // window.location.href = "/";
       } else if (loginMethod === "phone") {
         setOtpSubmitLoader(true);
         if (!userId) {
@@ -160,10 +175,11 @@ function Login(props) {
         const userInfo = await userData(session.userId);
         console.log("User info: ", userInfo); //Debugging purposes
 
-        props.onLogin(session, userInfo); // Pass the session data to App.js
+        handleLogin(session, userInfo); // Pass the session data to App.js
 
         // Redirect to home page
         navigate("/");
+        // window.location.href = "/";
       }
     } catch (error) {
       console.error("Login failed:", error.message);

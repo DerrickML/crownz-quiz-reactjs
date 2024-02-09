@@ -18,7 +18,10 @@ import {
   studentMarksTable_id,
 } from "../appwriteConfig.js";
 import { showToast } from "../utilities/toastUtil.js";
-import storageUtil from "../utilities/storageUtil";
+import {
+  fetchAndUpdateResults,
+} from "../utilities/resultsUtil";
+import { useAuth } from '../context/AuthContext';
 import "./IframeComponent.css";
 
 const IframeComponent = ({ url }) => {
@@ -44,7 +47,7 @@ const IframeComponent = ({ url }) => {
   ];
 
   //To send to database
-  const userInfo = storageUtil.getItem("sessionInfo");
+  const { userInfo } = useAuth();
   let studentID = userInfo.userId;
 
   const canDisplayUrl = urlWhitelist.includes(url);
@@ -85,7 +88,7 @@ const IframeComponent = ({ url }) => {
       // Check if the message is received after the button click
       if (buttonClicked && event.data && typeof event.data === "object") {
         console.log("Message received: ", event.data);
-        const { percentage, results } = event.data;
+        const { marksObtained, results } = event.data;
 
         // Convert results to a JSON string before sending
         const resultsString = JSON.stringify(results);
@@ -95,7 +98,7 @@ const IframeComponent = ({ url }) => {
         // Create a document in Appwrite Collection
         await createDocument({
           studID: studentID,
-          marks: percentage,
+          marks: marksObtained,
           subject: "English",
           results: resultsString,
         });
@@ -125,8 +128,9 @@ const IframeComponent = ({ url }) => {
     setShowSubmitModal(true);
   };
 
-  const confirmSubmit = () => {
+  const confirmSubmit = async () => {
     sendMessageToIframe();
+    await fetchAndUpdateResults(userInfo.userId);
     setShowSubmitModal(false);
   };
 

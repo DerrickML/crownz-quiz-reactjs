@@ -44,7 +44,6 @@ function SignUp() {
   // State hooks for each input field
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [otherName, setOtherName] = useState("");
@@ -52,8 +51,34 @@ function SignUp() {
   const [classGrade, setClassGrade] = useState("");
   const [schoolName, setSchoolName] = useState("");
   const [schoolAddress, setSchoolAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordStrength, setPasswordStrength] = useState(0);
+  const [passwordMatch, setPasswordMatch] = useState(true);
 
   const [phoneError, setPhoneError] = useState(false); // Error flag for user's phone
+
+  // Password strength calculation (basic example)
+  const calculatePasswordStrength = (password) => {
+    let strength = 0;
+    if (password.length >= 8) strength++; // Length check
+    if (/[A-Z]/.test(password)) strength++; // Uppercase letter
+    if (/[0-9]/.test(password)) strength++; // Number
+    if (/[^A-Za-z0-9]/.test(password)) strength++; // Special character
+    return strength;
+  };
+
+  // Update the password strength whenever the password changes
+  const handlePasswordChange = (password) => {
+    setPassword(password);
+    setPasswordStrength(calculatePasswordStrength(password));
+  };
+
+  // Check if passwords match
+  const handleConfirmPasswordChange = (confirmPassword) => {
+    setConfirmPassword(confirmPassword);
+    setPasswordMatch(password === confirmPassword);
+  };
 
   // Generalized phone number validation function
   const validatePhoneNumber = (phoneNumber) => {
@@ -103,8 +128,6 @@ function SignUp() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    setSignupLoader(true);
-
     // Validate phone numbers
     const isUserPhoneValid = !validatePhoneNumber(phone);
     setPhoneError(!isUserPhoneValid);
@@ -114,7 +137,16 @@ function SignUp() {
       return;
     }
 
+    // Check if password is strong enough and matches
+    if (passwordStrength < 3 || !passwordMatch) {
+      // Show an error or update the UI to indicate the issue
+      showToast("Please ensure your password is strong and matches", "error");
+      return;
+    }
+
     try {
+      setSignupLoader(true);
+
       // Construct the user details object
       const studentDetails = {
         email,
@@ -135,7 +167,13 @@ function SignUp() {
       if (signupMethod === "email") {
         const userEmail = studentDetails.email;
         console.log("Signing up student using Email: " + userEmail);
+        console.log(
+          `Details; \n Email: ${userEmail} \nPassword: ${password}\nFirst Name: ${firstName} \nPhone: ${phone}`
+        );
         userResponse = await emailSignup(userEmail, password, firstName, phone);
+        console.log(
+          "Finished signing up using email.\n Proceed to assing label"
+        );
         studentID = userResponse.$id;
       } else {
         const phoneNumber = phone;
@@ -370,6 +408,14 @@ function SignUp() {
                         setEmail={setEmail}
                         password={password}
                         setPassword={setPassword}
+                        confirmPassword={confirmPassword}
+                        setConfirmPassword={handleConfirmPasswordChange}
+                        passwordStrength={passwordStrength}
+                        passwordMatch={passwordMatch}
+                        handlePasswordChange={handlePasswordChange}
+                        handleConfirmPasswordChange={
+                          handleConfirmPasswordChange
+                        }
                         phone={phone}
                         setPhone={setPhone}
                         phoneError={phoneError}
