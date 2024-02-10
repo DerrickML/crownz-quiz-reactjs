@@ -22,7 +22,7 @@ const QuizContainer = () => {
                     <h2>Category {category.category}</h2>
                     <p>{category.instructions}</p>
                     {category.questions.map((question, index) => {
-                        // Check if the question format is either/or, otherwise just pass the question
+                        // Check if the question format is 'either' or 'or', otherwise just pass the question
                         let questionProps = question.hasOwnProperty('either') && question.hasOwnProperty('or')
                             ? question
                             : { either: question };
