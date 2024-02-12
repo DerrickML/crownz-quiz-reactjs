@@ -3,17 +3,18 @@ import React from 'react';
 import { Form, Card } from 'react-bootstrap';
 import { isImageUrl } from './utils';
 
-const MultipleChoiceQuestion = ({ question, onChange, disabled }) => {
+const MultipleChoiceQuestion = ({ question, onChange, disabled, userAnswer, displayQuestionText }) => {
     const options = question.options || [];
 
     return (
         <Form.Group>
-            <Form.Label dangerouslySetInnerHTML={{ __html: question.question_text }}></Form.Label>
-            {question.image && isImageUrl(question.image) && (
+            {displayQuestionText && <Form.Label dangerouslySetInnerHTML={{ __html: question.question_text }} />}
+
+            {/* {question.image && isImageUrl(question.image) && (
                 <Card style={{ alignContent: 'center' }}>
                     <img src={question.image} alt="Question" style={{ maxWidth: '10rem', height: 'auto' }} />
                 </Card>
-            )}
+            )} */}
             {options.map((option, index) => (
                 <Form.Check
                     type="radio"

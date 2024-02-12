@@ -3,15 +3,16 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 import { isImageUrl } from './utils';
 
-const CheckboxQuestion = ({ question, onChange, disabled }) => {
+const CheckboxQuestion = ({ question, onChange, disabled, userAnswer, displayQuestionText }) => {
     const options = question.options || [];
 
     return (
         <Form.Group>
-            <Form.Label dangerouslySetInnerHTML={{ __html: question.question_text }}></Form.Label>
-            {question.image && isImageUrl(question.image) && (
+            {displayQuestionText && <Form.Label dangerouslySetInnerHTML={{ __html: question.question_text }} />}
+
+            {/* {question.image && isImageUrl(question.image) && (
                 <img src={question.image} alt="Question" style={{ maxWidth: '100%', height: 'auto' }} />
-            )}
+            )} */}
             {options.map((option, index) => (
                 <Form.Check
                     type="checkbox"

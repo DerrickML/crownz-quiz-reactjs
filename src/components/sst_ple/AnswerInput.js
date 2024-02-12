@@ -4,9 +4,7 @@ import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 import CheckboxQuestion from './CheckboxQuestion';
 import TextInputQuestion from './TextInputQuestion';
 
-const AnswerInput = ({ question, onChange, disabled, userAnswer }) => {
-    console.log("Received questions:\n", question);
-
+const AnswerInput = ({ question, onChange, disabled, userAnswer, displayQuestionText = true }) => {
     switch (question.type) {
         case 'multipleChoice':
             return (
@@ -15,6 +13,7 @@ const AnswerInput = ({ question, onChange, disabled, userAnswer }) => {
                     onChange={onChange}
                     disabled={disabled}
                     userAnswer={userAnswer}
+                    displayQuestionText={displayQuestionText} // Pass the prop down
                 />
             );
         case 'check_box':
@@ -24,6 +23,7 @@ const AnswerInput = ({ question, onChange, disabled, userAnswer }) => {
                     onChange={onChange}
                     disabled={disabled}
                     userAnswer={userAnswer}
+                    displayQuestionText={displayQuestionText} // Pass the prop down
                 />
             );
         case 'text':
@@ -33,6 +33,7 @@ const AnswerInput = ({ question, onChange, disabled, userAnswer }) => {
                     onChange={onChange}
                     disabled={disabled}
                     userAnswer={userAnswer}
+                    displayQuestionText={displayQuestionText} // Pass the prop down
                 />
             );
         default:

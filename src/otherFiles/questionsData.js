@@ -1,4 +1,4 @@
-const questionsData = [
+const sst_ple = [
     {
         "category": 1,
         "instructions": null,
@@ -2524,7 +2524,7 @@ const questionsData = [
                     "Tobacco",
                     "Coffee"
                 ],
-                "optios": [
+                "options": [
                     "Sugar",
                     "Slaves",
                     "Tobacco",
@@ -6328,1414 +6328,1414 @@ const questionsData = [
         "category": 51,
         "instructions": "For each of the questions 51 to 55, answer EITHER the Christian OR Islamic question but not both. No marks will be awarded to a candidate who attempts both alternatives in a particular number.",
         "questions": [
-            {
-                "either": {
-                    "question_text": "What type of religion existed in Africa before the coming of Christianity?",
-                    "type": "text",
-                    "answer": [
-                        "African Traditional Religion"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two ways in which believers of the religion in (a) above showed that there was life after death",
-                            "type": "check_box",
-                            "answer": [
-                                "They named their children after their dead relatives",
-                                "They sacrificed animals to appease the spirits of their dead relatives"
-                            ],
-                            "options": [
-                                "They named their children after their dead relatives",
-                                "They prayed for the dead",
-                                "They sacrificed animals to appease the spirits of their dead relatives"
-                            ]
-                        },
-                        {
-                            "question_text": "State any one reason why some Christians fear death",
-                            "type": "check_box",
-                            "answer": [
-                                "They don't want to lose their wealth"
-                            ],
-                            "options": [
-                                "They are not sure of life after death",
-                                "They don't want to lose their wealth"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_1"
-                },
-                "or": {
-                    "question_text": "What type of religion existed in Africa before the coming of Islam?",
-                    "type": "text",
-                    "answer": [
-                        "African Traditional Religion"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two ways in which believers of the religion in (a) above showed that there was life after death",
-                            "type": "check_box",
-                            "answer": [
-                                "They named their children after their dead relatives",
-                                "They sacrificed animals to appease the spirits of their dead relatives"
-                            ],
-                            "options": [
-                                "They named their children after their dead relatives",
-                                "They prayed for the dead",
-                                "They sacrificed animals to appease the spirits of their dead relatives"
-                            ]
-                        },
-                        {
-                            "question_text": "State any one reason why some Christians fear death",
-                            "type": "check_box",
-                            "answer": [
-                                "They don't want to lose their wealth"
-                            ],
-                            "options": [
-                                "They are not sure of life after death",
-                                "They don't want to lose their wealth"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_1"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "What helped Jesus Christ to be successful when he was on earth?",
-                    "type": "multipleChoice",
-                    "answer": [
-                        "His kindness and generosity brought him many followers"
-                    ],
-                    "options": [
-                        "His kindness and generosity brought him many followers",
-                        "Him being the son of God"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any three factors that lead people to a successful life today",
-                            "type": "check_box",
-                            "answer": [
-                                "The fear of God",
-                                "High levels of education",
-                                "Creativity"
-                            ],
-                            "options": [
-                                "Having a family",
-                                "The fear of God",
-                                "Having children",
-                                "High levels of education",
-                                "Creativity"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_2"
-                },
-                "or": {
-                    "question_text": "What helped Prophet Muhammad (PBUH) to be successful when he was on earth",
-                    "type": "multipleChoice",
-                    "answer": [
-                        "Allah's guidance and protection"
-                    ],
-                    "options": [
-                        "Allah's guidance and protection",
-                        "Because he was Allah's servant"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any three factors that lead people to a successful life today",
-                            "type": "check_box",
-                            "answer": [
-                                "The fear of Allah",
-                                "High levels of education",
-                                "Creativity"
-                            ],
-                            "options": [
-                                "Having a family",
-                                "The fear of Allah",
-                                "Having children",
-                                "High levels of education",
-                                "Creativity"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_2"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "What did Simon of Cyrene do?",
-                    "type": "multipleChoice",
-                    "answer": [
-                        "Helped Jesus Christ to carry the cross"
-                    ],
-                    "options": [
-                        "He buried the body of Jesus Christ",
-                        "He helped Jesus Christ to carry the cross",
-                        "He killed his brother",
-                        "He betrayed Jesus Christ"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "What did Joseph of Arimathea do?",
-                            "type": "check_box",
-                            "answer": [
-                                "He buried the body of Jesus Christ"
-                            ],
-                            "options": [
-                                "He buried the body of Jesus Christ",
-                                "He helped Jesus Christ to carry the cross",
-                                "He killed his brother",
-                                "He betrayed Jesus Christ"
-                            ]
-                        },
-                        {
-                            "question_text": "What did Cain do?",
-                            "type": "check_box",
-                            "answer": [
-                                "He killed his brother"
-                            ],
-                            "options": [
-                                "He buried the body of Jesus Christ",
-                                "He helped Jesus Christ to carry the cross",
-                                "He killed his brother",
-                                "He betrayed Jesus Christ"
-                            ]
-                        },
-                        {
-                            "question_text": "What did Judas Iscariot do?",
-                            "type": "check_box",
-                            "answer": [
-                                "He betrayed Jesus Christ"
-                            ],
-                            "options": [
-                                "He buried the body of Jesus Christ",
-                                "He helped Jesus Christ to carry the cross",
-                                "He killed his brother",
-                                "He betrayed Jesus Christ"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_3"
-                },
-                "or": {
-                    "question_text": "What did Abubakr do?",
-                    "type": "multipleChoice",
-                    "answer": [
-                        "Was the first Caliph in Islam"
-                    ],
-                    "options": [
-                        "Was the mother of Prophet Muhammad",
-                        "The book given to Prophet Musa",
-                        "Was the wife of Prophet Muhammad",
-                        "Was the first Caliph in Islam"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Who was Amina?",
-                            "type": "check_box",
-                            "answer": [
-                                "Was the mother of Prophet Muhammad"
-                            ],
-                            "options": [
-                                "Was the mother of Prophet Muhammad",
-                                "The book given to Prophet Musa",
-                                "Was the wife of Prophet Muhammad",
-                                "Was the first Caliph in Islam"
-                            ]
-                        },
-                        {
-                            "question_text": "Whats the taurat?",
-                            "type": "check_box",
-                            "answer": [
-                                "The book given to Prophet Musa"
-                            ],
-                            "options": [
-                                "Was the mother of Prophet Muhammad",
-                                "The book given to Prophet Musa",
-                                "Was the wife of Prophet Muhammad",
-                                "Was the first Caliph in Islam"
-                            ]
-                        },
-                        {
-                            "question_text": "Who was Aisha?",
-                            "type": "check_box",
-                            "answer": [
-                                "Was the wife of Prophet Muhammad"
-                            ],
-                            "options": [
-                                "Was the mother of Prophet Muhammad",
-                                "The book given to Prophet Musa",
-                                "Was the wife of Prophet Muhammad",
-                                "Was the first Caliph in Islam"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_3"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "What is marriage in Christianity?",
-                    "type": "multipleChoice",
-                    "answer": [
-                        "Marriage is the legal love union between a man and a woman as husband and wife"
-                    ],
-                    "options": [
-                        "Marriage is the legal love union between a man and a woman as husband and wife",
-                        "Marriage is a christian sacrament or ritual that involves the symbolic consumption of bread and wine"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two reasons why Christians marry",
-                            "type": "check_box",
-                            "answer": [
-                                "To earn respect from the society",
-                                "To procreate"
-                            ],
-                            "options": [
-                                "To earn respect from the society",
-                                "Because they are required to marry",
-                                "To procreate",
-                                "To gain wealth"
-                            ]
-                        },
-                        {
-                            "question_text": "Give one quality of a good marriage partner",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "Honest"
-                            ],
-                            "options": [
-                                "Educated",
-                                "Honest"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_4"
-                },
-                "or": {
-                    "question_text": "What is Nikah in Islam?",
-                    "type": "multipleChoice",
-                    "answer": [
-                        "Nikah is an agreement between a man and a woman to live as husband and wife"
-                    ],
-                    "options": [
-                        "Nikah is an agreement between a man and a woman to live as husband and wife",
-                        "Nikah is an agreement for a man or woman to make the pilgrimage to mecca"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two reasons why Muslims marry",
-                            "type": "check_box",
-                            "answer": [
-                                "To earn respect from the society",
-                                "To procreate"
-                            ],
-                            "options": [
-                                "To earn respect from the society",
-                                "Because they are required to marry",
-                                "To procreate",
-                                "To gain wealth"
-                            ]
-                        },
-                        {
-                            "question_text": "Give one quality of a good marriage partner",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "Honest"
-                            ],
-                            "options": [
-                                "Educated",
-                                "Honest"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_4"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "Who is a martyr according to christian teaching?",
-                    "type": "multipleChoice",
-                    "answer": [
-                        "A martyr is a person who dies for his or her faith in God"
-                    ],
-                    "options": [
-                        "A martyr is a person who believes in his religion",
-                        "A martyr is a person who dies for his or her faith in God"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two benefits of the benefits of the death of Jesus Christ to christian",
-                            "type": "check_box",
-                            "answer": [
-                                "It promotes God's love for Christians",
-                                "It brought salvation to Christians"
-                            ],
-                            "options": [
-                                "It helped Christians to be rich",
-                                "It promotes God's love for Christians",
-                                "It brought salvation to Christians",
-                                "It helped christians to go to church"
-                            ]
-                        },
-                        {
-                            "question_text": "What lesson can christians learn from the life of Mbaga Tuzinde",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "They can learn to sacrifice for the sake of Jesus Christ"
-                            ],
-                            "options": [
-                                "They can learn to go to church",
-                                "They can learn to sacrifice for the sake of Jesus Christ"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_5"
-                },
-                "or": {
-                    "question_text": "Who is a martyr according to islamic teaching?",
-                    "type": "multipleChoice",
-                    "answer": [
-                        "A martyr is a person who dies for his or her faith in Allah"
-                    ],
-                    "options": [
-                        "A martyr is a person who believes in his religion",
-                        "A martyr is a person who dies for his or her faith in Allah"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two postive results of the battles between muslims and the meccans",
-                            "type": "check_box",
-                            "answer": [
-                                "Muslims were able to get new converts",
-                                "Muslims grew stronger in faith"
-                            ],
-                            "options": [
-                                "Muslims were able to get new converts",
-                                "It helped muslims to fight corruption",
-                                "Muslims grew stronger in faith",
-                                "Muslims got recognised in the world"
-                            ]
-                        },
-                        {
-                            "question_text": "What lesson can a muslim learn from the wars fought by prophet Muhammed (P.B.U.H) in madina?",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "To have strong faith in Allah"
-                            ],
-                            "options": [
-                                "A muslim can learn to have strong faith in Allah",
-                                "A muslim can learn to go to the mosque for prayer"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_5"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "Select any two reasons why children should obey their parents",
-                    "type": "check_box",
-                    "answer": [
-                        "To get blessings from God",
-                        "To give respect to their parents"
-                    ],
-                    "options": [
-                        "To get blessings from God",
-                        "To be able to go to church",
-                        "To give respect to their parents",
-                        "To get basic needs"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two ways in which christians can avoid evil practices in their communities",
-                            "type": "check_box",
-                            "answer": [
-                                "By joining the church choir",
-                                "By reading the Holy Bible"
-                            ],
-                            "options": [
-                                "By going to school",
-                                "By joining the church choir",
-                                "By reading the Holy Bible",
-                                "By fighting corruption"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_6"
-                },
-                "or": {
-                    "question_text": "Select any two reasons why children should obey their parents",
-                    "type": "check_box",
-                    "answer": [
-                        "To get blessings from Allah",
-                        "To give respect to their parents"
-                    ],
-                    "options": [
-                        "To get blessings from Allah",
-                        "To be able to go to mosque",
-                        "To give respect to their parents",
-                        "To get basic needs"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two ways in which muslims can avoid evil practices in their communities",
-                            "type": "check_box",
-                            "answer": [
-                                "To get blessings from Allah",
-                                "By reading the Quran"
-                            ],
-                            "options": [
-                                "By going to school",
-                                "To get blessings from Allah",
-                                "By reading the Quran",
-                                "By fighting corruption"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_6"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "\"I am nobody. How can I go to the King and bring the Israelities out of Egypt?\" (Exodus 3:11)",
-                    "sub_questions": [
-                        {
-                            "question_text": "What made Moses to say the above words?",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "He was afraid of the pharaoh"
-                            ],
-                            "options": [
-                                "He wanted to live the Israelities",
-                                "He was afraid of the pharaoh"
-                            ]
-                        },
-                        {
-                            "question_text": "Select any two miracles performed in order to convice Pharaoh to release the children of Israel",
-                            "type": "check_box",
-                            "answer": [
-                                "He turned his rod into a big snake",
-                                "His hand became diseased"
-                            ],
-                            "options": [
-                                "He turned his rod into a big snake",
-                                "His hand became diseased",
-                                "He parted the red sea for Israelities to pass",
-                                "He healed the blind"
-                            ]
-                        },
-                        {
-                            "question_text": "Give any one lesson you learn from the above quotation.",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "I learn to trust God"
-                            ],
-                            "options": [
-                                "I learn to be honest",
-                                "I learn to trust God"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_7"
-                },
-                "or": {
-                    "question_text": "\"Proper it is for me that I say nothing concerning Allah but the truth. Indeed I have come unto you from your Lord with a clear proof. So let the children of Israel depart along with me\". (Surat Al-Araf 7:105)",
-                    "sub_questions": [
-                        {
-                            "question_text": "What made Prophet Musa to say the above words?",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "He was afraid of the Firaun"
-                            ],
-                            "options": [
-                                "He was afraid of the Firaun",
-                                "He wanted to live the Israelities"
-                            ]
-                        },
-                        {
-                            "question_text": "Select any two miracles prophet Musa performed in order to convice Firaun to release Ban Israel",
-                            "type": "check_box",
-                            "answer": [
-                                "He turned his rod into a big snake",
-                                "His hand became diseased"
-                            ],
-                            "options": [
-                                "He turned his rod into a big snake",
-                                "His hand became diseased",
-                                "He parted the red sea for Israelities to pass",
-                                "He healed the blind"
-                            ]
-                        },
-                        {
-                            "question_text": "Give any one lesson you learn from the above quotation",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "I learn to trust Allah"
-                            ],
-                            "options": [
-                                "I learn to be honest",
-                                "I learn to trust Allah"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_7"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "Select any two ways in which the Uganda Joint Christian Council (UJCC) has promoted social welfare of people.",
-                    "type": "check_box",
-                    "answer": [
-                        "It has promoted morals through guidance and counselling",
-                        "It has promoted unity among people"
-                    ],
-                    "options": [
-                        "It has promoted morals through guidance and counselling",
-                        "It has helped to organise free and fair elections",
-                        "It has helped to fight corruption",
-                        "It has promoted unity among people"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "In which two ways can the Inter-Religious Council (IRC) promote unity in Uganda?",
-                            "type": "check_box",
-                            "answer": [
-                                "By mediating peace talks",
-                                "By guiding and counselling people"
-                            ],
-                            "options": [
-                                "By organising elections",
-                                "By mediating peace talks",
-                                "By guiding and counselling people",
-                                "By fighting corruption"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_8"
-                },
-                "or": {
-                    "question_text": "Select any two ways in which the Uganda Muslim Supreme Council (UMSC) has promoted social welfare of people.",
-                    "type": "check_box",
-                    "answer": [
-                        "It has promoted morals through guidance and counselling",
-                        "It has promoted unity among people"
-                    ],
-                    "options": [
-                        "It has promoted morals through guidance and counselling",
-                        "It has helped to organise free and fair elections",
-                        "It has helped to fight corruption",
-                        "It has promoted unity among people"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "In which two ways can the Inter-Religious Council (IRC) promote unity in Uganda?",
-                            "type": "check_box",
-                            "answer": [
-                                "By mediating peace talks",
-                                "By guiding and counselling people"
-                            ],
-                            "options": [
-                                "By organising elections",
-                                "By mediating peace talks",
-                                "By guiding and counselling people",
-                                "By fighting corruption"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_8"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "Give the meaning of baptism as a sacrament in christianity",
-                    "type": "multipleChoice",
-                    "answer": [
-                        "It is the sacrament that introduces a person into Christianity"
-                    ],
-                    "options": [
-                        "It is the sacrament in which Christians receive the body and blood of Jesus Christ",
-                        "It is the sacrament that introduces a person into Christianity"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Give the meaning of holy communion as a sacrament in christianity",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "It is the sacrament in which Christians receive the body and blood of Jesus Christ"
-                            ],
-                            "options": [
-                                "It is the sacrament in which Christians receive the body and blood of Jesus Christ",
-                                "It is the sacrament that introduces a person into Christianity"
-                            ]
-                        },
-                        {
-                            "question_text": "Select two conditions that can enable a christian to take part in Holy communion",
-                            "type": "check_box",
-                            "answer": [
-                                "One must have repented before receiving it",
-                                "One must be baptized"
-                            ],
-                            "options": [
-                                "One must be a christian who goes to church",
-                                "One must have repented before receiving it",
-                                "One must be baptized",
-                                "One has to be a honest christian"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_9"
-                },
-                "or": {
-                    "question_text": "Give the meaning of Zakah as a pillar of Islam",
-                    "type": "multipleChoice",
-                    "answer": [
-                        "Zakah refers to the money and other items given by Muslims to the mosque to help the needy"
-                    ],
-                    "options": [
-                        "Zakah refers to the journey made by a Muslim to Mecca",
-                        "Zakah refers to the money and other items given by Muslims to the mosque to help the needy"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Give the meaning of Hijjah as a pillar of Islam",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "Hijjah refers to the journey made by a Muslim to Mecca"
-                            ],
-                            "options": [
-                                "Hijjah refers to the journey made by a Muslim to Mecca",
-                                "Hijjah refers to the money and other items given by Muslims to the mosque to help the needy"
-                            ]
-                        },
-                        {
-                            "question_text": "Select two conditions that enable a muslim to observe Hijjah",
-                            "type": "check_box",
-                            "answer": [
-                                "One must have niyyah or intention",
-                                "One must leave enough money for one's family"
-                            ],
-                            "options": [
-                                "One has to be a muslim",
-                                "One must have niyyah or intention",
-                                "One must be honest",
-                                "One must leave enough money for one's family"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_9"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "Select any two types of books in the holy bible.",
-                    "type": "check_box",
-                    "answer": [
-                        "Gospel books",
-                        "Epistles or Letters"
-                    ],
-                    "options": [
-                        "Gospel books",
-                        "Epistles or Letters",
-                        "Mathew",
-                        "John"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any one way in which christians give respect to the holy bible",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "By keeping it in a clean place"
-                            ],
-                            "options": [
-                                "By reading it",
-                                "By keeping it in a clean place"
-                            ]
-                        },
-                        {
-                            "question_text": "Why do christains use the holy bible when preaching",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "Because it contains the word of God"
-                            ],
-                            "options": [
-                                "Because it contains the word of God",
-                                "Because it is a holy book"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_10"
-                },
-                "or": {
-                    "question_text": "Name the holy book that was revealed to Prophet Issa",
-                    "type": "text",
-                    "answer": [
-                        "Injil",
-                        "Injir"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two ways in which muslims give respect to the holy Quran",
-                            "type": "check_box",
-                            "answer": [
-                                "By keeping it in a clean place",
-                                "By performing ablution before reading it"
-                            ],
-                            "options": [
-                                "By performing ablution before reading it",
-                                "By always carrying it",
-                                "By reading it",
-                                "By keeping it in a clean place"
-                            ]
-                        },
-                        {
-                            "question_text": "Why do muslim leaders use the holy Quran when preaching?",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "Because it contains the word of Allah"
-                            ],
-                            "options": [
-                                "Because it contains the word of Allah",
-                                "Because it is a holy book"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_10"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "Apart from love, select any other two parts of the fruits of the holy spirit",
-                    "type": "check_box",
-                    "answer": [
-                        "Joy",
-                        "Peace"
-                    ],
-                    "options": [
-                        "Honest",
-                        "Joy",
-                        "Peace",
-                        "Righteousness"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any other two ways in which the holy spirit is important in the life of a christian",
-                            "type": "check_box",
-                            "answer": [
-                                "He guides christians",
-                                "He protects christians"
-                            ],
-                            "options": [
-                                "He guides christians",
-                                "He gives wealth to christians",
-                                "He helps christians go to church",
-                                "He protects christians"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_11"
-                },
-                "or": {
-                    "question_text": "Select any two ways in which observing the pillars of Islam can change the life of a muslim",
-                    "type": "check_box",
-                    "answer": [
-                        "They strengthen a Muslim's faith",
-                        "They guide a muslim"
-                    ],
-                    "options": [
-                        "They help a muslim go to the mosque",
-                        "They strengthen a Muslim's faith",
-                        "They guide a muslim",
-                        "They help muslims to be rich"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two ways in which articles of Islamic faith are important to muslims",
-                            "type": "check_box",
-                            "answer": [
-                                "They strengthen the faith of a muslim",
-                                "They draw muslims closer to Allah"
-                            ],
-                            "options": [
-                                "They strengthen the faith of a muslim",
-                                "They help muslims to be rich",
-                                "They draw muslims closer to Allah",
-                                "They help a muslim go to the mosque"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_11"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "State any one traditional way of reconciliation",
-                    "type": "multipleChoice",
-                    "answer": [
-                        "Through arbitration"
-                    ],
-                    "options": [
-                        "Through going to church",
-                        "Through arbitration"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two ways in which christians carry out reconciliation",
-                            "type": "check_box",
-                            "answer": [
-                                "Through arbitration",
-                                "Through exchanging gifts"
-                            ],
-                            "options": [
-                                "Through going to church",
-                                "Through arbitration",
-                                "Through exchanging gifts",
-                                "Through fighting corruption"
-                            ]
-                        },
-                        {
-                            "question_text": "Why is reconciliation very important in our communities?",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "It promotes peace"
-                            ],
-                            "options": [
-                                "It helps to fight corruption",
-                                "It promotes peace"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_12"
-                },
-                "or": {
-                    "question_text": "State any one traditional way of reconciliation",
-                    "type": "multipleChoice",
-                    "answer": [
-                        "Through arbitration"
-                    ],
-                    "options": [
-                        "Through going to church",
-                        "Through arbitration"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two ways in which muslims carry out reconciliation",
-                            "type": "check_box",
-                            "answer": [
-                                "Through arbitration",
-                                "Through exchanging gifts"
-                            ],
-                            "options": [
-                                "Through going to church",
-                                "Through arbitration",
-                                "Through exchanging gifts",
-                                "Through fighting corruption"
-                            ]
-                        },
-                        {
-                            "question_text": "Why is reconciliation very important in our communities?",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "It promotes peace"
-                            ],
-                            "options": [
-                                "It helps to fight corruption",
-                                "It promotes peace"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_12"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "Mention any one cause of suffering in our society",
-                    "type": "text",
-                    "answer": [
-                        "Death of parents",
-                        "Ignorance",
-                        "Disobedience",
-                        "Accidents",
-                        "Diseases",
-                        "Witchcraft",
-                        "Poor family background"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "State any one way in which Jesus suffered during his life on earth",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "He was made to carry a heavy cross"
-                            ],
-                            "options": [
-                                "He was poisoned",
-                                "He was made to carry a heavy cross"
-                            ]
-                        },
-                        {
-                            "question_text": "Select any two things a christian can do in times of suffering",
-                            "type": "check_box",
-                            "answer": [
-                                "By praying to God",
-                                "By reading the Holy Bible"
-                            ],
-                            "options": [
-                                "By praying to God",
-                                "By going to work",
-                                "By reading the Holy Bible",
-                                "By fighting corruption"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_13"
-                },
-                "or": {
-                    "question_text": "Mention any one cause of suffering in our society",
-                    "type": "text",
-                    "answer": [
-                        "Death of parents",
-                        "Ignorance",
-                        "Disobedience",
-                        "Accidents",
-                        "Diseases",
-                        "Witchcraft",
-                        "Poor family background"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "State any one way in which Prophet Muhammad (P.B.U.H) suffered during his life on earth",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "He was poisoned"
-                            ],
-                            "options": [
-                                "He was poisoned",
-                                "He was made to carry a heavy cross"
-                            ]
-                        },
-                        {
-                            "question_text": "Select any two things a muslim can do in times of suffering",
-                            "type": "check_box",
-                            "answer": [
-                                "By praying to Allah",
-                                "By reciting the Holy Quran"
-                            ],
-                            "options": [
-                                "By praying to Allah",
-                                "By going to work",
-                                "By reciting the Holy Quran",
-                                "By fighting corruption"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_13"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "Select any two qualities of a good friend",
-                    "type": "check_box",
-                    "answer": [
-                        "Loving",
-                        "Caring"
-                    ],
-                    "options": [
-                        "Educated",
-                        "Loving",
-                        "Caring",
-                        "Wealthy"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Give any one reason why a christian child should have good friends",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "To receive good advice"
-                            ],
-                            "options": [
-                                "To be rich",
-                                "To receive good advice"
-                            ]
-                        },
-                        {
-                            "question_text": "State any one way of keeping good friends",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "By praying for them"
-                            ],
-                            "options": [
-                                "By praying for them",
-                                "By giving them money"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_14"
-                },
-                "or": {
-                    "question_text": "Select any two qualities of a good friend",
-                    "type": "check_box",
-                    "answer": [
-                        "Loving",
-                        "Caring"
-                    ],
-                    "options": [
-                        "Educated",
-                        "Loving",
-                        "Caring",
-                        "Wealthy"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Give any one reason why a muslim child should have good friends",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "To receive good advice"
-                            ],
-                            "options": [
-                                "To be rich",
-                                "To receive good advice"
-                            ]
-                        },
-                        {
-                            "question_text": "State any one way of keeping good friends",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "By praying for them"
-                            ],
-                            "options": [
-                                "By praying for them",
-                                "By giving them money"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_14"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "Mention any one book which was written by Moses",
-                    "type": "text",
-                    "answer": [
-                        "Genesis",
-                        "Exodus",
-                        "Leviticus",
-                        "Numbers",
-                        "Deuteronomy"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "State any one way in which the Bible is different from other books",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "The Holy Bible was written by people inspired with Holy Spirit unlike other books"
-                            ],
-                            "options": [
-                                "The bible is different because it is a holy book",
-                                "The Holy Bible was written by people inspired with Holy Spirit unlike other books"
-                            ]
-                        },
-                        {
-                            "question_text": "Select any two ways in which the Bible is important to christians.",
-                            "type": "check_box",
-                            "answer": [
-                                "It guides Christians",
-                                "It strengthens the faith of christians"
-                            ],
-                            "options": [
-                                "It is a holy book",
-                                "It guides Christians",
-                                "It was written by God",
-                                "It strengthens the faith of christians"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_15"
-                },
-                "or": {
-                    "question_text": "Mention any one holy book in Islam which was received by prophet Musa",
-                    "type": "text",
-                    "answer": [
-                        "Tauret",
-                        "Taurat"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "State any one way in which the Quran is different from other books",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "The Quran is used during prayers unlike other books"
-                            ],
-                            "options": [
-                                "The Quran is different because it is a holy book",
-                                "The Quran is used during prayers unlike other books"
-                            ]
-                        },
-                        {
-                            "question_text": "Select any two ways in which the Quran is important to muslims.",
-                            "type": "check_box",
-                            "answer": [
-                                "It guides muslims",
-                                "It strengthens the faith of muslims"
-                            ],
-                            "options": [
-                                "It is a holy book",
-                                "It guides muslims",
-                                "It was written by Allah",
-                                "It strengthens the faith of muslims"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_15"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "Select any two groups of church leaders who conduct marriages",
-                    "type": "check_box",
-                    "answer": [
-                        "Priests",
-                        "Reverends"
-                    ],
-                    "options": [
-                        "Nuns",
-                        "Priests",
-                        "Reverends",
-                        "Catechist"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two ways in which christan marriages have promoted morals among christians",
-                            "type": "check_box",
-                            "answer": [
-                                "They have encouraged christian couples to remain faithful to each other",
-                                "They have encouraged christians to care for each other"
-                            ],
-                            "options": [
-                                "They have encouraged christians to fight corruption",
-                                "They have encouraged christian couples to remain faithful to each other",
-                                "They have encouraged christians to care for each other",
-                                "They have encouraged christians to get married"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_16"
-                },
-                "or": {
-                    "question_text": "Select any two groups of muslim leaders who conduct marriages",
-                    "type": "check_box",
-                    "answer": [
-                        "Sheikh",
-                        "Mufti"
-                    ],
-                    "options": [
-                        "Mufti",
-                        "Priests",
-                        "Reverends",
-                        "Sheikh"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two ways in which marriages have promoted morals among muslims",
-                            "type": "check_box",
-                            "answer": [
-                                "They have encouraged them to remain faithful to each other",
-                                "They have encouraged Muslims to take care of each other"
-                            ],
-                            "options": [
-                                "They have encouraged Muslims to fight corruption",
-                                "They have encouraged them to remain faithful to each other",
-                                "They have encouraged Muslims to take care of each other",
-                                "They have encouraged Muslims to get married"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_16"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "Select any two ways in which christians prepare themselves for christmas day",
-                    "type": "check_box",
-                    "answer": [
-                        "By decorating their houses",
-                        "By attending prayers"
-                    ],
-                    "options": [
-                        "By healing the sick",
-                        "By decorating their houses",
-                        "By going to the mosque",
-                        "By attending prayers"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two ways in which christians share joy of christmas with other people",
-                            "type": "check_box",
-                            "answer": [
-                                "By inviting other people to eat with them",
-                                "By exchanging gifts with others"
-                            ],
-                            "options": [
-                                "By going to church",
-                                "By decorating their houses",
-                                "By inviting other people to eat with them",
-                                "By exchanging gifts with others"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_17"
-                },
-                "or": {
-                    "question_text": "Select any two ways in which muslims prepare themselves for Idd-el-fitr",
-                    "type": "check_box",
-                    "answer": [
-                        "By attending Idd prayers",
-                        "By preparing food for their families"
-                    ],
-                    "options": [
-                        "By healing the sick",
-                        "By preparing food for their families",
-                        "By going to the church",
-                        "By attending Idd prayers"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any two ways in which muslims share joy of Idd-el-fitr with other people",
-                            "type": "check_box",
-                            "answer": [
-                                "By inviting other people to eat with them",
-                                "By exchanging gifts with others"
-                            ],
-                            "options": [
-                                "By going to mosque",
-                                "By decorating their houses",
-                                "By inviting other people to eat with them",
-                                "By exchanging gifts with others"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_17"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "Select any two roles that were played by prophets in christianity",
-                    "type": "check_box",
-                    "answer": [
-                        "They baptized people",
-                        "They performed miracles"
-                    ],
-                    "options": [
-                        "They fought the unfaithful",
-                        "They baptized people",
-                        "They performed miracles",
-                        "They gave punishments to law breakers"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select two ways in which prophets changed people's lives",
-                            "type": "check_box",
-                            "answer": [
-                                "They guided people",
-                                "They strengthened people's faith in God"
-                            ],
-                            "options": [
-                                "They kept criminals away from society",
-                                "They guided people",
-                                "They were the people's leaders",
-                                "They strengthened people's faith in God"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_18"
-                },
-                "or": {
-                    "question_text": "Select any two roles that were played by prophets in islam",
-                    "type": "check_box",
-                    "answer": [
-                        "They people to convert to Islam",
-                        "They performed miracles"
-                    ],
-                    "options": [
-                        "They fought the unfaithful",
-                        "They people to convert to Islam",
-                        "They performed miracles",
-                        "They gave punishments to law breakers"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select two ways in which prophets changed people's lives",
-                            "type": "check_box",
-                            "answer": [
-                                "They guided people",
-                                "They strengthened people's faith in Allah"
-                            ],
-                            "options": [
-                                "They kept criminals away from society",
-                                "They guided people",
-                                "They were the people's leaders",
-                                "They strengthened people's faith in Allah"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_18"
-                }
-            },
-            {
-                "either": {
-                    "question_text": "Where will sinners go on the day of Judgement",
-                    "type": "text",
-                    "answer": [
-                        "Hell"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any three ways in which christians should prepare for the day of Judgement",
-                            "type": "check_box",
-                            "answer": [
-                                "By repenting their sins",
-                                "By forgiving others",
-                                "By getting baptized"
-                            ],
-                            "options": [
-                                "By going to church",
-                                "By repenting their sins",
-                                "By going to school",
-                                "By forgiving others",
-                                "By going to work",
-                                "By getting baptized"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_19"
-                },
-                "or": {
-                    "question_text": "Where will sinners go on the day of Judgement",
-                    "type": "text",
-                    "answer": [
-                        "Jannah"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "Select any three ways in which muslims should prepare for the day of Judgement",
-                            "type": "check_box",
-                            "answer": [
-                                "By repenting their sins",
-                                "By forgiving others",
-                                "By getting baptized"
-                            ],
-                            "options": [
-                                "By going to the mosque",
-                                "By repenting their sins",
-                                "By going to school",
-                                "By forgiving others",
-                                "By going to work",
-                                "By observing the five pillars of Islam"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_19"
-                }
-            },
+            // {
+            //     "either": {
+            //         "question_text": "What type of religion existed in Africa before the coming of Christianity?",
+            //         "type": "text",
+            //         "answer": [
+            //             "African Traditional Religion"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two ways in which believers of the religion in (a) above showed that there was life after death",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "They named their children after their dead relatives",
+            //                     "They sacrificed animals to appease the spirits of their dead relatives"
+            //                 ],
+            //                 "options": [
+            //                     "They named their children after their dead relatives",
+            //                     "They prayed for the dead",
+            //                     "They sacrificed animals to appease the spirits of their dead relatives"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "State any one reason why some Christians fear death",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "They don't want to lose their wealth"
+            //                 ],
+            //                 "options": [
+            //                     "They are not sure of life after death",
+            //                     "They don't want to lose their wealth"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_1"
+            //     },
+            //     "or": {
+            //         "question_text": "What type of religion existed in Africa before the coming of Islam?",
+            //         "type": "text",
+            //         "answer": [
+            //             "African Traditional Religion"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two ways in which believers of the religion in (a) above showed that there was life after death",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "They named their children after their dead relatives",
+            //                     "They sacrificed animals to appease the spirits of their dead relatives"
+            //                 ],
+            //                 "options": [
+            //                     "They named their children after their dead relatives",
+            //                     "They prayed for the dead",
+            //                     "They sacrificed animals to appease the spirits of their dead relatives"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "State any one reason why some Christians fear death",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "They don't want to lose their wealth"
+            //                 ],
+            //                 "options": [
+            //                     "They are not sure of life after death",
+            //                     "They don't want to lose their wealth"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_1"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "What helped Jesus Christ to be successful when he was on earth?",
+            //         "type": "multipleChoice",
+            //         "answer": [
+            //             "His kindness and generosity brought him many followers"
+            //         ],
+            //         "options": [
+            //             "His kindness and generosity brought him many followers",
+            //             "Him being the son of God"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any three factors that lead people to a successful life today",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "The fear of God",
+            //                     "High levels of education",
+            //                     "Creativity"
+            //                 ],
+            //                 "options": [
+            //                     "Having a family",
+            //                     "The fear of God",
+            //                     "Having children",
+            //                     "High levels of education",
+            //                     "Creativity"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_2"
+            //     },
+            //     "or": {
+            //         "question_text": "What helped Prophet Muhammad (PBUH) to be successful when he was on earth",
+            //         "type": "multipleChoice",
+            //         "answer": [
+            //             "Allah's guidance and protection"
+            //         ],
+            //         "options": [
+            //             "Allah's guidance and protection",
+            //             "Because he was Allah's servant"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any three factors that lead people to a successful life today",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "The fear of Allah",
+            //                     "High levels of education",
+            //                     "Creativity"
+            //                 ],
+            //                 "options": [
+            //                     "Having a family",
+            //                     "The fear of Allah",
+            //                     "Having children",
+            //                     "High levels of education",
+            //                     "Creativity"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_2"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "What did Simon of Cyrene do?",
+            //         "type": "multipleChoice",
+            //         "answer": [
+            //             "Helped Jesus Christ to carry the cross"
+            //         ],
+            //         "options": [
+            //             "He buried the body of Jesus Christ",
+            //             "He helped Jesus Christ to carry the cross",
+            //             "He killed his brother",
+            //             "He betrayed Jesus Christ"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "What did Joseph of Arimathea do?",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "He buried the body of Jesus Christ"
+            //                 ],
+            //                 "options": [
+            //                     "He buried the body of Jesus Christ",
+            //                     "He helped Jesus Christ to carry the cross",
+            //                     "He killed his brother",
+            //                     "He betrayed Jesus Christ"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "What did Cain do?",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "He killed his brother"
+            //                 ],
+            //                 "options": [
+            //                     "He buried the body of Jesus Christ",
+            //                     "He helped Jesus Christ to carry the cross",
+            //                     "He killed his brother",
+            //                     "He betrayed Jesus Christ"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "What did Judas Iscariot do?",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "He betrayed Jesus Christ"
+            //                 ],
+            //                 "options": [
+            //                     "He buried the body of Jesus Christ",
+            //                     "He helped Jesus Christ to carry the cross",
+            //                     "He killed his brother",
+            //                     "He betrayed Jesus Christ"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_3"
+            //     },
+            //     "or": {
+            //         "question_text": "What did Abubakr do?",
+            //         "type": "multipleChoice",
+            //         "answer": [
+            //             "Was the first Caliph in Islam"
+            //         ],
+            //         "options": [
+            //             "Was the mother of Prophet Muhammad",
+            //             "The book given to Prophet Musa",
+            //             "Was the wife of Prophet Muhammad",
+            //             "Was the first Caliph in Islam"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Who was Amina?",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "Was the mother of Prophet Muhammad"
+            //                 ],
+            //                 "options": [
+            //                     "Was the mother of Prophet Muhammad",
+            //                     "The book given to Prophet Musa",
+            //                     "Was the wife of Prophet Muhammad",
+            //                     "Was the first Caliph in Islam"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Whats the taurat?",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "The book given to Prophet Musa"
+            //                 ],
+            //                 "options": [
+            //                     "Was the mother of Prophet Muhammad",
+            //                     "The book given to Prophet Musa",
+            //                     "Was the wife of Prophet Muhammad",
+            //                     "Was the first Caliph in Islam"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Who was Aisha?",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "Was the wife of Prophet Muhammad"
+            //                 ],
+            //                 "options": [
+            //                     "Was the mother of Prophet Muhammad",
+            //                     "The book given to Prophet Musa",
+            //                     "Was the wife of Prophet Muhammad",
+            //                     "Was the first Caliph in Islam"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_3"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "What is marriage in Christianity?",
+            //         "type": "multipleChoice",
+            //         "answer": [
+            //             "Marriage is the legal love union between a man and a woman as husband and wife"
+            //         ],
+            //         "options": [
+            //             "Marriage is the legal love union between a man and a woman as husband and wife",
+            //             "Marriage is a christian sacrament or ritual that involves the symbolic consumption of bread and wine"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two reasons why Christians marry",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "To earn respect from the society",
+            //                     "To procreate"
+            //                 ],
+            //                 "options": [
+            //                     "To earn respect from the society",
+            //                     "Because they are required to marry",
+            //                     "To procreate",
+            //                     "To gain wealth"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Give one quality of a good marriage partner",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "Honest"
+            //                 ],
+            //                 "options": [
+            //                     "Educated",
+            //                     "Honest"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_4"
+            //     },
+            //     "or": {
+            //         "question_text": "What is Nikah in Islam?",
+            //         "type": "multipleChoice",
+            //         "answer": [
+            //             "Nikah is an agreement between a man and a woman to live as husband and wife"
+            //         ],
+            //         "options": [
+            //             "Nikah is an agreement between a man and a woman to live as husband and wife",
+            //             "Nikah is an agreement for a man or woman to make the pilgrimage to mecca"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two reasons why Muslims marry",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "To earn respect from the society",
+            //                     "To procreate"
+            //                 ],
+            //                 "options": [
+            //                     "To earn respect from the society",
+            //                     "Because they are required to marry",
+            //                     "To procreate",
+            //                     "To gain wealth"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Give one quality of a good marriage partner",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "Honest"
+            //                 ],
+            //                 "options": [
+            //                     "Educated",
+            //                     "Honest"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_4"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "Who is a martyr according to christian teaching?",
+            //         "type": "multipleChoice",
+            //         "answer": [
+            //             "A martyr is a person who dies for his or her faith in God"
+            //         ],
+            //         "options": [
+            //             "A martyr is a person who believes in his religion",
+            //             "A martyr is a person who dies for his or her faith in God"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two benefits of the benefits of the death of Jesus Christ to christian",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "It promotes God's love for Christians",
+            //                     "It brought salvation to Christians"
+            //                 ],
+            //                 "options": [
+            //                     "It helped Christians to be rich",
+            //                     "It promotes God's love for Christians",
+            //                     "It brought salvation to Christians",
+            //                     "It helped christians to go to church"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "What lesson can christians learn from the life of Mbaga Tuzinde",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "They can learn to sacrifice for the sake of Jesus Christ"
+            //                 ],
+            //                 "options": [
+            //                     "They can learn to go to church",
+            //                     "They can learn to sacrifice for the sake of Jesus Christ"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_5"
+            //     },
+            //     "or": {
+            //         "question_text": "Who is a martyr according to islamic teaching?",
+            //         "type": "multipleChoice",
+            //         "answer": [
+            //             "A martyr is a person who dies for his or her faith in Allah"
+            //         ],
+            //         "options": [
+            //             "A martyr is a person who believes in his religion",
+            //             "A martyr is a person who dies for his or her faith in Allah"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two postive results of the battles between muslims and the meccans",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "Muslims were able to get new converts",
+            //                     "Muslims grew stronger in faith"
+            //                 ],
+            //                 "options": [
+            //                     "Muslims were able to get new converts",
+            //                     "It helped muslims to fight corruption",
+            //                     "Muslims grew stronger in faith",
+            //                     "Muslims got recognised in the world"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "What lesson can a muslim learn from the wars fought by prophet Muhammed (P.B.U.H) in madina?",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "To have strong faith in Allah"
+            //                 ],
+            //                 "options": [
+            //                     "A muslim can learn to have strong faith in Allah",
+            //                     "A muslim can learn to go to the mosque for prayer"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_5"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "Select any two reasons why children should obey their parents",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "To get blessings from God",
+            //             "To give respect to their parents"
+            //         ],
+            //         "options": [
+            //             "To get blessings from God",
+            //             "To be able to go to church",
+            //             "To give respect to their parents",
+            //             "To get basic needs"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two ways in which christians can avoid evil practices in their communities",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "By joining the church choir",
+            //                     "By reading the Holy Bible"
+            //                 ],
+            //                 "options": [
+            //                     "By going to school",
+            //                     "By joining the church choir",
+            //                     "By reading the Holy Bible",
+            //                     "By fighting corruption"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_6"
+            //     },
+            //     "or": {
+            //         "question_text": "Select any two reasons why children should obey their parents",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "To get blessings from Allah",
+            //             "To give respect to their parents"
+            //         ],
+            //         "options": [
+            //             "To get blessings from Allah",
+            //             "To be able to go to mosque",
+            //             "To give respect to their parents",
+            //             "To get basic needs"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two ways in which muslims can avoid evil practices in their communities",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "To get blessings from Allah",
+            //                     "By reading the Quran"
+            //                 ],
+            //                 "options": [
+            //                     "By going to school",
+            //                     "To get blessings from Allah",
+            //                     "By reading the Quran",
+            //                     "By fighting corruption"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_6"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "\"I am nobody. How can I go to the King and bring the Israelities out of Egypt?\" (Exodus 3:11)",
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "What made Moses to say the above words?",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "He was afraid of the pharaoh"
+            //                 ],
+            //                 "options": [
+            //                     "He wanted to live the Israelities",
+            //                     "He was afraid of the pharaoh"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Select any two miracles performed in order to convice Pharaoh to release the children of Israel",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "He turned his rod into a big snake",
+            //                     "His hand became diseased"
+            //                 ],
+            //                 "options": [
+            //                     "He turned his rod into a big snake",
+            //                     "His hand became diseased",
+            //                     "He parted the red sea for Israelities to pass",
+            //                     "He healed the blind"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Give any one lesson you learn from the above quotation.",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "I learn to trust God"
+            //                 ],
+            //                 "options": [
+            //                     "I learn to be honest",
+            //                     "I learn to trust God"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_7"
+            //     },
+            //     "or": {
+            //         "question_text": "\"Proper it is for me that I say nothing concerning Allah but the truth. Indeed I have come unto you from your Lord with a clear proof. So let the children of Israel depart along with me\". (Surat Al-Araf 7:105)",
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "What made Prophet Musa to say the above words?",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "He was afraid of the Firaun"
+            //                 ],
+            //                 "options": [
+            //                     "He was afraid of the Firaun",
+            //                     "He wanted to live the Israelities"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Select any two miracles prophet Musa performed in order to convice Firaun to release Ban Israel",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "He turned his rod into a big snake",
+            //                     "His hand became diseased"
+            //                 ],
+            //                 "options": [
+            //                     "He turned his rod into a big snake",
+            //                     "His hand became diseased",
+            //                     "He parted the red sea for Israelities to pass",
+            //                     "He healed the blind"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Give any one lesson you learn from the above quotation",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "I learn to trust Allah"
+            //                 ],
+            //                 "options": [
+            //                     "I learn to be honest",
+            //                     "I learn to trust Allah"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_7"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "Select any two ways in which the Uganda Joint Christian Council (UJCC) has promoted social welfare of people.",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "It has promoted morals through guidance and counselling",
+            //             "It has promoted unity among people"
+            //         ],
+            //         "options": [
+            //             "It has promoted morals through guidance and counselling",
+            //             "It has helped to organise free and fair elections",
+            //             "It has helped to fight corruption",
+            //             "It has promoted unity among people"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "In which two ways can the Inter-Religious Council (IRC) promote unity in Uganda?",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "By mediating peace talks",
+            //                     "By guiding and counselling people"
+            //                 ],
+            //                 "options": [
+            //                     "By organising elections",
+            //                     "By mediating peace talks",
+            //                     "By guiding and counselling people",
+            //                     "By fighting corruption"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_8"
+            //     },
+            //     "or": {
+            //         "question_text": "Select any two ways in which the Uganda Muslim Supreme Council (UMSC) has promoted social welfare of people.",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "It has promoted morals through guidance and counselling",
+            //             "It has promoted unity among people"
+            //         ],
+            //         "options": [
+            //             "It has promoted morals through guidance and counselling",
+            //             "It has helped to organise free and fair elections",
+            //             "It has helped to fight corruption",
+            //             "It has promoted unity among people"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "In which two ways can the Inter-Religious Council (IRC) promote unity in Uganda?",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "By mediating peace talks",
+            //                     "By guiding and counselling people"
+            //                 ],
+            //                 "options": [
+            //                     "By organising elections",
+            //                     "By mediating peace talks",
+            //                     "By guiding and counselling people",
+            //                     "By fighting corruption"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_8"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "Give the meaning of baptism as a sacrament in christianity",
+            //         "type": "multipleChoice",
+            //         "answer": [
+            //             "It is the sacrament that introduces a person into Christianity"
+            //         ],
+            //         "options": [
+            //             "It is the sacrament in which Christians receive the body and blood of Jesus Christ",
+            //             "It is the sacrament that introduces a person into Christianity"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Give the meaning of holy communion as a sacrament in christianity",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "It is the sacrament in which Christians receive the body and blood of Jesus Christ"
+            //                 ],
+            //                 "options": [
+            //                     "It is the sacrament in which Christians receive the body and blood of Jesus Christ",
+            //                     "It is the sacrament that introduces a person into Christianity"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Select two conditions that can enable a christian to take part in Holy communion",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "One must have repented before receiving it",
+            //                     "One must be baptized"
+            //                 ],
+            //                 "options": [
+            //                     "One must be a christian who goes to church",
+            //                     "One must have repented before receiving it",
+            //                     "One must be baptized",
+            //                     "One has to be a honest christian"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_9"
+            //     },
+            //     "or": {
+            //         "question_text": "Give the meaning of Zakah as a pillar of Islam",
+            //         "type": "multipleChoice",
+            //         "answer": [
+            //             "Zakah refers to the money and other items given by Muslims to the mosque to help the needy"
+            //         ],
+            //         "options": [
+            //             "Zakah refers to the journey made by a Muslim to Mecca",
+            //             "Zakah refers to the money and other items given by Muslims to the mosque to help the needy"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Give the meaning of Hijjah as a pillar of Islam",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "Hijjah refers to the journey made by a Muslim to Mecca"
+            //                 ],
+            //                 "options": [
+            //                     "Hijjah refers to the journey made by a Muslim to Mecca",
+            //                     "Hijjah refers to the money and other items given by Muslims to the mosque to help the needy"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Select two conditions that enable a muslim to observe Hijjah",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "One must have niyyah or intention",
+            //                     "One must leave enough money for one's family"
+            //                 ],
+            //                 "options": [
+            //                     "One has to be a muslim",
+            //                     "One must have niyyah or intention",
+            //                     "One must be honest",
+            //                     "One must leave enough money for one's family"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_9"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "Select any two types of books in the holy bible.",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "Gospel books",
+            //             "Epistles or Letters"
+            //         ],
+            //         "options": [
+            //             "Gospel books",
+            //             "Epistles or Letters",
+            //             "Mathew",
+            //             "John"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any one way in which christians give respect to the holy bible",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "By keeping it in a clean place"
+            //                 ],
+            //                 "options": [
+            //                     "By reading it",
+            //                     "By keeping it in a clean place"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Why do christains use the holy bible when preaching",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "Because it contains the word of God"
+            //                 ],
+            //                 "options": [
+            //                     "Because it contains the word of God",
+            //                     "Because it is a holy book"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_10"
+            //     },
+            //     "or": {
+            //         "question_text": "Name the holy book that was revealed to Prophet Issa",
+            //         "type": "text",
+            //         "answer": [
+            //             "Injil",
+            //             "Injir"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two ways in which muslims give respect to the holy Quran",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "By keeping it in a clean place",
+            //                     "By performing ablution before reading it"
+            //                 ],
+            //                 "options": [
+            //                     "By performing ablution before reading it",
+            //                     "By always carrying it",
+            //                     "By reading it",
+            //                     "By keeping it in a clean place"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Why do muslim leaders use the holy Quran when preaching?",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "Because it contains the word of Allah"
+            //                 ],
+            //                 "options": [
+            //                     "Because it contains the word of Allah",
+            //                     "Because it is a holy book"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_10"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "Apart from love, select any other two parts of the fruits of the holy spirit",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "Joy",
+            //             "Peace"
+            //         ],
+            //         "options": [
+            //             "Honest",
+            //             "Joy",
+            //             "Peace",
+            //             "Righteousness"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any other two ways in which the holy spirit is important in the life of a christian",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "He guides christians",
+            //                     "He protects christians"
+            //                 ],
+            //                 "options": [
+            //                     "He guides christians",
+            //                     "He gives wealth to christians",
+            //                     "He helps christians go to church",
+            //                     "He protects christians"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_11"
+            //     },
+            //     "or": {
+            //         "question_text": "Select any two ways in which observing the pillars of Islam can change the life of a muslim",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "They strengthen a Muslim's faith",
+            //             "They guide a muslim"
+            //         ],
+            //         "options": [
+            //             "They help a muslim go to the mosque",
+            //             "They strengthen a Muslim's faith",
+            //             "They guide a muslim",
+            //             "They help muslims to be rich"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two ways in which articles of Islamic faith are important to muslims",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "They strengthen the faith of a muslim",
+            //                     "They draw muslims closer to Allah"
+            //                 ],
+            //                 "options": [
+            //                     "They strengthen the faith of a muslim",
+            //                     "They help muslims to be rich",
+            //                     "They draw muslims closer to Allah",
+            //                     "They help a muslim go to the mosque"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_11"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "State any one traditional way of reconciliation",
+            //         "type": "multipleChoice",
+            //         "answer": [
+            //             "Through arbitration"
+            //         ],
+            //         "options": [
+            //             "Through going to church",
+            //             "Through arbitration"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two ways in which christians carry out reconciliation",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "Through arbitration",
+            //                     "Through exchanging gifts"
+            //                 ],
+            //                 "options": [
+            //                     "Through going to church",
+            //                     "Through arbitration",
+            //                     "Through exchanging gifts",
+            //                     "Through fighting corruption"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Why is reconciliation very important in our communities?",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "It promotes peace"
+            //                 ],
+            //                 "options": [
+            //                     "It helps to fight corruption",
+            //                     "It promotes peace"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_12"
+            //     },
+            //     "or": {
+            //         "question_text": "State any one traditional way of reconciliation",
+            //         "type": "multipleChoice",
+            //         "answer": [
+            //             "Through arbitration"
+            //         ],
+            //         "options": [
+            //             "Through going to church",
+            //             "Through arbitration"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two ways in which muslims carry out reconciliation",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "Through arbitration",
+            //                     "Through exchanging gifts"
+            //                 ],
+            //                 "options": [
+            //                     "Through going to church",
+            //                     "Through arbitration",
+            //                     "Through exchanging gifts",
+            //                     "Through fighting corruption"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Why is reconciliation very important in our communities?",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "It promotes peace"
+            //                 ],
+            //                 "options": [
+            //                     "It helps to fight corruption",
+            //                     "It promotes peace"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_12"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "Mention any one cause of suffering in our society",
+            //         "type": "text",
+            //         "answer": [
+            //             "Death of parents",
+            //             "Ignorance",
+            //             "Disobedience",
+            //             "Accidents",
+            //             "Diseases",
+            //             "Witchcraft",
+            //             "Poor family background"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "State any one way in which Jesus suffered during his life on earth",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "He was made to carry a heavy cross"
+            //                 ],
+            //                 "options": [
+            //                     "He was poisoned",
+            //                     "He was made to carry a heavy cross"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Select any two things a christian can do in times of suffering",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "By praying to God",
+            //                     "By reading the Holy Bible"
+            //                 ],
+            //                 "options": [
+            //                     "By praying to God",
+            //                     "By going to work",
+            //                     "By reading the Holy Bible",
+            //                     "By fighting corruption"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_13"
+            //     },
+            //     "or": {
+            //         "question_text": "Mention any one cause of suffering in our society",
+            //         "type": "text",
+            //         "answer": [
+            //             "Death of parents",
+            //             "Ignorance",
+            //             "Disobedience",
+            //             "Accidents",
+            //             "Diseases",
+            //             "Witchcraft",
+            //             "Poor family background"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "State any one way in which Prophet Muhammad (P.B.U.H) suffered during his life on earth",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "He was poisoned"
+            //                 ],
+            //                 "options": [
+            //                     "He was poisoned",
+            //                     "He was made to carry a heavy cross"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Select any two things a muslim can do in times of suffering",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "By praying to Allah",
+            //                     "By reciting the Holy Quran"
+            //                 ],
+            //                 "options": [
+            //                     "By praying to Allah",
+            //                     "By going to work",
+            //                     "By reciting the Holy Quran",
+            //                     "By fighting corruption"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_13"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "Select any two qualities of a good friend",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "Loving",
+            //             "Caring"
+            //         ],
+            //         "options": [
+            //             "Educated",
+            //             "Loving",
+            //             "Caring",
+            //             "Wealthy"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Give any one reason why a christian child should have good friends",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "To receive good advice"
+            //                 ],
+            //                 "options": [
+            //                     "To be rich",
+            //                     "To receive good advice"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "State any one way of keeping good friends",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "By praying for them"
+            //                 ],
+            //                 "options": [
+            //                     "By praying for them",
+            //                     "By giving them money"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_14"
+            //     },
+            //     "or": {
+            //         "question_text": "Select any two qualities of a good friend",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "Loving",
+            //             "Caring"
+            //         ],
+            //         "options": [
+            //             "Educated",
+            //             "Loving",
+            //             "Caring",
+            //             "Wealthy"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Give any one reason why a muslim child should have good friends",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "To receive good advice"
+            //                 ],
+            //                 "options": [
+            //                     "To be rich",
+            //                     "To receive good advice"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "State any one way of keeping good friends",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "By praying for them"
+            //                 ],
+            //                 "options": [
+            //                     "By praying for them",
+            //                     "By giving them money"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_14"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "Mention any one book which was written by Moses",
+            //         "type": "text",
+            //         "answer": [
+            //             "Genesis",
+            //             "Exodus",
+            //             "Leviticus",
+            //             "Numbers",
+            //             "Deuteronomy"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "State any one way in which the Bible is different from other books",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "The Holy Bible was written by people inspired with Holy Spirit unlike other books"
+            //                 ],
+            //                 "options": [
+            //                     "The bible is different because it is a holy book",
+            //                     "The Holy Bible was written by people inspired with Holy Spirit unlike other books"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Select any two ways in which the Bible is important to christians.",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "It guides Christians",
+            //                     "It strengthens the faith of christians"
+            //                 ],
+            //                 "options": [
+            //                     "It is a holy book",
+            //                     "It guides Christians",
+            //                     "It was written by God",
+            //                     "It strengthens the faith of christians"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_15"
+            //     },
+            //     "or": {
+            //         "question_text": "Mention any one holy book in Islam which was received by prophet Musa",
+            //         "type": "text",
+            //         "answer": [
+            //             "Tauret",
+            //             "Taurat"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "State any one way in which the Quran is different from other books",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "The Quran is used during prayers unlike other books"
+            //                 ],
+            //                 "options": [
+            //                     "The Quran is different because it is a holy book",
+            //                     "The Quran is used during prayers unlike other books"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Select any two ways in which the Quran is important to muslims.",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "It guides muslims",
+            //                     "It strengthens the faith of muslims"
+            //                 ],
+            //                 "options": [
+            //                     "It is a holy book",
+            //                     "It guides muslims",
+            //                     "It was written by Allah",
+            //                     "It strengthens the faith of muslims"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_15"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "Select any two groups of church leaders who conduct marriages",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "Priests",
+            //             "Reverends"
+            //         ],
+            //         "options": [
+            //             "Nuns",
+            //             "Priests",
+            //             "Reverends",
+            //             "Catechist"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two ways in which christan marriages have promoted morals among christians",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "They have encouraged christian couples to remain faithful to each other",
+            //                     "They have encouraged christians to care for each other"
+            //                 ],
+            //                 "options": [
+            //                     "They have encouraged christians to fight corruption",
+            //                     "They have encouraged christian couples to remain faithful to each other",
+            //                     "They have encouraged christians to care for each other",
+            //                     "They have encouraged christians to get married"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_16"
+            //     },
+            //     "or": {
+            //         "question_text": "Select any two groups of muslim leaders who conduct marriages",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "Sheikh",
+            //             "Mufti"
+            //         ],
+            //         "options": [
+            //             "Mufti",
+            //             "Priests",
+            //             "Reverends",
+            //             "Sheikh"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two ways in which marriages have promoted morals among muslims",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "They have encouraged them to remain faithful to each other",
+            //                     "They have encouraged Muslims to take care of each other"
+            //                 ],
+            //                 "options": [
+            //                     "They have encouraged Muslims to fight corruption",
+            //                     "They have encouraged them to remain faithful to each other",
+            //                     "They have encouraged Muslims to take care of each other",
+            //                     "They have encouraged Muslims to get married"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_16"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "Select any two ways in which christians prepare themselves for christmas day",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "By decorating their houses",
+            //             "By attending prayers"
+            //         ],
+            //         "options": [
+            //             "By healing the sick",
+            //             "By decorating their houses",
+            //             "By going to the mosque",
+            //             "By attending prayers"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two ways in which christians share joy of christmas with other people",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "By inviting other people to eat with them",
+            //                     "By exchanging gifts with others"
+            //                 ],
+            //                 "options": [
+            //                     "By going to church",
+            //                     "By decorating their houses",
+            //                     "By inviting other people to eat with them",
+            //                     "By exchanging gifts with others"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_17"
+            //     },
+            //     "or": {
+            //         "question_text": "Select any two ways in which muslims prepare themselves for Idd-el-fitr",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "By attending Idd prayers",
+            //             "By preparing food for their families"
+            //         ],
+            //         "options": [
+            //             "By healing the sick",
+            //             "By preparing food for their families",
+            //             "By going to the church",
+            //             "By attending Idd prayers"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any two ways in which muslims share joy of Idd-el-fitr with other people",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "By inviting other people to eat with them",
+            //                     "By exchanging gifts with others"
+            //                 ],
+            //                 "options": [
+            //                     "By going to mosque",
+            //                     "By decorating their houses",
+            //                     "By inviting other people to eat with them",
+            //                     "By exchanging gifts with others"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_17"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "Select any two roles that were played by prophets in christianity",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "They baptized people",
+            //             "They performed miracles"
+            //         ],
+            //         "options": [
+            //             "They fought the unfaithful",
+            //             "They baptized people",
+            //             "They performed miracles",
+            //             "They gave punishments to law breakers"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select two ways in which prophets changed people's lives",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "They guided people",
+            //                     "They strengthened people's faith in God"
+            //                 ],
+            //                 "options": [
+            //                     "They kept criminals away from society",
+            //                     "They guided people",
+            //                     "They were the people's leaders",
+            //                     "They strengthened people's faith in God"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_18"
+            //     },
+            //     "or": {
+            //         "question_text": "Select any two roles that were played by prophets in islam",
+            //         "type": "check_box",
+            //         "answer": [
+            //             "They people to convert to Islam",
+            //             "They performed miracles"
+            //         ],
+            //         "options": [
+            //             "They fought the unfaithful",
+            //             "They people to convert to Islam",
+            //             "They performed miracles",
+            //             "They gave punishments to law breakers"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select two ways in which prophets changed people's lives",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "They guided people",
+            //                     "They strengthened people's faith in Allah"
+            //                 ],
+            //                 "options": [
+            //                     "They kept criminals away from society",
+            //                     "They guided people",
+            //                     "They were the people's leaders",
+            //                     "They strengthened people's faith in Allah"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_18"
+            //     }
+            // },
+            // {
+            //     "either": {
+            //         "question_text": "Where will sinners go on the day of Judgement",
+            //         "type": "text",
+            //         "answer": [
+            //             "Hell"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any three ways in which christians should prepare for the day of Judgement",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "By repenting their sins",
+            //                     "By forgiving others",
+            //                     "By getting baptized"
+            //                 ],
+            //                 "options": [
+            //                     "By going to church",
+            //                     "By repenting their sins",
+            //                     "By going to school",
+            //                     "By forgiving others",
+            //                     "By going to work",
+            //                     "By getting baptized"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_19"
+            //     },
+            //     "or": {
+            //         "question_text": "Where will sinners go on the day of Judgement",
+            //         "type": "text",
+            //         "answer": [
+            //             "Jannah"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "Select any three ways in which muslims should prepare for the day of Judgement",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "By repenting their sins",
+            //                     "By forgiving others",
+            //                     "By getting baptized"
+            //                 ],
+            //                 "options": [
+            //                     "By going to the mosque",
+            //                     "By repenting their sins",
+            //                     "By going to school",
+            //                     "By forgiving others",
+            //                     "By going to work",
+            //                     "By observing the five pillars of Islam"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_19"
+            //     }
+            // },
             {
                 "either": {
                     "question_text": "Name the miracle Jesus performed while in a boat with his disciples",
@@ -7782,7 +7782,7 @@ const questionsData = [
                     "answer": [
                         "He split the moon into two parts"
                     ],
-                    "option": [
+                    "options": [
                         "He walked on water",
                         "He split the moon into two parts"
                     ],
@@ -8097,84 +8097,84 @@ const questionsData = [
                     "id": "ple_sst_sect_B_or_24"
                 }
             },
-            {
-                "either": {
-                    "question_text": "Name any one symbol in Christianity",
-                    "type": "text",
-                    "answer": [
-                        "Rosary",
-                        "Cross",
-                        "Holy Bible"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "State any one way symbols are important to Christians",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "They strengthen the faith of Christians"
-                            ],
-                            "options": [
-                                "They strengthen the faith of Christians",
-                                "They help christians go to church"
-                            ]
-                        },
-                        {
-                            "question_text": "Select any two symbols of Christianity",
-                            "type": "check_box",
-                            "answer": [
-                                "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51.png",
-                                "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51D.png"
-                            ],
-                            "options": [
-                                "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51.png",
-                                "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51C.png",
-                                "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51D.png",
-                                "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51F.png"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_either_25"
-                },
-                "or": {
-                    "question_text": "Name any one symbol in Islam",
-                    "type": "text",
-                    "answer": [
-                        "Tasbih",
-                        "Holy Quran",
-                        "Star",
-                        "Moon",
-                        "Crescent"
-                    ],
-                    "sub_questions": [
-                        {
-                            "question_text": "State any one way symbols are important to Muslims",
-                            "type": "multipleChoice",
-                            "answer": [
-                                "They are used during prayers"
-                            ],
-                            "options": [
-                                "They are used during prayers",
-                                "They help christians go to church"
-                            ]
-                        },
-                        {
-                            "question_text": "Select any two symbols of Christianity",
-                            "type": "check_box",
-                            "answer": [
-                                "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51C.png",
-                                "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51F.png"
-                            ],
-                            "options": [
-                                "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51.png",
-                                "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51C.png",
-                                "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51D.png",
-                                "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51F.png"
-                            ]
-                        }
-                    ],
-                    "id": "ple_sst_sect_B_or_25"
-                }
-            }
+            // {
+            //     "either": {
+            //         "question_text": "Name any one symbol in Christianity",
+            //         "type": "text",
+            //         "answer": [
+            //             "Rosary",
+            //             "Cross",
+            //             "Holy Bible"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "State any one way symbols are important to Christians",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "They strengthen the faith of Christians"
+            //                 ],
+            //                 "options": [
+            //                     "They strengthen the faith of Christians",
+            //                     "They help christians go to church"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Select any two symbols of Christianity",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51.png",
+            //                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51D.png"
+            //                 ],
+            //                 "options": [
+            //                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51.png",
+            //                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51C.png",
+            //                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51D.png",
+            //                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51F.png"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_either_25"
+            //     },
+            //     "or": {
+            //         "question_text": "Name any one symbol in Islam",
+            //         "type": "text",
+            //         "answer": [
+            //             "Tasbih",
+            //             "Holy Quran",
+            //             "Star",
+            //             "Moon",
+            //             "Crescent"
+            //         ],
+            //         "sub_questions": [
+            //             {
+            //                 "question_text": "State any one way symbols are important to Muslims",
+            //                 "type": "multipleChoice",
+            //                 "answer": [
+            //                     "They are used during prayers"
+            //                 ],
+            //                 "options": [
+            //                     "They are used during prayers",
+            //                     "They help christians go to church"
+            //                 ]
+            //             },
+            //             {
+            //                 "question_text": "Select any two symbols of Christianity",
+            //                 "type": "check_box",
+            //                 "answer": [
+            //                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51C.png",
+            //                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51F.png"
+            //                 ],
+            //                 "options": [
+            //                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51.png",
+            //                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51C.png",
+            //                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51D.png",
+            //                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_51F.png"
+            //                 ]
+            //             }
+            //         ],
+            //         "id": "ple_sst_sect_B_or_25"
+            //     }
+            // }
         ],
         "$id": "document_51"
     },
@@ -11435,7 +11435,7 @@ const questionsData = [
                 "answer": [
                     "They provide free services to people"
                 ],
-                "option": [
+                "options": [
                     "They help to fight corruption",
                     "They provide free services to people"
                 ],
@@ -11447,7 +11447,7 @@ const questionsData = [
                 "answer": [
                     "Captain F.D Lugard restored Omukama Kasagama to his throne"
                 ],
-                "option": [
+                "options": [
                     "Captain F.D Lugard restored Omukama Kasagama to his throne",
                     "Captain F.D Lugard built schools in Omukama Kasagama's kingdom"
                 ],
@@ -11459,7 +11459,7 @@ const questionsData = [
                 "answer": [
                     "It has given loans to the youth"
                 ],
-                "option": [
+                "options": [
                     "It has given loans to the youth",
                     "It has fought corruption"
                 ],
@@ -11471,7 +11471,7 @@ const questionsData = [
                 "answer": [
                     "Due to the presence of enough pasture for rearing cattle"
                 ],
-                "option": [
+                "options": [
                     "Due to the presence of enough pasture for rearing cattle",
                     "The scarcity of land and spaces in other areas"
                 ],
@@ -11483,7 +11483,7 @@ const questionsData = [
                 "answer": [
                     "It promotes trade"
                 ],
-                "option": [
+                "options": [
                     "It helps to increase taxes",
                     "It promotes trade"
                 ],
@@ -13284,4 +13284,3868 @@ const questionsData = [
     }
 ]
 
-export default questionsData;
+const math_ple = [
+    {
+        "category": 1,
+        "questions": [
+            {
+                "question_text": "Work out: 534 - 123",
+                "type": "text",
+                "answer": "411",
+                "id": "ple_math_sect_A1_1"
+            },
+            {
+                "question_text": "Work out: 36 ÷ 3",
+                "type": "text",
+                "answer": "12",
+                "id": "ple_math_sect_A1_2"
+            },
+            {
+                "question_text": "Work out: 32 x 3",
+                "type": "text",
+                "answer": "96",
+                "id": "ple_math_sect_A1_3"
+            },
+            {
+                "question_text": "Work out: 23 + 42",
+                "type": "text",
+                "answer": "65",
+                "id": "ple_math_sect_A1_4"
+            },
+            {
+                "question_text": "Work out: 124 - 45",
+                "type": "text",
+                "answer": "79",
+                "id": "ple_math_sect_A1_5"
+            },
+            {
+                "question_text": "Work out: 14 + 53",
+                "type": "text",
+                "answer": "67",
+                "id": "ple_math_sect_A1_6"
+            },
+            {
+                "question_text": "Work out : 22 x 4",
+                "type": "text",
+                "answer": "88",
+                "id": "ple_math_sect_A1_7"
+            }
+        ],
+        "$id": "document_0"
+    },
+    {
+        "category": 2,
+        "questions": [
+            {
+                "question_text": "Write XCVII IN Hindu Arabic numerals",
+                "type": "text",
+                "answer": "97",
+                "id": "ple_math_sect_A2_1"
+            },
+            {
+                "question_text": "Write in figures: Nine thousand, thirty six",
+                "type": "text",
+                "answer": "9036",
+                "id": "ple_math_sect_A2_2"
+            },
+            {
+                "question_text": "Write 650,019 in words",
+                "type": "multipleChoice",
+                "answer": "Six hundred fifty thousand nineteen",
+                "options": [
+                    "Six hundred fifty thousand nine",
+                    "Six thousand five hundred nineteen",
+                    "Six hundred fifty thousand nineteen"
+                ],
+                "id": "ple_math_sect_A2_3"
+            },
+            {
+                "question_text": "Simplify: 3a + a - 2a",
+                "type": "multipleChoice",
+                "answer": "= 2a",
+                "explanation": "4a - 2a\n = 2a",
+                "options": [
+                    "= 4a",
+                    "= 2",
+                    "= 2a"
+                ],
+                "id": "ple_math_sect_A2_4"
+            },
+            {
+                "question_text": "Write in figures: Eighty thousand, ten.",
+                "type": "text",
+                "answer": "80010",
+                "id": "ple_math_sect_A2_5"
+            },
+            {
+                "question_text": "Write 99,040 in words",
+                "type": "multipleChoice",
+                "answer": "Ninety nine thousand forty",
+                "options": [
+                    "Nine hundred nine thousand four",
+                    "Ninety nine thousand four",
+                    "Ninety nine thousand forty"
+                ],
+                "id": "ple_math_sect_A2_6"
+            },
+            {
+                "question_text": "What number has been expanded below?\n 20,000 + 600 + 8",
+                "type": "text",
+                "answer": "20608",
+                "id": "ple_math_sect_A2_7"
+            }
+        ],
+        "$id": "document_1"
+    },
+    {
+        "category": 11,
+        "questions": [
+            {
+                "question_text": "Find the next number in the sequence 58, 33, 17, 8, _____",
+                "type": "multipleChoice",
+                "answer": "4",
+                "options": [
+                    "7",
+                    "6",
+                    "4"
+                ],
+                "id": "ple_math_sect_A11_1"
+            },
+            {
+                "question_text": "Work out: (49 x 39) + (61 x 49)",
+                "type": "multipleChoice",
+                "answer": "4900",
+                "explanation": "(49 x 39) + (61 x 49)\n 49(39 + 61)\n 49(100)\n 49 x 100\n 4900",
+                "options": [
+                    "198",
+                    "4900",
+                    "400"
+                ],
+                "id": "ple_math_sect_A11_2"
+            },
+            {
+                "question_text": "Work out: 1<sup>1</sup>/<sub>2</sub> - 2/3",
+                "type": "multipleChoice",
+                "answer": "= 5/6",
+                "explanation": "Convert the mixed fraction to improper fraction\n 3/2 - 2/3\n Get the LCM\n (9 - 4)/6\n = 5/6",
+                "options": [
+                    "= 1/2",
+                    "= 1/6",
+                    "= 5/6"
+                ],
+                "id": "ple_math_sect_A11_3"
+            },
+            {
+                "question_text": "The area of a square flower garden is 196m <sub>2</sub> . find the length of each side.",
+                "type": "multipleChoice",
+                "answer": "14 m",
+                "explanation": "Area of a square = Side x Side\n = S<sub>2</sub>\n 196 = S<sub>2</sub>\n √196 = √S<sub>2</sub>\n 14 = S\n ∴ S = 14",
+                "options": [
+                    "14 m",
+                    "49 m",
+                    "98 m"
+                ],
+                "id": "ple_math_sect_A11_4"
+            },
+            {
+                "question_text": "In a car park there are 192 cars. The probability that a car picked at random from the park is made in Japan is 5/8. How many cars are not made in Japan?",
+                "type": "multipleChoice",
+                "answer": "72 cars",
+                "explanation": "Number of cars made in Japan = 5/8 x 192\n = 5 x 24\n = 120 cars\n Number of cars not made in Japan = Total number of cars - Number of cars made in Japan\n = 192 - 120\n = 72 cars",
+                "options": [
+                    "120 cars",
+                    "78 cars",
+                    "72 cars"
+                ],
+                "id": "ple_math_sect_A11_5"
+            },
+            {
+                "question_text": "Given that n = 3 and r =  -2, evaluate (2n+2r)/r",
+                "type": "multipleChoice",
+                "answer": "-1",
+                "explanation": "(2 x 3 + 2 x -2)/-2\n = (6 + -4)/2\n = -2/2\n = -1",
+                "options": [
+                    "-1",
+                    "1",
+                    "1/2"
+                ],
+                "id": "ple_math_sect_A11_6"
+            },
+            {
+                "question_text": "What morning time is shown on the clock face below?",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/11.png",
+                "type": "multipleChoice",
+                "answer": "8:25 a.m",
+                "options": [
+                    "2:25 a.m",
+                    "8:25 a.m",
+                    "8:45 a.m"
+                ],
+                "id": "ple_math_sect_A11_7"
+            }
+        ],
+        "$id": "document_10"
+    },
+    {
+        "category": 12,
+        "questions": [
+            {
+                "question_text": "Calculate the speed of a motorist who covered a distance of 210 kilometres in 2.5 hours",
+                "type": "multipleChoice",
+                "answer": "84 km/hr",
+                "explanation": "Speed = Distance/Time\n Speed = 210/2.5\n Speed = 84 kilometres/hour",
+                "options": [
+                    "84 km/hr",
+                    "212.5 km/hr",
+                    "525 km/hr"
+                ],
+                "id": "ple_math_sect_A12_1"
+            },
+            {
+                "question_text": "Round off 796 to the nearest tens.",
+                "type": "text",
+                "answer": "800",
+                "explanation": "Since 6 is greater than or equal to 5, you round up the tens digit\n. Therefore, the tens digit becomes 0, and the hundreds digit remains the same. The final result is 800.",
+                "options": [
+                    "795",
+                    "800",
+                    "795"
+                ],
+                "id": "ple_math_sect_A12_2"
+            },
+            {
+                "question_text": "Find the value of the digit in the ten thousands place in the number 850634.",
+                "type": "text",
+                "answer": "5",
+                "id": "ple_math_sect_A12_3"
+            },
+            {
+                "question_text": "Convert 12½% to fraction in its lowest term",
+                "type": "multipleChoice",
+                "answer": "= 1/8",
+                "explanation": "12½/100\n convert 12½ to an improper fraction\n (25/2)/100\n 25/2 ÷ 100\n 25/2 ÷ 100/1\n 25/2 x 1/100\n 1/2 x 1/4\n = 1/8",
+                "options": [
+                    "= 1/4",
+                    "= 1/2",
+                    "= 1/8"
+                ],
+                "id": "ple_math_sect_A12_4"
+            },
+            {
+                "question_text": "How many packets of 200 grammes can be got from 2.6 kilogrames of salt?",
+                "type": "multipleChoice",
+                "answer": "13 packets",
+                "explanation": "First convert 2.6 kg to grammes\n 1 kg = 1000 g\n 2.6 kg = (2.6 x 1000)g\n = 2600 g\n Number of packets = 2600/200\n = 26/2\n = 13 packets",
+                "options": [
+                    "13 packets",
+                    "12 packets",
+                    "75 packets"
+                ],
+                "id": "ple_math_sect_A12_5"
+            },
+            {
+                "question_text": "The graph below shows the temperature of a patient in a hospital taken from 7:00 a.m. to 12:00 noon in a day. What times of the day was the temperature of the patient the same?",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/12.png",
+                "type": "multipleChoice",
+                "answer": "10:00 a.m and 12:00 noon",
+                "options": [
+                    "10:00 a.m and 12:00 noon",
+                    "10:00 a.m and 11:00 a.m",
+                    "7:00 a.m and 110:00 a.m"
+                ],
+                "id": "ple_math_sect_A12_6"
+            },
+            {
+                "question_text": "Simplify : <sup>+</sup>4 - <sup>+</sup>6",
+                "type": "multipleChoice",
+                "answer": "-10",
+                "explanation": "+4 - (+6)\n = -10",
+                "options": [
+                    "-2",
+                    "-10",
+                    "10"
+                ],
+                "id": "ple_math_sect_A12_7"
+            }
+        ],
+        "$id": "document_11"
+    },
+    {
+        "category": 13,
+        "questions": [
+            {
+                "question_text": "Change 8<sub>ten</sub> to binary system.",
+                "type": "multipleChoice",
+                "answer": "1000",
+                "explanation": "Divide 8 by 2. The quotient is 4 and the remainder is 0\n Divide 4 by 2. The quotient is 2 and the remainder is 0\n Divide 2 by 2. The quotient is 1 and the remainder is 0\n Write down the remainders in reverse order as 0001\n Therefore, 8 in binary is 1000",
+                "options": [
+                    "100",
+                    "1000",
+                    "10000"
+                ],
+                "id": "ple_math_sect_A13_1"
+            },
+            {
+                "question_text": "Which of the following diagrams show <sub>-</sub>5+<sub>+</sub>2 on the number line?",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/13.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/13_1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/13_2.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/13.png"
+                ],
+                "id": "ple_math_sect_A13_2"
+            },
+            {
+                "question_text": "A box contains 20 pens, 10 are blue, 7 are red and the rest black. A pen is picked at random from the box, find the probability that it is a black pen.",
+                "type": "multipleChoice",
+                "answer": "Probability = 3/20",
+                "explanation": "Let the number of black pens be x\n Number of black pens = Total number of pens - (Blue pens + Red pens)\n = 20 - (10 + 7)\n = 20 - 17\n = 3 black pens\n Probability = (Number of black pens)/(Total number of pens)\n = 3/20",
+                "options": [
+                    "Probability = 1/10",
+                    "Probability = 7/20",
+                    "Probability = 3/20"
+                ],
+                "id": "ple_math_sect_A13_3"
+            },
+            {
+                "question_text": "The prime factors of 12 and 90 are given below;\n 12 = 2<sup>2</sup> x 3\n 90 = 2 x 3<sup>2</sup> x 5\n Use the given prime factors above to find the Lowest Common Multiple (LCM) of 12 and 90",
+                "type": "multipleChoice",
+                "answer": "LCM = 180",
+                "explanation": "2<sup>2</sup> x 3<sup>2</sup> x 5\n = 4 x 9 x 5\n = 180",
+                "options": [
+                    "LCM = 30",
+                    "LCM = 180",
+                    "LCM = 360"
+                ],
+                "id": "ple_math_sect_A13_4"
+            },
+            {
+                "question_text": "Given that a = <sup>-</sup>2, b = 3 and c = 4, find the value of b(a<sup>2</sup> + c)",
+                "type": "multipleChoice",
+                "answer": "24",
+                "explanation": "3((<sup>-</sup>2)<sup>2</sup> + 4)\n = 3(4 + 4)\n = 3(8)\n = 3 x 8\n = 24",
+                "options": [
+                    "24",
+                    "0",
+                    "20"
+                ],
+                "id": "ple_math_sect_A13_5"
+            },
+            {
+                "question_text": "Today Monday, the workers on farm are paid their salary. What day of the week will the workers' next pay be, 30 days from today?",
+                "type": "multipleChoice",
+                "answer": "Monday",
+                "explanation": "Monday + 30 days = 30 days\n Since every week has 7 days\n 30 = (7 x 4) + 2",
+                "options": [
+                    "Tuesday",
+                    "Friday",
+                    "Monday"
+                ],
+                "id": "ple_math_sect_A13_6"
+            },
+            {
+                "question_text": "In a class, the ratio of girls to boys is 3:2. If there are 18 girls, how many pupils are in the class?",
+                "type": "multipleChoice",
+                "answer": "30 pupils",
+                "explanation": "Total ratio = 3 + 2 = 5\n Let each ratio be n\n 3n = 18\n 3n/3 = 18/3\n n = 6\n = 5 x 6\n = 30 pupils",
+                "options": [
+                    "20 pupils",
+                    "10 pupils",
+                    "30 pupils"
+                ],
+                "id": "ple_math_sect_A13_7"
+            }
+        ],
+        "$id": "document_12"
+    },
+    {
+        "category": 14,
+        "questions": [
+            {
+                "question_text": "Find the smallest number that can be divided by 8 or 12 and leaves 5 as the remainder",
+                "type": "multipleChoice",
+                "answer": "29",
+                "explanation": "Find the LCM of 8 and 12\n 8 = 2<sup>3</sup>\n 12 = 2<sup>2</sup> x 3\n LCM of 8 and 12 = 2<sup>3</sup> x 3\n LCM = 24\n Smallest number = LCM + remainder\n Smallest number = 24 + 5\n = 29",
+                "options": [
+                    "24",
+                    "25",
+                    "29"
+                ],
+                "id": "ple_math_sect_A14_1"
+            },
+            {
+                "question_text": "Martha drove from town A to town B at a speed of 72km per hour. Town A is 90km away from town B. Calculate the time she took to reach town B.",
+                "type": "multipleChoice",
+                "answer": "Time taken is 1 hour and 15 minutes",
+                "explanation": "Time taken = Distance/Speed\n = 90/72\n = 15/12\n Convert to minutes\n 15/12 x 60\n = 75 minutes\n = 1 hour and 15 minutes",
+                "options": [
+                    "Time taken is 2 hours",
+                    "Time taken is 1 hour",
+                    "Time taken is 1 hour and 15 minutes"
+                ],
+                "id": "ple_math_sect_A14_2"
+            },
+            {
+                "question_text": "The diagram below shows the positions of two towns L and M. Work out the bearing of town L from town M",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/14.png",
+                "type": "multipleChoice",
+                "answer": "Bearing = 283<sup>o</sup>",
+                "explanation": "Since the bearing is calculated from the North clockwise\n (90 + 90 + 90) + (90 - 77) (corresponding angles)\n = 270 + 13\n  = 283<sup>o</sup>",
+                "options": [
+                    "Bearing = 347<sup>o</sup>",
+                    "Bearing = 77<sup>o</sup>",
+                    "Bearing = 283<sup>o</sup>"
+                ],
+                "id": "ple_math_sect_A14_3"
+            },
+            {
+                "question_text": "A wire of length 161 metres was shared by some boys. The average length of wire each boy got was 23 metres. Find the number of boys who shared the wire.",
+                "type": "multipleChoice",
+                "answer": "7 boys",
+                "explanation": "Number of boys = (wire length)/(average length each boy got)\n = 161/23\n = 7",
+                "options": [
+                    "9 boys",
+                    "8 boys",
+                    "7 boys"
+                ],
+                "id": "ple_math_sect_A14_4"
+            },
+            {
+                "question_text": "Work out 1101<sub>two</sub> + 111<sub>two</sub>",
+                "type": "multipleChoice",
+                "answer": "10100<sub>two</sub>",
+                "options": [
+                    "1010<sub>two</sub>",
+                    "10110<sub>two</sub>",
+                    "10100<sub>two</sub>"
+                ],
+                "id": "ple_math_sect_A14_5"
+            },
+            {
+                "question_text": "Write the number whose scientific notation is 9.85 x 10<sup>3</sup>",
+                "type": "multipleChoice",
+                "answer": "9850",
+                "explanation": "9.85 x (10 x 10 x 10)\n = 9.85 x 1000\n = 9850",
+                "options": [
+                    "9850",
+                    "985",
+                    "98500"
+                ],
+                "id": "ple_math_sect_A14_6"
+            }
+        ],
+        "$id": "document_13"
+    },
+    {
+        "category": 15,
+        "questions": [
+            {
+                "question_text": "A teacher deposited shs 72,000 in a bank. After one year, the teacher earned a simple interest of shs 3,600. Calculate the simple interest rate of the bank.",
+                "type": "multipleChoice",
+                "answer": "Rate = 5",
+                "explanation": "Simple Interest = (Principal x Rate x Time)/100\n Rate = (Simple Interest x 100)/Principal x Time\n Rate = (3600 x 100)/(72000 x 1)\n Rate = 5",
+                "options": [
+                    "Rate = 15",
+                    "Rate = 10",
+                    "Rate = 5"
+                ],
+                "id": "ple_math_sect_A15_1"
+            },
+            {
+                "question_text": "The following heights of six children were recorded at a health centre: 53cm, 64cm, 59cm, 51cm, 63cm and 61cm. Find the median height of the children.",
+                "type": "multipleChoice",
+                "answer": "Median height = 60cm",
+                "explanation": "Arrange the heights in ascending and descending order\n 51cm, 53cm, 59cm, 61cm, 63cm, 64cm\n Since we have two values in the middle\n Add and divide them by 2\n Median = (59 + 61)/2\n = 60",
+                "options": [
+                    "Median height = 51cm",
+                    "Median height = 60cm",
+                    "Median height = 58.5cm"
+                ],
+                "id": "ple_math_sect_A15_2"
+            },
+            {
+                "question_text": "Find the length of the arc DK in the diagram below. (Use π = 22/7)",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/15.png",
+                "type": "multipleChoice",
+                "answer": "99 cm",
+                "explanation": "From circumference of a circle;\n C = 2πr\n Since we finding the length of the arc\n Length = 2πr/2\n = πr\n = 22/7 x 63/2\n = 99",
+                "options": [
+                    "99 cm",
+                    "126 cm",
+                    "31.5 cm"
+                ],
+                "id": "ple_math_sect_A15_3"
+            },
+            {
+                "question_text": "Find the size of angle y in the figure below",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/15.png",
+                "answer": "y = 65<sup>o</sup>",
+                "explanation": "y + y + 50 = 180\n 2y + 50 = 180\n 2y + 50 - 50 = 180 - 50\n 2y = 130\n y = 65",
+                "options": [
+                    "y = 50<sup>o</sup>",
+                    "y = 80<sup>o</sup>",
+                    "y = 65<sup>o</sup>"
+                ],
+                "id": "ple_math_sect_A15_4"
+            },
+            {
+                "question_text": "A cyclist covers 70 km in 2½ hours. How long will he take to cover 21 km at the same speed?",
+                "type": "multipleChoice",
+                "answer": "Time taken = 45 minutes",
+                "explanation": "Speed = Distance/Time\n = 70/2.5\n = 28km/hr\n Time with same speed = Distance/Speed\n = 21/28\n = 3/4\n Convert 3/4 hours to minutes\n = 3/4 x 60\n = 45 minutes",
+                "options": [
+                    "Time taken = 1 hour and 45 minutes",
+                    "Time taken = 45 minutes",
+                    "Time taken = 35 minutes"
+                ],
+                "id": "ple_math_sect_A15_5"
+            },
+            {
+                "question_text": "Work out: 2 - 6(mod 7)",
+                "type": "multipleChoice",
+                "answer": "3(mod 7)",
+                "explanation": "2 - 6 = __(mod 7)\n (2+7) - 6 = __(mod 7)\n 9 - 6 = 3(mod 7)\n = 3(mod 7)",
+                "options": [
+                    "-4(mod 7)",
+                    "4(mod 7)",
+                    "3(mod 7)"
+                ],
+                "id": "ple_math_sect_A15_6"
+            }
+        ],
+        "$id": "document_14"
+    },
+    {
+        "category": 16,
+        "questions": [
+            {
+                "question_text": "Study the coordinate graph below and use it to answer the questions that follow:",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol%207.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Write the coordinates of point G",
+                        "type": "multipleChoice",
+                        "answer": "(3,2)",
+                        "options": [
+                            "(2,3)",
+                            "(3,-2)",
+                            "(3,2)"
+                        ]
+                    },
+                    {
+                        "question_text": "Select the image that shows point H(-3,0) on the coordinate graph",
+                        "type": "multipleChoice",
+                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol%208.png",
+                        "options": [
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/16.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol%208.png"
+                        ]
+                    }
+                ],
+                "id": "ple_math_sect_A16_1"
+            },
+            {
+                "question_text": "Given that 1 US dollar ($) costs Uganda Shillings (Ug.sh) 3,672 and 1 Kenya shilling (Ksh) costs Ug.sh 36, find the cost of 1 US dollar in Kenya shillings.",
+                "type": "multipleChoice",
+                "answer": "1 US dollar = 102 Kenya shillings",
+                "explanation": "1 US dollar ($) = 3,672 Ug.sh\n 1 (Ksh) = 36 (Ug.sh)\n Cost of 1 US dollar in Ksh = (Cost of 1 US dollar in Ug.sh)/(Exchange rate for Ksh to Ug.sh)\n = 3672/36\n = 102",
+                "options": [
+                    "1 US dollar = 36 Kenya shillings",
+                    "1 US dollar = 132,192 Kenya shillings",
+                    "1 US dollar = 102 Kenya shillings"
+                ],
+                "id": "ple_math_sect_A16_2"
+            },
+            {
+                "question_text": "Given that a = 3 and b= -2, find the value of a<sub>2</sub> - b<sub>3</sub>",
+                "type": "multipleChoice",
+                "answer": "17",
+                "explanation": "3<sub>2</sub> - (-2)<sub>3</sub>\n 9 - (-8)\n 9 + 8\n = 17",
+                "options": [
+                    "1",
+                    "17",
+                    "5"
+                ],
+                "id": "ple_math_sect_A16_3"
+            },
+            {
+                "question_text": "Apio bought 30 books at sh 3,000 per dozen. How much money did she spend?",
+                "type": "multipleChoice",
+                "answer": "sh 7,500",
+                "explanation": "We need to first find the number of dozens Apio bought\n Since a dozen contains 12 books\n Number of dozens = 30/12\n = 15/6\n = 5/2 dozens\n Amount spent = Number of dozens x Cost of dozen\n = 5/2 x 3000\n = 5 x 1500\n = 7500",
+                "options": [
+                    "sh 90,000",
+                    "sh 7,500",
+                    "sh 5,000"
+                ],
+                "id": "ple_math_sect_A16_4"
+            },
+            {
+                "question_text": "The venn diagram below shows the prime factors of 12 and 18. Find the Lowest Common Multiple of 12 and 18.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/16.png",
+                "type": "multipleChoice",
+                "answer": "LCM = 36",
+                "explanation": "LCM = 2x2x3x3\n = 4x3x3\n = 12x3\n = 36",
+                "options": [
+                    "LCM = 6",
+                    "LCM = 18",
+                    "LCM = 36"
+                ],
+                "id": "ple_math_sect_A16_5"
+            },
+            {
+                "question_text": "Find the bearing of point Q from point P in the diagram below.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/16.png",
+                "type": "multipleChoice",
+                "answer": "Bearing = 245<sup>o</sup>",
+                "explanation": "180 + (90 - 25)\n = 180 + 65\n = 245",
+                "options": [
+                    "Bearing = 75<sup>o</sup>",
+                    "Bearing = 25<sup>o</sup>",
+                    "Bearing = 245<sup>o</sup>"
+                ],
+                "id": "ple_math_sect_A16_6"
+            },
+            {
+                "question_text": "Given that a = 1/3 and b = 1/9. Find the value of a/b",
+                "type": "multipleChoice",
+                "answer": "3",
+                "explanation": "a/b = a ÷ b\n = 1/3 ÷ 1/9\n = 1/3 x 9/1\n = 9/3\n = 3",
+                "options": [
+                    "1/3",
+                    "3",
+                    "1/2"
+                ],
+                "id": "ple_math_sect_A16_7"
+            }
+        ],
+        "$id": "document_15"
+    },
+    {
+        "category": 17,
+        "questions": [
+            {
+                "question_text": "A train left station K at 11 38 hours and reached station M at 14 27 hours. How long did the train take to travel from K to M?",
+                "type": "multipleChoice",
+                "answer": "2 hours and 49 minutes",
+                "explanation": "Time taken = Arrival time - Departure time\n = 14:27 - 11:38\n Subtract the minutes first\n 27 - 38 = -11 (carry over 1)\n Now, subtract the hours\n (14 - 1) - 11 = 2",
+                "options": [
+                    "2 hours and 11 minutes",
+                    "1 hours and 49 minutes",
+                    "2 hours and 49 minutes"
+                ],
+                "id": "ple_math_sect_A17_1"
+            },
+            {
+                "question_text": "Find the value of p in degrees in the diagram below.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/17.png",
+                "answer": "p = 30",
+                "explanation": "Exterior angles of a triangle add up to 360<sup>o</sup>\n 5p + 3p + 4p = 360\n 12p = 360\n p = 360/12\n = 30",
+                "options": [
+                    "p = 15",
+                    "p = 30",
+                    "p = 180"
+                ],
+                "id": "ple_math_sect_A17_2"
+            },
+            {
+                "question_text": "Sixty six poles are fixed in a straight line along one side of a road. The poles are fixed at intervals of 10 meters. Calculate the length of the road.",
+                "type": "multipleChoice",
+                "answer": "Length = 660 meters",
+                "explanation": "Total Length = Distance between poles * Number of poles\n = 10 m x 66\n = 660 m",
+                "options": [
+                    "Length = 76 meters",
+                    "Length = 660 meters",
+                    "Length = 650 meters"
+                ],
+                "id": "ple_math_sect_A17_3"
+            },
+            {
+                "question_text": "A motorist travels 64 km in 40 minutes. Find the speed of the motorist in kilometers per hour.",
+                "type": "multipleChoice",
+                "answer": "Speed = 96 km/hr",
+                "explanation": "Since the time is in minutes we need to convert it to hours\n 1 minute = 1/60 hours\n 40 minutes = (1/60 x 40) hours\n = 4/6\n = 2/3\n Speed = Distance/Time\n = 64/(2/3)\n = 64 ÷ 2/3\n = 64 x 3/2 = 96",
+                "options": [
+                    "Speed = 2560 km/hr",
+                    "Speed = 90 km/hr",
+                    "Speed = 96 km/hr"
+                ],
+                "id": "ple_math_sect_A17_4"
+            },
+            {
+                "question_text": "Find the median of the numbers 8, 10 ,4 ,1 ,6 and 9",
+                "type": "multipleChoice",
+                "answer": "Median = 7",
+                "explanation": "Arrange the number is ascending or descending order\n 1, 4, 6, 8, 9, 10\n Median = (6+8)/2\n = 7",
+                "options": [
+                    "Median = 8",
+                    "Median = 6.33",
+                    "Median = 7"
+                ],
+                "id": "ple_math_sect_A17_5"
+            },
+            {
+                "question_text": "Solve 2<sup>3n</sup> ÷ 2<sup>n</sup> = 2<sup>4</sup>",
+                "type": "multipleChoice",
+                "answer": "n = 2",
+                "explanation": "2<sup>(3n-n)</sup> = 2<sup>4</sup>\n 3n - n = 4\n 2n = 4\n n = 2",
+                "options": [
+                    "n = 4",
+                    "n = 1",
+                    "n = 2"
+                ],
+                "id": "ple_math_sect_A17_6"
+            },
+            {
+                "question_text": "The bar graph below shows the number of eggs laid by chicken in Opio's farm from Monday to Friday. How many eggs were laid on Wednsday and Friday",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/17.png",
+                "answer": "28 eggs were laid on Wednsday and 42 eggs were laid on Friday",
+                "options": [
+                    "30 eggs were laid on Wednsday and 45 eggs were laid on Friday",
+                    "28 eggs were laid on Wednsday and 42 eggs were laid on Friday",
+                    "42 eggs were laid on Wednsday and 28 eggs were laid on Friday"
+                ],
+                "id": "ple_math_sect_A17_7"
+            }
+        ],
+        "$id": "document_16"
+    },
+    {
+        "category": 18,
+        "questions": [
+            {
+                "question_text": "Find the solution set for k + 2 < 6.",
+                "type": "multipleChoice",
+                "answer": "k < 4",
+                "explanation": "k + 2 < 6\n k + 2 -2 < 6 -2\n k < 6 -2\n k < 4",
+                "options": [
+                    "k < 8",
+                    "k < 4",
+                    "k = 4"
+                ],
+                "id": "ple_math_sect_A18_1"
+            },
+            {
+                "question_text": "The taxi fare from Kampala to Mukono was raised by 16<sup>2</sup>/<sub>3</sub>% The old farewash 3,000. Find the new taxi fare",
+                "type": "multipleChoice",
+                "answer": "New Fare = 3,500",
+                "explanation": "New Fare = Old Fare + (Percentage increase/100 x Old fare)\n Percentage increase = 16<sup>2</sup>/<sub>3</sub>/100\n = 50/3/100\n = 1/6\n = 3000 + (1/6 x 3000)\n = 3000 + 500\n = 3500",
+                "options": [
+                    "New Fare = 4,000",
+                    "New Fare = 3,800",
+                    "New Fare = 3,500"
+                ],
+                "id": "ple_math_sect_A18_2"
+            },
+            {
+                "question_text": "A house can be built by 3 men in 20 days. How many men working at the same rate can build the same house in 12 days?",
+                "type": "multipleChoice",
+                "answer": "5 men",
+                "explanation": "3 men = 20 days\n Total man days = (3 x 20)days\n = 60 days\n Total man days = Number of men x Number of days\n 60 = Number of men x 12\n Number of men = 60/12\n = 5 men",
+                "options": [
+                    "5 men",
+                    "6 men",
+                    "4 men"
+                ],
+                "id": "ple_math_sect_A18_3"
+            },
+            {
+                "question_text": "The area of the shaded part of the cuboid below is 12 cm<sup>2</sup>. Calculate the volume of the cuboid.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/18.png",
+                "type": "multipleChoice",
+                "answer": "Volume = 84cm³",
+                "explanation": "Base area = 12cm²\n Volume = Base area x height\n = 12 x 7\n = 84cm³",
+                "options": [
+                    "Volume = 80cm³",
+                    "Volume = 84cm³",
+                    "Volume = 36cm³"
+                ],
+                "id": "ple_math_sect_A18_4"
+            },
+            {
+                "question_text": "Gidudu has goats and sheep in the ratio of 3:2. If he has 24 goats, how many sheep does he have?",
+                "type": "multipleChoice",
+                "answer": "16 sheep",
+                "explanation": "Let the total number of animals be x\n Total parts = 3+2 = 5\n 3x/5 = 24\n Multipy both sides by 5\n 3x = 24x5\n x = (24x5)/3\n x = 40 animals\n Number of sheep = Total number of animals - Number of goats\n = 40 - 24\n = 16 sheep",
+                "options": [
+                    "16 sheep",
+                    "10 sheep",
+                    "24 sheep"
+                ],
+                "id": "ple_math_sect_A18_5"
+            },
+            {
+                "question_text": "The time on the 12-hour clock is : a quarter to 4 O'clock in the afternoon. Express this time in the 24-hour clock.",
+                "type": "multipleChoice",
+                "answer": "15:45 hours",
+                "options": [
+                    "15:00 hours",
+                    "15:45 hours",
+                    "15:15 hours"
+                ],
+                "id": "ple_math_sect_A18_6"
+            },
+            {
+                "question_text": "The Lowest Common Multiple (LCM) of two numbers is 72 and their Greatest Common Factor (GCF) is 6. If one of the numbers is 24, find the second number.",
+                "type": "multipleChoice",
+                "answer": "First number = 18",
+                "explanation": "First number = (LCM x GCF)/Given number\n = (72 x 6)/24\n = 18",
+                "options": [
+                    "First number = 18",
+                    "First number = 16",
+                    "First number = 20"
+                ],
+                "id": "ple_math_sect_A18_7"
+            }
+        ],
+        "$id": "document_17"
+    },
+    {
+        "category": 19,
+        "questions": [
+            {
+                "question_text": "A shopkeeper bought 19 plates at sh 34,200. At what price must the shopkeeper sell each plate in order to raise a profit of sh 3,800?",
+                "type": "multipleChoice",
+                "answer": "2,000",
+                "explanation": "Selling Price per Plate = (Total Cost + Profit)/ Number of plates\n = (34200+3800)/19\n = 38000/19\n = 2000",
+                "options": [
+                    "1,500",
+                    "2,000",
+                    "2,500"
+                ],
+                "id": "ple_math_sect_A19_1"
+            },
+            {
+                "question_text": "Solve the inequality: 3 - 2m < 15",
+                "type": "multipleChoice",
+                "answer": "m > -6",
+                "explanation": "3 - 2m < 15\n 3 - 3 -2m < 15 - 3\n -2m < 12\n Divide both sides by -2. When you divide by a negative number, the inequality sign changes\n -2m/-2 > 12/-2\n m > -6",
+                "options": [
+                    "m < -6",
+                    "m > -6",
+                    "m > 6"
+                ],
+                "id": "ple_math_sect_A19_2"
+            },
+            {
+                "question_text": "The graph below shows the number of pupils present in a class of 40 pupils in a certain week. Find the number of pupils who were absent on Tuesday.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/19.png",
+                "type": "multipleChoice",
+                "answer": "15 pupils",
+                "explanation": "Number of pupils absent = Total number of pupils - Number of pupils present\n = 40 - 25\n = 15 pupils",
+                "options": [
+                    "20 pupils",
+                    "10 pupils",
+                    "15 pupils"
+                ],
+                "id": "ple_math_sect_A19_3"
+            },
+            {
+                "question_text": "Which of the following show 135<sup>o</sup> constructed accurately",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/19.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/19_1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/19_2.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/19.png"
+                ],
+                "id": "ple_math_sect_A19_4"
+            },
+            {
+                "question_text": "A bucket was ¾ full of water. When 4 litres were removed, it became ½ full of water. What is the capacity of the bucket?",
+                "type": "multipleChoice",
+                "answer": "Capacity = 16 litres",
+                "explanation": "Fraction of water = 3/4\n Removed fraction = 3/4 - 1/2\n LCM = 4\n = ((1x3)-(2x1))/4\n = (3-2)/4\n = 1/4\n Full bucket = Let the full bucket capacity be k\n 1/4 of k = 4\n 1/4 x k = 4\n k = 4 x 4\n = 16 litres",
+                "options": [
+                    "Capacity = 20 litres",
+                    "Capacity = 16 litres",
+                    "Capacity = 15 litres"
+                ],
+                "id": "ple_math_sect_A19_5"
+            },
+            {
+                "question_text": "The pie chart below shows how a farmer uses her land. Calculate the size of her land if she uses 72 acres for cultivation",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/19.png",
+                "type": "multipleChoice",
+                "answer": "216 acres",
+                "explanation": "Let the size of the size of her land be x\n 120x/360 = 72\n x = (72 x 360)/120\n = 72 x 3\n = 216",
+                "options": [
+                    "206 acres",
+                    "200 acres",
+                    "216 acres"
+                ],
+                "id": "ple_math_sect_A19_6"
+            },
+            {
+                "question_text": "Trees were planted along a straight road 305 meters long. If the trees were planted 5 metres apart, how many trees were planted along the road?",
+                "type": "multipleChoice",
+                "answer": "62 tress",
+                "explanation": "Number of trees in a strainght road = ( Distance ÷ interval)+ 1\n = (305 ÷ 5) + 1\n = 61 + 1\n = 62 trees",
+                "options": [
+                    "62 tress",
+                    "61 tress",
+                    "60 tress"
+                ],
+                "id": "ple_math_sect_A19_7"
+            }
+        ],
+        "$id": "document_18"
+    },
+    {
+        "category": 20,
+        "questions": [
+            {
+                "question_text": "Mawa built a circular hut of circumference 66 metres using poles. The poles were fixed at intervals of 1.5 metres. Calculate the number of poles he used.",
+                "type": "multipleChoice",
+                "answer": "44 poles",
+                "explanation": "Circumference = 2πr\n 66 = 2πr\n r = 66/2π\n Number of poles = C/Interval\n = 66/1.5\n = 44 poles",
+                "options": [
+                    "40 poles",
+                    "30 poles",
+                    "44 poles"
+                ],
+                "id": "ple_math_sect_A20_1"
+            },
+            {
+                "question_text": "Bottles of 300 millilitres (ml) were used to fill a nine litre bucket with water. Find the number of full 300ml bottles that were used.",
+                "type": "multipleChoice",
+                "answer": "30 bottles",
+                "explanation": "1 litre = 1000ml\n So a 9 litre bucket = (9 x 1000)ml\n = 9000ml\n Number of bottles = (Total volume)/(Volume of one bottle)\n = 9000ml/300ml\n = 30",
+                "options": [
+                    "30 bottles",
+                    "20 bottles",
+                    "40 bottles"
+                ],
+                "id": "ple_math_sect_A20_2"
+            },
+            {
+                "question_text": "Find the least number of sweets when divided among 8 boys or 6 girls equally, leaves 2 sweets as remainder.",
+                "type": "multipleChoice",
+                "answer": "26 sweets",
+                "explanation": "Let's first find the LCM of 8 and 6\n Prime factorization of 8: 2 x 2 x 2\n Prime factorization of 6: 2 x 3\n LCM = 2 x 2 x 2 x 3\n = 24\n Least number of sweets that leaves a remainder of 2 = 24 + 6\n = 26 sweets",
+                "options": [
+                    "24 sweets",
+                    "26 sweets",
+                    "22 sweets"
+                ],
+                "id": "ple_math_sect_A20_3"
+            },
+            {
+                "question_text": "Hakim is 3 times as old as Lucky. Their total age is 52 year. How old is Lucky?",
+                "type": "multipleChoice",
+                "answer": "13 years old",
+                "explanation": "Let Hakim's age be H and Lucky's age be L\n ∴ H = 3L\n Since H + L = 52\n 3L + L = 52\n 4L = 52\n 4L/4 = 52/4\n L = 13",
+                "options": [
+                    "13 years old",
+                    "12 years old",
+                    "39 years old"
+                ],
+                "id": "ple_math_sect_A20_4"
+            },
+            {
+                "question_text": "In a poultry farm, eggs are packed into boxes which hold 144 eggs. How many boxes of the same size are needed to pack 1,008 eggs?",
+                "type": "multipleChoice",
+                "answer": "7 boxes",
+                "explanation": "Number of boxes = Total number of eggs/Number of eggs per box\n = 1008/144\n = 7 boxes",
+                "options": [
+                    "7 boxes",
+                    "5 boxes",
+                    "6 boxes"
+                ],
+                "id": "ple_math_sect_A20_5"
+            },
+            {
+                "question_text": "A man got a loan of sh 120,000 from a savings and credit co-operative society at a simple interest rate of 8% per anunm. He paid an interest of sh7,200 on the loan. How long was the loan?",
+                "type": "multipleChoice",
+                "answer": "9 months",
+                "explanation": "Interest = Principal x Rate x Time\n 7200 = 120000 x 8/100 x T\n 7200 = 120000 x 0.08T\n 7200 = 9600T\n T = 7200/9600\n = 3/4\n Convert to months\n = 3/4 x 12\n = 9",
+                "options": [
+                    "90 months",
+                    "9 months",
+                    "9 years"
+                ],
+                "id": "ple_math_sect_A20_6"
+            },
+            {
+                "question_text": "Medi has 30 kg to be parked in ¾ kg packets. How many packets will he get?",
+                "type": "multipleChoice",
+                "answer": "40 packets",
+                "explanation": "The number of packets = 30 ÷ 3/4\n = 30 x 4/3\n = 120/3\n = 40",
+                "options": [
+                    "30 packets",
+                    "40 packets",
+                    "50 packets"
+                ],
+                "id": "ple_math_sect_A20_7"
+            }
+        ],
+        "$id": "document_19"
+    },
+    {
+        "category": 3,
+        "questions": [
+            {
+                "question_text": "Simplify: 3p+p-2p",
+                "type": "multipleChoice",
+                "answer": "2p",
+                "explanation": "3p+p-2p\n =4p-2p\n =2p",
+                "options": [
+                    "4p",
+                    "2p",
+                    "p"
+                ],
+                "id": "ple_math_sect_A3_1"
+            },
+            {
+                "question_text": "Given that P = {a, b, c, d, e, f, g} and Q = {b, a, f, e, h} find n(P u Q).",
+                "type": "multipleChoice",
+                "answer": "n(P u Q) = 8",
+                "explanation": "First we get (P u Q)\n (P u Q) = {a,b,c,d,e,f,g,h}\n ∴ n(P u Q) = 8",
+                "options": [
+                    "n(P u Q) = 4",
+                    "n(P u Q) = 7",
+                    "n(P u Q) = 8"
+                ],
+                "id": "ple_math_sect_A3_2"
+            },
+            {
+                "question_text": "Work out: 2 - 5 (finite 7)",
+                "type": "multipleChoice",
+                "answer": "-33",
+                "explanation": "2 - 5 x (7)\n 2 - 35\n = -33",
+                "options": [
+                    "-33",
+                    "-3",
+                    "-21"
+                ],
+                "id": "ple_math_sect_A3_3"
+            },
+            {
+                "question_text": "Work out 5/9 ÷ 2/3",
+                "type": "multipleChoice",
+                "answer": "5/6",
+                "explanation": "5/9 x 3/2\n = 5/3 x 1/2\n = 5/6",
+                "options": [
+                    "5/6",
+                    "1",
+                    "5/9"
+                ],
+                "id": "ple_math_sect_A3_4"
+            },
+            {
+                "question_text": "Simplify: 18x - 5(3x + 7)",
+                "type": "multipleChoice",
+                "answer": "3x - 35",
+                "explanation": "Using BODMAS\n 18x - 15x - 35\n 3x - 35",
+                "options": [
+                    "3x + 35",
+                    "3x - 35",
+                    "3x + 12"
+                ],
+                "id": "ple_math_sect_A3_5"
+            },
+            {
+                "question_text": "Given that k = {1,2,3,4,5} and M = {2,4,6,8}, find n(K u M)",
+                "type": "multipleChoice",
+                "answer": "n(K u M) = 7",
+                "explanation": "First we get (K u M)\n (K u M) = {1,2,3,4,5,6,8}\n ∴ n(P u Q) = 7",
+                "options": [
+                    "n(K u M) = 8",
+                    "n(K u M) = 7",
+                    "n(K u M) = 6"
+                ],
+                "id": "ple_math_sect_A3_6"
+            },
+            {
+                "question_text": "Write XCIX in Hindu-Arabic numerals",
+                "type": "multipleChoice",
+                "answer": "99",
+                "explanation": "XCIX = XC + IX\n = 90 + 9\n = 99",
+                "options": [
+                    "99",
+                    "90",
+                    "95"
+                ],
+                "id": "ple_math_sect_A3_7"
+            }
+        ],
+        "$id": "document_2"
+    },
+    {
+        "category": 21,
+        "questions": [
+            {
+                "question_text": "The diagrams below represent subtraction of two numbers on abacus. Study the diagrams and use them to answer the questions that follow.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol 10.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Write down the numbers represented in the subtraction",
+                        "type": "multipleChoice",
+                        "answer": "304 - 43",
+                        "options": [
+                            "314 - 43",
+                            "304 - 23",
+                            "304 - 43"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Which diagram represents your answer above on the third abacus?",
+                        "type": "multipleChoice",
+                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/21.png",
+                        "options": [
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/21A.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/21.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/21B.png"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A21_1"
+            },
+            {
+                "question_text": "At a party, guests were served with soda (S) and mineral water (W) as shown in the Venn diagram below. Study and use the Venn diagram to answer the questions that follow.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/21.png",
+                "sub_questions": [
+                    {
+                        "question_text": "If 32 guests were served with soda, find the value of r.",
+                        "type": "multipleChoice",
+                        "answer": "r = 4",
+                        "explanation": "3r + 7 + 13 = 32\n 3r + 20 = 32\n 3r + 20 - 20 = 32 - 20\n 3r = 12\n 3r/3 = 12/3\n r = 4",
+                        "options": [
+                            "r = 3",
+                            "r = 4",
+                            "r = 5"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Find the total number of guests who attended the party.",
+                        "type": "multipleChoice",
+                        "answer": "50 guests",
+                        "explanation": "3r + 7 + 13 + r + 6 + 2r\n Since r = 4\n (3x4) + 20 + 4 + 6 + (2x4)\n 12 + 30 + 8\n = 50",
+                        "options": [
+                            "48 people",
+                            "42 people",
+                            "50 people"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Find the probability that a guest picked at random did not take any drink.",
+                        "type": "multipleChoice",
+                        "answer": "Probability  = 4/25",
+                        "explanation": "Probability = (Guests who did not take any drink)/(Guests who attended the party)\n = (2r)/50\n = (2x4)/50\n = 8/50\n = 4/25",
+                        "options": [
+                            "4/25",
+                            "13/50",
+                            "1/8"
+                        ],
+                        "mark": 1
+                    }
+                ],
+                "id": "ple_math_sect_A21_2"
+            },
+            {
+                "question_text": "Work out: 334<sub>five</sub> + 123<sub>five</sub>",
+                "type": "multipleChoice",
+                "answer": "1011<sub>five</sub>",
+                "options": [
+                    "1111<sub>five</sub>",
+                    "10011<sub>five</sub>",
+                    "1011<sub>five</sub>"
+                ],
+                "mark": 2,
+                "sub_questions": [
+                    {
+                        "question_text": "Given that 34<sub>t</sub> = 112<sub>four</sub>, find the value of t",
+                        "type": "multipleChoice",
+                        "answer": "t = 6",
+                        "explanation": "34t<sub>m</sub> = 112<sub>four</sub>\n 3t¹ + 4t⁰ = 1x4² + 1x4¹ + 2x4⁰\n (3 x t) + (4 x 1) = (1x4x4) +(1 x 4) + (2x1)\n 3t + 4 = 16 + 4 + 2\n 3t + 4 = 22\n 3t + 4 - 4 = 22 - 4\n 3t/3 = 18/3\n t = 6",
+                        "options": [
+                            "t = 5",
+                            "t = 4",
+                            "t = 6"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A21_3"
+            },
+            {
+                "question_text": "In a class of 41 pupils, 30 play football (F), t play Netball (N) and 5 play both football and Netball. 3 pupils do not play any of the two games.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/21.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Which of the following show the complete venn diagram",
+                        "type": "multipleChoice",
+                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/21C.png",
+                        "options": [
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/21C.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/21W.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/21W1.png"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Find the value t",
+                        "type": "multipleChoice",
+                        "answer": "t = 13",
+                        "explanation": "25 + 5 + t - 5 + 3 = 41\n 25 + 5 - 5 + 3 + t = 41\n 28 + t = 41\n 28 - 28 + t = 41 - 28\n t = 13",
+                        "options": [
+                            "t = 12",
+                            "t = 10",
+                            "t = 13"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A21_4"
+            },
+            {
+                "question_text": "In a class, 31 pupils play tennis (T) and (d+5) play volley ball (V) only. d pupils play both games while 3 play neither of the games.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/21.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Which of the following show the correct complete venn diagram",
+                        "type": "multipleChoice",
+                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/21C.png",
+                        "options": [
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/21W.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/21C.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/21W1.png"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "If 27 pupils play volleyball altogether, find the value of d",
+                        "type": "multipleChoice",
+                        "answer": "d = 11",
+                        "explanation": "d + d + 5 = 27\n 2d + 5 = 27\n 2d + 5 - 5 = 27 - 5\n 2d = 22\n d = 11",
+                        "options": [
+                            "d = 11",
+                            "d = 11",
+                            "d = 11"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A21_5"
+            },
+            {
+                "question_text": "Which of the following represent 4,502 on the abacus",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/21.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/21_1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/21.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/21_2.png"
+                ],
+                "mark": 1,
+                "sub_questions": [
+                    {
+                        "question_text": "Find the sum of the values of 3 and 7 in the numbers 3,678",
+                        "type": "multipleChoice",
+                        "answer": "3070",
+                        "explanation": "3000 + 70\n = 3070",
+                        "options": [
+                            "37",
+                            "3070",
+                            "73"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A21_6"
+            },
+            {
+                "question_text": "Musamali bought the items in the table below from a shop",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/21.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Which of the following tables show the complete and correct table",
+                        "type": "multipleChoice",
+                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/21.png",
+                        "explanation": "Soap = 6600/2200 = 3 bars\n Bread = 3400/2 = 1,700\n Salt = (5 x 800)/2\n = 5 x 400\n = 2,000\n Total = 6600 + 3400 + 2000\n = 12,000",
+                        "options": [
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/21C.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/21W.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/21W1.png"
+                        ],
+                        "mark": 4
+                    },
+                    {
+                        "question_text": "If Musamali paid Sh 10,800, what percentage discount was he given?",
+                        "type": "multipleChoice",
+                        "answer": "Discount = 10%",
+                        "explanation": "Discount = old price - new price\n = 12,000 - 10,800\n = 1,200\n Percentage discount = (Discount/Total expenditure) x 100\n = 1,200/12,000 x 100\n = 1/10 x 100\n = 10%",
+                        "options": [
+                            "Discount = 9%",
+                            "Discount = 19%",
+                            "Discount = 10%"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A21_7"
+            }
+        ],
+        "$id": "document_20"
+    },
+    {
+        "category": 22,
+        "questions": [
+            {
+                "question_text": "A class of 68 pupils was served matooke (M) and rice (R). 30 pupils ate matooke and 2h ate rice. 7 pupils ate both matooke and rice while 9 pupils did not eat either of the foods.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/22.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Which of the following diagrams show the complete venn diagram",
+                        "type": "multipleChoice",
+                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/22A.png",
+                        "options": [
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/22B.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/22A.png"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "How many pupils ate rice only?",
+                        "type": "multipleChoice",
+                        "answer": "29 pupils",
+                        "explanation": "First solve for h;\n 23 + 7 + 2h - 7 + 9 = 68\n 2h + 32 = 68\n 2h + 32 - 32 = 68 - 32\n 2h = 36\n h = 36/2\n h = 18\n Pupils who ate only rice = 2h - 7\n = 2 x 18 - 7\n = 29 pupils",
+                        "options": [
+                            "25 pupils",
+                            "29 pupils",
+                            "20 pupils"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A22_1"
+            },
+            {
+                "question_text": "Express 4/15 as a recurring decimal",
+                "type": "multipleChoice",
+                "answer": "0.266...",
+                "explanation": "Perform long division\n You will find that you get 6 as a recurring answer",
+                "options": [
+                    "0.25",
+                    "0.26",
+                    "0.266..."
+                ],
+                "mark": 2,
+                "sub_questions": [
+                    {
+                        "question_text": "Simplify: 4/5 x 3/7 ÷ 9/14 + 2<sup>7</sup>/<sub>15</sub>",
+                        "type": "multipleChoice",
+                        "answer": "= 3",
+                        "explanation": "Change the mixed fraction to improper fraction\n 4/5 x 3/7 ÷ 9/14 + 37/15\n Using BODMAS\n = 4/5 x 3/7 x 14/9 + 37/15\n = 8/15 + 37/15\n = 45/15\n = 3",
+                        "options": [
+                            "= 3",
+                            "= 4",
+                            "= 5/7"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A22_2"
+            },
+            {
+                "question_text": "Akot went to the market and bought the following items:\n 3 liters of milk at sh2,400 per liter\n 250g of salt at sh2,000 per kg.\n 18 oranges at sh1,500 for every 6 oranges",
+                "sub_questions": [
+                    {
+                        "question_text": "Calculate the total cost of the items",
+                        "type": "multipleChoice",
+                        "answer": "Total cost = shs 12,200",
+                        "explanation": "Cost of milk = 3 x 2400\n =  shs 7,200\n Cost of salt;\n We first convert the 250 grammes to kilogrammes\n 1 gram = (1/1000) kilogrammes\n 250 g = (250 x 1/1000) kg\n = 1/4 kg\n Cost of salt = 1/4 x 2000\n =  shs 500\n Cost of oranges: \n We first need to find the cost of 1 orange\n 6 oranges = 1500\n 1 orange = 1500/6\n = shs 250\n 18 oranges = 250 x 18\n = shs 4,500\n Total cost = 7,200 + 500 + 4,500\n = 12,200",
+                        "options": [
+                            "Total cost = shs 511,700",
+                            "Total cost = shs 12,200",
+                            "Total cost = shs 27,000"
+                        ],
+                        "mark": 4
+                    },
+                    {
+                        "question_text": "Akot paid sh 12,000 for the items. What discount was she given?",
+                        "type": "multipleChoice",
+                        "answer": "Discount = sh 200",
+                        "explanation": "Discount = Total cost - Amount Paid\n = 12,200 - 12,000\n = 200",
+                        "options": [
+                            "Discount = sh 499,700",
+                            "Discount = sh 200",
+                            "Discount = sh 15,000"
+                        ],
+                        "mark": 1
+                    }
+                ],
+                "id": "ple_math_sect_A22_3"
+            },
+            {
+                "question_text": "Write 955 in Roman numerals.",
+                "type": "text",
+                "answer": "CMLV",
+                "explanation": "CM represents 900 (1000 - 100)\n LV represents 55 (50 + 5)",
+                "mark": 1,
+                "sub_questions": [
+                    {
+                        "question_text": "Find the product of the value of 2 and the value of 8 in the number 4820",
+                        "type": "multipleChoice",
+                        "answer": "Product = 16000",
+                        "explanation": "8 hundreds = 8 x 100 = 800\n 2 tens = 2 x 10 = 20\n Product = 800 x 20\n = 16000",
+                        "options": [
+                            "Product = 16000",
+                            "Product = 16",
+                            "Product = 160"
+                        ],
+                        "mark": 4
+                    }
+                ],
+                "id": "ple_math_sect_A22_4"
+            },
+            {
+                "question_text": "What number has been expanded below?\n (6x10<sup>3</sup>) + (2x10<sup>1</sup>) + (7x10<sup>0</sup>) + (3x10<sup>-2</sup>).",
+                "type": "multipleChoice",
+                "answer": "6027.03",
+                "explanation": "= 6000 + 20 + 7 + 0.03\n = 6027.03",
+                "options": [
+                    "6027.03",
+                    "6127.03",
+                    "6027.3"
+                ],
+                "mark": 3,
+                "sub_questions": [
+                    {
+                        "question_text": "Work out (8.5x14) + (8.5x16)",
+                        "type": "multipleChoice",
+                        "answer": "255",
+                        "explanation": "= 8.5(14 + 16)\n = 8.5 x 30\n = 255",
+                        "options": [
+                            "250",
+                            "255.5",
+                            "255"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A22_5"
+            },
+            {
+                "question_text": "A birthday party attended by 76 guests, 47 were served with beef (B) and 18 were served with both beef and chicken (C). y guests were served with chicken only while (y-5) were not served with any of the two dishes.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/22.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Which of the following show a complete and correct venn diagram",
+                        "type": "multipleChoice",
+                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/22_3.png",
+                        "options": [
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/22_1.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/22_3.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/22_2.png"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Find the value of y",
+                        "type": "multipleChoice",
+                        "answer": "y = 17",
+                        "explanation": "y + 18 + 29 + y - 5 = 76\n y + y + 18 + 29 - 5 = 76\n 2y + 42 = 76\n 2y + 42 - 42 = 76 - 42\n 2y = 34\n y = 17",
+                        "options": [
+                            "y = 14",
+                            "y = 12",
+                            "y = 17"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Find the number of guests who were served with chicken",
+                        "type": "multipleChoice",
+                        "answer": "35 guests",
+                        "explanation": "Number of guests served with chicken;\n = 18 + y\n = 18 + 17\n = 35",
+                        "options": [
+                            "32 guests",
+                            "30 guests",
+                            "35 guests"
+                        ],
+                        "mark": 1
+                    }
+                ],
+                "id": "ple_math_sect_A22_6"
+            },
+            {
+                "question_text": "Express 0.406 in standard form",
+                "type": "multipleChoice",
+                "answer": "4.06 x 10<sup>-1</sup>",
+                "options": [
+                    "40.6 x 10<sup>-1</sup>",
+                    "4.06 x 10<sup>-1</sup>",
+                    "4.06 x 10"
+                ],
+                "mark": 2,
+                "sub_questions": [
+                    {
+                        "question_text": "Write 72 as a product of its prime factors",
+                        "type": "multipleChoice",
+                        "answer": "Prime factors of 72 = 2<sup>3</sup> x3<sup>2</sup>",
+                        "explanation": "72 ÷ 2 = 36\n 36 ÷ 2 = 18\n 18 ÷ 2 = 9\n 9 ÷ 3 = 3\n 3 ÷ 3 = 1\n = 2 x 2 x 2 x 3 x 3\n = 2<sup>3</sup> x3<sup>2</sup>",
+                        "options": [
+                            "Prime factors of 72 = 2<sup>2</sup> x3<sup>2</sup>",
+                            "Prime factors of 72 = 2<sup>3</sup> x3<sup>3</sup>",
+                            "Prime factors of 72 = 2<sup>3</sup> x3<sup>2</sup>"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A22_7"
+            }
+        ],
+        "$id": "document_21"
+    },
+    {
+        "category": 23,
+        "questions": [
+            {
+                "question_text": "Work out: (2.4 x 0.5)/0.12",
+                "type": "multipleChoice",
+                "answer": "10",
+                "explanation": "(2.4 x 0.5)/0.12\n = (24/10 x 5/10)/12/100\n = (120/100)/12/100\n = 120/100 ÷ 12/100\n = 120/100 x 100/12\n = 120/12\n = 10",
+                "options": [
+                    "10",
+                    "20",
+                    "30"
+                ],
+                "mark": 3,
+                "sub_questions": [
+                    {
+                        "question_text": "Simplify: 0.37 - 1.03 + 2.6",
+                        "type": "multipleChoice",
+                        "answer": "1.94",
+                        "explanation": "Using BODMAS\n = 0.37 + 2.6 - 1.03\n = 2.97 - 1.03\n = 1.94",
+                        "options": [
+                            "2.97",
+                            "1.94",
+                            "-3.26"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A23_1"
+            },
+            {
+                "question_text": "What is the place value of 2 and 1 in 201<sub>three</sub>?",
+                "type": "multipleChoice",
+                "answer": "Three threes and ones",
+                "options": [
+                    "Threes and ones",
+                    "Three and ones",
+                    "Three and threes"
+                ],
+                "mark": 2,
+                "sub_questions": [
+                    {
+                        "question_text": "Work out: 42<sub>five</sub> x 21<sub>five</sub>",
+                        "type": "multipleChoice",
+                        "answer": "1432<sub>five</sub>",
+                        "options": [
+                            "1422<sub>five</sub>",
+                            "1442<sub>five</sub>",
+                            "1432<sub>five</sub>"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A23_2"
+            },
+            {
+                "question_text": "In a class, 32 pupils play football (F) only, g play both volleyball (V) and football, (2 g - 10) play volley ball but not football while (g -2) play neither of the two games.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/23.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Which of the following venn diagrams show the correct venn diagram",
+                        "type": "multipleChoice",
+                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/23W1.png",
+                        "options": [
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/23W.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/23W1.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/23C.png"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Given that 62 pupils play one game only, find the value of g",
+                        "type": "multipleChoice",
+                        "answer": "g = 36",
+                        "explanation": "2g - 10 = 62\n 2g - 10 + 10 = 62 + 10\n 2g = 72\n 2g/2 = 72/2\n g = 36",
+                        "options": [
+                            "g = 60",
+                            "g = 36",
+                            "g = 32"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Calculate the number of pupils in the class.",
+                        "type": "multipleChoice",
+                        "answer": "164 pupils",
+                        "explanation": "(2g - 10) + g + 32 + (g - 2)\n (2 x 36 - 10) + 36 + 32 + (32 - 2)\n 62 + 36 + 32 + 34\n = 164",
+                        "options": [
+                            "162 pupils",
+                            "160 pupils",
+                            "164 pupils"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A23_3"
+            },
+            {
+                "question_text": "Simplify: (0.12 x 5.4)/(0.03 x 0.6)",
+                "type": "multipleChoice",
+                "answer": "= 36",
+                "explanation": "(12/100 x 54/10) ÷ (3/100 x 6/10)\n = ((12 x 54)/1000) ÷ ((3 x 6)/1000)\n = ((12 x 54)/1000) x (1000/(3 x 6))\n = (12 x 54)/(3 x 6)\n = 4 x 9\n = 36",
+                "options": [
+                    "36",
+                    "2/9",
+                    "3/10"
+                ],
+                "mark": 3,
+                "sub_questions": [
+                    {
+                        "question_text": "Express the recurring decimal 0.5454… as a common fraction.",
+                        "type": "multipleChoice",
+                        "answer": "6/11",
+                        "explanation": "0.5454 = (54 - 0) ÷ (100 - 1)\n = 54/99\n = 6/11",
+                        "options": [
+                            "2/11",
+                            "5/11",
+                            "6/11"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A23_4"
+            },
+            {
+                "question_text": "The table below shows the rate at which different currencies were sold and bought in a commercial bank during the month of September. Use it to answer the questions that follow",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/23.png",
+                "sub_questions": [
+                    {
+                        "question_text": "How many Euros did Musa get for Ug. Sh. 603,000?",
+                        "type": "multipleChoice",
+                        "answer": "150 Euros",
+                        "explanation": "Since Musa was buying Euros\n = 603,000/4,020\n = 150",
+                        "options": [
+                            "150 Euros",
+                            "150.75 Euros",
+                            "167.5 Euros"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Amina came from Rwanda with 109,500 Rwandese francs and exchanged them for US dollars. How many US dollars did she get from the bank?",
+                        "type": "multipleChoice",
+                        "answer": "120 US dollars",
+                        "explanation": "Changing Rwandan francs to Ugandan shillings and then to US dollars\n Local currency = foreign currency x buying rate\n 1 Rwandan franc = Ugshs 4\n 10,9500 RF = Ug sh 4 x 109,500\n = Ugshs 438,000\n Foreign currency = local currency/selling rate\n = 438,000/3,650\n = 120 US dollars",
+                        "options": [
+                            "240 US dollars",
+                            "120 US dollars",
+                            "200 US dollars"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A23_5"
+            },
+            {
+                "question_text": "Apio bought the following items from a market.\n 2kg of rice at sh 32,00 per kg\n 1½ kg of meat at sh 8,000 per kg\n 500 g of salt at sh 1,400 per kg\n A sacket of cooking oil at sh 1,750.\n How much money did she spend altogether?",
+                "type": "multipleChoice",
+                "answer": "She spent sh 20,850",
+                "explanation": "Rice = 3200 x 2 = 6,400\n Meat = 1½ x 8000\n = 3/2 x 8000\n = 12,000\n Salt, we first convert grammes to kilogrammes\n 1g = 1/1000kg\n 500g = (500 x 1/1000)kg\n = 1/2kg\n = 1/2 x 1400\n = 700\n Cooking oil = 1750\n Total spent = 6,400 + 12,000 + 700 + 1750\n = 20,850",
+                "options": [
+                    "She spent sh 20,000",
+                    "She spent sh 15,850",
+                    "She spent sh 20,850"
+                ],
+                "mark": 5,
+                "id": "ple_math_sect_A23_6"
+            },
+            {
+                "question_text": "In a village of 49 farmers, 20 grow millet)M), 25 grow beans and y grow both millet and beans. 3y farmers grow neither of the two food crops.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/23.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Which of the following show a complete venn diagram according to the given information",
+                        "type": "multipleChoice",
+                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/23_3.png",
+                        "options": [
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/23_2.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/23_1.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/23_3.png"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question_text": "Find the value of y",
+                        "type": "multipleChoice",
+                        "answer": "y = 2",
+                        "explanation": "20 - y + y + 25 - y + 3y = 49\n 3y - y + 20 + 25 = 49\n 2y + 45 = 49\n 2y + 45 - 45 = 49 - 45\n 2y = 4\n y = 2",
+                        "options": [
+                            "y = 2",
+                            "y = 3",
+                            "y = 4"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "How many farmers grow neither millet nor beans?",
+                        "type": "multipleChoice",
+                        "answer": "6 farmers",
+                        "explanation": "Neither millet nor beans = 3 x y\n = 3 x 2\n = 6",
+                        "options": [
+                            "4 farmers",
+                            "8 farmers",
+                            "6 farmers"
+                        ],
+                        "mark": 1
+                    }
+                ],
+                "id": "ple_math_sect_A23_7"
+            }
+        ],
+        "$id": "document_22"
+    },
+    {
+        "category": 24,
+        "questions": [
+            {
+                "question_text": "In the figure below, PQ is parallel to RS and AB is perpendicular to AR. Study the figure and answer the question that follows.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/2019_24.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Find the size of angle c.",
+                        "type": "multipleChoice",
+                        "answer": "c = 29°",
+                        "explanation": "Angle ARS\n ∠ARS + 90° + 55° = 180°( interior angle sum of a triangle)\n ∠ARS + 145° = 180°\n ∠ARS + 145°- 145° = 180° - 145°\n ∠ARS = 35°\n c + 35° + 116° = 180° (co-interior angles)\n c + 151° = 180°\n c + 151°- 151° = 180°- 151°\n c = 29°",
+                        "options": [
+                            "c = 39°",
+                            "c = 30°",
+                            "c = 29°"
+                        ]
+                    }
+                ],
+                "id": "ple_math_sect_A24_1"
+            },
+            {
+                "question_text": "The sum of the lengths of all the edges of the prism below is 96cm.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/24.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Find the length of edge L",
+                        "type": "multipleChoice",
+                        "answer": "L = 30cm",
+                        "explanation": "2 x (10 + 8 + L) = 96\n 2 x (18 + L) = 96\n 36 + 2L = 96\n 36 - 36 + 2L = 96 - 36\n 2L = 60\n L = 60/2\n = L = 30",
+                        "options": [
+                            "L = 30cm",
+                            "L = 78cm",
+                            "L = 90cm"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question_text": "Calculate the volume of the prism",
+                        "type": "multipleChoice",
+                        "answer": "2400cm<sup>3</sup>",
+                        "explanation": "Volume=Length x Width x Height\n = 10cm x 8cm x 30cm\n = 2400cm<sup>3</sup>",
+                        "options": [
+                            "4800cm<sup>3</sup>",
+                            "2400cm<sup>3</sup>",
+                            "240cm<sup>3</sup>"
+                        ]
+                    }
+                ],
+                "id": "ple_math_sect_A24_2"
+            },
+            {
+                "question_text": "A school bus taking pupils to a Game Park covered 75% of its journey in 1½ hour. The bus travelled at a steady speed of 80 kilometers per hour. Find how far the school is from the Game Park.",
+                "type": "multipleChoice",
+                "answer": "160 km",
+                "explanation": "Let total time be t\n 75% of t = 1½\n 75/100 x t = 3/2\n 75/100t x 100 = 3/2 x 100\n 75t = 150\n t = 2 hours\n Distance = Speed x Time\n = 80 x 2\n = 160 km",
+                "options": [
+                    "150 km",
+                    "100 km",
+                    "160 km"
+                ],
+                "mark": 4,
+                "id": "ple_math_sect_A24_3"
+            },
+            {
+                "question_text": "The exchange rates in a bank are as follows;\n 1 US dollar ($) = Ug.Sh 3,400\n 1 British pound Sterling (£) = Ug sh 4,600\n 1 Kenya shilling (K.sh)= Ug. Sh 35.",
+                "sub_questions": [
+                    {
+                        "question_text": "Convert Ug. Sh 1,840,000 to British pound sterling.",
+                        "type": "multipleChoice",
+                        "answer": "Ug. Sh 1,840,000 = 400 British pound Sterling",
+                        "explanation": "Since 1 British pound Sterling (£) = Ug sh 4,600\n Ug. Sh 1,840,000 = 1,840,000/4,600\n = 18400/46\n = 9200/23\n = 400",
+                        "options": [
+                            "Ug. Sh 1,840,000 = 541.2 British pound Sterling",
+                            "Ug. Sh 1,840,000 = 400 British pound Sterling",
+                            "Ug. Sh 1,840,000 = 450 British pound Sterling"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "If a set of chairs costs $700, find the equivalent cost of the chairs in Kenya shillings.",
+                        "type": "multipleChoice",
+                        "answer": "Cost = K.sh 68,000",
+                        "explanation": "First convert $700 to Ug. sh\n = 700 x 3.400\n = Ug.sh 2,380,000\n Now convert Ug. sh to K. sh\n = 2,380,000/36\n = 68,000",
+                        "options": [
+                            "Cost = K.sh 2,380,000",
+                            "Cost = K.sh 68,000",
+                            "Cost = K.sh 68,0000"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A24_4"
+            },
+            {
+                "question_text": "Betty filled container A below with drinking water. She served visitors with the water using cups of size B shown in the diagram. Find total number of full cups of water she served the visitors (Use π = 22/7)",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/24.png",
+                "answer": "80 cups",
+                "explanation": "Number of cups = Volume of container A/Volume of container B\n Volume of A = πr<sub>2</sub>h\n = 22/7 x (28/2)<sub>2</sub> x 50\n = 22/7 x 14 x 14 x 50\n = 30800 cm<sub>3</sub>\n Volume of B = 22/7 x (7/2)<sub>2</sub> x 10\n = 22/7 x 7/2 x 7/2 x 10\n = 11 x 7 x 5\n = 385 cm<sub>3</sub>\n Number of cups = 30800/385\n = 80 cups",
+                "options": [
+                    "80 cups",
+                    "100 cups",
+                    "20 cups"
+                ],
+                "mark": 6,
+                "id": "ple_math_sect_A24_5"
+            },
+            {
+                "question_text": "The diagram below shows a rhombus PQRS. The diagonals PR = 24 cm and QS = 10 cm.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/24.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Calculate the area of the rhombus.",
+                        "type": "multipleChoice",
+                        "answer": "Area = 120 cm<sup>2</sup>",
+                        "explanation": "Area = 1/2 x PR x QS\n = 1/2 x 24 x 10\n = 1/2 x 240\n = 120",
+                        "options": [
+                            "Area = 120 cm<sup>2</sup>",
+                            "Area = 240 cm<sup>2</sup>",
+                            "Area = 34 cm<sup>2</sup>"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Find the perimeter of the rhombus",
+                        "type": "multipleChoice",
+                        "answer": "Perimeter = 52 cm",
+                        "explanation": "Perimeter = 4 x side\n Side = √[(24/2)<sup>2</sup> + (10/2)<sup>2</sup>]\n = √(12<sup>2</sup> + 5<sup>2</sup>)\n = √(144 + 25)\n = √169\n = 13\n Therefore Perimeter = 4 x 13\n = 52 cm",
+                        "options": [
+                            "Perimeter = 34 cm",
+                            "Perimeter = 52 cm",
+                            "Perimeter = 26 cm"
+                        ],
+                        "mark": 4
+                    }
+                ],
+                "id": "ple_math_sect_A24_6"
+            },
+            {
+                "question_text": "Pupils did a test and scored marks as shown in the table below.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/24.png",
+                "sub_questions": [
+                    {
+                        "question_text": "How many pupils did the test?",
+                        "type": "multipleChoice",
+                        "answer": "15 pupils",
+                        "explanation": "Number of pupils = 2 + 6 + 3 + 4\n = 15 pupils",
+                        "options": [
+                            "150 pupils",
+                            "15 pupils",
+                            "100 pupils"
+                        ],
+                        "mark": 1
+                    },
+                    {
+                        "question_text": "Find the value of k if the mean mark was 61.",
+                        "type": "multipleChoice",
+                        "answer": "k = 60",
+                        "explanation": "sum ÷ number = mean\n ((50x2) + (kx6) + (45 x 3) + (80 x 4)) ÷ 15 = 61\n (6k + 100 + 135 + 320) ÷ 15 = 61\n 15(6k + 555) ÷ 15 = 61 x 15\n 6k + 555 = 915\n 6k + 555 - 555 = 915 - 555\n 6k = 360\n 6k/6 = 360/6\n k = 60",
+                        "options": [
+                            "k = 100",
+                            "k = 50",
+                            "k = 60"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question_text": "What was the range of the marks?",
+                        "type": "multipleChoice",
+                        "answer": "Range = 35",
+                        "explanation": "Range = Highest - lowest\n = 80 - 45\n = 35",
+                        "options": [
+                            "Range = 35",
+                            "Range = 30",
+                            "Range = 25"
+                        ],
+                        "mark": 1
+                    }
+                ],
+                "id": "ple_math_sect_A24_7"
+            }
+        ],
+        "$id": "document_23"
+    },
+    {
+        "category": 25,
+        "questions": [
+            {
+                "question_text": "The diagram below represents a container which a shopkeeper uses to sell cooking oil.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol 13.png",
+                "sub_questions": [
+                    {
+                        "question_text": "On a certain day, the shopkeeper sold 15.4 litres of cooking oil. How many such containers of cooking oil were sold that day? (Use π = 22/7)",
+                        "type": "multipleChoice",
+                        "answer": "20 containers",
+                        "explanation": "Get the volume of the container;\n Volume = π x radius<sup>2</sup> x height\n = 22/7 x (7/2)<sup>2</sup> x 20\n = 22/7 x 7/2 x 7/2 x 20\n = 770 cm<sup>3</sup>\n Convert litres to cm<sup>3</sup>\n 1 litre = 1000 cm<sup>3</sup>\n 15.4 litres = (15.4 x 1000)cm<sup>3</sup>\n = 15400cm<sup>3</sup>\n Number of containers = (Volume of litres sold in cm<sup>3</sup>)/(Volume of the container)\n = 15400/770 = 20 containers",
+                        "options": [
+                            "70 containers",
+                            "20 containers",
+                            "50 containers"
+                        ],
+                        "mark": 5
+                    }
+                ],
+                "id": "ple_math_sect_A25_1"
+            },
+            {
+                "question_text": "Below is Mukasa's shopping table. Select the complete correct table from the given options",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25.png",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25C.png",
+                "explanation": "Unit cost of sugar = 14400/3\n = 4800\nRice quantity = 5000/2500\n = 2 kg\n Milk total; We first need to convert the ml to litres\n 1 ml = (1/1000)litres\n 250ml = (1/1000 x 250)litres\n = 25/100 litres\n 1/4 litres\n ∴ Milk total = 3000 x 1/4 = 750 shs\n Total for Biscuits = Total Expenditure - (Other expenditures)\n = 29,650 - (14,400 + 2,500 + 750)\n = 12,000\n Unit cost for biscuits = 12000/2\n = 6,000",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25W.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25W1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25.png"
+                ],
+                "mark": 5,
+                "id": "ple_math_sect_A25_2"
+            },
+            {
+                "question_text": "Solve the equation: 3/5n + 6 = 2 + n",
+                "type": "multipleChoice",
+                "answer": "n = 10",
+                "explanation": "3/5n - n + 6 - 6 = 2 - 6 + n - n\n 3/5n - n = 2 - 6\n (3n - 5n)/5 = -4\n -2n/5 = -4\n Multiply both sides by 5\n -2n/5 x 5 = -4 x 5\n -2n = -20\n -2n/-2 = -20/-2\n n = 10",
+                "options": [
+                    "n = 5",
+                    "n = 15",
+                    "n = 10"
+                ],
+                "mark": 3,
+                "sub_questions": [
+                    {
+                        "question_text": "Solve the inequality: 9 - 2k > k + 3",
+                        "type": "multipleChoice",
+                        "answer": "k < 2",
+                        "explanation": "9 - 2k > k + 3\n 9 - 9 - 2k - k > k - k + 3 - 9\n -3k > -6\n -3k/-3 < -6/-3\n k < 2",
+                        "options": [
+                            "k > 2",
+                            "k < 2",
+                            "k < -2"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A25_3"
+            },
+            {
+                "question_text": "Study the figure below and use it to answer the questions that follow.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/25.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Find the value of g",
+                        "type": "multipleChoice",
+                        "answer": "g = 28",
+                        "explanation": "3g + 6 + g + 30 + 2g - 24 = 180\n 3g + g + 2g - 24 + 6 + 30 = 180\n 6g - 24 + 36 = 180\n 6g + 12 = 180\n 6g + 12 - 12 = 180 - 12\n 6g = 168\n 6g/6 = 168/6\n g = 28",
+                        "options": [
+                            "g = 28",
+                            "g = 24",
+                            "g = 30"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question_text": "Calculate the size of the angle RST",
+                        "type": "multipleChoice",
+                        "answer": "Angle RST = 58<sup>o</sup>",
+                        "explanation": "Since angle RST = (g+30)\n = 28 + 30\n = 58",
+                        "options": [
+                            "Angle RST = 58<sup>o</sup>",
+                            "Angle RST = 54<sup>o</sup>",
+                            "Angle RST = 60<sup>o</sup>"
+                        ],
+                        "mark": 1
+                    }
+                ],
+                "id": "ple_math_sect_A25_4"
+            },
+            {
+                "question_text": "A fruit seller sold the following number of mangoes in six days.\n 60, 35, 28, 42, and 35",
+                "sub_questions": [
+                    {
+                        "question_text": "What is the modal number of mangoes sold?",
+                        "type": "multipleChoice",
+                        "answer": "Modal number = 35",
+                        "explanation": "Since 35 appears twice, its the modal number",
+                        "options": [
+                            "Modal number = 28",
+                            "Modal number = 35",
+                            "Modal number = 60"
+                        ],
+                        "mark": 1
+                    },
+                    {
+                        "question_text": "Work out the mean number of mangoes sold.",
+                        "type": "multipleChoice",
+                        "answer": "Mean = 40",
+                        "explanation": "Mean = (60 + 35 + 28 + 42 + 35)/5\n = 200/5\n = 40",
+                        "optiions": [
+                            "Mean = 40",
+                            "Mean = 30",
+                            "Mean = 20"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "By the end of the seventh day, the mean number of mangoes sold was 44. How many mangoes were sold on the seventh day?",
+                        "type": "multipleChoice",
+                        "answer": "68 mangoes",
+                        "explanation": "Total mangoes sold in 6 days = 60 + 35 + 28 + 42 + 35\n = 240\n Total mangoes sold by the end of the seventh day = 7 x 44\n = 308\n Number of mangoes sold on the seventh day = Total mangoes sold by the end of the seventh day - Total mangoes sold in 6 days\n = 308 - 240\n = 68",
+                        "options": [
+                            "60 mangoes",
+                            "65 mangoes",
+                            "68 mangoes"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A25_5"
+            },
+            {
+                "question_text": "Work out: (3.09 + 3.6)/(0.06 x 0.5)",
+                "type": "multipleChoice",
+                "answer": "223",
+                "explanation": "(3.09 + 3.6)/(6/100 x 5/10)\n = 6.69 ÷ 30/1000\n = 6.69 ÷ 3/100\n = 669/100 ÷ 3/100\n = 669/100 x 100/3\n = 223",
+                "options": [
+                    "223",
+                    "2230",
+                    "22300"
+                ],
+                "mark": 3,
+                "sub_questions": [
+                    {
+                        "question_text": "Simplify: 3⅓ ÷ 2½ x 2⅖",
+                        "type": "multipleChoice",
+                        "answer": "3⅕",
+                        "explanation": "Using BODMAS\n (10/3 ÷ 5/2) x 12/5\n = (10/3 x 2/5) x 12/5\n = 4/3 x 12/5\n = (4 x 4)/ 5\n = 16/5\n = 3⅕",
+                        "options": [
+                            "3⅕",
+                            "3½",
+                            "3⅐"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A25_6"
+            },
+            {
+                "question_text": "Solve the inequality: 9 ≤ -3(y-1)",
+                "type": "multipleChoice",
+                "answer": "y ≤ -2",
+                "explanation": "9 ≤ -3y + 3\n 9 - 3 ≤ -3y + 3 - 3\n 6 ≤ -3y\n 6/-3 ≤ -3/-3y\n -2 ≥ y (Change sign when dividing with a negative coefficient)\n Therefore y ≤ -2",
+                "options": [
+                    "y ≥ -2",
+                    "y ≤ -2",
+                    "y ≤ 2"
+                ],
+                "mark": 3,
+                "sub_questions": [
+                    {
+                        "question_text": "State the first two values of the solution set for the inequality",
+                        "type": "multipleChoice",
+                        "answer": "First two values of y = { -2, -3}",
+                        "options": [
+                            "First two values of y = { -3, -4}",
+                            "First two values of y = { -1, -2}",
+                            "First two values of y = { -2, -3}"
+                        ],
+                        "mark": 1
+                    }
+                ],
+                "id": "ple_math_sect_A25_7"
+            }
+        ],
+        "$id": "document_24"
+    },
+    {
+        "category": 26,
+        "questions": [
+            {
+                "question_text": "Kizza went to a market with sh. 30,000. She bought the items shown in the table below. After paying for all the items, she remained with sh 9,250. Which of the following tables show the complete table?",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/26.png",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/26A.png",
+                "explanation": "",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/26B.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/26C.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/26A.png"
+                ],
+                "mark": 6,
+                "id": "ple_math_sect_A26_1"
+            },
+            {
+                "question_text": "In the diagram below, line DH is parallel to FE. Angle ACB = 75<sub>o</sub> and angle CBE = 135<sub>o</sub>. Angle FAD is twice angle DAC. Study the diagram and use it to answer the questions that follow.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/26.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Calculate the size of angle DAC",
+                        "type": "multipleChoice",
+                        "answer": "Angle DAC = 40°",
+                        "explanation": "Let the angle DAC be a\n Angle FAD = 2a\n 2a + a = 75 + 45\n 3a = 120\n a = 40°",
+                        "options": [
+                            "Angle DAC = 50°",
+                            "Angle DAC = 60°",
+                            "Angle DAC = 40°"
+                        ],
+                        "mark": 3,
+                        "sub_questions": [
+                            {
+                                "question_text": "Find the size of angle ADC",
+                                "type": "multipleChoice",
+                                "answer": "Angle ADC = 80°",
+                                "explanation": "Angle ADC = 2a°(alternetive angle)\n = 2 x 40\n Angle ADC = 80°",
+                                "options": [
+                                    "Angle ADC = 60°",
+                                    "Angle ADC = 80°",
+                                    "Angle ADC = 70°"
+                                ],
+                                "mark": 2
+                            }
+                        ]
+                    }
+                ],
+                "id": "ple_math_sect_A26_2"
+            },
+            {
+                "question_text": "The figure below represents a rectangular floor which is covered by square tiles of area 400 cm<sup>2</sup> each. Use it to answer the questions that follow",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/26.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Find the area of the rectangular floor",
+                        "type": "multipleChoice",
+                        "answer": "Area = 7200 cm<sup>2</sup>",
+                        "explanation": "Since the number of sqaures = 18\n Area of rectangular floor = Area of one square x Number of sqaures\n = 400 x 18\n = 7200",
+                        "options": [
+                            "Area = 8000 cm<sup>2</sup>",
+                            "Area = 7000 cm<sup>2</sup>",
+                            "Area = 7200 cm<sup>2</sup>"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Calculate the perimeter of the rectangular floor",
+                        "type": "multipleChoice",
+                        "answer": "Perimeter = 360 cm",
+                        "explanation": "Perimeter = 2(L + W)\n The length of each side of the squares;\n From Area = S<sup>2</sup>\n 400 = S<sup>2</sup>\n √400 = √S<sup>2</sup>\n S = 20 cm\n Length = (6 x 20) = 120 cm\n Width = (3 x 20) = 60 cm\n ∴ P = 2(L + W)\n = 2(120 + 60)\n = 2 x 180\n = 360",
+                        "options": [
+                            "Perimeter = 360 cm",
+                            "Perimeter = 14,400 cm",
+                            "Perimeter = 72000 cm"
+                        ],
+                        "mark": 4
+                    }
+                ],
+                "id": "ple_math_sect_A26_3"
+            },
+            {
+                "question_text": "In the figure below, line AB is parallel to CD. Angle CTV = 44<sup>o</sup> and angle TQR =56<sup>o</sup>. Study and use it to answer the questions that follow.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/26.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Find the size of angle k",
+                        "type": "multipleChoice",
+                        "answer": "k = 80°",
+                        "explanation": "k + 56 + 44 = 180 (Straight line angles)\n k + 100 = 180\n k + 100 - 100 = 180 - 100\n k = 80°",
+                        "options": [
+                            "k = 70°",
+                            "k = 55°",
+                            "k = 80°"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Find the size of angle g",
+                        "type": "multipleChoice",
+                        "answer": "g = 136°",
+                        "explanation": "g + 44 = 180 (Co-interior angles add up to 180)\n g + 44 - 44 = 180 - 44\n g = 136°",
+                        "options": [
+                            "g = 130°",
+                            "g = 126°",
+                            "g = 136°"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A26_4"
+            },
+            {
+                "question_text": "Which of the following diagrams show an accurate parallelogram ABCD such that line AB = 7 cm, BC = 5 cm and angle ABC = 120<sup>o</sup>, with a perpendicular from D to meet AB at M.",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/26_2.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/26.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/26_1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/26_2.png"
+                ],
+                "mark": 6,
+                "id": "ple_math_sect_A26_5"
+            },
+            {
+                "question_text": "A watch loses 5 seconds every hour. How many minutes will it lose in two days?",
+                "type": "multipleChoice",
+                "answer": "4 minutes",
+                "explanation": "1 day =  24hrs\n 2days = (24 x 2) hours\n = 48 hours\n In 1 hour the clock loses 5 second\n In 1 day (24hours) it loses 5 x 24\n =  120 seconds\n  In 2 day (48hours) it loses  5 x 48\n = 240 seconds\n But 60 seconds = 1 minute\n 240 seconds = 240/60 minutes\n = 4 minutes",
+                "options": [
+                    "40 minutes",
+                    "14 minutes",
+                    "4 minutes"
+                ],
+                "mark": 2,
+                "sub_questions": [
+                    {
+                        "question_text": "Express 5m/sec in km/hr",
+                        "type": "multipleChoice",
+                        "answer": "18 km/hr",
+                        "explanation": "5m/sec = km/hr\n 1000m = 1km\n 5m = 5/1000 km\n 3600 seconds = 1hr\n 1 second = 1/3600 hours\n Speed = Distance ÷ Time\n = 5/1000 ÷ 1/3600\n = 5/1000 x 3600/1\n = 5/10 x 36/1\n = 36/2\n = 18km/hr",
+                        "options": [
+                            "18 km/hr",
+                            "18 km/hr",
+                            "18 km/hr"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A26_6"
+            }
+        ],
+        "$id": "document_25"
+    },
+    {
+        "category": 27,
+        "questions": [
+            {
+                "question_text": "A bus that left town A at 11:30 a.m. moving at a speed of 60 km/hr reached town B at 1:30 p.m. The bus stayed at town B for 40 minutes. It then continued to town C and covered a distance of 96 kilometres at a speed of 64 km/hr.",
+                "sub_questions": [
+                    {
+                        "question_text": "Calculate the total distance covered by the bus from town A to town C.",
+                        "type": "multipleChoice",
+                        "answer": "216 kilometres",
+                        "explanation": "Time from town A to B is 2 hours\n Speed = 60km/hr\n Distance from town A to B = Speed x Time\n = 60 x 2\n = 120km/hr\n Total distance = Distance from town A to B + Distance from town B to C\n = 120km + 96km\n = 216km",
+                        "options": [
+                            "200 kilometres",
+                            "216 kilometres",
+                            "120 kilometres"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question_text": "At waht time did the bus reach town C?",
+                        "type": "multipleChoice",
+                        "answer": "1:40 p.m",
+                        "explanation": "Time from B to C\n = Distance/Speed\n = 96/64 hours\n Total Time = Time from A to B+Time at B+Time from B to C\n = 2 hours + 40/60 hours + 96/64 hours\n = 2 hours + 2/3 hours + 3/2 hours\n = 13/6 hours\n Arrival time at town C = 11:30a.m + 13/6 hours\n Convert 13/6 hours to minutes\n = 13/6 x 60 minutes\n = 130 minutes\n = 1:40p.m",
+                        "options": [
+                            "1:30 p.m",
+                            "1:40 p.m",
+                            "11:30 a.m"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A27_1"
+            },
+            {
+                "question_text": "The average weight of four boys is 56kg. When two other boys join the group, the average weight becomes 52kg. The sixth boy is 8kg heavier than the fifth boy. Find the weight of the sixth boy.",
+                "type": "multipleChoice",
+                "answer": "48 kg",
+                "explanation": "Average weight of the four boys;\n (a+b+c+d)/4 = 56\n Multiply both sides by 4\n a+b+c+d = 224'\n Average weight of the six boys;\n (a+b+c+d+e+f)/6 = 52\n Multiply both sides by 6\n a+b+c+d+e+f = 312\n Now we subtract the average weight of the 4 boys from the average weight of the 6 boys to get the weight of the 5th and 6th boys\n (a+b+c+d+e+f = 312) - (a+b+c+d = 224)\n We cancel out whats common on both sides\n e + f = 88\n Since the 6th boy is 8 kg heavier than the 5th boy\n 6th boy's weight = e + 8'\n e + e + 8 = 88\n 2e + 8 = 88\n 2e = 80\n e = 40kg\n ∴ Weight of the 6th boy = e + 8\n = 40 + 8\n = 48kg",
+                "options": [
+                    "40 kg",
+                    "50 kg",
+                    "48kg"
+                ],
+                "mark": 6,
+                "id": "ple_math_sect_A27_2"
+            },
+            {
+                "question_text": "Arafat deposited money in a bank which offers a simple interest rate of 2½% per year. After 9 months, his account had an amount of sh 163,000. Calculate the money Arafat deposited in the bank.",
+                "type": "multipleChoice",
+                "answer": "Amount = 160,000",
+                "explanation": "Amount deposited = Principal + Simple interest\n Simple interest = Principal x Rate x Time\n 163,000 = P + P x R x T\n 163,000 = P + P x 2.5/100 x 9/12\n 163,000 = P(1 + 0.025 x 0.75)\n 163,000 = 1.01875P\n P = 160,000",
+                "options": [
+                    "Amount = 150,000",
+                    "Amount = 160,000",
+                    "Amount = 166,000"
+                ],
+                "mark": 5,
+                "id": "ple_math_sect_A27_3"
+            },
+            {
+                "question_text": "A taxi driver left town A for town B at 10:30am. Driving at a speed of 80 kilometers per hour. The driver reached town B at 2:00 p.m",
+                "sub_questions": [
+                    {
+                        "question_text": "Calculate the time taken by the driver to reach town B",
+                        "type": "multipleChoice",
+                        "answer": "Time taken = 3 hours and 30 minutes",
+                        "explanation": "Time interval = Arrival time - Departure time\n = 2:00p.m - 10:30a.m\n Convert the time to 24 hour format\n = 14:00 - 10:30\n = (14-10) hours + (0-30) minutes\n = 4hours - 30minutes\n Convert 30 minutes to hours\n = 4 - 30/60\n = 4 - 1/2\n = 3.5\n = 3 hours and 30 minutes",
+                        "options": [
+                            "Time taken = 3 hours and 30 minutes",
+                            "Time taken = 4 hours and 30 minutes",
+                            "Time taken = 2 hours and 30 minutes"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Find the distance between town A and town B",
+                        "type": "multipleChoice",
+                        "answer": "Distance = 280 km/hr",
+                        "explanation": "Distance = Speed x Time\n = 80 x 3.5\n = 280",
+                        "options": [
+                            "Distance = 360 km/hr",
+                            "Distance = 200 km/hr",
+                            "Distance = 280 km/hr"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A27_4"
+            },
+            {
+                "question_text": "The table below shows how a motor cyclist travelled from town R through town Q and S to town P. Study it to answer the questions that follow.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/27.png",
+                "sub_questions": [
+                    {
+                        "question_text": "How long did the motor cyclist stay at town S?",
+                        "type": "multipleChoice",
+                        "answer": "35 minutes",
+                        "explanation": "Time taken at S;\n = 11:10 a.m - 10:35 a.m\n = 35 minutes.",
+                        "options": [
+                            "45 minutes",
+                            "40 minutes",
+                            "35 minutes"
+                        ],
+                        "mark": 1
+                    },
+                    {
+                        "question_text": "Find the time the motor cyclist took to travel from town R to town P.",
+                        "type": "multipleChoice",
+                        "answer": "4 hours and 30 minutes",
+                        "explanation": "12:00 hrs + 1 00\n = 13 30 hrs\n 13 30 - 9 00\n = 4 hours and 30 minutes",
+                        "options": [
+                            "4 hours and 30 minutes",
+                            "5 hours and 30 minutes",
+                            "5 hours"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "If the distance from town R to P is 180 km, calculate the average speed of the motor cyclist for the whole journey.",
+                        "type": "multipleChoice",
+                        "answer": "40 km/hr",
+                        "explanation": "Average speed = Total distance/Total time\n = 180 ÷ 4½\n = 180 ÷ 9/2\n = 180 x 2/9\n = 40 km/hr",
+                        "options": [
+                            "45 km/hr",
+                            "50 km/hr",
+                            "40 km/hr"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A27_5"
+            },
+            {
+                "question_text": "The time table shows how a pupil spent his time one Saturday. Use it to answer the questions that follow.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/27.png",
+                "sub_questions": [
+                    {
+                        "question_text": "How long did he take playing?",
+                        "type": "multipleChoice",
+                        "answer": "1 hour and 30 minutes",
+                        "explanation": "4:30 pm - 3:00 pm\n Hours: (4 - 3) = 1 hour\n Minutes: (30 - 00) = 30 minutes\n = 1 hour and 30 minutes",
+                        "options": [
+                            "30 minutes",
+                            "1 hour",
+                            "1 hour and 30 minutes"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "If he dug his maize garden at a rate of 2 rows in every 30 minutes, find the number of rows he dug that day.",
+                        "type": "multipleChoice",
+                        "answer": "18 rows",
+                        "explanation": "Time taken digging = 10:30 a.m - 7:00 a.m\n = 4 hours and 30 minutes\n = 4.5 hours\n Convert to minutes\n = 4.5 x 60\n = 270 minutes\n Number of rows = 270/30 x 2\n = 18 rows",
+                        "options": [
+                            "9 rows",
+                            "20 rows",
+                            "18 rows"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A27_6"
+            },
+            {
+                "question_text": "The pictograph below represents the number of patients who were admitted in a hospital on a certain day. Study and use it to answer the questions that follow.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/27.png",
+                "sub_questions": [
+                    {
+                        "question_text": "How many patients were admitted in the hospital on that day?",
+                        "type": "multipleChoice",
+                        "answer": "120 patients",
+                        "explanation": "Total number of pictures = 3 + 4 + 3½ + 1½\n 1 picture = 10 patients\n 12 pictures = 10 x 12\n = 120 patients",
+                        "options": [
+                            "12 patients",
+                            "120 patients",
+                            "100 patients"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Find the ratio of the patients in the women's ward to those in the children's ward in its simplest form.",
+                        "type": "multipleChoice",
+                        "answer": "Ratio = 7:8",
+                        "explanation": "Women's ward = 3½\n = 7/2 x 10\n = 7 x 5\n = 35 patients\n Children's ward = 4 x 10\n = 40 patients\n Women ward : Children\n 35 : 40\n Divide each by 5\n = 7 : 8",
+                        "options": [
+                            "Ratio = 8:7",
+                            "Ratio = 5:8",
+                            "Ratio = 7:8"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Express the number of patients in the men's ward as a percentage of the total number of patients.",
+                        "type": "multipleChoice",
+                        "answer": "25%",
+                        "explanation": "Men's ward = 3 x 10\n = 30\n Percentage = (30/120 x 100)%\n = 25%",
+                        "options": [
+                            "33.33%",
+                            "30%",
+                            "25%"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A27_7"
+            }
+        ],
+        "$id": "document_26"
+    },
+    {
+        "category": 28,
+        "questions": [
+            {
+                "question_text": "The table below shows the marks obtained by some pupils in a test. If the mean mark of the pupils was 55, find the value of m.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/28.png",
+                "type": "multipleChoice",
+                "answer": "m = 600",
+                "explanation": "Mean = (Total marks/Number of pupils)'\n = 55 = (40+m+60+70)/(2+6+3+3)\n 55 = (170 + m)/14\n 770 = 170 + m\n 770 - 170 = 170 - 170 + m\n 600 = m\n m = 600",
+                "options": [
+                    "m = 770",
+                    "m = 500",
+                    "m = 600"
+                ],
+                "mark": 4,
+                "id": "ple_math_sect_A28_1"
+            },
+            {
+                "question_text": "The interior angle of a regular polygon is 108<sup>o</sup> more than the exterior angle. How many sides has the polygon?",
+                "type": "multipleChoice",
+                "answer": "10 sides",
+                "explanation": "Let the exterior angle be y\n Exterior = y\n Interior = y + 108°\n  y + y + 108° = 180° (Interior and exterior angles add upto 180°)\n 2y + 108° = 180°\n 2y + 108°- 108° = 180° - 108°\n 2y = 72°\n y = 36°\n Number of sides = sum of exterior angles/one exterior angle\n = 360/60\n = 10 sides",
+                "options": [
+                    "8 sides",
+                    "10 sides",
+                    "5 sides"
+                ],
+                "mark": 3,
+                "sub_questions": [
+                    {
+                        "question_text": "In the figure below, find the size of angle z.",
+                        "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/28.png",
+                        "answer": "z = 65<sup>o</sup>",
+                        "explanation": "z + 60 + 55 = 180\n z + 115 = 180\n z + 115 - 115 = 180 - 115\n z = 65",
+                        "options": [
+                            "z = 65<sup>o</sup>",
+                            "z = 60<sup>o</sup>",
+                            "z = 55<sup>o</sup>"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A28_2"
+            },
+            {
+                "question_text": "Which of the following diagrams show a quadrilateral ABCD where line AB = 7cm, angle ABC = BAD = 60<sub>o</sub> and AD = BC = 3.5cm",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/27.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/27_1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/27.png"
+                ],
+                "mark": 6,
+                "id": "ple_math_sect_A28_3"
+            },
+            {
+                "question_text": "Hajati bought 120 shares from a village SACCO at a simple interest rate of 30% per year. Each share costs sh 3,000.",
+                "sub_questions": [
+                    {
+                        "question_text": "Find her total interest after 3½ years",
+                        "type": "multipleChoice",
+                        "answer": "Total interest = 378,000",
+                        "explanation": "Interest = Principal x Rate x Time\n = (3000 x 120) x 30/100 x 3½\n = 360000 x 30/100 x 3.5\n = 3600 x 30 x 35/10\n = 360 x 30 x 35\n = 378,000",
+                        "options": [
+                            "Total interest = 3,150",
+                            "Total interest = 378,000",
+                            "Total interest = 37,800"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question_text": "Calculate the total amount of money Hajat has in the SACCO after the 3½ years.",
+                        "type": "multipleChoice",
+                        "answer": "Sh 738,000",
+                        "explanation": "Total Amount = P + SI\n = 360,000 + 378,000\n = 738,000",
+                        "options": [
+                            "Sh 73,800",
+                            "Sh 738,000",
+                            "Sh 648,000"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A28_4"
+            },
+            {
+                "question_text": "Madada sold his radio to Aguti at 63,000 making a loss of 10%. Aguti later sold the radio to chebet at a profit of 15%.",
+                "sub_questions": [
+                    {
+                        "question_text": "Calculate the amount of money Madada paid for the radio.",
+                        "type": "multipleChoice",
+                        "answer": "Madada paid 70,000",
+                        "explanation": "Madada to aguti selling price = shs 63,000\n new % = 100% - 10%\n = 90% of c.p\n Let cost price be k\n 90/100 of k = 63,000\n 9/10k = 63,000\n 9/10k x 10 = 63,000 x 10\n 9k = 630,000\n k = 70,000",
+                        "options": [
+                            "Madada paid 80,400",
+                            "Madada paid 80,000",
+                            "Madada paid 70,000"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question_text": "For how much money did Aguti sell the radio?",
+                        "type": "multipleChoice",
+                        "answer": "Selling price = 72,450",
+                        "explanation": "Aguti to chebet cost price = sh. 63,000\n New% = 100%+ 15%\n = 115% of cost price\n Selling price = 115/100 x 63000\n = 115 x 630\n = shs 72,450",
+                        "options": [
+                            "Selling price = 72,450",
+                            "Selling price = 82,450",
+                            "Selling price = 80,450"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A28_5"
+            },
+            {
+                "question_text": "The exchange rate of Kenya shillings (Ksh) to Uganda shillings (Ug.sh) and the United states dollars (US$) to Uganda shillings are shown below\n 1 Ksh = Ug.sh 30\n US $1 = Ug.shs 2,580",
+                "sub_questions": [
+                    {
+                        "question_text": "How many United States dollars will one get from 21,500 kenya shillings?",
+                        "type": "multipleChoice",
+                        "answer": "US$ 250",
+                        "explanation": "Convert Ksh 21,500 to Ug.sh\n Ksh 21,500 = (21,500 x 30)\n = Ug.sh 645,000\n Convert Ug.sh 645,000 to US$\n = 645,000/2,580\n = 64,500/258\n = US$ 250",
+                        "options": [
+                            "US$ 2500",
+                            "US$ 25",
+                            "US$ 250"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question_text": "If the cost of a new bicycle is 90 United States dollars, how much would this be in Uganda shillings?",
+                        "type": "multipleChoice",
+                        "answer": "Ug.sh 232,200",
+                        "explanation": "US$ 90 = (90 x 2,580)\n = Ug.sh 232,200",
+                        "options": [
+                            "Ug.sh 28.67",
+                            "Ug.sh 232,200",
+                            "Ug.sh 232,000"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A28_6"
+            },
+            {
+                "question_text": "A tank was 2/3 full of water. When ¼ of the water in the tank was drawn, 2,500 litres remained. Find the capacity of the tank when full.",
+                "type": "multipleChoice",
+                "answer": "5000 litres",
+                "explanation": "Fraction in tank = 2/3\n Fraction drown = 1/4 of 2/3\n (1 x 2)/(4 x 3)\n = 1/6\n Remaining fraction = 2/3 - 1/6\n LCM = 6\n ((2 x 2)x(1 x 1))/6\n = (4 - 1)/6\n = 1/2\n Let capacity of full tank be g\n 1/2 of g = 2500\n 1/2g = 2500\n g = 2 x 2500\n = 5000 litres",
+                "options": [
+                    "6000 litres",
+                    "5000 litres",
+                    "10000 litres"
+                ],
+                "mark": 4,
+                "id": "ple_math_sect_A28_7"
+            }
+        ],
+        "$id": "document_27"
+    },
+    {
+        "category": 29,
+        "questions": [
+            {
+                "question_text": "The number of goats, cows and sheep on a certain farm are in the ratio of 4:3:5 respectively. There are 40 more sheep than goats on the farm. Find the number of each type of animal on the farm.",
+                "type": "multipleChoice",
+                "answer": "Number of goats = 160, Number of cows = 120, Number of sheep = 200",
+                "explanation": "Use a common multiplier x\n ∴ Goats = 4x, Cows = 3x and Sheep = 5x\n Since there are 40 more sheep than goats\n 5x = 4x + 40\n Solve for x\n 5x - 4x = 4x - 4x + 40\n x = 40\n ∴ Number of goats = 4x = 4 x 40 = 160\n Number of cows  = 3x = 3 x 40 = 120\n Number of sheep = 5x = 5 x 40 = 200",
+                "options": [
+                    "Number of goats = 120, Number of cows = 200, Number of sheep = 160",
+                    "Number of goats = 200, Number of cows = 160, Number of sheep = 120",
+                    "Number of goats = 160, Number of cows = 120, Number of sheep = 200"
+                ],
+                "mark": 5,
+                "id": "ple_math_sect_A29_1"
+            },
+            {
+                "question_text": "Joyce, Peter and Hannah shared pencils in the ratio 3:5:7 respectively.",
+                "sub_questions": [
+                    {
+                        "question_text": "If Hannah got 12 more pencils than Joyce, how many pencils did they share altogether?",
+                        "type": "multipleChoice",
+                        "answer": "45 pencils",
+                        "explanation": "Lets use a common multiplier x\n ∴ The ratios are 3x:5x:7x\n Since Hannah got 12 more pencils than Joyce\n 7x = 3x + 12\n 7x - 3x = 3x - 3x + 12\n 4x = 12\n 4x/4 = 12/4\n x = 3\n Now that we have the value of x, we can find the number of pencils each person got\n Joyce: 3x = 3 x 3 = 9 pencils\n Peter: 5x = 5 x 3 = 15 pencils\n Hannah: 7x = 7 x 3 = 21 pencils\n Total number of pencils;\n = 9 + 15 + 21\n = 45",
+                        "options": [
+                            "45 pencils",
+                            "40 pencils",
+                            "35 pencils"
+                        ],
+                        "mark": 4,
+                        "sub_questions": [
+                            {
+                                "question_text": "Find the number of pencils Peter got.",
+                                "type": "multipleChoice",
+                                "answer": "15 pencils",
+                                "options": [
+                                    "9 pencils",
+                                    "15 pencils",
+                                    "21 pencils"
+                                ],
+                                "mark": 2
+                            }
+                        ]
+                    }
+                ],
+                "id": "ple_math_sect_A29_2"
+            },
+            {
+                "question_text": "The total mass of tins of honey in a box is 3.25kg. The mass of each tin is 250g. Find the number of tins in the box.",
+                "type": "multipleChoice",
+                "answer": "13 tins",
+                "explanation": "Total mass = 3.25kg\n Mass of each tin = 250g\n Convert mass of each tin to kg\n Since 1 g = 1/1000 kg\n = (250 x 1/1000)kg\n = 0.25kg\n Number of tins  = 3.25/0.25\n = 13 tins",
+                "options": [
+                    "12 tins",
+                    "10 tins",
+                    "13 tins"
+                ],
+                "mark": 4,
+                "id": "ple_math_sect_A29_3"
+            },
+            {
+                "question_text": "The pie chart below shows how pupils of Mpaata Primary School are distributed in various clubs in the school. Use it to answer the questions that follow",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/29.png",
+                "sub_questions": [
+                    {
+                        "question_text": "There are 216 pupils in debating club. Find the total number of pupils in the school",
+                        "type": "multipleChoice",
+                        "answer": "1080 pupils",
+                        "explanation": "p + 2p + 90° + 54° = 360°\n 3p + 144° = 360°\n 3p + 144° - 144° = 360° - 144°\n 3p = 216\n p = 72°\n 72° = 216 pupils\n 1° = 216/72\n 1° = 3\n 360° = 360 x 3\n = 1080 pupils",
+                        "options": [
+                            "180 pupils",
+                            "1080 pupils",
+                            "108 pupils"
+                        ],
+                        "mark": 4
+                    },
+                    {
+                        "question_text": "Express the number of pupils in the debating club as a percentage of the whole school.",
+                        "type": "multipleChoice",
+                        "answer": "20%",
+                        "explanation": "Percentage for debating = (72/360 x 100)%\n = (2 x 10)%\n = 20%",
+                        "options": [
+                            "20%",
+                            "30%",
+                            "40%"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A29_4"
+            },
+            {
+                "question_text": "Study the figure below and use it to answer the questions that follow",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/29.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Calculate the area of the figure",
+                        "type": "multipleChoice",
+                        "answer": "Area = 69 cm<sup>2</sup>",
+                        "explanation": "Area of triangle = 1/2 x b x h\n = 1/2 x 3 x 4\n = 6 cm<sup>2</sup>\n Area of rectangle = L x W\n = 7 x 9\n = 63 cm<sup>2</sup>\n Total area = 63 + 6\n = 69 cm<sup>2</sup>",
+                        "options": [
+                            "Area = 64 cm<sup>2</sup>",
+                            "Area = 69 cm<sup>2</sup>",
+                            "Area = 70 cm<sup>2</sup>"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question_text": "Work out the perimeter of the figure",
+                        "type": "multipleChoice",
+                        "answer": "Perimeter = 37cm",
+                        "explanation": "Hypotenuse = 3<sup>2</sup> + 4<sup>2</sup>\n = 9 + 16\n = 25 cm\n Perimeter = 10 + 9 + 7 + 5 + 5\n = 37 cm",
+                        "options": [
+                            "Perimeter = 32cm",
+                            "Perimeter = 37cm",
+                            "Perimeter = 35cm"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A29_5"
+            },
+            {
+                "question_text": "At a kampala bus park, buses travelling to Arua and Mbarara leave after every 40 minutes and 50 minutes respectively. The first buses to the two towns leave together at 6:00 am. At what time will buses to the two towns leave Kampala together again?",
+                "type": "multipleChoice",
+                "answer": "9:20 a.m",
+                "explanation": "LCM of 40 and 50\n = 2 x 2 x 2 x 5 x 5\n = 200 minutes\n They will leave together after 200 minutes or 3hrs 20mins\n 200 minutes = 200/60\n = 3⅓ hours\n = 3hrs and 20minutes\n = 6:00 a.m  + 3:20\n = 9:20 a.m",
+                "options": [
+                    "10:20 a.m",
+                    "8:20 a.m",
+                    "9:20 a.m"
+                ],
+                "mark": 4,
+                "id": "ple_math_sect_A29_6"
+            },
+            {
+                "question_text": "Opoka rides a distance of 2.97 km from his home to school on a bicycle. The wheel of the bicycle has a diameter of 63 cm.",
+                "sub_questions": [
+                    {
+                        "question_text": "How many revolutions does the wheel make to cover the distance? (Take π = 22/7}",
+                        "type": "multipleChoice",
+                        "answer": "1500 revolutions",
+                        "explanation": "Change km to cm\n 2.97km to cm = 2.97 x 100000\n Distance = 297000 cm\n Circumference of the wheel = πd\n C = 22/7 x 63\n = 22 x 9\n = 198 cm\n Number of revolutions = distance/circumference\n = 297000/198\n = 1500 revolutions",
+                        "options": [
+                            "1500 revolutions",
+                            "1000 revolutions",
+                            "2000 revolutions"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question_text": "If Opoka makes 50 revolutions in one minute, how long does he take to reach the school?",
+                        "type": "multipleChoice",
+                        "answer": "30 minutes",
+                        "explanation": "50 revolutions = 1 minute\n 1 rev = 1/50 minutes\n 1500 revolutions = 1/50 x 1500\n = 30 minutes",
+                        "options": [
+                            "25 minutes",
+                            "40 minutes",
+                            "30 minutes"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A29_7"
+            }
+        ],
+        "$id": "document_28"
+    },
+    {
+        "category": 30,
+        "questions": [
+            {
+                "question_text": "In the parallelogram ABCD below, lines DX and DY are perpendiculars to AB and BC respectively. Line AB = 16cm, BC = 12cm and DX = 6cm.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/30.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Calculate the area of the parallelogram.",
+                        "type": "multipleChoice",
+                        "answer": "Area = 96cm<sup>2</sup>",
+                        "explanation": "Area = Base x Height\n = AB x DX\n = 16cm x 6cm\n = 96cm<sup>2</sup>",
+                        "options": [
+                            "Area = 192cm<sup>2</sup>",
+                            "Area = 96cm<sup>2</sup>",
+                            "Area = 72cm<sup>2</sup>"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Find the length of DY",
+                        "type": "multipleChoice",
+                        "answer": "DY = 8cm",
+                        "explanation": "B x h = B x h (Find DY by comparing areas using different height)\n 12 x h = 16 x 6\n 12h = 96\n h = 8 cm\n Therefore DY = 8cm",
+                        "options": [
+                            "DY = 10cm",
+                            "DY = 8cm",
+                            "DY = 6cm"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A30_1"
+            },
+            {
+                "question_text": "Kizito is 38 years old and his sister is 24 years old.",
+                "sub_questions": [
+                    {
+                        "question_text": "How many years ago was Kizito three times as old as his sister?",
+                        "type": "multipleChoice",
+                        "answer": "17 years ago",
+                        "explanation": "∴ x years ago Kizito was 38 - x and his sister 24 - x\n Since x years ago Kizito was three times as old as his sister\n 38 - x = 3(24 - x)\n 38 - x = 72 - 3x\n 38 - 38 - x + 3x = 72 - 38 - 3x + 3x\n - x + 3x = 72 - 34\n 2x = 34\n 2x/2 = 34/2\n x = 17",
+                        "options": [
+                            "19 years ago",
+                            "17 years ago",
+                            "20 years ago"
+                        ],
+                        "mark": 4
+                    },
+                    {
+                        "question_text": "How old was Kizito's sister then?",
+                        "type": "multipleChoice",
+                        "answer": "7 years old",
+                        "explanation": "From the above explanation\n 24 - x\n = 24 - 17\n = 7",
+                        "options": [
+                            "24 years old",
+                            "7 years old",
+                            "19 years old"
+                        ]
+                    }
+                ],
+                "id": "ple_math_sect_A30_2"
+            },
+            {
+                "question_text": "The diagram below shows a square BCDE enclosed in a circle with centre O and radius 14cm. Parts of the circle are shaded as shown. Study the diagram and use it to answer the questions that follow.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/30.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Calculate the area of the circle. (Use π = 22/7)",
+                        "type": "multipleChoice",
+                        "answer": "Area = 616 cm<sub>2</sub>",
+                        "explanation": "Area = π x (radius)cm<sub>2</sub>\n = 22/7 x 14cm<sub>2</sub>\n = 22/7 x 14 x 14\n = 22 x 2 x 14\n = 616 cm<sub>2</sub>",
+                        "options": [
+                            "Area = 88 cm<sub>2</sub>",
+                            "Area = 44 cm<sub>2</sub>",
+                            "Area = 616 cm<sub>2</sub>"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Find the area of the shaded part.",
+                        "type": "multipleChoice",
+                        "answer": "Area of shaded part = 224 cm<sup>2</sup>",
+                        "explanation": "Area of the shaded part  = Area of circle - Area of square area  of square\n Area of square;\n d<sub>1</sub> = 14 + 14\n d<sub>1</sub> = 28 cm\n d<sub>2</sub> = 28 cm\n = 1/2 x d<sub>1</sub> x d<sub>2</sub>\n = 1/2 x 28 x 28\n = 14 x 28\n = 392 cm<sub>2</sub>\n Shaded area = 616 cm<sub>2</sub> - 392 cm<sub>2</sub>\n = 224 cm<sub>2</sub>",
+                        "options": [
+                            "Area of shaded part = 124 cm<sup>2</sup>",
+                            "Area of shaded part = 224 cm<sup>2</sup>",
+                            "Area of shaded part = 120 cm<sup>2</sup>"
+                        ],
+                        "mark": 4
+                    }
+                ],
+                "id": "ple_math_sect_A30_3"
+            },
+            {
+                "question_text": "A cylindrical tank of diameter 70cm contains water to a height of 100 cm. Find in litres the amount of water the tank contains (Use π = 22/7)",
+                "type": "multipleChoice",
+                "answer": "Volume = 11 litres",
+                "explanation": "V = πr<sup>2</sup>h\n = 22/7 x 70/2 x 100\n = 11 x 10 x 100\n = 11000 cm<sup>3</sup>\n Convert cm<sup>3</sup> to litres\n 1 cm<sup>3</sup> = (1/1000) litres\n 11000 cm<sup>3</sup> = (1/1000 x 11000)\n = 11 litres",
+                "options": [
+                    "Volume = 11000 litres",
+                    "Volume = 110 litres",
+                    "Volume = 11 litres"
+                ],
+                "mark": 4,
+                "id": "ple_math_sect_A30_4"
+            },
+            {
+                "question_text": "Two taps F and E are connected to water tank. Tap F can fill the tank in 2 hours while E can empty it in 3 hours. One day when the tank was 1/3 full of water, the taps were opened at the same time. How long did it take to fill the tank?",
+                "type": "multipleChoice",
+                "answer": "4 hours",
+                "explanation": "In one hour;\n Tap F fills = ½ of the tank\n Tap E empties = ⅓ of the tank\n Both taps open;\n 1/2 - 1/3\n LCM = 6\n (3-2)/6\n Whole tank = 1 ÷ 1/6\n = 6\n 6 hours to fill the tank\n = 1/3 x 6\n = 2 hours\n Remaining time to fill the tank = (6-2) hour\n = 4 hours",
+                "options": [
+                    "2 hours",
+                    "6 hours",
+                    "4 hours"
+                ],
+                "mark": 5,
+                "id": "ple_math_sect_A30_5"
+            },
+            {
+                "question_text": "The mean of the numbers 7, 9, 5, x+2 and 6 is 8. Find the value of x.",
+                "type": "multipleChoice",
+                "answer": "x = 11",
+                "explanation": "Mean = (7 + 9 + 5 + x+2 + 6)/5\n 8 = (7 + 9 + 5 + x+2 + 6)/5\n (29 + x)/5 = 8\n 29 + x = 40\n 29 - 29 + x = 40 - 29\n x = 11",
+                "options": [
+                    "x = 9",
+                    "x = 10",
+                    "x = 11"
+                ],
+                "mark": 3,
+                "sub_questions": [
+                    {
+                        "question_text": "In a bag there are 15 pens. Out of these 4 are red and the rest blue. What is the probability that a pen picked at random from the bag is blue?",
+                        "type": "multipleChoice",
+                        "answer": "Probability = 11/15",
+                        "explanation": "Blue pens = 15 - 4\n = 11 pens\n Probability = Number of blue pens/Total number of pens\n = 11/15",
+                        "options": [
+                            "Probability = 4/15",
+                            "Probability = 11/15",
+                            "Probability = 1/2"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A30_6"
+            },
+            {
+                "question_text": "In the figure below, BCD is a straight line. Line BX bisects angle ABC. Line AB is parallel to line XC. Angle BCE = 50<sup>oo</sup> and angle BAC = 70<sup>oo</sup>.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/30.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Find the size of the angle CEX",
+                        "type": "multipleChoice",
+                        "answer": "Angle CEX  = 80<sup>o</sup>",
+                        "explanation": "Considering triangle ABC\n a + a + 50 + 70 = 180 (angle sum of a triangle\n 2a + 120 = 180\n 2a = 60\n a = 30\n Using triangle BAE\n a + ∠BEA + 70 = 180\n 30 + ∠BEA + 70 = 180\n ∠BEA = 80<sup>o</sup>\n But ∠BEA = ∠CEX\n Therefore ∠CEX = 80<sup>o</sup>)",
+                        "options": [
+                            "Angle CEX  = 30<sup>o</sup>",
+                            "Angle CEX  = 40<sup>o</sup>",
+                            "Angle CEX  = 80<sup>o</sup>"
+                        ],
+                        "mark": 4
+                    },
+                    {
+                        "question_text": "Find the size of the angle DCX",
+                        "type": "multipleChoice",
+                        "answer": "Angle DCX = 60<sup>o</sup>",
+                        "explanation": " Angel XCA = angle BAC = 70<sup>o</sup> (alternative angles)\n Angle BCA + angle ACX + angle DCX = 180<sup>o</sup> (angle sum on a straight line)\n 50 + 70 + ∠DCX = 180\n ∠DCX = 60<sup>o</sup>",
+                        "options": [
+                            "Angle DCX = 30<sup>o</sup>",
+                            "Angle DCX = 60<sup>o</sup>",
+                            "Angle DCX = 75<sup>o</sup>"
+                        ],
+                        "mark": 1
+                    }
+                ],
+                "id": "ple_math_sect_A30_7"
+            }
+        ],
+        "$id": "document_29"
+    },
+    {
+        "category": 4,
+        "questions": [
+            {
+                "question_text": "In the venn diagram, shade the region (S u T)'",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol%201.png",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/2.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/3.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/2.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/4.png"
+                ],
+                "id": "ple_math_sect_A4_1"
+            },
+            {
+                "question_text": "A teacher counted pupils without school uniform in a class and tallied them as follows: How many pupils were withpout unifom?",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/4.png",
+                "type": "text",
+                "answer": "24 pupils",
+                "id": "ple_math_sect_A4_2"
+            },
+            {
+                "question_text": "Find the next number in the sequence: -11, -8, -5, -2, ....",
+                "type": "multipleChoice",
+                "answer": "1",
+                "explanation": "3 is added to the next number in the sequence",
+                "options": [
+                    "1",
+                    "-5",
+                    "-1"
+                ],
+                "id": "ple_math_sect_A4_3"
+            },
+            {
+                "question_text": "Use the venn diagram below to find n(P∩Q)",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/4.png",
+                "type": "multipleChoice",
+                "answer": "n(P∩Q) = 2",
+                "options": [
+                    "n(P∩Q) = {a,b}",
+                    "n(P∩Q) = 2",
+                    "n(P∩Q) = 3"
+                ],
+                "id": "ple_math_sect_A4_4"
+            },
+            {
+                "question_text": "Given that K = {g,m,v,z}, find the numbers of subjects in set K.",
+                "type": "multipleChoice",
+                "answer": "4 subsets",
+                "explanation": "Subsets of K are;\n {g}, {m}, {v} and {z}\n which are 4 in total",
+                "options": [
+                    "9 subsets",
+                    "6 subsets",
+                    "4 subsets"
+                ],
+                "id": "ple_math_sect_A4_5"
+            },
+            {
+                "question_text": "Work out : 1/6 x 3/4",
+                "type": "multipleChoice",
+                "answer": "1/8",
+                "explanation": "= 1/2 x 1/4\n = 1/8",
+                "options": [
+                    "1/24",
+                    "1/8",
+                    "1/4"
+                ],
+                "id": "ple_math_sect_A4_6"
+            },
+            {
+                "question_text": "Given that set P = {1, 2, 3, 5, 7, 9 } and set Q = {2, 3, 5, 7} find n(P∩Q)",
+                "type": "multipleChoice",
+                "answer": "n(P n Q) = 3",
+                "explanation": "P ∩ Q = {2, 3, 5, 7}\n n (P n Q) = 3",
+                "options": [
+                    "n(P n Q) = 4",
+                    "n(P n Q) = 6",
+                    "n(P n Q) = 3"
+                ],
+                "id": "ple_math_sect_A4_7"
+            }
+        ],
+        "$id": "document_3"
+    },
+    {
+        "category": 31,
+        "questions": [
+            {
+                "question_text": "In a market, the cost of a pawpaw is sh 800 more than the cost of a mango. A mango costs two thirds of the cost of a pineapple. The total cost of the three fruits is sh 4,300. Calculate the cost of a pineapple.",
+                "type": "multipleChoice",
+                "answer": "Cost of a pineapple is sh 1,500",
+                "explanation": "Let cost of a pineapple be k\n Pineapple = k\n Mango = 2/3k\n Pawpaw = 2/3k + 800\n k + 2/3k + 2/3k + 800 = 4300\n k + 2/3k + 2/3k + 800 - 800 = 4300 - 800\n k + 2/3k + 2/3k = 3500\n Multiply through by 3\n 3k + 2k + 2k = 10500\n 7k = 10500\n k = 1500",
+                "options": [
+                    "Cost of a pineapple is sh 2,500",
+                    "Cost of a pineapple is sh 1,500",
+                    "Cost of a pineapple is sh 1,000"
+                ],
+                "mark": 4,
+                "id": "ple_math_sect_A31_1"
+            },
+            {
+                "question_text": "The figure below shows a rectangular sheet of metal. The sheet is curved to form the wall of a cylindrical tank whose height is 100cm.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/31.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Find the diameter of the tank formed. (Use π = 22/7)",
+                        "type": "multipleChoice",
+                        "answer": "Diameter = 70cm",
+                        "explanation": "Circumference = 2 x π x radius\n Since the rectangle was folded to form the cylinder, Length = Circumference\n From C = 2πr\n 220 = 2 x 22/7 x r\n 220 = 44/7 x r\n 220 x 7 = 44/7 x r x 7\n 1540 = 44r\n 1540/44 = 44r/44\n 35 = r\n r = 35\n Diameter = radius x 2\n = 35 x 2\n = 70",
+                        "options": [
+                            "Diameter = 35cm",
+                            "Diameter = 70cm",
+                            "Diameter = 110cm"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Calculate the area of the sheet needed to cover the base of the tank.",
+                        "type": "multipleChoice",
+                        "answer": "Area = 3850 cm<sup>2</sup>",
+                        "explanation": "Area of sheet needed to cover = Area of circle that can fit on the cylinder\n = π x radius<sup>2</sup>\n = 22/7 x (70/2)<sup>2</sup>\n = 22/7 x 35<sup>2</sup>\n 22/7 x 1225\n = 3850 cm<sup>2</sup>",
+                        "options": [
+                            "Area = 2250 cm<sup>2</sup>",
+                            "Area = 3800 cm<sup>2</sup>",
+                            "Area = 3850 cm<sup>2</sup>"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Calculate the capacity of the tank.",
+                        "type": "multipleChoice",
+                        "answer": "Capacity = 385000cm<sup>3</sup>",
+                        "explanation": "Capacity = Volume\n Volume = π x radiuscm<sup>2</sup> x height\n = π x (70/2)<sup>2</sup> x 100\n = 22/7 x 35 x 35 x 100\n = 385000",
+                        "options": [
+                            "Capacity = 38500cm<sup>3</sup>",
+                            "Capacity = 385000cm<sup>3</sup>",
+                            "Capacity = 3850000cm<sup>3</sup>"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A31_2"
+            },
+            {
+                "question_text": "In a class, 1/5 of the girls are boarders while 1/3 of the boys are day scholars. The percentage of the girls in the class in 60%. The class has 10 boys who are day scholars.",
+                "sub_questions": [
+                    {
+                        "question_text": "How many pupils are in the class?",
+                        "type": "multipleChoice",
+                        "answer": "75 pupils",
+                        "explanation": "Girls = 60% = 60/100\n = 3/5\n Boys = 5/5 - 3/5\n = 2/5\n Boys day scholars = 1/3 of 2/5\n = 1/3 x 2/5\n = 2/15\n Let the total number of pupils be n\n 2/15 x n = 10\n 15 x 2/15n = 10 x 15\n 2n = 150\n n = 75 pupils",
+                        "options": [
+                            "70 pupils",
+                            "65 pupils",
+                            "75 pupils"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question_text": "Find the number of girls who are borders",
+                        "type": "multipleChoice",
+                        "answer": "9 girls",
+                        "explanation": "Number of girls = 3/5 x 75\n = 3 x 15\n = 45 girls\n Girls in boarding = 1/5 x 45\n = 9 girls",
+                        "options": [
+                            "10 girls",
+                            "9 girls",
+                            "8 girls"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A31_3"
+            },
+            {
+                "question_text": "Given that m = 3k and k = 5, find the value of 2k + 6m",
+                "type": "multipleChoice",
+                "answer": "100",
+                "explanation": "2k + 6m\n 2 x 5 + 6 x 3k\n 10 + 6 x 3 x 5\n 10 + 90\n = 100",
+                "options": [
+                    "10",
+                    "100",
+                    "90"
+                ],
+                "mark": 3,
+                "sub_questions": [
+                    {
+                        "question_text": "Write the solution set for the inequality: 6 < x < 10",
+                        "type": "multipleChoice",
+                        "answer": "x = {7, 8, 9}",
+                        "explanation": "x are integers between 6 and 10",
+                        "options": [
+                            "x = {6, 8, 9}",
+                            "x = {7, 8, 9}",
+                            "x = {7, 8, 10}"
+                        ],
+                        "mark": 1
+                    }
+                ],
+                "id": "ple_math_sect_A31_4"
+            },
+            {
+                "question_text": "A geometry set costs half as much as a book. A book costs 600 more than a fountain pen. If the total cost of the three items is sh 6,900, find the cost of the geometry set.",
+                "type": "multipleChoice",
+                "answer": "shs 1,500",
+                "explanation": "Let the cost of fountain pen be y\n Book = y + 600\n Set = 1/2(y + 600)\n y + y + 600 + 1/2(y + 600) = 6900\n 2y + 600 + (y+600)/2 = 6900\n Multiply through by 2\n 4y + 1200 + y + 600 = 13800\n 4y + y + 600 + 1200 = 13800\n 5y + 1800 - 1800 = 13800 - 1800\n 5y = 12000\n y = 2400\n Cost of geometry set\n = 1/2(y+600)\n = 1/2(2400 + 600)\n = 1/2 x 3000\n = shs 1500",
+                "options": [
+                    "shs 2,000",
+                    "shs 3,000",
+                    "shs 1,500"
+                ],
+                "mark": 4,
+                "id": "ple_math_sect_A31_5"
+            },
+            {
+                "question_text": "Nanziri has two children, a son and a daughter. If the son is half her age, the daughter a third her age and the total age of the two children is 30 years.",
+                "sub_questions": [
+                    {
+                        "question_text": "Find Nanziri's age",
+                        "type": "multipleChoice",
+                        "answer": "36 years old",
+                        "explanation": "Let Nanziri's age be x\n Son = ½x\n Daughter = ⅓x\n Total age = 30 years\n ½x + ⅓x = 30\n x/2 + x/3 = 30\n (3x + 2x)/6 = 30\n 5x/6 = 30\n 5x = (30x6)\n 5x = 180\n x = 36",
+                        "options": [
+                            "30 years old",
+                            "25 years old",
+                            "36 years old"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question_text": "How old is the daughter?",
+                        "type": "multipleChoice",
+                        "answer": "12 years old",
+                        "explanation": "Daughter's age  = 1/3 x 36\n = 12 years old",
+                        "options": [
+                            "10 years old",
+                            "18 years old",
+                            "12 years old"
+                        ],
+                        "mark": 1
+                    }
+                ],
+                "id": "ple_math_sect_A31_6"
+            },
+            {
+                "question_text": "The figure below is a cuboid. Study and use it to answer the questions that follow.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/31.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Find the value of y",
+                        "type": "multipleChoice",
+                        "answer": "y = 5",
+                        "explanation": "Length = Length\n 2y - 3 = y + 2\n 2y - 3 + 3 = y + 2 + 3\n 2y = y + 5\n 2y - y = y - y + 5\n y = 5",
+                        "options": [
+                            "y = 6",
+                            "y = 5",
+                            "y = 4"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question_text": "Find the volume of the cuboid",
+                        "type": "multipleChoice",
+                        "answer": "Volume = 105 cm<sup>3</sup>",
+                        "explanation": "Length = (y+2)cm\n = 5+2\n = 7 cm\n Width = (y-2)cm\n = y-2\n = 5-2\n = 3 cm\n Height\n y cm = 5 cm\n Volume = L x W x H\n = (7 x 3) x 5\n = 21 x 5\n = 105 cm<sup>3</sup>",
+                        "options": [
+                            "Volume = 100 cm<sup>3</sup>",
+                            "Volume = 110 cm<sup>3</sup>",
+                            "Volume = 105 cm<sup>3</sup>"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_A31_7"
+            }
+        ],
+        "$id": "document_30"
+    },
+    {
+        "category": 32,
+        "questions": [
+            {
+                "question_text": "A boat sailed from island P on a bearing of 300<sup>o</sup> to island Q for a distance of 56 km. The boatman then left island Q and sailed on a bearing of 230<sup>o</sup> to island R for a distance of 40km. Which of the following diagrams represents the accurate journey of the boat using the scale of 1 centimetre to represent 8 kilometres?",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/32.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/32W.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/32.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/32W2.png"
+                ],
+                "mark": 6,
+                "id": "ple_math_sect_A32_1"
+            },
+            {
+                "question_text": "Town M is 150 km from town G. A motorcyclist started a journey from town M at 10:30am. He was travelling at a speed of 25 km/h for 2 hours. He rested for 30 minutes and then continued at a speed of 50km/h for the rest of the journey to town G.",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/32.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/32_1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/32_2.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/32.png"
+                ],
+                "mark": 6,
+                "id": "ple_math_sect_A32_2"
+            },
+            {
+                "question_text": "Study the coordinate graph below and use it to answer the questions that follow.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/32.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Write the cordinates of point A",
+                        "type": "text",
+                        "answer": "(-1,4)",
+                        "mark": 1
+                    },
+                    {
+                        "question_text": "In the following diagrams, which one shows point B(+2,+2) and C(-1,-4) with point D forming a kite.",
+                        "type": "multipleChoice",
+                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/32C.png",
+                        "options": [
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/32W.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/32C.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/32W1.png"
+                        ],
+                        "mark": 4
+                    }
+                ],
+                "id": "ple_math_sect_A32_3"
+            },
+            {
+                "question_text": "A school library is 70 metres east of the main hall. The staff room is 60 metres from the library on a bearing of 240<sup>o</sup>. Using a scale of 1cm to represent 10 metres, which of the following represent the accurate diagram",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/32.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/32.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/32W.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/32W1.png"
+                ],
+                "mark": 6,
+                "id": "ple_math_sect_A32_4"
+            },
+            {
+                "question_text": "A plane flew from airport K to airport T on a bearing of 120<sup>o</sup>. The distance between K and T is 600 km. It then left airport T for airport R on a bearing of 210<sup>o</sup>. The distance between T and R is 500 km, Which of the following show the accurate diagram using the scale of 1 cm to represent 100 km.",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/32b.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/32b_1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/32b_2.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/32b.png"
+                ],
+                "mark": 6,
+                "id": "ple_math_sect_A32_5"
+            },
+            {
+                "question_text": "A school wants to fence a circular flower garden of diameter 14m using poles placed at intervals of 80cm.",
+                "sub_questions": [
+                    {
+                        "question_text": "How many poles are needed to fence the flower garden? (Take π = 22/7)",
+                        "type": "multipleChoice",
+                        "answer": "55 poles",
+                        "explanation": "Circumfrence = π x Diameter\n = 22/7 x 14\n = 44 m\n Convert 44m to cm\n = (44 x 100)\n = 4400 cm\n Number of poles = Circumference/Interval\n = 4400/80\n = 55 poles",
+                        "options": [
+                            "20 poles",
+                            "50 poles",
+                            "55 poles"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question_text": "If each pole costs shs 3,000, how much money will the school spend on poles?",
+                        "type": "multipleChoice",
+                        "answer": "shs 165,000",
+                        "explanation": "55 x 3,000\n = 165,000",
+                        "options": [
+                            "shs 60,000",
+                            "shs 150,000",
+                            "shs 165,000"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_A32_6"
+            },
+            {
+                "question_text": "A tourist left town A and travelled 55 km westwards to town B. He then turned on a bearing of 215<sup>o</sup> and travelled to town C which is a distance of 65 km. Which of the following the accurate diagram using a scale 1 cm to represent 10 km",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/32b_2.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/32b_2.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/32b_1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/32b.png"
+                ],
+                "mark": 6,
+                "id": "ple_math_sect_A32_7"
+            }
+        ],
+        "$id": "document_31"
+    },
+    {
+        "category": 5,
+        "questions": [
+            {
+                "question_text": "Round off 53.86 to the nearest tenth",
+                "type": "multipleChoice",
+                "answer": "53.9",
+                "options": [
+                    "53.0",
+                    "53.9",
+                    "53.8"
+                ],
+                "id": "ple_math_sect_A5_1"
+            },
+            {
+                "question_text": "The clock face shows time in afternoon. What's the time shown in 24-hour clock.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/5.png",
+                "type": "multipleChoice",
+                "answer": "16:50 hours",
+                "explanation": "4:50p.m + 12hours\n = 16:50 or 16 hours 50 minutes",
+                "options": [
+                    "04:50 hours",
+                    "16:50 hours",
+                    "12:50 hours"
+                ],
+                "id": "ple_math_sect_A5_2"
+            },
+            {
+                "question_text": "Solve the equation: 7n + 2 = 23",
+                "type": "multipleChoice",
+                "answer": "n = 3",
+                "explanation": "7n + 2 = 23\n 7n + 2 - 2 = 23 - 2\n 7n = 21\n 7n/7 = 21/7\n n = 3",
+                "options": [
+                    "n = 7",
+                    "n = 4",
+                    "n = 3"
+                ],
+                "id": "ple_math_sect_A5_3"
+            },
+            {
+                "question_text": "Without dividing, show which of the numbers 140 and 5070 is divisible by 3",
+                "type": "text",
+                "answer": "5070",
+                "explanation": "We add the sum of the numbers and the sum that is divisible by 3 is the number that can be divided by 3",
+                "id": "ple_math_sect_A5_4"
+            },
+            {
+                "question_text": "Which of the following diagrams represent <sup>-</sup>7 - <sup>-</sup>3 on a number line",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/5.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/5_1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/5_2.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/5.png"
+                ],
+                "id": "ple_math_sect_A5_5"
+            },
+            {
+                "question_text": "Simplify: 5ab - 2xy - ab + 7y",
+                "type": "multipleChoice",
+                "answer": "4ab - y(2x - 7)",
+                "explanation": "5ab - ab - 2xy + 7y\n 4ab - y(2x - 7)",
+                "options": [
+                    "4ab - y(2x - 7)",
+                    "4ab - y(2x + 7)",
+                    "4ab + y(2x - 7)"
+                ],
+                "id": "ple_math_sect_A5_6"
+            },
+            {
+                "question_text": "Round off 12,962 onto the nearest thousands",
+                "type": "multipleChoice",
+                "answer": "12,962  is  13,000 to the nearest a thousands",
+                "explanation": "12000 + 1000\n = 13,000",
+                "options": [
+                    "12,999",
+                    "13,000",
+                    "13,852"
+                ],
+                "id": "ple_math_sect_A5_7"
+            }
+        ],
+        "$id": "document_4"
+    },
+    {
+        "category": 6,
+        "questions": [
+            {
+                "question_text": "Which image shows the perpendicular from point C onto the segment AB below",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol 3.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol%205.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol 4.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol 3.png"
+                ],
+                "id": "ple_math_sect_A6_1"
+            },
+            {
+                "question_text": "Simplify: 5k - 2(3 - k)",
+                "type": "multipleChoice",
+                "answer": "7k - 6",
+                "explanation": "Use BODMAS\n Open the brackets\n 5k - 6 + 2k\n Collect the like terms\n 5k + 2k - 6\n 7k - 6",
+                "options": [
+                    "3k - 6",
+                    "7k - 6",
+                    "7k + 6"
+                ],
+                "id": "ple_math_sect_A6_2"
+            },
+            {
+                "question_text": "Given that set N = {c, t, p}, list all the subsets in N",
+                "type": "multipleChoice",
+                "answer": "{c},{t},{p},{c,t},{c,p},{t,p}",
+                "options": [
+                    "{c},{t},{p}",
+                    "{c},{t},{p},{c,t},{c,p},{t,p},{c,t,p}",
+                    "{c},{t},{p},{c,t},{c,p},{t,p}"
+                ],
+                "id": "ple_math_sect_A6_3"
+            },
+            {
+                "question_text": "Work out 110<sub>two</sub> x 11<sub>two</sub>",
+                "type": "multipleChoice",
+                "answer": "10010<sub>two</sub>",
+                "options": [
+                    "1210<sub>two</sub>",
+                    "10010<sub>two</sub>",
+                    "1010<sub>two</sub>"
+                ],
+                "id": "ple_math_sect_A6_4"
+            },
+            {
+                "question_text": "Find the sum of the 5<sup>th</sup> and 8<sup>th</sup> prime numbers",
+                "type": "multipleChoice",
+                "answer": "Sum = 30",
+                "explanation": "The 5<sup>th</sup> is 11 and the 8<sup>th</sup> is 19\n So 11 + 19 = 30",
+                "options": [
+                    "Sum = 34",
+                    "Sum = 30",
+                    "Sum = 26"
+                ],
+                "id": "ple_math_sect_A6_5"
+            },
+            {
+                "question_text": "Find the next number in the sequence: 49, 47, 44, 39, .....",
+                "type": "multipleChoice",
+                "answer": "32",
+                "explanation": "By subtracting prime numbers from the given sequence\n 49 - 2 = 47\n 47 - 3 = 44\n 44 - 5 = 39\n 39 - 7 = 32",
+                "options": [
+                    "32",
+                    "31",
+                    "37"
+                ],
+                "id": "ple_math_sect_A6_6"
+            },
+            {
+                "question_text": "Find the value of X in the diagram below.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/6.png",
+                "type": "multipleChoice",
+                "answer": "X = 18°",
+                "explanation": "3x + 90°+ 2x = 180° (angle sum of straight line)\n 5x + 90° = 180°\n 5x + 90 - 90 = 180 - 90\n 5x = 90\n x = 18°",
+                "options": [
+                    "X = 18°",
+                    "X = 15°",
+                    "X = 10°"
+                ],
+                "id": "ple_math_sect_A6_7"
+            }
+        ],
+        "$id": "document_5"
+    },
+    {
+        "category": 7,
+        "questions": [
+            {
+                "question_text": "Change 250 grammes into kilogrammes",
+                "type": "multipleChoice",
+                "answer": "0.25 kilogrammes",
+                "explanation": "1 gram = 1/1000 kilogrammes\n 250 grammes = (250 x 1/1000) kilogrammes\n = 0.25 kilogrammes",
+                "options": [
+                    "0.025 kilogrammes",
+                    "0.25 kilogrammes",
+                    "250000 kilogrammes"
+                ],
+                "id": "ple_math_sect_A7_1"
+            },
+            {
+                "question_text": "A car uses 7 litres of petrol to cover 28 kilometres. How many litres of petrol can it use to cover 64 kilometres?",
+                "type": "multipleChoice",
+                "answer": "16 litres",
+                "explanation": "28 kilometres = 7 litres\n 1 km = 7/28 litres\n = 1/4 litres\n 64 km = (64 x 1/4) litres\n = 16 litres",
+                "options": [
+                    "448 litres",
+                    "256 litres",
+                    "16 litres"
+                ],
+                "id": "ple_math_sect_A7_2"
+            },
+            {
+                "question_text": "Find the number which has been expanded below: (3x10<sup>2</sup>) + (5x10<sup>-1</sup>)",
+                "type": "multipleChoice",
+                "answer": "300.5",
+                "explanation": "(3 x 10 x 10) + (5 x 1/10)\n = 300 + 0.5\n = 300.5",
+                "options": [
+                    "30.5",
+                    "300.5",
+                    "300.2"
+                ],
+                "id": "ple_math_sect_A7_3"
+            },
+            {
+                "question_text": "A die is tossed once. What is the probability that a number less than 5 will appear on top?",
+                "type": "multipleChoice",
+                "answer": "Probability = 2/3",
+                "explanation": "Probability = Number of favorable outcomes/Total number of possible outcomes\n = 4/6\n Since both the numerator and denominator are divisible by 2\n = (4÷2)/(6÷2)\n = 2/3",
+                "options": [
+                    "Probability = 5/6",
+                    "Probability = 2/3",
+                    "Probability = 1/2"
+                ],
+                "id": "ple_math_sect_A7_4"
+            },
+            {
+                "question_text": "Work out 14/15 ÷ 2/5",
+                "type": "multipleChoice",
+                "answer": "2⅓",
+                "explanation": "14/15 ÷ 2/5\n = 14/15 x 5/2\n = 7/3\n = 2⅓",
+                "options": [
+                    "2⅓",
+                    "2½",
+                    "2⅔"
+                ],
+                "id": "ple_math_sect_A7_5"
+            },
+            {
+                "question_text": "A pupil bought a dozen of exercise books for shs 6,000. He later sold each book at Sh 700. Calculate the profit.",
+                "type": "multipleChoice",
+                "answer": "shs 2,400",
+                "explanation": "Buying price = sh 6,000\n Selling price;\n 1 dozen = 12 books\n 12 books = 12 x 700\n = shs 8400\n Profit = selling price - buying price\n = 8400 - 6000\n = shs 2,400",
+                "options": [
+                    "shs 2,400",
+                    "shs 4,800",
+                    "shs 3,600"
+                ],
+                "id": "ple_math_sect_A7_6"
+            }
+        ],
+        "$id": "document_6"
+    },
+    {
+        "category": 8,
+        "questions": [
+            {
+                "question_text": "Okia bought 4 packets of washing powder each weighing 750 grams. Find the weight of the washing powder Okia bought in kilograms.",
+                "type": "multipleChoice",
+                "answer": "3000 grams",
+                "explanation": "1 packet = 750 grams\n 4 packets = (4 x 750) grams\n = 3000 grams",
+                "options": [
+                    "754 grams",
+                    "187.5 grams",
+                    "3000 grams"
+                ],
+                "id": "ple_math_sect_A8_1"
+            },
+            {
+                "question_text": "The profit on a shirt sold at sh7,900 was sh2,100. Calculate the cost price of the shirt.",
+                "type": "multipleChoice",
+                "answer": "Cost price = 5,800",
+                "explanation": "Profit = Selling price - Cost price\n 2100 = 7900 - CP\n 2100 - 2100 + CP = 7900 - 2100 - CP + CP\n CP = 5800",
+                "options": [
+                    "Cost price = 6,000",
+                    "Cost price = 5,100",
+                    "Cost price = 5,800"
+                ],
+                "id": "ple_math_sect_A8_2"
+            },
+            {
+                "question_text": "Write the integers represented by letters a and b on the line below",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/8.png",
+                "sub_question": [
+                    {
+                        "question_text": "a",
+                        "type": "text",
+                        "answer": "4"
+                    },
+                    {
+                        "question_text": "b",
+                        "type": "text",
+                        "answer": "-5"
+                    }
+                ],
+                "id": "ple_math_sect_A8_3"
+            },
+            {
+                "question_text": "A birthday party started at 4:30 p.m and lasted 2¾ hours . At what time did the party end?",
+                "type": "multipleChoice",
+                "answer": "7:15 p.m",
+                "explanation": "We need to add 2¾ hours to 4:30 p.m\n First we convert ¾ hours to minutes\n 3/4 x 60 = 45 minutes\n 4:30 p.m + 2:45\n = 7:15 p.m",
+                "options": [
+                    "6:15 p.m",
+                    "7:15 p.m",
+                    "7:00 p.m"
+                ],
+                "id": "ple_math_sect_A8_4"
+            },
+            {
+                "question_text": "A lady bought a dress at 55,000. She later sold it and made a loss of sh 15,000. At what price did she sell the dress?",
+                "type": "multipleChoice",
+                "answer": "40,000",
+                "explanation": "Purchase Price = 55,000 shillings\n Loss = 15,000 shillings\n Selling Price = Purchase Price - Loss\n = 55,000 - 15,000\n = 40,000",
+                "options": [
+                    "60,000",
+                    "35,000",
+                    "40,000"
+                ],
+                "id": "ple_math_sect_A8_5"
+            },
+            {
+                "question_text": "Simplify 4t - 2k + 5k - t",
+                "type": "multipleChoice",
+                "answer": "3t + 3k",
+                "explanation": "4t - 2k + 5k - t\n = 4t - t + 5k - 2k\n = 3t + 3k",
+                "options": [
+                    "4t + 3k",
+                    "3t + 2k",
+                    "3t + 3k"
+                ],
+                "id": "ple_math_sect_A8_6"
+            }
+        ],
+        "$id": "document_7"
+    },
+    {
+        "category": 9,
+        "questions": [
+            {
+                "question_text": "Solve: 3 + m = 2(finite 5)",
+                "type": "multipleChoice",
+                "answer": "m = 7",
+                "explanation": "3 + m = 2 x 5\n 3 + m = 10\n m = 10 - 3\n m = 7",
+                "options": [
+                    "m = 5",
+                    "m = 7",
+                    "m = -1"
+                ],
+                "id": "ple_math_sect_A9_1"
+            },
+            {
+                "question_text": "Change 10 square meters into square centimeters",
+                "type": "multipleChoice",
+                "answer": "10 m<sub>2</sub> = 100,000 cm<sub>2</sub>",
+                "explanation": "1 m = 100 cm\n 1 m<sub>2</sub> = 10000 cm<sub>2</sub>\n 10 m<sub>2</sub> = (10 x 10000) cm<sub>2</sub>\n = 100000 cm<sub>2</sub>",
+                "options": [
+                    "10 m<sub>2</sub> = 100,000 cm<sub>2</sub>",
+                    "10 m<sub>2</sub> = 1,000 cm<sub>2</sub>",
+                    "10 m<sub>2</sub> = 100 cm<sub>2</sub>"
+                ],
+                "id": "ple_math_sect_A9_2"
+            },
+            {
+                "question_text": "Which of the following images show Twenty five minutes to eleven on the clock face",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/9.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/9_1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/9_2.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/9.png"
+                ],
+                "id": "ple_math_sect_A9_3"
+            },
+            {
+                "question_text": "Which of the following show all the lines of folding symmetry in the figure below",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/9Q.png",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/9.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/9_2.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/9_1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/9.png"
+                ],
+                "id": "ple_math_sect_A9_4"
+            },
+            {
+                "question_text": "The mass of a packet of coffee is 1/8kg. what is this mass in grams?",
+                "type": "multipleChoice",
+                "answer": "125 grams",
+                "explanation": "1 kg = 1000 g\n 1/8 kg = (1/8 x 1000)g\n = 1000/8\n = 500/4\n = 250/2\n = 125",
+                "options": [
+                    "0.125 grams",
+                    "12.5 grams",
+                    "125 grams"
+                ],
+                "id": "ple_math_sect_A9_5"
+            },
+            {
+                "question_text": "Divide 6363 by 7",
+                "type": "text",
+                "answer": "909",
+                "id": "ple_math_sect_A9_6"
+            }
+        ],
+        "$id": "document_8"
+    },
+    {
+        "category": 10,
+        "questions": [
+            {
+                "question_text": "In the diagram below, find the value of b in degrees",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol 6.png",
+                "type": "multipleChoice",
+                "answer": "b = 50<sup>o</sup>",
+                "explanation": "b + 20 + 110 = 180\n b + 130 = 180\n b + 130 - 130 = 180 - 130\n b = 50",
+                "options": [
+                    "b = 90<sup>o</sup>",
+                    "b = 50<sup>o</sup>",
+                    "b = 160<sup>o</sup>"
+                ],
+                "id": "ple_math_sect_A10_1"
+            },
+            {
+                "question_text": "Find the next number in the sequence: 1, 2, 10, 37, .....",
+                "type": "text",
+                "answer": "101",
+                "explanation": "The difference between 2 and 1 is 1\n The difference between 10 and 2 is 8\n The difference between 37 and 10 is 27\n which is gotten from 1<sub>3</sub>, 2<sub>3</sub>, 3<sub>3</sub>\n So the next difference is 4<sub>3</sub> = 64\n 37 + 64 = 101",
+                "id": "ple_math_sect_A10_2"
+            },
+            {
+                "question_text": "Write 9:30am in the 24 hour clock",
+                "type": "text",
+                "answer": "09:30 hours",
+                "explanation": "When the time is in a.m, it remains the same but only changes the a.m to hours",
+                "id": "ple_math_sect_A10_3"
+            },
+            {
+                "question_text": "In the triangle below, find the value of d in degrees",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/10.png",
+                "type": "multipleChoice",
+                "answer": "d = 36<sup>o</sup>",
+                "explanation": "Since its an equilateral triangle, the base angles are equal\n ∴ 2d + 2d + d = 180 (Angle sum of a triangle)\n 5d = 180\n 5d/5 = 180/5\n d = 36",
+                "options": [
+                    "d = 45<sup>o</sup>",
+                    "d = 60<sup>o</sup>",
+                    "d = 36<sup>o</sup>"
+                ],
+                "id": "ple_math_sect_A10_4"
+            },
+            {
+                "question_text": "A trader sold a pair of shoes at sh 32,800 making a profit of sh 1,200. What was the cost price of the pair of shoes?",
+                "type": "multipleChoice",
+                "answer": "Cost price = 31,600",
+                "explnation": "Cost price = Selling price - Profit\n = 32,800 - 1,200\n = 31,600",
+                "options": [
+                    "Cost price = 30,600",
+                    "Cost price = 31,000",
+                    "Cost price = 31,600"
+                ],
+                "id": "ple_math_sect_A10_5"
+            },
+            {
+                "question_text": "Work out: 412<sub>five</sub> - 13<sub>five</sub>",
+                "type": "multipleChoice",
+                "answer": "344<sub>five</sub>",
+                "options": [
+                    "399<sub>five</sub>",
+                    "304<sub>five</sub>",
+                    "344<sub>five</sub>"
+                ],
+                "id": "ple_math_sect_A10_6"
+            },
+            {
+                "question_text": "Work out: 2/3 + 1/4",
+                "type": "multipleChoice",
+                "answer": "11/12",
+                "explanation": "LCM of 3 and 4 = 12\n  = ((4 x 2) + (3 x 1))/12\n = (8 + 3)/12\n = 11/12",
+                "options": [
+                    "11/12",
+                    "1/2",
+                    "1/12"
+                ],
+                "id": "ple_math_sect_A10_7"
+            }
+        ],
+        "$id": "document_9"
+    }
+]
+
+export { sst_ple, math_ple };
