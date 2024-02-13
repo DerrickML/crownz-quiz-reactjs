@@ -1,26 +1,48 @@
-// CheckboxQuestion.js
-import React from 'react';
-import { Form } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Form, Card } from 'react-bootstrap';
 import { isImageUrl } from './utils';
 
 const CheckboxQuestion = ({ question, onChange, disabled, userAnswer, displayQuestionText }) => {
-    const options = question.options || [];
+    const [selectedOptions, setSelectedOptions] = useState([]);
+
+    useEffect(() => {
+        if (userAnswer) {
+            setSelectedOptions(userAnswer);
+        }
+    }, [userAnswer]);
+
+    const handleOptionChange = (option) => {
+        const updatedOptions = selectedOptions.includes(option)
+            ? selectedOptions.filter(opt => opt !== option)
+            : [...selectedOptions, option];
+        setSelectedOptions(updatedOptions);
+        onChange(updatedOptions);
+    };
+
+    const renderOptionLabel = (option) => {
+        return isImageUrl(option) ? (
+            <Card>
+                <Card.Img variant="top" src={option} style={{ width: '300px', height: 'auto', margin: 'auto' }} />
+            </Card>
+        ) : (
+            <>
+                <div dangerouslySetInnerHTML={{ __html: option }}></div >
+            </>
+        );
+    };
 
     return (
         <Form.Group>
             {displayQuestionText && <Form.Label dangerouslySetInnerHTML={{ __html: question.question_text }} />}
-
-            {/* {question.image && isImageUrl(question.image) && (
-                <img src={question.image} alt="Question" style={{ maxWidth: '100%', height: 'auto' }} />
-            )} */}
-            {options.map((option, index) => (
+            {question.options && question.options.map((option, index) => (
                 <Form.Check
                     type="checkbox"
-                    label={isImageUrl(option) ? <img src={option} alt="Option" style={{ maxWidth: '100%', height: 'auto' }} /> : <span dangerouslySetInnerHTML={{ __html: option }}></span>}
-                    id={`${question.id}-${index}`}
-                    onChange={onChange}
+                    label={renderOptionLabel(option)}
+                    onChange={() => handleOptionChange(option)}
+                    checked={selectedOptions.includes(option)}
                     disabled={disabled}
                     key={`${question.id}-${index}`}
+                    id={`${question.id}-option-${index}`}
                 />
             ))}
         </Form.Group>

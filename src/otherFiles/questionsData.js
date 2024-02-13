@@ -2410,7 +2410,7 @@ const sst_ple = [
         "questions": [
             {
                 "question_text": "Select where the Akosombo dam is found",
-                "type": "mutipleChoice",
+                "type": "multipleChoice",
                 "answer": [
                     "River Volta"
                 ],
@@ -17148,4 +17148,2178 @@ const math_ple = [
     }
 ]
 
-export { sst_ple, math_ple };
+const sst_ple_ans = [
+    {
+        "category": 1,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "What helps a pilot flying a plane from Arua to Entebbe to find the direction to Entebbe Airport?",
+                "type": "text",
+                "answer": [
+                    "A compass",
+                    "Compass"
+                ],
+                "id": "ple_sst_sect_A1_18",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 2,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Name the system of government that is practised in Uganda today.",
+                "type": "multipleChoice",
+                "answer": [
+                    "Presidential System"
+                ],
+                "options": [
+                    "Parliamentary System",
+                    "Presidential System",
+                    "Federalism"
+                ],
+                "id": "ple_sst_sect_A2_7",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 3,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "What is the compass direction of Mt.Elgon from Mt.Rwenzori?",
+                "type": "text",
+                "answer": [
+                    "North-east"
+                ],
+                "id": "ple_sst_sect_A3_15",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 4,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "What discovery enabled the early man to start sleeping in caves?",
+                "type": "text",
+                "answer": [
+                    "The discovery of fire",
+                    "Fire"
+                ],
+                "id": "ple_sst_sect_A4_6",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 5,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "State any one way in which Jomo Kenyatta contributed to the struggle for the independence of Kenya.",
+                "type": "multipleChoice",
+                "answer": [
+                    "He formed the Kenya African National Union which led the country to independence"
+                ],
+                "options": [
+                    "He led the Mau Mau rebellion",
+                    "He led the Maji Maji rebellion",
+                    "He formed the Kenya African National Union which led the country to independence"
+                ],
+                "id": "ple_sst_sect_A5_20",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 6,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "State any one way in which a community can help the police to keep law and order",
+                "type": "multipleChoice",
+                "answer": [
+                    "By reporting lawbreakers"
+                ],
+                "options": [
+                    "By imprisoning wrong doers",
+                    "By reporting lawbreakers"
+                ],
+                "id": "ple_sst_sect_A6_4",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 7,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Name the river which separates Tanzania from Uganda",
+                "type": "text",
+                "answer": [
+                    "River Kagera"
+                ],
+                "id": "ple_sst_sect_A7_1",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 8,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Mention the Muganda agent used by the British to extend their rule to Eastern Uganda.",
+                "type": "text",
+                "answer": [
+                    "Semei Kakungulu",
+                    "Kakungulu",
+                    "Semei Lwakirenzi"
+                ],
+                "id": "ple_sst_sect_A8_12",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 9,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Name the type of mountains formed as a result of the process shown below.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2023_9.png",
+                "type": "text",
+                "answer": [
+                    "Fold mountains"
+                ],
+                "id": "ple_sst_sect_A9_3",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 10,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Give any one reason why the United Nations Organisation sends peace keeping missions to war torn areas",
+                "type": "multipleChoice",
+                "answer": [
+                    "To promote the respect of human rights"
+                ],
+                "options": [
+                    "To fight for the right cause",
+                    "To promote the respect of human rights"
+                ],
+                "id": "ple_sst_sect_A10_5",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 11,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "State any one reason why early missionaries in Uganda taught people how to read and write",
+                "type": "multipleChoice",
+                "answer": [
+                    "They wanted to spread christianity which required people to be able to read and write"
+                ],
+                "options": [
+                    "They wanted to spread christianity which required people to be able to read and write",
+                    "They wanted to colonise the Ugandans"
+                ],
+                "id": "ple_sst_sect_A11_8",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 12,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Mention any one climatic condition which has enabled diary farming to be carried out in the Kenya Highlands.",
+                "type": "text",
+                "answer": [
+                    "Cool climate",
+                    "Cool temperature",
+                    "High rainfall",
+                    "Reliable rainfall"
+                ],
+                "id": "ple_sst_sect_A12_12",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 13,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Apart from water,give any one other commodity that can be transported using a pipe-line.",
+                "type": "text",
+                "answer": [
+                    "Oil",
+                    "Crude oil",
+                    "Gas"
+                ],
+                "id": "ple_sst_sect_A13_12",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 14,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "State any one reason why some traditional leaders in Uganda did not like missionaries.",
+                "type": "multipleChoice",
+                "answer": [
+                    "The missionaries were preaching against their religions"
+                ],
+                "options": [
+                    "The missionaries wanted to take away their land",
+                    "The missionaries wanted to take away their kingdoms",
+                    "The missionaries were preaching against their religions"
+                ],
+                "id": "ple_sst_sect_A14_20",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 15,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "State any one role played by civil servants",
+                "type": "multipleChoice",
+                "answer": [
+                    "To implement government programs"
+                ],
+                "options": [
+                    "To implement laws",
+                    "To implement government programs"
+                ],
+                "id": "ple_sst_sect_A15_1",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 16,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Apart from the Judiciary and the Executive. Name one other arm of government.",
+                "type": "text",
+                "answer": [
+                    "The legislator",
+                    "Parliament",
+                    "National Assembly"
+                ],
+                "id": "ple_sst_sect_A16_15",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 17,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Mention any one human activity that affects wild life.",
+                "type": "text",
+                "answer": [
+                    "Deforestration",
+                    "Farming",
+                    "Road and dam building",
+                    "Pesticide use"
+                ],
+                "id": "ple_sst_sect_A17_8",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 18,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Mention any one way in which industrials growth can be a problem to the Environment.",
+                "type": "multipleChoice",
+                "answer": [
+                    "It leads to destruction of environment",
+                    "It leads to pollution of the environment"
+                ],
+                "options": [
+                    "It leads to destruction of environment",
+                    "It leads to pollution of the environment"
+                ],
+                "id": "ple_sst_sect_A18_12",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 19,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Which body in Uganda is responsible for protecting wildlife? ",
+                "type": "text",
+                "answer": [
+                    "Uganda Wildlife Authority",
+                    "UWA"
+                ],
+                "id": "ple_sst_sect_A19_2",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 20,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Why is a sign post important?",
+                "type": "multipleChoice",
+                "answer": [
+                    "It directs people to the place where the company or institution is found"
+                ],
+                "options": [
+                    "It is used to show directions on a map",
+                    "It directs people to the place where the company or institution is found"
+                ],
+                "id": "ple_sst_sect_A20_5",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 21,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Write NEMA in full.",
+                "type": "text",
+                "answer": [
+                    "National Environment Management Authority"
+                ],
+                "id": "ple_sst_sect_A21_1",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 22,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Give any one way the early man protected himself from danger",
+                "type": "multipleChoice",
+                "answer": [
+                    "He used fire to scare away wild animals"
+                ],
+                "options": [
+                    "He used fire to scare away wild animals",
+                    "He used guns to fight enemies and wild animals"
+                ],
+                "id": "ple_sst_sect_A22_1",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 23,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Why are traffic police officers encouraged to wear jackets with reflectors while on duty?",
+                "type": "multipleChoice",
+                "answer": [
+                    "To ease identification"
+                ],
+                "options": [
+                    "Because its part of their uniform",
+                    "To ease identification"
+                ],
+                "id": "ple_sst_sect_A23_3",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 24,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "How does afforestation influence the climatic condition of a place?",
+                "type": "multipleChoice",
+                "answer": [
+                    "It helps to increase on the rain fall amounts received in a place"
+                ],
+                "options": [
+                    "It helps to reduce floods in an area",
+                    "It helps to increase on the rain fall amounts received in a place"
+                ],
+                "id": "ple_sst_sect_A24_7",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 25,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Mention any one way through which poverty can be reduced in your community. ",
+                "type": "multipleChoice",
+                "answer": [
+                    "By creating more jobs"
+                ],
+                "options": [
+                    "By creating more jobs",
+                    "By increasing taxes"
+                ],
+                "id": "ple_sst_sect_A25_6",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 26,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Mention any one way through which the government of Uganda is able to find out the problems affecting its people",
+                "type": "multipleChoice",
+                "answer": [
+                    "Through talk shows"
+                ],
+                "options": [
+                    "Through talk shows",
+                    "Through elections"
+                ],
+                "id": "ple_sst_sect_A26_4",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 27,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "State any one advantage tarmac roads have over murram roads",
+                "type": "multipleChoice",
+                "answer": [
+                    "Tarmac roads cannot easily be spoilt by bad weather unlike murram roads"
+                ],
+                "options": [
+                    "Tarmac roads cannot easily be spoilt by bad weather unlike murram roads",
+                    "Murram roads cannot easily be spoilt by bad weather unlike tarmac roads"
+                ],
+                "id": "ple_sst_sect_A27_1",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 28,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Mention any one through which parents can ensure equal treatment of boys and girls at home",
+                "type": "multipleChoice",
+                "answer": [
+                    "By giving them similar tasks to perform"
+                ],
+                "options": [
+                    "By teaching the cultural values",
+                    "By giving them similar tasks to perform"
+                ],
+                "id": "ple_sst_sect_A28_2",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 29,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Give any one economic result of the movement of the Boers to the interior of South Africa",
+                "type": "multipleChoice",
+                "answer": [
+                    "It led to discovery of gold"
+                ],
+                "options": [
+                    "It led to discovery of gold",
+                    "It led to infrastructure development"
+                ],
+                "id": "ple_sst_sect_A29_4",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 30,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Give one reason why the Antarctica continent is not suitable for human settlement",
+                "type": "multipleChoice",
+                "answer": [
+                    "Because it is very cold"
+                ],
+                "options": [
+                    "Because it is very cold",
+                    "Because its far south"
+                ],
+                "id": "ple_sst_sect_A30_2",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 31,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Give one way in which forceful registration of guns led to Lamogi rebellion",
+                "type": "multipleChoice",
+                "answer": [
+                    "The Acholi never wanted to be disarmed"
+                ],
+                "options": [
+                    "The Acholi wanted to fight the government",
+                    "The Acholi never wanted to be disarmed"
+                ],
+                "id": "ple_sst_sect_A31_4",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 32,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "How is Lake Victoria similar to Lake Kyoga in terms of formation?",
+                "type": "multipleChoice",
+                "answer": [
+                    "They were both formed by down warping"
+                ],
+                "options": [
+                    "They were both formed volcanicity",
+                    "They were both formed by down warping"
+                ],
+                "id": "ple_sst_sect_A32_6",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 33,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Why is Mwalimu Julius Nyerere Kambarage remembered in the history of Tanzania?",
+                "type": "multipleChoice",
+                "answer": [
+                    "He led Tanganyika to independence"
+                ],
+                "options": [
+                    "He led Tanganyika to independence",
+                    "He stopped slave trade in Tanzania"
+                ],
+                "id": "ple_sst_sect_A33_1",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 34,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Why is mob justice a bad practice in communities",
+                "type": "multipleChoice",
+                "answer": [
+                    "It leads to violation of human rights"
+                ],
+                "options": [
+                    "It lets wrong doers escape justice",
+                    "It leads to violation of human rights"
+                ],
+                "id": "ple_sst_sect_A34_3",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 35,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "How do civil servants benefit from government revenue?",
+                "type": "multipleChoice",
+                "answer": [
+                    "They are paid their salaries"
+                ],
+                "options": [
+                    "They get free health services",
+                    "They are paid their salaries"
+                ],
+                "id": "ple_sst_sect_A35_4",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 36,
+        "instruction": "For each of the questions 36 to 40, answer EITHER the Christian OR Islamic question but not both. No marks will be awarded to a candidate who attempts both alternatives in a particular number.",
+        "questions": [
+            {
+                "question_text": "State any one way in which christians can participate in the development of their communities",
+                "type": "multipleChoice",
+                "answer": [
+                    "By constructing schools"
+                ],
+                "options": [
+                    "By participating in elections",
+                    "By constructing schools"
+                ],
+                "id": "ple_sst_sect_A_either_9",
+                "user_answer": null,
+                "selectedOption": "either"
+            },
+            {
+                "question_text": "What term is used by christians to mean the act of asking for forgiveness after wrong doing?",
+                "type": "text",
+                "answer": [
+                    "Repentance"
+                ],
+                "id": "ple_sst_sect_A_either_14",
+                "user_answer": null,
+                "selectedOption": "either"
+            },
+            {
+                "question_text": "Why should a christian couple go for HIV testing before marriage?",
+                "type": "multipleChoice",
+                "answer": [
+                    "To produce healthy children"
+                ],
+                "options": [
+                    "Because the Bible requires them to",
+                    "To produce healthy children"
+                ],
+                "id": "ple_sst_sect_A_either_17",
+                "user_answer": null,
+                "selectedOption": "either"
+            },
+            {
+                "question_text": "Give any one reason why Christians pray to God",
+                "type": "multipleChoice",
+                "answer": [
+                    "To ask for forgiveness"
+                ],
+                "options": [
+                    "To go to heaven",
+                    "To ask for forgiveness"
+                ],
+                "id": "ple_sst_sect_A_either_4",
+                "user_answer": null,
+                "selectedOption": "either"
+            },
+            {
+                "question_text": "Name the mountain where Moses received the Ten commandments.",
+                "type": "text",
+                "answer": [
+                    "Mount Sinai",
+                    "Mountain Sinai"
+                ],
+                "id": "ple_sst_sect_A_either_24",
+                "user_answer": null,
+                "selectedOption": "either"
+            }
+        ]
+    },
+    {
+        "category": 41,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Name the two European explorers who made two journeys to East Africa.",
+                "type": "check_box",
+                "answer": [
+                    "John Hanning Speke",
+                    "Henry Morton Stanely"
+                ],
+                "options": [
+                    "David Livingstone",
+                    "John Hanning Speke",
+                    "Henry Morton Stanely",
+                    "Sir Samuel Baker"
+                ],
+                "sub_questions": [
+                    {
+                        "question_text": "Mention any two ways in which the work of the early explorers contributed to the development of Africa",
+                        "type": "check_box",
+                        "answer": [
+                            "It led to the stopping of slave trade through articles by Dr. David Livingstone",
+                            "They made Africa to be known to the rest of the world",
+                            "They opened the way to the interior of Africa"
+                        ],
+                        "options": [
+                            "They discovered Timbuktu",
+                            "It led to the stopping of slave trade through articles by Dr. David Livingstone",
+                            "They made Africa to be known to the rest of the world",
+                            "They promoted slave trade",
+                            "They opened the way to the interior of Africa"
+                        ],
+                        "id": "ple_sst_sect_B41_9_sub_0",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B41_9",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 42,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Select any two problems that are caused by floods",
+                "type": "check_box",
+                "answer": [
+                    "Destruction of property and crops",
+                    "Destruction of infrastructures like roads"
+                ],
+                "options": [
+                    "Destruction of property and crops",
+                    "They lead to drought",
+                    "Destruction of infrastructures like roads",
+                    "They lead to air pollution"
+                ],
+                "sub_questions": [
+                    {
+                        "question_text": "Select any two ways in which the government can help the people affected by floods",
+                        "type": "check_box",
+                        "answer": [
+                            "It can provide them with food",
+                            "It can provide them with shelter"
+                        ],
+                        "options": [
+                            "By providing them with face masks",
+                            "It can provide them with food",
+                            "It can provide them with shelter"
+                        ],
+                        "id": "ple_sst_sect_B42_15_sub_0",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B42_15",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 43,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Which ministry in Uganda is responsible for tourism?",
+                "type": "text",
+                "answer": [
+                    "Ministry of Tourism Wildlife and Antiquities"
+                ],
+                "sub_questions": [
+                    {
+                        "question_text": "Select any two importance of the tourism industry to Uganda",
+                        "type": "check_box",
+                        "answer": [
+                            "It is a source of government revenue",
+                            "It creates employment opportunities to people"
+                        ],
+                        "options": [
+                            "It is a source of government revenue",
+                            "It helps to provide health services to Ugandans",
+                            "It helps to fight corruption",
+                            "It creates employment opportunities to people"
+                        ],
+                        "id": "ple_sst_sect_B43_1_sub_0",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "What can the government of Uganda do to attract more tourists into the country?",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "By advertising Uganda's tourist attractions on international media"
+                        ],
+                        "options": [
+                            "By fighting corruption in Uganda",
+                            "By advertising Uganda's tourist attractions on international media"
+                        ],
+                        "id": "ple_sst_sect_B43_1_sub_1",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B43_1",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 44,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "The first two lines of the song below are missing\n United free for liberty,\n Together we'll always stand.",
+                "sub_questions": [
+                    {
+                        "question_text": "What are the missing lines",
+                        "type": "check_box",
+                        "answer": [
+                            "Oh Uganda! May God uphold the",
+                            "We lay our future in thy hands"
+                        ],
+                        "options": [
+                            "Oh Uganda! the land of freedom",
+                            "Our love and labour we give",
+                            "Oh Uganda! May God uphold the",
+                            "We lay our future in thy hands"
+                        ],
+                        "id": "ple_sst_sect_B44_19_sub_0",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "Select any two important things that can be learnt from this song.",
+                        "type": "check_box",
+                        "answer": [
+                            "Promotion of unity to attain peace",
+                            "The need for prayers in order to become prosperous"
+                        ],
+                        "options": [
+                            "Promotion of unity to attain peace",
+                            "The promotion of family values",
+                            "The need for prayers in order to become prosperous",
+                            "Promotion of elections in Uganda"
+                        ],
+                        "id": "ple_sst_sect_B44_19_sub_1",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B44_19",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 45,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Name any one place at school where waste materials can be disposed.",
+                "type": "text",
+                "answer": [
+                    "Dustbin",
+                    "Rubbish pit",
+                    "Toilet",
+                    "Pit latrine"
+                ],
+                "sub_questions": [
+                    {
+                        "question_text": "Select any two problems caused by poor waste management in schools",
+                        "type": "check_box",
+                        "answer": [
+                            "Water and soil pollution",
+                            "Blocking of water channels"
+                        ],
+                        "options": [
+                            "Poor transport",
+                            "Water and soil pollution",
+                            "Blocking of water channels",
+                            "Corruption"
+                        ],
+                        "id": "ple_sst_sect_B45_7_sub_0",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "Why is recycling important in waste management?",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "It conserves the environment"
+                        ],
+                        "options": [
+                            "It reduces deforestration",
+                            "It conserves the environment"
+                        ],
+                        "id": "ple_sst_sect_B45_7_sub_1",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B45_7",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 46,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Apart from Russia, select any other two permanent member states on the United Nations Security Council",
+                "type": "check_box",
+                "answer": [
+                    "United States of America (USA)",
+                    "France"
+                ],
+                "options": [
+                    "United States of America (USA)",
+                    "Italy",
+                    "Israel",
+                    "France"
+                ],
+                "sub_questions": [
+                    {
+                        "question_text": "Select any two challenges faced by the United Nations",
+                        "type": "check_box",
+                        "answer": [
+                            "Shortage of funds to run its programmes effectively",
+                            "Differences in political systems among the member states"
+                        ],
+                        "options": [
+                            "Corruption among member states",
+                            "Shortage of funds to run its programmes effectively",
+                            "Wars among member states",
+                            "Differences in political systems among the member states"
+                        ],
+                        "id": "ple_sst_sect_B46_1_sub_0",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B46_1",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 47,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Below is a sketch map of an area. Use it to answer the questions that follow.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2023_47.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Identify any one economic activity carried out in the area",
+                        "type": "text",
+                        "answer": [
+                            "Crop growing",
+                            "Dairy farming",
+                            "Lumbering",
+                            "Trade",
+                            "Transport",
+                            "Industrialisation"
+                        ],
+                        "id": "ple_sst_sect_B47_2_sub_0",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "Give any one social service provided in the area",
+                        "type": "text",
+                        "answer": [
+                            "Education",
+                            "Health",
+                            "Transport"
+                        ],
+                        "id": "ple_sst_sect_B47_2_sub_1",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "Select any one way in which people benefit from the area marked F",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "People get jobs"
+                        ],
+                        "options": [
+                            "People get timber",
+                            "People get jobs"
+                        ],
+                        "id": "ple_sst_sect_B47_2_sub_2",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "Select any one way in which people can care for the resources in the area.",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "Through proper disposal of wastes"
+                        ],
+                        "options": [
+                            "By voting for the leaders they want",
+                            "Through proper disposal of wastes"
+                        ],
+                        "id": "ple_sst_sect_B47_2_sub_3",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B47_2",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 48,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Select any two materials the Early man used for marking his tools.",
+                "type": "check_box",
+                "answer": [
+                    "Stones",
+                    "Iron"
+                ],
+                "options": [
+                    "Stones",
+                    "Iron",
+                    "Steel",
+                    "Clay"
+                ],
+                "sub_questions": [
+                    {
+                        "question_text": "How did the Early man use bolas to live a better life?",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "He used it to entangle the legs of first running animals"
+                        ],
+                        "options": [
+                            "He used it for fishing",
+                            "He used it to entangle the legs of first running animals"
+                        ],
+                        "id": "ple_sst_sect_B48_6_sub_0",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "Give any one reason why the discovery of fire was important to the early man.",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "Fire was used for protection"
+                        ],
+                        "options": [
+                            "He used fire to develop weapons",
+                            "Fire was used for protection"
+                        ],
+                        "id": "ple_sst_sect_B48_6_sub_1",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B48_6",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 49,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "What is a national election?",
+                "type": "multipleChoice",
+                "answer": [
+                    "A national election is a democratic way of choosing leaders in a country"
+                ],
+                "options": [
+                    "A national election is the process of counting people in an area",
+                    "A national election is a democratic way of choosing leaders in a country"
+                ],
+                "sub_questions": [
+                    {
+                        "question_text": "Select any two bad practices done by people during the national elections.",
+                        "type": "check_box",
+                        "answer": [
+                            "Ballot stuffing",
+                            "Ballot stuffing"
+                        ],
+                        "options": [
+                            "Corruption",
+                            "Ballot stuffing",
+                            "Ballot stuffing",
+                            "Theft"
+                        ],
+                        "id": "ple_sst_sect_B49_6_sub_0",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "In which one way is a votersâ€™ register important during elections?",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "It eases the identification of voters"
+                        ],
+                        "options": [
+                            "It eases the identification of voters",
+                            "It helps to know the people in an area"
+                        ],
+                        "id": "ple_sst_sect_B49_6_sub_1",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B49_6",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 50,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Why is Stevenson screen designed with louvres?",
+                "type": "multipleChoice",
+                "answer": [
+                    "To allow free air circulation"
+                ],
+                "options": [
+                    "To make its appearance better",
+                    "To allow free air circulation"
+                ],
+                "sub_questions": [
+                    {
+                        "question_text": "Select any two weather instruments kept in a Stevenson screen",
+                        "type": "check_box",
+                        "answer": [
+                            "Barometer",
+                            "Hygrometer"
+                        ],
+                        "options": [
+                            "Barometer",
+                            "Ranfall gauge",
+                            "Hygrometer",
+                            "Wind sock"
+                        ],
+                        "id": "ple_sst_sect_B50_1_sub_0",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "What is meant by weather forecasting?",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "Weather forecasting is the telling of the expected weather conditions of an area"
+                        ],
+                        "options": [
+                            "Weather forecasting is predicting whether it may rain or not in an area",
+                            "Weather forecasting is the telling of the expected weather conditions of an area"
+                        ],
+                        "id": "ple_sst_sect_B50_1_sub_1",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B50_1",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 51,
+        "instruction": "For each of the questions 51 to 55, answer EITHER the Christian OR Islamic question but not both. No marks will be awarded to a candidate who attempts both alternatives in a particular number.",
+        "questions": [
+            {
+                "question_text": "Name the miracle Jesus performed while in a boat with his disciples",
+                "type": "multipleChoice",
+                "answer": [
+                    "Jesus Christ calmed the storm"
+                ],
+                "options": [
+                    "Jesus Christ calmed the storm",
+                    "Jesus Christ walked on water"
+                ],
+                "sub_questions": [
+                    {
+                        "question_text": "Give one reason why Jesus performed miracles in His teaching.",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "To show that He was God's son"
+                        ],
+                        "options": [
+                            "To go to heaven",
+                            "To show that He was God's son"
+                        ],
+                        "id": "ple_sst_sect_B_either_20_sub_0",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "Select two ways in which Jesus' followers still benefit from the miracles He performed",
+                        "type": "check_box",
+                        "answer": [
+                            "Their faith in God is strengthened",
+                            "They get hope"
+                        ],
+                        "options": [
+                            "Their faith in God is strengthened",
+                            "They go to church",
+                            "They get hope",
+                            "They read the bible"
+                        ],
+                        "id": "ple_sst_sect_B_either_20_sub_1",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B_either_20",
+                "user_answer": null,
+                "selectedOption": "either"
+            },
+            {
+                "question_text": "Name the day that marks the beginning of fasting in Christianity",
+                "type": "text",
+                "answer": [
+                    "Ash Wednesday"
+                ],
+                "sub_questions": [
+                    {
+                        "question_text": "Select any two reasons why fasting is a good practice in Christianity",
+                        "type": "check_box",
+                        "answer": [
+                            "It strengthens the faith of Christians",
+                            "It enables Christians to get blessings from God"
+                        ],
+                        "options": [
+                            "It makes Christians go to church",
+                            "It strengthens the faith of Christians",
+                            "It makes Christians read the bible",
+                            "It enables Christians to get blessings from God"
+                        ],
+                        "id": "ple_sst_sect_B_either_21_sub_0",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "Give any one thing a Christian can do during fasting to get blessings from God",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "Helping the needy"
+                        ],
+                        "options": [
+                            "Going to church",
+                            "Helping the needy"
+                        ],
+                        "id": "ple_sst_sect_B_either_21_sub_1",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B_either_21",
+                "user_answer": null,
+                "selectedOption": "either"
+            },
+            {
+                "question_text": "When do most Christians celebrate the birth of Jesus Christ?",
+                "type": "text",
+                "answer": [
+                    "On Christmas day",
+                    "On 25th December every year"
+                ],
+                "sub_questions": [
+                    {
+                        "question_text": "Select any three things to show that Jesus Christ is the son of God",
+                        "type": "check_box",
+                        "answer": [
+                            "He performed miracles",
+                            "The Holy Spirit came down on earth during his baptism",
+                            "Angel Gabriel brought the good news about His birth to Mary"
+                        ],
+                        "options": [
+                            "He performed miracles",
+                            "He split the moon into two parts",
+                            "The Holy Spirit came down on earth during his baptism",
+                            "He performed the Miraj",
+                            "He performed the Hegira",
+                            "Angel Gabriel brought the good news about His birth to Mary"
+                        ],
+                        "id": "ple_sst_sect_B_either_22_sub_0",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B_either_22",
+                "user_answer": null,
+                "selectedOption": "either"
+            },
+            {
+                "question_text": "\"Don't hurt the boy or do anything to him,\" he said. \"Now I know that you honour and obey God, because you have not kept back your only son from him.\" (Gen 22:12)",
+                "sub_questions": [
+                    {
+                        "question_text": "Who spoke the above words?",
+                        "type": "text",
+                        "answer": [
+                            "An angel of God",
+                            "An angel"
+                        ],
+                        "id": "ple_sst_sect_B_either_23_sub_0",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "Who was being talked to in the message?",
+                        "type": "text",
+                        "answer": [
+                            "Abraham"
+                        ],
+                        "id": "ple_sst_sect_B_either_23_sub_1",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "Mention the son who was to be sacrificed",
+                        "type": "text",
+                        "answer": [
+                            "Isaac"
+                        ],
+                        "id": "ple_sst_sect_B_either_23_sub_2",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "Give any one lesson you as a Christian learn from the message above",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "I learn to obey God"
+                        ],
+                        "options": [
+                            "I learn to go to church",
+                            "I learn to obey God"
+                        ],
+                        "id": "ple_sst_sect_B_either_23_sub_3",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B_either_23",
+                "user_answer": null,
+                "selectedOption": "either"
+            },
+            {
+                "question_text": "Name the Kabaka of Buganda who welcomed the first Christian missionaries to Uganda",
+                "type": "text",
+                "answer": [
+                    "Kabaka Muteesa I"
+                ],
+                "sub_questions": [
+                    {
+                        "question_text": "Select any two contributions of Christianity to the development of Uganda",
+                        "type": "check_box",
+                        "answer": [
+                            "It has led to the building of hospitals",
+                            "It has led to the building of schools"
+                        ],
+                        "options": [
+                            "It has led to the fighting of corruption",
+                            "It has led to the building of hospitals",
+                            "It has led to the building of roads",
+                            "It has led to the building of schools"
+                        ],
+                        "id": "ple_sst_sect_B_either_24_sub_0",
+                        "user_answer": null
+                    },
+                    {
+                        "question_text": "Give any one similarity between the Christian missionaries and the first Arab traders in Uganda.",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "Both spread a foreign religion"
+                        ],
+                        "options": [
+                            "Both built roads",
+                            "Both spread a foreign religion"
+                        ],
+                        "id": "ple_sst_sect_B_either_24_sub_1",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B_either_24",
+                "user_answer": null,
+                "selectedOption": "either"
+            }
+        ]
+    }
+]
+
+const math_ple_ans = [
+    {
+        "category": 1,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Work out : 22 x 4",
+                "type": "text",
+                "answer": "88",
+                "id": "ple_math_sect_A1_7",
+                "user_answer": "48"
+            }
+        ]
+    },
+    {
+        "category": 2,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Write XCVII IN Hindu Arabic numerals",
+                "type": "text",
+                "answer": "97",
+                "id": "ple_math_sect_A2_1",
+                "user_answer": "97"
+            }
+        ]
+    },
+    {
+        "category": 3,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Work out 5/9 ÷ 2/3",
+                "type": "multipleChoice",
+                "answer": "5/6",
+                "explanation": "5/9 x 3/2\n = 5/3 x 1/2\n = 5/6",
+                "options": [
+                    "5/6",
+                    "1",
+                    "5/9"
+                ],
+                "id": "ple_math_sect_A3_4",
+                "user_answer": "5/6"
+            }
+        ]
+    },
+    {
+        "category": 4,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "A teacher counted pupils without school uniform in a class and tallied them as follows: How many pupils were withpout unifom?",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/4.png",
+                "type": "text",
+                "answer": "24 pupils",
+                "id": "ple_math_sect_A4_2",
+                "user_answer": "25"
+            }
+        ]
+    },
+    {
+        "category": 5,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "The clock face shows time in afternoon. What's the time shown in 24-hour clock.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/5.png",
+                "type": "multipleChoice",
+                "answer": "16:50 hours",
+                "explanation": "4:50p.m + 12hours\n = 16:50 or 16 hours 50 minutes",
+                "options": [
+                    "04:50 hours",
+                    "16:50 hours",
+                    "12:50 hours"
+                ],
+                "id": "ple_math_sect_A5_2",
+                "user_answer": "16:50 hours"
+            }
+        ]
+    },
+    {
+        "category": 6,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Work out 110<sub>two</sub> x 11<sub>two</sub>",
+                "type": "multipleChoice",
+                "answer": "10010<sub>two</sub>",
+                "options": [
+                    "1210<sub>two</sub>",
+                    "10010<sub>two</sub>",
+                    "1010<sub>two</sub>"
+                ],
+                "id": "ple_math_sect_A6_4",
+                "user_answer": "10010<sub>two</sub>"
+            }
+        ]
+    },
+    {
+        "category": 7,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Find the number which has been expanded below: (3x10<sup>2</sup>) + (5x10<sup>-1</sup>)",
+                "type": "multipleChoice",
+                "answer": "300.5",
+                "explanation": "(3 x 10 x 10) + (5 x 1/10)\n = 300 + 0.5\n = 300.5",
+                "options": [
+                    "30.5",
+                    "300.5",
+                    "300.2"
+                ],
+                "id": "ple_math_sect_A7_3",
+                "user_answer": "300.5"
+            }
+        ]
+    },
+    {
+        "category": 8,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Simplify 4t - 2k + 5k - t",
+                "type": "multipleChoice",
+                "answer": "3t + 3k",
+                "explanation": "4t - 2k + 5k - t\n = 4t - t + 5k - 2k\n = 3t + 3k",
+                "options": [
+                    "4t + 3k",
+                    "3t + 2k",
+                    "3t + 3k"
+                ],
+                "id": "ple_math_sect_A8_6",
+                "user_answer": "3t + 3k"
+            }
+        ]
+    },
+    {
+        "category": 9,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Which of the following images show Twenty five minutes to eleven on the clock face",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/9.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/9_1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/9_2.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/9.png"
+                ],
+                "id": "ple_math_sect_A9_3",
+                "user_answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/9_1.png"
+            }
+        ]
+    },
+    {
+        "category": 10,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "In the diagram below, find the value of b in degrees",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol 6.png",
+                "type": "multipleChoice",
+                "answer": "b = 50<sup>o</sup>",
+                "explanation": "b + 20 + 110 = 180\n b + 130 = 180\n b + 130 - 130 = 180 - 130\n b = 50",
+                "options": [
+                    "b = 90<sup>o</sup>",
+                    "b = 50<sup>o</sup>",
+                    "b = 160<sup>o</sup>"
+                ],
+                "id": "ple_math_sect_A10_1",
+                "user_answer": "b = 50<sup>o</sup>"
+            }
+        ]
+    },
+    {
+        "category": 11,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "The area of a square flower garden is 196m <sub>2</sub> . find the length of each side.",
+                "type": "multipleChoice",
+                "answer": "14 m",
+                "explanation": "Area of a square = Side x Side\n = S<sub>2</sub>\n 196 = S<sub>2</sub>\n √196 = √S<sub>2</sub>\n 14 = S\n ∴ S = 14",
+                "options": [
+                    "14 m",
+                    "49 m",
+                    "98 m"
+                ],
+                "id": "ple_math_sect_A11_4",
+                "user_answer": "49 m"
+            }
+        ]
+    },
+    {
+        "category": 12,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Convert 12½% to fraction in its lowest term",
+                "type": "multipleChoice",
+                "answer": "= 1/8",
+                "explanation": "12½/100\n convert 12½ to an improper fraction\n = (25/2)/100\n = 25/2 ÷ 100\n = 25/2 ÷ 100/1\n = 25/2 x 1/100\n = 1/2 x 1/4\n = 1/8",
+                "options": [
+                    "= 1/4",
+                    "= 1/2",
+                    "= 1/8"
+                ],
+                "id": "ple_math_sect_A12_4",
+                "user_answer": "= 1/2"
+            }
+        ]
+    },
+    {
+        "category": 13,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Change 8<sub>ten</sub> to binary system.",
+                "type": "multipleChoice",
+                "answer": "1000",
+                "explanation": "Divide 8 by 2. The quotient is 4 and the remainder is 0\n Divide 4 by 2. The quotient is 2 and the remainder is 0\n Divide 2 by 2. The quotient is 1 and the remainder is 0\n Write down the remainders in reverse order as 0001\n Therefore, 8 in binary is 1000",
+                "options": [
+                    "100",
+                    "1000",
+                    "10000"
+                ],
+                "id": "ple_math_sect_A13_1",
+                "user_answer": "1000"
+            }
+        ]
+    },
+    {
+        "category": 14,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Write the number whose scientific notation is 9.85 x 10<sup>3</sup>",
+                "type": "multipleChoice",
+                "answer": "9850",
+                "explanation": "9.85 x (10 x 10 x 10)\n = 9.85 x 1000\n = 9850",
+                "options": [
+                    "9850",
+                    "985",
+                    "98500"
+                ],
+                "id": "ple_math_sect_A14_6",
+                "user_answer": "9850"
+            }
+        ]
+    },
+    {
+        "category": 15,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Find the length of the arc DK in the diagram below. (Use π = 22/7)",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/15.png",
+                "type": "multipleChoice",
+                "answer": "99 cm",
+                "explanation": "From circumference of a circle;\n C = 2πr\n Since we finding the length of the arc\n Length = 2πr/2\n = πr\n = 22/7 x 63/2\n = 99",
+                "options": [
+                    "99 cm",
+                    "126 cm",
+                    "31.5 cm"
+                ],
+                "id": "ple_math_sect_A15_3",
+                "user_answer": "126 cm"
+            }
+        ]
+    },
+    {
+        "category": 16,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Find the bearing of point Q from point P in the diagram below.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/16.png",
+                "type": "multipleChoice",
+                "answer": "Bearing = 245<sup>o</sup>",
+                "explanation": "180 + (90 - 25)\n = 180 + 65\n = 245",
+                "options": [
+                    "Bearing = 75<sup>o</sup>",
+                    "Bearing = 25<sup>o</sup>",
+                    "Bearing = 245<sup>o</sup>"
+                ],
+                "id": "ple_math_sect_A16_6",
+                "user_answer": "Bearing = 25<sup>o</sup>"
+            }
+        ]
+    },
+    {
+        "category": 17,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "A train left station K at 11 38 hours and reached station M at 14 27 hours. How long did the train take to travel from K to M?",
+                "type": "multipleChoice",
+                "answer": "2 hours and 49 minutes",
+                "explanation": "Time taken = Arrival time - Departure time\n = 14:27 - 11:38\n Subtract the minutes first\n 27 - 38 = -11 (carry over 1)\n Now, subtract the hours\n (14 - 1) - 11 = 2",
+                "options": [
+                    "2 hours and 11 minutes",
+                    "1 hours and 49 minutes",
+                    "2 hours and 49 minutes"
+                ],
+                "id": "ple_math_sect_A17_1",
+                "user_answer": "1 hours and 49 minutes"
+            }
+        ]
+    },
+    {
+        "category": 18,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Gidudu has goats and sheep in the ratio of 3:2. If he has 24 goats, how many sheep does he have?",
+                "type": "multipleChoice",
+                "answer": "16 sheep",
+                "explanation": "Let the total number of animals be x\n Total parts = 3+2 = 5\n 3x/5 = 24\n Multipy both sides by 5\n 3x = 24x5\n x = (24x5)/3\n x = 40 animals\n Number of sheep = Total number of animals - Number of goats\n = 40 - 24\n = 16 sheep",
+                "options": [
+                    "16 sheep",
+                    "10 sheep",
+                    "24 sheep"
+                ],
+                "id": "ple_math_sect_A18_5",
+                "user_answer": "10 sheep"
+            }
+        ]
+    },
+    {
+        "category": 19,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "A shopkeeper bought 19 plates at sh 34,200. At what price must the shopkeeper sell each plate in order to raise a profit of sh 3,800?",
+                "type": "multipleChoice",
+                "answer": "2,000",
+                "explanation": "Selling Price per Plate = (Total Cost + Profit)/ Number of plates\n = (34200+3800)/19\n = 38000/19\n = 2000",
+                "options": [
+                    "1,500",
+                    "2,000",
+                    "2,500"
+                ],
+                "id": "ple_math_sect_A19_1",
+                "user_answer": "1,500"
+            }
+        ]
+    },
+    {
+        "category": 20,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "A man got a loan of sh 120,000 from a savings and credit co-operative society at a simple interest rate of 8% per anunm. He paid an interest of sh7,200 on the loan. How long was the loan?",
+                "type": "multipleChoice",
+                "answer": "9 months",
+                "explanation": "Interest = Principal x Rate x Time\n 7200 = 120000 x 8/100 x T\n 7200 = 120000 x 0.08T\n 7200 = 9600T\n T = 7200/9600\n = 3/4\n Convert to months\n = 3/4 x 12\n = 9",
+                "options": [
+                    "90 months",
+                    "9 months",
+                    "9 years"
+                ],
+                "id": "ple_math_sect_A20_6",
+                "user_answer": "9 months"
+            }
+        ]
+    },
+    {
+        "category": 21,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "In a class of 41 pupils, 30 play football (F), t play Netball (N) and 5 play both football and Netball. 3 pupils do not play any of the two games.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/21.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Which of the following show the complete venn diagram",
+                        "type": "multipleChoice",
+                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/21C.png",
+                        "options": [
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/21C.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/21W.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/21W1.png"
+                        ],
+                        "mark": 2,
+                        "id": "ple_math_sect_A21_4_sub_0",
+                        "user_answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/21C.png"
+                    },
+                    {
+                        "question_text": "Find the value t",
+                        "type": "multipleChoice",
+                        "answer": "t = 13",
+                        "explanation": "25 + 5 + t - 5 + 3 = 41\n 25 + 5 - 5 + 3 + t = 41\n 28 + t = 41\n 28 - 28 + t = 41 - 28\n t = 13",
+                        "options": [
+                            "t = 12",
+                            "t = 10",
+                            "t = 13"
+                        ],
+                        "mark": 2,
+                        "id": "ple_math_sect_A21_4_sub_1",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_math_sect_A21_4",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 22,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Akot went to the market and bought the following items:\n 3 liters of milk at sh2,400 per liter\n 250g of salt at sh2,000 per kg.\n 18 oranges at sh1,500 for every 6 oranges",
+                "sub_questions": [
+                    {
+                        "question_text": "Calculate the total cost of the items",
+                        "type": "multipleChoice",
+                        "answer": "Total cost = shs 12,200",
+                        "explanation": "Cost of milk = 3 x 2400\n =  shs 7,200\n Cost of salt;\n We first convert the 250 grammes to kilogrammes\n 1 gram = (1/1000) kilogrammes\n 250 g = (250 x 1/1000) kg\n = 1/4 kg\n Cost of salt = 1/4 x 2000\n =  shs 500\n Cost of oranges: \n We first need to find the cost of 1 orange\n 6 oranges = 1500\n 1 orange = 1500/6\n = shs 250\n 18 oranges = 250 x 18\n = shs 4,500\n Total cost = 7,200 + 500 + 4,500\n = 12,200",
+                        "options": [
+                            "Total cost = shs 511,700",
+                            "Total cost = shs 12,200",
+                            "Total cost = shs 27,000"
+                        ],
+                        "mark": 4,
+                        "id": "ple_math_sect_A22_3_sub_0",
+                        "user_answer": "Total cost = shs 511,700"
+                    },
+                    {
+                        "question_text": "Akot paid sh 12,000 for the items. What discount was she given?",
+                        "type": "multipleChoice",
+                        "answer": "Discount = sh 200",
+                        "explanation": "Discount = Total cost - Amount Paid\n = 12,200 - 12,000\n = 200",
+                        "options": [
+                            "Discount = sh 499,700",
+                            "Discount = sh 200",
+                            "Discount = sh 15,000"
+                        ],
+                        "mark": 1,
+                        "id": "ple_math_sect_A22_3_sub_1",
+                        "user_answer": "Discount = sh 15,000"
+                    }
+                ],
+                "id": "ple_math_sect_A22_3",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 23,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Work out: (2.4 x 0.5)/0.12",
+                "type": "multipleChoice",
+                "answer": "10",
+                "explanation": "(2.4 x 0.5)/0.12\n = (24/10 x 5/10)/12/100\n = (120/100)/12/100\n = 120/100 ÷ 12/100\n = 120/100 x 100/12\n = 120/12\n = 10",
+                "options": [
+                    "10",
+                    "20",
+                    "30"
+                ],
+                "mark": 3,
+                "sub_questions": [
+                    {
+                        "question_text": "Simplify: 0.37 - 1.03 + 2.6",
+                        "type": "multipleChoice",
+                        "answer": "1.94",
+                        "explanation": "Using BODMAS\n = 0.37 + 2.6 - 1.03\n = 2.97 - 1.03\n = 1.94",
+                        "options": [
+                            "2.97",
+                            "1.94",
+                            "-3.26"
+                        ],
+                        "mark": 2,
+                        "id": "ple_math_sect_A23_1_sub_0",
+                        "user_answer": "2.97"
+                    }
+                ],
+                "id": "ple_math_sect_A23_1",
+                "user_answer": "20"
+            }
+        ]
+    },
+    {
+        "category": 24,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "In the figure below, PQ is parallel to RS and AB is perpendicular to AR. Study the figure and answer the question that follows.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/2019_24.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Find the size of angle c.",
+                        "type": "multipleChoice",
+                        "answer": "c = 29°",
+                        "explanation": "Angle ARS\n ∠ARS + 90° + 55° = 180°( interior angle sum of a triangle)\n ∠ARS + 145° = 180°\n ∠ARS + 145°- 145° = 180° - 145°\n ∠ARS = 35°\n c + 35° + 116° = 180° (co-interior angles)\n c + 151° = 180°\n c + 151°- 151° = 180°- 151°\n c = 29°",
+                        "options": [
+                            "c = 39°",
+                            "c = 30°",
+                            "c = 29°"
+                        ],
+                        "id": "ple_math_sect_A24_1_sub_0",
+                        "user_answer": "c = 30°"
+                    }
+                ],
+                "id": "ple_math_sect_A24_1",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 25,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "The diagram below represents a container which a shopkeeper uses to sell cooking oil.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol 13.png",
+                "sub_questions": [
+                    {
+                        "question_text": "On a certain day, the shopkeeper sold 15.4 litres of cooking oil. How many such containers of cooking oil were sold that day? (Use π = 22/7)",
+                        "type": "multipleChoice",
+                        "answer": "20 containers",
+                        "explanation": "Get the volume of the container;\n Volume = π x radius<sup>2</sup> x height\n = 22/7 x (7/2)<sup>2</sup> x 20\n = 22/7 x 7/2 x 7/2 x 20\n = 770 cm<sup>3</sup>\n Convert litres to cm<sup>3</sup>\n 1 litre = 1000 cm<sup>3</sup>\n 15.4 litres = (15.4 x 1000)cm<sup>3</sup>\n = 15400cm<sup>3</sup>\n Number of containers = (Volume of litres sold in cm<sup>3</sup>)/(Volume of the container)\n = 15400/770 = 20 containers",
+                        "options": [
+                            "70 containers",
+                            "20 containers",
+                            "50 containers"
+                        ],
+                        "mark": 5,
+                        "id": "ple_math_sect_A25_1_sub_0",
+                        "user_answer": "20 containers"
+                    }
+                ],
+                "id": "ple_math_sect_A25_1",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 26,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "A watch loses 5 seconds every hour. How many minutes will it lose in two days?",
+                "type": "multipleChoice",
+                "answer": "4 minutes",
+                "explanation": "1 day =  24hrs\n 2days = (24 x 2) hours\n = 48 hours\n In 1 hour the clock loses 5 second\n In 1 day (24hours) it loses 5 x 24\n =  120 seconds\n  In 2 day (48hours) it loses  5 x 48\n = 240 seconds\n But 60 seconds = 1 minute\n 240 seconds = 240/60 minutes\n = 4 minutes",
+                "options": [
+                    "40 minutes",
+                    "14 minutes",
+                    "4 minutes"
+                ],
+                "mark": 2,
+                "sub_questions": [
+                    {
+                        "question_text": "Express 5m/sec in km/hr",
+                        "type": "multipleChoice",
+                        "answer": "18 km/hr",
+                        "explanation": "5m/sec = km/hr\n 1000m = 1km\n 5m = 5/1000 km\n 3600 seconds = 1hr\n 1 second = 1/3600 hours\n Speed = Distance ÷ Time\n = 5/1000 ÷ 1/3600\n = 5/1000 x 3600/1\n = 5/10 x 36/1\n = 36/2\n = 18km/hr",
+                        "options": [
+                            "18 km/hr",
+                            "18 km/hr",
+                            "18 km/hr"
+                        ],
+                        "mark": 3,
+                        "id": "ple_math_sect_A26_6_sub_0",
+                        "user_answer": "18 km/hr"
+                    }
+                ],
+                "id": "ple_math_sect_A26_6",
+                "user_answer": "14 minutes"
+            }
+        ]
+    },
+    {
+        "category": 27,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Arafat deposited money in a bank which offers a simple interest rate of 2½% per year. After 9 months, his account had an amount of sh 163,000. Calculate the money Arafat deposited in the bank.",
+                "type": "multipleChoice",
+                "answer": "Amount = 160,000",
+                "explanation": "Amount deposited = Principal + Simple interest\n Simple interest = Principal x Rate x Time\n 163,000 = P + P x R x T\n 163,000 = P + P x 2.5/100 x 9/12\n 163,000 = P(1 + 0.025 x 0.75)\n 163,000 = 1.01875P\n P = 160,000",
+                "options": [
+                    "Amount = 150,000",
+                    "Amount = 160,000",
+                    "Amount = 166,000"
+                ],
+                "mark": 5,
+                "id": "ple_math_sect_A27_3",
+                "user_answer": "Amount = 150,000"
+            }
+        ]
+    },
+    {
+        "category": 28,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "The exchange rate of Kenya shillings (Ksh) to Uganda shillings (Ug.sh) and the United states dollars (US$) to Uganda shillings are shown below\n 1 Ksh = Ug.sh 30\n US $1 = Ug.shs 2,580",
+                "sub_questions": [
+                    {
+                        "question_text": "How many United States dollars will one get from 21,500 kenya shillings?",
+                        "type": "multipleChoice",
+                        "answer": "US$ 250",
+                        "explanation": "Convert Ksh 21,500 to Ug.sh\n Ksh 21,500 = (21,500 x 30)\n = Ug.sh 645,000\n Convert Ug.sh 645,000 to US$\n = 645,000/2,580\n = 64,500/258\n = US$ 250",
+                        "options": [
+                            "US$ 2500",
+                            "US$ 25",
+                            "US$ 250"
+                        ],
+                        "mark": 3,
+                        "id": "ple_math_sect_A28_6_sub_0",
+                        "user_answer": "US$ 2500"
+                    },
+                    {
+                        "question_text": "If the cost of a new bicycle is 90 United States dollars, how much would this be in Uganda shillings?",
+                        "type": "multipleChoice",
+                        "answer": "Ug.sh 232,200",
+                        "explanation": "US$ 90 = (90 x 2,580)\n = Ug.sh 232,200",
+                        "options": [
+                            "Ug.sh 28.67",
+                            "Ug.sh 232,200",
+                            "Ug.sh 232,000"
+                        ],
+                        "mark": 2,
+                        "id": "ple_math_sect_A28_6_sub_1",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_math_sect_A28_6",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 29,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Joyce, Peter and Hannah shared pencils in the ratio 3:5:7 respectively.",
+                "sub_questions": [
+                    {
+                        "question_text": "If Hannah got 12 more pencils than Joyce, how many pencils did they share altogether?",
+                        "type": "multipleChoice",
+                        "answer": "45 pencils",
+                        "explanation": "Lets use a common multiplier x\n ∴ The ratios are 3x:5x:7x\n Since Hannah got 12 more pencils than Joyce\n 7x = 3x + 12\n 7x - 3x = 3x - 3x + 12\n 4x = 12\n 4x/4 = 12/4\n x = 3\n Now that we have the value of x, we can find the number of pencils each person got\n Joyce: 3x = 3 x 3 = 9 pencils\n Peter: 5x = 5 x 3 = 15 pencils\n Hannah: 7x = 7 x 3 = 21 pencils\n Total number of pencils;\n = 9 + 15 + 21\n = 45",
+                        "options": [
+                            "45 pencils",
+                            "40 pencils",
+                            "35 pencils"
+                        ],
+                        "mark": 4,
+                        "sub_questions": [
+                            {
+                                "question_text": "Find the number of pencils Peter got.",
+                                "type": "multipleChoice",
+                                "answer": "15 pencils",
+                                "options": [
+                                    "9 pencils",
+                                    "15 pencils",
+                                    "21 pencils"
+                                ],
+                                "mark": 2
+                            }
+                        ],
+                        "id": "ple_math_sect_A29_2_sub_0",
+                        "user_answer": "45 pencils"
+                    }
+                ],
+                "id": "ple_math_sect_A29_2",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 30,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "In the figure below, BCD is a straight line. Line BX bisects angle ABC. Line AB is parallel to line XC. Angle BCE = 50<sup>oo</sup> and angle BAC = 70<sup>oo</sup>.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/30.png",
+                "sub_questions": [
+                    {
+                        "question_text": "Find the size of the angle CEX",
+                        "type": "multipleChoice",
+                        "answer": "Angle CEX  = 80<sup>o</sup>",
+                        "explanation": "Considering triangle ABC\n a + a + 50 + 70 = 180 (angle sum of a triangle\n 2a + 120 = 180\n 2a = 60\n a = 30\n Using triangle BAE\n a + ∠BEA + 70 = 180\n 30 + ∠BEA + 70 = 180\n ∠BEA = 80<sup>o</sup>\n But ∠BEA = ∠CEX\n Therefore ∠CEX = 80<sup>o</sup>)",
+                        "options": [
+                            "Angle CEX  = 30<sup>o</sup>",
+                            "Angle CEX  = 40<sup>o</sup>",
+                            "Angle CEX  = 80<sup>o</sup>"
+                        ],
+                        "mark": 4,
+                        "id": "ple_math_sect_A30_7_sub_0",
+                        "user_answer": "Angle CEX  = 40<sup>o</sup>"
+                    },
+                    {
+                        "question_text": "Find the size of the angle DCX",
+                        "type": "multipleChoice",
+                        "answer": "Angle DCX = 60<sup>o</sup>",
+                        "explanation": " Angel XCA = angle BAC = 70<sup>o</sup> (alternative angles)\n Angle BCA + angle ACX + angle DCX = 180<sup>o</sup> (angle sum on a straight line)\n 50 + 70 + ∠DCX = 180\n ∠DCX = 60<sup>o</sup>",
+                        "options": [
+                            "Angle DCX = 30<sup>o</sup>",
+                            "Angle DCX = 60<sup>o</sup>",
+                            "Angle DCX = 75<sup>o</sup>"
+                        ],
+                        "mark": 1,
+                        "id": "ple_math_sect_A30_7_sub_1",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_math_sect_A30_7",
+                "user_answer": null
+            }
+        ]
+    },
+    {
+        "category": 31,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "Given that m = 3k and k = 5, find the value of 2k + 6m",
+                "type": "multipleChoice",
+                "answer": "100",
+                "explanation": "2k + 6m\n 2 x 5 + 6 x 3k\n 10 + 6 x 3 x 5\n 10 + 90\n = 100",
+                "options": [
+                    "10",
+                    "100",
+                    "90"
+                ],
+                "mark": 3,
+                "sub_questions": [
+                    {
+                        "question_text": "Write the solution set for the inequality: 6 < x < 10",
+                        "type": "multipleChoice",
+                        "answer": "x = {7, 8, 9}",
+                        "explanation": "x are integers between 6 and 10",
+                        "options": [
+                            "x = {6, 8, 9}",
+                            "x = {7, 8, 9}",
+                            "x = {7, 8, 10}"
+                        ],
+                        "mark": 1,
+                        "id": "ple_math_sect_A31_4_sub_0",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_math_sect_A31_4",
+                "user_answer": "10"
+            }
+        ]
+    },
+    {
+        "category": 32,
+        "instruction": null,
+        "questions": [
+            {
+                "question_text": "A school library is 70 metres east of the main hall. The staff room is 60 metres from the library on a bearing of 240<sup>o</sup>. Using a scale of 1cm to represent 10 metres, which of the following represent the accurate diagram",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/32.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/32.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/32W.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/32W1.png"
+                ],
+                "mark": 6,
+                "id": "ple_math_sect_A32_4",
+                "user_answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/32W.png"
+            }
+        ]
+    }
+]
+
+export { sst_ple, math_ple, sst_ple_ans, math_ple_ans };

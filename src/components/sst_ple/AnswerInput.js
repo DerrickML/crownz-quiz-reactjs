@@ -4,7 +4,10 @@ import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 import CheckboxQuestion from './CheckboxQuestion';
 import TextInputQuestion from './TextInputQuestion';
 
-const AnswerInput = ({ question, onChange, disabled, userAnswer, displayQuestionText = true }) => {
+const AnswerInput = ({ question, onChange, disabled, getUserAnswer, displayQuestionText }) => {
+
+    const userAnswer = getUserAnswer(question.id);
+
     switch (question.type) {
         case 'multipleChoice':
             return (
@@ -13,7 +16,7 @@ const AnswerInput = ({ question, onChange, disabled, userAnswer, displayQuestion
                     onChange={onChange}
                     disabled={disabled}
                     userAnswer={userAnswer}
-                    displayQuestionText={displayQuestionText} // Pass the prop down
+                    displayQuestionText={displayQuestionText}
                 />
             );
         case 'check_box':
@@ -23,7 +26,7 @@ const AnswerInput = ({ question, onChange, disabled, userAnswer, displayQuestion
                     onChange={onChange}
                     disabled={disabled}
                     userAnswer={userAnswer}
-                    displayQuestionText={displayQuestionText} // Pass the prop down
+                    displayQuestionText={displayQuestionText}
                 />
             );
         case 'text':
@@ -33,7 +36,7 @@ const AnswerInput = ({ question, onChange, disabled, userAnswer, displayQuestion
                     onChange={onChange}
                     disabled={disabled}
                     userAnswer={userAnswer}
-                    displayQuestionText={displayQuestionText} // Pass the prop down
+                    displayQuestionText={displayQuestionText}
                 />
             );
         default:
