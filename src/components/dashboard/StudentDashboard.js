@@ -15,7 +15,7 @@ const StudentDashboard = () => {
   const [results, setResults] = useState([]);
 
   const viewResults = (resultDetails, subjectName, totalMarks) => {
-    if (subjectName === "English") {
+    if (subjectName === "English Language") {
       navigate("/quiz-results", { state: { results: resultDetails } });
     }
     else {

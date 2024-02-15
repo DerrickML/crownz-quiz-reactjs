@@ -12,7 +12,7 @@ const NextOfKinDashboard = () => {
   // Function to get the most recent result of each student
   const getMostRecentResult = (results) => {
     if (!results || results.length === 0)
-      return { recentScore: "N/A", lastExamDateTime: "N/A" };
+      return { subjectName: "N/A", recentScore: "N/A", lastExamDateTime: "N/A" };
 
     const mostRecent = results.reduce((latest, current) => {
       return new Date(latest.dateTime) > new Date(current.dateTime)
@@ -21,6 +21,7 @@ const NextOfKinDashboard = () => {
     });
 
     return {
+      subjectName: mostRecent.subject,
       recentScore: `${mostRecent.score}%`,
       results: mostRecent.resultDetails,
       lastExamDateTime: new Date(mostRecent.dateTime).toLocaleString("en-US", {
@@ -35,8 +36,14 @@ const NextOfKinDashboard = () => {
   };
 
   //To view student results
-  function viewResults(resultDetails) {
-    navigate("/quiz-results", { state: { results: resultDetails } });
+  function viewResults(resultDetails, subjectName, totalMarks) {
+    if (subjectName === "English Language") {
+      navigate("/quiz-results", { state: { results: resultDetails } });
+    }
+    else {
+      const questionsData = JSON.parse(resultDetails);
+      navigate('/answers', { state: { questionsData, subjectName, totalMarks } });
+    }
   }
 
   return (
@@ -53,19 +60,21 @@ const NextOfKinDashboard = () => {
                   <th>No.</th>
                   <th>Student Name</th>
                   <th>Recent Score</th>
+                  <th>Subject</th>
                   <th>Last Exam Date & Time</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {linkedStudentsData.map((student, index) => {
-                  const { recentScore, lastExamDateTime, results } =
+                  const { subjectName, recentScore, lastExamDateTime, results } =
                     getMostRecentResult(student.Results);
                   return (
                     <tr key={student.studID}>
                       <td>{index + 1}</td>
                       <td>{student.studName}</td>
                       <td>{recentScore}</td>
+                      <td>{subjectName}</td>
                       <td>{lastExamDateTime}</td>
                       <td>
                         <ButtonGroup>
@@ -73,7 +82,7 @@ const NextOfKinDashboard = () => {
                             <Button
                               variant="primary"
                               //   size="sm"
-                              onClick={() => viewResults(results)}
+                              onClick={() => viewResults(results, subjectName, recentScore)}
                             >
                               Exam Results
                             </Button>

@@ -38,7 +38,7 @@ const AllResults = () => {
   const navigate = useNavigate();
 
   const viewResults = (resultDetails, subjectName, totalMarks) => {
-    if (subjectName === "English") {
+    if (subjectName === "English Language") {
       navigate("/quiz-results", { state: { results: resultDetails } });
     }
     else {

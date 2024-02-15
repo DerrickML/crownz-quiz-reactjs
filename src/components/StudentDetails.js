@@ -44,8 +44,14 @@ const StudentDetails = () => {
   const displayValue = (value) => value || "Not provided";
 
   //To view student results
-  function viewResults(resultDetails) {
-    navigate("/quiz-results", { state: { results: resultDetails } });
+  function viewResults(resultDetails, subjectName, totalMarks) {
+    if (subjectName === "English Language") {
+      navigate("/quiz-results", { state: { results: resultDetails } });
+    }
+    else {
+      const questionsData = JSON.parse(resultDetails);
+      navigate('/answers', { state: { questionsData, subjectName, totalMarks } });
+    }
   }
 
   return (
@@ -141,7 +147,7 @@ const StudentDetails = () => {
                         <Button
                           variant="primary"
                           size="sm"
-                          onClick={() => viewResults(result.resultDetails)}
+                          onClick={() => viewResults(result.resultDetails, result.subject, result.score)}
                         >
                           Exam Results
                         </Button>
