@@ -17,6 +17,7 @@ import {
   database_id,
   studentMarksTable_id,
 } from "../appwriteConfig.js";
+import { fetchAndUpdateResults } from "../utilities/resultsUtil";
 import { showToast } from "../utilities/toastUtil.js";
 import { useAuth } from '../context/AuthContext';
 import "./IframeComponent.css";
@@ -90,18 +91,28 @@ const IframeComponent = ({ url }) => {
         // Convert results to a JSON string before sending
         const resultsString = JSON.stringify(results);
 
-        console.log("To Appwrite:\n", resultsString);
+        // Ensure resultsString is not empty and contains valid data
+        if (resultsString && resultsString !== "{}") {
+          try {
 
-        // Create a document in Appwrite Collection
-        await createDocument({
-          studID: studentID,
-          marks: marksObtained,
-          subject: "English",
-          results: resultsString,
-        });
+            // Create a document in Appwrite Collection
+            await createDocument({
+              studID: studentID,
+              marks: marksObtained,
+              subject: "English",
+              results: resultsString,
+            });
+            showToast("Results submitted successfully!", "success");
+            await fetchAndUpdateResults(studentID);
+          } catch (e) {
+            showToast("Failed to save results. Contact the support team for guidance", "error")
+            throw e;
+          }
+        }
 
         console.log("Exam finished in: ", capturedTime);
 
+        // Reset buttonClicked after processing
         setButtonClicked(false);
       }
     };
