@@ -12,19 +12,27 @@ import {
 import {
     fetchAndUpdateResults,
 } from "../../utilities/resultsUtil";
+import { sendEmailToNextOfKin } from "../../utilities/otherUtils.js";
 import { useAuth } from '../../context/AuthContext';
 
-const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDisplay, subjectName }, ref) => {
+const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDisplay, subject_Name }, ref) => {
+
+    const { userInfo } = useAuth();
+    let studentID = userInfo.userId;
+
+    let subjectName;
+    if (userInfo.educationLevel === 'PLE') {
+        subjectName = subject_Name === 'sst_ple' ? 'Social Studies' : (subject_Name === 'math_ple' ? 'Mathematics' : (subject_Name === 'sci_ple' ? 'Science' : 'English Language'));
+    }
+    else {
+        subjectName = subject_Name
+    }
 
     const navigate = useNavigate();
 
     const reduxState = useSelector(state => state.answers);
 
     const [isLoading, setIsLoading] = useState(false);
-
-    //To send to database
-    const { userInfo } = useAuth();
-    let studentID = userInfo.userId;
 
     //Function to submit data the database
     const createDocument = async (data) => {
@@ -36,7 +44,6 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
                 "unique()",
                 data
             );
-            console.log("Document created:", result);
         } catch (error) {
             console.error("Error creating document:", error);
         } finally {
@@ -154,7 +161,9 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
 
         await createDocument(userResultsData);
 
-        console.log(finalDataToSave);
+        if (userInfo.kinEmail) {
+            await sendEmailToNextOfKin(userInfo, subjectName, totalMarks, new Date());
+        }
 
         await fetchAndUpdateResults(userInfo.userId); // Update the local storage
 

@@ -212,7 +212,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                         onSubmit={handleSubmit}
                         disabled={isSubmitted}
                         style={{ backgroundColor: 'blue', color: 'white', fontSize: '20px' }}
-                        subjectName={subjectName}
+                        subject_Name={subjectName}
                     />
                 </Modal.Body>
                 <Modal.Footer>
@@ -245,7 +245,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                 disabled={isSubmitted}
                 style={{ display: 'none' }}
                 buttonDisplay={'none'}
-                subjectName={subjectName}
+                subject_Name={subjectName}
             />
         </Container>
     );

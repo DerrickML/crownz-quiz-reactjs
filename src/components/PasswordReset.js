@@ -64,10 +64,9 @@ function PasswordReset() {
         password
       );
       showToast("Password has been successfully reset", "success");
-      console.log(email, password, repeatPassword);
       setSuccess(true);
     } catch (error) {
-      console.log(error); // Failure
+      console.error(error); // Failure
       setSuccess(false);
       throw error;
     }

@@ -54,14 +54,10 @@ const AllResults = ({ userInfo, sessionInfo }) => {
         studentMarksTable_id,
         [Query.equal("studID", sessionInfo.userId)]
       );
-      console.log(
-        `Students Results retrieved for ${sessionInfo.userId}: `,
-        response
-      );
 
       return response;
     } catch (error) {
-      console.log("Failed to retrieve student results:\n", error);
+      console.error("Error fetching results:", error);
     }
   }
   const [aResults, setaResults] = useState([]);
@@ -105,11 +101,6 @@ const AllResults = ({ userInfo, sessionInfo }) => {
 
     return Array.from(resultsMap.values());
   }
-
-  console.log(
-    `Transformed Students Results retrieved for ${sessionInfo.userId}: `,
-    aResults
-  );
 
   /*--------*/
 

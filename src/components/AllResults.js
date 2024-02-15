@@ -148,7 +148,6 @@ const AllResults = () => {
 
   // Function to render results for each subject
   const renderResultsForSubject = (subjectResults) => {
-    console.log("ALll Results:\n", subjectResults);
     const totalResults = subjectResults.attempts.length;
     const indexOfLastResult =
       (currentPage[subjectResults.subject] || 1) * itemsPerPage;
@@ -164,7 +163,7 @@ const AllResults = () => {
           onClick={() => toggleSubject(subjectResults.subject)}
           style={{ cursor: "pointer" }}
         >
-          {subjectResults.subject === "sst_ple" ? "Social Studies" : (subjectResults.subject === "math_ple" ? "Mathematics" : (subjectResults.subject === "sci_ple" ? "Science" : "English Language"))}
+          {subjectResults.subject === "sst_ple" ? "Social Studies" : (subjectResults.subject === "math_ple" ? "Mathematics" : (subjectResults.subject === "sci_ple" ? "Science" : subjectResults.subject))}
         </Card.Header>
         {openSubjects[subjectResults.subject] && (
           <>

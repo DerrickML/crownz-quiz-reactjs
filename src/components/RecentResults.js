@@ -28,7 +28,7 @@ const RecentResults = ({ results, onViewResults }) => {
           <tbody>
             {mostRecentAttempts.map((attempt, idx) => (
               <tr key={idx}>
-                <td>{attempt.subject === "sst_ple" ? "Social Studies" : (attempt.subject === "math_ple" ? "Mathematics" : (attempt.subject === "sci_ple" ? "Science" : "English Language"))}</td>
+                <td>{attempt.subject === "sst_ple" ? "Social Studies" : (attempt.subject === "math_ple" ? "Mathematics" : (attempt.subject === "sci_ple" ? "Science" : attempt.subject))}</td>
                 <td>{attempt.dateTime}</td>
                 <td>{attempt.score}</td>
                 <td>

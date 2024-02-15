@@ -92,24 +92,14 @@ const EditProfile = () => {
       const checkForChange = (field, value) => {
         // Special handling for phone field to validate the phone number
         if (field === "phone") {
-          console.log("phone validation value is " + value);
-          console.log(
-            "Original phone validation value is " + originalData[field]
-          );
           if (
             originalData[field] === "" ||
             originalData[field] === null ||
             originalData[field] === undefined
           ) {
-            console.log("Phone field check is true");
             if (value === undefined || value === null || value === "") {
               value = originalData[field];
             }
-            console.log("updated phone validation value is " + value);
-            console.log(
-              "updated Original phone validation value is " +
-              originalData[field]
-            );
           }
           if (value !== undefined && value !== null && value !== "") {
             // Phone number validation using isValidPhoneNumber from 'react-phone-number-input'
@@ -173,7 +163,7 @@ const EditProfile = () => {
         showToast("No information to be updated", "info");
       }
     } catch (error) {
-      console.log("Value Update Failed", error);
+      console.error("Error:", error);
     }
   };
 
@@ -186,12 +176,9 @@ const EditProfile = () => {
         body: JSON.stringify(userInfoToUpdate),
       };
 
-      console.log("contacting server to update user info");
       const response = await fetch(url, requestOptions);
-      console.log("Finished contacting server to update user info");
       const data = await response.json();
       if (response.ok) {
-        console.log("Update successful:", data);
         showToast("Profile Updated Successfully", "success");
 
         // User is logged out
@@ -234,7 +221,6 @@ const EditProfile = () => {
       setShowModalBody(false);
       setShowButtonGroup(false);
       setSpinner(true);
-      console.log("Failed to update profile: \n", error);
     }
   };
 

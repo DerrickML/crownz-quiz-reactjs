@@ -27,10 +27,9 @@ const useLinkedStudents = (kinId) => {
             educationLevel: student.educationLevel,
           }));
 
-          console.log("Kin linked students:\n" + formattedStudents);
           setLinkedStudents(formattedStudents);
         } else {
-          console.log("No students found");
+          setLinkedStudents([]);
         }
       } catch (error) {
         console.error("Error fetching linked students:", error);

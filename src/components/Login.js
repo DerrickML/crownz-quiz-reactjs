@@ -141,11 +141,9 @@ function Login() {
       if (loginMethod === "email") {
         setEmailLoginLoader(true);
         const session = await account.createEmailSession(email, password);
-        console.log("Email login successful", session);
 
         //Fetch Account Data/Info from server-side
         const userInfo = await userData(session.userId);
-        console.log("User info: ", userInfo); //Debugging purposes
 
         handleLogin(session, userInfo); // Pass the session data to App.js
 
@@ -169,11 +167,9 @@ function Login() {
           return;
         }
         const session = await account.updatePhoneSession(userId, otp);
-        console.log("Phone login successful", session);
 
         //Fetch Account Data/Info from server-side
         const userInfo = await userData(session.userId);
-        console.log("User info: ", userInfo); //Debugging purposes
 
         handleLogin(session, userInfo); // Pass the session data to App.js
 
@@ -197,7 +193,7 @@ function Login() {
     const phoneNumber = value;
 
     if (!phoneNumber) {
-      console.log("Phone number is required");
+      console.error("Phone number is required");
     }
 
     try {
@@ -208,7 +204,6 @@ function Login() {
       );
 
       if (existsInStudentTable) {
-        console.log(phoneNumber + " exists in student table");
         return true;
       }
 
@@ -219,12 +214,10 @@ function Login() {
       );
 
       if (existsInKinTable) {
-        console.log(phoneNumber + " exists in kin table");
         return true;
       }
 
       // Phone number does not exist in any table
-      console.log(phoneNumber + " does not exist");
       return false;
     } catch (error) {
       console.error("Error checking phone number:", error);
@@ -256,7 +249,6 @@ function Login() {
       }
 
       const responseData = await response.json();
-      console.log("Account data fetched: ", responseData);
       return responseData;
     } catch (error) {
       if (!navigator.onLine) {

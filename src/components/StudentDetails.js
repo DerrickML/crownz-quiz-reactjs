@@ -45,7 +45,6 @@ const StudentDetails = () => {
 
   //To view student results
   function viewResults(resultDetails) {
-    console.log("Results to be rendered\n", resultDetails);
     navigate("/quiz-results", { state: { results: resultDetails } });
   }
 

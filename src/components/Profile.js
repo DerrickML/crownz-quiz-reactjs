@@ -23,7 +23,6 @@ import HeroHeader from "./HeroHeader";
 import "./Home.css";
 
 const Profile = () => {
-  console.log("Profile Fire Check");
   //Fetch sessionInfo from localStorage
   const userInfo = storageUtil.getItem("userInfo");
 
@@ -103,9 +102,8 @@ const Profile = () => {
               (_, i) => (
                 <li
                   key={i}
-                  className={`page-item ${
-                    currentPage === i + 1 ? "active" : ""
-                  }`}
+                  className={`page-item ${currentPage === i + 1 ? "active" : ""
+                    }`}
                 >
                   <Button variant="link" onClick={() => paginate(i + 1)}>
                     {i + 1}

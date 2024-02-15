@@ -4,7 +4,6 @@ import { Card, CardBody, CardTitle, Container } from 'react-bootstrap';
 import AnswerCard from './AnswerCard';
 
 const AnswerContainer = ({ questionsData, subjectName, totalMarks }) => {
-    console.log("QuizContainer Subject Name:", subjectName + "\nEnd");
     // Extract category IDs dynamically from questionsData
     const categoriesToInclude = questionsData.map(category => category.category);
 
@@ -15,7 +14,6 @@ const AnswerContainer = ({ questionsData, subjectName, totalMarks }) => {
         setSelectedQuestions(questionsData);
     }, []); // Empty dependency array to run only once
 
-    console.log("Selected Questions in Quiz Container:\n", resultsData);
 
     return (
         <Container>

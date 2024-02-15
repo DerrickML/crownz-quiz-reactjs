@@ -166,21 +166,13 @@ function SignUp() {
       // Perform the signup using Appwrite SDK
       if (signupMethod === "email") {
         const userEmail = studentDetails.email;
-        console.log("Signing up student using Email: " + userEmail);
-        console.log(
-          `Details; \n Email: ${userEmail} \nPassword: ${password}\nFirst Name: ${firstName} \nPhone: ${phone}`
-        );
         userResponse = await emailSignup(userEmail, password, firstName, phone);
-        console.log(
-          "Finished signing up using email.\n Proceed to assing label"
-        );
         studentID = userResponse.$id;
       } else {
         const phoneNumber = phone;
         userResponse = await phoneSignup(phoneNumber);
 
         studentID = userResponse.userId;
-        console.log("Phone student ID: ", studentID);
       }
 
       if (!userResponse) {
@@ -245,7 +237,6 @@ function SignUp() {
       }
 
       const responseData = await response.json();
-      console.log("Student created server-side response: ", responseData);
 
       return responseData;
     } catch (error) {
@@ -296,7 +287,6 @@ function SignUp() {
         body: JSON.stringify(paylaod),
       });
 
-      console.log("FROM FUNCTION: Label Response: ", response);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -341,7 +331,6 @@ function SignUp() {
         }
       );
 
-      console.log("Student Account Added to student tabel:", userDocResponse);
       return userDocResponse;
     } catch (error) {
       console.error("Error adding Student Account to Student Table:", error);

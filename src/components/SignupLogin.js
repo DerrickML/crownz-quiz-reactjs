@@ -41,7 +41,6 @@ function Login() {
     try {
       const createSession = await account.createPhoneSession("unique()", phone);
       setUserId(createSession.userId); // Save the userId in state
-      console.log(createSession);
 
       setIsOtpSent(true); // Disable the button initially
       setShowOtpInput(true); // Show the OTP input field
@@ -71,7 +70,6 @@ function Login() {
     try {
       if (loginMethod === "email") {
         const session = await account.createEmailSession(email, password);
-        console.log("Email login successful", session);
         // TODO: Redirect to dashboard or user area
       } else if (loginMethod === "phone") {
         if (!userId) {
@@ -79,7 +77,6 @@ function Login() {
           return;
         }
         const session = await account.updatePhoneSession(userId, otp);
-        console.log("Phone login successful", session);
         // TODO: Redirect to dashboard or user area
       }
     } catch (error) {

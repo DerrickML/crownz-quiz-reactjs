@@ -32,9 +32,6 @@ import "./App.css";
 
 function PrivateRoute({ children }) {
   const { sessionInfo } = useAuth();
-
-  console.log('Rendering PrivateRoute');
-
   if (!sessionInfo) {
     // User is not logged in, redirect to login page
     return <Navigate to="/sign-in" />;
@@ -47,13 +44,10 @@ function PrivateRoute({ children }) {
 // Component to extract subject from URL and pass it to Exam
 function ExamWithSubject(props) {
   let { subject } = useParams();
-  console.log(`Rendering ExamWithSubject for subject: ${subject}`);
   return <Exam subject={subject} {...props} />;
 }
 
 function App() {
-  console.log('Rendering App');
-
   // Check Network Status
   const isOnline = useNetworkStatus();
   const initialLoad = useRef(true);

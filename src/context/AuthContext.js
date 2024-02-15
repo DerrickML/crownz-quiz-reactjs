@@ -19,7 +19,6 @@ export const AuthProvider = ({ children }) => {
     });
 
     const handleLogin = async (sessionData, userData) => {
-        console.log("session data on login: \n", sessionData);
         const sessionDetails = {
             $id: sessionData.$id,
             userId: sessionData.userId,
@@ -49,7 +48,6 @@ export const AuthProvider = ({ children }) => {
             kinPhone: userData.kinPhone,
         };
 
-        console.log("User details on login", userDetails); //FOR Debugging purposes only
         setUserInfo(userDetails);
         storageUtil.setItem("userInfo", userDetails);
     };
@@ -58,12 +56,11 @@ export const AuthProvider = ({ children }) => {
         if (sessionInfo && sessionInfo.$id) {
             try {
                 await account.deleteSession(sessionInfo.$id); //Clears the session on Client's and Appwrite's side
-                console.log("Logged out successfully");
             } catch (error) {
                 console.error("Logout failed", error);
             }
         } else {
-            console.log("No active session to log out");
+            console.error("No session to logout");
         }
 
         setSessionInfo(null);

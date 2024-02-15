@@ -32,10 +32,9 @@ const ForgetPassword = () => {
         "Email reset link sent successfully. Please check your email",
         "success"
       );
-      console.log("Reset link sent to:", email);
       setHideButton(false);
     } catch (error) {
-      console.log(error); // Failure
+      console.error(error);
       setHideButton(false);
       throw new Error();
     }

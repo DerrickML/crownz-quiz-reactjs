@@ -52,13 +52,13 @@ const CustomNavbar = () => {
                 >
                   Logout
                 </Nav.Link>
-                <Nav.Link
+                {/* <Nav.Link
                   as={NavLink}
                   to="/testing"
                   onClick={() => setExpanded(false)}
                 >
                   Testing
-                </Nav.Link>
+                </Nav.Link> */}
               </>
             ) : (
               <>

@@ -5,7 +5,6 @@ export const isEitherOrFormat = (question) => {
 
 // utils.js
 export const selectRandomQuestions = (questionsData, categoryIds, subjectName) => {
-    console.log("Subject Name:", subjectName + "\nEnd");
     return categoryIds.map(categoryId => {
         const category = questionsData.find(cat => cat.category === categoryId);
         if (!category) {

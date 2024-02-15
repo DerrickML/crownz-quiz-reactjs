@@ -15,7 +15,6 @@ import {
 import { sst_ple, math_ple } from '../otherFiles/questionsData'; //Static data from local files
 
 function Exam({ subject }) {
-  console.log("fires"); // checking the number of times the component fires
   const [showInstructionsModal, setShowInstructionsModal] = useState(true);
   const [showUnavailableModal, setShowUnavailableModal] = useState(false);
   const [data, setData] = useState(null); // Variable to store the fetched questions data
@@ -58,9 +57,7 @@ function Exam({ subject }) {
           delete obj.$databaseId
           delete obj.$collectionId
         });
-        // console.log(`Converted questions:\n${JSON.stringify(questionData)}`);
         setData(questionData); // Assign the fetched data to the variable
-        console.log(`Converted questions:\n${data}`);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -70,7 +67,6 @@ function Exam({ subject }) {
 
     // Cleanup function
     return () => {
-      console.log("Exam unmounted"); // This will run when the component unmounts
     };
   }, []); // Empty dependency array ensures the code runs only once
 
@@ -88,7 +84,6 @@ function Exam({ subject }) {
       case "english-language_ple":
         return <IframeComponent url="https://exams.crownz.derrickml.com/english_ple_section_B" />;
       case "social-studies_ple":
-        console.log("Data passed SST\n", data);
         if (data === null) { return null }
         else {
           return <QuizContainer questionsData={data} subjectName={'sst_ple'} />;

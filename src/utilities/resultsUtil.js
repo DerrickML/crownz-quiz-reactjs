@@ -15,7 +15,6 @@ export async function fetchAndUpdateResults(userId) {
       studentMarksTable_id,
       [Query.equal("studID", userId), Query.limit(500)]
     );
-    console.log("Refreshed Results fetched:\n", response);
     // Update local storage with new results
     storageUtil.setItem("examResults", "");
     storageUtil.setItem("examResults", response.documents);

@@ -18,6 +18,7 @@ import {
   studentMarksTable_id,
 } from "../appwriteConfig.js";
 import { fetchAndUpdateResults } from "../utilities/resultsUtil";
+import { sendEmailToNextOfKin } from "../utilities/otherUtils.js";
 import { showToast } from "../utilities/toastUtil.js";
 import { useAuth } from '../context/AuthContext';
 import "./IframeComponent.css";
@@ -44,7 +45,6 @@ const IframeComponent = ({ url }) => {
     // Add other URLs here
   ];
 
-  //To send to database
   const { userInfo } = useAuth();
   let studentID = userInfo.userId;
 
@@ -69,7 +69,6 @@ const IframeComponent = ({ url }) => {
         "unique()",
         data
       );
-      console.log("Document created:", result);
       setIsCompleted(true); // Set completion to true on success
     } catch (error) {
       console.error("Error creating document:", error);
@@ -85,7 +84,6 @@ const IframeComponent = ({ url }) => {
 
       // Check if the message is received after the button click
       if (buttonClicked && event.data && typeof event.data === "object") {
-        console.log("Message received: ", event.data);
         const { marksObtained, results } = event.data;
 
         // Convert results to a JSON string before sending
@@ -99,18 +97,19 @@ const IframeComponent = ({ url }) => {
             await createDocument({
               studID: studentID,
               marks: marksObtained,
-              subject: "English",
+              subject: "English Language",
               results: resultsString,
             });
             showToast("Results submitted successfully!", "success");
+            if (userInfo.kinEmail) {
+              await sendEmailToNextOfKin(userInfo, "English Language", marksObtained, new Date());
+            }
             await fetchAndUpdateResults(studentID);
           } catch (e) {
             showToast("Failed to save results. Contact the support team for guidance", "error")
             throw e;
           }
         }
-
-        console.log("Exam finished in: ", capturedTime);
 
         // Reset buttonClicked after processing
         setButtonClicked(false);
