@@ -28,7 +28,7 @@ const IframeComponent = ({ url }) => {
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [buttonClicked, setButtonClicked] = useState(false);
   const [showExitModal, setShowExitModal] = useState(false);
-  const [timer, setTimer] = useState(3600); // 1 hour in seconds for example --This will be a prop passed
+  const [timer, setTimer] = useState(5400); // 1 hour & 30 mins in seconds for example --This will be a prop passed
   const [capturedTime, setCapturedTime] = useState(null);
   const timerIntervalRef = useRef(); // Ref for the timer interval
   const navigate = useNavigate();
