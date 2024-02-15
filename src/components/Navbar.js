@@ -1,22 +1,14 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { useAuth } from '../context/AuthContext'
 
-const CustomNavbar = (setNavbarHeight) => {
+const CustomNavbar = () => {
   const { sessionInfo, handleLogout } = useAuth();
-  const navbarRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
-
-  // useEffect(() => {
-  //   if (navbarRef.current) {
-  //     setNavbarHeight(navbarRef.current.clientHeight);
-  //   }
-  // }, [expanded, setNavbarHeight]);
 
   return (
     <Navbar
-      // ref={navbarRef}
       bg="dark"
       variant="dark"
       expand="lg"
@@ -84,13 +76,13 @@ const CustomNavbar = (setNavbarHeight) => {
                 >
                   Sign up
                 </Nav.Link>
-                <Nav.Link
+                {/* <Nav.Link
                   as={NavLink}
                   to="/testing"
                   onClick={() => setExpanded(false)}
                 >
                   Testing
-                </Nav.Link>
+                </Nav.Link> */}
               </>
             )}
           </Nav>

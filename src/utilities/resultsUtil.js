@@ -13,7 +13,7 @@ export async function fetchAndUpdateResults(userId) {
     const response = await databases.listDocuments(
       database_id,
       studentMarksTable_id,
-      [Query.equal("studID", userId), Query.limit(100)]
+      [Query.equal("studID", userId), Query.limit(500)]
     );
     console.log("Refreshed Results fetched:\n", response);
     // Update local storage with new results
@@ -63,7 +63,7 @@ export const getTransformedResults = (studentId) => {
 
   // Sort each subject's attempts by date in descending order
   resultsMap.forEach((subjectData) => {
-    subjectData.attempts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    subjectData.attempts.sort((a, b) => new Date(b.dateTime) - new Date(a.dateTime));
   });
 
   return Array.from(resultsMap.values());

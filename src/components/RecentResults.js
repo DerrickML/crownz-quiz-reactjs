@@ -9,7 +9,7 @@ const RecentResults = ({ results, onViewResults }) => {
   // Extract the most recent five attempts
   const mostRecentAttempts = results
     .flatMap((subject) => subject.attempts)
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .sort((a, b) => new Date(b.dateTime) - new Date(a.dateTime)) // Use dateTime instead of date
     .slice(0, 5);
 
   return (
@@ -28,14 +28,14 @@ const RecentResults = ({ results, onViewResults }) => {
           <tbody>
             {mostRecentAttempts.map((attempt, idx) => (
               <tr key={idx}>
-                <td>{attempt.subject}</td>
+                <td>{attempt.subject === "sst_ple" ? "Social Studies" : (attempt.subject === "math_ple" ? "Mathematics" : (attempt.subject === "sci_ple" ? "Science" : "English Language"))}</td>
                 <td>{attempt.dateTime}</td>
                 <td>{attempt.score}</td>
                 <td>
                   {attempt.resultDetails ? (
                     <Button
                       variant="primary"
-                      onClick={() => onViewResults(attempt.resultDetails)}
+                      onClick={() => onViewResults(attempt.resultDetails, attempt.subject, attempt.score)}
                     >
                       <FontAwesomeIcon icon={faEye} className="me-2" />
                       View Exam

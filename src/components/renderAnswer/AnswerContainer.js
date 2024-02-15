@@ -1,9 +1,9 @@
 //  AnswerContainer.js
 import React, { useState, useEffect } from 'react';
-import { Card, Container } from 'react-bootstrap';
+import { Card, CardBody, CardTitle, Container } from 'react-bootstrap';
 import AnswerCard from './AnswerCard';
 
-const AnswerContainer = ({ questionsData, subjectName }) => {
+const AnswerContainer = ({ questionsData, subjectName, totalMarks }) => {
     console.log("QuizContainer Subject Name:", subjectName + "\nEnd");
     // Extract category IDs dynamically from questionsData
     const categoriesToInclude = questionsData.map(category => category.category);
@@ -19,6 +19,14 @@ const AnswerContainer = ({ questionsData, subjectName }) => {
 
     return (
         <Container>
+            <Card className="my-4">
+                <Card.Header >Exam Results</Card.Header>
+                <Card.Body >
+                    <Card.Title>
+                        Score: {totalMarks}
+                    </Card.Title>
+                </Card.Body>
+            </Card>
             {resultsData.map((category, index) => (
                 <Card key={index} style={{ margin: "5px" }}>
                     <h2>{category.category}</h2>
@@ -35,7 +43,6 @@ const AnswerContainer = ({ questionsData, subjectName }) => {
                     })}
                 </Card>
             ))}
-
         </Container>
     );
 };

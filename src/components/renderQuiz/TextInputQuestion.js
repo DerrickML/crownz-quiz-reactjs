@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 
-const TextInputQuestion = ({ question, onChange, disabled, userAnswer, displayQuestionText }) => {
+const TextInputQuestion = ({ question, onChange, disabled, userAnswer, displayQuestionText, questionNumber }) => {
     const [localUserAnswer, setLocalUserAnswer] = useState(userAnswer || '');
 
     useEffect(() => {
@@ -19,7 +19,11 @@ const TextInputQuestion = ({ question, onChange, disabled, userAnswer, displayQu
 
     return (
         <Form.Group>
-            {displayQuestionText && <Form.Label dangerouslySetInnerHTML={{ __html: question.question }} />}
+            {displayQuestionText &&
+                <Form.Label>
+                    {questionNumber}. <span dangerouslySetInnerHTML={{ __html: question.question }} />
+                </Form.Label>
+            }
             <Form.Control
                 type="text"
                 value={localUserAnswer}

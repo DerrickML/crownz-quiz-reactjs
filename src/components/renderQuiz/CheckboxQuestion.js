@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, Card } from 'react-bootstrap';
 import { isImageUrl } from './utils';
 
-const CheckboxQuestion = ({ question, onChange, disabled, userAnswer, displayQuestionText }) => {
+const CheckboxQuestion = ({ question, onChange, disabled, userAnswer, displayQuestionText, questionNumber }) => {
     const [selectedOptions, setSelectedOptions] = useState([]);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const CheckboxQuestion = ({ question, onChange, disabled, userAnswer, displayQue
     const renderOptionLabel = (option) => {
         return isImageUrl(option) ? (
             <Card>
-                <Card.Img variant="top" src={option} style={{ width: '300px', height: 'auto', margin: 'auto' }} />
+                <Card.Img variant="top" src={option} style={{ maxWidth: '25rem', maxHeight: '15em', margin: 'auto' }} />
             </Card>
         ) : (
             <>
@@ -33,7 +33,11 @@ const CheckboxQuestion = ({ question, onChange, disabled, userAnswer, displayQue
 
     return (
         <Form.Group>
-            {displayQuestionText && <Form.Label dangerouslySetInnerHTML={{ __html: question.question }} />}
+            {displayQuestionText &&
+                <Form.Label>
+                    {questionNumber}. <span dangerouslySetInnerHTML={{ __html: question.question }} />
+                </Form.Label>
+            }
             {question.options && question.options.map((option, index) => (
                 <Form.Check
                     type="checkbox"

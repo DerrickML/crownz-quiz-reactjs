@@ -1,11 +1,11 @@
-// QuestionCard.js
+// AnswerCard.js
 import React, { useState } from 'react';
 import { Card, ListGroup, Badge, ButtonGroup, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { setUserAnswer, setSelectedOption } from '../../redux/actions';
 import { isImageUrl } from './utils';
 
-const QuestionCard = ({ resultsData }) => {
+const AnswerCard = ({ resultsData }) => {
 
     const renderValue = (value) => {
         if (Array.isArray(value)) {
@@ -41,8 +41,84 @@ const QuestionCard = ({ resultsData }) => {
     };
 
     // Define renderQuestionText function here
-    const renderQuestionText = (data, questionText, questionImage, explanation, answer, user_answer) => {
-        const isAnswerCorrect = Array.isArray(answer) && Array.isArray(user_answer) ? areArraysEqual(answer, user_answer) : answer === user_answer;
+    const renderQuestionText = (data, questionText, questionImage, explanation, answer, user_answer, mark) => {
+
+        // const checkAnswer = (answer, user_answer) => {
+        //     // Convert to lowercase
+        //     if (typeof user_answer === 'string') {
+        //         user_answer = user_answer.toLowerCase();
+        //     } else if (Array.isArray(user_answer)) {
+        //         user_answer = user_answer.map(answer => answer.toLowerCase());
+        //     }
+
+        //     if (typeof answer === 'string') {
+        //         answer = answer.toLowerCase();
+        //     } else if (Array.isArray(answer)) {
+        //         answer = answer.map(answer => answer.toLowerCase());
+        //     }
+
+        //     // Check for equality
+        //     if (Array.isArray(answer) && Array.isArray(user_answer)) {
+        //         if (user_answer.length > answer.length) {
+        //             return false;
+        //         } else {
+        //             return user_answer.every(val => answer.includes(val));
+        //         }
+        //     } else if (Array.isArray(answer) && typeof user_answer === 'string') {
+        //         return answer.includes(user_answer);
+        //     } else if (typeof answer === 'string' && typeof user_answer === 'string') {
+        //         return answer === user_answer;
+        //     }
+
+        //     return false;
+        // };
+
+        const checkAnswer = (answer, user_answer, mark) => {
+            // Convert to lowercase
+            if (typeof user_answer === 'string') {
+                user_answer = user_answer.toLowerCase();
+            } else if (Array.isArray(user_answer)) {
+                user_answer = user_answer.map(answer => answer.toLowerCase());
+            }
+
+            if (typeof answer === 'string') {
+                answer = answer.toLowerCase();
+            } else if (Array.isArray(answer)) {
+                answer = answer.map(answer => answer.toLowerCase());
+            }
+
+            // Check for equality
+            let score = 0;
+            if (Array.isArray(answer) && Array.isArray(user_answer)) {
+                if (user_answer.length > answer.length) {
+                    return 0;
+                } else {
+                    user_answer.forEach(val => {
+                        if (answer.includes(val)) {
+                            score++;
+                        }
+                    });
+                }
+            } else if (Array.isArray(answer) && typeof user_answer === 'string') {
+                if (answer.includes(user_answer)) {
+                    score = 1;
+                }
+            } else if (typeof answer === 'string' && typeof user_answer === 'string') {
+                if (answer === user_answer) {
+                    score = 1;
+                }
+            }
+
+            // If mark is defined, limit the score to the mark value
+            if (mark !== undefined) {
+                score = Math.min(score, mark);
+            }
+
+            return score;
+        };
+
+        const isAnswerCorrect = checkAnswer(answer, user_answer);
+        const score = checkAnswer(answer, user_answer, mark);
 
         return (
             <>
@@ -98,6 +174,15 @@ const QuestionCard = ({ resultsData }) => {
                                 )}
                             </>
                         )}
+                        <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start"
+                        >
+                            <div className="ms-2 me-auto">
+                                <Card.Text className="fw-bold">Score</Card.Text>
+                                <Card.Text>{score}</Card.Text>
+                            </div>
+                        </ListGroup.Item>
                     </ListGroup>
                 )}
             </>
@@ -106,12 +191,12 @@ const QuestionCard = ({ resultsData }) => {
 
     const renderQuestion = (question) => (
         <>
-            {renderQuestionText(question, question.question_text, question.image, question.explanation, question.answer, question.user_answer)}
+            {renderQuestionText(question, question.question, question.image, question.explanation, question.answer, question.user_answer)}
             {/* other parts go here */}
             {question.sub_questions && question.sub_questions.map((subQ, index) => (
 
                 // rendering subQ qtns
-                renderQuestionText(subQ, subQ.question_text, subQ.image, subQ.explanation, subQ.answer, subQ.user_answer)
+                renderQuestionText(subQ, subQ.question, subQ.image, subQ.explanation, subQ.answer, subQ.user_answer)
 
             ))}
         </>
@@ -137,4 +222,4 @@ const mapDispatchToProps = {
     setSelectedOption
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuestionCard);
+export default connect(mapStateToProps, mapDispatchToProps)(AnswerCard);

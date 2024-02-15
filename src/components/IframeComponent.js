@@ -18,9 +18,6 @@ import {
   studentMarksTable_id,
 } from "../appwriteConfig.js";
 import { showToast } from "../utilities/toastUtil.js";
-import {
-  fetchAndUpdateResults,
-} from "../utilities/resultsUtil";
 import { useAuth } from '../context/AuthContext';
 import "./IframeComponent.css";
 
@@ -39,10 +36,10 @@ const IframeComponent = ({ url }) => {
     window.location.origin,
     "http://localhost:5173/",
     "https://derrickml.com",
-    "https://exams.crownz.derrickml.com/public/",
     "http://127.0.0.1:5500/",
     "http://127.0.0.1:5501/",
     "http://127.0.0.1:5500/english_ple/",
+    "https://exams.crownz.derrickml.com/english_ple_section_B",
     // Add other URLs here
   ];
 
@@ -130,7 +127,6 @@ const IframeComponent = ({ url }) => {
 
   const confirmSubmit = async () => {
     sendMessageToIframe();
-    await fetchAndUpdateResults(userInfo.userId);
     setShowSubmitModal(false);
   };
 

@@ -37,15 +37,20 @@ const AllResults = () => {
   const userInfo = storageUtil.getItem("userInfo");
   const navigate = useNavigate();
 
-  const viewResults = (resultDetails) => {
-    navigate("/quiz-results", { state: { results: resultDetails } });
+  const viewResults = (resultDetails, subjectName, totalMarks) => {
+    if (subjectName === "English") {
+      navigate("/quiz-results", { state: { results: resultDetails } });
+    }
+    else {
+      const questionsData = JSON.parse(resultDetails);
+      navigate('/answers', { state: { questionsData, subjectName, totalMarks } });
+    }
   };
 
   useEffect(() => {
     const userId = userInfo?.userId;
     if (userId) {
       const transformedData = getTransformedResults(userId);
-      console.log("TransformedResults:\n", transformedData);
       if (JSON.stringify(transformedData) !== JSON.stringify(results)) {
         setResults(transformedData);
       }
@@ -118,7 +123,7 @@ const AllResults = () => {
           <Button
             variant="secondary"
             hidden
-            // onClick={() => navigate("/exam-page")} //Navigate to chart page
+          // onClick={() => navigate("/exam-page")} //Navigate to chart page
           >
             <FontAwesomeIcon icon={faChartLine} className="me-2" />
             View Statistics
@@ -159,7 +164,7 @@ const AllResults = () => {
           onClick={() => toggleSubject(subjectResults.subject)}
           style={{ cursor: "pointer" }}
         >
-          {subjectResults.subject}
+          {subjectResults.subject === "sst_ple" ? "Social Studies" : (subjectResults.subject === "math_ple" ? "Mathematics" : (subjectResults.subject === "sci_ple" ? "Science" : "English Language"))}
         </Card.Header>
         {openSubjects[subjectResults.subject] && (
           <>
@@ -186,7 +191,7 @@ const AllResults = () => {
                           <Button
                             variant="primary"
                             className="mt-3"
-                            onClick={() => viewResults(attempt.resultDetails)}
+                            onClick={() => viewResults(attempt.resultDetails, subjectResults.subject, attempt.score)}
                           >
                             <FontAwesomeIcon icon={faEye} className="me-2" />
                             View Exam
@@ -247,9 +252,9 @@ const AllResults = () => {
                 {/* Right Column for larger screens, full width for smaller screens */}
                 {
                   !noResultsAvailable &&
-                    results
-                      .filter((_, index) => index % 2 !== 0)
-                      .map(renderResultsForSubject) // Render odd indexed items
+                  results
+                    .filter((_, index) => index % 2 !== 0)
+                    .map(renderResultsForSubject) // Render odd indexed items
                 }
               </Col>
             </>

@@ -1,12 +1,17 @@
 // QuestionCard.js
 import React, { useState } from 'react';
-import { Card, ButtonGroup, Button } from 'react-bootstrap';
+import { Card, ButtonGroup, Button, ListGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import AnswerInput from './AnswerInput';
 import { setUserAnswer, setSelectedOption } from '../../redux/actions';
 import { isImageUrl } from './utils';
 
-const QuestionCard = ({ selectedQuestions, setUserAnswer, setSelectedOption, answers }) => {
+const QuestionCard = ({ selectedQuestions, setUserAnswer, setSelectedOption, answers, subjectName }) => {
+    // Helper function to convert index to roman numeral
+    function indexToRoman(index) {
+        const roman = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii", "xiii", "xiv", "xv", "xvi", "xvii", "xviii", "xix", "xx"].map(numeral => `(${numeral})`);
+        return roman[index];
+    }
 
     const [selectedOption, setSelectedOptionState] = useState('either');
 
@@ -47,20 +52,20 @@ const QuestionCard = ({ selectedQuestions, setUserAnswer, setSelectedOption, ans
     };
 
     // Define renderQuestionText function here
-    const renderQuestionText = (questionText, questionImage) => (
+    const renderQuestionText = (category, questionText, questionImage) => (
         <>
-            <p dangerouslySetInnerHTML={{ __html: questionText }}></p>
+            <p>{subjectName === 'sst_ple' && category !== 51 && category !== 36 ? category : null} <span dangerouslySetInnerHTML={{ __html: questionText }}></span></p>
             {questionImage && isImageUrl(questionImage) && (
                 <Card style={{ alignItems: 'flex-start', textAlign: 'center', margin: '10px 0' }}>
-                    <Card.Img src={questionImage} alt="Question" style={{ maxWidth: '20rem', height: 'auto' }} />
+                    <Card.Img src={questionImage} alt="Question" style={{ maxWidth: '30rem', maxHeight: '25em' }} />
                 </Card>
             )}
         </>
     );
 
-    const renderQuestion = (question, disabled) => (
+    const renderQuestion = (category, question, disabled) => (
         <>
-            {renderQuestionText(question.question, question.image)}
+            {renderQuestionText(category, question.question, question.image)}
             <AnswerInput
                 question={question}
                 onChange={(answer) => handleAnswerChange(question.id, answer)}
@@ -68,6 +73,7 @@ const QuestionCard = ({ selectedQuestions, setUserAnswer, setSelectedOption, ans
                 disabled={disabled}
                 displayQuestionText={false}
             />
+
             {question.sub_questions && question.sub_questions.map((subQ, index) => (
                 <AnswerInput
                     key={`${question.id}_sub_${index}`}
@@ -76,8 +82,10 @@ const QuestionCard = ({ selectedQuestions, setUserAnswer, setSelectedOption, ans
                     getUserAnswer={() => getUserAnswer(`${question.id}_sub_${index}`)}
                     disabled={false}
                     displayQuestionText={true}
+                    questionNumber={indexToRoman(index)}
                 />
             ))}
+
         </>
     );
 
@@ -103,10 +111,10 @@ const QuestionCard = ({ selectedQuestions, setUserAnswer, setSelectedOption, ans
                             </Button>
                         </ButtonGroup>
 
-                        {selectedOption === 'either' ? renderQuestion(selectedQuestions.either, selectedOption !== 'either') : renderQuestion(selectedQuestions.or, selectedOption !== 'or')}
+                        {selectedOption === 'either' ? renderQuestion(selectedQuestions.categoryId, selectedQuestions.either, selectedOption !== 'either') : renderQuestion(selectedQuestions.categoryId, selectedQuestions.or, selectedOption !== 'or')}
                     </>
                 ) : (
-                    renderQuestion(selectedQuestions.either, false) // Here, 'either' is used to handle non-either/or questions
+                    renderQuestion(selectedQuestions.categoryId, selectedQuestions.either, false) // Here, 'either' is used to handle non-either/or questions
                 )}
             </Card.Body>
         </Card>

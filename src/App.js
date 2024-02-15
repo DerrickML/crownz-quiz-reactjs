@@ -7,6 +7,7 @@ import {
   useParams,
 } from "react-router-dom";
 import useNetworkStatus from "./hooks/useNetworkStatus";
+import { Container } from "react-bootstrap";
 import { showToast } from "./utilities/toastUtil.js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,12 +25,15 @@ import QuizResults from "./components/english/QuizResults";
 import PasswordReset from "./components/PasswordReset";
 import StudentDetails from "./components/StudentDetails";
 import LinkedStudents from "./components/LinkedStudents";
-import EditProfile from "./components/EditProfile.js";
+import EditProfile from "./components/EditProfile";
+import Answers from "./components/renderAnswer/Answers";
 import { AuthProvider, useAuth } from './context/AuthContext';
 import "./App.css";
 
 function PrivateRoute({ children }) {
   const { sessionInfo } = useAuth();
+
+  console.log('Rendering PrivateRoute');
 
   if (!sessionInfo) {
     // User is not logged in, redirect to login page
@@ -43,10 +47,12 @@ function PrivateRoute({ children }) {
 // Component to extract subject from URL and pass it to Exam
 function ExamWithSubject(props) {
   let { subject } = useParams();
+  console.log(`Rendering ExamWithSubject for subject: ${subject}`);
   return <Exam subject={subject} {...props} />;
 }
 
 function App() {
+  console.log('Rendering App');
 
   // Check Network Status
   const isOnline = useNetworkStatus();
@@ -70,8 +76,8 @@ function App() {
 
       <AuthProvider>
         <div className="App">
-          {/* <CustomNavbar /> */}
-          <div className="main-content">
+          <CustomNavbar />
+          <div className="main-content" style={{ marginTop: "70px", width: "100%" }} >
             <Routes>
               <Route
                 exact
@@ -139,6 +145,13 @@ function App() {
                 element={
                   <PrivateRoute>
                     <LinkedStudents />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/answers"
+                element={
+                  <PrivateRoute>
+                    <Answers />
                   </PrivateRoute>
                 }
               />
