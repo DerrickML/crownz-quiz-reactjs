@@ -31,94 +31,42 @@ const AnswerCard = ({ resultsData }) => {
         }
     };
 
-    const areArraysEqual = (arr1, arr2) => {
-        if (arr1.length !== arr2.length) {
-            return false;
-        }
-        const sortedArr1 = arr1.slice().sort();
-        const sortedArr2 = arr2.slice().sort();
-        return sortedArr1.every((element, index) => element === sortedArr2[index]);
-    };
-
     // Define renderQuestionText function here
-    const renderQuestionText = (data, questionText, questionImage, explanation, answer, user_answer, mark) => {
+    const renderQuestionText = (data, questionText, questionImage, explanation, answer, user_answer, questionType, mark) => {
 
-        // const checkAnswer = (answer, user_answer) => {
-        //     // Convert to lowercase
-        //     if (typeof user_answer === 'string') {
-        //         user_answer = user_answer.toLowerCase();
-        //     } else if (Array.isArray(user_answer)) {
-        //         user_answer = user_answer.map(answer => answer.toLowerCase());
-        //     }
+        const checkAnswer = (answer, user_answer, questionType, mark) => {
+            // Helper function to normalize answers for comparison
+            const normalize = value => typeof value === 'string' ? value.trim().toLowerCase() : value;
 
-        //     if (typeof answer === 'string') {
-        //         answer = answer.toLowerCase();
-        //     } else if (Array.isArray(answer)) {
-        //         answer = answer.map(answer => answer.toLowerCase());
-        //     }
+            // Normalize user_answer and answer
+            user_answer = Array.isArray(user_answer) ? user_answer.map(normalize) : normalize(user_answer);
+            answer = Array.isArray(answer) ? answer.map(normalize) : normalize(answer);
 
-        //     // Check for equality
-        //     if (Array.isArray(answer) && Array.isArray(user_answer)) {
-        //         if (user_answer.length > answer.length) {
-        //             return false;
-        //         } else {
-        //             return user_answer.every(val => answer.includes(val));
-        //         }
-        //     } else if (Array.isArray(answer) && typeof user_answer === 'string') {
-        //         return answer.includes(user_answer);
-        //     } else if (typeof answer === 'string' && typeof user_answer === 'string') {
-        //         return answer === user_answer;
-        //     }
-
-        //     return false;
-        // };
-
-        const checkAnswer = (answer, user_answer, mark) => {
-            // Convert to lowercase
-            if (typeof user_answer === 'string') {
-                user_answer = user_answer.toLowerCase();
-            } else if (Array.isArray(user_answer)) {
-                user_answer = user_answer.map(answer => answer.toLowerCase());
-            }
-
-            if (typeof answer === 'string') {
-                answer = answer.toLowerCase();
-            } else if (Array.isArray(answer)) {
-                answer = answer.map(answer => answer.toLowerCase());
-            }
-
-            // Check for equality
             let score = 0;
-            if (Array.isArray(answer) && Array.isArray(user_answer)) {
-                if (user_answer.length > answer.length) {
-                    return 0;
-                } else {
+
+            if (questionType === 'multipleChoice' || questionType === 'text') {
+                // Single mark for multipleChoice and text, check if answer matches
+                if (answer === user_answer || (Array.isArray(answer) && answer.includes(user_answer))) {
+                    score = mark || 1; // Use provided mark or default to 1
+                }
+            } else if (questionType === 'check_box') {
+                // Checkbox question type
+                const maxScore = mark || (Array.isArray(answer) ? answer.length : 1);
+                if (Array.isArray(user_answer)) {
                     user_answer.forEach(val => {
                         if (answer.includes(val)) {
                             score++;
                         }
                     });
+                    score = Math.min(score, maxScore); // Limit score to maxScore
                 }
-            } else if (Array.isArray(answer) && typeof user_answer === 'string') {
-                if (answer.includes(user_answer)) {
-                    score = 1;
-                }
-            } else if (typeof answer === 'string' && typeof user_answer === 'string') {
-                if (answer === user_answer) {
-                    score = 1;
-                }
-            }
-
-            // If mark is defined, limit the score to the mark value
-            if (mark !== undefined) {
-                score = Math.min(score, mark);
             }
 
             return score;
         };
 
         const isAnswerCorrect = checkAnswer(answer, user_answer);
-        const score = checkAnswer(answer, user_answer, mark);
+        const score = checkAnswer(answer, user_answer, questionType, mark);
 
         return (
             <>
@@ -189,20 +137,20 @@ const AnswerCard = ({ resultsData }) => {
         );
     };
 
-    const renderQuestion = (question) => (
-        <>
-            {renderQuestionText(question, question.question, question.image, question.explanation, question.answer, question.user_answer)}
-            {/* other parts go here */}
-            {question.sub_questions && question.sub_questions.map((subQ, index) => (
-
-                // rendering subQ qtns
-                <div key={index}>
-                    {renderQuestionText(subQ, subQ.question, subQ.image, subQ.explanation, subQ.answer, subQ.user_answer)}
-                </div>
-
-            ))}
-        </>
-    );
+    const renderQuestion = (question) => {
+        const questionType = question.type; // Get the question type
+        const mark = question.mark; // Get the mark if available
+        return (
+            <>
+                {renderQuestionText(question, question.question, question.image, question.explanation, question.answer, question.user_answer, questionType, mark)}
+                {question.sub_questions && question.sub_questions.map((subQ, index) => (
+                    <div key={index}>
+                        {renderQuestionText(subQ, subQ.question, subQ.image, subQ.explanation, subQ.answer, subQ.user_answer, subQ.type, subQ.mark)}
+                    </div>
+                ))}
+            </>
+        );
+    };
 
     return (
         <Card>

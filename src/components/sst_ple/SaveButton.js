@@ -4,6 +4,42 @@ import { useSelector } from 'react-redux';
 const SaveButton = ({ selectedQuestions }) => {
     const reduxState = useSelector(state => state.answers);
 
+    const calculateMarks = (question, userAnswer) => {
+        const { type, answer, mark, sub_questions } = question;
+        const correctAnswer = Array.isArray(answer) ? answer : [answer];
+        let score = 0;
+
+        switch (type) {
+            case 'multipleChoice':
+            case 'text':
+                if (userAnswer && correctAnswer.map(a => a.trim().toLowerCase()).includes(userAnswer.trim().toLowerCase())) {
+                    score = mark || 1; // Use mark if provided, otherwise default to 1
+                }
+                break;
+            case 'check_box':
+                const maxScore = mark || correctAnswer.length;
+                if (userAnswer && userAnswer.length <= maxScore) {
+                    userAnswer.forEach(userOption => {
+                        if (correctAnswer.map(a => a.trim().toLowerCase()).includes(userOption.trim().toLowerCase())) {
+                            score += 1;
+                        }
+                    });
+                }
+                break;
+            default:
+                break;
+        }
+
+        // Calculate marks for subquestions
+        if (sub_questions) {
+            sub_questions.forEach(subQ => {
+                score += calculateMarks(subQ, subQ.user_answer);
+            });
+        }
+
+        return score;
+    };
+
     const findUserAnswer = (questionId, categoryId, questionType) => {
         const reduxAnswers = reduxState.filter(answer => answer.id === questionId && answer.category === categoryId);
         if (reduxAnswers.length === 0) return null;
@@ -43,7 +79,8 @@ const SaveButton = ({ selectedQuestions }) => {
 
     const formatAnswersForSaving = () => {
         console.log('Redux stored data:', reduxState);
-        return selectedQuestions.map(category => ({
+        let totalMarks = 0;
+        const formattedAnswers = selectedQuestions.map(category => ({
             ...category,
             questions: category.questions.flatMap(question => {
                 if (question.either && question.or) {
@@ -53,8 +90,14 @@ const SaveButton = ({ selectedQuestions }) => {
 
                     // Include the part with a user answer, or both if both are answered
                     const partsToInclude = [];
-                    if (updatedEither.user_answer !== null) partsToInclude.push(updatedEither);
-                    if (updatedOr.user_answer !== null) partsToInclude.push(updatedOr);
+                    if (updatedEither.user_answer !== null) {
+                        partsToInclude.push(updatedEither);
+                        totalMarks += calculateMarks(updatedEither, updatedEither.user_answer);
+                    }
+                    if (updatedOr.user_answer !== null) {
+                        partsToInclude.push(updatedOr);
+                        totalMarks += calculateMarks(updatedOr, updatedOr.user_answer);
+                    }
                     return partsToInclude;
                 } else {
                     // Handle normal questions
@@ -65,10 +108,14 @@ const SaveButton = ({ selectedQuestions }) => {
                             ? appendUserAnswersToSubQuestions(question.sub_questions, category.category)
                             : [],
                     };
+                    totalMarks += calculateMarks(updatedQuestion, updatedQuestion.user_answer);
                     return [updatedQuestion];
                 }
             }).flat(),
         }));
+
+        console.log('Total Marks:', totalMarks);
+        return formattedAnswers;
     };
 
     const handleSave = () => {

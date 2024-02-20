@@ -4,8 +4,6 @@ const initialState = {
     answers: []
 };
 
-// reducers.js
-
 const quizReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'RESET_ANSWERS':
@@ -48,7 +46,7 @@ const quizReducer = (state = initialState, action) => {
                 answers: newAnswers
             };
 
-        // Handle SET_SELECTED_OPTION if needed
+        //TODO: Handle SET_SELECTED_OPTION if needed
 
         default:
             return state;

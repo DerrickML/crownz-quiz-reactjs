@@ -1,5 +1,7 @@
+// SaveButton.js
 import React, { useState, forwardRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { resetAnswers } from './redux/actions';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from "react-router-dom";
@@ -16,6 +18,8 @@ import { sendEmailToNextOfKin } from "../../utilities/otherUtils.js";
 import { useAuth } from '../../context/AuthContext';
 
 const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDisplay, subject_Name }, ref) => {
+
+    const dispatch = useDispatch();
 
     const { userInfo } = useAuth();
     let studentID = userInfo.userId;
@@ -52,105 +56,128 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
     };
 
     //Calculating marks
-    const calculateMarks = (question) => {
-        let marks = 0;
-        if ('mark' in question) {
-            if (Array.isArray(question.answer) && Array.isArray(question.user_answer)) {
-                if (question.user_answer.length > question.mark) {
-                    marks = 0;
-                } else {
-                    marks = question.user_answer.filter(answer => question.answer.includes(answer)).length;
+    const calculateMarks = (question, userAnswer) => {
+        const { type, answer, mark, sub_questions } = question;
+        const correctAnswer = Array.isArray(answer) ? answer : [answer];
+        let score = 0;
+
+        switch (type) {
+            case 'multipleChoice':
+            case 'text':
+                if (userAnswer && correctAnswer.map(a => a.trim().toLowerCase()).includes(userAnswer.trim().toLowerCase())) {
+                    score = mark || 1; // Use mark if provided, otherwise default to 1
                 }
-            } else if (question.answer === question.user_answer) {
-                marks = question.mark;
-            }
-        } else {
-            if (Array.isArray(question.answer)) {
-                if (Array.isArray(question.user_answer)) {
-                    if (question.user_answer.length > question.answer.length) {
-                        marks = 0;
-                    } else {
-                        marks = question.user_answer.filter(answer => question.answer.includes(answer)).length;
-                    }
-                } else if (question.answer.includes(question.user_answer)) {
-                    marks = 1;
+                break;
+            case 'check_box':
+                const maxScore = mark || correctAnswer.length;
+                if (userAnswer && userAnswer.length <= maxScore) {
+                    userAnswer.forEach(userOption => {
+                        if (correctAnswer.map(a => a.trim().toLowerCase()).includes(userOption.trim().toLowerCase())) {
+                            score += 1;
+                        }
+                    });
                 }
-            } else if (question.answer === question.user_answer) {
-                marks = 1;
-            }
+                break;
+            default:
+                break;
         }
-        return marks;
+
+        // Calculate marks for subquestions
+        if (sub_questions) {
+            sub_questions.forEach(subQ => {
+                score += calculateMarks(subQ, subQ.user_answer);
+            });
+        }
+
+        return score;
+    };
+
+    const findUserAnswer = (questionId, categoryId, questionType) => {
+        const reduxAnswers = reduxState.filter(answer => answer.id === questionId && answer.category === categoryId);
+        if (reduxAnswers.length === 0) return null;
+
+        // Handle different types of questions
+        switch (questionType) {
+            case 'multipleChoice':
+            case 'text':
+                // For multiple choice and text questions, return the last user answer
+                return reduxAnswers[reduxAnswers.length - 1].user_answer;
+            case 'check_box':
+                // For checkbox questions, return the options that are checked
+                const userAnswer = reduxAnswers[reduxAnswers.length - 1].user_answer;
+                const checkedOptions = Object.keys(userAnswer).filter(option => userAnswer[option]);
+                return checkedOptions;
+            default:
+                return null;
+        }
+    };
+
+    const appendUserAnswersToSubQuestions = (subQuestions, categoryId) => {
+        return subQuestions.map(subQ => ({
+            ...subQ,
+            user_answer: findUserAnswer(subQ.id, categoryId, subQ.type),
+        }));
+    };
+
+    const formatAnswersForEitherOrQuestion = (questionPart, categoryId) => {
+        return {
+            ...questionPart,
+            user_answer: findUserAnswer(questionPart.id, categoryId, questionPart.type),
+            sub_questions: questionPart.sub_questions
+                ? appendUserAnswersToSubQuestions(questionPart.sub_questions, categoryId)
+                : []
+        };
     };
 
     const formatAnswersForSaving = () => {
+        console.log('Redux stored data:', reduxState);
         let totalMarks = 0;
-        const formattedData = selectedQuestions.map(category => ({
-            category: category.category,
-            instruction: category.instructions || null,
-            questions: category.questions.map(question => {
+        const formattedAnswers = selectedQuestions.map(category => ({
+            ...category,
+            questions: category.questions.flatMap(question => {
                 if (question.either && question.or) {
-                    const selectedOption = reduxState[`${category.category}-${question.id}-selectedOption`] || 'either';
-                    const relevantQuestion = question[selectedOption];
+                    // Process each part of the either/or question
+                    const updatedEither = formatAnswersForEitherOrQuestion(question.either, category.category);
+                    const updatedOr = formatAnswersForEitherOrQuestion(question.or, category.category);
 
-                    const questionKey = `${category.category}-${relevantQuestion.id}`;
-                    const userAnswer = reduxState[questionKey] || null;
-
-                    const formattedQuestion = {
-                        ...relevantQuestion,
-                        user_answer: userAnswer,
-                        selectedOption: selectedOption,
-                    };
-
-                    if (relevantQuestion.sub_questions) {
-                        formattedQuestion.sub_questions = relevantQuestion.sub_questions.map(subQ => {
-                            const subQuestionKey = `${category.category}-${subQ.id}`;
-                            const subUserAnswer = reduxState[subQuestionKey] || null;
-
-                            return {
-                                ...subQ,
-                                user_answer: subUserAnswer,
-                            };
-                        });
+                    // Include the part with a user answer, or both if both are answered
+                    const partsToInclude = [];
+                    if (updatedEither.user_answer !== null) {
+                        partsToInclude.push(updatedEither);
+                        totalMarks += calculateMarks(updatedEither, updatedEither.user_answer);
                     }
-
-                    return formattedQuestion;
+                    if (updatedOr.user_answer !== null) {
+                        partsToInclude.push(updatedOr);
+                        totalMarks += calculateMarks(updatedOr, updatedOr.user_answer);
+                    }
+                    return partsToInclude;
+                } else {
+                    // Handle normal questions
+                    const updatedQuestion = {
+                        ...question,
+                        user_answer: findUserAnswer(question.id, category.category, question.type),
+                        sub_questions: question.sub_questions
+                            ? appendUserAnswersToSubQuestions(question.sub_questions, category.category)
+                            : [],
+                    };
+                    totalMarks += calculateMarks(updatedQuestion, updatedQuestion.user_answer);
+                    return [updatedQuestion];
                 }
-
-                const questionKey = `${category.category}-${question.id}`;
-                const userAnswer = reduxState[questionKey] || null;
-
-                const formattedQuestion = {
-                    ...question,
-                    user_answer: userAnswer,
-                };
-
-                if (question.sub_questions) {
-                    formattedQuestion.sub_questions = question.sub_questions.map(subQ => {
-                        const subQuestionKey = `${category.category}-${subQ.id}`;
-                        const subQUserAnswer = reduxState[subQuestionKey] || null;
-
-                        return {
-                            ...subQ,
-                            user_answer: subQUserAnswer,
-                        };
-                    });
-                }
-
-                totalMarks += calculateMarks(formattedQuestion);
-                return formattedQuestion;
-            }),
+            }).flat(),
         }));
 
-        return { formattedData, totalMarks };
+        console.log('Total Marks:', totalMarks);
+        console.log('Formatted Answers:', formattedAnswers);
+        return { formattedAnswers, totalMarks };
     };
 
     const handleSave = async () => {
-        // const finalDataToSave = formatAnswersForSaving();
-        const { formattedData: finalDataToSave, totalMarks } = formatAnswersForSaving();
+        const { formattedAnswers, totalMarks } = formatAnswersForSaving();
+
         onSubmit();
 
         // Create a document in Appwrite Collection
-        const resultsString = JSON.stringify(finalDataToSave);
+        const resultsString = JSON.stringify(formattedAnswers);
 
         const userResultsData = {
             studID: studentID,
@@ -168,7 +195,10 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
         await fetchAndUpdateResults(userInfo.userId); // Update the local storage
 
         //Rendering user attempts to them
-        const questionsData = finalDataToSave;
+        const questionsData = formattedAnswers;
+
+        // Dispatch the action to reset the answers
+        dispatch(resetAnswers());
 
         navigate('/answers', { state: { questionsData, subjectName, totalMarks } });
     };

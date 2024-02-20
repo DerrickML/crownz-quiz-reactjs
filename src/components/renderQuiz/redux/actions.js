@@ -1,11 +1,5 @@
 // actions.js
 
-export const resetAnswers = () => {
-    return {
-        type: 'RESET_ANSWERS'
-    };
-};
-
 export const setUserAnswer = (questionId, answer, categoryId, isEitherOr, questionType) => {
     let payload = { questionId, answer, categoryId, isEitherOr, questionType };
 
@@ -24,5 +18,11 @@ export const setSelectedOption = (questionId, selectedOption, categoryId, isEith
     return {
         type: 'SET_SELECTED_OPTION',
         payload: { questionId, selectedOption, categoryId, isEitherOr }
+    };
+};
+
+export const resetAnswers = () => {
+    return {
+        type: 'RESET_ANSWERS'
     };
 };

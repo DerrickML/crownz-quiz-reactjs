@@ -1,6 +1,8 @@
 // QuizContainer.js
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { resetAnswers } from './redux/actions';
 import SaveButton from './SaveButton';
 import QuestionCard from './QuestionCard';
 import { selectRandomQuestions } from './utils';
@@ -13,6 +15,8 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     const [showModal, setShowModal] = useState(false);
     const [showExitModal, setShowExitModal] = useState(false);
     const [showTimeUpModal, setShowTimeUpModal] = useState(false);
+
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     //===SUBMISSION MODAL========================
@@ -31,6 +35,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     };
 
     const confirmExit = () => {
+        dispatch(resetAnswers()); // Dispatch the action
         navigate("/exam-page");
     };
     //===END EXIT/CANCEL EXAM MODAL==============
@@ -128,27 +133,23 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                     </ButtonGroup>
                 </Col>
                 <Col xs={12} md={{ span: 9, offset: 3 }}>
-                    {selectedQuestions.map(category => (
-                        <Row key={category.$id} className="mb-4">
-                            <Col>
-                                <Card>
-                                    <Card.Header as="h5">Question {category.category}.</Card.Header>
-                                    <Card.Body>
-                                        <Card.Title>{category.instructions}</Card.Title>
-                                        {category.questions.map((question, index) => {
-                                            let questionProps = question.hasOwnProperty('either') && question.hasOwnProperty('or')
-                                                ? question
-                                                : { either: question };
-                                            questionProps = { ...questionProps, categoryId: category.category };
-                                            return (
-                                                <Card style={{ marginBottom: '10px' }}>
-                                                    <QuestionCard key={question.id || `${category.$id}_${index}`} selectedQuestions={questionProps} subjectName={subjectName} />
-                                                </Card>);
-                                        })}
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        </Row>
+                    {selectedQuestions.map((category, index) => (
+                        <div key={category.$id}>
+                            <h2>Category {category.category}</h2>
+                            <p>{category.instructions}</p>
+                            {category.questions.map((question, index) => {
+                                // Pass the question as is, with an additional property to indicate "either/or" type
+                                const isEitherOr = question.hasOwnProperty('either') && question.hasOwnProperty('or');
+                                return (
+                                    <QuestionCard
+                                        key={question.id || `${category.$id}_${index}`}
+                                        question={question}
+                                        isEitherOr={isEitherOr}
+                                        categoryId={category.category}
+                                    />
+                                );
+                            })}
+                        </div>
                     ))}
                 </Col>
             </Row>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import IframeComponent from "./IframeComponent";
-import QuizContainer from "./sst_ple/QuizContainer";
+// import QuizContainer from "./sst_ple/QuizContainer";
+import QuizContainer from "./renderQuiz/QuizContainer";
 import { Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -90,7 +91,7 @@ function Exam({ subject }) {
         };
 
       case "mathematics_ple":
-        return <QuizContainer questionsData={math_ple} subjectName={'math_ple'} />;
+        return <QuizContainer questionsData={data} subjectName={'math_ple'} />;
       // case "science_ple":
       //   return <QuizContainer questionsData={questionsData} subjectName={subject} />;
       default:
