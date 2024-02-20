@@ -14,13 +14,13 @@ const StudentDashboard = () => {
   const { userInfo } = useAuth();
   const [results, setResults] = useState([]);
 
-  const viewResults = (resultDetails, subjectName, totalMarks) => {
+  const viewResults = (resultDetails, subjectName, totalMarks, attemptDate) => {
     if (subjectName === "English Language") {
       navigate("/quiz-results", { state: { results: resultDetails } });
     }
     else {
       const questionsData = JSON.parse(resultDetails);
-      navigate('/answers', { state: { questionsData, subjectName, totalMarks } });
+      navigate('/answers', { state: { questionsData, subjectName, totalMarks, attemptDate } });
     }
   };
 

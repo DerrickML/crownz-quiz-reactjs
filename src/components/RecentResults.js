@@ -35,7 +35,7 @@ const RecentResults = ({ results, onViewResults }) => {
                   {attempt.resultDetails ? (
                     <Button
                       variant="primary"
-                      onClick={() => onViewResults(attempt.resultDetails, attempt.subject, attempt.score)}
+                      onClick={() => onViewResults(attempt.resultDetails, attempt.subject, attempt.score, attempt.dateTime)}
                     >
                       <FontAwesomeIcon icon={faEye} className="me-2" />
                       View Exam

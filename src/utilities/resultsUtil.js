@@ -27,7 +27,7 @@ export async function fetchAndUpdateResults(userId) {
 /*=========END FETCH DATA FROM DB TO UPDATE LOCALSTORAGE=========*/
 
 /*=========TRANSFORMS THE RESULTS=========*/
-const formatDate = (dateTime) => {
+export const formatDate = (dateTime) => {
   const date = new Date(dateTime);
   return date.toLocaleDateString("en-US", {
     month: "short",

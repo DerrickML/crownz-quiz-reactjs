@@ -1,9 +1,12 @@
 //  AnswerContainer.js
 import React, { useState, useEffect } from 'react';
-import { Card, CardBody, CardTitle, Container } from 'react-bootstrap';
+import { Card, Container, ListGroup } from 'react-bootstrap';
 import AnswerCard from './AnswerCard';
 
-const AnswerContainer = ({ questionsData, subjectName, totalMarks }) => {
+const AnswerContainer = ({ questionsData, subjectName, totalMarks, attemptDate }) => {
+
+    let subject_Name = subjectName === "sst_ple" ? "Social Studies" : (subjectName === "math_ple" ? "Mathematics" : (subjectName === "sci_ple" ? "Science" : subjectName));
+
     // Extract category IDs dynamically from questionsData
     const categoriesToInclude = questionsData.map(category => category.category);
 
@@ -20,9 +23,13 @@ const AnswerContainer = ({ questionsData, subjectName, totalMarks }) => {
             <Card className="my-4">
                 <Card.Header >Exam Results</Card.Header>
                 <Card.Body >
-                    <Card.Title>
-                        Score: {totalMarks}
-                    </Card.Title>
+                    <Card.Subtitle>
+                        <ListGroup as="ol">
+                            {subject_Name ? (<ListGroup.Item as="li">Subject: <span style={{ fontStyle: 'normal !important', fontSize: 'medium' }}>{subject_Name}</span></ListGroup.Item>) : null}
+                            {totalMarks ? (<ListGroup.Item as="li">Score: <span style={{ fontStyle: 'normal !important', fontSize: 'medium' }}>{totalMarks}</span></ListGroup.Item>) : null}
+                            {attemptDate ? (<ListGroup.Item as="li">Date of Exam Submission: <span style={{ fontStyle: 'normal !important', fontSize: 'medium' }}>{attemptDate}</span></ListGroup.Item>) : null}
+                        </ListGroup>
+                    </Card.Subtitle>
                 </Card.Body>
             </Card>
             {resultsData.map((category, index) => (

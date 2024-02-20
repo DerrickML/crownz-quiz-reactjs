@@ -7,11 +7,11 @@ import AnswerContainer from './AnswerContainer';
 const Answers = () => {
 
     const location = useLocation();
-    const { questionsData, subjectName, totalMarks } = location.state || { questionsData: [], subjectName: '', totalMarks: 0 };
+    const { questionsData, subjectName, totalMarks, attemptDate } = location.state || { questionsData: [], subjectName: '', totalMarks: 0, attemptDate: '' };
 
     return (
         <Container fluid>
-            <AnswerContainer questionsData={questionsData} subjectName={subjectName} totalMarks={totalMarks} />
+            <AnswerContainer questionsData={questionsData} subjectName={subjectName} totalMarks={totalMarks} attemptDate={attemptDate} />
         </Container>
     );
 };

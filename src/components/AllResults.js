@@ -37,13 +37,13 @@ const AllResults = () => {
   const userInfo = storageUtil.getItem("userInfo");
   const navigate = useNavigate();
 
-  const viewResults = (resultDetails, subjectName, totalMarks) => {
+  const viewResults = (resultDetails, subjectName, totalMarks, attemptDate) => {
     if (subjectName === "English Language") {
       navigate("/quiz-results", { state: { results: resultDetails } });
     }
     else {
       const questionsData = JSON.parse(resultDetails);
-      navigate('/answers', { state: { questionsData, subjectName, totalMarks } });
+      navigate('/answers', { state: { questionsData, subjectName, totalMarks, attemptDate } });
     }
   };
 
@@ -190,7 +190,7 @@ const AllResults = () => {
                           <Button
                             variant="primary"
                             className="mt-3"
-                            onClick={() => viewResults(attempt.resultDetails, subjectResults.subject, attempt.score)}
+                            onClick={() => viewResults(attempt.resultDetails, subjectResults.subject, attempt.score, attempt.dateTime)}
                           >
                             <FontAwesomeIcon icon={faEye} className="me-2" />
                             View Exam

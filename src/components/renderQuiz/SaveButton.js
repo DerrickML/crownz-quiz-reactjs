@@ -12,7 +12,7 @@ import {
     studentMarksTable_id,
 } from "../../appwriteConfig.js";
 import {
-    fetchAndUpdateResults,
+    fetchAndUpdateResults, formatDate
 } from "../../utilities/resultsUtil";
 import { sendEmailToNextOfKin } from "../../utilities/otherUtils.js";
 import { useAuth } from '../../context/AuthContext';
@@ -172,7 +172,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
     };
 
     const handleSave = async () => {
-        const { formattedAnswers, totalMarks } = formatAnswersForSaving();
+        let { formattedAnswers, totalMarks } = formatAnswersForSaving();
 
         onSubmit();
 
@@ -200,7 +200,10 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
         // Dispatch the action to reset the answers
         dispatch(resetAnswers());
 
-        navigate('/answers', { state: { questionsData, subjectName, totalMarks } });
+        let attemptDate = formatDate((new Date()));
+
+        if (totalMarks === 0) { totalMarks = '0' }
+        navigate('/answers', { state: { questionsData, subjectName, totalMarks, attemptDate } });
     };
 
     return (
