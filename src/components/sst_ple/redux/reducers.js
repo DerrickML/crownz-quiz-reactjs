@@ -4,10 +4,12 @@ const initialState = {
     answers: []
 };
 
+// reducers.js
+
 const quizReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'SET_USER_ANSWER':
-            const { categoryId, questionId, answer, isEitherOr } = action.payload;
+            const { categoryId, questionId, answer, isEitherOr, questionType } = action.payload;
             const answerIndex = state.answers.findIndex(ans =>
                 ans.categoryId === categoryId && ans.questionId === questionId
             );
@@ -15,14 +17,24 @@ const quizReducer = (state = initialState, action) => {
             let newAnswers = [...state.answers];
             if (answerIndex !== -1) {
                 // Update existing answer
-                newAnswers[answerIndex] = { ...newAnswers[answerIndex], user_answer: answer };
+                if (questionType === 'check_box') {
+                    // If the question type is checkbox, merge the existing and new answers
+                    newAnswers[answerIndex] = {
+                        ...newAnswers[answerIndex],
+                        user_answer: { ...newAnswers[answerIndex].user_answer, ...answer },
+                        type: questionType
+                    };
+                } else {
+                    newAnswers[answerIndex] = { ...newAnswers[answerIndex], user_answer: answer, type: questionType };
+                }
             } else {
                 // Add new answer
                 newAnswers.push({
                     id: questionId,
                     user_answer: answer,
                     isEitherOr: !!isEitherOr, // Convert to boolean
-                    category: categoryId
+                    category: categoryId,
+                    type: questionType // Store question type
                 });
             }
 

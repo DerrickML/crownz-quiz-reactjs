@@ -26,20 +26,21 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                     <h2>Category {category.category}</h2>
                     <p>{category.instructions}</p>
                     {category.questions.map((question, index) => {
-                        // Check if the question format is 'either' or 'or', otherwise just pass the question
-                        let questionProps = question.hasOwnProperty('either') && question.hasOwnProperty('or')
-                            ? question
-                            : { either: question };
-                        // Add category ID to questionProps
-                        questionProps = { ...questionProps, categoryId: category.category };
-                        return <QuestionCard key={question.id || `${category.$id}_${index}`} selectedQuestions={questionProps} />;
-
+                        // Pass the question as is, with an additional property to indicate "either/or" type
+                        const isEitherOr = question.hasOwnProperty('either') && question.hasOwnProperty('or');
+                        return (
+                            <QuestionCard
+                                key={question.id || `${category.$id}_${index}`}
+                                question={question}
+                                isEitherOr={isEitherOr}
+                                categoryId={category.category}
+                            />
+                        );
                     })}
                 </div>
             ))}
 
             <SaveButton selectedQuestions={selectedQuestions} />
-
         </div>
     );
 };

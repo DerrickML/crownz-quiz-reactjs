@@ -9,13 +9,13 @@ function App() {
   return (
     <div className="App">
       {/* Social studies questions */}
-      {/* <QuizContainer questionsData={sst_ple} subjectName={'sst_ple'} /> */}
+      <QuizContainer questionsData={sst_ple} subjectName={'sst_ple'} />
 
       {/* Maths-ple questions */}
       {/* <QuizContainer questionsData={math_ple} subjectName={'math_ple'} /> */}
 
       {/* Sci-ple questions */}
-      <QuizContainer questionsData={sci_ple} subjectName={'sci_ple'} />
+      {/* <QuizContainer questionsData={sci_ple} subjectName={'sci_ple'} /> */}
 
       {/* <SaveButton questionsData={sst_ple} /> */}
 

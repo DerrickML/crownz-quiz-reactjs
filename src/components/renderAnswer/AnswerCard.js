@@ -196,7 +196,9 @@ const AnswerCard = ({ resultsData }) => {
             {question.sub_questions && question.sub_questions.map((subQ, index) => (
 
                 // rendering subQ qtns
-                renderQuestionText(subQ, subQ.question, subQ.image, subQ.explanation, subQ.answer, subQ.user_answer)
+                <div key={index}>
+                    {renderQuestionText(subQ, subQ.question, subQ.image, subQ.explanation, subQ.answer, subQ.user_answer)}
+                </div>
 
             ))}
         </>

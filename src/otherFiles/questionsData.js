@@ -28645,139 +28645,143 @@ const sci_ple = [
 
 const sst_ple_ans = [
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Name one inland port found on Lake Victoria in Uganda",
+                "type": "text",
+                "answer": [
+                    "Port bell",
+                    "Port Bukakata",
+                    "Jinja port"
+                ],
+                "id": "ple_sst_sect_A1_11",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 1,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "What helps a person to find the actual distance between two places on a map?",
-                "type": "text",
-                "answer": [
-                    "Scale",
-                    "A scale"
-                ],
-                "id": "ple_sst_sect_A1_15",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_0"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Give any one traditional means of communication.",
+                "type": "text",
+                "answer": [
+                    "Drumming",
+                    "Clapping",
+                    "Ululation"
+                ],
+                "id": "ple_sst_sect_A2_12",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 2,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "State one advantage of a music festival in a community.",
-                "type": "multipleChoice",
-                "answer": [
-                    "It develops talents"
-                ],
-                "options": [
-                    "It helps to fight corruption",
-                    "It develops talents"
-                ],
-                "id": "ple_sst_sect_A2_5",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_1"
     },
     {
-        "category": 3,
-        "instruction": null,
+        "instructions": null,
         "questions": [
             {
-                "question": "How does a map reader tell the meaning of symbols used on the map?",
-                "type": "multipleChoice",
-                "answer": [
-                    "By the use of the key"
-                ],
-                "options": [
-                    "By the use of the scale",
-                    "By the use of the key",
-                    "By the use of the title"
-                ],
-                "id": "ple_sst_sect_A3_19",
-                "user_answer": null
-            }
-        ]
-    },
-    {
-        "category": 4,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Give any one way phosphates promotes agricultural development",
-                "type": "multipleChoice",
-                "answer": [
-                    "Phosphates is used in the making of artificial fertilizers"
-                ],
-                "options": [
-                    "Phosphates are used to make the ground more fertile",
-                    "Phosphates is used in the making of artificial fertilizers"
-                ],
-                "id": "ple_sst_sect_A4_1",
-                "user_answer": null
-            }
-        ]
-    },
-    {
-        "category": 5,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Give any one negative effect of the collapse of the East African Community (EAC) in 1977 on the development of East African countries",
-                "type": "multipleChoice",
-                "answer": [
-                    "It led to decline in trade among the East African countries"
-                ],
-                "options": [
-                    "It led to civil wars in East Africa",
-                    "It led to decline in trade among the East African countries"
-                ],
-                "id": "ple_sst_sect_A5_3",
-                "user_answer": null
-            }
-        ]
-    },
-    {
-        "category": 6,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Give any one reason why a radio is important to a community.",
-                "type": "multipleChoice",
-                "answer": [
-                    "A radio is used to broadcast important information to the community"
-                ],
-                "options": [
-                    "A radio is used to show current affairs to the community",
-                    "A radio is used to broadcast important information to the community"
-                ],
-                "id": "ple_sst_sect_A6_7",
-                "user_answer": null
-            }
-        ]
-    },
-    {
-        "category": 7,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "What is important about the place called Magosi in Karamoja sub-region?",
+                "question": "Name one basic need provided by a school.",
                 "type": "text",
                 "answer": [
-                    "It is a stone age site or historical site",
-                    "It is a place where early man lived",
-                    "It is a tourist attraction site",
-                    "It is an archaeological site",
-                    "Its is a source of income and employment"
+                    "Food",
+                    "Shelter"
                 ],
-                "id": "ple_sst_sect_A7_11",
-                "user_answer": null
+                "id": "ple_sst_sect_A3_8",
+                "user_answer": null,
+                "sub_questions": []
             }
-        ]
+        ],
+        "category": 3,
+        "$id": "document_2"
     },
     {
-        "category": 8,
-        "instruction": null,
+        "instructions": null,
+        "questions": [
+            {
+                "question": "State any one way in which weather records are important to a farmer,",
+                "type": "multipleChoice",
+                "answer": [
+                    "They help a farmer schedule his planting and harvesting season"
+                ],
+                "options": [
+                    "They help a farmer to know whether to carry an umbrella or not",
+                    "They help a farmer schedule his planting and harvesting season"
+                ],
+                "id": "ple_sst_sect_A4_19",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
+        "category": 4,
+        "$id": "document_3"
+    },
+    {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Which element gives detailed information about a map?",
+                "type": "text",
+                "answer": [
+                    "Key",
+                    "The key"
+                ],
+                "id": "ple_sst_sect_A5_8",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
+        "category": 5,
+        "$id": "document_4"
+    },
+    {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Mention any one activity that the Bachwezi are remembered for.",
+                "type": "text",
+                "answer": [
+                    "Animal rearing",
+                    "Rearing cattle",
+                    "Cattle rearing",
+                    "Rearing animals"
+                ],
+                "id": "ple_sst_sect_A6_10",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
+        "category": 6,
+        "$id": "document_5"
+    },
+    {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "How did the people in Kenya struggle to get independence",
+                "type": "multipleChoice",
+                "answer": [
+                    "By forming political parties"
+                ],
+                "options": [
+                    "By staging the Maji Maji rebellion",
+                    "By forming political parties"
+                ],
+                "id": "ple_sst_sect_A7_5",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
+        "category": 7,
+        "$id": "document_6"
+    },
+    {
+        "instructions": null,
         "questions": [
             {
                 "question": "Why is road construction difficult in Kigezi sub region?",
@@ -28790,350 +28794,394 @@ const sst_ple_ans = [
                     "Kigezi sub region is mountaineous in nature"
                 ],
                 "id": "ple_sst_sect_A8_1",
-                "user_answer": null
+                "user_answer": null,
+                "sub_questions": []
             }
-        ]
+        ],
+        "category": 8,
+        "$id": "document_7"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Give any one reason why people make plans of what to buy before shopping.",
+                "type": "multipleChoice",
+                "answer": [
+                    "To cater for priorities"
+                ],
+                "options": [
+                    "To buy better things",
+                    "To cater for priorities"
+                ],
+                "id": "ple_sst_sect_A9_1",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 9,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Give any one volcanic mountain in Uganda",
-                "type": "text",
-                "answer": [
-                    "Mountain elgon",
-                    "Mountain moroto",
-                    "Mountain muhavura"
-                ],
-                "id": "ple_sst_sect_A9_20",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_8"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "How did Johann Ludwig Krapf make it easy for the coastal people to understand the Bible?",
+                "type": "multipleChoice",
+                "answer": [
+                    "He built the first mission station in East Africa at Rabai Mpya"
+                ],
+                "options": [
+                    "He built fort portal in Kabarole to fight enemies",
+                    "He built the first mission station in East Africa at Rabai Mpya"
+                ],
+                "id": "ple_sst_sect_A10_1",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 10,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Mention any one role played by Kwame Nkrumah during the Pan African Conference of 1958.",
-                "type": "multipleChoice",
-                "answer": [
-                    "He chaired the 1958 Accra conference"
-                ],
-                "options": [
-                    "He led Ghana to independence",
-                    "He chaired the 1958 Accra conference"
-                ],
-                "id": "ple_sst_sect_A10_4",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_9"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Mention any one of the citrus fruits grown in the Mediterranean climate region of Africa",
+                "type": "text",
+                "answer": [
+                    "Oranges",
+                    "Lemons",
+                    "Grapefruits",
+                    "Limes"
+                ],
+                "id": "ple_sst_sect_A11_6",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 11,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Mention the weather condition suitable for winnowing grains.",
-                "type": "text",
-                "answer": [
-                    "Windy"
-                ],
-                "id": "ple_sst_sect_A11_7",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_10"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Which ministry is responsible for major roads in Uganda?",
+                "type": "multipleChoice",
+                "answer": [
+                    "Ministry of works and transport"
+                ],
+                "options": [
+                    "Ministry of health",
+                    "Ministry of internal affairs",
+                    "Ministry of works and transport"
+                ],
+                "id": "ple_sst_sect_A12_15",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 12,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Mention any one effect of a long period of drought on agriculture",
-                "type": "multipleChoice",
-                "answer": [
-                    "It dries up water sources"
-                ],
-                "options": [
-                    "It dries up water sources",
-                    "It creates infertile soils"
-                ],
-                "id": "ple_sst_sect_A12_4",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_11"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "What is meant by a tributary?",
+                "type": "multipleChoice",
+                "answer": [
+                    "A tributary is a small river that joins the main river"
+                ],
+                "options": [
+                    "A tributary is a big river that drains a small river",
+                    "A tributary is a small river that joins the main river"
+                ],
+                "id": "ple_sst_sect_A13_2",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 13,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "State any one way in which the government of Uganda benefits from mobile telephone companies.",
-                "type": "multipleChoice",
-                "answer": [
-                    "They help to improve communication",
-                    "The government collects taxes from mobile telephone companies"
-                ],
-                "options": [
-                    "They help to improve communication",
-                    "The government collects taxes from mobile telephone companies",
-                    "They provide education services to the people of Uganda"
-                ],
-                "id": "ple_sst_sect_A13_8",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_12"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Give any one main crop grown in Doha Irrigation Scheme",
+                "type": "text",
+                "answer": [
+                    "Rice"
+                ],
+                "id": "ple_sst_sect_A14_10",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 14,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Give one advantage of exporting processed goods other than raw materials.",
-                "type": "multipleChoice",
-                "answer": [
-                    "Processed goods earn more revenue compared to unprocessed goods",
-                    "Processed good last longer"
-                ],
-                "options": [
-                    "Processed goods earn more revenue compared to unprocessed goods",
-                    "Processed goods are expensive to produce",
-                    "Processed good last longer"
-                ],
-                "id": "ple_sst_sect_A14_16",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_13"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "How can a small scale sugarcane grower in Jinja benefit from the nearby Kakira sugar factory?",
+                "type": "multipleChoice",
+                "answer": [
+                    "It provides market to sugar cane from out growers",
+                    "Kakira sugar factory provide employment to the workers"
+                ],
+                "options": [
+                    "It provides education services to the sugarcane grower in Jinja",
+                    "It provides market to sugar cane from out growers",
+                    "Kakira sugar factory provide employment to the workers",
+                    "It provides health services to the sugarcane grower in Jinja"
+                ],
+                "id": "ple_sst_sect_A15_16",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 15,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "State any one role played by civil servants",
-                "type": "multipleChoice",
-                "answer": [
-                    "To implement government programs"
-                ],
-                "options": [
-                    "To implement laws",
-                    "To implement government programs"
-                ],
-                "id": "ple_sst_sect_A15_1",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_14"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "What is Bwindi National Park famous for?",
+                "type": "multipleChoice",
+                "answer": [
+                    "It is famous for mountain gorillas"
+                ],
+                "options": [
+                    "It is famous for Chimpanzee",
+                    "It is famous for mountain gorillas"
+                ],
+                "id": "ple_sst_sect_A16_16",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 16,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "How did the early explorers promote the work of European traders in Africa?",
-                "type": "multipleChoice",
-                "answer": [
-                    "The explorers drew sketch maps about the interior of Africa showing trade routes"
-                ],
-                "options": [
-                    "The explorers drew sketch maps about the interior of Africa showing trade routes",
-                    "The explorers practiced slave trade to boost economic growth"
-                ],
-                "id": "ple_sst_sect_A16_5",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_15"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "How does a good road network promote development in an area?",
+                "type": "multipleChoice",
+                "answer": [
+                    "It promotes trade"
+                ],
+                "options": [
+                    "It helps to increase taxes",
+                    "It promotes trade"
+                ],
+                "id": "ple_sst_sect_A17_5",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 17,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Why was Africa called a dark continent by the Europeans?",
-                "type": "multipleChoice",
-                "answer": [
-                    "Because it was unknown to them"
-                ],
-                "options": [
-                    "Because it had black people living on it",
-                    "Because it was unknown to them"
-                ],
-                "id": "ple_sst_sect_A17_7",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_16"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Why is cattle keeping one of the most important economic activities in Uganda?",
+                "type": "multipleChoice",
+                "answer": [
+                    "It is a primary source of income"
+                ],
+                "options": [
+                    "It is a primary source of income",
+                    "Its because many Ugandans own cattle"
+                ],
+                "id": "ple_sst_sect_A18_6",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 18,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Mention any one type of mining used in East Africa.",
-                "type": "text",
-                "answer": [
-                    "Open cast",
-                    "Quarrying",
-                    "Alluvial",
-                    "Shaft",
-                    "Underground",
-                    "Deep shaft"
-                ],
-                "id": "ple_sst_sect_A18_11",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_17"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Why was the railway line extended from Kampala to Kasese?",
+                "type": "multipleChoice",
+                "answer": [
+                    "To transport coper ore",
+                    "To transport goods"
+                ],
+                "options": [
+                    "To transport coper ore",
+                    "To transport oil",
+                    "To transport goods"
+                ],
+                "id": "ple_sst_sect_A19_11",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 19,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Why do some people build their houses with slanting roofs",
-                "type": "multipleChoice",
-                "answer": [
-                    "To allow the easy flow of rain water"
-                ],
-                "options": [
-                    "Inorder to have high roofs",
-                    "To allow the easy flow of rain water "
-                ],
-                "id": "ple_sst_sect_A19_4",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_18"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Why is a sign post important?",
+                "type": "multipleChoice",
+                "answer": [
+                    "It directs people to the place where the company or institution is found"
+                ],
+                "options": [
+                    "It is used to show directions on a map",
+                    "It directs people to the place where the company or institution is found"
+                ],
+                "id": "ple_sst_sect_A20_5",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 20,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Why is the government of Uganda building more classrooms in schools across the country?",
-                "type": "text",
-                "answer": [
-                    "To reduce congestion in classrooms",
-                    "To improve on education standards"
-                ],
-                "options": [
-                    "To reduce congestion in classrooms",
-                    "To improve on education standards"
-                ],
-                "id": "ple_sst_sect_A20_13",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_19"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Ghana lies on the prime Meridian. If the time in Ghana is 1:00p.m what time will it be East Africa standard time?",
+                "type": "multipleChoice",
+                "answer": [
+                    "It will be 4:00p.m",
+                    "It will be4 o'clock"
+                ],
+                "options": [
+                    "It will be 4:00p.m",
+                    "It will be4 o'clock",
+                    "It will be 1:00p.m",
+                    "It will be 3:00p.m"
+                ],
+                "id": "ple_sst_sect_A21_12",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 21,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Write NEMA in full.",
-                "type": "text",
-                "answer": [
-                    "National Environment Management Authority"
-                ],
-                "id": "ple_sst_sect_A21_1",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_20"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "State one way in which feeder roads promote development in rural areas of Uganda",
+                "type": "multipleChoice",
+                "answer": [
+                    "They ease the movement of traders in rural areas"
+                ],
+                "options": [
+                    "They reduce congestion in rural areas",
+                    "They ease the movement of traders in rural areas"
+                ],
+                "id": "ple_sst_sect_A22_3",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 22,
-        "instruction": null,
+        "$id": "document_21"
+    },
+    {
+        "instructions": null,
         "questions": [
             {
-                "question": "Mention one type of tax directly paid by civil servants in Uganda today.",
+                "question": "Which type of timber is used in the ship building industry?",
                 "type": "text",
                 "answer": [
-                    "Pay As You Earn",
-                    "PAYE",
-                    "NSSF tax",
-                    "National Social Security Fund tax"
+                    "Mangrove timber",
+                    "Waterproof timber"
                 ],
-                "id": "ple_sst_sect_A22_5",
-                "user_answer": null
+                "id": "ple_sst_sect_A23_1",
+                "user_answer": null,
+                "sub_questions": []
             }
-        ]
-    },
-    {
+        ],
         "category": 23,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Why are traffic police officers encouraged to wear jackets with reflectors while on duty?",
-                "type": "multipleChoice",
-                "answer": [
-                    "To ease identification"
-                ],
-                "options": [
-                    "Because its part of their uniform",
-                    "To ease identification"
-                ],
-                "id": "ple_sst_sect_A23_3",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_22"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Apart from controlling soil erosion, give any one other reason why a school compound should have vegetation cover",
+                "type": "multipleChoice",
+                "answer": [
+                    "To beautify the compound"
+                ],
+                "options": [
+                    "Its a requirement by the ministry",
+                    "To beautify the compound"
+                ],
+                "id": "ple_sst_sect_A24_5",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 24,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Give any one factor that enables people to survive in semi-desert conditions",
-                "type": "multipleChoice",
-                "answer": [
-                    "Wearing light clothes during sunny weather"
-                ],
-                "options": [
-                    "Wearing light clothes during sunny weather",
-                    "By growing trees"
-                ],
-                "id": "ple_sst_sect_A24_3",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_23"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Mention any one way through which poverty can be reduced in your community. ",
+                "type": "multipleChoice",
+                "answer": [
+                    "By creating more jobs"
+                ],
+                "options": [
+                    "By creating more jobs",
+                    "By increasing taxes"
+                ],
+                "id": "ple_sst_sect_A25_6",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 25,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Why is pastrolism not highly developed among the nomadic communities in Africa?",
-                "type": "multipleChoice",
-                "answer": [
-                    "The shortage of pasture"
-                ],
-                "options": [
-                    "The presence of fertile soils",
-                    "The shortage of pasture"
-                ],
-                "id": "ple_sst_sect_A25_4",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_24"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Mention any one way through which the government of Uganda is able to find out the problems affecting its people",
+                "type": "multipleChoice",
+                "answer": [
+                    "Through talk shows"
+                ],
+                "options": [
+                    "Through talk shows",
+                    "Through elections"
+                ],
+                "id": "ple_sst_sect_A26_4",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 26,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "How is Uganda different from Liberia in terms of colonization?",
-                "type": "multipleChoice",
-                "answer": [
-                    "Uganda was colonized by the Europeans while Liberia was not"
-                ],
-                "options": [
-                    "Uganda was colonized by the British while Liberia was colonized by the Germans",
-                    "Uganda was colonized by the Europeans while Liberia was not"
-                ],
-                "id": "ple_sst_sect_A26_5",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_25"
     },
     {
-        "category": 27,
-        "instruction": null,
+        "instructions": null,
         "questions": [
             {
                 "question": "State any one advantage tarmac roads have over murram roads",
@@ -29146,87 +29194,99 @@ const sst_ple_ans = [
                     "Murram roads cannot easily be spoilt by bad weather unlike tarmac roads"
                 ],
                 "id": "ple_sst_sect_A27_1",
-                "user_answer": null
+                "user_answer": null,
+                "sub_questions": []
             }
-        ]
+        ],
+        "category": 27,
+        "$id": "document_26"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Mention any one through which parents can ensure equal treatment of boys and girls at home",
+                "type": "multipleChoice",
+                "answer": [
+                    "By giving them similar tasks to perform"
+                ],
+                "options": [
+                    "By teaching the cultural values",
+                    "By giving them similar tasks to perform"
+                ],
+                "id": "ple_sst_sect_A28_2",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 28,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Who were the founders of Wanga kingdom? ",
-                "type": "text",
-                "answer": [
-                    "Abaluhya",
-                    "The Luhya"
-                ],
-                "id": "ple_sst_sect_A28_1",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_27"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Give any one economic result of the movement of the Boers to the interior of South Africa",
+                "type": "multipleChoice",
+                "answer": [
+                    "It led to discovery of gold"
+                ],
+                "options": [
+                    "It led to discovery of gold",
+                    "It led to infrastructure development"
+                ],
+                "id": "ple_sst_sect_A29_4",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 29,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Mention any one way in which the temperate grasslands are economically important to the people of South Africa",
-                "type": "multipleChoice",
-                "answer": [
-                    "They promote tourism"
-                ],
-                "options": [
-                    "They promote tourism",
-                    "They promote environmental conseravtion"
-                ],
-                "id": "ple_sst_sect_A29_3",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_28"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Give any one reason why a country should maintain peace and security",
+                "type": "multipleChoice",
+                "answer": [
+                    "To promote trade"
+                ],
+                "options": [
+                    "To fight corruption",
+                    "To promote trade"
+                ],
+                "id": "ple_sst_sect_A30_4",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 30,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "State any one reason why some people in Uganda do not read newspapers",
-                "type": "multipleChoice",
-                "answer": [
-                    "Newspapers are not written in all languages in Uganda"
-                ],
-                "options": [
-                    "Newspapers are not written in all languages in Uganda",
-                    "Newspapers are only restricted to urban areas"
-                ],
-                "id": "ple_sst_sect_A30_1",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_29"
     },
     {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Give one way in which forceful registration of guns led to Lamogi rebellion",
+                "type": "multipleChoice",
+                "answer": [
+                    "The Acholi never wanted to be disarmed"
+                ],
+                "options": [
+                    "The Acholi wanted to fight the government",
+                    "The Acholi never wanted to be disarmed"
+                ],
+                "id": "ple_sst_sect_A31_4",
+                "user_answer": null,
+                "sub_questions": []
+            }
+        ],
         "category": 31,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "What time is it at town X which is located 45<sup>o</sup> East if it’s 6:00am at Greenwich?",
-                "type": "multipleChoice",
-                "answer": [
-                    "It is 9:00 am at place X"
-                ],
-                "explanation": "1hour = 15<sup>o</sup>\n 45<sup>0</sup> = (45/15) = 3 hours\n 6:00 + 3:00 = 9:00am",
-                "options": [
-                    "It is 9:00 pm at place X",
-                    "It is 9:00 am at place X"
-                ],
-                "id": "ple_sst_sect_A31_5",
-                "user_answer": null
-            }
-        ]
+        "$id": "document_30"
     },
     {
-        "category": 32,
-        "instruction": null,
+        "instructions": null,
         "questions": [
             {
                 "question": "Write UWEC in full",
@@ -29235,32 +29295,36 @@ const sst_ple_ans = [
                     "Uganda Wildlife Conservation Education Center"
                 ],
                 "id": "ple_sst_sect_A32_1",
-                "user_answer": null
+                "user_answer": null,
+                "sub_questions": []
             }
-        ]
+        ],
+        "category": 32,
+        "$id": "document_31"
     },
     {
-        "category": 33,
-        "instruction": null,
+        "instructions": null,
         "questions": [
             {
-                "question": "Give any one reason why few people use newspapers as means of communication in East Africa.",
+                "question": "State any one problem that has made plantation farming difficult in rural areas of Uganda.",
                 "type": "multipleChoice",
                 "answer": [
-                    "Some people in East Africa can’t read newspapers"
+                    "Shortage of capital"
                 ],
                 "options": [
-                    "Newspapers are not easy to find",
-                    "Some people in East Africa can’t read newspapers"
+                    "Lack of enough land",
+                    "Shortage of capital "
                 ],
-                "id": "ple_sst_sect_A33_3",
-                "user_answer": null
+                "id": "ple_sst_sect_A33_4",
+                "user_answer": null,
+                "sub_questions": []
             }
-        ]
+        ],
+        "category": 33,
+        "$id": "document_32"
     },
     {
-        "category": 34,
-        "instruction": null,
+        "instructions": null,
         "questions": [
             {
                 "question": "Which mountain forms a natural boundary between Rwanda and Uganda",
@@ -29269,42 +29333,74 @@ const sst_ple_ans = [
                     "Mountain Mufumbiro"
                 ],
                 "id": "ple_sst_sect_A34_4",
-                "user_answer": null
+                "user_answer": "re",
+                "sub_questions": []
             }
-        ]
+        ],
+        "category": 34,
+        "$id": "document_33"
     },
     {
-        "category": 35,
-        "instruction": null,
+        "instructions": null,
         "questions": [
             {
-                "question": "How do civil servants benefit from government revenue?",
-                "type": "multipleChoice",
-                "answer": [
-                    "They are paid their salaries"
-                ],
-                "options": [
-                    "They get free health services",
-                    "They are paid their salaries"
-                ],
-                "id": "ple_sst_sect_A35_4",
-                "user_answer": null
-            }
-        ]
-    },
-    {
-        "category": 36,
-        "instruction": "For each of the questions 36 to 40, answer EITHER the Christian OR Islamic question but not both. No marks will be awarded to a candidate who attempts both alternatives in a particular number.",
-        "questions": [
-            {
-                "question": "Who was the mother of Ismail according to the Holy Quran",
+                "question": "Name any one common market in which Uganda is a member.",
                 "type": "text",
                 "answer": [
-                    "Hajarah"
+                    "East African Community"
                 ],
-                "id": "ple_sst_sectA_or_19",
-                "user_answer": null,
-                "selectedOption": "or"
+                "id": "ple_sst_sect_A35_5",
+                "user_answer": "tert",
+                "sub_questions": []
+            }
+        ],
+        "category": 35,
+        "$id": "document_34"
+    },
+    {
+        "instructions": "For each of the questions 36 to 40, answer EITHER the Christian OR Islamic question but not both. No marks will be awarded to a candidate who attempts both alternatives in a particular number.",
+        "questions": [
+            {
+                "question": "In what way did God punish the human race because of their disobedience during Noah's time?",
+                "type": "multipleChoice",
+                "answer": [
+                    "He sent a flood"
+                ],
+                "options": [
+                    "He killed all first born sons",
+                    "He sent a flood"
+                ],
+                "id": "ple_sst_sectA_either_12",
+                "user_answer": "He sent a flood",
+                "sub_questions": []
+            },
+            {
+                "question": "How should you as a Muslim treat those who mistreat you?",
+                "type": "multipleChoice",
+                "answer": [
+                    "A Muslim should love those who mistreat him/her"
+                ],
+                "options": [
+                    "A Muslim should not pray for those who mistreat him",
+                    "A Muslim should love those who mistreat him/her"
+                ],
+                "id": "ple_sst_sectA_or_22",
+                "user_answer": "A Muslim should love those who mistreat him/her",
+                "sub_questions": []
+            },
+            {
+                "question": "State any one role of angels in Christianity",
+                "type": "multipleChoice",
+                "answer": [
+                    "They protect Christians"
+                ],
+                "options": [
+                    "They blow the trumpet on the judgement day",
+                    "They protect Christians"
+                ],
+                "id": "ple_sst_sectA_either_8",
+                "user_answer": "They blow the trumpet on the judgement day",
+                "sub_questions": []
             },
             {
                 "question": "Select any one pratice that can enable a muslim to live a fruitful life",
@@ -29318,262 +29414,245 @@ const sst_ple_ans = [
                     "Reading the Holy Bible"
                 ],
                 "id": "ple_sst_sectA_or_6",
-                "user_answer": null,
-                "selectedOption": "or"
+                "user_answer": "Reading the Holy Bible",
+                "sub_questions": []
             },
             {
-                "question": "Give one reason why Yusuf was sold to the Midianite traders (Israelities) by his brothers",
-                "type": "multipleChoice",
-                "answer": [
-                    "His brothers were jealous of him"
-                ],
-                "options": [
-                    "His brothers wanted to get some money",
-                    "His brothers were jealous of him"
-                ],
-                "id": "ple_sst_sectA_or_5",
-                "user_answer": null,
-                "selectedOption": "or"
-            },
-            {
-                "question": "Give one reason why Muslims pray to Allah",
-                "type": "multipleChoice",
-                "answer": [
-                    "To strengthen their faith "
-                ],
-                "options": [
-                    "To go to Jannah",
-                    "To strengthen their faith "
-                ],
-                "id": "ple_sst_sectA_or_4",
-                "user_answer": null,
-                "selectedOption": "or"
-            },
-            {
-                "question": "Name the Holy Book in Islam that was revealed to Prophet Musa.",
+                "question": "What term is used by christians to mean the act of asking for forgiveness after wrong doing?",
                 "type": "text",
                 "answer": [
-                    "Tauret ",
-                    "Taurat"
+                    "Repentance"
                 ],
-                "id": "ple_sst_sectA_or_23",
-                "user_answer": "ewdwe",
-                "selectedOption": "or"
+                "id": "ple_sst_sectA_either_14",
+                "user_answer": "treter",
+                "sub_questions": []
             }
-        ]
+        ],
+        "category": 36,
+        "$id": "document_35"
     },
     {
-        "category": 41,
-        "instruction": null,
+        "instructions": null,
         "questions": [
             {
-                "question": "Study the sketch map of East Africa below and use it to answer the questions that follow.",
-                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2023_41.png",
+                "question": "Name the body that is responsible for organizing population census in Uganda.",
+                "type": "text",
+                "answer": [
+                    "Uganda Bureau of Statistics",
+                    "UBOS"
+                ],
                 "sub_questions": [
                     {
-                        "question": "State one ecomomic activity carried out by the people in the shaded area K.",
-                        "type": "text",
+                        "question": "Select any two reasons why people migrate from villages to towns.",
+                        "type": "check_box",
                         "answer": [
-                            "Pastoralism",
-                            "Fishing",
-                            "Tourism",
-                            "Crop growing"
-                        ],
-                        "id": "ple_sst_sect_B41_2_sub_0",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "How was the formation of Lake S different from that of Lake M?",
-                        "type": "multipleChoice",
-                        "answer": [
-                            "Lake S was formed by down warping while Lake M was formed by faulting."
+                            "They migrate to look for better employment opportunities",
+                            "They migrate to look for better education",
+                            "They migrate to look for better healthcare"
                         ],
                         "options": [
-                            "Lake M was formed by down warping while Lake S was formed by faulting",
-                            "Lake S was formed by down warping while Lake M was formed by faulting"
+                            "They migrate to look for better employment opportunities",
+                            "They migrate to look for cheaper cost of living",
+                            "They migrate to look for better agricultural opportunities",
+                            "They migrate to look for better healthcare",
+                            "They migrate to look for better education"
                         ],
-                        "id": "ple_sst_sect_B41_2_sub_1",
-                        "user_answer": null
+                        "id": "ple_sst_sect_B41_6_sub_0",
+                        "user_answer": [
+                            "They migrate to look for cheaper cost of living"
+                        ]
                     },
                     {
-                        "question": "In which one way the town T and island Q important to the Arabs?",
+                        "question": "Select any one challenges faced by the enumerators during census.",
                         "type": "multipleChoice",
                         "answer": [
-                            "Both were slave markets"
+                            "Language barrier",
+                            "Resistance and non-cooperation"
                         ],
                         "options": [
-                            "Both were slave markets",
-                            "Both were trade routes for the Arabs."
+                            "Resistance and non-cooperation",
+                            "High cost of living",
+                            "Language barrier"
                         ],
-                        "id": "ple_sst_sect_B41_2_sub_2",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "Name the explorer whom Henry Morton Stanley met at the place marked R.",
-                        "type": "text",
-                        "answer": [
-                            "Doctor David Livingstone"
-                        ],
-                        "id": "ple_sst_sect_B41_2_sub_3",
-                        "user_answer": null
+                        "id": "ple_sst_sect_B41_6_sub_1",
+                        "user_answer": "High cost of living"
                     }
                 ],
-                "id": "ple_sst_sect_B41_2",
-                "user_answer": null
+                "id": "ple_sst_sect_B41_6",
+                "user_answer": "tre"
             }
-        ]
+        ],
+        "category": 41,
+        "$id": "document_36"
     },
     {
-        "category": 42,
-        "instruction": null,
+        "instructions": null,
         "questions": [
             {
-                "question": "Select any two problems that are caused by floods",
+                "question": "The diagram below shows a school budget. Use it to answer the questions that follow",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2013_42.png",
+                "sub_questions": [
+                    {
+                        "question": "Give the type of Budget shown in the diagram above",
+                        "type": "text",
+                        "answer": [
+                            "Deficit budget",
+                            "Loss budget"
+                        ],
+                        "id": "ple_sst_sect_B42_11_sub_0",
+                        "user_answer": "ferer"
+                    },
+                    {
+                        "question": "Give any two problems a school may face when  it has a budget shown above.",
+                        "type": "check_box",
+                        "answer": [
+                            "It leads to debts",
+                            "It leads to shortages in school"
+                        ],
+                        "options": [
+                            "It leads to debts",
+                            "It leads to shortages in school",
+                            "It leads to late closure of the school term",
+                            "It leads to unnecessary spending"
+                        ],
+                        "id": "ple_sst_sect_B42_11_sub_1",
+                        "user_answer": [
+                            "It leads to late closure of the school term"
+                        ]
+                    },
+                    {
+                        "question": "State any one reason a school should have a budget.",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "To identify priorities for proper planning"
+                        ],
+                        "options": [
+                            "To identify priorities for proper planning",
+                            "To avoid budget constraints"
+                        ],
+                        "id": "ple_sst_sect_B42_11_sub_2",
+                        "user_answer": "To avoid budget constraints"
+                    }
+                ],
+                "id": "ple_sst_sect_B42_11",
+                "user_answer": null
+            }
+        ],
+        "category": 42,
+        "$id": "document_37"
+    },
+    {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Select any two reasons why a family needs to make a budget.",
                 "type": "check_box",
                 "answer": [
-                    "Destruction of property and crops",
-                    "Destruction of infrastructures like roads"
+                    "To identify sources of income",
+                    "To avoid over spending"
                 ],
                 "options": [
-                    "Destruction of property and crops",
-                    "They lead to drought",
-                    "Destruction of infrastructures like roads",
-                    "They lead to air pollution"
+                    "To be rich",
+                    "To identify sources of income",
+                    "To avoid over spending",
+                    "To help the government"
                 ],
                 "sub_questions": [
                     {
-                        "question": "Select any two ways in which the government can help the people affected by floods",
-                        "type": "check_box",
+                        "question": "What type of budget can bring development in a family?",
+                        "type": "text",
                         "answer": [
-                            "It can provide them with food",
-                            "It can provide them with shelter"
+                            "Surplus budget"
                         ],
-                        "options": [
-                            "By providing them with face masks",
-                            "It can provide them with food",
-                            "It can provide them with shelter"
-                        ],
-                        "id": "ple_sst_sect_B42_15_sub_0",
-                        "user_answer": null
-                    }
-                ],
-                "id": "ple_sst_sect_B42_15",
-                "user_answer": null
-            }
-        ]
-    },
-    {
-        "category": 43,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Which ministry in Uganda is responsible for tourism?",
-                "type": "text",
-                "answer": [
-                    "Ministry of Tourism Wildlife and Antiquities"
-                ],
-                "sub_questions": [
-                    {
-                        "question": "Select any two importance of the tourism industry to Uganda",
-                        "type": "check_box",
-                        "answer": [
-                            "It is a source of government revenue",
-                            "It creates employment opportunities to people"
-                        ],
-                        "options": [
-                            "It is a source of government revenue",
-                            "It helps to provide health services to Ugandans",
-                            "It helps to fight corruption",
-                            "It creates employment opportunities to people"
-                        ],
-                        "id": "ple_sst_sect_B43_1_sub_0",
+                        "id": "ple_sst_sect_B43_13_sub_0",
                         "user_answer": null
                     },
                     {
-                        "question": "What can the government of Uganda do to attract more tourists into the country?",
+                        "question": "In which one way can the budget you have mentioned above bring development in the family?",
                         "type": "multipleChoice",
                         "answer": [
-                            "By advertising Uganda's tourist attractions on international media"
+                            "It  helps the family to save for the future"
                         ],
                         "options": [
-                            "By fighting corruption in Uganda",
-                            "By advertising Uganda's tourist attractions on international media"
+                            "It  helps the family to save for the future",
+                            "It helps the family to pay more taxes"
                         ],
-                        "id": "ple_sst_sect_B43_1_sub_1",
+                        "id": "ple_sst_sect_B43_13_sub_1",
                         "user_answer": null
                     }
                 ],
-                "id": "ple_sst_sect_B43_1",
-                "user_answer": null
+                "id": "ple_sst_sect_B43_13",
+                "user_answer": [
+                    "To be rich"
+                ]
             }
-        ]
+        ],
+        "category": 43,
+        "$id": "document_38"
     },
     {
-        "category": 44,
-        "instruction": null,
+        "instructions": null,
         "questions": [
             {
-                "question": "Give one way in which lake Tana is important to be the Blue Nile.",
+                "question": "Why was Kabaka Mwanga afraid for foreigner coming to Buganda through the East?",
                 "type": "multipleChoice",
                 "answer": [
-                    "Lake Tana is the source of Blue Nile"
+                    "He thought they would overthrow him"
                 ],
                 "options": [
-                    "The Blue Nile flows into of lake Tana",
-                    "Lake Tana is the source of Blue Nile"
+                    "He didn't want their gifts",
+                    "He thought they would overthrow him"
                 ],
                 "sub_questions": [
                     {
-                        "question": "Explain the meaning of tributary of a river",
-                        "type": "multipleChoice",
+                        "question": "Where did Bishop Hannington meet his death on his way to Buganda?",
+                        "type": "text",
                         "answer": [
-                            "A tributary is a smaller river which flows into the main river"
+                            "Busoga",
+                            "Mayuge",
+                            "Kyanda",
+                            "Luba's Fort",
+                            "Bunya"
                         ],
-                        "options": [
-                            "A tributary is a smaller river which flows into the main river",
-                            "A tributary is the end point of the river where it pours into a lake, sea or ocean.",
-                            "A tributary of a river is a small river that flows out of a bigger river"
-                        ],
-                        "id": "ple_sst_sect_B44_16_sub_0",
+                        "id": "ple_sst_sect_B44_14_sub_0",
                         "user_answer": null
                     },
                     {
-                        "question": "Explain the meaning of mouth of a river",
+                        "question": "State any one way in which the imperial British East Africa company (IBEACO) helped missionaries to work in Uganda.",
                         "type": "multipleChoice",
                         "answer": [
-                            "A tributary of a river is a small river that flows out of a bigger river"
+                            "They protected the missionaries"
                         ],
                         "options": [
-                            "Mouth of the river is a smaller river which flows into the main river",
-                            "Mouth of the river is the end point of the river where it pours into a lake, sea or ocean.",
-                            "Mouth of the river is a small river that flows out of a bigger river"
+                            "They helped them to promote christianity",
+                            "They protected the missionaries"
                         ],
-                        "id": "ple_sst_sect_B44_16_sub_1",
+                        "id": "ple_sst_sect_B44_14_sub_1",
                         "user_answer": null
                     },
                     {
-                        "question": "Explain the meaning of distributary of a river",
+                        "question": "Give any one way the missionaries helped in the development of Uganda.",
                         "type": "multipleChoice",
                         "answer": [
-                            "Mouth of the river is the end point of the river where it pours into a lake, sea or ocean."
+                            "They built hospitals"
                         ],
                         "options": [
-                            "A tributary is a smaller river which flows into the main river",
-                            "A tributary is the end point of the river where it pours into a lake, sea or ocean.",
-                            "A tributary of a river is a small river that flows out of a bigger river"
+                            "They built hospitals",
+                            "They fought slave trade"
                         ],
-                        "id": "ple_sst_sect_B44_16_sub_2",
+                        "id": "ple_sst_sect_B44_14_sub_2",
                         "user_answer": null
                     }
                 ],
-                "id": "ple_sst_sect_B44_16",
+                "id": "ple_sst_sect_B44_14",
                 "user_answer": null
             }
-        ]
+        ],
+        "category": 44,
+        "$id": "document_39"
     },
     {
-        "category": 45,
-        "instruction": null,
+        "instructions": null,
         "questions": [
             {
                 "question": "Name the policy practiced in South Africa which separated the blacks from the whites.",
@@ -29613,482 +29692,337 @@ const sst_ple_ans = [
                 "id": "ple_sst_sect_B45_8",
                 "user_answer": null
             }
-        ]
+        ],
+        "category": 45,
+        "$id": "document_40"
     },
     {
-        "category": 46,
-        "instruction": null,
+        "instructions": null,
         "questions": [
             {
-                "question": "Give any two reasons why Germany colonised Tanganyika",
-                "type": "multipleChoice",
-                "answer": [
-                    "They wanted to get raw materials for their home industries"
-                ],
-                "options": [
-                    "They wanted to stop slave trade in Tanganyika",
-                    "They wanted to get raw materials for their home industries"
-                ],
-                "sub_questions": [
-                    {
-                        "question": "Select any two postive effects of German East Africa Company (GEACO) on the development of East Africa",
-                        "type": "multipleChoice",
-                        "answer": [
-                            "It promoted trade in Tanganyika"
-                        ],
-                        "options": [
-                            "It stopped slave trade in Tanganyika",
-                            "It promoted trade in Tanganyika"
-                        ],
-                        "id": "ple_sst_sect_B46_2_sub_0",
-                        "user_answer": null
-                    }
-                ],
-                "id": "ple_sst_sect_B46_2",
-                "user_answer": "They wanted to get raw materials for their home industries"
-            }
-        ]
-    },
-    {
-        "category": 47,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Below is a sketch map of an area. Use it to answer the questions that follow.",
-                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2022_47.png",
-                "sub_questions": [
-                    {
-                        "question": "Name the month of the year that received the highest of rainfall",
-                        "type": "text",
-                        "answer": [
-                            "July"
-                        ],
-                        "id": "ple_sst_sect_B47_3_sub_0",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "Identify the type of climate shown in the table",
-                        "type": "text",
-                        "answer": [
-                            "Desert climate"
-                        ],
-                        "id": "ple_sst_sect_B47_3_sub_1",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "What is the temperature range of the climate shown in the table?",
-                        "type": "multipleChoice",
-                        "answer": [
-                            "7<sup>o</sup>c"
-                        ],
-                        "explanation": "Range = Highest - Lowest\n = 44<sup>o</sup>c - 37<sup>o</sup>c\n = 7<sup>o</sup>c",
-                        "options": [
-                            "8<sup>o</sup>c",
-                            "6<sup>o</sup>c",
-                            "7<sup>o</sup>c"
-                        ],
-                        "id": "ple_sst_sect_B47_3_sub_2",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "Mention one factor that influences the type of climate shown in the table",
-                        "type": "text",
-                        "answer": [
-                            "Cold ocean current",
-                            "Dry winds",
-                            "Offshore winds"
-                        ],
-                        "id": "ple_sst_sect_B47_3_sub_3",
-                        "user_answer": null
-                    }
-                ],
-                "id": "ple_sst_sect_B47_3",
-                "user_answer": null
-            }
-        ]
-    },
-    {
-        "category": 48,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Study the sketch map of East Africa below and then answer the questions that follow",
-                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/1st_paper.png",
-                "sub_questions": [
-                    {
-                        "question": "Name the game park marked S",
-                        "type": "multipleChoice",
-                        "answer": [
-                            "Tsavo National park"
-                        ],
-                        "options": [
-                            "Tsavo National park",
-                            "Serengeti National park",
-                            "Nairobi national park"
-                        ],
-                        "id": "ple_sst_sect_B48_1_sub_0",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "Name the game park marked V",
-                        "type": "multipleChoice",
-                        "answer": [
-                            "Serengeti National park"
-                        ],
-                        "options": [
-                            "Tsavo National park",
-                            "Serengeti National park",
-                            "Nairobi national park"
-                        ],
-                        "id": "ple_sst_sect_B48_1_sub_1",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "Why is the peak of mountain marked X snowcapped throughout the year?",
-                        "type": "multipleChoice",
-                        "answer": [
-                            "Because its peak crosses the snowline"
-                        ],
-                        "options": [
-                            "Because its peak crosses the snowline",
-                            "Because its on the boarder of two countries"
-                        ],
-                        "id": "ple_sst_sect_B48_1_sub_2",
-                        "user_answer": null
-                    }
-                ],
-                "id": "ple_sst_sect_B48_1",
-                "user_answer": null
-            }
-        ]
-    },
-    {
-        "category": 49,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Study the sketch map of Uganda below and then answer the questions that follow",
-                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2020_49.png",
-                "sub_questions": [
-                    {
-                        "question": "Name the national game park found in the area marked A",
-                        "type": "text",
-                        "answer": [
-                            "Queen Elizabeth National Park",
-                            "Queen Elizabeth"
-                        ],
-                        "id": "ple_sst_sect_B49_4_sub_0",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "Why is the lake marked Q swampy with floating vegetation?",
-                        "type": "multipleChoice",
-                        "answer": [
-                            "Because it is shallow"
-                        ],
-                        "options": [
-                            "Because it is a fresh water lake",
-                            "Because it is shallow"
-                        ],
-                        "id": "ple_sst_sect_B49_4_sub_1",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "Name the river marked S",
-                        "type": "text",
-                        "answer": [
-                            "River Kafu"
-                        ],
-                        "id": "ple_sst_sect_B49_4_sub_2",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "Why does the region marked Z experience semi-arid climate?",
-                        "type": "multipleChoice",
-                        "answer": [
-                            "Region Z receives dry Northeast trade winds"
-                        ],
-                        "options": [
-                            "Because region Z is in the nothern part ",
-                            "Because region Z receives dry Northeast trade winds"
-                        ],
-                        "id": "ple_sst_sect_B49_4_sub_3",
-                        "user_answer": null
-                    }
-                ],
-                "id": "ple_sst_sect_B49_4",
-                "user_answer": null
-            }
-        ]
-    },
-    {
-        "category": 50,
-        "instruction": null,
-        "questions": [
-            {
-                "question": "Give the source of solar energy",
-                "type": "text",
-                "answer": [
-                    "The sun",
-                    "Sun"
-                ],
-                "sub_questions": [
-                    {
-                        "question": "Give the source of wind energy",
-                        "type": "text",
-                        "answer": [
-                            "The wind",
-                            "Wind"
-                        ],
-                        "id": "ple_sst_sect_B50_3_sub_0",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "Select any two benefits of extending hydro-electric power (HEP) to all parts of Uganda.",
-                        "type": "check_box",
-                        "answer": [
-                            "It promotes industrialization",
-                            "It controls rural-urban migration"
-                        ],
-                        "options": [
-                            "It promotes industrialization",
-                            "It provides education services",
-                            "It controls rural-urban migration",
-                            "It helps to fight corruption"
-                        ],
-                        "id": "ple_sst_sect_B50_3_sub_1",
-                        "user_answer": null
-                    }
-                ],
-                "id": "ple_sst_sect_B50_3",
-                "user_answer": "fwrfrf"
-            }
-        ]
-    },
-    {
-        "category": 51,
-        "instruction": "For each of the questions 51 to 55, answer EITHER the Christian OR Islamic question but not both. No marks will be awarded to a candidate who attempts both alternatives in a particular number.",
-        "questions": [
-            {
-                "question": "\"Proper it is for me that I say nothing concerning Allah but the truth. Indeed I have come unto you from your Lord with a clear proof. So let the children of Israel depart along with me\". (Surat Al-Araf 7:105)",
-                "sub_questions": [
-                    {
-                        "question": "What made Prophet Musa to say the above words?",
-                        "type": "multipleChoice",
-                        "answer": [
-                            "He was afraid of the Firaun"
-                        ],
-                        "options": [
-                            "He was afraid of the Firaun",
-                            "He wanted to live the Israelities"
-                        ],
-                        "id": "ple_sst_sectB_or_7_sub_0",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "Select any two miracles prophet Musa performed in order to convice Firaun to release Ban Israel",
-                        "type": "check_box",
-                        "answer": [
-                            "He turned his rod into a big snake",
-                            "His hand became diseased"
-                        ],
-                        "options": [
-                            "He turned his rod into a big snake",
-                            "His hand became diseased",
-                            "He parted the red sea for Israelities to pass",
-                            "He healed the blind"
-                        ],
-                        "id": "ple_sst_sectB_or_7_sub_1",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "Give any one lesson you learn from the above quotation",
-                        "type": "multipleChoice",
-                        "answer": [
-                            "I learn to trust Allah"
-                        ],
-                        "options": [
-                            "I learn to be honest",
-                            "I learn to trust Allah"
-                        ],
-                        "id": "ple_sst_sectB_or_7_sub_2",
-                        "user_answer": null
-                    }
-                ],
-                "id": "ple_sst_sectB_or_7",
-                "user_answer": null,
-                "selectedOption": "or"
-            },
-            {
-                "question": "Mention any one cause of suffering in our society",
-                "type": "text",
-                "answer": [
-                    "Death of parents",
-                    "Ignorance",
-                    "Disobedience",
-                    "Accidents",
-                    "Diseases",
-                    "Witchcraft",
-                    "Poor family background"
-                ],
-                "sub_questions": [
-                    {
-                        "question": "State any one way in which Prophet Muhammad (P.B.U.H) suffered during his life on earth",
-                        "type": "multipleChoice",
-                        "answer": [
-                            "He was poisoned"
-                        ],
-                        "options": [
-                            "He was poisoned",
-                            "He was made to carry a heavy cross"
-                        ],
-                        "id": "ple_sst_sectB_or_13_sub_0",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "Select any two things a muslim can do in times of suffering",
-                        "type": "check_box",
-                        "answer": [
-                            "By praying to Allah",
-                            "By reciting the Holy Quran"
-                        ],
-                        "options": [
-                            "By praying to Allah",
-                            "By going to work",
-                            "By reciting the Holy Quran",
-                            "By fighting corruption"
-                        ],
-                        "id": "ple_sst_sectB_or_13_sub_1",
-                        "user_answer": null
-                    }
-                ],
-                "id": "ple_sst_sectB_or_13",
-                "user_answer": null,
-                "selectedOption": "or"
-            },
-            {
-                "question": "What is Nikah in Islam?",
-                "type": "multipleChoice",
-                "answer": [
-                    "Nikah is an agreement between a man and a woman to live as husband and wife"
-                ],
-                "options": [
-                    "Nikah is an agreement between a man and a woman to live as husband and wife",
-                    "Nikah is an agreement for a man or woman to make the pilgrimage to mecca"
-                ],
-                "sub_questions": [
-                    {
-                        "question": "Select any two reasons why Muslims marry",
-                        "type": "check_box",
-                        "answer": [
-                            "To earn respect from the society",
-                            "To procreate"
-                        ],
-                        "options": [
-                            "To earn respect from the society",
-                            "Because they are required to marry",
-                            "To procreate",
-                            "To gain wealth"
-                        ],
-                        "id": "ple_sst_sectB_or_4_sub_0",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "Give one quality of a good marriage partner",
-                        "type": "multipleChoice",
-                        "answer": [
-                            "Honest"
-                        ],
-                        "options": [
-                            "Educated",
-                            "Honest"
-                        ],
-                        "id": "ple_sst_sectB_or_4_sub_1",
-                        "user_answer": null
-                    }
-                ],
-                "id": "ple_sst_sectB_or_4",
-                "user_answer": null,
-                "selectedOption": "or"
-            },
-            {
-                "question": "Name the holy book that was revealed to Prophet Issa",
-                "type": "text",
-                "answer": [
-                    "Injil",
-                    "Injir"
-                ],
-                "sub_questions": [
-                    {
-                        "question": "Select any two ways in which muslims give respect to the holy Quran",
-                        "type": "check_box",
-                        "answer": [
-                            "By keeping it in a clean place",
-                            "By performing ablution before reading it"
-                        ],
-                        "options": [
-                            "By performing ablution before reading it",
-                            "By always carrying it",
-                            "By reading it",
-                            "By keeping it in a clean place"
-                        ],
-                        "id": "ple_sst_sectB_or_10_sub_0",
-                        "user_answer": null
-                    },
-                    {
-                        "question": "Why do muslim leaders use the holy Quran when preaching?",
-                        "type": "multipleChoice",
-                        "answer": [
-                            "Because it contains the word of Allah"
-                        ],
-                        "options": [
-                            "Because it contains the word of Allah",
-                            "Because it is a holy book"
-                        ],
-                        "id": "ple_sst_sectB_or_10_sub_1",
-                        "user_answer": null
-                    }
-                ],
-                "id": "ple_sst_sectB_or_10",
-                "user_answer": "fwf",
-                "selectedOption": "or"
-            },
-            {
-                "question": "Select any two groups of muslim leaders who conduct marriages",
+                "question": "Apart from Russia, select any other two permanent member states on the United Nations Security Council",
                 "type": "check_box",
                 "answer": [
-                    "Sheikh",
-                    "Mufti"
+                    "United States of America (USA)",
+                    "France"
                 ],
                 "options": [
-                    "Mufti",
-                    "Priests",
-                    "Reverends",
-                    "Sheikh"
+                    "United States of America (USA)",
+                    "Italy",
+                    "Israel",
+                    "France"
                 ],
                 "sub_questions": [
                     {
-                        "question": "Select any two ways in which marriages have promoted morals among muslims",
+                        "question": "Select any two challenges faced by the United Nations",
                         "type": "check_box",
                         "answer": [
-                            "They have encouraged them to remain faithful to each other",
-                            "They have encouraged Muslims to take care of each other"
+                            "Shortage of funds to run its programmes effectively",
+                            "Differences in political systems among the member states"
                         ],
                         "options": [
-                            "They have encouraged Muslims to fight corruption",
-                            "They have encouraged them to remain faithful to each other",
-                            "They have encouraged Muslims to take care of each other",
-                            "They have encouraged Muslims to get married"
+                            "Corruption among member states",
+                            "Shortage of funds to run its programmes effectively",
+                            "Wars among member states",
+                            "Differences in political systems among the member states"
                         ],
-                        "id": "ple_sst_sectB_or_16_sub_0",
+                        "id": "ple_sst_sect_B46_1_sub_0",
                         "user_answer": null
                     }
                 ],
-                "id": "ple_sst_sectB_or_16",
-                "user_answer": null,
-                "selectedOption": "or"
+                "id": "ple_sst_sect_B46_1",
+                "user_answer": null
             }
-        ]
+        ],
+        "category": 46,
+        "$id": "document_41"
+    },
+    {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Study the sketch map below and answer the questions that follow.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_47.png",
+                "sub_questions": [
+                    {
+                        "question": "Name feature marked with letter A",
+                        "type": "text",
+                        "answer": [
+                            "Niger delta"
+                        ],
+                        "id": "ple_sst_sect_B47_6_sub_0",
+                        "user_answer": null
+                    },
+                    {
+                        "question": "Name feature marked with letter B",
+                        "type": "text",
+                        "answer": [
+                            "River Benue"
+                        ],
+                        "id": "ple_sst_sect_B47_6_sub_1",
+                        "user_answer": null
+                    },
+                    {
+                        "question": "Name any one other river in Africa that ends the same way as the river marked C above",
+                        "type": "text",
+                        "answer": [
+                            "River Nile",
+                            "River Zambezi",
+                            "River Rufiji",
+                            "River Tana"
+                        ],
+                        "id": "ple_sst_sect_B47_6_sub_2",
+                        "user_answer": null
+                    },
+                    {
+                        "question": "How is the part marked A economically important to Nigeria",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "It is a source of water for irrigation"
+                        ],
+                        "options": [
+                            "It provides the raw material for salt mining",
+                            "It is a source of water for irrigation"
+                        ],
+                        "id": "ple_sst_sect_B47_6_sub_3",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B47_6",
+                "user_answer": null
+            }
+        ],
+        "category": 47,
+        "$id": "document_42"
+    },
+    {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "On which type of goods is customs tax charged?",
+                "type": "text",
+                "answer": [
+                    "Imports",
+                    "Imported goods"
+                ],
+                "sub_questions": [
+                    {
+                        "question": "Select any two reasons why some people in Uganda are not willing to pay taxes.",
+                        "type": "check_box",
+                        "answer": [
+                            "Due to ignorance about the importance of paying taxes",
+                            "Due to the high taxes charged on goods"
+                        ],
+                        "options": [
+                            "Due to ignorance about the importance of paying taxes",
+                            "Because of poor transport networks",
+                            "Due to the high taxes charged on goods",
+                            "Due to under development"
+                        ],
+                        "id": "ple_sst_sect_B48_3_sub_0",
+                        "user_answer": null
+                    },
+                    {
+                        "question": "Why does the government set up revenue check points on roads?",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "To control smuggling"
+                        ],
+                        "options": [
+                            "To collect taxes",
+                            "To control smuggling"
+                        ],
+                        "id": "ple_sst_sect_B48_3_sub_1",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B48_3",
+                "user_answer": null
+            }
+        ],
+        "category": 48,
+        "$id": "document_43"
+    },
+    {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "Select any two factors that have made South Africa the most industrialised country in Africa",
+                "type": "check_box",
+                "answer": [
+                    "High levels of technology",
+                    "Presence of skilled labour"
+                ],
+                "options": [
+                    "High levels of technology",
+                    "The apartheid policy",
+                    "Presence of skilled labour",
+                    "The large coast of South Africa"
+                ],
+                "sub_questions": [
+                    {
+                        "question": "In which two ways are South African's industries helpful to the growth of other sectors of her economy?",
+                        "type": "check_box",
+                        "answer": [
+                            "Industries provide processed goods to other sectors",
+                            "Industries create market for produce from other sectors"
+                        ],
+                        "options": [
+                            "Industries provide processed goods to other sectors",
+                            "Industries help to reduce the taxes in other sectors",
+                            "Industries help to reduce criminal rates",
+                            "Industries create market for produce from other sectors"
+                        ],
+                        "id": "ple_sst_sect_B49_2_sub_0",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B49_2",
+                "user_answer": null
+            }
+        ],
+        "category": 49,
+        "$id": "document_44"
+    },
+    {
+        "instructions": null,
+        "questions": [
+            {
+                "question": "tudy the sketch map of Uganda below and answer the questions that follow:",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2018_50.png",
+                "sub_questions": [
+                    {
+                        "question": "Name the National Game Park found at place marked P",
+                        "type": "text",
+                        "answer": [
+                            "Lake Mburo National Park"
+                        ],
+                        "id": "ple_sst_sect_B50_6_sub_0",
+                        "user_answer": null
+                    },
+                    {
+                        "question": "State any one reason why there are no crocodiles in the National Game Park marked S.",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "Due to the absence of a permanent waterbody"
+                        ],
+                        "options": [
+                            "Because the area is a desert",
+                            "Due to the absence of a permanent waterbody"
+                        ],
+                        "id": "ple_sst_sect_B50_6_sub_1",
+                        "user_answer": null
+                    },
+                    {
+                        "question": "Select any two economic benefits of national game parks in Uganda",
+                        "type": "check_box",
+                        "answer": [
+                            "They promote tourism",
+                            "They are source of employment"
+                        ],
+                        "options": [
+                            "They promote tourism",
+                            "They are source of employment",
+                            "They help to promote human rights",
+                            "They help to fight corruption"
+                        ],
+                        "id": "ple_sst_sect_B50_6_sub_2",
+                        "user_answer": null
+                    }
+                ],
+                "id": "ple_sst_sect_B50_6",
+                "user_answer": null
+            }
+        ],
+        "category": 50,
+        "$id": "document_45"
+    },
+    {
+        "instructions": "For each of the questions 51 to 55, answer EITHER the Christian OR Islamic question but not both. No marks will be awarded to a candidate who attempts both alternatives in a particular number.",
+        "questions": [
+            {
+                "question": "Select any two ways in which christians prepare themselves for christmas day",
+                "type": "check_box",
+                "answer": [
+                    "By decorating their houses",
+                    "By attending prayers"
+                ],
+                "options": [
+                    "By healing the sick",
+                    "By decorating their houses",
+                    "By going to the mosque",
+                    "By attending prayers"
+                ],
+                "sub_questions": [
+                    {
+                        "question": "Select any two ways in which christians share joy of christmas with other people",
+                        "type": "check_box",
+                        "answer": [
+                            "By inviting other people to eat with them",
+                            "By exchanging gifts with others"
+                        ],
+                        "options": [
+                            "By going to church",
+                            "By decorating their houses",
+                            "By inviting other people to eat with them",
+                            "By exchanging gifts with others"
+                        ],
+                        "id": "ple_sst_sectB_either_17_sub_0",
+                        "user_answer": [
+                            "By going to church"
+                        ]
+                    }
+                ],
+                "id": "ple_sst_sectB_either_17",
+                "user_answer": [
+                    "By healing the sick"
+                ]
+            },
+            {
+                "question": "Name the Kabaka of Buganda who welcomed the first Arab traders to Uganda",
+                "type": "text",
+                "answer": [
+                    "Kabaka Ssuuna II"
+                ],
+                "sub_questions": [
+                    {
+                        "question": "Select any two contributions of Islam to the development of Uganda",
+                        "type": "check_box",
+                        "answer": [
+                            "It has led to the building of hospitals",
+                            "It has led to the building of schools"
+                        ],
+                        "options": [
+                            "It has led to the fighting of corruption",
+                            "It has led to the building of hospitals",
+                            "It has led to the building of roads",
+                            "It has led to the building of schools"
+                        ],
+                        "id": "ple_sst_sectB_or_24_sub_0",
+                        "user_answer": [
+                            "It has led to the building of hospitals"
+                        ]
+                    },
+                    {
+                        "question": "Give any one similarity between the first Arab traders and Christian missionaries in Uganda",
+                        "type": "multipleChoice",
+                        "answer": [
+                            "Both spread a foreign religion"
+                        ],
+                        "options": [
+                            "Both built roads",
+                            "Both spread a foreign religion"
+                        ],
+                        "id": "ple_sst_sectB_or_24_sub_1",
+                        "user_answer": "Both built roads"
+                    }
+                ],
+                "id": "ple_sst_sectB_or_24",
+                "user_answer": "rteer"
+            }
+        ],
+        "category": 51,
+        "$id": "document_46"
     }
 ]
 

@@ -29,6 +29,11 @@ const AnswerContainer = ({ questionsData, subjectName, totalMarks }) => {
                 <Card key={index} style={{ margin: "5px" }}>
                     <h2>{category.category}</h2>
                     <p>{category.instructions}</p>
+
+                    {
+                        subjectName === 'sst_ple' && (category.category === 36 || category.category === 51) ? <p>Answered questions: {category.questions.length}/5</p> : null
+                    }
+
                     {category.questions.map((question, questionIndex) => {
                         // Check if the question format is 'either' or 'or', otherwise just pass the question
                         let questionProps = question.hasOwnProperty('either') && question.hasOwnProperty('or')

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import IframeComponent from "./IframeComponent";
-import QuizContainer from "./renderQuiz/QuizContainer";
+import QuizContainer from "./sst_ple/QuizContainer";
 import { Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";

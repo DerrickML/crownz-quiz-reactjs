@@ -3,50 +3,37 @@ import React, { useState } from 'react';
 import { Card, ButtonGroup, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import AnswerInput from './AnswerInput';
-import { setUserAnswer, setSelectedOption } from '../../redux/actions';
+import { setUserAnswer, setSelectedOption } from './redux/actions';
 import { isImageUrl } from './utils';
 
-const QuestionCard = ({ selectedQuestions, setUserAnswer, setSelectedOption, answers }) => {
+const QuestionCard = ({ question, isEitherOr, categoryId, setUserAnswer, setSelectedOption, answers }) => {
+    const [selectedOption, setSelectedOptionState] = useState('');
 
-    const [selectedOption, setSelectedOptionState] = useState('either');
-
-    const isEitherOr = selectedQuestions.hasOwnProperty('either') && selectedQuestions.hasOwnProperty('or');
-
-    // Fetch userAnswer from Redux state
+    // Adjusted to handle the new structure
     const getUserAnswer = (questionId) => {
-        const key = `${selectedQuestions.categoryId}-${questionId}`;
+        const key = `${categoryId}-${questionId}`;
         return answers[key];
     };
 
-    // Call this function when the answer changes
-    const handleAnswerChange = (questionId, answer, subQuestionIndex = null, isEitherOrType = null) => {
-
-        //Ensure that the sub-questions have ids
+    const handleAnswerChange = (questionId, answer, questionType, subQuestionIndex = null) => {
         let uniqueId = subQuestionIndex !== null ? `${questionId}_sub_${subQuestionIndex}` : questionId;
-
-        if (subQuestionIndex !== null) {
-            // If it's a sub-question, append the sub-question index
-            uniqueId = `${questionId}_sub_${subQuestionIndex}`;
-        } else {
-            // For regular questions, use the question ID directly
-            uniqueId = questionId;
-        }
-
-        if (isEitherOrType) {
-            // For 'either/or' questions, append the type ('either' or 'or') to the ID
-            uniqueId = `${uniqueId}_${isEitherOrType}`;
-        }
-
-        setUserAnswer(uniqueId, answer, selectedQuestions.categoryId);
+        setUserAnswer(uniqueId, answer, categoryId, isEitherOr, questionType);
     };
 
-    // Update Redux state when either/or selection changes
     const handleOptionSelection = (option) => {
         setSelectedOptionState(option);
-        setSelectedOption(`${selectedQuestions.id}-selectedOption`, option, selectedQuestions.categoryId);
+
+        let id;
+        if (isEitherOr) {
+            id = option === 'either' ? question.either.id : question.or.id;
+            // For either/or questions, update the selected option with the isEitherOr flag
+            setSelectedOption(`${id}-selectedOption`, option, categoryId, true);
+        } else {
+            id = question.id; // For standard questions
+            setSelectedOption(`${id}-selectedOption`, option, categoryId, false);
+        }
     };
 
-    // Define renderQuestionText function here
     const renderQuestionText = (questionText, questionImage) => (
         <>
             <p dangerouslySetInnerHTML={{ __html: questionText }}></p>
@@ -58,22 +45,22 @@ const QuestionCard = ({ selectedQuestions, setUserAnswer, setSelectedOption, ans
         </>
     );
 
-    const renderQuestion = (question, disabled) => (
+    const renderQuestion = (currentQuestion, disabled) => (
         <>
-            {renderQuestionText(question.question, question.image)}
+            {renderQuestionText(currentQuestion.question, currentQuestion.image)}
             <AnswerInput
-                question={question}
-                onChange={(answer) => handleAnswerChange(question.id, answer)}
+                question={currentQuestion}
+                onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, currentQuestion.type)}
                 getUserAnswer={getUserAnswer}
                 disabled={disabled}
                 displayQuestionText={false}
             />
-            {question.sub_questions && question.sub_questions.map((subQ, index) => (
+            {currentQuestion.sub_questions && currentQuestion.sub_questions.map((subQ, index) => (
                 <AnswerInput
-                    key={`${question.id}_sub_${index}`}
+                    key={`${currentQuestion.id}_sub_${index}`}
                     question={subQ}
-                    onChange={(answer) => handleAnswerChange(question.id, answer, index, selectedOption)}
-                    getUserAnswer={() => getUserAnswer(`${question.id}_sub_${index}`)}
+                    onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, subQ.type, index)}
+                    getUserAnswer={() => getUserAnswer(`${currentQuestion.id}_sub_${index}`)}
                     disabled={false}
                     displayQuestionText={true}
                 />
@@ -87,26 +74,13 @@ const QuestionCard = ({ selectedQuestions, setUserAnswer, setSelectedOption, ans
                 {isEitherOr ? (
                     <>
                         <ButtonGroup>
-                            <Button
-                                variant={selectedOption === 'either' ? "success" : "secondary"}
-                                // onClick={() => setSelectedOption('either')}
-                                onClick={() => handleOptionSelection('either')}
-                            >
-                                Either
-                            </Button>
-                            <Button
-                                variant={selectedOption === 'or' ? "warning" : "secondary"}
-                                // onClick={() => setSelectedOption('or')}
-                                onClick={() => handleOptionSelection('or')}
-                            >
-                                Or
-                            </Button>
+                            <Button variant={selectedOption === 'either' ? "success" : "secondary"} onClick={() => handleOptionSelection('either')}>Either</Button>
+                            <Button variant={selectedOption === 'or' ? "warning" : "secondary"} onClick={() => handleOptionSelection('or')}>Or</Button>
                         </ButtonGroup>
-
-                        {selectedOption === 'either' ? renderQuestion(selectedQuestions.either, selectedOption !== 'either') : renderQuestion(selectedQuestions.or, selectedOption !== 'or')}
+                        {selectedOption === 'either' ? renderQuestion(question.either, selectedOption !== 'either') : renderQuestion(question.or, selectedOption !== 'or')}
                     </>
                 ) : (
-                    renderQuestion(selectedQuestions.either, false) // Here, 'either' is used to handle non-either/or questions
+                    renderQuestion(question, false) // Non either/or question
                 )}
             </Card.Body>
         </Card>
