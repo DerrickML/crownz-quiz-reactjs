@@ -1,14 +1,12 @@
 // QuizContainer.js
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { resetAnswers } from './redux/actions';
-import SaveButton from './SaveButton';
-import QuestionCard from './QuestionCard';
-import { selectRandomQuestions } from './utils';
-import { Container, Row, Col, Modal, ButtonGroup, Button } from 'react-bootstrap';
+import SaveButton from '../renderQuiz/SaveButton';
+import QuestionCard from '../renderQuiz/QuestionCard';
+import { selectRandomQuestions } from '../renderQuiz/utils';
+import { Container, Row, Col, Card, ProgressBar, Tooltip, OverlayTrigger, Modal, ButtonGroup, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import Timer from './Timer';
 
 const QuizContainer = ({ questionsData, subjectName }) => {
@@ -16,8 +14,8 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     const [showModal, setShowModal] = useState(false);
     const [showExitModal, setShowExitModal] = useState(false);
     const [showTimeUpModal, setShowTimeUpModal] = useState(false);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     //===SUBMISSION MODAL========================
@@ -36,7 +34,6 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     };
 
     const confirmExit = () => {
-        dispatch(resetAnswers()); // Dispatch the action
         navigate("/exam-page");
     };
     //===END EXIT/CANCEL EXAM MODAL==============
@@ -55,7 +52,6 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     const handleSubmit = () => {
         setIsSubmitted(true);
     };
-
     // ===END TIMER ==============================
 
     // Extract category IDs dynamically from questionsData
@@ -100,22 +96,40 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                 </Col>
                 <Col xs={12} md={{ span: 9, offset: 3 }}>
                     {selectedQuestions.map((category, index) => (
-                        <div key={category.$id}>
-                            <h2>Category {category.category}</h2>
-                            <p>{category.instructions}</p>
-                            {category.questions.map((question, index) => {
-                                // Pass the question as is, with an additional property to indicate "either/or" type
-                                const isEitherOr = question.hasOwnProperty('either') && question.hasOwnProperty('or');
-                                return (
-                                    <QuestionCard
-                                        key={question.id || `${category.$id}_${index}`}
-                                        question={question}
-                                        isEitherOr={isEitherOr}
-                                        categoryId={category.category}
-                                    />
-                                );
-                            })}
-                        </div>
+                        index === currentQuestionIndex && (
+                            <Row key={category.$id} className="mb-4">
+                                <Col>
+                                    <Card style={{ minHeight: 'auto', maxHeight: '100%' }}>
+                                        <Card.Header as="h5">Question {category.category}.</Card.Header>
+                                        <Card.Body>
+                                            <Card.Title>{category.instructions}</Card.Title>
+                                            {category.questions.map((question, index) => {
+                                                // Pass the question as is, with an additional property to indicate "either/or" type
+                                                const isEitherOr = question.hasOwnProperty('either') && question.hasOwnProperty('or');
+                                                return (
+                                                    <QuestionCard
+                                                        key={question.id || `${category.$id}_${index}`}
+                                                        question={question}
+                                                        isEitherOr={isEitherOr}
+                                                        categoryId={category.category}
+                                                    />
+                                                );
+                                            })}
+                                        </Card.Body>
+                                        <Card.Footer className="text-muted">
+                                            <ButtonGroup className="w-75" aria-label="Question navigation buttons">
+                                                <Button variant="outline-primary" onClick={() => setCurrentQuestionIndex(currentQuestionIndex - 1)} disabled={currentQuestionIndex === 0}>
+                                                    <FontAwesomeIcon icon={faArrowLeft} /> Previous Question
+                                                </Button>
+                                                <Button variant="outline-primary" onClick={() => setCurrentQuestionIndex(currentQuestionIndex + 1)} disabled={currentQuestionIndex === selectedQuestions.length - 1}>
+                                                    Next Question <FontAwesomeIcon icon={faArrowRight} />
+                                                </Button>
+                                            </ButtonGroup>
+                                        </Card.Footer>
+                                    </Card>
+                                </Col>
+                            </Row>
+                        )
                     ))}
                 </Col>
             </Row>
