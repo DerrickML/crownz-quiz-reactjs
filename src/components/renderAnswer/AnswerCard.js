@@ -65,7 +65,7 @@ const AnswerCard = ({ resultsData }) => {
             return score;
         };
 
-        const isAnswerCorrect = checkAnswer(answer, user_answer);
+        const isAnswerCorrect = checkAnswer(answer, user_answer, questionType, mark);
         const score = checkAnswer(answer, user_answer, questionType, mark);
 
         return (

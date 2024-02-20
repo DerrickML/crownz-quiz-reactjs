@@ -1,12 +1,12 @@
 // QuizContainer.js
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { resetAnswers } from './redux/actions';
 import SaveButton from './SaveButton';
 import QuestionCard from './QuestionCard';
 import { selectRandomQuestions } from './utils';
-import { Container, Row, Col, Modal, ButtonGroup, Button } from 'react-bootstrap';
+import { Container, Row, Col, Modal, ButtonGroup, Button, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { } from '@fortawesome/free-solid-svg-icons';
 import Timer from './Timer';
@@ -16,6 +16,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     const [showModal, setShowModal] = useState(false);
     const [showExitModal, setShowExitModal] = useState(false);
     const [showTimeUpModal, setShowTimeUpModal] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -59,13 +60,36 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     // ===END TIMER ==============================
 
     // Extract category IDs dynamically from questionsData
-    const categoriesToInclude = React.useMemo(() => questionsData.map(category => category.category), [questionsData]);
+    const categoriesToInclude = useMemo(() => questionsData ? questionsData.map(category => category.category) : [], [questionsData]);
+
+    useEffect(() => {
+        if (questionsData) {
+            setIsLoading(false);
+            const randomQuestions = selectRandomQuestions(questionsData, categoriesToInclude, subjectName);
+            // console.log('Random Selected Questions:\n', randomQuestions);
+            randomQuestions.sort((a, b) => a.category - b.category);
+            setSelectedQuestions(randomQuestions);
+        }
+    }, [questionsData, categoriesToInclude, subjectName]); // Dependencies are now stable
 
     useEffect(() => {
         const randomQuestions = selectRandomQuestions(questionsData, categoriesToInclude, subjectName);
+        // console.log('Random Selected Questions:\n', randomQuestions);
         randomQuestions.sort((a, b) => a.category - b.category);
         setSelectedQuestions(randomQuestions);
     }, [questionsData, categoriesToInclude, subjectName]); // Dependencies are now stable
+
+    if (isLoading) {
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                <Spinner animation="grow" variant="primary" />
+                <Spinner animation="grow" variant="success" />
+                <Spinner animation="grow" variant="danger" />
+                <Spinner animation="grow" variant="warning" />
+                <Spinner animation="grow" variant="info" />
+            </div>
+        );
+    }
 
     return (
         <Container fluid>

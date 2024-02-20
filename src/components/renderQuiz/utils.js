@@ -3,7 +3,6 @@ export const isEitherOrFormat = (question) => {
     return question.hasOwnProperty('either') && question.hasOwnProperty('or');
 };
 
-// utils.js
 export const selectRandomQuestions = (questionsData, categoryIds, subjectName) => {
     return categoryIds.map(categoryId => {
         const category = questionsData.find(cat => cat.category === categoryId);
