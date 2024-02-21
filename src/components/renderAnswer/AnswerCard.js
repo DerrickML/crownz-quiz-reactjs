@@ -5,6 +5,13 @@ import { connect } from 'react-redux';
 import { setUserAnswer, setSelectedOption } from '../../redux/actions';
 import { isImageUrl } from './utils';
 
+/**
+ * Renders an answer card component.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.resultsData - The data for rendering the answer card.
+ * @returns {JSX.Element} The rendered answer card component.
+ */
 const AnswerCard = ({ resultsData }) => {
 
     const renderValue = (value) => {
