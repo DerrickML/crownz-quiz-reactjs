@@ -43,15 +43,17 @@ const AnswerCard = ({ resultsData }) => {
             answer = Array.isArray(answer) ? answer.map(normalize) : normalize(answer);
 
             let score = 0;
+            let maxScore = 0;
 
             if (questionType === 'multipleChoice' || questionType === 'text') {
+                maxScore = mark || 1; //Assign the max score to mark if available, otherwise 1
                 // Single mark for multipleChoice and text, check if answer matches
                 if (answer === user_answer || (Array.isArray(answer) && answer.includes(user_answer))) {
                     score = mark || 1; // Use provided mark or default to 1
                 }
             } else if (questionType === 'check_box') {
                 // Checkbox question type
-                const maxScore = mark || (Array.isArray(answer) ? answer.length : 1);
+                maxScore = mark || (Array.isArray(answer) ? answer.length : 1);
                 if (Array.isArray(user_answer)) {
                     user_answer.forEach(val => {
                         if (answer.includes(val)) {
@@ -62,11 +64,11 @@ const AnswerCard = ({ resultsData }) => {
                 }
             }
 
-            return score;
+            return { score, maxScore };
         };
 
         const isAnswerCorrect = checkAnswer(answer, user_answer, questionType, mark);
-        const score = checkAnswer(answer, user_answer, questionType, mark);
+        const { score, maxScore } = checkAnswer(answer, user_answer, questionType, mark);
 
         return (
             <>
@@ -128,7 +130,7 @@ const AnswerCard = ({ resultsData }) => {
                         >
                             <div className="ms-2 me-auto">
                                 <Card.Text className="fw-bold">Score</Card.Text>
-                                <Card.Text>{score}</Card.Text>
+                                <Card.Text>{score}/{maxScore}</Card.Text>
                             </div>
                         </ListGroup.Item>
                     </ListGroup>
