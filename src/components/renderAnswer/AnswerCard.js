@@ -186,13 +186,4 @@ const AnswerCard = ({ resultsData }) => {
     );
 };
 
-const mapStateToProps = (state) => ({
-    answers: state.answers
-});
-
-const mapDispatchToProps = {
-    setUserAnswer,
-    setSelectedOption
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AnswerCard);
+export default AnswerCard;

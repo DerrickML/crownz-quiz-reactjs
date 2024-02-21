@@ -28,6 +28,7 @@ import LinkedStudents from "./components/LinkedStudents";
 import EditProfile from "./components/EditProfile";
 import Answers from "./components/renderAnswer/Answers";
 import { AuthProvider, useAuth } from './context/AuthContext';
+import Collapsed from "./components/navbar/Collapsed.js";
 import "./App.css";
 
 function PrivateRoute({ children }) {
@@ -70,6 +71,7 @@ function App() {
 
       <AuthProvider>
         <div className="App">
+          {/* <Collapsed style={{ zIndex: '5' }} /> */}
           <CustomNavbar />
           <div className="main-content" style={{ marginTop: "70px", width: "100%" }} >
             <Routes>

@@ -208,7 +208,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
 
     return (
         <Button ref={ref} onClick={handleSave} disabled={disabled} variant="primary" style={{ display: buttonDisplay ? buttonDisplay : 'false' }}>
-            <FontAwesomeIcon icon={faSave} /> Save Answers
+            <FontAwesomeIcon icon={faSave} /> Submit Exam
         </Button>
     );
 });

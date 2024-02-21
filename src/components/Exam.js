@@ -15,9 +15,15 @@ import {
 } from "./renderQuiz/examsAppwriteConfig"; //Data from appwrite database
 import { sst_ple, math_ple } from '../otherFiles/questionsData'; //Static data from local files
 
+/**
+ * Represents an Exam component.
+ * @param {Object} props - The component props.
+ * @param {string} props.subject - The subject of the exam.
+ * @returns {JSX.Element} The Exam component.
+ */
 function Exam({ subject }) {
   const [showInstructionsModal, setShowInstructionsModal] = useState(true);
-  const [showUnavailableModal, setShowUnavailableModal] = useState(false);
+  const [showUnavailableModal, setshowUnavailableModal] = useState(true);
   const [data, setData] = useState(null); // Variable to store the fetched questions data
 
   const navigate = useNavigate();
@@ -38,7 +44,8 @@ function Exam({ subject }) {
             collection_id = engTbalePLE_id;
             break;
           default:
-            collection_id = null;
+            // collection_id = null;
+            return;
         }
         const response = await databases.listDocuments(
           database_id,
@@ -73,7 +80,13 @@ function Exam({ subject }) {
 
 
   const handleProceed = () => {
-    setShowInstructionsModal(false);
+    if (subject === ('social-studies_ple' && 'mathematics_ple' && 'english-language_ple')) {
+      setShowInstructionsModal(false);
+    }
+    else {
+      setShowInstructionsModal(false);
+      setshowUnavailableModal(false); // Set the subject validity to false
+    }
   };
 
   const handleCancel = () => {
@@ -95,8 +108,7 @@ function Exam({ subject }) {
       // case "science_ple":
       //   return <QuizContainer questionsData={questionsData} subjectName={subject} />;
       default:
-        setShowUnavailableModal(true);
-        return null;
+        return null; // Return null if the subject is not valid
     }
   };
 
@@ -125,21 +137,23 @@ function Exam({ subject }) {
         </Modal.Footer>
       </Modal>
 
-      {!showInstructionsModal && renderQuizContent()}
+      {!showInstructionsModal && showUnavailableModal && renderQuizContent()}
 
-      <Modal show={showUnavailableModal} onHide={() => { }} centered>
-        <Modal.Header>
-          <Modal.Title>Exam Unavailable</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Currently, the exam for the selected subject is not available. Please check back later.</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleCancel}>
-            Go Back
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {!showUnavailableModal &&
+        <Modal show={true} onHide={() => { }} centered styles={{ width: '40%', height: '40%' }}>
+          <Modal.Header>
+            <Modal.Title>Exam Unavailable</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>Currently, the exam for the selected subject is not available. Please check back later.</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={handleCancel}>
+              Go Back
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      }
     </>
   );
 }

@@ -93,9 +93,9 @@ const QuizContainer = ({ questionsData, subjectName }) => {
 
     return (
         <Container fluid>
-            <div style={{ position: 'sticky', top: 0, zIndex: 1 }}>
+            <div style={{ position: 'sticky', top: 0, zIndex: 2 }}>
                 <Row>
-                    <Col xs={12} className="d-md-none bg-light">
+                    <Col xs={12} className="d-md-none bg-light" >
                         {/* Timer */}
                         <Timer initialTime={initialTime} onTimeUp={handleTimeUp} />
                     </Col>
