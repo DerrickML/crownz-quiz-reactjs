@@ -89,7 +89,7 @@ const AnswerCard = ({ resultsData }) => {
                             </div>
 
                             {
-                                score !== 0 ?
+                                score === maxScore ?
                                     (
                                         <Badge pill bg="success">
                                             Correct
