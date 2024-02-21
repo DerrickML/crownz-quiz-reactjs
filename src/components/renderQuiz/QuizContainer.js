@@ -6,7 +6,7 @@ import { resetAnswers } from './redux/actions';
 import SaveButton from './SaveButton';
 import QuestionCard from './QuestionCard';
 import { selectRandomQuestions } from './utils';
-import { Container, Row, Col, Modal, ButtonGroup, Button, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, Modal, ButtonGroup, Button, Spinner, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { } from '@fortawesome/free-solid-svg-icons';
 import Timer from './Timer';
@@ -124,22 +124,23 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                 </Col>
                 <Col xs={12} md={{ span: 9, offset: 3 }}>
                     {selectedQuestions.map((category, index) => (
-                        <div key={category.$id}>
-                            <h2>Category {category.category}</h2>
-                            <p>{category.instructions}</p>
+                        <Card key={category.$id}>
+                            {/* <h2>Question {category.category}</h2> */}
+                            <Card.Title>{category.instructions}</Card.Title>
                             {category.questions.map((question, index) => {
                                 // Pass the question as is, with an additional property to indicate "either/or" type
                                 const isEitherOr = question.hasOwnProperty('either') && question.hasOwnProperty('or');
                                 return (
                                     <QuestionCard
                                         key={question.id || `${category.$id}_${index}`}
+                                        questionIndex={index}
                                         question={question}
                                         isEitherOr={isEitherOr}
                                         categoryId={category.category}
                                     />
                                 );
                             })}
-                        </div>
+                        </Card>
                     ))}
                 </Col>
             </Row>

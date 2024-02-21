@@ -6,7 +6,7 @@ import AnswerInput from './AnswerInput';
 import { setUserAnswer, setSelectedOption } from './redux/actions';
 import { isImageUrl } from './utils';
 
-const QuestionCard = ({ question, isEitherOr, categoryId, setUserAnswer, setSelectedOption, answers }) => {
+const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUserAnswer, setSelectedOption, answers }) => {
 
     const [selectedOption, setSelectedOptionState] = useState('');
 
@@ -43,7 +43,7 @@ const QuestionCard = ({ question, isEitherOr, categoryId, setUserAnswer, setSele
 
     const renderQuestionText = (questionText, questionImage) => (
         <>
-            <p dangerouslySetInnerHTML={{ __html: questionText }}></p>
+            <p>{questionIndex + categoryId}. <span dangerouslySetInnerHTML={{ __html: questionText }}></span></p>
             {questionImage && isImageUrl(questionImage) && (
                 <Card style={{ alignItems: 'flex-start', textAlign: 'center', margin: '10px 0' }}>
                     <Card.Img src={questionImage} alt="Question" style={{ maxWidth: '20rem', height: 'auto' }} />

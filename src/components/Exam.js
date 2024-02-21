@@ -11,6 +11,7 @@ import {
   sstTablePLE_id,
   mathPLE_id,
   engTbalePLE_id,
+  sciTablePLE_id,
   Query,
 } from "./renderQuiz/examsAppwriteConfig"; //Data from appwrite database
 import { sst_ple, math_ple } from '../otherFiles/questionsData'; //Static data from local files
@@ -42,6 +43,9 @@ function Exam({ subject }) {
             break;
           case "english-language_ple":
             collection_id = engTbalePLE_id;
+            break;
+          case "science_ple":
+            collection_id = sciTablePLE_id;
             break;
           default:
             // collection_id = null;
@@ -80,7 +84,7 @@ function Exam({ subject }) {
 
 
   const handleProceed = () => {
-    if (subject === ('social-studies_ple' && 'mathematics_ple' && 'english-language_ple')) {
+    if (subject === 'social-studies_ple' || subject === 'mathematics_ple' || subject === 'english-language_ple' || subject === 'science_ple') {
       setShowInstructionsModal(false);
     }
     else {
@@ -102,13 +106,12 @@ function Exam({ subject }) {
         else {
           return <QuizContainer questionsData={data} subjectName={'sst_ple'} />;
         };
-
       case "mathematics_ple":
         return <QuizContainer questionsData={data} subjectName={'math_ple'} />;
-      // case "science_ple":
-      //   return <QuizContainer questionsData={questionsData} subjectName={subject} />;
+      case "science_ple":
+        return <QuizContainer questionsData={data} subjectName={'sci_ple'} />;
       default:
-        return null; // Return null if the subject is not valid
+        return null;
     }
   };
 
