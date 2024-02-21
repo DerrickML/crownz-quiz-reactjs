@@ -88,17 +88,31 @@ const AnswerCard = ({ resultsData }) => {
                                 {user_answer ? renderValue(user_answer) : "Not Answered"}
                             </div>
 
-                            {isAnswerCorrect ? (
-                                <Badge pill bg="success">
-                                    Correct
-                                </Badge>
-                            ) : (
-                                <Badge pill bg="danger">
-                                    Fail
-                                </Badge>
-                            )}
+                            {
+                                score !== 0 ?
+                                    (
+                                        <Badge pill bg="success">
+                                            Correct
+                                        </Badge>
+                                    )
+                                    :
+                                    (
+                                        score > 0 && score < maxScore ?
+                                            (
+                                                <Badge pill bg="warning">
+                                                    Partial
+                                                </Badge>
+                                            )
+                                            :
+                                            (
+                                                <Badge pill bg="danger">
+                                                    Fail
+                                                </Badge>
+                                            )
+                                    )
+                            }
                         </ListGroup.Item>
-                        {!isAnswerCorrect && (
+                        {score !== 0 && (
                             <>
                                 <ListGroup.Item
                                     as="li"
