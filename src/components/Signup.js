@@ -276,7 +276,7 @@ function SignUp() {
     try {
       const paylaod = {
         userId: stud_Id,
-        labels: ["student"],
+        labels: ["student", "subscriber"],
       };
 
       const response = await fetch("https://2wkvf7-3000.csb.app/update-label", {
