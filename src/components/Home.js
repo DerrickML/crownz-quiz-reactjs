@@ -1,5 +1,5 @@
 // Home.js
-import React from "react"; // Import useState
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faUserCircle } from "@fortawesome/free-solid-svg-icons";

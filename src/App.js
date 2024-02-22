@@ -28,7 +28,6 @@ import LinkedStudents from "./components/LinkedStudents";
 import EditProfile from "./components/EditProfile";
 import Answers from "./components/renderAnswer/Answers";
 import { AuthProvider, useAuth } from './context/AuthContext';
-import Collapsed from "./components/navbar/Collapsed.js";
 import "./App.css";
 
 function PrivateRoute({ children }) {
@@ -48,6 +47,11 @@ function ExamWithSubject(props) {
   return <Exam subject={subject} {...props} />;
 }
 
+/**
+ * Main component of the application.
+ * Manages the routing and authentication of the app.
+ * @returns {JSX.Element} The rendered App component.
+ */
 function App() {
   // Check Network Status
   const isOnline = useNetworkStatus();
@@ -71,7 +75,6 @@ function App() {
 
       <AuthProvider>
         <div className="App">
-          {/* <Collapsed style={{ zIndex: '5' }} /> */}
           <CustomNavbar />
           <div className="main-content" style={{ marginTop: "70px", width: "100%" }} >
             <Routes>
