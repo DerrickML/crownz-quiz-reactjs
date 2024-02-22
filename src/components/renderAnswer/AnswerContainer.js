@@ -1,6 +1,6 @@
 //  AnswerContainer.js
 import React, { useState, useEffect } from 'react';
-import { Card, Container, ListGroup } from 'react-bootstrap';
+import { Card, Container, ListGroup, Alert } from 'react-bootstrap';
 import AnswerCard from './AnswerCard';
 
 const AnswerContainer = ({ questionsData, subjectName, totalMarks, attemptDate }) => {
@@ -37,11 +37,15 @@ const AnswerContainer = ({ questionsData, subjectName, totalMarks, attemptDate }
             </Card>
             {resultsData.map((category, index) => (
                 <Card key={index} style={{ margin: "5px" }}>
-                    <h2>{category.category}</h2>
-                    <p>{category.instructions}</p>
+                    {/* <h2>{category.category}</h2> */}
+                    <h3>{category.instructions}</h3>
+
+                    {/* {
+                        subjectName === 'Social Studies' && (category.category === 36 || category.category === 51) ? <p>Answered questions: {category.questions.length}/5</p> : null
+                    } */}
 
                     {
-                        subjectName === 'sst_ple' && (category.category === 36 || category.category === 51) ? <p>Answered questions: {category.questions.length}/5</p> : null
+                        category.questions.length === 0 ? <Alert>No questions attempted</Alert> : subjectName === 'Social Studies' && (category.category === 36 || category.category === 51) ? <Alert>Attempted questions: {category.questions.length}/5</Alert> : null
                     }
 
                     {category.questions.map((question, questionIndex) => {
@@ -51,12 +55,16 @@ const AnswerContainer = ({ questionsData, subjectName, totalMarks, attemptDate }
                             : question;
                         // Add category ID to questionProps
                         questionProps = { ...questionProps, categoryId: category.category };
-                        return <AnswerCard
-                            key={question.id || `${category.$id}_${questionIndex}`}
-                            category_Id={category.category}
-                            questionIndex={questionIndex}
-                            resultsData={questionProps}
-                        />;
+                        return (
+                            <>
+                                <div>{category.category + questionIndex}</div>
+                                <AnswerCard
+                                    key={question.id || `${category.$id}_${questionIndex}`}
+                                    category_Id={category.category}
+                                    questionIndex={questionIndex}
+                                    resultsData={questionProps}
+                                />
+                            </>);
 
                     })}
                 </Card>
