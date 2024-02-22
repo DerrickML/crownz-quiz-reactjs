@@ -7,14 +7,17 @@ const AnswerContainer = ({ questionsData, subjectName, totalMarks, attemptDate }
 
     let subject_Name = subjectName === "sst_ple" ? "Social Studies" : (subjectName === "math_ple" ? "Mathematics" : (subjectName === "sci_ple" ? "Science" : subjectName));
 
+    // console.log('Attempted questions', questionsData);
+
     // Extract category IDs dynamically from questionsData
     const categoriesToInclude = questionsData.map(category => category.category);
 
-    const [resultsData, setSelectedQuestions] = useState([]);
+    const [resultsData, setResultsData] = useState([]);
 
     useEffect(() => {
         questionsData.sort((a, b) => a.category - b.category);
-        setSelectedQuestions(questionsData);
+        setResultsData(questionsData);
+
     }, []); // Empty dependency array to run only once
 
 
@@ -48,7 +51,12 @@ const AnswerContainer = ({ questionsData, subjectName, totalMarks, attemptDate }
                             : question;
                         // Add category ID to questionProps
                         questionProps = { ...questionProps, categoryId: category.category };
-                        return <AnswerCard key={question.id || `${category.$id}_${questionIndex}`} resultsData={questionProps} />;
+                        return <AnswerCard
+                            key={question.id || `${category.$id}_${questionIndex}`}
+                            category_Id={category.category}
+                            questionIndex={questionIndex}
+                            resultsData={questionProps}
+                        />;
 
                     })}
                 </Card>

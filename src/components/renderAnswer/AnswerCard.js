@@ -12,7 +12,7 @@ import { isImageUrl } from './utils';
  * @param {Object} props.resultsData - The data for rendering the answer card.
  * @returns {JSX.Element} The rendered answer card component.
  */
-const AnswerCard = ({ resultsData }) => {
+const AnswerCard = ({ resultsData, questionIndex, category_Id }) => {
 
     const renderValue = (value) => {
         if (Array.isArray(value)) {
@@ -79,7 +79,10 @@ const AnswerCard = ({ resultsData }) => {
 
         return (
             <>
-                <Card.Header dangerouslySetInnerHTML={{ __html: questionText }}></Card.Header>
+                <p>
+                    {/* {questionIndex + category_Id}.  */}
+                    <span dangerouslySetInnerHTML={{ __html: questionText }}></span>
+                </p>
                 {questionImage && isImageUrl(questionImage) && (
                     <Card.Img src={questionImage} alt="Question" style={{ maxWidth: '25rem', maxHeight: '15rem' }} />
                 )}
@@ -119,31 +122,27 @@ const AnswerCard = ({ resultsData }) => {
                                     )
                             }
                         </ListGroup.Item>
-                        {score !== 0 && (
-                            <>
-                                <ListGroup.Item
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 me-auto">
-                                        <div className="fw-bold">Correct Answer</div>
-                                        {renderValue(answer)}
-                                    </div>
-                                </ListGroup.Item>
-                                {explanation && (
-                                    <ListGroup.Item
-                                        as="li"
-                                        className="d-flex justify-content-between align-items-start"
-                                    >
-                                        <div className="ms-2 me-auto">
-                                            <Card.Text className="fw-bold">Explanation</Card.Text>
-                                            <Card.Text
-                                                dangerouslySetInnerHTML={{ __html: explanation.replace(/\n/g, '<br/>') }}
-                                            ></Card.Text>
-                                        </div>
-                                    </ListGroup.Item>
-                                )}
-                            </>
+                        <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start"
+                        >
+                            <div className="ms-2 me-auto">
+                                <div className="fw-bold">Correct Answer</div>
+                                {renderValue(answer)}
+                            </div>
+                        </ListGroup.Item>
+                        {explanation && (
+                            <ListGroup.Item
+                                as="li"
+                                className="d-flex justify-content-between align-items-start"
+                            >
+                                <div className="ms-2 me-auto">
+                                    <Card.Text className="fw-bold">Explanation</Card.Text>
+                                    <Card.Text
+                                        dangerouslySetInnerHTML={{ __html: explanation.replace(/\n/g, '<br/>') }}
+                                    ></Card.Text>
+                                </div>
+                            </ListGroup.Item>
                         )}
                         <ListGroup.Item
                             as="li"

@@ -1,6 +1,6 @@
 // QuestionCard.js
 import React, { useState } from 'react';
-import { Card, ButtonGroup, Button } from 'react-bootstrap';
+import { Card, ButtonGroup, Button, ListGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import AnswerInput from './AnswerInput';
 import { setUserAnswer, setSelectedOption } from './redux/actions';
@@ -47,6 +47,7 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
             {questionImage && isImageUrl(questionImage) && (
                 <Card style={{ alignItems: 'flex-start', textAlign: 'center', margin: '10px 0' }}>
                     <Card.Img src={questionImage} alt="Question" style={{ maxWidth: '20rem', height: 'auto' }} />
+                    {/* <Card.Img src={questionImage} alt="Question" style={{ width: 'auto', height: 'auto' }} /> */}
                 </Card>
             )}
         </>
@@ -77,8 +78,8 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
     );
 
     return (
-        <Card>
-            <Card.Body>
+        <ListGroup>
+            <ListGroup.Item>
                 {isEitherOr ? (
                     <>
                         <ButtonGroup>
@@ -90,8 +91,8 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
                 ) : (
                     renderQuestion(question, false) // Non either/or question
                 )}
-            </Card.Body>
-        </Card>
+            </ListGroup.Item>
+        </ListGroup>
     );
 };
 

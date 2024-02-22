@@ -19,6 +19,8 @@ import { useAuth } from '../../context/AuthContext';
 
 const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDisplay, subject_Name }, ref) => {
 
+    // console.log('selectedQuestions on submit', selectedQuestions)
+
     const dispatch = useDispatch();
 
     const { userInfo } = useAuth();
@@ -35,6 +37,8 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
     const navigate = useNavigate();
 
     const reduxState = useSelector(state => state.answers);
+
+    // console.log('Redux state on submit', reduxState)
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -130,7 +134,6 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
     };
 
     const formatAnswersForSaving = () => {
-        console.log('Redux stored data:', reduxState);
         let totalMarks = 0;
         const formattedAnswers = selectedQuestions.map(category => ({
             ...category,
@@ -166,8 +169,8 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
             }).flat(),
         }));
 
-        console.log('Total Marks:', totalMarks);
-        console.log('Formatted Answers:', formattedAnswers);
+        // console.log('Total Marks:', totalMarks);
+        // console.log('Formatted Answers:', formattedAnswers);
         return { formattedAnswers, totalMarks };
     };
 

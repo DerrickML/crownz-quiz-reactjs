@@ -124,9 +124,9 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                 </Col>
                 <Col xs={12} md={{ span: 9, offset: 3 }}>
                     {selectedQuestions.map((category, index) => (
-                        <Card key={category.$id}>
+                        <div key={category.$id}>
                             {/* <h2>Question {category.category}</h2> */}
-                            <Card.Title>{category.instructions}</Card.Title>
+                            {subjectName === 'sst_ple' && category.category === 36 || category.category === 51 ? (<Card.Title style={{ marginTop: '20px', border: '2px solid #000', borderColor: 'red' }}>{category.instructions}</Card.Title>) : null}
                             {category.questions.map((question, index) => {
                                 // Pass the question as is, with an additional property to indicate "either/or" type
                                 const isEitherOr = question.hasOwnProperty('either') && question.hasOwnProperty('or');
@@ -140,7 +140,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                                     />
                                 );
                             })}
-                        </Card>
+                        </div>
                     ))}
                 </Col>
             </Row>
