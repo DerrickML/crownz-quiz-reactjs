@@ -138,7 +138,7 @@ function SignUp() {
     }
 
     // Check if password is strong enough and matches
-    if (passwordStrength < 3 || !passwordMatch) {
+    if (signupMethod === 'email' && (passwordStrength < 3 || !passwordMatch)) {
       // Show an error or update the UI to indicate the issue
       showToast("Please ensure your password is strong and matches", "error");
       return;
@@ -193,7 +193,7 @@ function SignUp() {
         showToast("Account Created Successfully", "success");
       } else {
         // Handle signup failure
-        showToast("Error Creating Account", "error");
+        showToast("Failed to Creat Account.\nAccount with the same email or phone already exists.", "error");
       }
 
       setSignupLoader(false);
