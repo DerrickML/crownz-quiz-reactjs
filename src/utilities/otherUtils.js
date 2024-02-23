@@ -50,3 +50,15 @@ export const updateLabels = async (userId, labels) => {
             console.error('Error:', error);
         });
 }
+
+/**
+* Formats the date string into a more readable format.
+* @param {string} dateTime - The original date-time string.
+* @returns {string} - The formatted date-time string.
+*/
+export const formatDate = (dateTime) => {
+    const date = new Date(dateTime);
+    return `${date.toLocaleString("en-US", {
+        dateStyle: "long",
+    })} ${date.toLocaleTimeString()}`;
+};

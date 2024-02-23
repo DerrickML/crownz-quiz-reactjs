@@ -192,7 +192,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
         await createDocument(userResultsData);
 
         if (userInfo.kinEmail) {
-            await sendEmailToNextOfKin(userInfo, subjectName, totalMarks, new Date());
+            await sendEmailToNextOfKin(userInfo, subjectName, totalMarks, formatDate((new Date())));
         }
 
         await fetchAndUpdateResults(userInfo.userId); // Update the local storage
