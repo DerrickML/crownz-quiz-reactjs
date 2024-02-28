@@ -31,6 +31,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import "./App.css";
 
 function PrivateRoute({ children }) {
+  console.log('APP.JS render')
   const { sessionInfo } = useAuth();
   if (!sessionInfo) {
     // User is not logged in, redirect to login page
@@ -75,8 +76,8 @@ function App() {
 
       <AuthProvider>
         <div className="App">
-          <CustomNavbar />
-          <div className="main-content" style={{ marginTop: "70px", width: "100%" }} >
+          {/* <CustomNavbar /> */}
+          <div className="main-content" style={{ marginTop: "10px", width: "100%" }} >
             <Routes>
               <Route
                 exact
@@ -161,6 +162,7 @@ function App() {
 
               {/* Used to only test pages/routes/parts of the application */}
               <Route exact path="/testing" element={<Testing />} />
+
             </Routes>
           </div>
         </div>
