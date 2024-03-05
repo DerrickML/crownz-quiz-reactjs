@@ -1,6 +1,7 @@
 /* global FlutterwaveCheckout */
 
 import React from 'react';
+import { Form, Button, Alert } from 'react-bootstrap';
 
 function CardPayment() {
     const makePayment = () => {
@@ -26,8 +27,7 @@ function CardPayment() {
 
     return (
         <div>
-            <h3>Card Payment</h3>
-            <button onClick={makePayment} className="btn btn-primary">Pay with Card</button>
+            <Button variant='dark' onClick={makePayment}>Pay with Card</Button>
         </div>
     );
 }

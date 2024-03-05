@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
+import { Card, Form, Button } from 'react-bootstrap';
+import 'react-phone-number-input/style.css';
+import PhoneInput from "react-phone-number-input";
+import { isValidPhoneNumber } from "react-phone-number-input";
+import { useAuth } from '../../context/AuthContext';
 
-const MtnMomo = () => {
-    const [phone, setPhone] = useState('');
-    const [amount, setAmount] = useState('');
+const MtnMomo = ({ price }) => {
+    const { userInfo } = useAuth();
+
+    const [phone, setPhone] = useState(userInfo.phone || '');
+    const [amount, setAmount] = useState(price ? price : '2000');
     const [message, setMessage] = useState('');
+    const [phoneError, setPhoneError] = useState(false); // Error flag for user's phone
+
 
     const createApiUser = async () => {
         console.log('Creating API user...');
@@ -56,9 +65,22 @@ const MtnMomo = () => {
         return response.json();
     };
 
+    // Phone number validation function
+    const validatePhoneNumber = (phoneNumber) => {
+        return phoneNumber && !isValidPhoneNumber(phoneNumber);
+    };
+
     const handlePayment = async () => {
         if (!phone || !amount) {
             setMessage('Please enter both phone number and amount.');
+            return;
+        }
+
+        // Validate phone numbers
+        const isUserPhoneValid = !validatePhoneNumber(phone);
+
+        if (!isUserPhoneValid) {
+            setPhoneError(!isUserPhoneValid);
             return;
         }
 
@@ -89,22 +111,29 @@ const MtnMomo = () => {
     };
 
     return (
-        <div>
-            <input
-                type="text"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="Phone Number"
-            />
-            <input
-                type="number"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                placeholder="Amount"
-            />
-            <button onClick={handlePayment}>Pay</button>
+        <Card>
+            <Form.Group className="mb-3">
+                <Form.Label>Phone Number*</Form.Label>
+                <PhoneInput
+                    className={`form-control ${phoneError ? "is-invalid" : "custom-phone-input "
+                        }`}
+                    placeholder="Enter phone number"
+                    international
+                    defaultCountry="UG"
+                    countryCallingCodeEditable={false}
+                    value={phone}
+                    onChange={setPhone}
+                    required
+                />
+                {phoneError && (
+                    <Form.Control.Feedback type="invalid">
+                        Invalid phone number
+                    </Form.Control.Feedback>
+                )}
+            </Form.Group>
+            <Button onClick={handlePayment}>Pay</Button>
             {message && <p>{message}</p>}
-        </div>
+        </Card>
     );
 };
 

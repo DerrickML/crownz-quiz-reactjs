@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
-import MobileMoney from './MobileMoney'; // Make sure this path is correct
+import AirtelMoney from './AirtelMoney';
 import CardPayment from './CardPayment';
 import MtnMomo from './MtnMomo';
 
@@ -13,20 +13,29 @@ function PaymentMethods() {
                 <Col md={6}>
                     <Card className="text-center">
                         <Card.Body>
+
+                            {/* MTN MoMo Payment */}
                             <Card.Title>Select Payment Method</Card.Title>
                             <Button variant="warning" className="m-2" onClick={() => setSelectedMethod('mtnMomo')}>
                                 MTN Mobile Money
                             </Button>
-                            <Button variant="danger" className="m-2" onClick={() => setSelectedMethod('mobileMoney')}>
-                                Airtel and MTN Mobile Money
-                            </Button>
-                            <Button variant="primary" className="m-2" onClick={() => setSelectedMethod('card')} >
-                                Card (Coming Soon)
-                            </Button>
-
                             {selectedMethod === 'mtnMomo' && <MtnMomo />}
-                            {selectedMethod === 'mobileMoney' && <MobileMoney />}
+
+                            {/* Airtel Money Payment */}
+                            <Button variant="danger" className="m-2" onClick={() => setSelectedMethod('mobileMoney')}>
+                                Airtel Money
+                            </Button>
+                            {selectedMethod === 'mobileMoney' && <AirtelMoney />}
+
+                            {/* Card Payment */}
+                            <CardPayment />
+                            {/* 
+                            <Button variant="primary" className="m-2" onClick={() => setSelectedMethod('card')} >
+                                Card
+                            </Button>
                             {selectedMethod === 'card' && <CardPayment />}
+                             */}
+
                         </Card.Body>
                     </Card>
                 </Col>

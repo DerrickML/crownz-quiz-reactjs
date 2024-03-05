@@ -16,14 +16,13 @@ const PhoneSignupFields = ({
       <Form.Label>Phone Number*</Form.Label>
       <div className="phone-input-container">
         <PhoneInput
-          className={`form-control ${
-            phoneError ? "is-invalid" : "custom-phone-input "
-          }`}
+          className={`form-control ${phoneError ? "is-invalid" : "custom-phone-input "
+            }`}
+          placeholder="Enter phone number"
           international
           countryCallingCodeEditable={false}
           value={phone}
           onChange={setPhone}
-          placeholder="Enter phone number"
           required
         />
       </div>
