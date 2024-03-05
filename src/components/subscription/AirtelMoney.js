@@ -23,10 +23,6 @@ function AirtelMoney({ price }) {
     });
     const [paymentStatus, setPaymentStatus] = useState(null);
 
-    // const handleChange = (e) => {
-    //     setFormData({ ...formData, [e.target.name]: e.target.value });
-    // };
-
     // Phone number validation function
     const validatePhoneNumber = (phoneNumber) => {
         return phoneNumber && !isValidPhoneNumber(phoneNumber);
@@ -85,7 +81,6 @@ function AirtelMoney({ price }) {
                         placeholder="Enter phone number"
                         international
                         defaultCountry="UG"
-                        name="phone_number"
                         countryCallingCodeEditable={false}
                         value={phone}
                         onChange={setPhone}
