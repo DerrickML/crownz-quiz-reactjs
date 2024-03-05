@@ -10,7 +10,7 @@ function CardPayment() {
             amount: 20000,
             currency: "UGX",
             payment_options: "card",
-            redirect_url: "",
+            redirect_url: "https://525e-41-210-145-67.ngrok-free.app",
             customer: {
                 email: "customer@example.com",
                 phone_number: "08102909304",
