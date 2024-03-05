@@ -49,7 +49,7 @@ function AirtelMoney({ price }) {
 
         try {
 
-            const response = await fetch('http://localhost:3002/pay', {
+            const response = await fetch('http://localhost:3001/pay', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
