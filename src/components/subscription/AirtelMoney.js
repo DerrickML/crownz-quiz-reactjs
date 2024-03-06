@@ -6,6 +6,7 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import { useAuth } from '../../context/AuthContext';
 function AirtelMoney({ price }) {
     const { userInfo } = useAuth();
+    const serverUrl = "https://2wkvf7-3000.csb.app"
 
     const [phone, setPhone] = useState(userInfo.phone || '');
     // const [email, setEmail] = useState(userInfo.email || 'crownzcom@gmail.com');
@@ -49,7 +50,7 @@ function AirtelMoney({ price }) {
 
         try {
 
-            const response = await fetch('http://localhost:3001/pay', {
+            const response = await fetch(`${serverUrl}/pay`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

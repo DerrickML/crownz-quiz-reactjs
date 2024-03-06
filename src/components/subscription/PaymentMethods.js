@@ -28,13 +28,13 @@ function PaymentMethods() {
                             {selectedMethod === 'mobileMoney' && <AirtelMoney />}
 
                             {/* Card Payment */}
-                            <CardPayment />
-                            {/* 
-                            <Button variant="primary" className="m-2" onClick={() => setSelectedMethod('card')} >
+                            {/* <CardPayment /> */}
+
+                            <Button variant="dark" className="m-2" onClick={() => setSelectedMethod('card')} >
                                 Card
                             </Button>
                             {selectedMethod === 'card' && <CardPayment />}
-                             */}
+
 
                         </Card.Body>
                     </Card>

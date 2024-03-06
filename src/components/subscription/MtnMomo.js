@@ -8,6 +8,8 @@ import { useAuth } from '../../context/AuthContext';
 const MtnMomo = ({ price }) => {
     const { userInfo } = useAuth();
 
+    const serverUrl = "https://2wkvf7-3000.csb.app"
+
     const [phone, setPhone] = useState(userInfo.phone || '');
     const [amount, setAmount] = useState(price ? price : '2000');
     const [message, setMessage] = useState('');
@@ -19,7 +21,7 @@ const MtnMomo = ({ price }) => {
         // Add the logic to create an API user
         // You should replace the URL with your server's endpoint for creating an API user
         // This is a sample logic
-        const response = await fetch('http://localhost:3001/create-api-user', {
+        const response = await fetch(`${serverUrl}create-api-user`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -28,13 +30,13 @@ const MtnMomo = ({ price }) => {
 
     const getCreatedUser = async (userId) => {
         console.log('Retrieving created user...');
-        const response = await fetch(`http://localhost:3001/get-created-user/${userId}`);
+        const response = await fetch(`${serverUrl}/get-created-user/${userId}`);
         return response.json();
     };
 
     const retrieveApiKey = async (userId) => {
         console.log('Retrieving API key...');
-        const response = await fetch(`http://localhost:3001/retrieve-api-key/${userId}`, {
+        const response = await fetch(`${serverUrl}/${userId}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -43,7 +45,7 @@ const MtnMomo = ({ price }) => {
 
     const generateApiToken = async (userId, apiKey) => {
         console.log('Generating MoMo token...');
-        const response = await fetch('http://localhost:3001/generate-api-token', {
+        const response = await fetch(`${serverUrl}/generate-api-token`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId, apiKey })
@@ -54,7 +56,7 @@ const MtnMomo = ({ price }) => {
     const requestToPay = async (phone, amount, momoTokenId) => {
         console.log('Making payment request...');
         console.log('MoMo Token: ', JSON.stringify(momoTokenId));
-        const response = await fetch('http://localhost:3001/request-to-pay', {
+        const response = await fetch(`${serverUrl}/request-to-pay`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
