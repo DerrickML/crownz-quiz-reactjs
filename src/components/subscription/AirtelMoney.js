@@ -34,7 +34,8 @@ function AirtelMoney({ price }) {
         e.preventDefault();
         setPaymentStatus(null);
 
-        setFormData({ ...formData, phone_number: phone });
+        // setFormData({ ...formData, phone_number: phone });
+        setFormData({ ...formData, phone_number: '256121212121' });
 
         if (!formData.phone_number) {
             setMessage('Please enter phone number.');
@@ -60,10 +61,11 @@ function AirtelMoney({ price }) {
             });
 
             const data = await response.json();
-            if (data.status === "success" && data.meta.authorization.mode === "redirect") {
-                window.location.href = data.meta.authorization.redirect;
+            console.log('Pay response Data:\n', data);
+            if (data.response.status === "success" && data.response.meta.authorization.mode === "redirect") {
+                window.location.href = data.response.meta.authorization.redirect;
             } else {
-                setPaymentStatus(data.message);
+                setPaymentStatus(data.response.message);
             }
         } catch (error) {
             console.error('Error making payment:', error);

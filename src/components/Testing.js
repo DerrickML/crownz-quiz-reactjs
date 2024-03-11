@@ -4,7 +4,7 @@ function Testing() {
 
   return (
     <div>
-      <PaymentMethods />
+      <PaymentMethods price={10000} />
     </div>
   );
 }

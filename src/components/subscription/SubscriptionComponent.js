@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { Button, Form, InputGroup, Container, Row, Col, Alert } from 'react-bootstrap';
-import DropIn from 'braintree-web-drop-in-react';
+import { Form, Container, Row, Col } from 'react-bootstrap';
 import { FlutterWaveButton, closePaymentModal } from 'flutterwave-react-v3';
 
 const SubscriptionComponent = () => {
@@ -13,7 +12,7 @@ const SubscriptionComponent = () => {
         public_key: 'FLWPUBK_TEST-5ec66010de33c362b7a1730ce87479f5-X',
         tx_ref: Date.now(),
         amount: 100,
-        currency: 'NGN',
+        currency: 'UGX',
         payment_options: 'card,mobilemoney,ussd',
         customer: {
             email: 'derrickmal123@gmail.com',

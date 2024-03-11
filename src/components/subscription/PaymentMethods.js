@@ -8,9 +8,9 @@ import AirtelMoney from './AirtelMoney';
 import CardPayment from './CardPayment';
 import MTNMomo from './MTNMomo';
 
-function PaymentMethods({ initialCoupon }) {
+function PaymentMethods({ initialCoupon, price }) {
     const serverUrl = "https://2wkvf7-3000.csb.app";
-    const originalPrice = 2000; // Example original price
+    const originalPrice = price; // Example original price
 
     const [stage, setStage] = useState('coupon'); // 'coupon', 'summary', or 'payment'
     const [coupon, setCoupon] = useState(initialCoupon || '');

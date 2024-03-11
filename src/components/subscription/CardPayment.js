@@ -62,7 +62,7 @@ function CardPayment({ price }) {
 
         try {
 
-            FlutterwaveCheckout({
+            const response = FlutterwaveCheckout({
                 public_key: "FLWPUBK_TEST-5ec66010de33c362b7a1730ce87479f5-X",
                 tx_ref: `${uuidv4()}-${Date.now()}`,
                 amount: amount,
@@ -76,6 +76,8 @@ function CardPayment({ price }) {
                     logo: `${serverUrl}/images/logo.png`,
                 },
             });
+
+            console.log('Card Payment: ', response)
 
         } catch (error) {
             console.error('Error making payment:', error);
