@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './PaymentMethods.css'
 import AirtelMoney from './AirtelMoney';
 import CardPayment from './CardPayment';
-import MtnMomo from './MtnMomo';
+import MTNMomo from './MTNMomo';
 
 function PaymentMethods() {
 
@@ -69,7 +69,7 @@ function PaymentMethods() {
                                 <Col sm={12}>
                                     <Tab.Content>
                                         <Tab.Pane eventKey="first">
-                                            <MtnMomo />
+                                            <MTNMomo />
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="second">
                                             <AirtelMoney />

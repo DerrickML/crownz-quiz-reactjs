@@ -3,6 +3,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
+import PropTypes from 'prop-types';
 import { useAuth } from '../../context/AuthContext';
 function AirtelMoney({ price }) {
     const { userInfo } = useAuth();
@@ -102,5 +103,13 @@ function AirtelMoney({ price }) {
         </div>
     );
 }
+
+AirtelMoney.propTypes = {
+    price: PropTypes.number
+};
+
+AirtelMoney.defaultProps = {
+    price: 2000
+};
 
 export default AirtelMoney;

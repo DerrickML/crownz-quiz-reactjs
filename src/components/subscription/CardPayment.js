@@ -4,8 +4,9 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
-import { useAuth } from '../../context/AuthContext';
+import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from "uuid"; // UUID generation for unique identifiers
+import { useAuth } from '../../context/AuthContext';
 
 
 function CardPayment({ price }) {
@@ -135,5 +136,13 @@ function CardPayment({ price }) {
         </div>
     );
 }
+
+CardPayment.propTypes = {
+    price: PropTypes.number
+};
+
+CardPayment.defaultProps = {
+    price: 2000
+};
 
 export default CardPayment;

@@ -3,9 +3,10 @@ import { Card, Form, Button } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
+import PropTypes from 'prop-types';
 import { useAuth } from '../../context/AuthContext';
 
-const MtnMomo = ({ price }) => {
+const MTNMomo = ({ price }) => {
     const { userInfo } = useAuth();
 
     const serverUrl = "https://2wkvf7-3000.csb.app"
@@ -143,4 +144,12 @@ const MtnMomo = ({ price }) => {
     );
 };
 
-export default MtnMomo;
+MTNMomo.propTypes = {
+    price: PropTypes.number
+};
+
+MTNMomo.defaultProps = {
+    price: 2000
+};
+
+export default MTNMomo;
