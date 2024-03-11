@@ -9,6 +9,7 @@ const MtnMomo = ({ price }) => {
     const { userInfo } = useAuth();
 
     const serverUrl = "https://2wkvf7-3000.csb.app"
+    const serverMomoRoute = `${serverUrl}/mtnMomo`
 
     const [phone, setPhone] = useState(userInfo.phone || '');
     const [amount, setAmount] = useState(price ? price : '2000');
@@ -21,7 +22,7 @@ const MtnMomo = ({ price }) => {
         // Add the logic to create an API user
         // You should replace the URL with your server's endpoint for creating an API user
         // This is a sample logic
-        const response = await fetch(`${serverUrl}create-api-user`, {
+        const response = await fetch(`${serverMomoRoute}/create-api-user`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -30,13 +31,13 @@ const MtnMomo = ({ price }) => {
 
     const getCreatedUser = async (userId) => {
         console.log('Retrieving created user...');
-        const response = await fetch(`${serverUrl}/get-created-user/${userId}`);
+        const response = await fetch(`${serverMomoRoute}/get-created-user/${userId}`);
         return response.json();
     };
 
     const retrieveApiKey = async (userId) => {
         console.log('Retrieving API key...');
-        const response = await fetch(`${serverUrl}/${userId}`, {
+        const response = await fetch(`${serverMomoRoute}/retrieve-api-key/${userId}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -45,7 +46,7 @@ const MtnMomo = ({ price }) => {
 
     const generateApiToken = async (userId, apiKey) => {
         console.log('Generating MoMo token...');
-        const response = await fetch(`${serverUrl}/generate-api-token`, {
+        const response = await fetch(`${serverMomoRoute}/generate-api-token`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId, apiKey })
@@ -56,7 +57,7 @@ const MtnMomo = ({ price }) => {
     const requestToPay = async (phone, amount, momoTokenId) => {
         console.log('Making payment request...');
         console.log('MoMo Token: ', JSON.stringify(momoTokenId));
-        const response = await fetch(`${serverUrl}/request-to-pay`, {
+        const response = await fetch(`${serverMomoRoute}/request-to-pay`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -89,14 +90,17 @@ const MtnMomo = ({ price }) => {
         try {
             const userCreationResponse = await createApiUser();
             const userId = userCreationResponse.userId;
+            console.log('User ID: ', userId);
 
-            await getCreatedUser(userId);
+            // await getCreatedUser(userId);
 
             const apiKeyResponse = await retrieveApiKey(userId);
             const apiKey = apiKeyResponse.apiKey;
+            console.log('API key: ' + apiKey)
 
             const tokenResponse = await generateApiToken(userId, apiKey);
             const momoTokenId = tokenResponse.access_token;
+            console.log('API token: ' + momoTokenId)
 
             const paymentResponse = await requestToPay(phone, amount, momoTokenId);
 

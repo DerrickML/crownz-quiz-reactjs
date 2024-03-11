@@ -1,0 +1,53 @@
+.custom-button {
+    /* background-color: #004085; */
+    /* dark blue */
+    /* color: white; */
+}
+
+.custom-modal {
+    background-color: #000000b7;
+    /* lighter shade of blue */
+    /* color: white; */
+}
+
+.custom-accordion {
+    display: flex;
+}
+
+.accordion-item {
+    flex: 1;
+    /* Distributes space evenly between accordion items */
+}
+
+.accordion-logo {
+    height: 20px;
+    /* Adjust size as needed */
+    margin-right: 8px;
+}
+
+.payment-nav {
+    justify-content: center;
+    border-bottom: 2px solid #dee2e6;
+    /* Border under the tabs */
+}
+
+.payment-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.payment-nav-link:hover {
+    background-color: #f8f9fa;
+    /* Light hover effect */
+}
+
+.payment-logo {
+    height: 30px;
+    margin-right: 10px;
+}
+
+/* Add further styles for fonts, colors, and responsive design */

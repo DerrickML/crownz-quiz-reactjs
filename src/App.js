@@ -31,7 +31,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import "./App.css";
 
 function PrivateRoute({ children }) {
-  console.log('APP.JS render')
+  // console.log('APP.JS render')
   const { sessionInfo } = useAuth();
   if (!sessionInfo) {
     // User is not logged in, redirect to login page
@@ -160,7 +160,7 @@ function App() {
               <Route path="/forget-password" element={<ForgetPassword />} />
               <Route path="/password-reset" element={<PasswordReset />} />
 
-              {/* Used to only test pages/routes/parts of the application */}
+              {/* Used to only test pages/routes/parts/component of the application */}
               <Route exact path="/testing" element={<Testing />} />
 
             </Routes>

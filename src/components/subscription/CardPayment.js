@@ -70,7 +70,7 @@ function CardPayment({ price }) {
                 customizations: { //TODO: Replace with customizations or dynamically manipulated values
                     title: "Crownzcom",
                     description: "Payment for exam/quiz Points",
-                    logo: "https://assets.piedpiper.com/logo.png",
+                    logo: `${serverUrl}/images/logo.png`,
                 },
             });
 

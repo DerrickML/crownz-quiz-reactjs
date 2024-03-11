@@ -50,7 +50,7 @@ function AirtelMoney({ price }) {
 
         try {
 
-            const response = await fetch(`${serverUrl}/pay`, {
+            const response = await fetch(`${serverUrl}/flutterwave/pay`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
