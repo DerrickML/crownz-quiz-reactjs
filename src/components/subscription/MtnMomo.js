@@ -6,7 +6,7 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import PropTypes from 'prop-types';
 import { useAuth } from '../../context/AuthContext';
 
-const MTNMomo = ({ price }) => {
+const MTNMomo = ({ price, otherData }) => {
     const { userInfo } = useAuth();
 
     const serverUrl = "https://2wkvf7-3000.csb.app"

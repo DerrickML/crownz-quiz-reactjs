@@ -13,10 +13,12 @@ function CardPayment({ price }) {
     const { userInfo } = useAuth();
     const serverUrl = "https://2wkvf7-3000.csb.app"
 
-    const [phone, setPhone] = useState(userInfo.phone || '');
+    console.log('Price: ', price)
+
+    const [phone, setPhone] = useState(userInfo ? userInfo.phone : '');
     // const [email, setEmail] = useState(userInfo.email || 'crownzcom@gmail.com');
     const [email, setEmail] = useState('crownzcom@gmail.com');
-    const [name, setName] = useState((userInfo.firstName ? userInfo.firstName : '') + ' ' + (userInfo.lastName ? userInfo.lastName : '') + ' ' + (userInfo.otherName ? userInfo.otherName : ''));
+    const [name, setName] = useState((userInfo ? userInfo.firstName : '') + ' ' + (userInfo ? userInfo.lastName : '') + ' ' + (userInfo ? userInfo.otherName : ''));
     const [message, setMessage] = useState('');
     const [phoneError, setPhoneError] = useState(false); // Error flag for user's phone
     const [amount, setAmount] = useState(price ? price : '2000');
@@ -24,7 +26,7 @@ function CardPayment({ price }) {
     const [formData, setFormData] = useState({
         // phone_number: phone,
         email: email,
-        name: (userInfo.firstName ? userInfo.firstName : '') + ' ' + (userInfo.lastName ? userInfo.lastName : '') + ' ' + (userInfo.otherName ? userInfo.otherName : '')
+        name: (userInfo ? userInfo.firstName : '') + ' ' + (userInfo ? userInfo.lastName : '') + ' ' + (userInfo ? userInfo.otherName : '')
     });
 
     const [paymentStatus, setPaymentStatus] = useState(null);

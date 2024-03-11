@@ -18,6 +18,7 @@ const studentTable_id = "657065f7dddd996bf19b";
 const nextOfKinTable_id = "65706739032c0962d0a9";
 const studentMarksTable_id = "6598050dbb628ae2216f";
 const sstTablePLE_id = "65a90a70741e52dd96fe"
+const couponTable_id = "65d74fb70f64c0e46f36"
 
 //Localhost - Appwrite
 // const database_id = '651c1d7b8872bb9d837d';
@@ -33,6 +34,7 @@ export {
   nextOfKinTable_id,
   studentMarksTable_id,
   sstTablePLE_id,
+  couponTable_id,
   Permission,
   Role,
   Query,
