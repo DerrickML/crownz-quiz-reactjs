@@ -26,6 +26,7 @@ import PasswordReset from "./components/PasswordReset";
 import StudentDetails from "./components/StudentDetails";
 import LinkedStudents from "./components/LinkedStudents";
 import EditProfile from "./components/EditProfile";
+import PaymentResult from "./components/subscription/PaymentVerification"
 import Answers from "./components/renderAnswer/Answers";
 import { AuthProvider, useAuth } from './context/AuthContext';
 import "./App.css";
@@ -152,6 +153,13 @@ function App() {
                 element={
                   <PrivateRoute>
                     <Answers />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/PaymentVerification"
+                element={
+                  <PrivateRoute>
+                    <PaymentResult />
                   </PrivateRoute>
                 }
               />

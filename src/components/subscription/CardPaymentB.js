@@ -7,8 +7,13 @@ import { useAuth } from '../../context/AuthContext';
 
 function CardPayment({ price }) {
     const { userInfo } = useAuth();
+    console.log(userInfo)
     const serverUrl = "https://2wkvf7-3000.csb.app"
 
+    // Extract the root URL (protocol + hostname + port)
+    var rootURL = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+
+    const [userId, setUserId] = useState(userInfo ? userInfo.userId : '');
     const [phone, setPhone] = useState(userInfo ? userInfo.phone : '');
     const [email, setEmail] = useState('crownzcom@gmail.com');
     const [name, setName] = useState((userInfo ? userInfo.firstName : '') + ' ' + (userInfo ? userInfo.lastName : '') + ' ' + (userInfo ? userInfo.otherName : ''));
@@ -34,12 +39,16 @@ function CardPayment({ price }) {
                     tx_ref: `${uuidv4()}-${Date.now()}`,
                     amount: amount,
                     currency: "UGX",
-                    redirect_url: `${serverUrl}`,
+                    // redirect_url: `${serverUrl}`,
+                    redirect_url: `${rootURL}/PaymentVerification`,
                     payment_options: "card",
                     customer: {
                         email: email,
                         phonenumber: phone,
                         name: name
+                    },
+                    meta: {
+                        userId: `${userId}`,
                     },
                     customizations: {
                         title: "Crownzcom",
@@ -49,8 +58,11 @@ function CardPayment({ price }) {
                 }),
             });
             const data = await response.json();
+            console.log('Data: ', data)
             if (data && data.status === 'success') {
-                window.location.href = data.data.link; // Redirect to the payment link
+                window.open(data.data.link, '_blank'); // Open the payment link in a new tab
+                // window.location.href = data.data.link; // Redirect to the payment link without opening new tab
+
             } else {
                 setPaymentStatus('Error initiating payment. Please try again.');
             }

@@ -16,12 +16,19 @@ function AirtelMoney({ price }) {
     const [phoneError, setPhoneError] = useState(false); // Error flag for user's phone
     const [amount, setAmount] = useState(price ? price : '2000');
 
+    // Extract the root URL (protocol + hostname + port)
+    var rootURL = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+
     const [formData, setFormData] = useState({
         phone_number: phone,
         network: 'AIRTEL',
         amount: amount,
         currency: 'UGX',
-        email: email
+        email: email,
+        redirect_url: `${rootURL}/PaymentVerification`,
+        meta: {
+            userId: `${userInfo.userId}`,
+        }
     });
     const [paymentStatus, setPaymentStatus] = useState(null);
 
@@ -34,8 +41,8 @@ function AirtelMoney({ price }) {
         e.preventDefault();
         setPaymentStatus(null);
 
-        // setFormData({ ...formData, phone_number: phone });
-        setFormData({ ...formData, phone_number: '256121212121' });
+        setFormData({ ...formData, phone_number: phone });
+        // setFormData({ ...formData, phone_number: '256121212121' });
 
         if (!formData.phone_number) {
             setMessage('Please enter phone number.');
@@ -52,7 +59,7 @@ function AirtelMoney({ price }) {
 
         try {
 
-            const response = await fetch(`${serverUrl}/flutterwave/pay`, {
+            const response = await fetch(`${serverUrl}/flutterwave/mobile-money-pay`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
