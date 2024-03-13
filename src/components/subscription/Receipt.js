@@ -22,6 +22,7 @@ const Receipt = ({ receiptData }) => {
             ['Email', receiptData.email],
             [receiptData.phone ? 'Phone' : '', receiptData.phone],
             ['Transaction Date', formatDate(receiptData.created_at)],
+            ['Description', receiptData.description]
         ];
 
         if (isCardPayment) {
@@ -47,9 +48,10 @@ const Receipt = ({ receiptData }) => {
                     <strong>Amount:</strong> {`${receiptData.currency} ${receiptData.charged_amount}`}<br />
                     <strong>Payment Type:</strong> {receiptData.payment_type}<br />
                     {isCardPayment && <span><strong>Card Information:</strong> {`${receiptData.card.type} (${receiptData.card.first_6digits}******${receiptData.card.last_4digits})`}<br /></span>}
-                    <strong>Phone:</strong> {receiptData.phone ? receiptData.phone : 'N/A'}<br />
+                    {receiptData.phone && <span><strong>Phone: {receiptData.phone}</strong><br /></span>}
                     <strong>Email:</strong> {receiptData.email}<br />
                     <strong>Date:</strong> {new Date(receiptData.created_at).toLocaleDateString()}
+                    <strong>Description:</strong> {receiptData.description}<br />
                 </Card.Text>
                 <Button variant="primary" onClick={downloadPdf}>Download Receipt as PDF</Button>
             </Card.Body>

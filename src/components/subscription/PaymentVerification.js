@@ -47,6 +47,7 @@ const PaymentResult = () => {
                             phone: data.transactionData.customer.phone_number,
                             created_at: data.transactionData.customer.created_at,
                             card: data.transactionData.card || {},
+                            description: data.transactionData.meta.description
                         }
                         setTransactionData(receiptData);
                     }

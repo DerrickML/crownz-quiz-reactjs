@@ -49,6 +49,7 @@ function CardPayment({ price }) {
                     },
                     meta: {
                         userId: `${userId}`,
+                        description: "Payment for exam/quiz Points", //TODO: Make it dynamic
                     },
                     customizations: {
                         title: "Crownzcom",
