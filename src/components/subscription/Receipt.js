@@ -13,7 +13,8 @@ const Receipt = ({ transactionData }) => {
         doc.text("Payment Receipt", 20, 20);
         const bodyContent = [
             ['Transaction Ref', transactionData.tx_ref],
-            ['Receipt Number', `#RECEIPT-${transactionData.id}`],
+            // ['Receipt Number', `#RECEIPT-${transactionData.id}`],
+            ['Receipt Number', transactionData.id],
             ['Amount', `${transactionData.currency} ${transactionData.charged_amount}`],
             ['Payment Type', transactionData.payment_type],
             ['Customer', transactionData.customer.name],
