@@ -5,25 +5,27 @@ import 'jspdf-autotable';
 import { formatDate } from '../../utilities/resultsUtil'
 import './Receipt.css'; // Import your custom CSS
 
-const Receipt = ({ transactionData }) => {
-    const isCardPayment = transactionData.payment_type === 'card';
+const Receipt = ({ receiptData }) => {
+    console.log('Receipt Data: ', receiptData)
+    const isCardPayment = receiptData.payment_type === 'card';
 
     const downloadPdf = () => {
         const doc = new jsPDF();
         doc.text("Payment Receipt", 20, 20);
         const bodyContent = [
-            ['Transaction Ref', transactionData.tx_ref],
-            // ['Receipt Number', `#RECEIPT-${transactionData.id}`],
-            ['Receipt Number', transactionData.id],
-            ['Amount', `${transactionData.currency} ${transactionData.charged_amount}`],
-            ['Payment Type', transactionData.payment_type],
-            ['Customer', transactionData.customer.name],
-            ['Email', transactionData.customer.email],
-            ['Transaction Date', formatDate(transactionData.created_at)],
+            ['Transaction Ref', receiptData.tx_ref],
+            // ['Receipt Number', `#RECEIPT-${receiptData.id}`],
+            ['Receipt Number', receiptData.id],
+            ['Amount', `${receiptData.currency} ${receiptData.charged_amount}`],
+            ['Payment Type', receiptData.payment_type],
+            ['Customer', receiptData.name],
+            ['Email', receiptData.email],
+            [receiptData.phone ? 'Phone' : '', receiptData.phone],
+            ['Transaction Date', formatDate(receiptData.created_at)],
         ];
 
         if (isCardPayment) {
-            bodyContent.push(['Card Type', `${transactionData.card.type} (${transactionData.card.first_6digits}******${transactionData.card.last_4digits})`]);
+            bodyContent.push(['Card Type', `${receiptData.card.type} (${receiptData.card.first_6digits}******${receiptData.card.last_4digits})`]);
         }
 
         doc.autoTable({
@@ -38,15 +40,16 @@ const Receipt = ({ transactionData }) => {
         <Card className="receipt-card">
             <Card.Header as="h5">Payment Receipt</Card.Header>
             <Card.Body>
-                <Card.Title>{transactionData.customer.name}</Card.Title>
+                <Card.Title>{receiptData.name}</Card.Title>
                 <Card.Text>
-                    <strong>Transaction Reference:</strong> {transactionData.tx_ref}<br />
-                    <strong>Receipt Number:</strong> #RECEIPT-{transactionData.id}<br />
-                    <strong>Amount:</strong> {`${transactionData.currency} ${transactionData.charged_amount}`}<br />
-                    <strong>Payment Type:</strong> {transactionData.payment_type}<br />
-                    {isCardPayment && <span><strong>Card Information:</strong> {`${transactionData.card.type} (${transactionData.card.first_6digits}******${transactionData.card.last_4digits})`}<br /></span>}
-                    <strong>Email:</strong> {transactionData.customer.email}<br />
-                    <strong>Date:</strong> {new Date(transactionData.created_at).toLocaleDateString()}
+                    <strong>Transaction Reference:</strong> {receiptData.tx_ref}<br />
+                    <strong>Receipt Number:</strong> #RECEIPT-{receiptData.id}<br />
+                    <strong>Amount:</strong> {`${receiptData.currency} ${receiptData.charged_amount}`}<br />
+                    <strong>Payment Type:</strong> {receiptData.payment_type}<br />
+                    {isCardPayment && <span><strong>Card Information:</strong> {`${receiptData.card.type} (${receiptData.card.first_6digits}******${receiptData.card.last_4digits})`}<br /></span>}
+                    <strong>Phone:</strong> {receiptData.phone ? receiptData.phone : 'N/A'}<br />
+                    <strong>Email:</strong> {receiptData.email}<br />
+                    <strong>Date:</strong> {new Date(receiptData.created_at).toLocaleDateString()}
                 </Card.Text>
                 <Button variant="primary" onClick={downloadPdf}>Download Receipt as PDF</Button>
             </Card.Body>

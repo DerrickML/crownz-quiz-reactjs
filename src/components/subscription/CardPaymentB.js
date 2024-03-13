@@ -16,7 +16,7 @@ function CardPayment({ price }) {
     const [userId, setUserId] = useState(userInfo ? userInfo.userId : '');
     const [phone, setPhone] = useState(userInfo ? userInfo.phone : '');
     const [email, setEmail] = useState('crownzcom@gmail.com');
-    const [name, setName] = useState((userInfo ? userInfo.firstName : '') + ' ' + (userInfo ? userInfo.lastName : '') + ' ' + (userInfo ? userInfo.otherName : ''));
+    const [name, setName] = useState((userInfo ? userInfo.firstName : '') + ' ' + (userInfo ? userInfo.lastName : ''));
     const [phoneError, setPhoneError] = useState(false);
     const [amount, setAmount] = useState(price ? price : '2000');
     const [paymentStatus, setPaymentStatus] = useState(null);

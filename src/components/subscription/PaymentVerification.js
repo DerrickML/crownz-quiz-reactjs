@@ -29,9 +29,32 @@ const PaymentResult = () => {
                 try {
                     const response = await fetch(`${serverUrl}/flutterwave/verify-payment/${transactionId}`);
                     const data = await response.json();
-                    await saveTransactionData(data.transactionData); //Saving to database
-                    setPaymentStatus(data.message);
-                    setTransactionData(data.transactionData);
+                    // await saveTransactionData(data.transactionData); //Saving to database
+                    console.log('Transaction data - Client side: ', data);
+                    setPaymentStatus(data.status);
+                    console.log('Payment status - Client side: ', paymentStatus);
+
+                    try {
+                        // Data to send to receipt
+                        const receiptData = {
+                            tx_ref: data.transactionData.tx_ref,
+                            id: data.transactionData.id,
+                            charged_amount: data.transactionData.amount,
+                            currency: data.transactionData.currency,
+                            payment_type: data.transactionData.payment_type,
+                            name: data.transactionData.customer.name,
+                            email: data.transactionData.customer.email,
+                            phone: data.transactionData.customer.phone_number,
+                            created_at: data.transactionData.customer.created_at,
+                            card: data.transactionData.card || {},
+                        }
+                        setTransactionData(receiptData);
+                    }
+                    catch (e) {
+                        console.log("error in recepit ..", e)
+                        throw new Error
+                    }
+
                 } catch (error) {
                     setPaymentStatus('Verification failed. Please contact support.');
                 } finally {
@@ -89,15 +112,15 @@ const PaymentResult = () => {
                     </Spinner>
                 </div>
             ) : (
-                <Alert variant={paymentStatus === "Payment successful" ? 'success' : 'danger'}>
+                <Alert variant={paymentStatus === "success" ? 'success' : 'danger'}>
                     <FontAwesomeIcon
-                        icon={paymentStatus === "Payment successful" ? faCheckCircle : faTimesCircle}
+                        icon={paymentStatus === "success" ? faCheckCircle : faTimesCircle}
                         size="3x"
                     />
                     <p className="payment-status-message">{paymentStatus}</p>
                 </Alert>
             )}
-            {paymentStatus === "Payment successful" ? <Receipt transactionData={transactionData} /> : null}
+            {paymentStatus === "success" ? <Receipt receiptData={transactionData} /> : null}
         </Container>
     );
 };
