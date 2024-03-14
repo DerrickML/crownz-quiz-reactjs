@@ -1,7 +1,7 @@
 //This component is only meant to run after a transaction is made for ONLY FLUTTERWAVE transactions
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Container, Alert, Spinner } from 'react-bootstrap';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Container, Alert, Spinner, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../../context/AuthContext';
@@ -15,10 +15,13 @@ import Receipt from './Receipt'
 import './PaymentResult.css'; // Path to your custom CSS file
 
 const PaymentResult = () => {
-    const { userInfo } = useAuth();
+
     const [transactionData, setTransactionData] = useState({});
     const [paymentStatus, setPaymentStatus] = useState('Verifying...');
     const [loading, setLoading] = useState(true);
+
+    const { userInfo } = useAuth();
+    const navigate = useNavigate();
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const transactionId = queryParams.get('transaction_id') || parseTransactionIdFromResp(queryParams.get('resp'));
@@ -52,7 +55,8 @@ const PaymentResult = () => {
                             created_at: data.transactionData.customer.created_at,
                             card: data.transactionData.card || {},
                             description: data.transactionData.meta.description,
-                            paymentFor: data.transactionData.meta.service
+                            paymentFor: data.transactionData.meta.service,
+                            points: data.transactionData.meta.points,
                         }
                         setTransactionData(receiptData);
                     }
@@ -99,6 +103,7 @@ const PaymentResult = () => {
             }
 
             console.log('transaction status: ', data.status);
+            console.log('Points purchased: ', data.points);
             const response = await databases.createDocument(database_id, transactionTable_id, "unique()",
                 {
                     userID: userInfo.userId,
@@ -111,12 +116,17 @@ const PaymentResult = () => {
                     transactionReference: data.tx_ref,
                     transactionId: `${data.id}`,
                     paymentFor: data.meta.service,
-                    description: data.meta.description
+                    description: data.meta.description,
+                    points: data.points
                 }
             )
         } catch (error) {
             console.error('Error saving transaction data:', error);
         }
+    };
+
+    const viewReceipt = (method) => {
+        navigate(`/payment/receipt`, { state: { receiptData: transactionData } });
     };
 
     return (
@@ -137,7 +147,7 @@ const PaymentResult = () => {
                     <p className="payment-status-message">{paymentStatus}</p>
                 </Alert>
             )}
-            {paymentStatus === "success" ? <Receipt receiptData={transactionData} /> : null}
+            {paymentStatus === "success" ? <Button onClick={viewReceipt} >View Your Receipt</Button> : null}
         </Container>
     );
 };

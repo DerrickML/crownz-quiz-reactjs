@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Card, Form, Button, Container } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInput from "react-phone-number-input";
@@ -17,8 +17,9 @@ import Receipt from './Receipt'
 const MTNMomo = ({ propPrice, propPaymentFor }) => {
     const { userInfo } = useAuth();
 
+    const navigate = useNavigate();
     const location = useLocation();
-    const { price, paymentFor } = location.state || { price: 2000, paymentFor: 'points' }; // Set defaultPrice and defaultPaymentFor accordingly
+    const { price, paymentFor, points } = location.state || { price: 2000, paymentFor: 'points', points: 0 }; // Set defaultPrice and defaultPaymentFor accordingly
 
     const serverUrl = "https://2wkvf7-3000.csb.app"
     const serverMomoRoute = `${serverUrl}/mtnMomo`
@@ -100,6 +101,7 @@ const MTNMomo = ({ propPrice, propPaymentFor }) => {
                     transactionStatus: 'success',
                     description: 'Points Purchase',
                     created_at: new Date().toLocaleString(), // or extract date from the response if available
+                    points: points
                 };
 
                 //Save to database
@@ -126,6 +128,7 @@ const MTNMomo = ({ propPrice, propPaymentFor }) => {
     //Function to save transaction data to transaction database table
     const saveTransactionData = async (data) => {
         try {
+            console.log('Points purchased: ', points);
             const response = await databases.createDocument(database_id, transactionTable_id, "unique()",
                 {
                     userID: userInfo.userId,
@@ -138,7 +141,8 @@ const MTNMomo = ({ propPrice, propPaymentFor }) => {
                     transactionReference: data.tx_ref,
                     transactionId: `${data.id}`,
                     paymentFor: paymentFor,
-                    description: 'Points Purchase'
+                    description: 'Points Purchase',
+                    points: points
                 }
             )
         } catch (error) {
@@ -193,6 +197,10 @@ const MTNMomo = ({ propPrice, propPaymentFor }) => {
         }
     };
 
+    const viewReceipt = () => {
+        navigate(`/payment/receipt`, { state: { receiptData: receiptInfo } });
+    };
+
     return (
         <Container>
             <Card>
@@ -218,7 +226,7 @@ const MTNMomo = ({ propPrice, propPaymentFor }) => {
                 <Button onClick={handlePayment}>Pay</Button>
                 {message && <p>{message}</p>}
             </Card>
-            {paymentStatus === "success" ? <Receipt receiptData={receiptInfo} /> : null}
+            {paymentStatus === "success" ? <Button onClick={viewReceipt}>View Your Receipt</Button> : null}
         </Container>
     );
 };

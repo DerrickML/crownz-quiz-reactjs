@@ -10,7 +10,7 @@ function AirtelMoney({ propPrice, propPaymentFor }) {
     const { userInfo } = useAuth();
 
     const location = useLocation();
-    const { price, paymentFor } = location.state || { price: 2000, paymentFor: 'points' }; // Set defaultPrice and defaultPaymentFor accordingly
+    const { price, paymentFor, points } = location.state || { price: 2000, paymentFor: 'points', points: 0 }; // Set defaultPrice and defaultPaymentFor accordingly
 
     const serverUrl = 'https://2wkvf7-3000.csb.app'
 
@@ -30,11 +30,12 @@ function AirtelMoney({ propPrice, propPaymentFor }) {
         amount: amount,
         currency: 'UGX',
         email: email,
-        redirect_url: `${rootURL}/PaymentVerification`,
+        redirect_url: `${rootURL}/payment/verification`,
         meta: {
             userId: `${userInfo.userId}`,
             description: 'Payment for exam/quiz Points', //TODO: Make it dynamic
-            service: `${paymentFor}`
+            service: `${paymentFor}`,
+            points: `${points}`,
         }
     });
     const [paymentStatus, setPaymentStatus] = useState(null);

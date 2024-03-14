@@ -1,11 +1,14 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 import { jsPDF } from "jspdf";
 import 'jspdf-autotable';
 import { formatDate } from '../../utilities/resultsUtil'
 import './Receipt.css'; // Import your custom CSS
 
-const Receipt = ({ receiptData }) => {
+const Receipt = ({ propReceiptData }) => {
+    const location = useLocation();
+    const { receiptData } = location.state || { price: 2000, paymentFor: 'points' }; // Set defaultReceiptData
     console.log('Receipt Data: ', receiptData)
     const isCardPayment = receiptData.payment_type === 'card';
 
@@ -34,7 +37,7 @@ const Receipt = ({ receiptData }) => {
             body: bodyContent,
             startY: 30,
         });
-        doc.save('receipt.pdf');
+        doc.save(`receipt-${receiptData.id}.pdf`);
     };
 
     return (

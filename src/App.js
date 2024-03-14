@@ -32,6 +32,7 @@ import PaymentResult from "./components/subscription/PaymentVerification"
 import MTNMomo from "./components/subscription/MTNMomo";
 import AirtelMoney from "./components/subscription/AirtelMoney";
 import CardPayment from "./components/subscription/CardPaymentB";
+import Receipt from "./components/subscription/Receipt.js";
 import { AuthProvider, useAuth } from './context/AuthContext';
 import "./App.css";
 
@@ -181,10 +182,17 @@ function App() {
                   </PrivateRoute>
                 }
               />
-              <Route path="/PaymentVerification"
+              <Route path="/payment/verification"
                 element={
                   <PrivateRoute>
                     <PaymentResult />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/payment/receipt"
+                element={
+                  <PrivateRoute>
+                    <Receipt />
                   </PrivateRoute>
                 }
               />

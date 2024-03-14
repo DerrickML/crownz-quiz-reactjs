@@ -10,7 +10,7 @@ function CardPayment({ propPrice, propPaymentFor }) {
     const { userInfo } = useAuth();
 
     const location = useLocation();
-    const { price, paymentFor } = location.state || { price: 2000, paymentFor: 'points' }; // Set defaultPrice and defaultPaymentFor accordingly
+    const { price, paymentFor, points } = location.state || { price: 2000, paymentFor: 'points', points: 0 }; // Set defaultPrice and defaultPaymentFor accordingly
 
     console.log(userInfo)
     const serverUrl = 'https://2wkvf7-3000.csb.app'
@@ -45,7 +45,7 @@ function CardPayment({ propPrice, propPaymentFor }) {
                     amount: amount,
                     currency: 'UGX',
                     // redirect_url: `${serverUrl}`,
-                    redirect_url: `${rootURL}/PaymentVerification`,
+                    redirect_url: `${rootURL}/payment/verification`,
                     payment_options: 'card',
                     customer: {
                         email: email,
@@ -55,7 +55,8 @@ function CardPayment({ propPrice, propPaymentFor }) {
                     meta: {
                         userId: `${userId}`,
                         description: 'Payment for exam/quiz Points', //TODO: Make it dynamic
-                        service: `${paymentFor}`
+                        service: `${paymentFor}`,
+                        points: `${points}`,
                     },
                     customizations: {
                         title: 'Crownzcom',
