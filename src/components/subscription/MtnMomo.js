@@ -260,10 +260,10 @@ const MTNMomo = ({ propPrice, propPaymentFor }) => {
                         </Form.Control.Feedback>
                     )}
                 </Form.Group>
-                <Button onClick={handlePayment}>Pay</Button>
+                <Button onClick={handlePayment} disabled={!phone}>Pay</Button>
                 {message && <p>{message}</p>}
             </Card>
-            {paymentStatus === "success" ? <Button onClick={viewReceipt}>View Your Receipt</Button> : null}
+            {paymentStatus === "success" ? <Button onClick={viewReceipt} >View Your Receipt</Button> : null}
         </Container>
     );
 };
