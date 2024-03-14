@@ -4,7 +4,7 @@ function Testing() {
 
   return (
     <div>
-      <PaymentMethods price={10000} />
+      <PaymentMethods price={10000} paymentFor={'points'} />
     </div>
   );
 }

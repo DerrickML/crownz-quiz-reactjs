@@ -1,4 +1,4 @@
-//This component is only meant to run after a transaction is made
+//This component is only meant to run after a transaction is made for ONLY FLUTTERWAVE transactions
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Container, Alert, Spinner } from 'react-bootstrap';
@@ -15,6 +15,7 @@ import Receipt from './Receipt'
 import './PaymentResult.css'; // Path to your custom CSS file
 
 const PaymentResult = () => {
+    const { userInfo } = useAuth();
     const [transactionData, setTransactionData] = useState({});
     const [paymentStatus, setPaymentStatus] = useState('Verifying...');
     const [loading, setLoading] = useState(true);
@@ -22,7 +23,6 @@ const PaymentResult = () => {
     const queryParams = new URLSearchParams(location.search);
     const transactionId = queryParams.get('transaction_id') || parseTransactionIdFromResp(queryParams.get('resp'));
     const serverUrl = "https://2wkvf7-3000.csb.app";
-    const { userInfo } = useAuth();
 
     useEffect(() => {
         const verifyPayment = async () => {
@@ -51,7 +51,8 @@ const PaymentResult = () => {
                             phone: data.transactionData.customer.phone_number,
                             created_at: data.transactionData.customer.created_at,
                             card: data.transactionData.card || {},
-                            description: data.transactionData.meta.description
+                            description: data.transactionData.meta.description,
+                            paymentFor: data.transactionData.meta.service
                         }
                         setTransactionData(receiptData);
                     }
@@ -108,7 +109,9 @@ const PaymentResult = () => {
                     paymentGateway: 'Flutterwave Gateway',
                     paymentSatus: data.status === 'successful' ? 'success' : 'failed',
                     transactionReference: data.tx_ref,
-                    transactionId: `${data.id}`
+                    transactionId: `${data.id}`,
+                    paymentFor: data.meta.service,
+                    description: data.meta.description
                 }
             )
         } catch (error) {

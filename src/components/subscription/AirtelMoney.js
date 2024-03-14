@@ -6,11 +6,11 @@ import PhoneInput from 'react-phone-number-input';
 import { isValidPhoneNumber } from 'react-phone-number-input';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../context/AuthContext';
-function AirtelMoney({ propPrice }) {
+function AirtelMoney({ propPrice, propPaymentFor }) {
     const { userInfo } = useAuth();
 
     const location = useLocation();
-    const { price } = location.state || { price: 2000 }; // Set defaultPrice accordingly
+    const { price, paymentFor } = location.state || { price: 2000, paymentFor: 'points' }; // Set defaultPrice and defaultPaymentFor accordingly
 
     const serverUrl = 'https://2wkvf7-3000.csb.app'
 
@@ -34,7 +34,7 @@ function AirtelMoney({ propPrice }) {
         meta: {
             userId: `${userInfo.userId}`,
             description: 'Payment for exam/quiz Points', //TODO: Make it dynamic
-            service: 'Points Purchase' //TODO: Make it dynamic
+            service: `${paymentFor}`
         }
     });
     const [paymentStatus, setPaymentStatus] = useState(null);

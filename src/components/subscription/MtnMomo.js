@@ -14,11 +14,11 @@ import {
 import { useAuth } from '../../context/AuthContext';
 import Receipt from './Receipt'
 
-const MTNMomo = ({ propPrice, otherData }) => {
+const MTNMomo = ({ propPrice, propPaymentFor }) => {
     const { userInfo } = useAuth();
 
     const location = useLocation();
-    const { price } = location.state || { price: 2000 }; // Set defaultPrice accordingly
+    const { price, paymentFor } = location.state || { price: 2000, paymentFor: 'points' }; // Set defaultPrice and defaultPaymentFor accordingly
 
     const serverUrl = "https://2wkvf7-3000.csb.app"
     const serverMomoRoute = `${serverUrl}/mtnMomo`
@@ -89,6 +89,7 @@ const MTNMomo = ({ propPrice, otherData }) => {
             const data = await response.json();
             if (data.status === "SUCCESSFUL") {
                 setPaymentStatus('success')
+                console.log('MTN Payment statuds: ', paymentStatus)
                 const receiptDetails = {
                     id: data.financialTransactionId,
                     tx_ref: data.externalId,
@@ -96,7 +97,7 @@ const MTNMomo = ({ propPrice, otherData }) => {
                     charged_amount: data.amount,
                     currency: data.currency,
                     phone: data.payer.partyId,
-                    transactionStatus: paymentStatus,
+                    transactionStatus: 'success',
                     description: 'Points Purchase',
                     created_at: new Date().toLocaleString(), // or extract date from the response if available
                 };
@@ -135,7 +136,9 @@ const MTNMomo = ({ propPrice, otherData }) => {
                     paymentGateway: 'MTN Mobile Money Payment Gateway',
                     paymentSatus: data.transactionStatus,
                     transactionReference: data.tx_ref,
-                    transactionId: `${data.id}`
+                    transactionId: `${data.id}`,
+                    paymentFor: paymentFor,
+                    description: 'Points Purchase'
                 }
             )
         } catch (error) {

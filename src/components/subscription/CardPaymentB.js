@@ -6,11 +6,11 @@ import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid'; // UUID generation for unique identifiers
 import { useAuth } from '../../context/AuthContext';
 
-function CardPayment({ propPrice }) {
+function CardPayment({ propPrice, propPaymentFor }) {
     const { userInfo } = useAuth();
 
     const location = useLocation();
-    const { price } = location.state || { price: 2000 }; // Set defaultPrice accordingly
+    const { price, paymentFor } = location.state || { price: 2000, paymentFor: 'points' }; // Set defaultPrice and defaultPaymentFor accordingly
 
     console.log(userInfo)
     const serverUrl = 'https://2wkvf7-3000.csb.app'
@@ -55,7 +55,7 @@ function CardPayment({ propPrice }) {
                     meta: {
                         userId: `${userId}`,
                         description: 'Payment for exam/quiz Points', //TODO: Make it dynamic
-                        service: 'Points Purchase' //TODO: Make it dynamic
+                        service: `${paymentFor}`
                     },
                     customizations: {
                         title: 'Crownzcom',

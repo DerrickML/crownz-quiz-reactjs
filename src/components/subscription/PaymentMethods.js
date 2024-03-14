@@ -6,7 +6,7 @@ import { faMobileAlt, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './PaymentMethods.css';
 
-function PaymentMethods({ initialCoupon, price }) {
+function PaymentMethods({ initialCoupon, price, paymentFor }) {
     const navigate = useNavigate();
     const serverUrl = "https://2wkvf7-3000.csb.app";
     const originalPrice = price;
@@ -17,6 +17,7 @@ function PaymentMethods({ initialCoupon, price }) {
     const [couponError, setCouponError] = useState('');
     const [couponLoader, setCouponLoader] = useState(false)
     const [finalPrice, setFinalPrice] = useState(originalPrice);
+    const [paymentMadeFor, setPaymentMadeFor] = useState(paymentFor)
 
     const handleApplyCoupon = async () => {
         try {
@@ -64,7 +65,7 @@ function PaymentMethods({ initialCoupon, price }) {
     };
 
     const handlePaymentSelection = (method) => {
-        navigate(`/payment/${method.toLowerCase()}`, { state: { price: finalPrice } });
+        navigate(`/payment/${method.toLowerCase()}`, { state: { price: finalPrice, paymentFor: paymentMadeFor } });
     };
 
     return (
