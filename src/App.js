@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
   useParams,
+  Switch,
 } from "react-router-dom";
 import useNetworkStatus from "./hooks/useNetworkStatus";
 import { Container } from "react-bootstrap";
@@ -26,8 +27,11 @@ import PasswordReset from "./components/PasswordReset";
 import StudentDetails from "./components/StudentDetails";
 import LinkedStudents from "./components/LinkedStudents";
 import EditProfile from "./components/EditProfile";
-import PaymentResult from "./components/subscription/PaymentVerification"
 import Answers from "./components/renderAnswer/Answers";
+import PaymentResult from "./components/subscription/PaymentVerification"
+import MTNMomo from "./components/subscription/MTNMomo";
+import AirtelMoney from "./components/subscription/AirtelMoney";
+import CardPayment from "./components/subscription/CardPaymentB";
 import { AuthProvider, useAuth } from './context/AuthContext';
 import "./App.css";
 
@@ -153,6 +157,27 @@ function App() {
                 element={
                   <PrivateRoute>
                     <Answers />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/payment/mtn-momo"
+                element={
+                  <PrivateRoute>
+                    <MTNMomo />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/payment/airtel-money"
+                element={
+                  <PrivateRoute>
+                    <AirtelMoney />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/payment/card-payment"
+                element={
+                  <PrivateRoute>
+                    <CardPayment />
                   </PrivateRoute>
                 }
               />

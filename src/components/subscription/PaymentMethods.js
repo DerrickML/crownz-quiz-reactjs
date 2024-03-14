@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Button, Form, Alert, Card, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './PaymentMethods.css';
-import AirtelMoney from './AirtelMoney';
-// import CardPayment from './CardPaymentA';
-import CardPayment from './CardPaymentB';
-import MTNMomo from './MTNMomo';
 
 function PaymentMethods({ initialCoupon, price }) {
+    const navigate = useNavigate();
     const serverUrl = "https://2wkvf7-3000.csb.app";
     const originalPrice = price;
 
@@ -17,7 +15,6 @@ function PaymentMethods({ initialCoupon, price }) {
     const [coupon, setCoupon] = useState(initialCoupon || '');
     const [discountInfo, setDiscountInfo] = useState(null);
     const [couponError, setCouponError] = useState('');
-    const [selectedMethod, setSelectedMethod] = useState('');
     const [couponLoader, setCouponLoader] = useState(false)
     const [finalPrice, setFinalPrice] = useState(originalPrice);
 
@@ -67,17 +64,8 @@ function PaymentMethods({ initialCoupon, price }) {
     };
 
     const handlePaymentSelection = (method) => {
-        setSelectedMethod(method);
-        setStage('makePayment');
+        navigate(`/payment/${method.toLowerCase()}`, { state: { price: finalPrice } });
     };
-
-    const loaders = () => {
-        <>
-            <Spinner animation="grow" variant="primary" />
-            <Spinner animation="grow" variant="secondary" />
-            <Spinner animation="grow" variant="success" />
-        </>
-    }
 
     return (
         <Container className="mt-5">
@@ -123,27 +111,10 @@ function PaymentMethods({ initialCoupon, price }) {
                         <Card className="text-center">
                             <Card.Body>
                                 <Card.Title>Select Payment Method</Card.Title>
-                                <Button variant="warning" onClick={() => handlePaymentSelection('MTNMomo')}>MTN Mobile Money</Button>
-                                <Button variant="danger" onClick={() => handlePaymentSelection('AirtelMoney')}>Airtel Money</Button>
-                                <Button variant="dark" onClick={() => handlePaymentSelection('CardPayment')}>Card Payment</Button>
+                                <Button variant="warning" onClick={() => handlePaymentSelection('mtn-momo')}>MTN Mobile Money</Button>
+                                <Button variant="danger" onClick={() => handlePaymentSelection('airtel-money')}>Airtel Money</Button>
+                                <Button variant="dark" onClick={() => handlePaymentSelection('card-payment')}>Card Payment</Button>
                                 <Button variant="secondary" onClick={() => setStage('coupon')}>Back to Coupon</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                </Row>
-            )}
-
-            {/* Stage 3: Make Payment */}
-            {stage === 'makePayment' && (
-                <Row className="justify-content-md-center">
-                    <Col md={6}>
-                        <Card className="text-center">
-                            <Card.Body>
-                                <Card.Title>Complete Payment</Card.Title>
-                                {selectedMethod === 'MTNMomo' && <MTNMomo price={finalPrice} />}
-                                {selectedMethod === 'AirtelMoney' && <AirtelMoney price={finalPrice} />}
-                                {selectedMethod === 'CardPayment' && <CardPayment price={finalPrice} />}
-                                <Button variant="secondary" onClick={() => setStage('payment')}>Back to Payment Methods</Button>
                             </Card.Body>
                         </Card>
                     </Col>

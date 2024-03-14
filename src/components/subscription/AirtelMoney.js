@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
-import PhoneInput from "react-phone-number-input";
-import { isValidPhoneNumber } from "react-phone-number-input";
+import PhoneInput from 'react-phone-number-input';
+import { isValidPhoneNumber } from 'react-phone-number-input';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../context/AuthContext';
-function AirtelMoney({ price }) {
+function AirtelMoney({ propPrice }) {
     const { userInfo } = useAuth();
-    const serverUrl = "https://2wkvf7-3000.csb.app"
+
+    const location = useLocation();
+    const { price } = location.state || { price: 2000 }; // Set defaultPrice accordingly
+
+    const serverUrl = 'https://2wkvf7-3000.csb.app'
 
     const [phone, setPhone] = useState(userInfo.phone || '');
     // const [email, setEmail] = useState(userInfo.email || 'crownzcom@gmail.com');
@@ -28,6 +33,8 @@ function AirtelMoney({ price }) {
         redirect_url: `${rootURL}/PaymentVerification`,
         meta: {
             userId: `${userInfo.userId}`,
+            description: 'Payment for exam/quiz Points', //TODO: Make it dynamic
+            service: 'Points Purchase' //TODO: Make it dynamic
         }
     });
     const [paymentStatus, setPaymentStatus] = useState(null);
@@ -69,7 +76,7 @@ function AirtelMoney({ price }) {
 
             const data = await response.json();
             console.log('Pay response Data:\n', data);
-            if (data.response.status === "success" && data.response.meta.authorization.mode === "redirect") {
+            if (data.response.status === 'success' && data.response.meta.authorization.mode === 'redirect') {
                 window.location.href = data.response.meta.authorization.redirect;
             } else {
                 setPaymentStatus(data.response.message);
@@ -81,32 +88,32 @@ function AirtelMoney({ price }) {
     };
 
     return (
-        <div className="mt-4">
+        <div className='mt-4'>
             <h3>Mobile Money Payment</h3>
             <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
+                <Form.Group className='mb-3'>
                     <Form.Label>Phone Number*</Form.Label>
                     <PhoneInput
-                        className={`form-control ${phoneError ? "is-invalid" : "custom-phone-input "
+                        className={`form-control ${phoneError ? 'is-invalid' : 'custom-phone-input '
                             }`}
-                        placeholder="Enter phone number"
+                        placeholder='Enter phone number'
                         international
-                        defaultCountry="UG"
+                        defaultCountry='UG'
                         countryCallingCodeEditable={false}
                         value={phone}
                         onChange={setPhone}
                         required
                     />
                     {phoneError && (
-                        <Form.Control.Feedback type="invalid">
+                        <Form.Control.Feedback type='invalid'>
                             Invalid phone number
                         </Form.Control.Feedback>
                     )}
                 </Form.Group>
 
-                <Button variant="success" type="submit">Pay with Mobile Money</Button>
+                <Button variant='success' type='submit'>Pay with Mobile Money</Button>
 
-                {paymentStatus && <Alert className="mt-3" variant="info">{paymentStatus}</Alert>}
+                {paymentStatus && <Alert className='mt-3' variant='info'>{paymentStatus}</Alert>}
             </Form>
             {message && <p>{message}</p>}
         </div>

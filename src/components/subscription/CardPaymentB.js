@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
-import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from "uuid"; // UUID generation for unique identifiers
+import { v4 as uuidv4 } from 'uuid'; // UUID generation for unique identifiers
 import { useAuth } from '../../context/AuthContext';
 
-function CardPayment({ price }) {
+function CardPayment({ propPrice }) {
     const { userInfo } = useAuth();
+
+    const location = useLocation();
+    const { price } = location.state || { price: 2000 }; // Set defaultPrice accordingly
+
     console.log(userInfo)
-    const serverUrl = "https://2wkvf7-3000.csb.app"
+    const serverUrl = 'https://2wkvf7-3000.csb.app'
 
     // Extract the root URL (protocol + hostname + port)
     var rootURL = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
@@ -38,10 +43,10 @@ function CardPayment({ price }) {
                 body: JSON.stringify({
                     tx_ref: `${uuidv4()}-${Date.now()}`,
                     amount: amount,
-                    currency: "UGX",
+                    currency: 'UGX',
                     // redirect_url: `${serverUrl}`,
                     redirect_url: `${rootURL}/PaymentVerification`,
-                    payment_options: "card",
+                    payment_options: 'card',
                     customer: {
                         email: email,
                         phonenumber: phone,
@@ -49,11 +54,12 @@ function CardPayment({ price }) {
                     },
                     meta: {
                         userId: `${userId}`,
-                        description: "Payment for exam/quiz Points", //TODO: Make it dynamic
+                        description: 'Payment for exam/quiz Points', //TODO: Make it dynamic
+                        service: 'Points Purchase' //TODO: Make it dynamic
                     },
                     customizations: {
-                        title: "Crownzcom",
-                        description: "Payment for exam/quiz Points",
+                        title: 'Crownzcom',
+                        description: 'Payment for exam/quiz Points',
                         logo: `${serverUrl}/images/logo.png`
                     }
                 }),
@@ -87,55 +93,55 @@ function CardPayment({ price }) {
     };
 
     return (
-        <div className="mt-4">
+        <div className='mt-4'>
             <h3>Payment with Card</h3>
 
             <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
+                <Form.Group className='mb-3'>
                     <Form.Label>Name*</Form.Label>
                     <Form.Control
-                        type="text"
-                        placeholder="Enter your name"
+                        type='text'
+                        placeholder='Enter your name'
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
                     />
                 </Form.Group>
 
-                <Form.Group className="mb-3">
+                <Form.Group className='mb-3'>
                     <Form.Label>Email*</Form.Label>
                     <Form.Control
-                        type="email"
-                        placeholder="Enter your email"
+                        type='email'
+                        placeholder='Enter your email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                 </Form.Group>
 
-                <Form.Group className="mb-3">
+                <Form.Group className='mb-3'>
                     <Form.Label>Phone Number*</Form.Label>
                     <PhoneInput
-                        className={`form-control ${phoneError ? "is-invalid" : "custom-phone-input "
+                        className={`form-control ${phoneError ? 'is-invalid' : 'custom-phone-input '
                             }`}
-                        placeholder="Enter phone number"
+                        placeholder='Enter phone number'
                         international
-                        defaultCountry="UG"
+                        defaultCountry='UG'
                         countryCallingCodeEditable={false}
                         value={phone}
                         onChange={setPhone}
                         required
                     />
                     {phoneError && (
-                        <Form.Control.Feedback type="invalid">
+                        <Form.Control.Feedback type='invalid'>
                             Invalid phone number
                         </Form.Control.Feedback>
                     )}
                 </Form.Group>
 
-                <Button variant="success" type="submit">Proceed to Complete Payment</Button>
+                <Button variant='success' type='submit'>Proceed to Complete Payment</Button>
 
-                {paymentStatus && <Alert className="mt-3" variant="info">{paymentStatus}</Alert>}
+                {paymentStatus && <Alert className='mt-3' variant='info'>{paymentStatus}</Alert>}
             </Form>
             {message && <p>{message}</p>}
         </div>

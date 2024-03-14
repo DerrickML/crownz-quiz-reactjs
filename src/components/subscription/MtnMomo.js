@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { Card, Form, Button } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
+import { Card, Form, Button, Container } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import PropTypes from 'prop-types';
 import { useAuth } from '../../context/AuthContext';
+import Receipt from './Receipt'
 
-const MTNMomo = ({ price, otherData }) => {
+const MTNMomo = ({ propPrice, otherData }) => {
     const { userInfo } = useAuth();
+
+    const location = useLocation();
+    const { price } = location.state || { price: 2000 }; // Set defaultPrice accordingly
 
     const serverUrl = "https://2wkvf7-3000.csb.app"
     const serverMomoRoute = `${serverUrl}/mtnMomo`
@@ -16,13 +21,12 @@ const MTNMomo = ({ price, otherData }) => {
     const [amount, setAmount] = useState(price ? price : '2000');
     const [message, setMessage] = useState('');
     const [phoneError, setPhoneError] = useState(false); // Error flag for user's phone
+    const [receiptInfo, setReceiptInfo] = useState({});
+    const [paymentStatus, setPaymentStatus] = useState('');
 
-
+    // Create a new MTN MoMo API user
     const createApiUser = async () => {
         console.log('Creating API user...');
-        // Add the logic to create an API user
-        // You should replace the URL with your server's endpoint for creating an API user
-        // This is a sample logic
         const response = await fetch(`${serverMomoRoute}/create-api-user`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
@@ -30,12 +34,14 @@ const MTNMomo = ({ price, otherData }) => {
         return response.json();
     };
 
+    // Returns created user details if exists
     const getCreatedUser = async (userId) => {
         console.log('Retrieving created user...');
         const response = await fetch(`${serverMomoRoute}/get-created-user/${userId}`);
         return response.json();
     };
 
+    // Retrieve API key for the user used to generate a token
     const retrieveApiKey = async (userId) => {
         console.log('Retrieving API key...');
         const response = await fetch(`${serverMomoRoute}/retrieve-api-key/${userId}`, {
@@ -45,6 +51,7 @@ const MTNMomo = ({ price, otherData }) => {
         return response.json();
     };
 
+    //Generates a token required for transaction
     const generateApiToken = async (userId, apiKey) => {
         console.log('Generating MoMo token...');
         const response = await fetch(`${serverMomoRoute}/generate-api-token`, {
@@ -55,9 +62,9 @@ const MTNMomo = ({ price, otherData }) => {
         return response.json();
     }
 
+    // Request to make a payment using the generated token
     const requestToPay = async (phone, amount, momoTokenId) => {
         console.log('Making payment request...');
-        console.log('MoMo Token: ', JSON.stringify(momoTokenId));
         const response = await fetch(`${serverMomoRoute}/request-to-pay`, {
             method: 'POST',
             headers: {
@@ -67,6 +74,36 @@ const MTNMomo = ({ price, otherData }) => {
             body: JSON.stringify({ phone, total: amount, momoTokenId })
         });
         return response.json();
+    };
+
+    // Verify payment status
+    const verifyPaymentStatus = async (transactionId, momoTokenId) => {
+        try {
+            const response = await fetch(`${serverMomoRoute}/payment-status/${transactionId}/${momoTokenId}`);
+            const data = await response.json();
+            if (data.status === "SUCCESSFUL") {
+                setPaymentStatus('success')
+                const receiptDetails = {
+                    id: data.financialTransactionId,
+                    tx_ref: data.externalId,
+                    payment_type: 'MTN Mobile Money Uganda',
+                    charged_amount: data.amount,
+                    currency: data.currency,
+                    phone: data.payer.partyId,
+                    transactionStatus: data.status,
+                    description: 'Points Purchase',
+                    created_at: new Date().toLocaleString(), // or extract date from the response if available
+                };
+                setReceiptInfo(receiptDetails);
+                return receiptDetails;
+            } else {
+                // Handle unsuccessful transaction
+                console.error("Payment Unsuccessful:", data);
+                return
+            }
+        } catch (error) {
+            console.error("Error verifying payment status:", error);
+        }
     };
 
     // Phone number validation function
@@ -107,7 +144,11 @@ const MTNMomo = ({ price, otherData }) => {
 
             if (paymentResponse.success) {
                 setMessage('Payment successful!');
-                console.log('Finshed to make payment...');
+                console.log('Finshed to make payment...', paymentResponse);
+
+                // Verify payment status
+                const verificatioStatusResponse = await verifyPaymentStatus(paymentResponse.paymentRefId, paymentResponse.momoTokenId);
+                console.log('Verification status:', verificatioStatusResponse);
             } else {
                 setMessage('Payment failed.');
             }
@@ -118,29 +159,32 @@ const MTNMomo = ({ price, otherData }) => {
     };
 
     return (
-        <Card>
-            <Form.Group className="mb-3">
-                <Form.Label>Phone Number*</Form.Label>
-                <PhoneInput
-                    className={`form-control ${phoneError ? "is-invalid" : "custom-phone-input "
-                        }`}
-                    placeholder="Enter phone number"
-                    international
-                    defaultCountry="UG"
-                    countryCallingCodeEditable={false}
-                    value={phone}
-                    onChange={setPhone}
-                    required
-                />
-                {phoneError && (
-                    <Form.Control.Feedback type="invalid">
-                        Invalid phone number
-                    </Form.Control.Feedback>
-                )}
-            </Form.Group>
-            <Button onClick={handlePayment}>Pay</Button>
-            {message && <p>{message}</p>}
-        </Card>
+        <Container>
+            <Card>
+                <Form.Group className="mb-3">
+                    <Form.Label>Phone Number*</Form.Label>
+                    <PhoneInput
+                        className={`form-control ${phoneError ? "is-invalid" : "custom-phone-input "
+                            }`}
+                        placeholder="Enter phone number"
+                        international
+                        defaultCountry="UG"
+                        countryCallingCodeEditable={false}
+                        value={phone}
+                        onChange={setPhone}
+                        required
+                    />
+                    {phoneError && (
+                        <Form.Control.Feedback type="invalid">
+                            Invalid phone number
+                        </Form.Control.Feedback>
+                    )}
+                </Form.Group>
+                <Button onClick={handlePayment}>Pay</Button>
+                {message && <p>{message}</p>}
+            </Card>
+            {paymentStatus === "success" ? <Receipt receiptData={receiptInfo} /> : null}
+        </Container>
     );
 };
 
