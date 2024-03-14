@@ -9,6 +9,7 @@ import {
     databases,
     database_id,
     transactionTable_id,
+    Query
 } from "../../appwriteConfig.js";
 import Receipt from './Receipt'
 import './PaymentResult.css'; // Path to your custom CSS file
@@ -29,7 +30,10 @@ const PaymentResult = () => {
                 try {
                     const response = await fetch(`${serverUrl}/flutterwave/verify-payment/${transactionId}`);
                     const data = await response.json();
-                    // await saveTransactionData(data.transactionData); //Saving to database
+
+                    //Saving to database
+                    await saveTransactionData(data.transactionData);
+
                     console.log('Transaction data - Client side: ', data);
                     setPaymentStatus(data.status);
                     console.log('Payment status - Client side: ', paymentStatus);
@@ -85,6 +89,15 @@ const PaymentResult = () => {
     //Function to save transaction data to transaction table
     const saveTransactionData = async (data) => {
         try {
+            // Check if transaction already exists
+            const existingTransaction = await databases.listDocuments(database_id, transactionTable_id, [Query.equal('transactionId', [`${data.id}`])]);
+
+            if (existingTransaction.documents.length > 0) {
+                console.log('Transaction already saved.');
+                return;
+            }
+
+            console.log('transaction status: ', data.status);
             const response = await databases.createDocument(database_id, transactionTable_id, "unique()",
                 {
                     userID: userInfo.userId,
@@ -92,8 +105,8 @@ const PaymentResult = () => {
                     transactionAmount: data.amount,
                     currency: data.currency,
                     paymentMethod: data.payment_type,
-                    paymentGateway: 'Flutterwave',
-                    paymentSatus: data.status,
+                    paymentGateway: 'Flutterwave Gateway',
+                    paymentSatus: data.status === 'successful' ? 'success' : 'failed',
                     transactionReference: data.tx_ref,
                     transactionId: `${data.id}`
                 }

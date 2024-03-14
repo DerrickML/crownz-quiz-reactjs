@@ -5,6 +5,12 @@ import 'react-phone-number-input/style.css';
 import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import PropTypes from 'prop-types';
+import {
+    databases,
+    database_id,
+    transactionTable_id,
+    Query
+} from "../../appwriteConfig.js";
 import { useAuth } from '../../context/AuthContext';
 import Receipt from './Receipt'
 
@@ -90,11 +96,16 @@ const MTNMomo = ({ propPrice, otherData }) => {
                     charged_amount: data.amount,
                     currency: data.currency,
                     phone: data.payer.partyId,
-                    transactionStatus: data.status,
+                    transactionStatus: paymentStatus,
                     description: 'Points Purchase',
                     created_at: new Date().toLocaleString(), // or extract date from the response if available
                 };
+
+                //Save to database
+                await saveTransactionData(receiptDetails);
+
                 setReceiptInfo(receiptDetails);
+
                 return receiptDetails;
             } else {
                 // Handle unsuccessful transaction
@@ -109,6 +120,27 @@ const MTNMomo = ({ propPrice, otherData }) => {
     // Phone number validation function
     const validatePhoneNumber = (phoneNumber) => {
         return phoneNumber && !isValidPhoneNumber(phoneNumber);
+    };
+
+    //Function to save transaction data to transaction database table
+    const saveTransactionData = async (data) => {
+        try {
+            const response = await databases.createDocument(database_id, transactionTable_id, "unique()",
+                {
+                    userID: userInfo.userId,
+                    transactionDate: data.created_at,
+                    transactionAmount: data.charged_amount,
+                    currency: data.currency,
+                    paymentMethod: data.payment_type,
+                    paymentGateway: 'MTN Mobile Money Payment Gateway',
+                    paymentSatus: data.transactionStatus,
+                    transactionReference: data.tx_ref,
+                    transactionId: `${data.id}`
+                }
+            )
+        } catch (error) {
+            console.error('Error saving transaction data:', error);
+        }
     };
 
     const handlePayment = async () => {
