@@ -9,9 +9,11 @@ import {
     databases,
     database_id,
     transactionTable_id,
+    pointsBatchTable_id,
+    pointsTable_id,
     Query
 } from "../../appwriteConfig.js";
-import Receipt from './Receipt'
+import { createDocument } from '../../utilities/otherUtils'
 import './PaymentResult.css'; // Path to your custom CSS file
 
 const PaymentResult = () => {
@@ -103,7 +105,7 @@ const PaymentResult = () => {
             }
 
             console.log('transaction status: ', data.status);
-            console.log('Points purchased: ', data.points);
+            console.log('Points purchased: ', data.meta.points);
             const response = await databases.createDocument(database_id, transactionTable_id, "unique()",
                 {
                     userID: userInfo.userId,
@@ -117,9 +119,45 @@ const PaymentResult = () => {
                     transactionId: `${data.id}`,
                     paymentFor: data.meta.service,
                     description: data.meta.description,
-                    points: data.points
+                    points: data.meta.points
                 }
             )
+
+            /*** ----------- Update Points tables ----------- ***/
+            let created_at = data.created_at;
+            let createdDate = new Date(created_at);
+            let expiryDate = new Date(createdDate.getFullYear() + 1, createdDate.getMonth(), createdDate.getDate()).toLocaleString();
+
+            console.log(expiryDate);
+            if (data.meta.service === 'points') {
+                //createDocument(databaseId, tableId, uniqueId, data, tableUse)
+                //Points Batch Table
+                await createDocument(database_id, pointsBatchTable_id, "unique()", {
+                    transactionID: data.tx_ref,
+                    userID: userInfo.userId,
+                    points: data.meta.points,
+                    purchaseDate: created_at,
+                    expiryDate: expiryDate,
+                }, 'Points Purchase with Flutterwave Gateway - PaymentVerification')
+
+                //Points Table
+                //Retrieve user document Id
+                const response = await databases.listDocuments(database_id, pointsTable_id, [
+                    Query.equal("UserID", userInfo.userId),
+                ]);
+                console.log('Checking points table: ', response)
+                if (response.documents.length > 0) { //TODO: If table user points doesn't exist, create new document
+                    const documentId = response.documents[0].$id //Points document id to be updated
+                    let currentPoints = response.documents[0].PointsBalance
+                    console.log('points document id: ', documentId)
+
+                    //update Points table with purchases points
+                    const updateResponse = await databases.updateDocument(database_id, pointsTable_id, documentId, { PointsBalance: (currentPoints + data.meta.points), ExpiryDate: expiryDate })
+                    console.log('update points balance: ', updateResponse)
+                }
+            }
+            /*** ----------- END: Update Points tables ----------- ***/
+
         } catch (error) {
             console.error('Error saving transaction data:', error);
         }

@@ -1,3 +1,21 @@
+import {
+    client,
+    account,
+    databases,
+    database_id,
+    studentTable_id,
+    nextOfKinTable_id,
+    studentMarksTable_id,
+    sstTablePLE_id,
+    couponTable_id,
+    transactionTable_id,
+    pointsTable_id,
+    pointsBatchTable_id,
+    Permission,
+    Role,
+    Query,
+} from "../appwriteConfig.js";
+
 export const sendEmailToNextOfKin = async (userInfo, subjectName, examScore, examDateTime) => {
     const studentName = `${userInfo.firstName} ${userInfo.lastName}${userInfo.otherName ? ` ${userInfo.otherName}` : ''}`;
     const educationLevel = userInfo.educationLevel;
@@ -62,3 +80,18 @@ export const formatDate = (dateTime) => {
         dateStyle: "long",
     })} ${date.toLocaleTimeString()}`;
 };
+
+/**
+* APPWRITE FUNCTIONS
+*/
+
+/*** Create a document ***/
+export const createDocument = async (databaseId, tableId, uniqueId, data, tableUse) => {
+    try {
+        const response = await databases.createDocument(databaseId, tableId, uniqueId, data)
+        return response;
+    } catch (error) {
+        console.error(`Error Creating Document - (${tableUse}):`, error);
+        return null;
+    }
+}

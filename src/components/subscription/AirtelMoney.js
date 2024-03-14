@@ -49,8 +49,9 @@ function AirtelMoney({ propPrice, propPaymentFor }) {
         e.preventDefault();
         setPaymentStatus(null);
 
-        setFormData({ ...formData, phone_number: phone });
+        setFormData({ ...formData, phone_number: phone }); // Move this line before the check
         // setFormData({ ...formData, phone_number: '256121212121' });
+
 
         if (!formData.phone_number) {
             setMessage('Please enter phone number.');
@@ -112,7 +113,7 @@ function AirtelMoney({ propPrice, propPaymentFor }) {
                     )}
                 </Form.Group>
 
-                <Button variant='success' type='submit'>Pay with Mobile Money</Button>
+                <Button variant='success' type='submit' disabled={!phone}>Pay with Mobile Money</Button>
 
                 {paymentStatus && <Alert className='mt-3' variant='info'>{paymentStatus}</Alert>}
             </Form>

@@ -21,6 +21,7 @@ import {
   databases,
   database_id,
   studentTable_id,
+  pointsTable_id
 } from "../appwriteConfig.js";
 import EmailSignupFields from "./formComponents/EmailSignupFields";
 import PhoneSignupFields from "./formComponents/PhoneSignupFields";
@@ -330,9 +331,34 @@ function SignUp() {
         }
       );
 
+      //Add student to points table
+      await addStudentToPointsTable(studID);
+
       return userDocResponse;
     } catch (error) {
       console.error("Error adding Student Account to Student Table:", error);
+      return null;
+    }
+  }
+
+  //Add student to points table
+  async function addStudentToPointsTable(studID) {
+    try {
+      const userDocResponse = await databases.createDocument(
+        database_id,
+        pointsTable_id,
+        "unique()",
+        {
+          UserID: studID || null,
+          PurchasedTier: classGrade, //userDetails.classGrade
+          AcquisitionDate: new Date().toLocaleString(),
+          ExpiryDate: new Date().toLocaleString(),
+        }
+      );
+
+      return userDocResponse;
+    } catch (error) {
+      console.error("Error adding Student Points Table:", error);
       return null;
     }
   }
