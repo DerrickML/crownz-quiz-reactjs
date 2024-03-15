@@ -92,10 +92,6 @@ export const AuthProvider = ({ children }) => {
     const updateUserPoints = async (PointsToDeduct, userId) => {
         // Update points in the database and then in the context and storage
         await saveUserPointsToDatabase(PointsToDeduct, userId);
-
-        // const updatedPoints = await saveUserPointsToDatabase(PointsToDeduct, userId);
-        // setUserPoints(updatedPoints);
-        // storageUtil.setItem("userPoints", updatedPoints);
     };
 
     // Fetch userPoints function (example)
