@@ -13,7 +13,7 @@ import {
     Query,
     pointsTable_id,
 } from "../../appwriteConfig.js";
-import { createDocument } from '../../utilities/otherUtils'
+import { updatePointsTable } from '../../utilities/otherUtils'
 import { useAuth } from '../../context/AuthContext';
 
 const MTNMomo = ({ propPrice, propPaymentFor }) => {
@@ -110,38 +110,15 @@ const MTNMomo = ({ propPrice, propPaymentFor }) => {
                 await saveTransactionData(receiptDetails);
 
                 /*** ----------- Update Points tables ----------- ***/
-                let created_at = receiptDetails.created_at;
-                let createdDate = new Date(created_at);
-                let expiryDate = new Date(createdDate.getFullYear() + 1, createdDate.getMonth(), createdDate.getDate()).toLocaleString();
-
-                console.log(expiryDate);
-                if (paymentFor === 'points') {
-                    //createDocument(databaseId, tableId, uniqueId, data, tableUse)
-                    //Points Batch Table
-                    await createDocument(database_id, pointsBatchTable_id, "unique()", {
-                        transactionID: data.externalId,
-                        userID: userInfo.userId,
-                        points: receiptDetails.points,
-                        purchaseDate: created_at,
-                        expiryDate: expiryDate,
-                    }, 'Points Purchase with MTN MoMo')
-
-                    //Points Table
-                    //Retrieve user document Id
-                    const response = await databases.listDocuments(database_id, pointsTable_id, [
-                        Query.equal("UserID", userInfo.userId),
-                    ]);
-                    console.log('Checking points table: ', response)
-                    if (response.documents.length > 0) { //TODO: If table user points doesn't exist, create new document
-                        const documentId = response.documents[0].$id //Points document id to be updated
-                        let currentPoints = response.documents[0].PointsBalance
-                        console.log('points document id: ', documentId)
-
-                        //update Points table with purchases points
-                        const updateResponse = await databases.updateDocument(database_id, pointsTable_id, documentId, { PointsBalance: (currentPoints + points), ExpiryDate: expiryDate })
-                        console.log('update points balance: ', updateResponse)
-                    }
-                }
+                await updatePointsTable({
+                    created_at: receiptDetails.created_at,
+                    paymentFor: paymentFor,
+                    transactionID: data.externalId,
+                    userId: userInfo.userId,
+                    points: points,
+                    educationLevel: userInfo.educationLevel,
+                    message: `Points Purchase with MTN MoMo`
+                })
                 /*** ----------- END: Update Points tables ----------- ***/
 
                 setReceiptInfo(receiptDetails);

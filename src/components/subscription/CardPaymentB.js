@@ -41,7 +41,7 @@ function CardPayment({ propPrice, propPaymentFor }) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    tx_ref: `${uuidv4()}-${Date.now()}`,
+                    tx_ref: `${uuidv4()}`,
                     amount: amount,
                     currency: 'UGX',
                     // redirect_url: `${serverUrl}`,
