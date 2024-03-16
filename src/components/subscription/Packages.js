@@ -54,7 +54,7 @@ const Packages = ({ studentInfo }) => {
     };
 
     return (
-        <Container style={{ background: '' }}>
+        <Container style={{ background: '', marginTop: '100px' }} >
             <Row className="justify-content-center my-5">
                 <h2 className="text-center mb-4 w-100">Choose Your Pack</h2>
                 {packages.map((pkg) => (

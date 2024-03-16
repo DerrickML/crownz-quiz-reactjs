@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Card, Form, Button, Container, Spinner } from 'react-bootstrap';
+import { Card, Form, Button, Container, Spinner, Alert } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import moment from 'moment';
 // import PropTypes from 'prop-types';
 import {
     databases,
@@ -40,6 +43,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
     const [receiptInfo, setReceiptInfo] = useState({});
     const [paymentStatus, setPaymentStatus] = useState('');
     const [submit, setSubmit] = useState(false);
+    const [loaders, setLoaders] = useState(false);
 
     // Create a new MTN MoMo API user
     const createApiUser = async () => {
@@ -99,8 +103,6 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
             const response = await fetch(`${serverMomoRoute}/payment-status/${transactionId}/${momoTokenId}`);
             const data = await response.json();
             if (data.status === "SUCCESSFUL") {
-                setPaymentStatus('success')
-                console.log('MTN Payment statuds: ', paymentStatus)
                 const receiptDetails = {
                     id: data.financialTransactionId,
                     tx_ref: data.externalId,
@@ -135,6 +137,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
                 }
                 /*** ----------- END: Update Points tables ----------- ***/
 
+                setPaymentStatus('success');
                 setReceiptInfo(receiptDetails);
 
                 return receiptDetails;
@@ -156,11 +159,16 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
     //Function to save transaction data to transaction database table
     const saveTransactionData = async (data) => {
         try {
+            const created_at_formattedDate = moment(data.created_at, 'DD/MM/YYYY, HH:mm:ss').toDate();
+            console.log('formattedDate - moment: ', created_at_formattedDate);
+
             console.log('Points purchased: ', points);
+            console.log('Transaction Table - MTNMoMo - Purchased points on: ', created_at_formattedDate);
+
             const response = await databases.createDocument(database_id, transactionTable_id, "unique()",
                 {
                     userID: userInfo.userId,
-                    transactionDate: data.created_at,
+                    transactionDate: created_at_formattedDate,
                     transactionAmount: data.charged_amount,
                     currency: data.currency,
                     paymentMethod: data.payment_type,
@@ -180,6 +188,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
 
     const handlePayment = async () => {
         setSubmit(true);
+        setLoaders(true);
         if (!phone || !amount) {
             setMessage('Please enter both phone number and amount.');
             return;
@@ -211,21 +220,21 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
             const paymentResponse = await requestToPay(phone, amount, momoTokenId);
 
             if (paymentResponse.success) {
-                setMessage('Payment successful!');
                 console.log('Finshed to make payment...', paymentResponse);
 
                 // Verify payment status
                 const verificatioStatusResponse = await verifyPaymentStatus(paymentResponse.paymentRefId, paymentResponse.momoTokenId);
                 console.log('Verification status:', verificatioStatusResponse);
+                setMessage('Payment successful!');
             } else {
                 setMessage('Payment failed.');
             }
         } catch (error) {
+            setSubmit(false);
             console.error('An error occurred:', error);
             setMessage('An error occurred while processing the payment.');
         }
-
-        setSubmit(false);
+        setLoaders(false);
     };
 
     const viewReceipt = () => {
@@ -233,37 +242,56 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
     };
 
     return (
-        <Container>
+        <Container style={{ marginTop: "100px" }} >
             <Card>
-                <Form.Group className="mb-3">
-                    <Form.Label>Phone Number*</Form.Label>
-                    <PhoneInput
-                        className={`form-control ${phoneError ? "is-invalid" : "custom-phone-input "
-                            }`}
-                        placeholder="Enter phone number"
-                        international
-                        defaultCountry="UG"
-                        countryCallingCodeEditable={false}
-                        value={phone}
-                        onChange={setPhone}
-                        required
-                    />
-                    {phoneError && (
-                        <Form.Control.Feedback type="invalid">
-                            Invalid phone number
-                        </Form.Control.Feedback>
-                    )}
-                </Form.Group>
                 {
-                    !submit ? <Button onClick={handlePayment} disabled={!phone}>Pay</Button> :
+                    !submit ?
                         <>
-                            <Spinner animation="grow" variant="primary" />
-                            <Spinner animation="grow" variant="secondary" />
-                            <Spinner animation="grow" variant="success" />
+                            <Form.Group className="mb-3">
+                                <Form.Label>Phone Number*</Form.Label>
+                                <PhoneInput
+                                    className={`form-control ${phoneError ? "is-invalid" : "custom-phone-input "
+                                        }`}
+                                    placeholder="Enter phone number"
+                                    international
+                                    defaultCountry="UG"
+                                    countryCallingCodeEditable={false}
+                                    value={phone}
+                                    onChange={setPhone}
+                                    required
+                                />
+                                {phoneError && (
+                                    <Form.Control.Feedback type="invalid">
+                                        Invalid phone number
+                                    </Form.Control.Feedback>
+                                )}
+                            </Form.Group>
+                            <Button onClick={handlePayment} disabled={!phone}>Pay</Button>
+                        </>
+                        :
+                        <>
+                            {loaders ?
+                                <>
+                                    <Spinner animation="grow" variant="primary" />
+                                    <Spinner animation="grow" variant="secondary" />
+                                    <Spinner animation="grow" variant="success" />
+                                </>
+                                :
+                                <>
+                                    <Alert variant={paymentStatus === "success" ? 'success' : 'danger'}>
+                                        <FontAwesomeIcon
+                                            icon={paymentStatus === "success" ? faCheckCircle : faTimesCircle}
+                                            size="3x"
+                                        />
+                                        <p className="payment-status-message">{paymentStatus}</p>
+                                    </Alert>
+                                </>
+                            }
                         </>
                 }
                 {message && <p>{message}</p>}
             </Card>
+
             {paymentStatus === "success" ? <Button onClick={viewReceipt} >View Your Receipt</Button> : null}
         </Container>
     );

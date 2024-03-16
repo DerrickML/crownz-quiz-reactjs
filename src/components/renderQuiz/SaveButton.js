@@ -2,7 +2,7 @@
 import React, { useState, forwardRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetAnswers } from './redux/actions';
-import { Button } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from "react-router-dom";
 import { faSave } from '@fortawesome/free-solid-svg-icons';
@@ -214,9 +214,22 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
     };
 
     return (
-        <Button ref={ref} onClick={handleSave} disabled={disabled} variant="primary" style={{ display: buttonDisplay ? buttonDisplay : 'false' }}>
-            <FontAwesomeIcon icon={faSave} /> Submit Exam
-        </Button>
+        <>
+            {
+                !disabled ?
+                    < Button ref={ref} onClick={handleSave} disabled={disabled} variant="primary" style={{ display: buttonDisplay ? buttonDisplay : 'false' }
+                    }>
+                        <FontAwesomeIcon icon={faSave} /> Submit Exam
+                    </Button >
+                    :
+                    <>
+                        <Spinner animation="grow" variant="primary" />
+                        <Spinner animation="grow" variant="secondary" />
+                        <Spinner animation="grow" variant="success" />
+                    </>
+            }
+        </>
+
     );
 });
 

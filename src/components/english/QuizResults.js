@@ -79,27 +79,25 @@ const QuizResults = () => {
               </Card.Subtitle>
               <Card.Text>
                 <p
-                  className={`mb-1 ${
-                    questionResult.userAnswer.toLowerCase() ===
-                    questionResult.correctAnswer.toLowerCase()
+                  className={`mb-1 ${questionResult.userAnswer.toLowerCase() ===
+                      questionResult.correctAnswer.toLowerCase()
                       ? "text-success"
                       : "text-danger"
-                  }`}
+                    }`}
                 >
                   Your answer: {questionResult.userAnswer}
                 </p>
                 {questionResult.userAnswer.toLowerCase() !==
                   questionResult.correctAnswer.toLowerCase() && (
-                  <p className="text-success mb-1">
-                    Correct answer: {questionResult.correctAnswer}
-                  </p>
-                )}
+                    <p className="text-success mb-1">
+                      Correct answer: {questionResult.correctAnswer}
+                    </p>
+                  )}
                 <p className="mb-0">
                   Marks:{" "}
                   <span
-                    className={`badge ${
-                      questionResult.marks > 0 ? "bg-success" : "bg-danger"
-                    }`}
+                    className={`badge ${questionResult.marks > 0 ? "bg-success" : "bg-danger"
+                      }`}
                   >
                     {questionResult.marks}
                   </span>
@@ -121,9 +119,8 @@ const QuizResults = () => {
             <p className="mb-0">
               Marks:{" "}
               <span
-                className={`badge ${
-                  iframeResult.totalMarks > 0 ? "bg-success" : "bg-danger"
-                }`}
+                className={`badge ${iframeResult.totalMarks > 0 ? "bg-success" : "bg-danger"
+                  }`}
               >
                 {iframeResult.totalMarks}
               </span>
@@ -149,7 +146,7 @@ const QuizResults = () => {
   const percentage = totalMarks > 0 ? (marksObtained / totalMarks) * 100 : 0;
 
   return (
-    <div className="container my-4">
+    <div className="container my-4" style={{ marginTop: "100px" }} >
       <div className="card text-center mb-4">
         <div className="card-header">Exam Results</div>
         <div className="card-body">

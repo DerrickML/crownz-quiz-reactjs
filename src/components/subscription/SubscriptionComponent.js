@@ -37,7 +37,7 @@ const SubscriptionComponent = () => {
     };
 
     return (
-        <Container>
+        <Container style={{ marginTop: "100px" }}>
             <Row className="justify-content-md-center">
                 <Col md={6}>
                     <h3>Subscribe to Tier: {educationLevel}</h3>

@@ -15,6 +15,7 @@ import {
 } from "../../appwriteConfig.js";
 import { updatePointsTable } from '../../utilities/otherUtils'
 import './PaymentResult.css'; // Path to your custom CSS file
+import moment from 'moment';
 
 const PaymentResult = () => {
 
@@ -109,35 +110,49 @@ const PaymentResult = () => {
 
             console.log('transaction status: ', data.status);
             console.log('Points purchased: ', data.meta.points);
-            const response = await databases.createDocument(database_id, transactionTable_id, "unique()",
-                {
-                    userID: userInfo.userId,
-                    transactionDate: data.created_at,
-                    transactionAmount: data.amount,
-                    currency: data.currency,
-                    paymentMethod: data.payment_type,
-                    paymentGateway: 'Flutterwave Gateway',
-                    paymentSatus: data.status === 'successful' ? 'success' : 'failed',
-                    transactionReference: data.tx_ref,
-                    transactionId: `${data.id}`,
-                    paymentFor: data.meta.service,
-                    description: data.meta.description,
-                    points: data.meta.points
-                }
-            )
+
+            console.log('original date: ', data.created_at)
+
+            const created_at_formattedDate = moment(data.created_at, 'DD/MM/YYYY, HH:mm:ss').toDate();
+            console.log('formattedDate - moment: ', created_at_formattedDate);
+
+            console.log('Transaction Table - Flutterwave - Purchased points on: ', created_at_formattedDate);
+
+            try {
+
+                const response = await databases.createDocument(database_id, transactionTable_id, "unique()",
+                    {
+                        userID: userInfo.userId,
+                        transactionDate: new Date(data.created_at),
+                        transactionAmount: data.amount,
+                        currency: data.currency,
+                        paymentMethod: data.payment_type,
+                        paymentGateway: 'Flutterwave Gateway',
+                        paymentSatus: data.status === 'successful' ? 'success' : 'failed',
+                        transactionReference: data.tx_ref,
+                        transactionId: `${data.id}`,
+                        paymentFor: data.meta.service,
+                        description: data.meta.description,
+                        points: data.meta.points
+                    }
+                )
+
+            } catch (e) { console.log('Update Transaction table error: ', e); throw e; }
 
             /*** ----------- Update Points tables ----------- ***/
             if (data.status === 'successful') {
                 //Update the points table in the database
-                await updatePointsTable({
-                    created_at: data.created_at,
-                    paymentFor: data.meta.service,
-                    transactionID: data.tx_ref, //USED tx_ref because it's unique for all, but transactionId in transaction table can be duplicated
-                    userId: `${isStudent ? userInfo.userId : data.meta.studentInfo.id}`,
-                    points: data.meta.points,
-                    educationLevel: `${isStudent ? userInfo.userId : data.meta.studentInfo.educationLevel}`,
-                    message: `Points Purchase with Flutterwave Gateway - PaymentVerification`
-                })
+                try {
+                    await updatePointsTable({
+                        created_at: new Date(data.created_at),
+                        paymentFor: data.meta.service,
+                        transactionID: data.tx_ref, //USED tx_ref because it's unique for all, but transactionId in transaction table can be duplicated
+                        userId: `${isStudent ? userInfo.userId : data.meta.studentInfo.id}`,
+                        points: data.meta.points,
+                        educationLevel: `${isStudent ? userInfo.userId : data.meta.studentInfo.educationLevel}`,
+                        message: `Points Purchase with Flutterwave Gateway - PaymentVerification`
+                    })
+                } catch (e) { console.log('Update Points table error: ', e); throw e; }
 
                 //Update client side points
                 if (isStudent) {
@@ -156,7 +171,7 @@ const PaymentResult = () => {
     };
 
     return (
-        <Container className="payment-result-container">
+        <Container className="payment-result-container" style={{ marginTop: "100px" }} >
             <h2 className="text-center">Payment Status for {userInfo.firstName}</h2>
             {loading ? (
                 <div className="text-center">

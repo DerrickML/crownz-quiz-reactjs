@@ -41,7 +41,7 @@ const Receipt = ({ propReceiptData }) => {
     };
 
     return (
-        <Card className="receipt-card">
+        <Card className="receipt-card" style={{ marginTop: "100px" }}>
             <Card.Header as="h5">Payment Receipt</Card.Header>
             <Card.Body>
                 <Card.Title>{receiptData.name}</Card.Title>

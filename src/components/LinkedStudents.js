@@ -109,7 +109,7 @@ const LinkedStudents = () => {
   };
 
   return (
-    <Container className="my-5">
+    <Container className="my-5" style={{ marginTop: "100px" }} >
       <h1>Linked Students</h1>
       <div className="view-mode-selector mb-3">
         <ButtonGroup>

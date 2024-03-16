@@ -381,7 +381,7 @@ function SignUp() {
   };
 
   return (
-    <div className="signup-background">
+    <div className="signup-background" style={{ marginTop: "100px" }}>
       <Container className="my-5">
         <Row className="justify-content-center">
           <Col md={8}>

@@ -92,7 +92,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     }
 
     return (
-        <Container fluid>
+        <Container fluid style={{ marginTop: "100px" }}>
             <div style={{ position: 'sticky', top: 0, zIndex: 2 }}>
                 <Row>
                     <Col xs={12} className="d-md-none bg-light" >
@@ -101,70 +101,80 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                     </Col>
                 </Row>
             </div>
-            <Row>
-                <Col xs={12} md={2} className="d-none d-md-block position-fixed bg-light" style={{ height: '100vh', overflowY: 'auto' }}>
-                    {/* Timer */}
-                    <Timer initialTime={initialTime} onTimeUp={handleTimeUp} />
-                    <ButtonGroup>
-                        <Button
-                            variant="success"
-                            onClick={handleOpenModal}
-                            className="w-25"
-                        >
-                            Submit Quiz
-                        </Button>
-                        <Button
-                            variant="danger"
-                            onClick={handleExitExam}
-                            className="w-25"
-                        >
-                            Exit Exam
-                        </Button>
-                    </ButtonGroup>
-                </Col>
-                <Col xs={12} md={{ span: 9, offset: 3 }}>
-                    {selectedQuestions.map((category, index) => (
-                        <div key={category.$id}>
-                            {/* <h2>Question {category.category}</h2> */}
-                            {subjectName === 'sst_ple' && category.category === 36 || category.category === 51 ? (<Card.Title style={{ marginTop: '20px', border: '2px solid #000', borderColor: 'red' }}>{category.instructions}</Card.Title>) : null}
-                            {category.questions.map((question, index) => {
-                                // Pass the question as is, with an additional property to indicate "either/or" type
-                                const isEitherOr = question.hasOwnProperty('either') && question.hasOwnProperty('or');
-                                return (
-                                    <QuestionCard
-                                        key={question.id || `${category.$id}_${index}`}
-                                        questionIndex={index}
-                                        question={question}
-                                        isEitherOr={isEitherOr}
-                                        categoryId={category.category}
-                                    />
-                                );
-                            })}
-                        </div>
-                    ))}
-                </Col>
-            </Row>
-            <Row >
-                <Col xs={12} className="d-md-none bg-light fixed-bottom">
-                    <div className="d-flex justify-content-center">
-                        <ButtonGroup className="w-75">
-                            <Button
-                                variant="success"
-                                onClick={handleOpenModal}
-                            >
-                                Submit Quiz
-                            </Button>
-                            <Button
-                                variant="danger"
-                                onClick={handleExitExam}
-                            >
-                                Exit Exam
-                            </Button>
-                        </ButtonGroup>
-                    </div>
-                </Col>
-            </Row>
-
+            {isSubmitted ?
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                    <Spinner animation="grow" variant="primary" />
+                    <Spinner animation="grow" variant="success" />
+                    <Spinner animation="grow" variant="danger" />
+                    <Spinner animation="grow" variant="warning" />
+                    <Spinner animation="grow" variant="info" />
+                </div>
+                :
+                <>
+                    <Row>
+                        <Col xs={12} md={2} className="d-none d-md-block position-fixed bg-light" style={{ height: '100vh', overflowY: 'auto' }}>
+                            {/* Timer */}
+                            <Timer initialTime={initialTime} onTimeUp={handleTimeUp} />
+                            <ButtonGroup>
+                                <Button
+                                    variant="success"
+                                    onClick={handleOpenModal}
+                                    className="w-25"
+                                >
+                                    Submit Quiz
+                                </Button>
+                                <Button
+                                    variant="danger"
+                                    onClick={handleExitExam}
+                                    className="w-25"
+                                >
+                                    Exit Exam
+                                </Button>
+                            </ButtonGroup>
+                        </Col>
+                        <Col xs={12} md={{ span: 9, offset: 3 }}>
+                            {selectedQuestions.map((category, index) => (
+                                <div key={category.$id}>
+                                    {/* <h2>Question {category.category}</h2> */}
+                                    {subjectName === 'sst_ple' && category.category === 36 || category.category === 51 ? (<Card.Title style={{ marginTop: '20px', border: '2px solid #000', borderColor: 'red' }}>{category.instructions}</Card.Title>) : null}
+                                    {category.questions.map((question, index) => {
+                                        // Pass the question as is, with an additional property to indicate "either/or" type
+                                        const isEitherOr = question.hasOwnProperty('either') && question.hasOwnProperty('or');
+                                        return (
+                                            <QuestionCard
+                                                key={question.id || `${category.$id}_${index}`}
+                                                questionIndex={index}
+                                                question={question}
+                                                isEitherOr={isEitherOr}
+                                                categoryId={category.category}
+                                            />
+                                        );
+                                    })}
+                                </div>
+                            ))}
+                        </Col>
+                    </Row>
+                    <Row >
+                        <Col xs={12} className="d-md-none bg-light fixed-bottom">
+                            <div className="d-flex justify-content-center">
+                                <ButtonGroup className="w-75">
+                                    <Button
+                                        variant="success"
+                                        onClick={handleOpenModal}
+                                    >
+                                        Submit Quiz
+                                    </Button>
+                                    <Button
+                                        variant="danger"
+                                        onClick={handleExitExam}
+                                    >
+                                        Exit Exam
+                                    </Button>
+                                </ButtonGroup>
+                            </div>
+                        </Col>
+                    </Row>
+                </>}
             {/* Modal for exit confirmation */}
             <Modal
                 show={showExitModal}
@@ -197,7 +207,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                     <Modal.Title>Confirm Submission</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Are you sure you want to submit?
+                    <div hidden={isSubmitted}>Are you sure you want to submit?</div>
                     <SaveButton
                         ref={saveButtonRef}
                         selectedQuestions={selectedQuestions}
@@ -208,7 +218,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                     />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModal}>
+                    <Button variant="secondary" onClick={handleCloseModal} hidden={isSubmitted}>
                         Cancel
                     </Button>
                 </Modal.Footer>

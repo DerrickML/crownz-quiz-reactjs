@@ -10,7 +10,7 @@ const Answers = () => {
     const { questionsData, subjectName, totalMarks, attemptDate } = location.state || { questionsData: [], subjectName: '', totalMarks: 0, attemptDate: '' };
 
     return (
-        <Container fluid>
+        <Container fluid style={{ marginTop: "100px" }}>
             <AnswerContainer questionsData={questionsData} subjectName={subjectName} totalMarks={totalMarks} attemptDate={attemptDate} />
         </Container>
     );

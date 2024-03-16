@@ -73,7 +73,7 @@ function PasswordReset() {
   };
 
   return (
-    <Container className="mt-5 resetPassword">
+    <Container className="mt-5 resetPassword" style={{ marginTop: "100px" }}>
       <Row className="justify-content-md-center">
         <Col md={6}>
           <h2 className="text-center mb-4">Reset Your Password</h2>

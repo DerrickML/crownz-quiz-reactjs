@@ -109,7 +109,7 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
     };
 
     return (
-        <div className='mt-4'>
+        <div className='mt-4' style={{ marginTop: "100px" }} >
             <h3>Mobile Money Payment</h3>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className='mb-3'>

@@ -69,7 +69,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, studentInfo 
     };
 
     return (
-        <Container className="mt-5">
+        <Container className="mt-5" style={{ marginTop: "100px" }} >
             {/* Stage 1: Apply Coupon */}
             {stage === 'coupon' && (
                 <Row className="justify-content-md-center">
@@ -110,8 +110,8 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, studentInfo 
                 <Row className="justify-content-center my-5">
                     <h2 className="text-center mb-4 w-100">Select Payment Method</h2>
                     <Col lg={4} className="d-flex justify-content-center">
-                        <Card className={`text-center package-card shadow-lg`} style={{ width: '18rem' }} onClick={() => handlePaymentSelection('mtn-momo')}>
-                            <Card.Header>
+                        <Card border="warning" className={`text-center package-card shadow-lg`} style={{ width: '18rem' }} onClick={() => handlePaymentSelection('mtn-momo')}>
+                            <Card.Header style={{ backgroundColor: 'orange', color: 'white' }}>
                                 MTN Mobile Money
                             </Card.Header>
                             <Card.Body className="justify-content-center">
@@ -120,8 +120,8 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, studentInfo 
                         </Card>
                     </Col>
                     <Col lg={4} className="d-flex justify-content-center">
-                        <Card className={`text-center package-card shadow-lg`} style={{ width: '18rem' }} onClick={() => handlePaymentSelection('airtel-money')}>
-                            <Card.Header>
+                        <Card border="danger" className={`text-center package-card shadow-lg`} style={{ width: '18rem' }} onClick={() => handlePaymentSelection('airtel-money')}>
+                            <Card.Header style={{ backgroundColor: 'red', color: 'white' }}>
                                 Airtel Money
                             </Card.Header>
                             <Card.Body className="justify-content-center">
@@ -130,8 +130,8 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, studentInfo 
                         </Card>
                     </Col>
                     <Col lg={4} className="d-flex justify-content-center">
-                        <Card className={`text-center package-card shadow-lg`} style={{ width: '18rem' }} onClick={() => handlePaymentSelection('card-payment')}>
-                            <Card.Header>
+                        <Card border="info" className={`text-center package-card shadow-lg`} style={{ width: '18rem' }} onClick={() => handlePaymentSelection('card-payment')}>
+                            <Card.Header style={{ backgroundColor: '#2a9d8f', color: 'white' }}>
                                 Card
                             </Card.Header>
                             <Card.Body className="justify-content-center">

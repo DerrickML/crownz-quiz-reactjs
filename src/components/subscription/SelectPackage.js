@@ -3,7 +3,7 @@ import Packages from './Packages';
 function SelectPackage() {
 
   return (
-    <div>
+    <div style={{ marginTop: "100px" }} >
       <Packages ></Packages>
     </div>
   );

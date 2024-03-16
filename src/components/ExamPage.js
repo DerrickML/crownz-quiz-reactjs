@@ -26,7 +26,7 @@ function ExamPage() {
   );
 
   return (
-    <div className="exam-page-bg">
+    <div className="exam-page-bg" style={{ marginTop: "" }}>
       <ExamPageHeroHeader />
       <SelectExam />
     </div>

@@ -179,7 +179,7 @@ const IframeComponent = ({ url }) => {
   };
 
   return (
-    <Container fluid="true" className="iframe-container">
+    <Container fluid="true" className="iframe-container" style={{ marginTop: "100px" }}>
       {canDisplayUrl ? (
         <>
           <Row className="justify-content-center my-1">

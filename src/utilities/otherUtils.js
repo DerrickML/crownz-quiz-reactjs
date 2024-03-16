@@ -15,6 +15,7 @@ import {
     Role,
     Query,
 } from "../appwriteConfig.js";
+import moment from 'moment';
 
 export const sendEmailToNextOfKin = async (userInfo, subjectName, examScore, examDateTime) => {
     const studentName = `${userInfo.firstName} ${userInfo.lastName}${userInfo.otherName ? ` ${userInfo.otherName}` : ''}`;
@@ -112,11 +113,19 @@ message: message-`createDocument() function`
 export const updatePointsTable = async (data) => {
     console.log('Data passed to update points function', data)
     let points = parseInt(data.points)
-    let created_at = data.created_at;
+    let created_at = moment(data.created_at, 'DD/MM/YYYY, HH:mm:ss').toDate();
     let createdDate = new Date(created_at);
-    let expiryDate = new Date(createdDate.getFullYear() + 1, createdDate.getMonth(), createdDate.getDate()).toLocaleString();
 
-    console.log(expiryDate);
+    // Creating a new Date object for expiryDate to avoid modifying createdDate
+    let expiryDate = new Date(createdDate);
+
+    // Adding 1 year to the expiryDate
+    expiryDate.setFullYear(createdDate.getFullYear() + 1);
+
+    // Now, createdDate and expiryDate are two separate Date objects
+    console.log("Created Date:", createdDate);
+    console.log("Expiry Date:", expiryDate);
+
     if (data.paymentFor === 'points') {
         //createDocument(databaseId, tableId, uniqueId, data, tableUse)
         //Points Batch Table

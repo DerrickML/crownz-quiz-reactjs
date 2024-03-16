@@ -225,7 +225,7 @@ const EditProfile = () => {
   };
 
   return (
-    <Container className="mt-4">
+    <Container className="mt-4" style={{ marginTop: "100px" }} >
       <Row className="justify-content-center">
         <Col md={10} lg={8}>
           <Card className="shadow">

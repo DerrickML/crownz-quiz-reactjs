@@ -108,7 +108,7 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
     };
 
     return (
-        <div className='mt-4'>
+        <div className='mt-4' style={{ marginTop: "100px" }} >
             <h3>Payment with Card</h3>
 
             <Form onSubmit={handleSubmit}>

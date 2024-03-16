@@ -83,7 +83,7 @@ function SelectExam() {
 
   const purchasePoints = () => {
     //Navigate to payment page
-    navigate(`/testing`)
+    navigate(`/select-package`)
   };
 
   return (
