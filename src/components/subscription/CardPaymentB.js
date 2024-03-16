@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid'; // UUID generation for unique identifiers
 import { useAuth } from '../../context/AuthContext';
 
-function CardPayment({ propPrice, propPaymentFor }) {
+function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
     const { userInfo } = useAuth();
+    const isStudent = userInfo.labels.includes("student");
+    const isNextOfKin = userInfo.labels.includes("kin");
 
+    const navigate = useNavigate();
     const location = useLocation();
-    const { price, paymentFor, points } = location.state || { price: 2000, paymentFor: 'points', points: 0 }; // Set defaultPrice and defaultPaymentFor accordingly
+    const { price, paymentFor, points, studentInfo } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' } }; // Set default values accordingly
+
+    useEffect(() => {
+        console.log('Price passed to MTN: ', price)
+        if (!price) {
+            navigate(-1);
+        }
+    }, []);
 
     console.log(userInfo)
     const serverUrl = 'https://2wkvf7-3000.csb.app'
@@ -54,13 +64,14 @@ function CardPayment({ propPrice, propPaymentFor }) {
                     },
                     meta: {
                         userId: `${userId}`,
-                        description: 'Payment for exam/quiz Points', //TODO: Make it dynamic
+                        description: `Payment for exam/quiz Points${isStudent ? '.' : ` for ${studentInfo.name}`}`,
                         service: `${paymentFor}`,
                         points: `${points}`,
+                        ...(isStudent ? {} : { studentInfo: studentInfo }), // Conditional spread operator for adding studentInfo
                     },
                     customizations: {
                         title: 'Crownzcom',
-                        description: 'Payment for exam/quiz Points',
+                        description: `Payment for exam/quiz Points${isStudent ? '.' : ` for ${studentInfo.name}`}`,
                         logo: `${serverUrl}/images/logo.png`
                     }
                 }),

@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
 import { isValidPhoneNumber } from 'react-phone-number-input';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../context/AuthContext';
-function AirtelMoney({ propPrice, propPaymentFor }) {
+function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
     const { userInfo } = useAuth();
+    const isStudent = userInfo.labels.includes("student");
+    const isNextOfKin = userInfo.labels.includes("kin");
 
+    const navigate = useNavigate();
     const location = useLocation();
-    const { price, paymentFor, points } = location.state || { price: 2000, paymentFor: 'points', points: 0 }; // Set defaultPrice and defaultPaymentFor accordingly
+    const { price, paymentFor, points, studentInfo } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' } }; // Set default values accordingly
+
+    useEffect(() => {
+        console.log('Price passed to MTN: ', price)
+        if (!price) {
+            navigate(-1);
+        }
+    }, []);
 
     const serverUrl = 'https://2wkvf7-3000.csb.app'
 
@@ -33,9 +43,10 @@ function AirtelMoney({ propPrice, propPaymentFor }) {
         redirect_url: `${rootURL}/payment/verification`,
         meta: {
             userId: `${userInfo.userId}`,
-            description: 'Payment for exam/quiz Points', //TODO: Make it dynamic
+            description: `Payment for exam/quiz Points${isStudent ? '.' : ` for ${studentInfo.name}`}`,
             service: `${paymentFor}`,
             points: `${points}`,
+            ...(isStudent ? {} : { studentInfo: studentInfo }), // Conditional spread operator for adding studentInfo
         }
     });
     const [paymentStatus, setPaymentStatus] = useState(null);

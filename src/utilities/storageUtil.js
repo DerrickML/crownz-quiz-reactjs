@@ -13,7 +13,11 @@ const storageUtil = {
   getItem(key) {
     try {
       const serializedValue = localStorage.getItem(key);
-      return serializedValue ? JSON.parse(serializedValue) : null;
+      if (serializedValue === null || serializedValue === "undefined") {
+        // Item does not exist or is set to "undefined"
+        return null;
+      }
+      return JSON.parse(serializedValue);
     } catch (error) {
       console.error("Error reading from localStorage", error);
       return null;

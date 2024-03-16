@@ -23,7 +23,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
 
     const dispatch = useDispatch();
 
-    const { userInfo } = useAuth();
+    const { userInfo, updateUserPoints, fetchUserPoints, } = useAuth();
     let studentID = userInfo.userId;
 
     let subjectName;
@@ -195,7 +195,11 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
             await sendEmailToNextOfKin(userInfo, subjectName, totalMarks, formatDate((new Date())));
         }
 
-        await fetchAndUpdateResults(userInfo.userId); // Update the local storage
+        // Update user Points
+        await updateUserPoints(20, userInfo.userId);
+
+        // Update the local storage with user information
+        await fetchAndUpdateResults(userInfo.userId);
 
         //Rendering user attempts to them
         const questionsData = formattedAnswers;

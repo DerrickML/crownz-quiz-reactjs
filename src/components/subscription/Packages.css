@@ -1,0 +1,43 @@
+.package-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.package-card:hover {
+    transform: scale(1.05);
+}
+
+.package-icon {
+    color: #ffd700;
+    /* Gold color for the gem icon */
+}
+
+.bronze {
+    background-color: #cd7f32;
+    /* A bronze-like color */
+    color: white;
+}
+
+.silver {
+    background-color: #c0c0c0;
+    /* A silver-like color */
+    color: white;
+}
+
+.gold {
+    background-color: #ffd700;
+    /* A gold-like color */
+    color: white;
+}
+
+.modal-70w {
+    width: 70%;
+    max-width: none;
+    /* This will allow the modal to go beyond the default max-width */
+}
+
+@media (max-width: 576px) {
+    .modal-70w {
+        width: 90%;
+        /* For smaller devices, the modal can take up more space */
+    }
+}

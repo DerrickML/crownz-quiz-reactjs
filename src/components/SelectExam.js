@@ -63,7 +63,7 @@ const iconMapping = {
 };
 
 function SelectExam() {
-  const { userInfo } = useAuth();
+  const { userInfo, userPoints } = useAuth();
   const navigate = useNavigate();
 
   const [selectedSubject, setSelectedSubject] = useState(null);
@@ -79,6 +79,11 @@ function SelectExam() {
     const subjectSlug = selectedSubject.name.toLowerCase().replace(/\s+/g, "-"); // Replaces spaces with hyphens
     const levelSlug = userInfo.educationLevel.toLowerCase();
     navigate(`/exam/${subjectSlug}_${levelSlug}`);
+  };
+
+  const purchasePoints = () => {
+    //Navigate to payment page
+    navigate(`/testing`)
   };
 
   return (
@@ -120,25 +125,52 @@ function SelectExam() {
           <Modal.Header closeButton>
             <Modal.Title>{selectedSubject?.name} Exam</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
-            <p>{selectedSubject?.description}</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button
-              variant="secondary"
-              onClick={() => setSelectedSubject(null)}
-            >
-              Close
-            </Button>
-            <Button
-              onClick={handleStartExam}
-              style={{
-                backgroundColor: selectedSubject?.color || "rgb(6, 63, 90) ",
-              }}
-            >
-              Start Exam
-            </Button>
-          </Modal.Footer>
+          {
+            userPoints < 20 ?
+              <>
+                <Modal.Body>
+                  <p>The points are not sufficient enough to attempt an exam. Your require a minimum of 20 points to attempt an exam.</p>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button
+                    variant="secondary"
+                    onClick={() => setSelectedSubject(null)}
+                  >
+                    Close
+                  </Button>
+                  <Button
+                    onClick={purchasePoints}
+                    style={{
+                      backgroundColor: selectedSubject?.color || "rgb(6, 63, 90) ",
+                    }}
+                  >
+                    Purchase Points
+                  </Button>
+                </Modal.Footer>
+              </>
+              :
+              <>
+                <Modal.Body>
+                  <p>{selectedSubject?.description}</p>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button
+                    variant="secondary"
+                    onClick={() => setSelectedSubject(null)}
+                  >
+                    Close
+                  </Button>
+                  <Button
+                    onClick={handleStartExam}
+                    style={{
+                      backgroundColor: selectedSubject?.color || "rgb(6, 63, 90) ",
+                    }}
+                  >
+                    Start Exam
+                  </Button>
+                </Modal.Footer>
+              </>
+          }
         </Modal>
       </Container>
     </div>

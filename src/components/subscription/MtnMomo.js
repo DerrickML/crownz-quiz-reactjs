@@ -1,33 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Card, Form, Button, Container } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import {
     databases,
     database_id,
     transactionTable_id,
-    pointsBatchTable_id,
-    Query,
-    pointsTable_id,
 } from "../../appwriteConfig.js";
 import { updatePointsTable } from '../../utilities/otherUtils'
 import { useAuth } from '../../context/AuthContext';
 
-const MTNMomo = ({ propPrice, propPaymentFor }) => {
-    const { userInfo } = useAuth();
+const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
+    const { userInfo, fetchUserPoints } = useAuth();
+    const isStudent = userInfo.labels.includes("student");
+    const isNextOfKin = userInfo.labels.includes("kin");
 
     const navigate = useNavigate();
     const location = useLocation();
-    const { price, paymentFor, points } = location.state || { price: 2000, paymentFor: 'points', points: 0 }; // Set defaultPrice and defaultPaymentFor accordingly
+    const { price, paymentFor, points, studentInfo } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' } }; // Set default values accordingly
+
+    //Check if price is not null, or else navigate back
+    useEffect(() => {
+        console.log('Price passed to MTN: ', price)
+        if (!price) {
+            navigate(-1);
+        }
+    }, []);
 
     const serverUrl = "https://2wkvf7-3000.csb.app"
     const serverMomoRoute = `${serverUrl}/mtnMomo`
 
     const [phone, setPhone] = useState(userInfo.phone || '');
-    const [amount, setAmount] = useState(price ? price : '2000');
+    const [amount, setAmount] = useState(price);
     const [message, setMessage] = useState('');
     const [phoneError, setPhoneError] = useState(false); // Error flag for user's phone
     const [receiptInfo, setReceiptInfo] = useState({});
@@ -101,7 +108,7 @@ const MTNMomo = ({ propPrice, propPaymentFor }) => {
                     currency: data.currency,
                     phone: data.payer.partyId,
                     transactionStatus: 'success',
-                    description: 'Points Purchase',
+                    description: `Points Purchase${isStudent ? '.' : ` for ${studentInfo.name}`}`,
                     created_at: new Date().toLocaleString(), // or extract date from the response if available
                     points: points
                 };
@@ -110,15 +117,21 @@ const MTNMomo = ({ propPrice, propPaymentFor }) => {
                 await saveTransactionData(receiptDetails);
 
                 /*** ----------- Update Points tables ----------- ***/
+                //Update the points table in the database
                 await updatePointsTable({
                     created_at: receiptDetails.created_at,
                     paymentFor: paymentFor,
                     transactionID: data.externalId,
-                    userId: userInfo.userId,
+                    userId: isStudent ? userInfo.userId : studentInfo.id,
                     points: points,
-                    educationLevel: userInfo.educationLevel,
+                    educationLevel: isStudent ? userInfo.userId : studentInfo.educationLevel,
                     message: `Points Purchase with MTN MoMo`
                 })
+
+                //Update client side points
+                if (isStudent) {
+                    await fetchUserPoints(userInfo.userId, userInfo.educationLevel);
+                }
                 /*** ----------- END: Update Points tables ----------- ***/
 
                 setReceiptInfo(receiptDetails);
@@ -245,12 +258,12 @@ const MTNMomo = ({ propPrice, propPaymentFor }) => {
     );
 };
 
-MTNMomo.propTypes = {
-    price: PropTypes.number
-};
+// MTNMomo.propTypes = {
+//     price: PropTypes.number
+// };
 
-MTNMomo.defaultProps = {
-    price: 2000
-};
+// MTNMomo.defaultProps = {
+//     price: 2000
+// };
 
 export default MTNMomo;

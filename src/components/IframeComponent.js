@@ -45,7 +45,7 @@ const IframeComponent = ({ url }) => {
     // Add other URLs here
   ];
 
-  const { userInfo } = useAuth();
+  const { userInfo, updateUserPoints } = useAuth();
   let studentID = userInfo.userId;
 
   const canDisplayUrl = urlWhitelist.includes(url);
@@ -100,11 +100,16 @@ const IframeComponent = ({ url }) => {
               subject: "English Language",
               results: resultsString,
             });
+
+            // Update user Points
+            await updateUserPoints(20, userInfo.userId);
+
             showToast("Results submitted successfully!", "success");
             if (userInfo.kinEmail) {
               await sendEmailToNextOfKin(userInfo, "English Language", marksObtained, new Date());
             }
             await fetchAndUpdateResults(studentID);
+
           } catch (e) {
             showToast("Failed to save results. Contact the support team for guidance", "error")
             throw e;

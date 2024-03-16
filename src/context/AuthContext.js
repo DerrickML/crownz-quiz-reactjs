@@ -63,9 +63,11 @@ export const AuthProvider = ({ children }) => {
 
         // Fetch userPoints from the database after login
         // This is an example, replace it with your actual API call
-        const pointsData = await fetchUserPoints(userData.userId, userData.educationLevel);
-        setUserPoints(pointsData);
-        storageUtil.setItem("userPoints", pointsData);
+        if (userDetails.labels.includes('student')) {
+            const pointsData = await fetchUserPoints(userDetails.userId, userDetails.educationLevel);
+        }
+        // setUserPoints(pointsData);
+        // storageUtil.setItem("userPoints", pointsData);
     };
 
     const handleLogout = async () => {
@@ -84,7 +86,7 @@ export const AuthProvider = ({ children }) => {
         storageUtil.clear();
 
         // Clear userPoints from context and storage
-        setUserPoints(0);
+        setUserPoints('');
         storageUtil.removeItem("userPoints");
     };
 
@@ -97,17 +99,21 @@ export const AuthProvider = ({ children }) => {
     // Fetch userPoints function (example)
     const fetchUserPoints = async (userId, educationLevel) => {
         try {
+            console.log('Fetching userPoints: ', userId + ' ' + educationLevel);
             let pointsData
             const pointsResponse = await databases.listDocuments(database_id, pointsTable_id, [Query.equal('UserID', userId)])
             //Create a new document if user has no document assigned
-            if (pointsResponse.documents.length === 0) {
+            if (pointsResponse.documents.length !== 0) {
+                pointsData = pointsResponse.documents[0].PointsBalance
+            }
+            else {
                 console.log('No user document assigned, creating a new one for the user')
                 const userDocResponse = await databases.createDocument(
                     database_id,
                     pointsTable_id,
                     "unique()",
                     {
-                        UserID: userId || null,
+                        UserID: JSON.stringify(userId) || null,
                         PurchasedTier: educationLevel,
                         AcquisitionDate: new Date().toLocaleString(),
                         ExpiryDate: new Date().toLocaleString(),
@@ -115,9 +121,6 @@ export const AuthProvider = ({ children }) => {
                 );
                 pointsData = 0
             }
-
-            pointsData = pointsResponse.documents[0].PointsBalance
-
 
             setUserPoints(pointsData);
             storageUtil.setItem("userPoints", pointsData);
@@ -139,18 +142,18 @@ export const AuthProvider = ({ children }) => {
                 const documentId = response.documents[0].$id //Points document id to be updated
                 let currentPoints = response.documents[0].PointsBalance
                 updatedPoints = currentPoints - points
-                console.log('points document id: ', documentId)
+                if (updatedPoints >= 0) {
+                    console.log('points document id: ', documentId)
 
-                //update Points table
-                const updateResponse = await databases.updateDocument(database_id, pointsTable_id, documentId, { PointsBalance: updatedPoints })
-                console.log('update points balance: ', updateResponse)
+                    //update Points table
+                    const updateResponse = await databases.updateDocument(database_id, pointsTable_id, documentId, { PointsBalance: updatedPoints })
+                    console.log('update points balance: ', updateResponse)
 
-                // Update points in context and localStorage
-                setUserPoints(updatedPoints);
-                storageUtil.setItem("userPoints", updatedPoints);
+                    // Update points in context and localStorage
+                    setUserPoints(updatedPoints);
+                    storageUtil.setItem("userPoints", updatedPoints);
+                }
             }
-
-            return updatedPoints;
 
         } catch (error) {
             console.error("Error updating user points:", error);

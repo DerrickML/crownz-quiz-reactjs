@@ -41,29 +41,28 @@ function Home() {
             </Button>
           </Col>
           {isStudent && (
-            <Col md="auto">
-              <Button variant="secondary" onClick={() => navigate("/exam-page")}>
-                <FontAwesomeIcon icon={faEdit} /> Attempt Exam
-              </Button>
-            </Col>
-          )}
-        </Row>
-        <Row className="justify-content-md-center mt-4">
-          <Col md={8}>
-            <Alert variant="primary" className="d-flex align-items-center">
-              <div className="flex-grow-1">
-                Points Left: <Badge bg="dark">{userPoints}</Badge>
-              </div>
-              <div>
-                <Button variant="success" onClick={() => fetchUserPoints(userInfo.userId, userInfo.educationLevel)}>
-                  <FontAwesomeIcon icon={faEdit} /> Fetching points
-                </Button>
-                <Button variant="warning" onClick={() => updateUserPoints(20, userInfo.userId)}>
+            <>
+              <Col md="auto">
+                <Button variant="secondary" onClick={() => navigate("/exam-page")}>
                   <FontAwesomeIcon icon={faEdit} /> Attempt Exam
                 </Button>
-              </div>
-            </Alert>
-          </Col>
+              </Col>
+              <Row className="justify-content-md-center mt-4">
+                <Col md={8}>
+                  <Alert variant="primary" className="d-flex align-items-center">
+                    <div className="flex-grow-1" style={{ fontSize: '1.7rem' }}>
+                      Points Left: <Badge bg="dark" style={{ fontSize: '2.5rem' }}>{userPoints}</Badge>
+                    </div>
+
+                    {/* For debugging purposes only - Testing fetch of points from Points table */}
+                    {/* <Button variant="secondary" onClick={() => fetchUserPoints(userInfo.userId, userInfo.educationLevel)}>
+                <FontAwesomeIcon icon={faEdit} /> Attempt Exam
+              </Button> */}
+                  </Alert>
+                </Col>
+              </Row>
+            </>
+          )}
         </Row>
       </Container>
     </HeroHeader>
