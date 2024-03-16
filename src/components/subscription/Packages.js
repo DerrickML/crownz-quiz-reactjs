@@ -108,6 +108,7 @@ const Packages = ({ studentInfo }) => {
                     <Button variant="secondary" onClick={handleCloseModal}>
                         Close
                     </Button>
+
                 </Modal.Footer>
             </Modal>        </Container>
     );

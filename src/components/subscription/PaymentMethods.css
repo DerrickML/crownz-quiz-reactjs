@@ -45,9 +45,10 @@
     /* Light hover effect */
 }
 
-.payment-logo {
-    height: 30px;
-    margin-right: 10px;
+.card-img-centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Add further styles for fonts, colors, and responsive design */

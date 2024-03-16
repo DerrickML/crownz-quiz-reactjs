@@ -33,6 +33,7 @@ import MTNMomo from "./components/subscription/MTNMomo";
 import AirtelMoney from "./components/subscription/AirtelMoney";
 import CardPayment from "./components/subscription/CardPaymentB";
 import Receipt from "./components/subscription/Receipt.js";
+import SelectPackage from "./components/subscription/SelectPackage";
 import { AuthProvider, useAuth } from './context/AuthContext';
 import "./App.css";
 
@@ -158,6 +159,13 @@ function App() {
                 element={
                   <PrivateRoute>
                     <Answers />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/select-package"
+                element={
+                  <PrivateRoute>
+                    <SelectPackage />
                   </PrivateRoute>
                 }
               />

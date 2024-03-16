@@ -2,8 +2,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import { Container, Row, Col, Button, Alert, Badge } from "react-bootstrap";
+import { faEdit, faUserCircle, faCoins, faArrowUp, faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
+import { Container, Row, Col, Button, Alert, Badge, Card } from "react-bootstrap";
 import storageUtil from "../utilities/storageUtil";
 import { useAuth } from "../context/AuthContext";
 import "../animations.css";
@@ -47,20 +47,21 @@ function Home() {
                   <FontAwesomeIcon icon={faEdit} /> Attempt Exam
                 </Button>
               </Col>
-              <Row className="justify-content-md-center mt-4">
-                <Col md={8}>
-                  <Alert variant="primary" className="d-flex align-items-center">
-                    <div className="flex-grow-1" style={{ fontSize: '1.7rem' }}>
-                      Points Left: <Badge bg="dark" style={{ fontSize: '2.5rem' }}>{userPoints}</Badge>
-                    </div>
+              <div className="d-flex justify-content-center">
 
-                    {/* For debugging purposes only - Testing fetch of points from Points table */}
-                    {/* <Button variant="secondary" onClick={() => fetchUserPoints(userInfo.userId, userInfo.educationLevel)}>
-                <FontAwesomeIcon icon={faEdit} /> Attempt Exam
-              </Button> */}
-                  </Alert>
-                </Col>
-              </Row>
+                <Card style={{ width: 'auto' }} className="text-center my-4">
+                  <Card.Header as="h5">
+                    <FontAwesomeIcon icon={faCoins} className="me-2" /> Points Available
+                  </Card.Header>
+                  <Card.Body>
+                    <Card.Title style={{ fontSize: '2.5rem' }}>{userPoints}</Card.Title>
+                    <Button variant="outline-primary" onClick={() => navigate('/select-package')}>
+                      <FontAwesomeIcon icon={faArrowCircleUp} className="me-2" />
+                      Top Up Points
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </div>
             </>
           )}
         </Row>

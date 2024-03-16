@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
 import { isValidPhoneNumber } from 'react-phone-number-input';
@@ -27,9 +27,10 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
     const [phone, setPhone] = useState(userInfo.phone || '');
     // const [email, setEmail] = useState(userInfo.email || 'crownzcom@gmail.com');
     const [email, setEmail] = useState('crownzcom@gmail.com');
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState('A page will load shortly after requesting you to enter a OTP. The OTP is 123456');
     const [phoneError, setPhoneError] = useState(false); // Error flag for user's phone
     const [amount, setAmount] = useState(price ? price : '2000');
+    const [submit, setSubmit] = useState(false);
 
     // Extract the root URL (protocol + hostname + port)
     var rootURL = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
@@ -60,6 +61,8 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
         e.preventDefault();
         setPaymentStatus(null);
 
+        setSubmit(true);
+
         setFormData({ ...formData, phone_number: phone }); // Move this line before the check
         // setFormData({ ...formData, phone_number: '256121212121' });
 
@@ -75,6 +78,7 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
         if (!isUserPhoneValid) {
             setPhoneError(!isUserPhoneValid);
             return;
+            setSubmit(false);
         }
 
         try {
@@ -91,12 +95,16 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
             console.log('Pay response Data:\n', data);
             if (data.response.status === 'success' && data.response.meta.authorization.mode === 'redirect') {
                 window.location.href = data.response.meta.authorization.redirect;
+                setPaymentStatus('A page will load shortly requesting you to enter OTP received on your phone')
+                alert('A page will load shortly requesting you to enter OTP. OTP is 123456');
             } else {
                 setPaymentStatus(data.response.message);
+                setSubmit(false);
             }
         } catch (error) {
             console.error('Error making payment:', error);
             setPaymentStatus('Error making payment. Please try again.');
+            setSubmit(false);
         }
     };
 
@@ -123,8 +131,14 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
                         </Form.Control.Feedback>
                     )}
                 </Form.Group>
-
-                <Button variant='success' type='submit' disabled={!phone}>Pay with Mobile Money</Button>
+                {
+                    !submit ? <Button variant='success' type='submit' disabled={!phone}>Pay with Mobile Money</Button> :
+                        <>
+                            <Spinner animation="grow" variant="primary" />
+                            <Spinner animation="grow" variant="secondary" />
+                            <Spinner animation="grow" variant="success" />
+                        </>
+                }
 
                 {paymentStatus && <Alert className='mt-3' variant='info'>{paymentStatus}</Alert>}
             </Form>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid'; // UUID generation for unique identifiers
@@ -36,7 +36,7 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
     const [amount, setAmount] = useState(price ? price : '2000');
     const [paymentStatus, setPaymentStatus] = useState(null);
     const [message, setMessage] = useState('');
-
+    const [submit, setSubmit] = useState(false);
 
     // Phone number validation function
     const validatePhoneNumber = (phoneNumber) => {
@@ -92,6 +92,7 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
     };
 
     const handleSubmit = async (e) => {
+        setSubmit(true);
         e.preventDefault();
         setPaymentStatus(null);
 
@@ -102,6 +103,8 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
         }
 
         await initiatePayment();
+
+        setSubmit(false);
     };
 
     return (
@@ -150,8 +153,14 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
                         </Form.Control.Feedback>
                     )}
                 </Form.Group>
-
-                <Button variant='success' type='submit'>Proceed to Complete Payment</Button>
+                {
+                    !submit ? <Button variant='success' type='submit'>Proceed to Complete Payment</Button> :
+                        <>
+                            <Spinner animation="grow" variant="primary" />
+                            <Spinner animation="grow" variant="secondary" />
+                            <Spinner animation="grow" variant="success" />
+                        </>
+                }
 
                 {paymentStatus && <Alert className='mt-3' variant='info'>{paymentStatus}</Alert>}
             </Form>

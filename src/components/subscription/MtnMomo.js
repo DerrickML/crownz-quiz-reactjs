@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Card, Form, Button, Container } from 'react-bootstrap';
+import { Card, Form, Button, Container, Spinner } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
@@ -39,6 +39,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
     const [phoneError, setPhoneError] = useState(false); // Error flag for user's phone
     const [receiptInfo, setReceiptInfo] = useState({});
     const [paymentStatus, setPaymentStatus] = useState('');
+    const [submit, setSubmit] = useState(false);
 
     // Create a new MTN MoMo API user
     const createApiUser = async () => {
@@ -178,6 +179,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
     };
 
     const handlePayment = async () => {
+        setSubmit(true);
         if (!phone || !amount) {
             setMessage('Please enter both phone number and amount.');
             return;
@@ -222,6 +224,8 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
             console.error('An error occurred:', error);
             setMessage('An error occurred while processing the payment.');
         }
+
+        setSubmit(false);
     };
 
     const viewReceipt = () => {
@@ -250,7 +254,14 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
                         </Form.Control.Feedback>
                     )}
                 </Form.Group>
-                <Button onClick={handlePayment} disabled={!phone}>Pay</Button>
+                {
+                    !submit ? <Button onClick={handlePayment} disabled={!phone}>Pay</Button> :
+                        <>
+                            <Spinner animation="grow" variant="primary" />
+                            <Spinner animation="grow" variant="secondary" />
+                            <Spinner animation="grow" variant="success" />
+                        </>
+                }
                 {message && <p>{message}</p>}
             </Card>
             {paymentStatus === "success" ? <Button onClick={viewReceipt} >View Your Receipt</Button> : null}
