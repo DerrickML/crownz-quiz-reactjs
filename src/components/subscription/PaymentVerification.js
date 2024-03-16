@@ -127,20 +127,22 @@ const PaymentResult = () => {
             )
 
             /*** ----------- Update Points tables ----------- ***/
-            //Update the points table in the database
-            await updatePointsTable({
-                created_at: data.created_at,
-                paymentFor: data.meta.service,
-                transactionID: data.tx_ref, //USED tx_ref because it's unique for all, but transactionId in transaction table can be duplicated
-                userId: `${isStudent ? userInfo.userId : data.meta.studentInfo.id}`,
-                points: data.meta.points,
-                educationLevel: `${isStudent ? userInfo.userId : data.meta.studentInfo.educationLevel}`,
-                message: `Points Purchase with Flutterwave Gateway - PaymentVerification`
-            })
+            if (data.status === 'successful') {
+                //Update the points table in the database
+                await updatePointsTable({
+                    created_at: data.created_at,
+                    paymentFor: data.meta.service,
+                    transactionID: data.tx_ref, //USED tx_ref because it's unique for all, but transactionId in transaction table can be duplicated
+                    userId: `${isStudent ? userInfo.userId : data.meta.studentInfo.id}`,
+                    points: data.meta.points,
+                    educationLevel: `${isStudent ? userInfo.userId : data.meta.studentInfo.educationLevel}`,
+                    message: `Points Purchase with Flutterwave Gateway - PaymentVerification`
+                })
 
-            //Update client side points
-            if (isStudent) {
-                await fetchUserPoints(userInfo.userId, userInfo.educationLevel);
+                //Update client side points
+                if (isStudent) {
+                    await fetchUserPoints(userInfo.userId, userInfo.educationLevel);
+                }
             }
             /*** ----------- END: Update Points tables ----------- ***/
 
