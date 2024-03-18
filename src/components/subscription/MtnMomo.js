@@ -6,7 +6,7 @@ import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-import moment from 'moment';
+import { serverUrl } from '../../config.js';
 // import PropTypes from 'prop-types';
 import {
     databases,
@@ -33,7 +33,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
         }
     }, []);
 
-    const serverUrl = "https://2wkvf7-3000.csb.app"
+    // const serverUrl = "https://2wkvf7-3000.csb.app"
     const serverMomoRoute = `${serverUrl}/mtnMomo`
 
     const [phone, setPhone] = useState(userInfo.phone || '');
@@ -148,6 +148,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
             }
         } catch (error) {
             console.error("Error verifying payment status:", error);
+            throw error;
         }
     };
 
@@ -159,16 +160,16 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
     //Function to save transaction data to transaction database table
     const saveTransactionData = async (data) => {
         try {
-            const created_at_formattedDate = moment(data.created_at, 'DD/MM/YYYY, HH:mm:ss').toDate();
-            console.log('formattedDate - moment: ', created_at_formattedDate);
+            // const created_at_formattedDate = moment(data.created_at, 'DD/MM/YYYY, HH:mm:ss').toDate();
+            // console.log('formattedDate - moment: ', created_at_formattedDate);
 
-            console.log('Points purchased: ', points);
-            console.log('Transaction Table - MTNMoMo - Purchased points on: ', created_at_formattedDate);
+            // console.log('Points purchased: ', points);
+            console.log('Transaction Table - MTNMoMo - Purchased points on: ', data.created_at);
 
             const response = await databases.createDocument(database_id, transactionTable_id, "unique()",
                 {
                     userID: userInfo.userId,
-                    transactionDate: created_at_formattedDate,
+                    transactionDate: data.created_at,
                     transactionAmount: data.charged_amount,
                     currency: data.currency,
                     paymentMethod: data.payment_type,

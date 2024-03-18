@@ -19,6 +19,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { showToast } from "../utilities/toastUtil.js";
 import { useAuth } from '../context/AuthContext';
+import { serverUrl } from '../config';
 
 // EditProfile functional component for handling user profile edits
 const EditProfile = () => {
@@ -169,7 +170,7 @@ const EditProfile = () => {
 
   async function updateUserProfile() {
     try {
-      const url = "https://2wkvf7-3000.csb.app/update-account";
+      const url = `${serverUrl}/update-account`;
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },

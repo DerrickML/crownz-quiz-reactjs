@@ -7,11 +7,11 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from "uuid"; // UUID generation for unique identifiers
 import { useAuth } from '../../context/AuthContext';
+import { serverUrl } from '../../config';
 
 
 function CardPayment({ price }) {
     const { userInfo } = useAuth();
-    const serverUrl = "https://2wkvf7-3000.csb.app"
 
     console.log('Price: ', price)
 

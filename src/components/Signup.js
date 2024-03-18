@@ -23,6 +23,7 @@ import {
   studentTable_id,
   pointsTable_id
 } from "../appwriteConfig.js";
+import { serverUrl } from "../config.js"
 import EmailSignupFields from "./formComponents/EmailSignupFields";
 import PhoneSignupFields from "./formComponents/PhoneSignupFields";
 import PersonalDetails from "./formComponents/PersonalDetails.js";
@@ -219,7 +220,7 @@ function SignUp() {
       };
 
       const response = await fetch(
-        "https://2wkvf7-3000.csb.app/create-student",
+        `${serverUrl}/create-student`,
         {
           method: "POST",
           headers: {
@@ -279,7 +280,7 @@ function SignUp() {
         labels: ["student", "subscriber"],
       };
 
-      const response = await fetch("https://2wkvf7-3000.csb.app/update-label", {
+      const response = await fetch(`${serverUrl}/update-label`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

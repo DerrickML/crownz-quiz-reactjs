@@ -5,6 +5,7 @@ import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid'; // UUID generation for unique identifiers
 import { useAuth } from '../../context/AuthContext';
+import { serverUrl } from '../../config';
 
 function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
     const { userInfo } = useAuth();
@@ -23,7 +24,6 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
     }, []);
 
     console.log(userInfo)
-    const serverUrl = 'https://2wkvf7-3000.csb.app'
 
     // Extract the root URL (protocol + hostname + port)
     var rootURL = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');

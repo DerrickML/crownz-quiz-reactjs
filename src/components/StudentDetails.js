@@ -29,6 +29,7 @@ import {
   faPen,
   faCircleArrowUp
 } from "@fortawesome/free-solid-svg-icons";
+import { kinPurchasePoints } from '../utilities/otherUtils'
 
 const StudentDetails = () => {
   const navigate = useNavigate();
@@ -119,7 +120,12 @@ const StudentDetails = () => {
                         </Badge>
                       </div>
 
-                      <Button variant={`outline-${student.pointsBalance < 20 ? 'danger' : 'success'}`}>
+                      <Button
+                        variant={`outline-${student.pointsBalance < 20 ? 'danger' : 'success'}`}
+                        onClick={() => {
+                          kinPurchasePoints(navigate, { userId: student.studID, name: student.studName, educationLevel: student.educationLevel })
+                        }}
+                      >
                         <FontAwesomeIcon icon={faCircleArrowUp} />
                         Top Up Points
                       </Button>

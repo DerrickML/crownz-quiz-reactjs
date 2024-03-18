@@ -6,6 +6,8 @@ import PhoneInput from 'react-phone-number-input';
 import { isValidPhoneNumber } from 'react-phone-number-input';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../context/AuthContext';
+import { serverUrl, rootUrl } from '../../config.js';
+
 function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
     const { userInfo } = useAuth();
     const isStudent = userInfo.labels.includes("student");
@@ -15,14 +17,14 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
     const location = useLocation();
     const { price, paymentFor, points, studentInfo } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' } }; // Set default values accordingly
 
+    console.log('Student Information: ', JSON.stringify(studentInfo))
+
     useEffect(() => {
         console.log('Price passed to MTN: ', price)
         if (!price) {
             navigate(-1);
         }
     }, []);
-
-    const serverUrl = 'https://2wkvf7-3000.csb.app'
 
     const [phone, setPhone] = useState(userInfo.phone || '');
     // const [email, setEmail] = useState(userInfo.email || 'crownzcom@gmail.com');
@@ -33,7 +35,7 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
     const [submit, setSubmit] = useState(false);
 
     // Extract the root URL (protocol + hostname + port)
-    var rootURL = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+    var rootURL = rootUrl;
 
     const [formData, setFormData] = useState({
         phone_number: phone,

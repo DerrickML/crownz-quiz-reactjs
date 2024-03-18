@@ -4,11 +4,11 @@ import { Container, Row, Col, Button, Form, Alert, Card, Spinner } from 'react-b
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { serverUrl } from '../../config'
 import './PaymentMethods.css';
 
 function PaymentMethods({ initialCoupon, price, paymentFor, points, studentInfo }) {
     const navigate = useNavigate();
-    const serverUrl = "https://2wkvf7-3000.csb.app";
     const originalPrice = price;
 
     const [stage, setStage] = useState('coupon'); // 'coupon', 'summary', or 'payment'

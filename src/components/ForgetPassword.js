@@ -12,6 +12,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { account } from "../appwriteConfig.js";
+import { rootUrl } from "../config.js";
 import "./PasswordReset.css"; // Make sure this CSS file contains your desired styles
 
 const ForgetPassword = () => {
@@ -19,7 +20,7 @@ const ForgetPassword = () => {
   const [submitted, setSubmitted] = useState(false);
   const [hideButton, setHideButton] = useState(false);
 
-  const resetLink = "http://localhost:3000/password-reset"; // Adjust accordingly
+  const resetLink = `${rootUrl}/password-reset`; // Adjust accordingly
 
   const handleSubmit = (e) => {
     e.preventDefault();

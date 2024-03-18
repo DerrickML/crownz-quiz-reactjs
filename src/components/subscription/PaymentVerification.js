@@ -16,6 +16,7 @@ import {
 import { updatePointsTable } from '../../utilities/otherUtils'
 import './PaymentResult.css'; // Path to your custom CSS file
 import moment from 'moment';
+import { serverUrl } from '../../config.js';
 
 const PaymentResult = () => {
 
@@ -31,7 +32,6 @@ const PaymentResult = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const transactionId = queryParams.get('transaction_id') || parseTransactionIdFromResp(queryParams.get('resp'));
-    const serverUrl = "https://2wkvf7-3000.csb.app";
 
     useEffect(() => {
         const verifyPayment = async () => {
@@ -147,7 +147,7 @@ const PaymentResult = () => {
                         created_at: new Date(data.created_at),
                         paymentFor: data.meta.service,
                         transactionID: data.tx_ref, //USED tx_ref because it's unique for all, but transactionId in transaction table can be duplicated
-                        userId: `${isStudent ? userInfo.userId : data.meta.studentInfo.id}`,
+                        userId: `${isStudent ? userInfo.userId : data.meta.studentInfo.userId}`,
                         points: data.meta.points,
                         educationLevel: `${isStudent ? userInfo.userId : data.meta.studentInfo.educationLevel}`,
                         message: `Points Purchase with Flutterwave Gateway - PaymentVerification`

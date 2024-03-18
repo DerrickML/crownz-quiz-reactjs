@@ -32,6 +32,7 @@ import {
   nextOfKinTable_id,
   Query,
 } from "../appwriteConfig.js";
+import { serverUrl } from "../config.js"
 import "./Login.css";
 
 function Login() {
@@ -231,7 +232,7 @@ function Login() {
       };
 
       const response = await fetch(
-        "https://2wkvf7-3000.csb.app/get-user-details",
+        `${serverUrl}/get-user-details`,
         {
           method: "POST",
           headers: {

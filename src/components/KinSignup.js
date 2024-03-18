@@ -25,6 +25,7 @@ import {
   nextOfKinTable_id,
   Query,
 } from "../appwriteConfig.js";
+import { serverUrl } from "../config.js";
 
 const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
   const navigate = useNavigate();
@@ -236,7 +237,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
       };
 
       const response = await fetch(
-        "https://2wkvf7-3000.csb.app/create-next-of-kin",
+        `${serverUrl}/create-next-of-kin`,
         {
           method: "POST",
           headers: {
