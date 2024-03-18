@@ -10,6 +10,7 @@ import {
   Tabs,
   Tab,
   Button,
+  Badge
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -24,6 +25,9 @@ import {
   faGraduationCap,
   faMapMarkerAlt,
   faPaperPlane,
+  faCoins,
+  faPen,
+  faCircleArrowUp
 } from "@fortawesome/free-solid-svg-icons";
 
 const StudentDetails = () => {
@@ -105,6 +109,21 @@ const StudentDetails = () => {
                       <FontAwesomeIcon icon={faMapMarkerAlt} className="me-2" />
                       <strong>School Address:</strong>{" "}
                       {displayValue(student.schoolAddress)}
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                      <div style={{ fontSize: '0.9em', paddingBottom: '3px' }} >
+                        <FontAwesomeIcon icon={faCoins} className="me-2" />
+                        <strong>Points Left:</strong>{" "}
+                        <Badge bg={student.pointsBalance < 20 ? 'danger' : 'success'} style={{ fontSize: '0.9em' }}>
+                          {student.pointsBalance}
+                        </Badge>
+                      </div>
+
+                      <Button variant={`outline-${student.pointsBalance < 20 ? 'danger' : 'success'}`}>
+                        <FontAwesomeIcon icon={faCircleArrowUp} />
+                        Top Up Points
+                      </Button>
+
                     </ListGroup.Item>
                   </ListGroup>
                 </Card.Body>

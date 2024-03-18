@@ -10,6 +10,7 @@ import {
   Col,
   Table,
   Pagination,
+  Badge,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -50,12 +51,28 @@ const LinkedStudents = () => {
               <Card.Text>
                 Education Level: {student.educationLevel || "N/A"}
               </Card.Text>
-              <Button
-                variant="primary"
-                onClick={() => navigateToStudentDetails(student)}
-              >
-                View Details
-              </Button>
+              <Card.Text>
+                Points Left:  <Badge bg={student.pointsBalance < 20 ? 'danger' : 'success'} style={{ fontSize: '0.9em' }}>
+                  {student.pointsBalance}
+                </Badge>
+              </Card.Text>
+
+              <ButtonGroup>
+                <Button
+                  variant="outline-dark"
+                  onClick={() => navigateToStudentDetails(student)}
+                  style={{ fontSize: '0.8rem' }}
+                >
+                  View Details
+                </Button>
+                <Button
+                  variant={`outline-${student.pointsBalance < 20 ? 'danger' : 'success'}`}
+                  onClick={() => navigateToStudentDetails(student)}
+                  style={{ fontSize: '0.8rem' }}
+                >
+                  Top Up Points
+                </Button>
+              </ButtonGroup>
             </Card.Body>
           </Card>
         </Col>
@@ -64,11 +81,12 @@ const LinkedStudents = () => {
   );
 
   const renderStudentsAsTable = () => (
-    <Table striped bordered hover>
+    <Table striped bordered hover >
       <thead>
         <tr>
           <th>Name</th>
           <th>Education Level</th>
+          <th>Points Left</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -77,13 +95,24 @@ const LinkedStudents = () => {
           <tr key={index}>
             <td>{student.studName}</td>
             <td>{student.educationLevel || "N/A"}</td>
+            <td>{student.pointsBalance}</td>
             <td>
-              <Button
-                variant="primary"
-                onClick={() => navigateToStudentDetails(student)}
-              >
-                View Details
-              </Button>
+              <ButtonGroup >
+                <Button
+                  variant="outline-dark"
+                  onClick={() => navigateToStudentDetails(student)}
+                  style={{ fontSize: '0.8rem' }}
+                >
+                  View Details
+                </Button>
+                <Button
+                  variant={`outline-${student.pointsBalance < 20 ? 'danger' : 'success'}`}
+                  onClick={() => navigateToStudentDetails(student)}
+                  style={{ fontSize: '0.8rem' }}
+                >
+                  Top Up Points
+                </Button>
+              </ButtonGroup>
             </td>
           </tr>
         ))}

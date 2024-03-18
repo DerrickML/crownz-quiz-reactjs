@@ -18,6 +18,7 @@ import {
   faPlusCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import storageUtil from "../utilities/storageUtil";
+import { fetchAndProcessStudentData } from "../utilities/fetchStudentData";
 import KinSignup from "./KinSignup";
 import HeroHeader from "./HeroHeader";
 import "./Home.css";
@@ -58,6 +59,7 @@ const Profile = () => {
     startIndex,
     startIndex + itemsPerPage
   );
+
   const renderNextOfKinProfile = () => (
     <Card className="shadow-sm mb-4 profile-card">
       <Card.Header>
@@ -66,12 +68,14 @@ const Profile = () => {
       </Card.Header>
       <Card.Body>
         <Card.Title>Linked Students</Card.Title>
+        {/* <Button onClick={() => { fetchAndProcessStudentData(userInfo.userId) }}>Update Students Data</Button> */}
         <Table hover>
           <thead>
             <tr>
               <th>No.</th>
               <th>Name</th>
               <th>Education Level</th>
+              <th>Points Available</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -81,6 +85,7 @@ const Profile = () => {
                 <td>{startIndex + index + 1}</td>
                 <td>{student.studName}</td>
                 <td>{student.educationLevel}</td>
+                <td>{student.pointsBalance}</td>
                 <td>
                   <Button
                     size="sm"

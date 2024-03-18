@@ -8,8 +8,6 @@ function KinSelectPackage() {
   const location = useLocation();
   const { studentInfo } = location.state || { studentInfo: { userId: '', name: '', educationLevel: '' } }; // Set default values accordingly
 
-  console.log('Student Info being payed for: ', studentInfo)
-
   return (
     <div style={{ marginTop: "100px" }} >
       <Packages studentInfo={studentInfo}></Packages>

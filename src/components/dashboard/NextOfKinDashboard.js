@@ -83,6 +83,7 @@ const NextOfKinDashboard = () => {
                               variant="primary"
                               //   size="sm"
                               onClick={() => viewResults(results, subjectName, recentScore)}
+                              style={{ fontSize: '0.8rem' }}
                             >
                               Exam Results
                             </Button>
@@ -95,6 +96,7 @@ const NextOfKinDashboard = () => {
                                 state: { student: student },
                               })
                             }
+                            style={{ fontSize: '0.8rem' }}
                           >
                             Student Details
                           </Button>

@@ -4,6 +4,7 @@ import {
   database_id,
   studentTable_id,
   studentMarksTable_id,
+  pointsTable_id,
   Query,
 } from "../appwriteConfig.js";
 import storageUtil from "./storageUtil"; // Import storageUtil
@@ -14,24 +15,31 @@ import storageUtil from "./storageUtil"; // Import storageUtil
  */
 export const fetchAndProcessStudentData = async (kinID) => {
   try {
+    console.log('Fetching and processing student data ...')
     // Step 1: Fetch students linked to the next-of-kin
     const students = await fetchStudentsLinkedToKin(kinID);
 
-    // Step 2: Fetch results for each student and process data
+    // Step 2: Fetch results and points for each student and process data
     const processedData = await Promise.all(
       students.map(async (student) => {
+        // Fetch results
         const results = await fetchStudentResults(student.studID);
+
+        // Fetch points
+        const points = await fetchStudentPoints(student.studID);
+        const pointsBalance = points.length > 0 ? points[0].PointsBalance : 0; // Assuming each student has only one points document
+
+        // Construct processed student data object
         return {
           studID: student.studID,
-          studName: `${student.firstName} ${student.lastName} ${
-            student.otherName === null ? "" : student.otherName
-          }`,
+          studName: `${student.firstName} ${student.lastName} ${student.otherName || ""}`,
           gender: student.gender,
           phone: student.phone,
           email: student.email,
           educationLevel: student.educationLevel,
           schoolName: student.schoolName,
           schoolAddress: student.schoolAddress,
+          pointsBalance: pointsBalance,
           Results: results.map((result) => ({
             subject: result.subject,
             score: result.marks,
@@ -39,8 +47,10 @@ export const fetchAndProcessStudentData = async (kinID) => {
             dateTime: formatDate(result.$createdAt),
           })),
         };
+
       })
     );
+
 
     // Step 3: Save the processed data to local storage using storageUtil
     storageUtil.setItem("studentData", processedData);
@@ -49,16 +59,21 @@ export const fetchAndProcessStudentData = async (kinID) => {
   }
 };
 
+
 /**
  * Fetches students linked to a specific next-of-kin.
  * @param {string} kinID - The ID of the next-of-kin.
  * @returns {Promise<Array>} - A promise that resolves to an array of students.
  */
 const fetchStudentsLinkedToKin = async (kinID) => {
-  const response = await databases.listDocuments(database_id, studentTable_id, [
-    Query.equal("kinID", [kinID]),
-  ]);
-  return response.documents;
+  try {
+    const response = await databases.listDocuments(database_id, studentTable_id, [
+      Query.equal("kinID", [kinID]),
+    ]);
+    return response.documents;
+  } catch (err) {
+    console.error('Failed to fecth students LINKED to next-of-kin. ' + err);
+  }
 };
 
 /**
@@ -67,12 +82,35 @@ const fetchStudentsLinkedToKin = async (kinID) => {
  * @returns {Promise<Array>} - A promise that resolves to an array of results.
  */
 const fetchStudentResults = async (studID) => {
-  const response = await databases.listDocuments(
-    database_id,
-    studentMarksTable_id,
-    [Query.equal("studID", [studID])]
-  );
-  return response.documents;
+  try {
+    const response = await databases.listDocuments(
+      database_id,
+      studentMarksTable_id,
+      [Query.equal("studID", [studID])]
+    );
+    return response.documents;
+  } catch (err) {
+    console.error('Failed to fecth Students RESULTS linked to next-of-kin. ' + err);
+  }
+};
+
+/**
+ * Fetches student points for a specific student.
+ * @param {string} studID - The ID of the student.
+ * @returns {Promise<Array>} - A promise that resolves to an array of results.
+ */
+const fetchStudentPoints = async (studID) => {
+  try {
+    const response = await databases.listDocuments(
+      database_id,
+      pointsTable_id,
+      [Query.equal("UserID", [studID])]
+    );
+    return response.documents;
+  } catch (err) {
+    console.error('Failed to fecth Students POINTS linked to next-of-kin. ' + err);
+  }
+
 };
 
 /**
@@ -81,8 +119,12 @@ const fetchStudentResults = async (studID) => {
  * @returns {string} - The formatted date-time string.
  */
 const formatDate = (dateTime) => {
-  const date = new Date(dateTime);
-  return `${date.toLocaleString("en-US", {
-    dateStyle: "long",
-  })} ${date.toLocaleTimeString()}`;
+  try {
+    const date = new Date(dateTime);
+    return `${date.toLocaleString("en-US", {
+      dateStyle: "long",
+    })} ${date.toLocaleTimeString()}`;
+  } catch (err) {
+    console.error('Failed to format DATE. ' + err);
+  }
 };

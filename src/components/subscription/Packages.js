@@ -3,7 +3,7 @@ import { Card, Button, Container, Row, Col, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGem } from '@fortawesome/free-solid-svg-icons';
 import PaymentMethods from './PaymentMethods';
-import './Packages.css'; // Your custom CSS file
+import './Packages.css';
 
 const Packages = ({ studentInfo }) => {
     /*
