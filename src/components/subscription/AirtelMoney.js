@@ -17,6 +17,9 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
     const location = useLocation();
     const { price, paymentFor, points, studentInfo } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' } }; // Set default values accordingly
 
+    //Destructuring student information
+    const { userId: studentId, name: studentName, educationLevel } = studentInfo;
+
     console.log('Student Information: ', JSON.stringify(studentInfo))
 
     useEffect(() => {
@@ -46,10 +49,10 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
         redirect_url: `${rootURL}/payment/verification`,
         meta: {
             userId: `${userInfo.userId}`,
-            description: `Payment for exam/quiz Points${isStudent ? '.' : ` for ${studentInfo.name}`}`,
+            description: `Payment for exam/quiz Points${isStudent ? '.' : ` for ${studentName}`}`,
             service: `${paymentFor}`,
             points: `${points}`,
-            ...(isStudent ? {} : { studentInfo: studentInfo }), // Conditional spread operator for adding studentInfo
+            ...(isStudent ? {} : { studentName: studentName, studentId: studentId, educationLevel: educationLevel }), // Conditional spread operator for adding studentInfo
         }
     });
     const [paymentStatus, setPaymentStatus] = useState(null);
@@ -65,12 +68,13 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
 
         setSubmit(true);
 
-        setFormData({ ...formData, phone_number: phone }); // Move this line before the check
+        setFormData({ ...formData, phone_number: phone });
         // setFormData({ ...formData, phone_number: '256121212121' });
 
 
         if (!formData.phone_number) {
             setMessage('Please enter phone number.');
+            setSubmit(false);
             return;
         }
 
@@ -79,8 +83,9 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
 
         if (!isUserPhoneValid) {
             setPhoneError(!isUserPhoneValid);
-            return;
             setSubmit(false);
+            return;
+
         }
 
         try {

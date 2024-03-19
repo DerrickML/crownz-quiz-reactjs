@@ -16,6 +16,9 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
     const location = useLocation();
     const { price, paymentFor, points, studentInfo } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' } }; // Set default values accordingly
 
+    //Destructuring student information
+    const { userId: studentId, name: studentName, educationLevel } = studentInfo;
+
     useEffect(() => {
         console.log('Price passed to MTN: ', price)
         if (!price) {
@@ -45,37 +48,44 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
 
     const initiatePayment = async () => {
         try {
+            const dataToSend = {
+                tx_ref: `${uuidv4()}`,
+                amount: amount,
+                currency: 'UGX',
+                // redirect_url: `${serverUrl}`,
+                redirect_url: `${rootURL}/payment/verification`,
+                payment_options: 'card',
+                customer: {
+                    email: email,
+                    phonenumber: phone,
+                    name: name
+                },
+                meta: {
+                    userId: `${userId}`,
+                    description: `Payment for exam/quiz Points${isStudent ? '.' : ` for ${studentName}`}`,
+                    service: `${paymentFor}`,
+                    points: `${points}`,
+                    ...(isStudent ? {} : { studentName: studentName, studentId: studentId, educationLevel: educationLevel }), // Conditional spread operator for adding studentInfo
+                },
+                customizations: {
+                    title: 'Crownzcom',
+                    description: `Payment for exam/quiz Points${isStudent ? '.' : ` for ${studentName}`}`,
+                    logo: `${serverUrl}/images/logo.png`
+                }
+            }
+
+            console.log('Data to send to flutterwave: ', dataToSend)
+
             const response = await fetch(`${serverUrl}/flutterwave/card-payment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    tx_ref: `${uuidv4()}`,
-                    amount: amount,
-                    currency: 'UGX',
-                    // redirect_url: `${serverUrl}`,
-                    redirect_url: `${rootURL}/payment/verification`,
-                    payment_options: 'card',
-                    customer: {
-                        email: email,
-                        phonenumber: phone,
-                        name: name
-                    },
-                    meta: {
-                        userId: `${userId}`,
-                        description: `Payment for exam/quiz Points${isStudent ? '.' : ` for ${studentInfo.name}`}`,
-                        service: `${paymentFor}`,
-                        points: `${points}`,
-                        ...(isStudent ? {} : { studentInfo: studentInfo }), // Conditional spread operator for adding studentInfo
-                    },
-                    customizations: {
-                        title: 'Crownzcom',
-                        description: `Payment for exam/quiz Points${isStudent ? '.' : ` for ${studentInfo.name}`}`,
-                        logo: `${serverUrl}/images/logo.png`
-                    }
-                }),
+                body: JSON.stringify(
+                    dataToSend
+                ),
             });
+
             const data = await response.json();
             console.log('Data: ', data)
             if (data && data.status === 'success') {

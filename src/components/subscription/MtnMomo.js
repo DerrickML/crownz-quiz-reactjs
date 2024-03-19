@@ -12,7 +12,10 @@ import {
     databases,
     database_id,
     transactionTable_id,
+    pointsTable_id,
+    Query
 } from "../../appwriteConfig.js";
+import { updateStudentDataInLocalStorage } from '../../utilities/fetchStudentData'
 import { updatePointsTable } from '../../utilities/otherUtils'
 import { useAuth } from '../../context/AuthContext';
 
@@ -24,6 +27,9 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const { price, paymentFor, points, studentInfo } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' } }; // Set default values accordingly
+
+    //Destructuring student information
+    const { userId: studentId, name: studentName, educationLevel } = studentInfo;
 
     //Check if price is not null, or else navigate back
     useEffect(() => {
@@ -111,7 +117,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
                     currency: data.currency,
                     phone: data.payer.partyId,
                     transactionStatus: 'success',
-                    description: `Points Purchase${isStudent ? '.' : ` for ${studentInfo.name}`}`,
+                    description: `Points Purchase${isStudent ? '.' : ` for ${studentName}`}`,
                     created_at: new Date().toLocaleString(), // or extract date from the response if available
                     points: points
                 };
@@ -125,15 +131,37 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
                     created_at: receiptDetails.created_at,
                     paymentFor: paymentFor,
                     transactionID: data.externalId,
-                    userId: isStudent ? userInfo.userId : studentInfo.id,
+                    userId: isStudent ? userInfo.userId : studentId,
                     points: points,
-                    educationLevel: isStudent ? userInfo.userId : studentInfo.educationLevel,
+                    educationLevel: isStudent ? userInfo.userId : educationLevel,
                     message: `Points Purchase with MTN MoMo`
                 })
 
-                //Update client side points
+                //Update student side points
                 if (isStudent) {
                     await fetchUserPoints(userInfo.userId, userInfo.educationLevel);
+                }
+                else { //Update next-of-kin side points
+                    let newPointsBalance
+                    //Query a Appwrite Database Table for user
+                    try {
+
+                        const response = await databases.listDocuments(database_id, pointsTable_id, [Query.equal('UserID', studentId)]);
+
+                        console.log('Checking points table: ', response)
+
+                        if (response.documents.length > 0) {
+
+                            newPointsBalance = response.documents[0].PointsBalance
+
+                            //update Student Points via local storage
+                            await updateStudentDataInLocalStorage(studentId, { pointsBalance: newPointsBalance });
+
+                        }
+                    } catch (err) {
+                        console.error('Failed to Fetch points from Database for update after Payment verification: ', err);
+                    }
+
                 }
                 /*** ----------- END: Update Points tables ----------- ***/
 

@@ -114,6 +114,40 @@ const fetchStudentPoints = async (studID) => {
 };
 
 /**
+ * Updates data for a single student in local storage.
+ * @param {string} studID - The ID of the student to update.
+ * @param {object} updatedData - The updated data for the student.
+ * // Example usage:
+ * updateStudentDataInLocalStorage(studentID, { pointsBalance: newPointsBalance });
+ */
+export const updateStudentDataInLocalStorage = async (studID, updatedData) => {
+  try {
+    // Retrieve the existing array of student data from local storage
+    const storedData = storageUtil.getItem("studentData");
+    if (!storedData || !Array.isArray(storedData)) {
+      throw new Error("No student data found in local storage.");
+    }
+
+    // Find the index of the student to update
+    const studentIndex = storedData.findIndex(student => student.studID === studID);
+    if (studentIndex === -1) {
+      throw new Error(`Student with ID ${studID} not found in local storage.`);
+    }
+
+    // Update the specific student's data
+    storedData[studentIndex] = {
+      ...storedData[studentIndex],
+      ...updatedData
+    };
+
+    // Save the modified array back to local storage
+    storageUtil.setItem("studentData", storedData);
+  } catch (error) {
+    console.error("Error updating student data in local storage:", error);
+  }
+};
+
+/**
  * Formats the date string into a more readable format.
  * @param {string} dateTime - The original date-time string.
  * @returns {string} - The formatted date-time string.

@@ -14,6 +14,7 @@ import {
     Query
 } from "../../appwriteConfig.js";
 import { updatePointsTable } from '../../utilities/otherUtils'
+import { updateStudentDataInLocalStorage } from '../../utilities/fetchStudentData'
 import './PaymentResult.css'; // Path to your custom CSS file
 import moment from 'moment';
 import { serverUrl } from '../../config.js';
@@ -39,6 +40,8 @@ const PaymentResult = () => {
                 try {
                     const response = await fetch(`${serverUrl}/flutterwave/verify-payment/${transactionId}`);
                     const data = await response.json();
+
+                    console.log('Verified Data from Flutterwave: ', data);
 
                     //Saving to database
                     await saveTransactionData(data.transactionData);
@@ -100,6 +103,7 @@ const PaymentResult = () => {
     //Function to save transaction data to transaction table
     const saveTransactionData = async (data) => {
         try {
+            console.log('Saving transaction data: ', data);
             // Check if transaction already exists
             const existingTransaction = await databases.listDocuments(database_id, transactionTable_id, [Query.equal('transactionId', [`${data.id}`])]);
 
@@ -147,16 +151,38 @@ const PaymentResult = () => {
                         created_at: new Date(data.created_at),
                         paymentFor: data.meta.service,
                         transactionID: data.tx_ref, //USED tx_ref because it's unique for all, but transactionId in transaction table can be duplicated
-                        userId: `${isStudent ? userInfo.userId : data.meta.studentInfo.userId}`,
+                        userId: `${isStudent ? userInfo.userId : data.meta.studentId}`,
                         points: data.meta.points,
-                        educationLevel: `${isStudent ? userInfo.userId : data.meta.studentInfo.educationLevel}`,
+                        educationLevel: `${isStudent ? userInfo.userId : data.meta.educationLevel}`,
                         message: `Points Purchase with Flutterwave Gateway - PaymentVerification`
                     })
-                } catch (e) { console.log('Update Points table error: ', e); throw e; }
+                } catch (e) { console.error('Update Points table error: ', e); throw e; }
 
-                //Update client side points
+                //Update student side points
                 if (isStudent) {
                     await fetchUserPoints(userInfo.userId, userInfo.educationLevel);
+                }
+                else { //Update next-of-kin side points
+                    let newPointsBalance
+                    //Query a Appwrite Database Table for user
+                    try {
+
+                        const response = await databases.listDocuments(database_id, pointsTable_id, [Query.equal('UserID', data.meta.studentId)]);
+
+                        console.log('Checking points table: ', response)
+
+                        if (response.documents.length > 0) {
+
+                            newPointsBalance = response.documents[0].PointsBalance
+
+                            //update Student Points via local storage
+                            await updateStudentDataInLocalStorage(data.meta.studentId, { pointsBalance: newPointsBalance });
+
+                        }
+                    } catch (err) {
+                        console.error('Failed to Fetch points from Database for update after Payment verification: ', err);
+                    }
+
                 }
             }
             /*** ----------- END: Update Points tables ----------- ***/
