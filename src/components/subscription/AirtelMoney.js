@@ -18,7 +18,10 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
     const { price, paymentFor, points, studentInfo } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' } }; // Set default values accordingly
 
     //Destructuring student information
-    const { userId: studentId, name: studentName, educationLevel } = studentInfo;
+    // const { userId: studentId, name: studentName, educationLevel } = studentInfo;
+    let studentId = isNextOfKin ? studentInfo.userId : '';
+    let studentName = isNextOfKin ? studentInfo.name : '';
+    let educationLevel = isNextOfKin ? studentInfo.educationLevel : '';
 
     console.log('Student Information: ', JSON.stringify(studentInfo))
 
