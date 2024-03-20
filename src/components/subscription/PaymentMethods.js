@@ -5,9 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { serverUrl } from '../../config'
+// import OrderSummery2 from './OrderSummery2';
+
 import './PaymentMethods.css';
 
-function PaymentMethods({ initialCoupon, price, paymentFor, points, studentInfo }) {
+function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studentInfo }) {
     const navigate = useNavigate();
     const originalPrice = price;
 
@@ -69,13 +71,21 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, studentInfo 
     };
 
     return (
-        <Container className="mt-5" style={{ marginTop: "100px" }} >
-            {/* Stage 1: Apply Coupon */}
+        <div className="mt-5" style={{ marginTop: "" }} >
+            {/* Stage 1: Order Summery and Apply Coupon */}
             {stage === 'coupon' && (
-                <Row className="justify-content-md-center">
-                    <Col md={6}>
+                <Row className="justify-content-md-center order-summary">
+                    <Col md={8} lg={12}>
                         <Card className="text-center">
+                            <Card.Header as="h2">Order Summary</Card.Header>
                             <Card.Body>
+                                <Card.Text>
+                                    You are about to purchase {points} points which you can use to attempt quizzes.
+                                    <br />
+                                    Package: {tier}
+                                    <br />
+                                    Price: ${finalPrice}
+                                </Card.Text>
                                 <Card.Title>Apply Coupon</Card.Title>
                                 <Form>
                                     <Form.Group className="mb-3">
@@ -97,9 +107,12 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, studentInfo 
                                     <p>Original Price: {originalPrice}</p>
                                     <p>Discount: {discountInfo ? discountInfo.DiscountValue : 0}</p>
                                     <p>Final Price: {finalPrice}</p>
-                                    <Button variant="primary" onClick={handleNext}>Next</Button>
                                 </div>
+                                <Button variant="primary" onClick={handleNext}>Proceed to Payment</Button>
                             </Card.Body>
+                            <Card.Footer className="text-muted">
+                                <Button variant="secondary" onClick={() => navigate(-1)}>Cancel</Button>
+                            </Card.Footer>
                         </Card>
                     </Col>
                 </Row>
@@ -140,12 +153,12 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, studentInfo 
                         </Card>
                     </Col>
                     <Col lg={8} style={{ paddingTop: '15px' }}>
-                        <Button variant="secondary" onClick={() => setStage('coupon')}>Back to Coupon</Button>
+                        <Button variant="secondary" onClick={() => setStage('coupon')}>Back to Order Summery</Button>
                     </Col>
                 </Row>
 
             )}
-        </Container>
+        </div>
     );
 }
 

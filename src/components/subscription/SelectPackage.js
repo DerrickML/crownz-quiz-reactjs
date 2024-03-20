@@ -11,7 +11,7 @@ function KinSelectPackage() {
   console.log('Student Info being payed for: ', studentInfo)
 
   return (
-    <div style={{ marginTop: "100px" }} >
+    <div>
       <Packages studentInfo={studentInfo}></Packages>
     </div>
   );
