@@ -36,12 +36,12 @@ const Packages = ({ studentInfo }) => {
         },
         {
             tier: 'Elite Bundle',
-            points: 220,
+            points: 340,
             price: 15000,
-            quizzes: 11,
+            quizzes: 17,
             duration: 30,
             features: [
-                '220 points',
+                '340 points',
                 `Attempt up to 11 quizzes`,
                 'Expires in 30 days',
             ],
@@ -58,9 +58,11 @@ const Packages = ({ studentInfo }) => {
     };
 
     return (
-        <div className="justify-content-center my-5" style={{ marginTop: '', backgroundColor: 'hsl(240, 78%, 98%)' }}>
+        <div className="justify-content-center"
+            style={{ backgroundColor: 'hsl(240, 78%, 98%)' }}
+        >
             <Row className="justify-content-md-center">
-                <h2 className="text-center mb-4 w-100">Choose Your Pack</h2>
+                <h2 className="text-center w-100">Choose Your Pack</h2>
                 <div className="packages-container">
                     {packages.map((pkg, idx) => (
                         <Col key={idx} md={3} className="mb-3">
@@ -116,14 +118,18 @@ const Packages = ({ studentInfo }) => {
                 <Modal.Header closeButton>
                     <Modal.Title>Complete Your Purchase</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{ width: 'auto' }}>
+                <Modal.Body >
                     {selectedPackage && (
-                        <PaymentMethods
-                            price={selectedPackage.price}
-                            points={selectedPackage.points}
-                            paymentFor={'points'}
-                            studentInfo={studentInfo}
-                        />
+                        <>
+                            <PaymentMethods
+                                price={selectedPackage.price}
+                                points={selectedPackage.points}
+                                tier={selectedPackage.tier}
+                                paymentFor={'points'}
+                                studentInfo={studentInfo}
+                            />
+                        </>
+
                     )}
                 </Modal.Body>
             </Modal>

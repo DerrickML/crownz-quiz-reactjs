@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Button, Form, Alert, Card, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, ButtonGroup, Button, Form, Alert, Card, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -32,6 +32,9 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                 setDiscountInfo(data.couponDetails); // Set discount info from response
                 setCouponError('');
             } else {
+                // Reset discount info and final price to original when the coupon is invalid
+                setDiscountInfo(null);
+                setFinalPrice(originalPrice);
                 setCouponError(data.message || 'Invalid coupon code');
             }
             setCouponLoader(false);
@@ -47,11 +50,11 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
         const discountValue = parseFloat(discountInfo.DiscountValue);
         switch (discountInfo.DiscountType) {
             case 'fixed':
-                return Math.max(originalPrice - discountValue, 0);
+                return `UGX. ` + Math.max(originalPrice - discountValue, 0);
             case 'percentage':
-                return originalPrice * (1 - discountValue / 100);
+                return `UGX. ` + originalPrice * (1 - discountValue / 100);
             default:
-                return originalPrice; // No discount applied
+                return `UGX. ` + originalPrice; // No discount applied
         }
     };
 
@@ -71,29 +74,31 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
     };
 
     return (
-        <div className="mt-5" style={{ marginTop: "" }} >
+        <div>
             {/* Stage 1: Order Summery and Apply Coupon */}
             {stage === 'coupon' && (
                 <Row className="justify-content-md-center order-summary">
-                    <Col md={8} lg={12}>
-                        <Card className="text-center">
+                    <Col md={8} lg={9} className='justify-content-md-center'>
+                        <Card className="content-center" >
                             <Card.Header as="h2">Order Summary</Card.Header>
                             <Card.Body>
                                 <Card.Text>
                                     You are about to purchase {points} points which you can use to attempt quizzes.
                                     <br />
-                                    Package: {tier}
+                                    <strong>Package:</strong> {tier}
                                     <br />
-                                    Price: ${finalPrice}
+                                    <strong>Price: </strong>UGX. {finalPrice}
                                 </Card.Text>
                                 <Card.Title>Apply Coupon</Card.Title>
                                 <Form>
                                     <Form.Group className="mb-3">
-                                        <Form.Label>Coupon Code</Form.Label>
+                                        <Form.Label>Coupon/Token Code</Form.Label>
                                         <Form.Control type="text" value={coupon} onChange={(e) => setCoupon(e.target.value)} placeholder="Enter coupon code" />
                                         {
-                                            !couponLoader ? <Button variant="secondary" onClick={handleApplyCoupon}>Apply</Button> :
-                                                // loaders()
+                                            !couponLoader ? <Button
+                                                className=''
+                                                size='sm'
+                                                variant="outline-primary" onClick={handleApplyCoupon}>Apply</Button> :
                                                 <>
                                                     <Spinner animation="grow" variant="primary" />
                                                     <Spinner animation="grow" variant="secondary" />
@@ -104,14 +109,20 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                     {couponError && <Alert variant="danger">{couponError}</Alert>}
                                 </Form>
                                 <div>
-                                    <p>Original Price: {originalPrice}</p>
-                                    <p>Discount: {discountInfo ? discountInfo.DiscountValue : 0}</p>
+                                    <p>Original Price: UGX. {originalPrice}</p>
+                                    <p>Discount:
+                                        {' '}
+                                        {discountInfo && discountInfo.DiscountType === 'fixed' && 'UGX. '}
+                                        {discountInfo ? discountInfo.DiscountValue : 0}
+                                        {discountInfo && discountInfo.DiscountType === 'percentage' ? '%' : (discountInfo && discountInfo.DiscountType === 'points' ? 'points' : null)}
+                                    </p>
+
                                     <p>Final Price: {finalPrice}</p>
                                 </div>
-                                <Button variant="primary" onClick={handleNext}>Proceed to Payment</Button>
+
                             </Card.Body>
                             <Card.Footer className="text-muted">
-                                <Button variant="secondary" onClick={() => navigate(-1)}>Cancel</Button>
+
                             </Card.Footer>
                         </Card>
                     </Col>
@@ -153,11 +164,24 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                         </Card>
                     </Col>
                     <Col lg={8} style={{ paddingTop: '15px' }}>
-                        <Button variant="secondary" onClick={() => setStage('coupon')}>Back to Order Summery</Button>
                     </Col>
                 </Row>
 
             )}
+            <ButtonGroup style={{ width: '100%' }}>
+                <Button className='btn-cancel' variant="outline-dark" onClick={() => navigate('/')}>
+                    Cancel
+                </Button>
+
+                {stage === 'payment' && (
+                    <Button variant="secondary" onClick={() => setStage('coupon')}>Back to Order Summery</Button>
+                )}
+
+                {stage === 'coupon' && (
+                    <Button variant="success" onClick={handleNext}>Proceed to Payment</Button>
+                )}
+
+            </ButtonGroup>
         </div>
     );
 }

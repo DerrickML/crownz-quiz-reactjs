@@ -83,7 +83,7 @@ function App() {
 
       <AuthProvider>
         <div className="App">
-          {/* <CustomNavbar /> */}
+          <CustomNavbar />
           <div className="main-content" style={{ marginTop: "5px", width: "100%" }} >
             <Routes>
               <Route
