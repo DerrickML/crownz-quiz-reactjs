@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import englishData from "./english.json"; // Adjust the path as necessary
+import englishData from "./english.json";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);

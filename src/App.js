@@ -82,9 +82,15 @@ function App() {
     <Router>
 
       <AuthProvider>
-        <div className="App">
-          <CustomNavbar />
-          <div className="main-content" style={{ marginTop: "5px", width: "100%" }} >
+        <div
+        // className="App"
+        >
+          {/* <CustomNavbar /> */}
+          <div
+          // className="main-content"
+          // style={{ marginTop: "60px", width: "100%" }}
+          >
+            <CustomNavbar />
             <Routes>
               <Route
                 exact

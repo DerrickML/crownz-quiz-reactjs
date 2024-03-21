@@ -1,24 +1,17 @@
 .App {
     min-height: 100vh;
-    /* Viewport height */
-    padding-top: var(--navbarHeight);
-    /* Adjusted padding to accommodate the navbar height */
     display: flex;
     flex-direction: column;
-    /* Ensures that the footer sticks to the bottom if you have one */
 }
 
 .main-content {
     flex: 1;
-    /* This will allow the main content to grow */
-    /* margin-top: 0.009rem; */
-    /* Maintain your desired space */
+    margin-top: 0.009rem;
 }
 
 
 @media (max-width: 768px) {
     .main-content {
-        /* padding-top: 100px; */
-        /* Adjust this value based on the actual height of the collapsed navbar */
+        padding-top: 100px;
     }
 }

@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    /* padding: 20px; */
 }
 
 /* .signup-background {
@@ -18,14 +18,18 @@
     padding: 20px;
 } */
 
-
+.signup-container {
+    /* margin-top: 100px; */
+    margin-bottom: -30px;
+}
 
 /* You might want to style the card or container of your form to make it stand out from the background */
 .signup-card {
     background: #fbffff;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(185, 183, 183, 0.15);
-    /* padding: 30px;max-width: 400px; */
+    /* padding: 30px; */
+    /* max-width: 400px; */
     /* or your preferred width */
     /* width: 100%; */
 }

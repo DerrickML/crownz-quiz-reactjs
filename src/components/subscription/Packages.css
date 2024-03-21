@@ -19,17 +19,19 @@
 }
 
 .packages-container {
-    /* display: grid; */
     place-content: center;
     min-height: 100vh;
     font-size: 0.9375rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat",
+        sans-serif;
     background-color: var(--very-light-grayish-blue);
-    background-image: url(../../images/bg-top.svg), url(../../images/bg-bottom.svg);
+    background-image: url(../../images/bg-top.svg),
+        url(../../images/bg-bottom.svg);
     background-repeat: no-repeat;
-    padding: 4rem 1rem;
+    padding: 1.8rem 1rem;
     background-origin: border-box;
-    background-position: top right -12rem, bottom left -10rem;
+    background-position: top right -12rem,
+        bottom left -10rem;
 
     @media screen and (min-width: 968px) {
         background-position: top right, bottom left;

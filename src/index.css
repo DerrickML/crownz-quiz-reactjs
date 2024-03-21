@@ -5,7 +5,7 @@
 }
 
 body {
-  background: #707985 !important;
+  background: linear-gradient(135deg, #5f6061 0%, #83b4b6 100%) !important;
   min-height: 100vh;
   display: flex;
   font-weight: 400;
@@ -36,5 +36,4 @@ html,
 body {
   height: 100%;
   margin: 0;
-  /* Reset default margin */
 }

@@ -283,7 +283,7 @@ function Login() {
   }
 
   return (
-    <div className="login-background" style={{ marginTop: "100px" }}>
+    <div className="login-background login-container">
       <Container className="my-5">
         <Row className="justify-content-center">
           <Col md={6} lg={5}>

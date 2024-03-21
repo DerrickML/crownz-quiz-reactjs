@@ -62,7 +62,7 @@ const Packages = ({ studentInfo }) => {
             style={{ backgroundColor: 'hsl(240, 78%, 98%)' }}
         >
             <Row className="justify-content-md-center">
-                <h2 className="text-center w-100">Choose Your Pack</h2>
+                <h2 className="text-center" style={{ paddingTop: '30px' }}>Choose Your Pack</h2>
                 <div className="packages-container">
                     {packages.map((pkg, idx) => (
                         <Col key={idx} md={3} className="mb-3">
