@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Form, Button, Alert, Spinner } from 'react-bootstrap';
+import { Card, Form, Button, Alert, Spinner } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
 import { isValidPhoneNumber } from 'react-phone-number-input';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../context/AuthContext';
 import { serverUrl, rootUrl } from '../../config.js';
+import './AirtelMoney.css'
 
 function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
     const { userInfo } = useAuth();
@@ -35,7 +36,7 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
     const [phone, setPhone] = useState(userInfo.phone || '');
     // const [email, setEmail] = useState(userInfo.email || 'crownzcom@gmail.com');
     const [email, setEmail] = useState('crownzcom@gmail.com');
-    const [message, setMessage] = useState('A page will load shortly after requesting you to enter a OTP. The OTP is 123456');
+    const [message, setMessage] = useState('A page will load shortly after requesting you to enter an OTP. The OTP is 123456');
     const [phoneError, setPhoneError] = useState(false); // Error flag for user's phone
     const [amount, setAmount] = useState(price ? price : '2000');
     const [submit, setSubmit] = useState(false);
@@ -119,40 +120,53 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
     };
 
     return (
-        <div className='mt-4' style={{ marginTop: "100px" }} >
-            <h3>Mobile Money Payment</h3>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className='mb-3'>
-                    <Form.Label>Phone Number*</Form.Label>
-                    <PhoneInput
-                        className={`form-control ${phoneError ? 'is-invalid' : 'custom-phone-input '
-                            }`}
-                        placeholder='Enter phone number'
-                        international
-                        defaultCountry='UG'
-                        countryCallingCodeEditable={false}
-                        value={phone}
-                        onChange={setPhone}
-                        required
-                    />
-                    {phoneError && (
-                        <Form.Control.Feedback type='invalid'>
-                            Invalid phone number
-                        </Form.Control.Feedback>
-                    )}
-                </Form.Group>
-                {
-                    !submit ? <Button variant='success' type='submit' disabled={!phone}>Pay with Mobile Money</Button> :
-                        <>
-                            <Spinner animation="grow" variant="primary" />
-                            <Spinner animation="grow" variant="secondary" />
-                            <Spinner animation="grow" variant="success" />
-                        </>
-                }
+        <div className='mt-4' style={{ marginTop: "100px", backgroundColor: ' background-color: hsl(236, 72%, 79%), hsl(237, 63%, 64%)' }}>
+            <Card className="payment-card">
+                <Card.Header className="payment-card-header">
+                    <h3>Airtel Money Payment</h3>
+                    <p>Securely complete your payment via Airtel Money.</p>
+                </Card.Header>
 
-                {paymentStatus && <Alert className='mt-3' variant='info'>{paymentStatus}</Alert>}
-            </Form>
-            {message && <p>{message}</p>}
+                <Card.Body>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group className='mb-3'>
+                            <Card.Subtitle>
+                                <Form.Label>Phone Number*</Form.Label>
+                            </Card.Subtitle>
+                            <PhoneInput
+                                className={`form-control ${phoneError ? 'is-invalid' : ''}`}
+                                placeholder='Enter phone number'
+                                international
+                                defaultCountry='UG'
+                                value={phone}
+                                onChange={setPhone}
+                                required
+                            />
+                            {phoneError && (
+                                <Form.Control.Feedback type='invalid'>
+                                    Invalid phone number
+                                </Form.Control.Feedback>
+                            )}
+                        </Form.Group>
+
+                        {paymentStatus && (
+                            <Alert className='mt-3' variant='info'>{paymentStatus}</Alert>
+                        )}
+
+                    </Form>
+                    {message && <p className="payment-message">{message}</p>}
+                </Card.Body>
+                <Card.Footer>
+                    <Button
+                        variant='primary'
+                        type='submit'
+                        className="w-100 mt-3 payment-submit-btn"
+                        disabled={!phone || submit}
+                    >
+                        {submit ? 'Processing...' : 'Pay with Mobile Money'}
+                    </Button>
+                </Card.Footer>
+            </Card>
         </div>
     );
 }

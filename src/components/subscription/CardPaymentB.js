@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Form, Button, Alert, Spinner } from 'react-bootstrap';
+import { Row, Col, Card, Container, Form, Button, Alert, Spinner } from 'react-bootstrap';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid'; // UUID generation for unique identifiers
 import { useAuth } from '../../context/AuthContext';
 import { serverUrl } from '../../config';
+import './CardPayment.css'
 
 function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
     const { userInfo } = useAuth();
@@ -79,7 +80,7 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
 
             console.log('Data to send to flutterwave: ', dataToSend)
 
-            const response = await fetch(`${serverUrl}/flutterwave/card-payment`, {
+            const response = await fetch(`${serverUrl}/flutterwave/card-paymentAAA`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -121,63 +122,84 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
     };
 
     return (
-        <div className='mt-4' style={{ marginTop: "100px" }} >
-            <h3>Payment with Card</h3>
+        <div style={{ backgroundColor: ' background-color: hsl(236, 72%, 79%), hsl(237, 63%, 64%)' }}>
+            {/* <Container className="card-payment-container">
+             <Row className="w-100  justify-content-center">
+                 <Col> */}
+            <Card className="w-100  shadow">
 
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className='mb-3'>
-                    <Form.Label>Name*</Form.Label>
-                    <Form.Control
-                        type='text'
-                        placeholder='Enter your name'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
-                </Form.Group>
+                <Card.Header>
+                    <Card.Title className="text-center mb-3">Card Payment
+                    </Card.Title>
+                    <Card.Text className="text-center">
+                        Enter your details to proceed with card payment.
+                    </Card.Text>
+                </Card.Header>
 
-                <Form.Group className='mb-3'>
-                    <Form.Label>Email*</Form.Label>
-                    <Form.Control
-                        type='email'
-                        placeholder='Enter your email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </Form.Group>
+                <Card.Body>
+                    <Form onSubmit={handleSubmit} className="card-payment-form">
+                        <Form.Group className='mb-3'>
+                            <Form.Label>Name*</Form.Label>
+                            <Form.Control
+                                type='text'
+                                placeholder='Enter your name'
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                            />
+                        </Form.Group>
 
-                <Form.Group className='mb-3'>
-                    <Form.Label>Phone Number*</Form.Label>
-                    <PhoneInput
-                        className={`form-control ${phoneError ? 'is-invalid' : 'custom-phone-input '
-                            }`}
-                        placeholder='Enter phone number'
-                        international
-                        defaultCountry='UG'
-                        countryCallingCodeEditable={false}
-                        value={phone}
-                        onChange={setPhone}
-                        required
-                    />
-                    {phoneError && (
-                        <Form.Control.Feedback type='invalid'>
-                            Invalid phone number
-                        </Form.Control.Feedback>
+                        <Form.Group className='mb-3'>
+                            <Form.Label>Email*</Form.Label>
+                            <Form.Control
+                                type='email'
+                                placeholder='Enter your email'
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                        </Form.Group>
+
+                        <Form.Group className='mb-3'>
+                            <Form.Label>Phone Number*</Form.Label>
+                            <PhoneInput
+                                className={`form-control ${phoneError ? 'is-invalid' : ''}`}
+                                placeholder='Enter phone number'
+                                international
+                                defaultCountry='UG'
+                                value={phone}
+                                onChange={setPhone}
+                                required
+                            />
+                            {phoneError && (
+                                <Form.Control.Feedback type='invalid'>
+                                    Invalid phone number
+                                </Form.Control.Feedback>
+                            )}
+                        </Form.Group>
+
+                    </Form>
+                </Card.Body>
+
+                <Card.Footer>
+                    <Button
+                        variant='primary'
+                        type='submit'
+                        disabled={submit}
+                        className="w-100 mb-3 payment-submit-btn"
+                    >
+                        {submit ? 'Processing...' : 'Proceed to Payment'}
+                    </Button>
+                    {paymentStatus && (
+                        <Alert variant='info' className='mt-3'>{paymentStatus}</Alert>
                     )}
-                </Form.Group>
-                {
-                    !submit ? <Button variant='success' type='submit'>Proceed to Complete Payment</Button> :
-                        <>
-                            <Spinner animation="grow" variant="primary" />
-                            <Spinner animation="grow" variant="secondary" />
-                            <Spinner animation="grow" variant="success" />
-                        </>
-                }
+                    {message && <p className="mt-3 text-center">{message}</p>}
+                </Card.Footer>
 
-                {paymentStatus && <Alert className='mt-3' variant='info'>{paymentStatus}</Alert>}
-            </Form>
-            {message && <p>{message}</p>}
+            </Card>
+            {/* </Col >
+            </Row >
+         </Container > */}
         </div>
     );
 }

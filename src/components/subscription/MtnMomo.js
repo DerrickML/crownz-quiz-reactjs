@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Card, Form, Button, Container, Spinner, Alert } from 'react-bootstrap';
+import { Row, Col, Card, Form, Button, Container, Spinner, Alert } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
@@ -18,6 +18,7 @@ import {
 import { updateStudentDataInLocalStorage } from '../../utilities/fetchStudentData'
 import { updatePointsTable } from '../../utilities/otherUtils'
 import { useAuth } from '../../context/AuthContext';
+import './MTNMomo.css'
 
 const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
     const { userInfo, fetchUserPoints } = useAuth();
@@ -274,20 +275,26 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
     };
 
     return (
-        <Container style={{ marginTop: "100px" }} >
-            <Card>
-                {
-                    !submit ?
-                        <>
+        <Container className="mt-4" style={{ backgroundColor: ' background-color: hsl(236, 72%, 79%), hsl(237, 63%, 64%)' }}>
+            <Row className="justify-content-center">
+                <Col md={6}>
+                    <Card className="shadow">
+                        <Card.Header className="payment-card-header">
+                            <Card.Title className="text-center mb-4">MTN Mobile Money Payment</Card.Title>
+                            <Card.Text className="text-center">
+                                Securely complete your payment with MTN Mobile Money.
+                            </Card.Text>
+                        </Card.Header>
+                        <Card.Body>
                             <Form.Group className="mb-3">
-                                <Form.Label>Phone Number*</Form.Label>
+                                <Card.Subtitle>
+                                    <Form.Label>Phone Number*</Form.Label>
+                                </Card.Subtitle>
                                 <PhoneInput
-                                    className={`form-control ${phoneError ? "is-invalid" : "custom-phone-input "
-                                        }`}
+                                    className={`form-control ${phoneError ? "is-invalid" : ""}`}
                                     placeholder="Enter phone number"
                                     international
                                     defaultCountry="UG"
-                                    countryCallingCodeEditable={false}
                                     value={phone}
                                     onChange={setPhone}
                                     required
@@ -298,33 +305,44 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
                                     </Form.Control.Feedback>
                                 )}
                             </Form.Group>
-                            <Button onClick={handlePayment} disabled={!phone}>Pay</Button>
-                        </>
-                        :
-                        <>
-                            {loaders ?
-                                <>
-                                    <Spinner animation="grow" variant="primary" />
-                                    <Spinner animation="grow" variant="secondary" />
-                                    <Spinner animation="grow" variant="success" />
-                                </>
-                                :
-                                <>
-                                    <Alert variant={paymentStatus === "success" ? 'success' : 'danger'}>
-                                        <FontAwesomeIcon
-                                            icon={paymentStatus === "success" ? faCheckCircle : faTimesCircle}
-                                            size="3x"
-                                        />
-                                        <p className="payment-status-message">{paymentStatus}</p>
-                                    </Alert>
-                                </>
-                            }
-                        </>
-                }
-                {message && <p>{message}</p>}
-            </Card>
 
-            {paymentStatus === "success" ? <Button onClick={viewReceipt} >View Your Receipt</Button> : null}
+                            {message && (
+                                <Alert
+                                    variant={paymentStatus === "success" ? 'success' : 'danger'}
+                                    className="mt-3 text-center"
+                                >
+                                    {message}
+                                </Alert>
+                            )}
+
+                            {paymentStatus === "success" && (
+                                <div className="text-center mt-4">
+                                    <FontAwesomeIcon icon={faCheckCircle} size="3x" className="text-success" />
+                                    <p className="mt-2">Payment successful!</p>
+                                    <Button
+                                        variant="success"
+                                        onClick={viewReceipt}
+                                        className="mt-2"
+                                    >
+                                        View Receipt
+                                    </Button>
+                                </div>
+                            )}
+
+                        </Card.Body>
+                        <Card.Footer>
+                            <Button
+                                variant="primary"
+                                onClick={handlePayment}
+                                disabled={!phone || loaders}
+                                className="w-100 mt-3 payment-submit-btn"
+                            >
+                                {loaders ? 'Processing...' : 'Pay UGX ' + price}
+                            </Button>
+                        </Card.Footer>
+                    </Card>
+                </Col>
+            </Row>
         </Container>
     );
 };

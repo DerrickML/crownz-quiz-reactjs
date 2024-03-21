@@ -1,6 +1,7 @@
 :root {
     /* Primary */
     --linear-gradient: linear-gradient(hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+    --linear-gradient2: linear-gradient(hsl(194, 87%, 17%), hsl(196, 23%, 23%));
 
     /* Neutral */
     --very-light-grayish-blue: hsl(240, 78%, 98%);

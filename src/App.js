@@ -90,7 +90,7 @@ function App() {
           // className="main-content"
           // style={{ marginTop: "60px", width: "100%" }}
           >
-            <CustomNavbar />
+            {/* <CustomNavbar /> */}
             <Routes>
               <Route
                 exact
