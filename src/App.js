@@ -85,7 +85,7 @@ function App() {
         <div
         // className="App"
         >
-          {/* <CustomNavbar /> */}
+          <CustomNavbar />
           <div
           // className="main-content"
           // style={{ marginTop: "60px", width: "100%" }}
