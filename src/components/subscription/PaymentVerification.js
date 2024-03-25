@@ -1,10 +1,11 @@
 //This component is only meant to run after a transaction is made for ONLY FLUTTERWAVE transactions
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Container, Alert, Spinner, Button } from 'react-bootstrap';
+import { Row, Col, Card, Form, Button, Container, Spinner, Alert } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../../context/AuthContext';
+import { printPDF } from "./print/index";
 import {
     databases,
     database_id,
@@ -23,6 +24,7 @@ const PaymentResult = () => {
 
     const [transactionData, setTransactionData] = useState({});
     const [paymentStatus, setPaymentStatus] = useState('Verifying...');
+    const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(true);
 
     const { userInfo, fetchUserPoints } = useAuth();
@@ -36,6 +38,7 @@ const PaymentResult = () => {
 
     useEffect(() => {
         const verifyPayment = async () => {
+            setMessage('')
             if (transactionId) {
                 try {
                     const response = await fetch(`${serverUrl}/flutterwave/verify-payment/${transactionId}`);
@@ -66,20 +69,82 @@ const PaymentResult = () => {
                             description: data.transactionData.meta.description,
                             paymentFor: data.transactionData.meta.service,
                             points: data.transactionData.meta.points,
+
+                            //RECEIPT DATA
+                            addressSender: {
+                                person: "Crownzcom LTD",
+                                building: "101, Block C, Swan Residency",
+                                street: "Heritage Road, Kireka",
+                                city: "Kampala, Uganda",
+                                email: "crownzom@gmail.com",
+                                phone: "+123-456-7890"
+                            },
+                            address: {
+                                company: "",
+                                person: `${userInfo.firstName} ${userInfo.lastName}`,
+                                street: "",
+                                city: "",
+                            },
+                            personalInfo: {
+                                website: '',
+                                bank: {
+                                    person: "Crownzcom LTD",
+                                    name: "Flutterwave Inc.",
+                                    paymentMethod: `${data.transactionData.payment_type}`,
+                                    IBAN: `+123-456-7890`
+                                },
+                                taxoffice: {
+                                    name: '',
+                                    number: ''
+                                }
+                            },
+                            label: {
+                                invoicenumber: `Transaction Number`,
+                                invoice: `Receipt`,
+                                tableItems: "Item",
+                                tableDescription: "Description",
+                                tableQty: "Qty",
+                                tableSinglePrice: "Unit Price",
+                                tableSingleTotal: "Total Price",
+                                totalGrand: "Grand Total",
+                                contact: "Contact Information",
+                                bank: "Payment Gateway Information",
+                                taxinfo: "TAX Information"
+                            },
+                            invoice: {
+                                number: `${data.transactionData.id}`,
+                                date: `${data.transactionData.customer.created_at}`,
+                                subject: "Points Purchase",
+                                total: `${data.transactionData.currency}. ${data.transactionData.amount}`,
+                                text: "Payment for Points rendered in March 2024."
+                            },
+                            items: {
+                                1: {
+                                    title: "Points",
+                                    description: `${data.transactionData.meta.points} Points Purchased ${isStudent ? `by ${userInfo.firstName} ${userInfo.lastName}` : ` for ${data.transactionData.customer.name}`}`,
+                                    amount: `${data.transactionData.currency}. ${data.transactionData.amount}`,
+                                    qty: `${data.transactionData.meta.points}`,
+                                    total: `${data.transactionData.currency}. ${data.transactionData.amount}`,
+                                }
+                            }
                         }
+                        console.log('Receipt Data:', receiptData);
                         setTransactionData(receiptData);
                     }
                     catch (e) {
                         console.log("error in recepit ..", e)
+                        setMessage('Failed to generate receipt')
                         throw new Error
                     }
 
                 } catch (error) {
+                    setMessage('Transaction Verification Failed')
                     setPaymentStatus('Verification failed. Please contact support.');
                 } finally {
                     setLoading(false);
                 }
             } else {
+                setMessage('Transaction Verification Failed due to absense of transaction ID. Please contact support')
                 setPaymentStatus('No transaction ID provided.');
                 setLoading(false);
             }
@@ -145,6 +210,7 @@ const PaymentResult = () => {
 
             /*** ----------- Update Points tables ----------- ***/
             if (data.status === 'successful') {
+                setMessage('Payment Successful!');
                 //Update the points table in the database
                 try {
                     await updatePointsTable({
@@ -197,28 +263,75 @@ const PaymentResult = () => {
     };
 
     return (
-        <Container className="payment-result-container" style={{ marginTop: "100px" }} >
-            <h2 className="text-center">Payment Status for {userInfo.firstName}</h2>
-            {loading ? (
-                <div className="text-center">
-                    {/* <Spinner animation="border" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </Spinner> */}
-                    <Spinner animation="grow" variant="primary" />
-                    <Spinner animation="grow" variant="secondary" />
-                    <Spinner animation="grow" variant="success" />
-                    <p className="sr-only">Loading...</p>
-                </div>
-            ) : (
-                <Alert variant={paymentStatus === "success" ? 'success' : 'danger'}>
-                    <FontAwesomeIcon
-                        icon={paymentStatus === "success" ? faCheckCircle : faTimesCircle}
-                        size="3x"
-                    />
-                    <p className="payment-status-message">{paymentStatus}</p>
-                </Alert>
-            )}
-            {paymentStatus === "success" ? <Button onClick={viewReceipt} >View Your Receipt</Button> : null}
+        <Container className="mt-4" style={{ backgroundColor: ' background-color: hsl(236, 72%, 79%), hsl(237, 63%, 64%)' }}>
+            <Row className="justify-content-center">
+                <Col md={6}>
+                    <Card className="shadow">
+                        <Card.Header className="payment-card-header">
+                            <Card.Title className="text-center mb-4">Flutterwave Online Payment</Card.Title>
+                            <Card.Text className="text-center">
+                                Securely complete your payment with Flutterwave.
+                            </Card.Text>
+                        </Card.Header>
+                        <Card.Body>
+                            {
+                                loading ? (
+                                    <div className="text-center">
+                                        <Spinner animation="grow" variant="primary" className="sr-only" />
+                                        <Spinner animation="grow" variant="secondary" className="sr-only" />
+                                        <Spinner animation="grow" variant="success" className="sr-only" />
+                                        <p className="sr-only">Loading...</p>
+                                    </div>
+                                )
+                                    :
+                                    <>
+                                        {message && (
+                                            <Alert
+                                                variant={paymentStatus === "success" ? 'success' : 'danger'}
+                                                className="mt-3 text-center"
+                                            >
+                                                {message}
+                                            </Alert>
+                                        )}
+
+                                        {paymentStatus === "success" ? (
+                                            <div className="text-center mt-4">
+                                                <Alert variant='success'>
+                                                    <FontAwesomeIcon icon={faCheckCircle} size="3x" className="text-success" />
+                                                    <p className="mt-2"><b>Payment Successful!</b></p>
+                                                    <p className="mt-2"><b>Service:</b> {transactionData.points} points</p>
+                                                    <p className="mt-2"><b>Price:</b> {transactionData.currency + '. ' + transactionData.charged_amount}</p>
+                                                </Alert>
+                                                <Button variant="dark" onClick={() => { printPDF(transactionData) }}>Print Receipt as PDF</Button>
+                                            </div>
+                                        ) :
+                                            (
+                                                <div className="text-center mt-4">
+                                                    <Alert variant='danger'>
+                                                        <FontAwesomeIcon icon={faTimesCircle} size="3x" className="text-danger" />
+                                                        <p className="mt-2"><b>An error occured!</b></p>
+                                                    </Alert>
+                                                    <Button variant="dark" onClick={() => { printPDF(transactionData) }}>Print Receipt as PDF</Button>
+                                                </div>
+                                            )
+                                        }
+                                    </>
+                            }
+                        </Card.Body>
+                        <Card.Footer>
+                            <Button
+                                variant="primary"
+                                onClick={() => { navigate('/') }}
+                                disabled={paymentStatus === "success" ? false : true}
+                                hidden={paymentStatus === "success" ? false : true}
+                                className="w-100 mt-3 payment-submit-btn"
+                            >
+                                Back To Dahsboard
+                            </Button>
+                        </Card.Footer>
+                    </Card>
+                </Col>
+            </Row>
         </Container>
     );
 };

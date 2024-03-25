@@ -1,26 +1,43 @@
-.receipt-card {
-    max-width: 500px;
-    margin: 20px auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: none;
-}
-
-.receipt-card .card-header {
-    background-color: #007bff;
-    color: white;
-    text-align: center;
-}
-
-.receipt-card .card-body {
+.receipt-container {
+    background: #f9f9f9;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.receipt-card .card-title {
-    font-size: 1.2em;
+.receipt-header h1 {
+    color: #333;
+}
+
+.receipt-body {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.receipt-info h2,
+.receipt-address h2,
+.receipt-item-details h2 {
+    color: #007bff;
     margin-bottom: 15px;
 }
 
-.receipt-card .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+.receipt-info p,
+.receipt-address p,
+.receipt-item-details p,
+.receipt-payment-info p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+}
+
+.receipt-footer {
+    text-align: right;
+}
+
+/* Adjustments for button styling */
+.btn-primary,
+.btn-dark {
+    margin: 5px;
 }

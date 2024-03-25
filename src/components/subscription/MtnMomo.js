@@ -7,6 +7,7 @@ import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { printPDF } from "./print/index";
 import { serverUrl } from '../../config.js';
 // import PropTypes from 'prop-types';
 import {
@@ -45,7 +46,6 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
         }
     }, []);
 
-    // const serverUrl = "https://2wkvf7-3000.csb.app"
     const serverMomoRoute = `${serverUrl}/mtnMomo`
 
     const [phone, setPhone] = useState(userInfo.phone || '');
@@ -126,7 +126,64 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
                     transactionStatus: 'success',
                     description: `Points Purchase${isStudent ? '.' : ` for ${studentName}`}`,
                     created_at: currentDateTime, // or extract date from the response if available
-                    points: points
+                    points: points,
+
+                    //RECEIPT DATA
+                    addressSender: {
+                        person: "Crownzcom LTD",
+                        building: "101, Block C, Swan Residency",
+                        street: "Heritage Road, Kireka",
+                        city: "Kampala, Uganda",
+                        email: "crownzom@gmail.com",
+                        phone: "+123-456-7890"
+                    },
+                    address: {
+                        company: "",
+                        person: `${userInfo.firstName} ${userInfo.lastName}`,
+                        street: "",
+                        city: ""
+                    },
+                    personalInfo: {
+                        website: '',
+                        bank: {
+                            person: "Crownzcom LTD",
+                            name: "MTN Uganda",
+                            IBAN: `+123-456-7890`
+                        },
+                        taxoffice: {
+                            name: '',
+                            number: ''
+                        }
+                    },
+                    label: {
+                        invoicenumber: `Transaction Number`,
+                        invoice: `Receipt`,
+                        tableItems: "Item",
+                        tableDescription: "Description",
+                        tableQty: "Qty",
+                        tableSinglePrice: "Unit Price",
+                        tableSingleTotal: "Total Price",
+                        totalGrand: "Grand Total",
+                        contact: "Contact Information",
+                        bank: "Payment Gateway Information",
+                        taxinfo: "TAX Information"
+                    },
+                    invoice: {
+                        number: `${data.financialTransactionId}`,
+                        date: `${currentDateTime}`,
+                        subject: "Points Purchase",
+                        total: `${data.currency}. ${data.amount}`,
+                        text: "Payment for Points rendered in March 2024."
+                    },
+                    items: {
+                        1: {
+                            title: "Points",
+                            description: `${points} Points Purchased ${isStudent ? `by ${userInfo.firstName} ${userInfo.lastName}` : ` for ${studentName}`}`,
+                            amount: `${data.currency}. ${data.amount}`,
+                            qty: `${points}`,
+                            total: `${data.currency}. ${data.amount}`,
+                        }
+                    }
                 };
 
                 //Save to database
@@ -277,7 +334,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
                 // Verify payment status
                 const verificatioStatusResponse = await verifyPaymentStatus(paymentResponse.paymentRefId, paymentResponse.momoTokenId);
                 console.log('Verification status:', verificatioStatusResponse);
-                setMessage('Payment successful!');
+                setMessage(`Payment successful!`);
             } else {
                 setMessage('Payment failed.');
             }
@@ -336,15 +393,19 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
 
                             {paymentStatus === "success" && (
                                 <div className="text-center mt-4">
-                                    <FontAwesomeIcon icon={faCheckCircle} size="3x" className="text-success" />
-                                    <p className="mt-2">Payment successful!</p>
-                                    <Button
+                                    <Alert variant='success'>
+                                        <FontAwesomeIcon icon={faCheckCircle} size="3x" className="text-success" />
+                                        <p className="mt-2"><b>Service:</b> {points} points</p>
+                                        <p className="mt-2"><b>Price:</b> {receiptInfo.currency + '. ' + price}</p>
+                                    </Alert>
+                                    {/* <Button
                                         variant="success"
                                         onClick={viewReceipt}
                                         className="mt-2"
                                     >
                                         View Receipt
-                                    </Button>
+                                    </Button> */}
+                                    <Button variant="dark" onClick={() => { printPDF(receiptInfo) }}>Print Receipt as PDF</Button>
                                 </div>
                             )}
 
@@ -354,9 +415,10 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
                                 variant="primary"
                                 onClick={handlePayment}
                                 disabled={!phone || loaders}
+                                hidden={paymentStatus === "success" ? true : false}
                                 className="w-100 mt-3 payment-submit-btn"
                             >
-                                {loaders ? 'Processing...' : 'Pay UGX ' + price}
+                                {loaders ? 'Processing...' : 'Pay UGX. ' + price}
                             </Button>
                         </Card.Footer>
                     </Card>
