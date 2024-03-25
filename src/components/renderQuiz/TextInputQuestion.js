@@ -1,6 +1,7 @@
 // TextInputQuestion.js
 import React, { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
+import './TextInputQuestion.module.css';
 
 const TextInputQuestion = ({ question, onChange, disabled, userAnswer, displayQuestionText, questionNumber }) => {
     const [localUserAnswer, setLocalUserAnswer] = useState(userAnswer || '');
@@ -24,13 +25,15 @@ const TextInputQuestion = ({ question, onChange, disabled, userAnswer, displayQu
                     {questionNumber}. <span dangerouslySetInnerHTML={{ __html: question.question }} />
                 </Form.Label>
             }
-            <Form.Control
-                type="text"
-                value={localUserAnswer}
-                onChange={handleLocalChange}
-                onBlur={handleBlur}
-                disabled={disabled}
-            />
+            <div className='bottomBorder'>
+                <Form.Control
+                    type="text"
+                    value={localUserAnswer}
+                    onChange={handleLocalChange}
+                    onBlur={handleBlur}
+                    disabled={disabled}
+                />
+            </div>
         </Form.Group>
     );
 };

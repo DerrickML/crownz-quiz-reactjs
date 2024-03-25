@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import moment from 'moment';
 import { Row, Col, Card, Form, Button, Container, Spinner, Alert } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInput from "react-phone-number-input";
@@ -13,7 +14,8 @@ import {
     database_id,
     transactionTable_id,
     pointsTable_id,
-    Query
+    Query,
+    ID
 } from "../../appwriteConfig.js";
 import { updateStudentDataInLocalStorage } from '../../utilities/fetchStudentData'
 import { updatePointsTable } from '../../utilities/otherUtils'
@@ -113,6 +115,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
             const response = await fetch(`${serverMomoRoute}/payment-status/${transactionId}/${momoTokenId}`);
             const data = await response.json();
             if (data.status === "SUCCESSFUL") {
+                var currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
                 const receiptDetails = {
                     id: data.financialTransactionId,
                     tx_ref: data.externalId,
@@ -122,7 +125,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
                     phone: data.payer.partyId,
                     transactionStatus: 'success',
                     description: `Points Purchase${isStudent ? '.' : ` for ${studentName}`}`,
-                    created_at: new Date().toLocaleString(), // or extract date from the response if available
+                    created_at: currentDateTime, // or extract date from the response if available
                     points: points
                 };
 
@@ -137,7 +140,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
                     transactionID: data.externalId,
                     userId: isStudent ? userInfo.userId : studentId,
                     points: points,
-                    educationLevel: isStudent ? userInfo.userId : educationLevel,
+                    educationLevel: isStudent ? userInfo.educationLevel : educationLevel,
                     message: `Points Purchase with MTN MoMo`
                 })
 
@@ -192,16 +195,31 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
     //Function to save transaction data to transaction database table
     const saveTransactionData = async (data) => {
         try {
-            // const created_at_formattedDate = moment(data.created_at, 'DD/MM/YYYY, HH:mm:ss').toDate();
-            // console.log('formattedDate - moment: ', created_at_formattedDate);
-
-            // console.log('Points purchased: ', points);
             console.log('Transaction Table - MTNMoMo - Purchased points on: ', data.created_at);
 
-            const response = await databases.createDocument(database_id, transactionTable_id, "unique()",
+            // Custom parser for the format 'March 25th 2024, 8:46:48 am'
+            let createdDate = moment(data.created_at, 'MMMM Do YYYY, h:mm:ss a', true);
+
+            // Fallback to standard formats if custom parsing fails
+            if (!createdDate.isValid()) {
+                createdDate = moment(data.created_at, ['DD/MM/YYYY, HH:mm:ss', moment.ISO_8601], true);
+            }
+
+            // Final check if the date is valid
+            if (!createdDate.isValid()) {
+                console.log('ERROR: Created Date: ', createdDate);
+                throw new Error('Invalid date format');
+            }
+
+            // Convert to JavaScript Date object
+            createdDate = createdDate.toDate();
+
+            console.log('CONVERTED CREATED-DATE: ', createdDate);
+
+            const response = await databases.createDocument(database_id, transactionTable_id, 'unique()',
                 {
                     userID: userInfo.userId,
-                    transactionDate: data.created_at,
+                    transactionDate: createdDate,
                     transactionAmount: data.charged_amount,
                     currency: data.currency,
                     paymentMethod: data.payment_type,
@@ -220,6 +238,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
     };
 
     const handlePayment = async () => {
+        setMessage('');
         setSubmit(true);
         setLoaders(true);
         if (!phone || !amount) {

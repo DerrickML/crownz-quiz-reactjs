@@ -14,6 +14,7 @@ import {
     Permission,
     Role,
     Query,
+    ID
 } from "../appwriteConfig.js";
 import moment from 'moment';
 import { serverUrl } from "../config.js";
@@ -87,10 +88,10 @@ export const formatDate = (dateTime) => {
 */
 
 /*** ----------- Create a document ----------- ***/
-export const createDocument = async (databaseId, tableId, uniqueId, data, tableUse) => {
+export const createDocument = async (databaseId, tableId, data, tableUse) => {
     try {
         console.log('Data passed to createDocument: ', data)
-        const response = await databases.createDocument(databaseId, tableId, uniqueId, data)
+        const response = await databases.createDocument(databaseId, tableId, 'unique()', data)
         return response;
     } catch (error) {
         console.error(`Error Creating Document - (${tableUse}):`, error);
@@ -112,59 +113,72 @@ message: message-`createDocument() function`
 */
 export const updatePointsTable = async (data) => {
     try {
-        console.log('Data passed to update points function', data)
-        console.log('Date Data passed to update points function', data.created_at)
-        //===MOMO TIMESTAMP
-        let momoDateTime = new Date(data.created_at)
-        console.log('MOMO TIMESTAMP: ' + momoDateTime)
-        //====================
-        let points = parseInt(data.points)
-        let created_at = moment(momoDateTime, 'DD/MM/YYYY, HH:mm:ss').toDate();
-        let createdDate = new Date(created_at);
+        console.log('PointsTableUpdate Data Received: ' + JSON.stringify(data));
+        let points = parseInt(data.points);
+
+        // Define both expected formats
+        const customFormats = ['MMMM Do YYYY, h:mm:ss a', 'ddd MMM DD YYYY HH:mm:ss [GMT]ZZ [(]ZZZ[)]', moment.ISO_8601];
+
+        // Parse the date using Moment.js with custom and expected formats
+        let createdDate = moment(data.created_at, customFormats, true);
+
+        // Check if the parsed date is valid
+        if (!createdDate.isValid()) {
+            throw new Error('Invalid date format');
+        }
+
+        // Convert to JavaScript Date object
+        createdDate = createdDate.toDate();
 
         // Creating a new Date object for expiryDate to avoid modifying createdDate
         let expiryDate = new Date(createdDate);
+        expiryDate.setFullYear(createdDate.getFullYear() + 1); // Adding 1 year to the expiryDate
 
-        // Adding 1 year to the expiryDate
-        expiryDate.setFullYear(createdDate.getFullYear() + 1);
-
-        // Now, createdDate and expiryDate are two separate Date objects
-        console.log("Created Date:", createdDate);
-        console.log("Expiry Date:", expiryDate);
+        console.log("CREATED Date:", createdDate);
+        console.log("EXPIRY Date:", expiryDate);
+        //===
 
         if (data.paymentFor === 'points') {
             //createDocument(databaseId, tableId, uniqueId, data, tableUse)
             //Points Batch Table
-            await createDocument(database_id, pointsBatchTable_id, "unique()", {
+            console.log('POINTS BATCH TABLE: Creating Document')
+            await createDocument(database_id, pointsBatchTable_id, {
                 transactionID: data.transactionID,
                 userID: data.userId,
                 points: points,
-                purchaseDate: created_at,
+                purchaseDate: createdDate,
                 expiryDate: expiryDate,
             }, data.message)
 
             //Points Table
             //Check if user has document assigned to them
+            console.log('POINTS TABLE: Checking if user has document assigned to them')
             const responseCheck = await databases.listDocuments(database_id, pointsTable_id, [Query.equal('UserID', data.userId)]);
 
             //Create a new document if user has no document assigned
             if (responseCheck.documents.length === 0) {
-                console.log('No user document assigned, creating a new one for the user')
+                console.log('POINTS TABLE: No user document assigned, creating a new one for the user')
+
+                // Use Moment.js to get the current date and time
+                const acquisitionDate = moment().format('YYYY-MM-DD HH:mm:ss Z');
+                console.log('Creating Document inPoints Table: ' + acquisitionDate)
+
                 const userDocResponse = await databases.createDocument(
                     database_id,
                     pointsTable_id,
-                    "unique()",
+                    'unique()',
                     {
                         UserID: data.userId || null,
                         PurchasedTier: data.educationLevel, //userDetails.classGrade
-                        AcquisitionDate: new Date().toLocaleString(),
-                        ExpiryDate: new Date().toLocaleString(),
+                        AcquisitionDate: acquisitionDate,
+                        ExpiryDate: acquisitionDate,
                     }
                 );
             }
 
             //Proceed to update the points tables
             //Retrieve user document Id
+            console.log('UPDATING POINTS TABLE: Creating Document')
             const response = await databases.listDocuments(database_id, pointsTable_id, [
                 Query.equal("UserID", data.userId),
             ]);

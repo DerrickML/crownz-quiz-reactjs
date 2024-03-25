@@ -87,7 +87,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                     <br />
                                     <strong>Package:</strong> {tier}
                                     <br />
-                                    <strong>Price: </strong>UGX. {finalPrice}
+                                    <strong>Price: </strong>{finalPrice}
                                 </Card.Text>
                                 <Card.Title>Apply Coupon</Card.Title>
                                 <Form>
@@ -168,20 +168,23 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                 </Row>
 
             )}
-            <ButtonGroup style={{ width: '100%' }}>
-                <Button className='btn-cancel' variant="outline-dark" onClick={() => navigate('/')}>
-                    Cancel
-                </Button>
 
-                {stage === 'payment' && (
-                    <Button variant="secondary" onClick={() => setStage('coupon')}>Back to Order Summery</Button>
-                )}
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                <ButtonGroup style={{ width: '75%' }}>
+                    <Button className='btn-cancel' variant="dark" onClick={() => navigate('/')}>
+                        Cancel
+                    </Button>
 
-                {stage === 'coupon' && (
-                    <Button variant="success" onClick={handleNext}>Proceed to Payment</Button>
-                )}
+                    {stage === 'payment' && (
+                        <Button variant="secondary" onClick={() => setStage('coupon')}>Back to Order Summary</Button>
+                    )}
 
-            </ButtonGroup>
+                    {stage === 'coupon' && (
+                        <Button variant="success" onClick={handleNext}>Proceed to Payment</Button>
+                    )}
+                </ButtonGroup>
+            </div>
+
         </div>
     );
 }

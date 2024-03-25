@@ -188,12 +188,12 @@ const AllResults = () => {
                       <td>
                         {attempt.resultDetails ? (
                           <Button
-                            variant="primary"
-                            className="mt-3"
+                            // className='btn-cancel'
+                            variant="dark"
                             onClick={() => viewResults(attempt.resultDetails, subjectResults.subject, attempt.score, attempt.dateTime)}
                           >
                             <FontAwesomeIcon icon={faEye} className="me-2" />
-                            View Exam
+                            Exam Results
                           </Button>
                         ) : (
                           <span className="text-muted">

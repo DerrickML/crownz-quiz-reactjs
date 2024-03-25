@@ -1,5 +1,6 @@
 // AuthContext.js
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import moment from 'moment';
 import {
     client,
     account,
@@ -16,6 +17,7 @@ import {
     Permission,
     Role,
     Query,
+    ID
 } from "../appwriteConfig.js";
 import storageUtil from '../utilities/storageUtil.js';
 
@@ -108,15 +110,23 @@ export const AuthProvider = ({ children }) => {
             }
             else {
                 console.log('No user document assigned, creating a new one for the user')
+
+                var currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
+
+                console.log('CURRENT DATE: ' + currentDateTime)
+
+                let docId = `PT-${userId}`
+                console.log('Unique ID: ', docId)
+
                 const userDocResponse = await databases.createDocument(
                     database_id,
                     pointsTable_id,
-                    "unique()",
+                    'unique()',
                     {
                         UserID: JSON.stringify(userId) || null,
                         PurchasedTier: educationLevel,
-                        AcquisitionDate: new Date().toLocaleString(),
-                        ExpiryDate: new Date().toLocaleString(),
+                        AcquisitionDate: currentDateTime,
+                        ExpiryDate: currentDateTime,
                     }
                 );
                 pointsData = 0

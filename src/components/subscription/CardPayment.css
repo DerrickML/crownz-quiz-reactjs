@@ -3,19 +3,6 @@
     justify-content: center;
 }
 
-.card {
-    max-width: 500px;
-    /* Set a max-width for the card */
-    width: 100%;
-    margin: 20px auto;
-    /* Center the card with some margin */
-    padding: 1rem;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-    /* Box shadow for the card */
-}
-
 .form-control {
     margin-bottom: 1rem;
     /* Spacing between form fields */

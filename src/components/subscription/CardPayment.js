@@ -30,8 +30,6 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
         }
     }, []);
 
-    console.log(userInfo)
-
     // Extract the root URL (protocol + hostname + port)
     var rootURL = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
 
@@ -80,15 +78,23 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
 
             console.log('Data to send to flutterwave: ', dataToSend)
 
-            const response = await fetch(`${serverUrl}/flutterwave/card-paymentAAA`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(
-                    dataToSend
-                ),
-            });
+            let response
+
+            try {
+                response = await fetch(`${serverUrl}/flutterwave/card-payment`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(
+                        dataToSend
+                    ),
+                });
+            } catch (e) {
+                console.log('Error initiating flutterwave serverside: ', e.message);
+            }
+
+
 
             const data = await response.json();
             console.log('Data: ', data)
@@ -123,93 +129,95 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
 
     return (
         <div style={{ backgroundColor: ' background-color: hsl(236, 72%, 79%), hsl(237, 63%, 64%)' }}>
-            {/* <Container className="card-payment-container">
-             <Row className="w-100  justify-content-center">
-                 <Col> */}
-            <Card className="w-100  shadow">
+            <Container className="card-payment-container">
+                <Row className="w-100  justify-content-center">
+                    <Col>
+                        <Card className="w-100  shadow">
 
-                <Card.Header>
-                    <Card.Title className="text-center mb-3">Card Payment
-                    </Card.Title>
-                    <Card.Text className="text-center">
-                        Enter your details to proceed with card payment.
-                    </Card.Text>
-                </Card.Header>
+                            <Card.Header>
+                                <Card.Title className="text-center mb-3">Card Payment
+                                </Card.Title>
+                                <Card.Text className="text-center">
+                                    Enter your details to proceed with card payment.
+                                </Card.Text>
+                            </Card.Header>
 
-                <Card.Body>
-                    <Form onSubmit={handleSubmit} className="card-payment-form">
-                        <Form.Group className='mb-3'>
-                            <Form.Label>Name*</Form.Label>
-                            <Form.Control
-                                type='text'
-                                placeholder='Enter your name'
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                required
-                            />
-                        </Form.Group>
+                            <Card.Body>
+                                <Form onSubmit={handleSubmit} className="card-payment-form">
+                                    <Form.Group className='mb-3'>
+                                        <Form.Label>Name*</Form.Label>
+                                        <Form.Control
+                                            type='text'
+                                            placeholder='Enter your name'
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}
+                                            required
+                                        />
+                                    </Form.Group>
 
-                        <Form.Group className='mb-3'>
-                            <Form.Label>Email*</Form.Label>
-                            <Form.Control
-                                type='email'
-                                placeholder='Enter your email'
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
-                        </Form.Group>
+                                    <Form.Group className='mb-3'>
+                                        <Form.Label>Email*</Form.Label>
+                                        <Form.Control
+                                            type='email'
+                                            placeholder='Enter your email'
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            required
+                                        />
+                                    </Form.Group>
 
-                        <Form.Group className='mb-3'>
-                            <Form.Label>Phone Number*</Form.Label>
-                            <PhoneInput
-                                className={`form-control ${phoneError ? 'is-invalid' : ''}`}
-                                placeholder='Enter phone number'
-                                international
-                                defaultCountry='UG'
-                                value={phone}
-                                onChange={setPhone}
-                                required
-                            />
-                            {phoneError && (
-                                <Form.Control.Feedback type='invalid'>
-                                    Invalid phone number
-                                </Form.Control.Feedback>
-                            )}
-                        </Form.Group>
+                                    <Form.Group className='mb-3'>
+                                        <Form.Label>Phone Number*</Form.Label>
+                                        <PhoneInput
+                                            className={`form-control ${phoneError ? 'is-invalid' : ''}`}
+                                            placeholder='Enter phone number'
+                                            international
+                                            defaultCountry='UG'
+                                            value={phone}
+                                            onChange={setPhone}
+                                            required
+                                        />
+                                        {phoneError && (
+                                            <Form.Control.Feedback type='invalid'>
+                                                Invalid phone number
+                                            </Form.Control.Feedback>
+                                        )}
+                                    </Form.Group>
 
-                    </Form>
-                </Card.Body>
 
-                <Card.Footer>
-                    <Button
-                        variant='primary'
-                        type='submit'
-                        disabled={submit}
-                        className="w-100 mb-3 payment-submit-btn"
-                    >
-                        {submit ? 'Processing...' : 'Proceed to Payment'}
-                    </Button>
-                    {paymentStatus && (
-                        <Alert variant='info' className='mt-3'>{paymentStatus}</Alert>
-                    )}
-                    {message && <p className="mt-3 text-center">{message}</p>}
-                </Card.Footer>
+                                    <Button
+                                        variant='primary'
+                                        type='submit'
+                                        disabled={submit}
+                                        className="w-100 mb-3 payment-submit-btn"
+                                    >
+                                        {submit ? 'Processing...' : 'Proceed to Payment'}
+                                    </Button>
 
-            </Card>
-            {/* </Col >
-            </Row >
-         </Container > */}
+                                </Form>
+                            </Card.Body>
+
+                            <Card.Footer>
+                                {paymentStatus && (
+                                    <Alert variant='info' className='mt-3'>{paymentStatus}</Alert>
+                                )}
+                                {message && <p className="mt-3 text-center">{message}</p>}
+                            </Card.Footer>
+
+                        </Card>
+                    </Col >
+                </Row >
+            </Container >
         </div>
     );
 }
 
-CardPayment.propTypes = {
-    price: PropTypes.number
-};
+// CardPayment.propTypes = {
+//     price: PropTypes.number
+// };
 
-CardPayment.defaultProps = {
-    price: 2000
-};
+// CardPayment.defaultProps = {
+//     price: 2000
+// };
 
 export default CardPayment;

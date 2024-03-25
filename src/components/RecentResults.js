@@ -33,12 +33,20 @@ const RecentResults = ({ results, onViewResults }) => {
                 <td>{attempt.score}</td>
                 <td>
                   {attempt.resultDetails ? (
+                    // <Button
+                    //   variant="primary"
+                    //   onClick={() => onViewResults(attempt.resultDetails, attempt.subject, attempt.score, attempt.dateTime)}
+                    // >
+                    //   <FontAwesomeIcon icon={faEye} className="me-2" />
+                    //   View Exam
+                    // </Button>
                     <Button
-                      variant="primary"
+                      className='btn-cancel'
+                      variant="dark"
                       onClick={() => onViewResults(attempt.resultDetails, attempt.subject, attempt.score, attempt.dateTime)}
                     >
                       <FontAwesomeIcon icon={faEye} className="me-2" />
-                      View Exam
+                      Exam Results
                     </Button>
                   ) : (
                     <span className="text-muted">

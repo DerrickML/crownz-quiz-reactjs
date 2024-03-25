@@ -1,8 +1,10 @@
 .App {
-    background-color: hsl(236, 72%, 79%), hsl(237, 63%, 64%);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    background-color: hsl(236, 72%,
+79%),
+hsl(237, 63%, 64%);
+min-height: 100vh;
+display: flex;
+flex-direction: column;
 }
 
 .main-content {

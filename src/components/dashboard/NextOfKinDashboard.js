@@ -1,7 +1,8 @@
 import React from "react";
-import { Row, Col, Card, Table, Button, ButtonGroup } from "react-bootstrap";
+import { Badge, Row, Col, Card, Table, Button, ButtonGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import storageUtil from "../../utilities/storageUtil";
+import './NextOfKinDashboard.css'
 
 const NextOfKinDashboard = () => {
   const navigate = useNavigate();
@@ -77,30 +78,47 @@ const NextOfKinDashboard = () => {
                       <td>{subjectName}</td>
                       <td>{lastExamDateTime}</td>
                       <td>
-                        <ButtonGroup>
-                          {results ? (
+                        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                          {/* <ButtonGroup className="buttonGroupFlex">
+                            {results ? (
+                              <Button
+                                variant="primary"
+                                onClick={() => viewResults(results, subjectName, recentScore)}
+                              >
+                                Exam Results
+                              </Button>
+                            ) : null}
                             <Button
-                              variant="primary"
-                              //   size="sm"
-                              onClick={() => viewResults(results, subjectName, recentScore)}
-                              style={{ fontSize: '0.8rem' }}
+                              variant="success"
+                              onClick={() =>
+                                navigate("/student-details", {
+                                  state: { student: student },
+                                })
+                              }
                             >
-                              Exam Results
+                              Student Details
                             </Button>
-                          ) : null}
-                          <Button
-                            variant="success"
-                            // size="sm"
-                            onClick={() =>
-                              navigate("/student-details", {
-                                state: { student: student },
-                              })
-                            }
-                            style={{ fontSize: '0.8rem' }}
-                          >
-                            Student Details
-                          </Button>
-                        </ButtonGroup>
+                          </ButtonGroup> */}
+                          <ButtonGroup style={{ width: '100%' }}>
+                            {results ? (
+                              <Button
+                                className='btn-cancel'
+                                variant="dark"
+                                onClick={() => viewResults(results, subjectName, recentScore)}
+                              >
+                                Exam Results
+                              </Button>
+                            ) : null}
+                            <Button
+                              variant="secondary"
+                              onClick={() =>
+                                navigate("/student-details", {
+                                  state: { student: student },
+                                })
+                              }
+                            >Student Details</Button>
+                          </ButtonGroup>
+                        </div>
                       </td>
                     </tr>
                   );

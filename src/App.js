@@ -31,7 +31,7 @@ import Answers from "./components/renderAnswer/Answers";
 import PaymentResult from "./components/subscription/PaymentVerification"
 import MTNMomo from "./components/subscription/MTNMomo";
 import AirtelMoney from "./components/subscription/AirtelMoney";
-import CardPayment from "./components/subscription/CardPaymentB";
+import CardPayment from "./components/subscription/CardPayment";
 import Receipt from "./components/subscription/Receipt.js";
 import SelectPackage from "./components/subscription/SelectPackage";
 import { AuthProvider, useAuth } from './context/AuthContext';

@@ -121,14 +121,15 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
 
     return (
         <div className='mt-4' style={{ marginTop: "100px", backgroundColor: ' background-color: hsl(236, 72%, 79%), hsl(237, 63%, 64%)' }}>
-            <Card className="payment-card">
-                <Card.Header className="payment-card-header">
-                    <h3>Airtel Money Payment</h3>
-                    <p>Securely complete your payment via Airtel Money.</p>
-                </Card.Header>
+            <Form onSubmit={handleSubmit}>
+                <Card className="payment-card">
+                    <Card.Header className="payment-card-header">
+                        <h3>Airtel Money Payment</h3>
+                        <p>Securely complete your payment via Airtel Money.</p>
+                    </Card.Header>
 
-                <Card.Body>
-                    <Form onSubmit={handleSubmit}>
+                    <Card.Body>
+
                         <Form.Group className='mb-3'>
                             <Card.Subtitle>
                                 <Form.Label>Phone Number*</Form.Label>
@@ -153,20 +154,22 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
                             <Alert className='mt-3' variant='info'>{paymentStatus}</Alert>
                         )}
 
-                    </Form>
-                    {message && <p className="payment-message">{message}</p>}
-                </Card.Body>
-                <Card.Footer>
-                    <Button
-                        variant='primary'
-                        type='submit'
-                        className="w-100 mt-3 payment-submit-btn"
-                        disabled={!phone || submit}
-                    >
-                        {submit ? 'Processing...' : 'Pay with Mobile Money'}
-                    </Button>
-                </Card.Footer>
-            </Card>
+                        <Button
+                            variant='primary'
+                            type='submit'
+                            className="w-100 mt-3 payment-submit-btn"
+                            disabled={!phone || submit}
+                        >
+                            {submit ? 'Processing...' : 'Pay with Mobile Money'}
+                        </Button>
+
+                    </Card.Body>
+
+                    <Card.Footer>
+                        {message && <p className="payment-message">{message}</p>}
+                    </Card.Footer>
+                </Card>
+            </Form>
         </div>
     );
 }

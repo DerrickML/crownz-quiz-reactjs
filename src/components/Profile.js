@@ -88,7 +88,7 @@ const Profile = () => {
                 <td>{student.pointsBalance}</td>
                 <td>
                   <Button
-                    size="sm"
+                    variant="dark"
                     onClick={() =>
                       navigate("/student-details", { state: { student } })
                     }

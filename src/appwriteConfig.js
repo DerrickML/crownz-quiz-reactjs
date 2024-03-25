@@ -1,5 +1,5 @@
 // appwriteConfig.js
-import { Client, Account, Databases, Permission, Role, Query } from "appwrite";
+import { Client, Account, Databases, Permission, Role, Query, ID } from "appwrite";
 
 const client = new Client()
   .setEndpoint("https://cloud.appwrite.io/v1") // Setting your Appwrite endpoint from env var
@@ -44,4 +44,5 @@ export {
   Permission,
   Role,
   Query,
+  ID
 };
