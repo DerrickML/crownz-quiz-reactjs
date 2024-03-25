@@ -201,9 +201,13 @@ const PaymentResult = () => {
             <h2 className="text-center">Payment Status for {userInfo.firstName}</h2>
             {loading ? (
                 <div className="text-center">
-                    <Spinner animation="border" role="status">
+                    {/* <Spinner animation="border" role="status">
                         <span className="sr-only">Loading...</span>
-                    </Spinner>
+                    </Spinner> */}
+                    <Spinner animation="grow" variant="primary" />
+                    <Spinner animation="grow" variant="secondary" />
+                    <Spinner animation="grow" variant="success" />
+                    <p className="sr-only">Loading...</p>
                 </div>
             ) : (
                 <Alert variant={paymentStatus === "success" ? 'success' : 'danger'}>
