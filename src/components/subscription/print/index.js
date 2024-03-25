@@ -173,7 +173,7 @@ export function printPDF(printData) {
         // <><>><><>><>><><><><><>>><><<><><><><>
 
         Promise.all([addressSvgLoaded, logoLoaded]).then(() => {
-            doc.save("invoice.pdf");
+            doc.save(`receipt - ${printData.id}.pdf`);
         });
     });
 }

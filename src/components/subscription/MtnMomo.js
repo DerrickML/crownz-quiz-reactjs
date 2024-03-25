@@ -398,14 +398,16 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
                                         <p className="mt-2"><b>Service:</b> {points} points</p>
                                         <p className="mt-2"><b>Price:</b> {receiptInfo.currency + '. ' + price}</p>
                                     </Alert>
-                                    {/* <Button
-                                        variant="success"
-                                        onClick={viewReceipt}
-                                        className="mt-2"
-                                    >
-                                        View Receipt
-                                    </Button> */}
                                     <Button variant="dark" onClick={() => { printPDF(receiptInfo) }}>Print Receipt as PDF</Button>
+                                    <Button
+                                        variant="primary"
+                                        onClick={() => { navigate('/') }}
+                                        disabled={paymentStatus === "success" ? false : true}
+                                        hidden={paymentStatus === "success" ? false : true}
+                                        className="w-100 mt-3 payment-submit-btn"
+                                    >
+                                        Back To Dahsboard
+                                    </Button>
                                 </div>
                             )}
 

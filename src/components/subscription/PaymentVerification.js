@@ -1,7 +1,7 @@
 //This component is only meant to run after a transaction is made for ONLY FLUTTERWAVE transactions
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Row, Col, Card, Form, Button, Container, Spinner, Alert } from 'react-bootstrap';
+import { Row, Col, Card, Form, ButtonGroup, Button, Container, Spinner, Alert } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../../context/AuthContext';
