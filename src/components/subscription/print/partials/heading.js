@@ -9,14 +9,22 @@ export default (doc, data, startY, fontSizes, lineSpacing) => {
     doc.setFontSize(fontSizes.SubTitleFontSize);
 
     // set fix value for Y to bring title in alignment with folding marks
-    startY = 243;
-    doc.text(invoiceNrTxt, startX, startY);
+    // If startY is less than 243 (alignment requirement), update it
+    if (startY < 243) {
+        startY = 243;
+    }
 
+    // Print invoice number
+    doc.text(invoiceNrTxt + `:`, startX, startY);
     doc.setFont(doc.vars.fontFamily, doc.vars.fontWeightBold);
 
+    // Move startX for the next piece of text
     startX += doc.getStringUnitWidth(invoiceNrTxt) * fontSizes.SubTitleFontSize;
+
+    // Print invoice data
     doc.text(data.invoice.number, startX, startY);
 
+    // Print location and date
     doc.setFont(doc.vars.fontFamily, doc.vars.fontWeightNormal);
     const location = data.invoice.location ? data.invoice.location + ', ' : '';
     doc.text(location + data.invoice.date, endX, startY, 'right');

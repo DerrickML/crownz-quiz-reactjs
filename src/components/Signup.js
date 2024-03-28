@@ -400,7 +400,7 @@ function SignUp() {
                   <h3 className="text-center mb-4">Create Account</h3>
                   <Form id="signupForm" onSubmit={handleSubmit}>
                     {/* Signup Method Selection */}
-                    <Form.Group as={Row} className="mb-3">
+                    {/* <Form.Group as={Row} className="mb-3">
                       <Form.Label column sm="3">
                         Signup Using
                       </Form.Label>
@@ -414,7 +414,7 @@ function SignUp() {
                           <option value="phone">Phone</option>
                         </Form.Select>
                       </Col>
-                    </Form.Group>
+                    </Form.Group> */}
 
                     {/* Dynamic Fields based on signup method */}
                     {signupMethod === "email" ? (

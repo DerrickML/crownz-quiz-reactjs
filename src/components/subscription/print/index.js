@@ -7,6 +7,7 @@ import fetchSvg from './utils/fetchSvg';
 import { serverUrl } from '../../../config.js';
 import addressSender from './partials/addressSender';
 import addressCustomer from './partials/addressCustomer';
+import addCardInfo from './partials/addCardInfo';
 import heading from './partials/heading';
 import table from './partials/table';
 import totals from './partials/totals';
@@ -19,6 +20,7 @@ import logo from './partials/logo';
  * @returns {void}
  */
 export function printPDF(printData) {
+    console.log('Data passed to receipt: ', printData);
     addFontNormal();
     addFontBold();
 
@@ -93,13 +95,20 @@ export function printPDF(printData) {
         startY = addressCustomer(doc, printData.address, startY, fontSizes.NormalFontSize, lineSpacing);
 
         // <><>><><>><>><><><><><>>><><<><><><><>
+        // Card Information
+        if (printData.payment_type === 'card') {
+            startY = addCardInfo(doc, printData.card, startY, fontSizes.NormalFontSize, lineSpacing);
+        }
+
+        // <><>><><>><>><><><><><>>><><<><><><><>
         // INVOICE DATA
         // <><>><><>><>><><><><><>>><><<><><><><>
 
         // <><>><><>><>><><><><><>>><><<><><><><>
         // Invoicenumber, -date and subject
+        console.log('startY: ', startY)
 
-        startY = heading(doc, printData, startY, fontSizes, lineSpacing);
+        startY = heading(doc, printData, startY + 20, fontSizes, lineSpacing);
 
         // <><>><><>><>><><><><><>>><><<><><><><>
         // Table with items
@@ -115,6 +124,8 @@ export function printPDF(printData) {
         // Text
 
         startY = await text(doc, printData.invoice.text, startY, fontSizes.NormalFontSize, lineSpacing);
+
+        startY = `Card Number: ` + await text(doc, printData.personalInfo.bank.cardOrPhoneNumber, startY, fontSizes.NormalFontSize, 0.5);
 
         // <><>><><>><>><><><><><>>><><<><><><><>
         // Footer

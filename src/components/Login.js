@@ -73,9 +73,6 @@ function Login() {
     }));
   };
 
-  // const handleMethodChange = (e) => {
-  //   setLoginMethod(e.target.value);
-  // };
   const handleMethodChange = (e) => {
     setLoginMethod(e.target.value);
     setShowOtpInput(false); // Reset OTP input visibility
@@ -296,14 +293,14 @@ function Login() {
                   {/* Login Method Selection */}
                   <Form.Group className="mb-3">
                     <Form.Label>Login Using</Form.Label>
-                    <Form.Select
+                    {/* <Form.Select
                       id="loginMethod"
                       value={loginMethod}
                       onChange={handleMethodChange}
                     >
                       <option value="email">Email</option>
                       <option value="phone">Phone</option>
-                    </Form.Select>
+                    </Form.Select> */}
                   </Form.Group>
 
                   {/* Dynamic Email or Phone Input */}
@@ -355,7 +352,7 @@ function Login() {
                   ) : (
                     loginMethod === "phone" && (
                       <>
-                        <Form.Group className="mb-3">
+                        {/* <Form.Group className="mb-3">
                           <Form.Label>
                             <FontAwesomeIcon icon={faMobileAlt} /> Phone Number
                           </Form.Label>
@@ -425,7 +422,7 @@ function Login() {
                               )}
                             </Button>
                           </>
-                        )}
+                        )} */}
                       </>
                     )
                   )}
