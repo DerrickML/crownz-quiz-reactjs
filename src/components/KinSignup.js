@@ -379,7 +379,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
           <Form.Label>
             {activeTab === "link" ? "Link Using" : "Signup Using"}
           </Form.Label>
-          <Form.Select
+          {/* <Form.Select
             id={
               activeTab === "link" ? "linkKinSignupMethod" : "kinSignupMethod"
             }
@@ -390,7 +390,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
           >
             <option value="email">Email</option>
             <option value="phone">Phone</option>
-          </Form.Select>
+          </Form.Select> */}
         </Form.Group>
 
         {/* Email or Phone Input */}
