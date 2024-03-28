@@ -119,6 +119,7 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
         // Validate phone number
         if (validatePhoneNumber(phone)) {
             setPhoneError(true);
+            setSubmit(false);
             return;
         }
 

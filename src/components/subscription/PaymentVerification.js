@@ -80,9 +80,9 @@ const PaymentResult = () => {
                                 phone: "+123-456-7890"
                             },
                             address: {
-                                company: "aa",
+                                company: "",
                                 person: `${userInfo.firstName} ${userInfo.lastName}`,
-                                street: "444",
+                                street: "",
                                 city: "",
                             },
                             personalInfo: {
@@ -91,7 +91,7 @@ const PaymentResult = () => {
                                     person: "Crownzcom LTD",
                                     name: "Flutterwave Inc.",
                                     paymentMethod: `${data.transactionData.payment_type}`,
-                                    cardOrPhoneNumber: `${data.transactionData.payment_type === 'card' ? '****' + data.transactionData.card.last_4digits : JSON.stringify(data.transactionData.customer.phone_number)}`,
+                                    cardOrPhoneNumber: `${data.transactionData.payment_type === 'card' ? '****' + data.transactionData.card.last_4digits : data.transactionData.customer.phone_number}`,
                                     IBAN: `UG1234***9ABC36`
                                 },
                                 taxoffice: {
