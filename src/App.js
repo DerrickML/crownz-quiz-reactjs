@@ -34,6 +34,7 @@ import AirtelMoney from "./components/subscription/AirtelMoney";
 import CardPayment from "./components/subscription/CardPayment";
 import Receipt from "./components/subscription/Receipt.js";
 import SelectPackage from "./components/subscription/SelectPackage";
+import NotFoundPage from './components/NotFoundPage.js'
 import { AuthProvider, useAuth } from './context/AuthContext';
 import "./App.css";
 
@@ -214,6 +215,7 @@ function App() {
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/forget-password" element={<ForgetPassword />} />
               <Route path="/password-reset" element={<PasswordReset />} />
+              <Route path='*' element={<NotFoundPage />} />
 
               {/* Used to only test pages/routes/parts/component of the application */}
               <Route exact path="/testing" element={<Testing />} />
