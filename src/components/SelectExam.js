@@ -30,9 +30,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useAuth } from '../context/AuthContext';
+// import { studentEnrollSubject } from "../utilities/fetchStudentData";
+import storageUtil from "../utilities/storageUtil"; // Import storageUtil
 import "./ExamPage.css"; // Import custom CSS
-
-import subjectData from "../otherFiles/subject_data.json"; // Import the subject data
 
 // Map the icon string from JSON to the actual FontAwesomeIcon component
 const iconMapping = {
@@ -63,22 +63,42 @@ const iconMapping = {
 };
 
 function SelectExam() {
-  const { userInfo, userPoints } = useAuth();
+  const { userInfo, userPoints, userSubjectData, studentEnrollSubject } = useAuth();
   const navigate = useNavigate();
 
   const [selectedSubject, setSelectedSubject] = useState(null);
+  const [enrollSubject, setEnrollSubject] = useState(null);
 
   // Get the subjects for the user's education level
-  const subjects = subjectData[userInfo.educationLevel] || [];
+  const subjects = userSubjectData || [];
+
+  const isEnrolled = subjects.some(subject => subject.enrolled === true);
+  const notEnrolled = subjects.some(subject => subject.enrolled === false);
+
+  console.log("Subject Data: " + JSON.stringify(subjects));
+  // const storedData = storageUtil.getItem("studentData");
+  if (!subjects || !Array.isArray(subjects)) {
+    throw new Error("No subjects data found in local storage.");
+  }
 
   const handleCardClick = (subject) => {
     setSelectedSubject(subject);
   };
 
+  const handleEnroll = (subject) => {
+    setEnrollSubject(subject);
+  }
+
   const handleStartExam = () => {
     const subjectSlug = selectedSubject.name.toLowerCase().replace(/\s+/g, "-"); // Replaces spaces with hyphens
     const levelSlug = userInfo.educationLevel.toLowerCase();
     navigate(`/exam/${subjectSlug}_${levelSlug}`);
+  };
+
+  const handleEnrollment = async (subject) => {
+    console.log('Enrollment: ', subject);
+    await studentEnrollSubject(userInfo.userDocId, subject.$id);
+    setEnrollSubject(null)
   };
 
   const purchasePoints = () => {
@@ -90,29 +110,49 @@ function SelectExam() {
     <div className="exam-page-bg">
       <Container className="py-5">
         <h2 className="text-center mb-4">Select Your Exam Subject</h2>
-        <Row className="justify-content-center">
-          {subjects.map((subject, index) => (
-            <Col key={index} md={6} lg={4} className="mb-4">
-              <Card
-                className="subject-card h-100"
-                onClick={() => handleCardClick(subject)}
-                style={{ borderColor: subject.color || "#000" }}
-              >
-                <Card.Body
-                  className="text-center"
-                  style={{ color: subject.color || "#000" }}
-                >
+
+        {/* Enrolled Subjects */}
+        <h3 className="text-center mb-4 subject-header">Enrolled</h3>
+        <Row className="subject-row">
+          {isEnrolled ?
+            <>
+              {subjects.map((subject, index) => (
+                subject.enrolled && renderSubjectCard(subject, index, handleCardClick)
+              ))}
+            </> :
+            <Card>
+              <Card.Body>
+                <div className="text-center">
                   <FontAwesomeIcon
-                    icon={iconMapping[subject.icon]}
-                    size="4x"
-                    style={{ color: subject.color || "#000" }}
+                    icon={faBookOpen}
+                    size="3x"
+                    className="text-muted"
                   />
-                  <Card.Title className="mt-3">{subject.name}</Card.Title>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
+                  <h5 className="mt-3">No Enrolled for</h5>
+                  <p>
+                    Looks like you haven't enrolled for any subject. Ready to
+                    challenge yourself?
+                    Enroll for a subject
+                  </p>
+                </div>
+              </Card.Body>
+            </Card>
+          }
         </Row>
+
+        {/* Not Enrolled Subjects */}
+        {notEnrolled ?
+          <>
+            <h3 className="text-center mb-4 subject-header">Select and Enroll</h3>
+            <Row className="subject-row">
+              {subjects.map((subject, index) => (
+                !subject.enrolled && renderSubjectCard(subject, index, handleEnroll)
+              ))}
+            </Row>
+          </>
+          :
+          null
+        }
 
         <Modal
           show={selectedSubject !== null}
@@ -172,9 +212,68 @@ function SelectExam() {
               </>
           }
         </Modal>
+
+        {/* Modal to enroll for a subject */}
+        <Modal
+          show={enrollSubject !== null}
+          onHide={() => setEnrollSubject(null)}
+          centered
+          style={{
+            borderColor: enrollSubject?.color || "rgb(6, 63, 90) ",
+          }}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Enroll for  {enrollSubject?.name}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>{enrollSubject?.description}</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => setEnrollSubject(null)}
+            >
+              Close
+            </Button>
+            <Button
+              onClick={() => handleEnrollment(enrollSubject)}
+              style={{
+                backgroundColor: enrollSubject?.color || "rgb(6, 63, 90) ",
+              }}
+            >
+              Enroll
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </div>
   );
+
+  function renderSubjectCard(subject, index, onClick) {
+    const cardStyle = subject.enrolled
+      ? { borderColor: subject.color || "#000", color: subject.color || "#000" }
+      : { borderColor: "#d3d3d3", color: "#000" }; // Grey color for not enrolled
+
+    return (
+      <Col key={index} md={6} lg={4} className="mb-4">
+        <Card
+          className="subject-card"
+          onClick={() => onClick(subject)}
+          style={cardStyle}
+        >
+          <Card.Body className="text-center">
+            <FontAwesomeIcon
+              icon={iconMapping[subject.icon]}
+              size="4x"
+              style={{ color: cardStyle.color }}
+            />
+            <Card.Title className="mt-3">{subject.name}</Card.Title>
+          </Card.Body>
+        </Card>
+      </Col>
+    );
+  }
+
 }
 
 export default SelectExam;

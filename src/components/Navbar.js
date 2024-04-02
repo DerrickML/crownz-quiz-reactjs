@@ -6,8 +6,7 @@ import { useAuth } from '../context/AuthContext'
 
 const CustomNavbar = () => {
   const navigate = useNavigate()
-  const { userInfo } = useAuth();
-  const { sessionInfo, handleLogout } = useAuth();
+  const { userInfo, sessionInfo, handleLogout } = useAuth();
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -16,7 +15,6 @@ const CustomNavbar = () => {
       variant="dark"
       expand="lg"
       className="shadow"
-      // fixed="top"
       sticky="top"
       expanded={expanded}
     >
@@ -58,7 +56,8 @@ const CustomNavbar = () => {
                   to="/profile"
                   onClick={() => setExpanded(false)}
                 >
-                  {userInfo.firstName}
+                  {userInfo.firstName ? userInfo.firstName : 'Profile'}
+                  {/* Profile */}
                 </NavLink>
               </Badge>
             </>

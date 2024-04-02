@@ -23,13 +23,14 @@ import {
 import { showToast } from "../utilities/toastUtil.js";
 import { useAuth } from "../context/AuthContext.js";
 import { fetchAndUpdateResults } from "../utilities/resultsUtil";
-import { fetchAndProcessStudentData } from "../utilities/fetchStudentData";
+import { fetchAndProcessStudentData, studentSubjectsData } from "../utilities/fetchStudentData";
 import {
   account,
   databases,
   database_id,
   studentTable_id,
   nextOfKinTable_id,
+  subjectsTable_id,
   Query,
 } from "../appwriteConfig.js";
 import { serverUrl } from "../config.js"
@@ -145,9 +146,16 @@ function Login() {
 
         handleLogin(session, userInfo); // Pass the session data to App.js
 
-        //Fetch of student(s) results
+
         if (userInfo.labels.includes("student")) {
+
+          //Fetch student(s) results
           await fetchAndUpdateResults(session.userId);
+
+          //Fecth and process subjects data
+          // let enrolledSubjectsData = userInfo.subjects || [];
+          // await studentSubjectsData(enrolledSubjectsData, userInfo.educationLevel)
+
         }
 
         //Fetch all students' results linked to the next-of-kin and save to local storage
@@ -247,6 +255,7 @@ function Login() {
       }
 
       const responseData = await response.json();
+      console.log('User Data: ' + JSON.stringify(responseData));
       return responseData;
     } catch (error) {
       if (!navigator.onLine) {

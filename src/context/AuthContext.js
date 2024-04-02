@@ -1,25 +1,16 @@
 // AuthContext.js
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 import moment from 'moment';
 import {
-    client,
     account,
     databases,
     database_id,
     studentTable_id,
-    nextOfKinTable_id,
-    studentMarksTable_id,
-    sstTablePLE_id,
-    couponTable_id,
-    transactionTable_id,
     pointsTable_id,
-    pointsBatchTable_id,
-    Permission,
-    Role,
     Query,
-    ID
 } from "../appwriteConfig.js";
 import storageUtil from '../utilities/storageUtil.js';
+import { studentSubjectsData } from "../utilities/fetchStudentData";
 
 const AuthContext = createContext(null);
 
@@ -29,48 +20,9 @@ export const AuthProvider = ({ children }) => {
     const [sessionInfo, setSessionInfo] = useState(storageUtil.getItem("sessionInfo"));
     const [userInfo, setUserInfo] = useState(storageUtil.getItem("userInfo"));
     const [userPoints, setUserPoints] = useState(storageUtil.getItem("userPoints") || 0);
+    const [userSubjectData, setUserSubjectData] = useState(storageUtil.getItem("userSubjectData") || [])
 
-    const handleLogin = async (sessionData, userData) => {
-        const sessionDetails = {
-            $id: sessionData.$id,
-            userId: sessionData.userId,
-            expire: sessionData.expire,
-            authMethod: sessionData.provider,
-        };
-        setSessionInfo(sessionDetails);
-        storageUtil.setItem("sessionInfo", sessionDetails);
-
-        const userDetails = {
-            userId: sessionData.userId,
-            userDocId: userData.userDocId,
-            firstName: userData.firstName,
-            lastName: userData.lastName,
-            otherName: userData.otherName,
-            phone: userData.phone,
-            email: userData.email,
-            gender: userData.gender,
-            schoolName: userData.schoolName,
-            schoolAddress: userData.schoolAddress,
-            educationLevel: userData.educationLevel,
-            labels: userData.labels,
-            kinID: userData.kinID,
-            kinFirstName: userData.kinFirstName,
-            kinLastName: userData.kinLastName,
-            kinEmail: userData.kinEmail,
-            kinPhone: userData.kinPhone,
-        };
-
-        setUserInfo(userDetails);
-        storageUtil.setItem("userInfo", userDetails);
-
-        // Fetch userPoints from the database after login
-        // This is an example, replace it with your actual API call
-        if (userDetails.labels.includes('student')) {
-            const pointsData = await fetchUserPoints(userDetails.userId, userDetails.educationLevel);
-        }
-        // setUserPoints(pointsData);
-        // storageUtil.setItem("userPoints", pointsData);
-    };
+    //LOGOUT FUNCTION
 
     const handleLogout = async () => {
         if (sessionInfo && sessionInfo.$id) {
@@ -90,6 +42,54 @@ export const AuthProvider = ({ children }) => {
         // Clear userPoints from context and storage
         setUserPoints('');
         storageUtil.removeItem("userPoints");
+    };
+
+    //LOGIN FUNCTION
+    const handleLogin = async (sessionData, userData) => {
+        const sessionDetails = {
+            $id: sessionData.$id,
+            userId: sessionData.userId,
+            expire: sessionData.expire,
+            authMethod: sessionData.provider,
+        };
+        setSessionInfo(sessionDetails);
+        storageUtil.setItem("sessionInfo", sessionDetails);
+
+        userData.labels.includes("student") ? console.log('Student subjects: ' + userData.subjects) : console.log('Next of Kin');
+        const userDetails = {
+            userId: sessionData.userId,
+            userDocId: userData.userDocId,
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            otherName: userData.otherName,
+            phone: userData.phone,
+            email: userData.email,
+            gender: userData.gender,
+            schoolName: userData.schoolName,
+            schoolAddress: userData.schoolAddress,
+            educationLevel: userData.educationLevel,
+            subjects: userData.subjects,
+            labels: userData.labels,
+            kinID: userData.kinID,
+            kinFirstName: userData.kinFirstName,
+            kinLastName: userData.kinLastName,
+            kinEmail: userData.kinEmail,
+            kinPhone: userData.kinPhone,
+        };
+
+        setUserInfo(userDetails);
+        storageUtil.setItem("userInfo", userDetails);
+
+        if (userDetails.labels.includes("student")) {
+
+            //Setting up subjects data
+            await updateUserSubjectData(userDetails.subjects, userDetails.educationLevel);
+
+            // Fetch userPoints from the database after login
+            await fetchUserPoints(userDetails.userId, userDetails.educationLevel);
+
+        }
+
     };
 
     // Update userPoints in local storage and database
@@ -170,15 +170,61 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    /**
+     * Formats the date string into a more readable format.
+     * @param {string} userDocId - Document id string.
+     * @param {string} subject - Subject string passed.
+     * @returns {string || null} - return sting or nothing.
+     */
+    const studentEnrollSubject = async (userDocId, subject) => {
+        console.log("Student Enroll Subject: ", subject);
+        console.log("Student DocuID: ", userDocId)
+        if (!subject) {
+            console.log('Subject is required');
+            return
+        }
+
+        databases.getDocument(database_id, studentTable_id, userDocId)
+            .then(document => {
+                const updatedArray = [...document.subjects, subject];
+
+                return databases.updateDocument(database_id, studentTable_id, userDocId, {
+                    subjects: updatedArray
+                });
+            })
+            .then(updatedDocument => {
+                console.log('Enrolled Subject Item appended successfully: ', updatedDocument.subjects);
+                updateUserSubjectData(updatedDocument.subjects, updatedDocument.educationLevel) //Update user subject data on localStorage
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    };
+
+    //Update user subject data on localStorage
+    const updateUserSubjectData = async (subjectsData, educationLevel) => {
+        try {
+            let enrolledSubjectsData = subjectsData || [];
+            const response = await studentSubjectsData(enrolledSubjectsData, educationLevel)
+            setUserSubjectData(response)
+            storageUtil.setItem("userSubjectData", response);
+
+        } catch (error) {
+            console.log('Subjects Data Error: ', error);
+        };
+    }
+
     return (
         <AuthContext.Provider value={{
             sessionInfo,
             userInfo,
             userPoints,
+            userSubjectData,
             handleLogin,
             handleLogout,
             fetchUserPoints,
             updateUserPoints,
+            studentEnrollSubject,
         }}>
             {children}
         </AuthContext.Provider>

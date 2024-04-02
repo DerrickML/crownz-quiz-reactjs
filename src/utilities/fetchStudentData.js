@@ -5,6 +5,7 @@ import {
   studentTable_id,
   studentMarksTable_id,
   pointsTable_id,
+  subjectsTable_id,
   Query,
 } from "../appwriteConfig.js";
 import storageUtil from "./storageUtil"; // Import storageUtil
@@ -146,6 +147,77 @@ export const updateStudentDataInLocalStorage = async (studID, updatedData) => {
     console.error("Error updating student data in local storage:", error);
   }
 };
+
+/**
+ * Fetch All Subjects Data for a particular education-level.
+ * @param {string} educationLevel - The education-level to fetch
+ */
+export const fetchAllSubjectsData = async (educationLevel) => {
+  try {
+    const response = await databases.listDocuments(database_id, subjectsTable_id, [
+      Query.equal("educationLevel", educationLevel),
+    ]);
+    if (response.documents.length > 0) {
+      // console.log('Checking points table: ', response.documents);
+      return response.documents
+    }
+  } catch (error) {
+    console.log('All Subjects Data Error: ', error);
+    throw new Error(`ALL Subjects Data Error: ${error}`);
+  };
+};
+
+export const studentSubjectsData = async (enrolledSubjectsData, educationLevel) => {
+  try {
+    console.log('Enrolled Subjects Data: ', enrolledSubjectsData);
+
+    let allSubjectsData = await fetchAllSubjectsData(educationLevel);
+
+    //Iterate over all subjects to add enrolled keys to all subjects which is either truthy or falsy
+    allSubjectsData.forEach(subject => {
+      subject.enrolled = enrolledSubjectsData.includes(subject.$id);
+    });
+
+    console.log('Updated Subjects Data with Enroll key: ', allSubjectsData)
+
+    //Save to local storage
+    return allSubjectsData;
+
+  } catch (error) {
+    console.log('Student Subjects Data Error: ', error);
+    console.error('Student Subjects Data Error: ', error)
+  }
+}
+
+/**
+    * Formats the date string into a more readable format.
+    * @param {string} userDocId - Document id string.
+    * @param {string} subject - Subject string passed.
+    * @returns {string || null} - return sting or nothing.
+    */
+// export const studentEnrollSubject = async (userDocId, subject) => {
+//   console.log("Student Enroll Subject: ", subject);
+//   console.log("Student DocuID: ", userDocId)
+//   if (!subject) {
+//     console.log('Subject is required');
+//     return
+//   }
+
+//   databases.getDocument(database_id, studentTable_id, userDocId)
+//     .then(document => {
+//       const updatedArray = [...document.subjects, subject];
+
+//       return databases.updateDocument(database_id, studentTable_id, userDocId, {
+//         subjects: updatedArray
+//       });
+//     })
+//     .then(updatedDocument => {
+//       console.log('Item appended successfully: ', updatedDocument);
+//     })
+//     .catch(error => {
+//       console.error('Error:', error);
+//     });
+// };
 
 /**
  * Formats the date string into a more readable format.
