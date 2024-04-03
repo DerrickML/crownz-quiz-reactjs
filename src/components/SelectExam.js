@@ -252,7 +252,7 @@ function SelectExam() {
   function renderSubjectCard(subject, index, onClick) {
     const cardStyle = subject.enrolled
       ? { borderColor: subject.color || "#000", color: subject.color || "#000" }
-      : { borderColor: "#d3d3d3", color: "#000" }; // Grey color for not enrolled
+      : { borderColor: "#d3d3d3", color: "#000" }; // Grey and black color for not enrolled
 
     return (
       <Col key={index} md={6} lg={4} className="mb-4">
