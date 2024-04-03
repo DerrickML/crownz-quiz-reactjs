@@ -141,18 +141,18 @@ function SelectExam() {
         </Row>
 
         {/* Not Enrolled Subjects */}
-        {notEnrolled ?
-          <>
-            <h3 className="text-center mb-4 subject-header">Select and Enroll</h3>
-            <Row className="subject-row">
-              {subjects.map((subject, index) => (
-                !subject.enrolled && renderSubjectCard(subject, index, handleEnroll)
-              ))}
-            </Row>
-          </>
+        {/* {notEnrolled ?
+          <> */}
+        <h3 className="text-center mb-4 subject-header">Select and Enroll</h3>
+        <Row className="subject-row">
+          {subjects.map((subject, index) => (
+            !subject.enrolled && renderSubjectCard(subject, index, handleEnroll)
+          ))}
+        </Row>
+        {/* </>
           :
           null
-        }
+        } */}
 
         <Modal
           show={selectedSubject !== null}
