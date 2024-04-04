@@ -8,6 +8,7 @@ const AnswerInput = ({ question, onChange, disabled, getUserAnswer, displayQuest
 
     const userAnswer = getUserAnswer(question.id);
 
+    //Case to display different question types
     switch (question.type) {
         case 'multipleChoice':
             return (
