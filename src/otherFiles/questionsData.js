@@ -2320,7 +2320,7 @@ const sst_ple = [
         "instructions": null,
         "questions": [
             {
-                "question": "Below is the number plate of Dr. Isiko's vehicle. What does letter U stand for on the number plate?\n <b>UBN 600B</b>",
+                "question": "Below is the number plate of Dr. Isiko's vehicle. What does letter U stand for on the number plate?<br> <b>UBN 600B</b>",
                 "type": "text",
                 "answer": [
                     "Uganda"
@@ -4403,7 +4403,7 @@ const sst_ple = [
                 "answer": [
                     "It is 9:00 am at place X"
                 ],
-                "explanation": "1hour = 15<sup>o</sup>\n 45<sup>0</sup> = (45/15) = 3 hours\n 6:00 + 3:00 = 9:00am",
+                "explanation": "1hour = 15<sup>o</sup><br> 45<sup>0</sup> = (45/15) = 3 hours<br> 6:00 + 3:00 = 9:00am",
                 "options": [
                     "It is 9:00 pm at place X",
                     "It is 9:00 am at place X"
@@ -4546,7 +4546,7 @@ const sst_ple = [
                 "answer": [
                     "It will be 5:00 p.m at a place 60<sup>o</sup>E"
                 ],
-                "explanation": "1 hr = 15<sup>o</sup>\n 60<sup>o</sup> = (60/15) = 4hrs\n 1:00 p.m + + 4:00hrs = 5:00 p.m",
+                "explanation": "1 hr = 15<sup>o</sup><br> 60<sup>o</sup> = (60/15) = 4hrs<br> 1:00 p.m + + 4:00hrs = 5:00 p.m",
                 "options": [
                     "It will be 5:00 a.m at a place 60<sup>o</sup>E",
                     "It will be 5:00 p.m at a place 60<sup>o</sup>E"
@@ -5962,7 +5962,7 @@ const sst_ple = [
                             "4<sup>o</sup>C"
                         ],
                         "explanation": [
-                            "Range = Highest temperature - lowest temperature\n= 25<sup>o</sup>C- 21<sup>o</sup>C\n= 4<sup>o</sup>C"
+                            "Range = Highest temperature - lowest temperature<br>= 25<sup>o</sup>C- 21<sup>o</sup>C<br>= 4<sup>o</sup>C"
                         ],
                         "options": [
                             "4<sup>o</sup>C",
@@ -7087,7 +7087,7 @@ const sst_ple = [
                         "answer": [
                             "$50 million"
                         ],
-                        "explanation": "The degree for tourism is 75<sup>0</sup>\n= 75<sup>0</sup>/360<sup>0</sup> X $ 240 million\n= 75/3 X 2 million\n= $ 25 X 2 million\n= $50 million",
+                        "explanation": "The degree for tourism is 75<sup>0</sup><br>= 75<sup>0</sup>/360<sup>0</sup> X $ 240 million<br>= 75/3 X 2 million<br>= $ 25 X 2 million<br>= $50 million",
                         "options": [
                             "$50 million",
                             "$40 million",
@@ -8192,7 +8192,7 @@ const sst_ple = [
                 "id": "ple_sst_sect_B44_18"
             },
             {
-                "question": "The first two lines of the song below are missing\n United free for liberty,\n Together we'll always stand.",
+                "question": "The first two lines of the song below are missing<br> United free for liberty,<br> Together we'll always stand.",
                 "sub_questions": [
                     {
                         "question": "What are the missing lines",
@@ -9458,7 +9458,7 @@ const sst_ple = [
                         "answer": [
                             "7<sup>o</sup>c"
                         ],
-                        "explanation": "Range = Highest - Lowest\n = 44<sup>o</sup>c - 37<sup>o</sup>c\n = 7<sup>o</sup>c",
+                        "explanation": "Range = Highest - Lowest<br> = 44<sup>o</sup>c - 37<sup>o</sup>c<br> = 7<sup>o</sup>c",
                         "options": [
                             "8<sup>o</sup>c",
                             "6<sup>o</sup>c",
@@ -13391,7 +13391,7 @@ const math_ple = [
                 "question": "Simplify: 3a + a - 2a",
                 "type": "multipleChoice",
                 "answer": "= 2a",
-                "explanation": "4a - 2a\n = 2a",
+                "explanation": "4a - 2a<br> = 2a",
                 "options": [
                     "= 4a",
                     "= 2",
@@ -13417,7 +13417,7 @@ const math_ple = [
                 "id": "ple_math_sect_A2_6"
             },
             {
-                "question": "What number has been expanded below?\n 20,000 + 600 + 8",
+                "question": "What number has been expanded below?<br> 20,000 + 600 + 8",
                 "type": "text",
                 "answer": "20608",
                 "id": "ple_math_sect_A2_7"
@@ -13443,7 +13443,7 @@ const math_ple = [
                 "question": "Work out: (49 x 39) + (61 x 49)",
                 "type": "multipleChoice",
                 "answer": "4900",
-                "explanation": "(49 x 39) + (61 x 49)\n 49(39 + 61)\n 49(100)\n 49 x 100\n 4900",
+                "explanation": "(49 x 39) + (61 x 49)<br> 49(39 + 61)<br> 49(100)<br> 49 x 100<br> 4900",
                 "options": [
                     "198",
                     "4900",
@@ -13455,7 +13455,7 @@ const math_ple = [
                 "question": "Work out: 1<sup>1</sup>/<sub>2</sub> - 2/3",
                 "type": "multipleChoice",
                 "answer": "= 5/6",
-                "explanation": "Convert the mixed fraction to improper fraction\n 3/2 - 2/3\n Get the LCM\n (9 - 4)/6\n = 5/6",
+                "explanation": "Convert the mixed fraction to improper fraction<br> 3/2 - 2/3<br> Get the LCM<br> (9 - 4)/6<br> = 5/6",
                 "options": [
                     "= 1/2",
                     "= 1/6",
@@ -13467,7 +13467,7 @@ const math_ple = [
                 "question": "The area of a square flower garden is 196m <sup>2</sup> . find the length of each side.",
                 "type": "multipleChoice",
                 "answer": "14 m",
-                "explanation": "Area of a square = Side x Side\n = S<sup>2</sup>\n 196 = S<sup>2</sup>\n √196 = √S<sup>2</sup>\n 14 = S\n ∴ S = 14",
+                "explanation": "Area of a square = Side x Side<br> = S<sup>2</sup><br> 196 = S<sup>2</sup><br> √196 = √S<sup>2</sup><br> 14 = S<br> ∴ S = 14",
                 "options": [
                     "14 m",
                     "49 m",
@@ -13479,7 +13479,7 @@ const math_ple = [
                 "question": "In a car park there are 192 cars. The probability that a car picked at random from the park is made in Japan is 5/8. How many cars are not made in Japan?",
                 "type": "multipleChoice",
                 "answer": "72 cars",
-                "explanation": "Number of cars made in Japan = 5/8 x 192\n = 5 x 24\n = 120 cars\n Number of cars not made in Japan = Total number of cars - Number of cars made in Japan\n = 192 - 120\n = 72 cars",
+                "explanation": "Number of cars made in Japan = 5/8 x 192<br> = 5 x 24<br> = 120 cars<br> Number of cars not made in Japan = Total number of cars - Number of cars made in Japan<br> = 192 - 120<br> = 72 cars",
                 "options": [
                     "120 cars",
                     "78 cars",
@@ -13491,7 +13491,7 @@ const math_ple = [
                 "question": "Given that n = 3 and r =  -2, evaluate (2n+2r)/r",
                 "type": "multipleChoice",
                 "answer": "-1",
-                "explanation": "(2 x 3 + 2 x -2)/-2\n = (6 + -4)/2\n = -2/2\n = -1",
+                "explanation": "(2 x 3 + 2 x -2)/-2<br> = (6 + -4)/2<br> = -2/2<br> = -1",
                 "options": [
                     "-1",
                     "1",
@@ -13521,7 +13521,7 @@ const math_ple = [
                 "question": "Calculate the speed of a motorist who covered a distance of 210 kilometres in 2.5 hours",
                 "type": "multipleChoice",
                 "answer": "84 km/hr",
-                "explanation": "Speed = Distance/Time\n Speed = 210/2.5\n Speed = 84 kilometres/hour",
+                "explanation": "Speed = Distance/Time<br> Speed = 210/2.5<br> Speed = 84 kilometres/hour",
                 "options": [
                     "84 km/hr",
                     "212.5 km/hr",
@@ -13533,7 +13533,7 @@ const math_ple = [
                 "question": "Round off 796 to the nearest tens.",
                 "type": "text",
                 "answer": "800",
-                "explanation": "Since 6 is greater than or equal to 5, you round up the tens digit\n. Therefore, the tens digit becomes 0, and the hundreds digit remains the same. The final result is 800.",
+                "explanation": "Since 6 is greater than or equal to 5, you round up the tens digit<br>. Therefore, the tens digit becomes 0, and the hundreds digit remains the same. The final result is 800.",
                 "options": [
                     "795",
                     "800",
@@ -13551,7 +13551,7 @@ const math_ple = [
                 "question": "Convert 12½% to fraction in its lowest term",
                 "type": "multipleChoice",
                 "answer": "= 1/8",
-                "explanation": "12½/100\n convert 12½ to an improper fraction\n (25/2)/100\n 25/2 ÷ 100\n 25/2 ÷ 100/1\n 25/2 x 1/100\n 1/2 x 1/4\n = 1/8",
+                "explanation": "12½/100<br> convert 12½ to an improper fraction<br> (25/2)/100<br> 25/2 ÷ 100<br> 25/2 ÷ 100/1<br> 25/2 x 1/100<br> 1/2 x 1/4<br> = 1/8",
                 "options": [
                     "= 1/4",
                     "= 1/2",
@@ -13563,7 +13563,7 @@ const math_ple = [
                 "question": "How many packets of 200 grammes can be got from 2.6 kilogrames of salt?",
                 "type": "multipleChoice",
                 "answer": "13 packets",
-                "explanation": "First convert 2.6 kg to grammes\n 1 kg = 1000 g\n 2.6 kg = (2.6 x 1000)g\n = 2600 g\n Number of packets = 2600/200\n = 26/2\n = 13 packets",
+                "explanation": "First convert 2.6 kg to grammes<br> 1 kg = 1000 g<br> 2.6 kg = (2.6 x 1000)g<br> = 2600 g<br> Number of packets = 2600/200<br> = 26/2<br> = 13 packets",
                 "options": [
                     "13 packets",
                     "12 packets",
@@ -13587,7 +13587,7 @@ const math_ple = [
                 "question": "Simplify : <sup>+</sup>4 - <sup>+</sup>6",
                 "type": "multipleChoice",
                 "answer": "-10",
-                "explanation": "+4 - (+6)\n = -10",
+                "explanation": "+4 - (+6)<br> = -10",
                 "options": [
                     "-2",
                     "-10",
@@ -13605,7 +13605,7 @@ const math_ple = [
                 "question": "Change 8<sub>ten</sub> to binary system.",
                 "type": "multipleChoice",
                 "answer": "1000",
-                "explanation": "Divide 8 by 2. The quotient is 4 and the remainder is 0\n Divide 4 by 2. The quotient is 2 and the remainder is 0\n Divide 2 by 2. The quotient is 1 and the remainder is 0\n Write down the remainders in reverse order as 0001\n Therefore, 8 in binary is 1000",
+                "explanation": "Divide 8 by 2. The quotient is 4 and the remainder is 0<br> Divide 4 by 2. The quotient is 2 and the remainder is 0<br> Divide 2 by 2. The quotient is 1 and the remainder is 0<br> Write down the remainders in reverse order as 0001<br> Therefore, 8 in binary is 1000",
                 "options": [
                     "100",
                     "1000",
@@ -13628,7 +13628,7 @@ const math_ple = [
                 "question": "A box contains 20 pens, 10 are blue, 7 are red and the rest black. A pen is picked at random from the box, find the probability that it is a black pen.",
                 "type": "multipleChoice",
                 "answer": "Probability = 3/20",
-                "explanation": "Let the number of black pens be x\n Number of black pens = Total number of pens - (Blue pens + Red pens)\n = 20 - (10 + 7)\n = 20 - 17\n = 3 black pens\n Probability = (Number of black pens)/(Total number of pens)\n = 3/20",
+                "explanation": "Let the number of black pens be x<br> Number of black pens = Total number of pens - (Blue pens + Red pens)<br> = 20 - (10 + 7)<br> = 20 - 17<br> = 3 black pens<br> Probability = (Number of black pens)/(Total number of pens)<br> = 3/20",
                 "options": [
                     "Probability = 1/10",
                     "Probability = 7/20",
@@ -13637,10 +13637,10 @@ const math_ple = [
                 "id": "ple_math_sect_A13_3"
             },
             {
-                "question": "The prime factors of 12 and 90 are given below;\n 12 = 2<sup>2</sup> x 3\n 90 = 2 x 3<sup>2</sup> x 5\n Use the given prime factors above to find the Lowest Common Multiple (LCM) of 12 and 90",
+                "question": "The prime factors of 12 and 90 are given below;<br> 12 = 2<sup>2</sup> x 3<br> 90 = 2 x 3<sup>2</sup> x 5<br> Use the given prime factors above to find the Lowest Common Multiple (LCM) of 12 and 90",
                 "type": "multipleChoice",
                 "answer": "LCM = 180",
-                "explanation": "2<sup>2</sup> x 3<sup>2</sup> x 5\n = 4 x 9 x 5\n = 180",
+                "explanation": "2<sup>2</sup> x 3<sup>2</sup> x 5<br> = 4 x 9 x 5<br> = 180",
                 "options": [
                     "LCM = 30",
                     "LCM = 180",
@@ -13652,7 +13652,7 @@ const math_ple = [
                 "question": "Given that a = <sup>-</sup>2, b = 3 and c = 4, find the value of b(a<sup>2</sup> + c)",
                 "type": "multipleChoice",
                 "answer": "24",
-                "explanation": "3((<sup>-</sup>2)<sup>2</sup> + 4)\n = 3(4 + 4)\n = 3(8)\n = 3 x 8\n = 24",
+                "explanation": "3((<sup>-</sup>2)<sup>2</sup> + 4)<br> = 3(4 + 4)<br> = 3(8)<br> = 3 x 8<br> = 24",
                 "options": [
                     "24",
                     "0",
@@ -13664,7 +13664,7 @@ const math_ple = [
                 "question": "Today Monday, the workers on farm are paid their salary. What day of the week will the workers' next pay be, 30 days from today?",
                 "type": "multipleChoice",
                 "answer": "Monday",
-                "explanation": "Monday + 30 days = 30 days\n Since every week has 7 days\n 30 = (7 x 4) + 2",
+                "explanation": "Monday + 30 days = 30 days<br> Since every week has 7 days<br> 30 = (7 x 4) + 2",
                 "options": [
                     "Tuesday",
                     "Friday",
@@ -13676,7 +13676,7 @@ const math_ple = [
                 "question": "In a class, the ratio of girls to boys is 3:2. If there are 18 girls, how many pupils are in the class?",
                 "type": "multipleChoice",
                 "answer": "30 pupils",
-                "explanation": "Total ratio = 3 + 2 = 5\n Let each ratio be n\n 3n = 18\n 3n/3 = 18/3\n n = 6\n = 5 x 6\n = 30 pupils",
+                "explanation": "Total ratio = 3 + 2 = 5<br> Let each ratio be n<br> 3n = 18<br> 3n/3 = 18/3<br> n = 6<br> = 5 x 6<br> = 30 pupils",
                 "options": [
                     "20 pupils",
                     "10 pupils",
@@ -13694,7 +13694,7 @@ const math_ple = [
                 "question": "Find the smallest number that can be divided by 8 or 12 and leaves 5 as the remainder",
                 "type": "multipleChoice",
                 "answer": "29",
-                "explanation": "Find the LCM of 8 and 12\n 8 = 2<sup>3</sup>\n 12 = 2<sup>2</sup> x 3\n LCM of 8 and 12 = 2<sup>3</sup> x 3\n LCM = 24\n Smallest number = LCM + remainder\n Smallest number = 24 + 5\n = 29",
+                "explanation": "Find the LCM of 8 and 12<br> 8 = 2<sup>3</sup><br> 12 = 2<sup>2</sup> x 3<br> LCM of 8 and 12 = 2<sup>3</sup> x 3<br> LCM = 24<br> Smallest number = LCM + remainder<br> Smallest number = 24 + 5<br> = 29",
                 "options": [
                     "24",
                     "25",
@@ -13706,7 +13706,7 @@ const math_ple = [
                 "question": "Martha drove from town A to town B at a speed of 72km per hour. Town A is 90km away from town B. Calculate the time she took to reach town B.",
                 "type": "multipleChoice",
                 "answer": "Time taken is 1 hour and 15 minutes",
-                "explanation": "Time taken = Distance/Speed\n = 90/72\n = 15/12\n Convert to minutes\n 15/12 x 60\n = 75 minutes\n = 1 hour and 15 minutes",
+                "explanation": "Time taken = Distance/Speed<br> = 90/72<br> = 15/12<br> Convert to minutes<br> 15/12 x 60<br> = 75 minutes<br> = 1 hour and 15 minutes",
                 "options": [
                     "Time taken is 2 hours",
                     "Time taken is 1 hour",
@@ -13719,7 +13719,7 @@ const math_ple = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/14.png",
                 "type": "multipleChoice",
                 "answer": "Bearing = 283<sup>o</sup>",
-                "explanation": "Since the bearing is calculated from the North clockwise\n (90 + 90 + 90) + (90 - 77) (corresponding angles)\n = 270 + 13\n  = 283<sup>o</sup>",
+                "explanation": "Since the bearing is calculated from the North clockwise<br> (90 + 90 + 90) + (90 - 77) (corresponding angles)<br> = 270 + 13<br>  = 283<sup>o</sup>",
                 "options": [
                     "Bearing = 347<sup>o</sup>",
                     "Bearing = 77<sup>o</sup>",
@@ -13731,7 +13731,7 @@ const math_ple = [
                 "question": "A wire of length 161 metres was shared by some boys. The average length of wire each boy got was 23 metres. Find the number of boys who shared the wire.",
                 "type": "multipleChoice",
                 "answer": "7 boys",
-                "explanation": "Number of boys = (wire length)/(average length each boy got)\n = 161/23\n = 7",
+                "explanation": "Number of boys = (wire length)/(average length each boy got)<br> = 161/23<br> = 7",
                 "options": [
                     "9 boys",
                     "8 boys",
@@ -13754,7 +13754,7 @@ const math_ple = [
                 "question": "Write the number whose scientific notation is 9.85 x 10<sup>3</sup>",
                 "type": "multipleChoice",
                 "answer": "9850",
-                "explanation": "9.85 x (10 x 10 x 10)\n = 9.85 x 1000\n = 9850",
+                "explanation": "9.85 x (10 x 10 x 10)<br> = 9.85 x 1000<br> = 9850",
                 "options": [
                     "9850",
                     "985",
@@ -13772,7 +13772,7 @@ const math_ple = [
                 "question": "A teacher deposited shs 72,000 in a bank. After one year, the teacher earned a simple interest of shs 3,600. Calculate the simple interest rate of the bank.",
                 "type": "multipleChoice",
                 "answer": "Rate = 5",
-                "explanation": "Simple Interest = (Principal x Rate x Time)/100\n Rate = (Simple Interest x 100)/Principal x Time\n Rate = (3600 x 100)/(72000 x 1)\n Rate = 5",
+                "explanation": "Simple Interest = (Principal x Rate x Time)/100<br> Rate = (Simple Interest x 100)/Principal x Time<br> Rate = (3600 x 100)/(72000 x 1)<br> Rate = 5",
                 "options": [
                     "Rate = 15",
                     "Rate = 10",
@@ -13784,7 +13784,7 @@ const math_ple = [
                 "question": "The following heights of six children were recorded at a health centre: 53cm, 64cm, 59cm, 51cm, 63cm and 61cm. Find the median height of the children.",
                 "type": "multipleChoice",
                 "answer": "Median height = 60cm",
-                "explanation": "Arrange the heights in ascending and descending order\n 51cm, 53cm, 59cm, 61cm, 63cm, 64cm\n Since we have two values in the middle\n Add and divide them by 2\n Median = (59 + 61)/2\n = 60",
+                "explanation": "Arrange the heights in ascending and descending order<br> 51cm, 53cm, 59cm, 61cm, 63cm, 64cm<br> Since we have two values in the middle<br> Add and divide them by 2<br> Median = (59 + 61)/2<br> = 60",
                 "options": [
                     "Median height = 51cm",
                     "Median height = 60cm",
@@ -13797,7 +13797,7 @@ const math_ple = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/15.png",
                 "type": "multipleChoice",
                 "answer": "99 cm",
-                "explanation": "From circumference of a circle;\n C = 2πr\n Since we finding the length of the arc\n Length = 2πr/2\n = πr\n = 22/7 x 63/2\n = 99",
+                "explanation": "From circumference of a circle;<br> C = 2πr<br> Since we finding the length of the arc<br> Length = 2πr/2<br> = πr<br> = 22/7 x 63/2<br> = 99",
                 "options": [
                     "99 cm",
                     "126 cm",
@@ -13809,7 +13809,7 @@ const math_ple = [
                 "question": "Find the size of angle y in the figure below",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/15.png",
                 "answer": "y = 65<sup>o</sup>",
-                "explanation": "y + y + 50 = 180\n 2y + 50 = 180\n 2y + 50 - 50 = 180 - 50\n 2y = 130\n y = 65",
+                "explanation": "y + y + 50 = 180<br> 2y + 50 = 180<br> 2y + 50 - 50 = 180 - 50<br> 2y = 130<br> y = 65",
                 "options": [
                     "y = 50<sup>o</sup>",
                     "y = 80<sup>o</sup>",
@@ -13821,7 +13821,7 @@ const math_ple = [
                 "question": "A cyclist covers 70 km in 2½ hours. How long will he take to cover 21 km at the same speed?",
                 "type": "multipleChoice",
                 "answer": "Time taken = 45 minutes",
-                "explanation": "Speed = Distance/Time\n = 70/2.5\n = 28km/hr\n Time with same speed = Distance/Speed\n = 21/28\n = 3/4\n Convert 3/4 hours to minutes\n = 3/4 x 60\n = 45 minutes",
+                "explanation": "Speed = Distance/Time<br> = 70/2.5<br> = 28km/hr<br> Time with same speed = Distance/Speed<br> = 21/28<br> = 3/4<br> Convert 3/4 hours to minutes<br> = 3/4 x 60<br> = 45 minutes",
                 "options": [
                     "Time taken = 1 hour and 45 minutes",
                     "Time taken = 45 minutes",
@@ -13833,7 +13833,7 @@ const math_ple = [
                 "question": "Work out: 2 - 6(mod 7)",
                 "type": "multipleChoice",
                 "answer": "3(mod 7)",
-                "explanation": "2 - 6 = __(mod 7)\n (2+7) - 6 = __(mod 7)\n 9 - 6 = 3(mod 7)\n = 3(mod 7)",
+                "explanation": "2 - 6 = __(mod 7)<br> (2+7) - 6 = __(mod 7)<br> 9 - 6 = 3(mod 7)<br> = 3(mod 7)",
                 "options": [
                     "-4(mod 7)",
                     "4(mod 7)",
@@ -13877,7 +13877,7 @@ const math_ple = [
                 "question": "Given that 1 US dollar ($) costs Uganda Shillings (Ug.sh) 3,672 and 1 Kenya shilling (Ksh) costs Ug.sh 36, find the cost of 1 US dollar in Kenya shillings.",
                 "type": "multipleChoice",
                 "answer": "1 US dollar = 102 Kenya shillings",
-                "explanation": "1 US dollar ($) = 3,672 Ug.sh\n 1 (Ksh) = 36 (Ug.sh)\n Cost of 1 US dollar in Ksh = (Cost of 1 US dollar in Ug.sh)/(Exchange rate for Ksh to Ug.sh)\n = 3672/36\n = 102",
+                "explanation": "1 US dollar ($) = 3,672 Ug.sh<br> 1 (Ksh) = 36 (Ug.sh)<br> Cost of 1 US dollar in Ksh = (Cost of 1 US dollar in Ug.sh)/(Exchange rate for Ksh to Ug.sh)<br> = 3672/36<br> = 102",
                 "options": [
                     "1 US dollar = 36 Kenya shillings",
                     "1 US dollar = 132,192 Kenya shillings",
@@ -13889,7 +13889,7 @@ const math_ple = [
                 "question": "Given that a = 3 and b= -2, find the value of a<sub>2</sub> - b<sub>3</sub>",
                 "type": "multipleChoice",
                 "answer": "17",
-                "explanation": "3<sub>2</sub> - (-2)<sub>3</sub>\n 9 - (-8)\n 9 + 8\n = 17",
+                "explanation": "3<sub>2</sub> - (-2)<sub>3</sub><br> 9 - (-8)<br> 9 + 8<br> = 17",
                 "options": [
                     "1",
                     "17",
@@ -13901,7 +13901,7 @@ const math_ple = [
                 "question": "Apio bought 30 books at sh 3,000 per dozen. How much money did she spend?",
                 "type": "multipleChoice",
                 "answer": "sh 7,500",
-                "explanation": "We need to first find the number of dozens Apio bought\n Since a dozen contains 12 books\n Number of dozens = 30/12\n = 15/6\n = 5/2 dozens\n Amount spent = Number of dozens x Cost of dozen\n = 5/2 x 3000\n = 5 x 1500\n = 7500",
+                "explanation": "We need to first find the number of dozens Apio bought<br> Since a dozen contains 12 books<br> Number of dozens = 30/12<br> = 15/6<br> = 5/2 dozens<br> Amount spent = Number of dozens x Cost of dozen<br> = 5/2 x 3000<br> = 5 x 1500<br> = 7500",
                 "options": [
                     "sh 90,000",
                     "sh 7,500",
@@ -13914,7 +13914,7 @@ const math_ple = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/16.png",
                 "type": "multipleChoice",
                 "answer": "LCM = 36",
-                "explanation": "LCM = 2x2x3x3\n = 4x3x3\n = 12x3\n = 36",
+                "explanation": "LCM = 2x2x3x3<br> = 4x3x3<br> = 12x3<br> = 36",
                 "options": [
                     "LCM = 6",
                     "LCM = 18",
@@ -13927,7 +13927,7 @@ const math_ple = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/16.png",
                 "type": "multipleChoice",
                 "answer": "Bearing = 245<sup>o</sup>",
-                "explanation": "180 + (90 - 25)\n = 180 + 65\n = 245",
+                "explanation": "180 + (90 - 25)<br> = 180 + 65<br> = 245",
                 "options": [
                     "Bearing = 75<sup>o</sup>",
                     "Bearing = 25<sup>o</sup>",
@@ -13939,7 +13939,7 @@ const math_ple = [
                 "question": "Given that a = 1/3 and b = 1/9. Find the value of a/b",
                 "type": "multipleChoice",
                 "answer": "3",
-                "explanation": "a/b = a ÷ b\n = 1/3 ÷ 1/9\n = 1/3 x 9/1\n = 9/3\n = 3",
+                "explanation": "a/b = a ÷ b<br> = 1/3 ÷ 1/9<br> = 1/3 x 9/1<br> = 9/3<br> = 3",
                 "options": [
                     "1/3",
                     "3",
@@ -13957,7 +13957,7 @@ const math_ple = [
                 "question": "A train left station K at 11 38 hours and reached station M at 14 27 hours. How long did the train take to travel from K to M?",
                 "type": "multipleChoice",
                 "answer": "2 hours and 49 minutes",
-                "explanation": "Time taken = Arrival time - Departure time\n = 14:27 - 11:38\n Subtract the minutes first\n 27 - 38 = -11 (carry over 1)\n Now, subtract the hours\n (14 - 1) - 11 = 2",
+                "explanation": "Time taken = Arrival time - Departure time<br> = 14:27 - 11:38<br> Subtract the minutes first<br> 27 - 38 = -11 (carry over 1)<br> Now, subtract the hours<br> (14 - 1) - 11 = 2",
                 "options": [
                     "2 hours and 11 minutes",
                     "1 hours and 49 minutes",
@@ -13969,7 +13969,7 @@ const math_ple = [
                 "question": "Find the value of p in degrees in the diagram below.",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/17.png",
                 "answer": "p = 30",
-                "explanation": "Exterior angles of a triangle add up to 360<sup>o</sup>\n 5p + 3p + 4p = 360\n 12p = 360\n p = 360/12\n = 30",
+                "explanation": "Exterior angles of a triangle add up to 360<sup>o</sup><br> 5p + 3p + 4p = 360<br> 12p = 360<br> p = 360/12<br> = 30",
                 "options": [
                     "p = 15",
                     "p = 30",
@@ -13981,7 +13981,7 @@ const math_ple = [
                 "question": "Sixty six poles are fixed in a straight line along one side of a road. The poles are fixed at intervals of 10 meters. Calculate the length of the road.",
                 "type": "multipleChoice",
                 "answer": "Length = 660 meters",
-                "explanation": "Total Length = Distance between poles * Number of poles\n = 10 m x 66\n = 660 m",
+                "explanation": "Total Length = Distance between poles * Number of poles<br> = 10 m x 66<br> = 660 m",
                 "options": [
                     "Length = 76 meters",
                     "Length = 660 meters",
@@ -13993,7 +13993,7 @@ const math_ple = [
                 "question": "A motorist travels 64 km in 40 minutes. Find the speed of the motorist in kilometers per hour.",
                 "type": "multipleChoice",
                 "answer": "Speed = 96 km/hr",
-                "explanation": "Since the time is in minutes we need to convert it to hours\n 1 minute = 1/60 hours\n 40 minutes = (1/60 x 40) hours\n = 4/6\n = 2/3\n Speed = Distance/Time\n = 64/(2/3)\n = 64 ÷ 2/3\n = 64 x 3/2 = 96",
+                "explanation": "Since the time is in minutes we need to convert it to hours<br> 1 minute = 1/60 hours<br> 40 minutes = (1/60 x 40) hours<br> = 4/6<br> = 2/3<br> Speed = Distance/Time<br> = 64/(2/3)<br> = 64 ÷ 2/3<br> = 64 x 3/2 = 96",
                 "options": [
                     "Speed = 2560 km/hr",
                     "Speed = 90 km/hr",
@@ -14005,7 +14005,7 @@ const math_ple = [
                 "question": "Find the median of the numbers 8, 10 ,4 ,1 ,6 and 9",
                 "type": "multipleChoice",
                 "answer": "Median = 7",
-                "explanation": "Arrange the number is ascending or descending order\n 1, 4, 6, 8, 9, 10\n Median = (6+8)/2\n = 7",
+                "explanation": "Arrange the number is ascending or descending order<br> 1, 4, 6, 8, 9, 10<br> Median = (6+8)/2<br> = 7",
                 "options": [
                     "Median = 8",
                     "Median = 6.33",
@@ -14017,7 +14017,7 @@ const math_ple = [
                 "question": "Solve 2<sup>3n</sup> ÷ 2<sup>n</sup> = 2<sup>4</sup>",
                 "type": "multipleChoice",
                 "answer": "n = 2",
-                "explanation": "2<sup>(3n-n)</sup> = 2<sup>4</sup>\n 3n - n = 4\n 2n = 4\n n = 2",
+                "explanation": "2<sup>(3n-n)</sup> = 2<sup>4</sup><br> 3n - n = 4<br> 2n = 4<br> n = 2",
                 "options": [
                     "n = 4",
                     "n = 1",
@@ -14046,7 +14046,7 @@ const math_ple = [
                 "question": "Find the solution set for k + 2 < 6.",
                 "type": "multipleChoice",
                 "answer": "k < 4",
-                "explanation": "k + 2 < 6\n k + 2 -2 < 6 -2\n k < 6 -2\n k < 4",
+                "explanation": "k + 2 < 6<br> k + 2 -2 < 6 -2<br> k < 6 -2<br> k < 4",
                 "options": [
                     "k < 8",
                     "k < 4",
@@ -14058,7 +14058,7 @@ const math_ple = [
                 "question": "The taxi fare from Kampala to Mukono was raised by 16<sup>2</sup>/<sub>3</sub>% The old farewash 3,000. Find the new taxi fare",
                 "type": "multipleChoice",
                 "answer": "New Fare = 3,500",
-                "explanation": "New Fare = Old Fare + (Percentage increase/100 x Old fare)\n Percentage increase = 16<sup>2</sup>/<sub>3</sub>/100\n = 50/3/100\n = 1/6\n = 3000 + (1/6 x 3000)\n = 3000 + 500\n = 3500",
+                "explanation": "New Fare = Old Fare + (Percentage increase/100 x Old fare)<br> Percentage increase = 16<sup>2</sup>/<sub>3</sub>/100<br> = 50/3/100<br> = 1/6<br> = 3000 + (1/6 x 3000)<br> = 3000 + 500<br> = 3500",
                 "options": [
                     "New Fare = 4,000",
                     "New Fare = 3,800",
@@ -14070,7 +14070,7 @@ const math_ple = [
                 "question": "A house can be built by 3 men in 20 days. How many men working at the same rate can build the same house in 12 days?",
                 "type": "multipleChoice",
                 "answer": "5 men",
-                "explanation": "3 men = 20 days\n Total man days = (3 x 20)days\n = 60 days\n Total man days = Number of men x Number of days\n 60 = Number of men x 12\n Number of men = 60/12\n = 5 men",
+                "explanation": "3 men = 20 days<br> Total man days = (3 x 20)days<br> = 60 days<br> Total man days = Number of men x Number of days<br> 60 = Number of men x 12<br> Number of men = 60/12<br> = 5 men",
                 "options": [
                     "5 men",
                     "6 men",
@@ -14083,7 +14083,7 @@ const math_ple = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/18.png",
                 "type": "multipleChoice",
                 "answer": "Volume = 84cm³",
-                "explanation": "Base area = 12cm²\n Volume = Base area x height\n = 12 x 7\n = 84cm³",
+                "explanation": "Base area = 12cm²<br> Volume = Base area x height<br> = 12 x 7<br> = 84cm³",
                 "options": [
                     "Volume = 80cm³",
                     "Volume = 84cm³",
@@ -14095,7 +14095,7 @@ const math_ple = [
                 "question": "Gidudu has goats and sheep in the ratio of 3:2. If he has 24 goats, how many sheep does he have?",
                 "type": "multipleChoice",
                 "answer": "16 sheep",
-                "explanation": "Let the total number of animals be x\n Total parts = 3+2 = 5\n 3x/5 = 24\n Multipy both sides by 5\n 3x = 24x5\n x = (24x5)/3\n x = 40 animals\n Number of sheep = Total number of animals - Number of goats\n = 40 - 24\n = 16 sheep",
+                "explanation": "Let the total number of animals be x<br> Total parts = 3+2 = 5<br> 3x/5 = 24<br> Multipy both sides by 5<br> 3x = 24x5<br> x = (24x5)/3<br> x = 40 animals<br> Number of sheep = Total number of animals - Number of goats<br> = 40 - 24<br> = 16 sheep",
                 "options": [
                     "16 sheep",
                     "10 sheep",
@@ -14118,7 +14118,7 @@ const math_ple = [
                 "question": "The Lowest Common Multiple (LCM) of two numbers is 72 and their Greatest Common Factor (GCF) is 6. If one of the numbers is 24, find the second number.",
                 "type": "multipleChoice",
                 "answer": "First number = 18",
-                "explanation": "First number = (LCM x GCF)/Given number\n = (72 x 6)/24\n = 18",
+                "explanation": "First number = (LCM x GCF)/Given number<br> = (72 x 6)/24<br> = 18",
                 "options": [
                     "First number = 18",
                     "First number = 16",
@@ -14136,7 +14136,7 @@ const math_ple = [
                 "question": "A shopkeeper bought 19 plates at sh 34,200. At what price must the shopkeeper sell each plate in order to raise a profit of sh 3,800?",
                 "type": "multipleChoice",
                 "answer": "2,000",
-                "explanation": "Selling Price per Plate = (Total Cost + Profit)/ Number of plates\n = (34200+3800)/19\n = 38000/19\n = 2000",
+                "explanation": "Selling Price per Plate = (Total Cost + Profit)/ Number of plates<br> = (34200+3800)/19<br> = 38000/19<br> = 2000",
                 "options": [
                     "1,500",
                     "2,000",
@@ -14148,7 +14148,7 @@ const math_ple = [
                 "question": "Solve the inequality: 3 - 2m < 15",
                 "type": "multipleChoice",
                 "answer": "m > -6",
-                "explanation": "3 - 2m < 15\n 3 - 3 -2m < 15 - 3\n -2m < 12\n Divide both sides by -2. When you divide by a negative number, the inequality sign changes\n -2m/-2 > 12/-2\n m > -6",
+                "explanation": "3 - 2m < 15<br> 3 - 3 -2m < 15 - 3<br> -2m < 12<br> Divide both sides by -2. When you divide by a negative number, the inequality sign changes<br> -2m/-2 > 12/-2<br> m > -6",
                 "options": [
                     "m < -6",
                     "m > -6",
@@ -14161,7 +14161,7 @@ const math_ple = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/19.png",
                 "type": "multipleChoice",
                 "answer": "15 pupils",
-                "explanation": "Number of pupils absent = Total number of pupils - Number of pupils present\n = 40 - 25\n = 15 pupils",
+                "explanation": "Number of pupils absent = Total number of pupils - Number of pupils present<br> = 40 - 25<br> = 15 pupils",
                 "options": [
                     "20 pupils",
                     "10 pupils",
@@ -14184,7 +14184,7 @@ const math_ple = [
                 "question": "A bucket was ¾ full of water. When 4 litres were removed, it became ½ full of water. What is the capacity of the bucket?",
                 "type": "multipleChoice",
                 "answer": "Capacity = 16 litres",
-                "explanation": "Fraction of water = 3/4\n Removed fraction = 3/4 - 1/2\n LCM = 4\n = ((1x3)-(2x1))/4\n = (3-2)/4\n = 1/4\n Full bucket = Let the full bucket capacity be k\n 1/4 of k = 4\n 1/4 x k = 4\n k = 4 x 4\n = 16 litres",
+                "explanation": "Fraction of water = 3/4<br> Removed fraction = 3/4 - 1/2<br> LCM = 4<br> = ((1x3)-(2x1))/4<br> = (3-2)/4<br> = 1/4<br> Full bucket = Let the full bucket capacity be k<br> 1/4 of k = 4<br> 1/4 x k = 4<br> k = 4 x 4<br> = 16 litres",
                 "options": [
                     "Capacity = 20 litres",
                     "Capacity = 16 litres",
@@ -14197,7 +14197,7 @@ const math_ple = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/19.png",
                 "type": "multipleChoice",
                 "answer": "216 acres",
-                "explanation": "Let the size of the size of her land be x\n 120x/360 = 72\n x = (72 x 360)/120\n = 72 x 3\n = 216",
+                "explanation": "Let the size of the size of her land be x<br> 120x/360 = 72<br> x = (72 x 360)/120<br> = 72 x 3<br> = 216",
                 "options": [
                     "206 acres",
                     "200 acres",
@@ -14209,7 +14209,7 @@ const math_ple = [
                 "question": "Trees were planted along a straight road 305 meters long. If the trees were planted 5 metres apart, how many trees were planted along the road?",
                 "type": "multipleChoice",
                 "answer": "62 tress",
-                "explanation": "Number of trees in a strainght road = ( Distance ÷ interval)+ 1\n = (305 ÷ 5) + 1\n = 61 + 1\n = 62 trees",
+                "explanation": "Number of trees in a strainght road = ( Distance ÷ interval)+ 1<br> = (305 ÷ 5) + 1<br> = 61 + 1<br> = 62 trees",
                 "options": [
                     "62 tress",
                     "61 tress",
@@ -14227,7 +14227,7 @@ const math_ple = [
                 "question": "Mawa built a circular hut of circumference 66 metres using poles. The poles were fixed at intervals of 1.5 metres. Calculate the number of poles he used.",
                 "type": "multipleChoice",
                 "answer": "44 poles",
-                "explanation": "Circumference = 2πr\n 66 = 2πr\n r = 66/2π\n Number of poles = C/Interval\n = 66/1.5\n = 44 poles",
+                "explanation": "Circumference = 2πr<br> 66 = 2πr<br> r = 66/2π<br> Number of poles = C/Interval<br> = 66/1.5<br> = 44 poles",
                 "options": [
                     "40 poles",
                     "30 poles",
@@ -14239,7 +14239,7 @@ const math_ple = [
                 "question": "Bottles of 300 millilitres (ml) were used to fill a nine litre bucket with water. Find the number of full 300ml bottles that were used.",
                 "type": "multipleChoice",
                 "answer": "30 bottles",
-                "explanation": "1 litre = 1000ml\n So a 9 litre bucket = (9 x 1000)ml\n = 9000ml\n Number of bottles = (Total volume)/(Volume of one bottle)\n = 9000ml/300ml\n = 30",
+                "explanation": "1 litre = 1000ml<br> So a 9 litre bucket = (9 x 1000)ml<br> = 9000ml<br> Number of bottles = (Total volume)/(Volume of one bottle)<br> = 9000ml/300ml<br> = 30",
                 "options": [
                     "30 bottles",
                     "20 bottles",
@@ -14251,7 +14251,7 @@ const math_ple = [
                 "question": "Find the least number of sweets when divided among 8 boys or 6 girls equally, leaves 2 sweets as remainder.",
                 "type": "multipleChoice",
                 "answer": "26 sweets",
-                "explanation": "Let's first find the LCM of 8 and 6\n Prime factorization of 8: 2 x 2 x 2\n Prime factorization of 6: 2 x 3\n LCM = 2 x 2 x 2 x 3\n = 24\n Least number of sweets that leaves a remainder of 2 = 24 + 6\n = 26 sweets",
+                "explanation": "Let's first find the LCM of 8 and 6<br> Prime factorization of 8: 2 x 2 x 2<br> Prime factorization of 6: 2 x 3<br> LCM = 2 x 2 x 2 x 3<br> = 24<br> Least number of sweets that leaves a remainder of 2 = 24 + 6<br> = 26 sweets",
                 "options": [
                     "24 sweets",
                     "26 sweets",
@@ -14263,7 +14263,7 @@ const math_ple = [
                 "question": "Hakim is 3 times as old as Lucky. Their total age is 52 year. How old is Lucky?",
                 "type": "multipleChoice",
                 "answer": "13 years old",
-                "explanation": "Let Hakim's age be H and Lucky's age be L\n ∴ H = 3L\n Since H + L = 52\n 3L + L = 52\n 4L = 52\n 4L/4 = 52/4\n L = 13",
+                "explanation": "Let Hakim's age be H and Lucky's age be L<br> ∴ H = 3L<br> Since H + L = 52<br> 3L + L = 52<br> 4L = 52<br> 4L/4 = 52/4<br> L = 13",
                 "options": [
                     "13 years old",
                     "12 years old",
@@ -14275,7 +14275,7 @@ const math_ple = [
                 "question": "In a poultry farm, eggs are packed into boxes which hold 144 eggs. How many boxes of the same size are needed to pack 1,008 eggs?",
                 "type": "multipleChoice",
                 "answer": "7 boxes",
-                "explanation": "Number of boxes = Total number of eggs/Number of eggs per box\n = 1008/144\n = 7 boxes",
+                "explanation": "Number of boxes = Total number of eggs/Number of eggs per box<br> = 1008/144<br> = 7 boxes",
                 "options": [
                     "7 boxes",
                     "5 boxes",
@@ -14287,7 +14287,7 @@ const math_ple = [
                 "question": "A man got a loan of sh 120,000 from a savings and credit co-operative society at a simple interest rate of 8% per anunm. He paid an interest of sh7,200 on the loan. How long was the loan?",
                 "type": "multipleChoice",
                 "answer": "9 months",
-                "explanation": "Interest = Principal x Rate x Time\n 7200 = 120000 x 8/100 x T\n 7200 = 120000 x 0.08T\n 7200 = 9600T\n T = 7200/9600\n = 3/4\n Convert to months\n = 3/4 x 12\n = 9",
+                "explanation": "Interest = Principal x Rate x Time<br> 7200 = 120000 x 8/100 x T<br> 7200 = 120000 x 0.08T<br> 7200 = 9600T<br> T = 7200/9600<br> = 3/4<br> Convert to months<br> = 3/4 x 12<br> = 9",
                 "options": [
                     "90 months",
                     "9 months",
@@ -14299,7 +14299,7 @@ const math_ple = [
                 "question": "Medi has 30 kg to be parked in ¾ kg packets. How many packets will he get?",
                 "type": "multipleChoice",
                 "answer": "40 packets",
-                "explanation": "The number of packets = 30 ÷ 3/4\n = 30 x 4/3\n = 120/3\n = 40",
+                "explanation": "The number of packets = 30 ÷ 3/4<br> = 30 x 4/3<br> = 120/3<br> = 40",
                 "options": [
                     "30 packets",
                     "40 packets",
@@ -14317,7 +14317,7 @@ const math_ple = [
                 "question": "Simplify: 3p+p-2p",
                 "type": "multipleChoice",
                 "answer": "2p",
-                "explanation": "3p+p-2p\n =4p-2p\n =2p",
+                "explanation": "3p+p-2p<br> =4p-2p<br> =2p",
                 "options": [
                     "4p",
                     "2p",
@@ -14329,7 +14329,7 @@ const math_ple = [
                 "question": "Given that P = {a, b, c, d, e, f, g} and Q = {b, a, f, e, h} find n(P u Q).",
                 "type": "multipleChoice",
                 "answer": "n(P u Q) = 8",
-                "explanation": "First we get (P u Q)\n (P u Q) = {a,b,c,d,e,f,g,h}\n ∴ n(P u Q) = 8",
+                "explanation": "First we get (P u Q)<br> (P u Q) = {a,b,c,d,e,f,g,h}<br> ∴ n(P u Q) = 8",
                 "options": [
                     "n(P u Q) = 4",
                     "n(P u Q) = 7",
@@ -14341,7 +14341,7 @@ const math_ple = [
                 "question": "Work out: 2 - 5 (finite 7)",
                 "type": "multipleChoice",
                 "answer": "-33",
-                "explanation": "2 - 5 x (7)\n 2 - 35\n = -33",
+                "explanation": "2 - 5 x (7)<br> 2 - 35<br> = -33",
                 "options": [
                     "-33",
                     "-3",
@@ -14353,7 +14353,7 @@ const math_ple = [
                 "question": "Work out 5/9 ÷ 2/3",
                 "type": "multipleChoice",
                 "answer": "5/6",
-                "explanation": "5/9 x 3/2\n = 5/3 x 1/2\n = 5/6",
+                "explanation": "5/9 x 3/2<br> = 5/3 x 1/2<br> = 5/6",
                 "options": [
                     "5/6",
                     "1",
@@ -14365,7 +14365,7 @@ const math_ple = [
                 "question": "Simplify: 18x - 5(3x + 7)",
                 "type": "multipleChoice",
                 "answer": "3x - 35",
-                "explanation": "Using BODMAS\n 18x - 15x - 35\n 3x - 35",
+                "explanation": "Using BODMAS<br> 18x - 15x - 35<br> 3x - 35",
                 "options": [
                     "3x + 35",
                     "3x - 35",
@@ -14377,7 +14377,7 @@ const math_ple = [
                 "question": "Given that k = {1,2,3,4,5} and M = {2,4,6,8}, find n(K u M)",
                 "type": "multipleChoice",
                 "answer": "n(K u M) = 7",
-                "explanation": "First we get (K u M)\n (K u M) = {1,2,3,4,5,6,8}\n ∴ n(P u Q) = 7",
+                "explanation": "First we get (K u M)<br> (K u M) = {1,2,3,4,5,6,8}<br> ∴ n(P u Q) = 7",
                 "options": [
                     "n(K u M) = 8",
                     "n(K u M) = 7",
@@ -14389,7 +14389,7 @@ const math_ple = [
                 "question": "Write XCIX in Hindu-Arabic numerals",
                 "type": "multipleChoice",
                 "answer": "99",
-                "explanation": "XCIX = XC + IX\n = 90 + 9\n = 99",
+                "explanation": "XCIX = XC + IX<br> = 90 + 9<br> = 99",
                 "options": [
                     "99",
                     "90",
@@ -14440,7 +14440,7 @@ const math_ple = [
                         "question": "If 32 guests were served with soda, find the value of r.",
                         "type": "multipleChoice",
                         "answer": "r = 4",
-                        "explanation": "3r + 7 + 13 = 32\n 3r + 20 = 32\n 3r + 20 - 20 = 32 - 20\n 3r = 12\n 3r/3 = 12/3\n r = 4",
+                        "explanation": "3r + 7 + 13 = 32<br> 3r + 20 = 32<br> 3r + 20 - 20 = 32 - 20<br> 3r = 12<br> 3r/3 = 12/3<br> r = 4",
                         "options": [
                             "r = 3",
                             "r = 4",
@@ -14452,7 +14452,7 @@ const math_ple = [
                         "question": "Find the total number of guests who attended the party.",
                         "type": "multipleChoice",
                         "answer": "50 guests",
-                        "explanation": "3r + 7 + 13 + r + 6 + 2r\n Since r = 4\n (3x4) + 20 + 4 + 6 + (2x4)\n 12 + 30 + 8\n = 50",
+                        "explanation": "3r + 7 + 13 + r + 6 + 2r<br> Since r = 4<br> (3x4) + 20 + 4 + 6 + (2x4)<br> 12 + 30 + 8<br> = 50",
                         "options": [
                             "48 people",
                             "42 people",
@@ -14464,7 +14464,7 @@ const math_ple = [
                         "question": "Find the probability that a guest picked at random did not take any drink.",
                         "type": "multipleChoice",
                         "answer": "Probability  = 4/25",
-                        "explanation": "Probability = (Guests who did not take any drink)/(Guests who attended the party)\n = (2r)/50\n = (2x4)/50\n = 8/50\n = 4/25",
+                        "explanation": "Probability = (Guests who did not take any drink)/(Guests who attended the party)<br> = (2r)/50<br> = (2x4)/50<br> = 8/50<br> = 4/25",
                         "options": [
                             "4/25",
                             "13/50",
@@ -14490,7 +14490,7 @@ const math_ple = [
                         "question": "Given that 34<sub>t</sub> = 112<sub>four</sub>, find the value of t",
                         "type": "multipleChoice",
                         "answer": "t = 6",
-                        "explanation": "34t<sub>m</sub> = 112<sub>four</sub>\n 3t¹ + 4t⁰ = 1x4² + 1x4¹ + 2x4⁰\n (3 x t) + (4 x 1) = (1x4x4) +(1 x 4) + (2x1)\n 3t + 4 = 16 + 4 + 2\n 3t + 4 = 22\n 3t + 4 - 4 = 22 - 4\n 3t/3 = 18/3\n t = 6",
+                        "explanation": "34t<sub>m</sub> = 112<sub>four</sub><br> 3t¹ + 4t⁰ = 1x4² + 1x4¹ + 2x4⁰<br> (3 x t) + (4 x 1) = (1x4x4) +(1 x 4) + (2x1)<br> 3t + 4 = 16 + 4 + 2<br> 3t + 4 = 22<br> 3t + 4 - 4 = 22 - 4<br> 3t/3 = 18/3<br> t = 6",
                         "options": [
                             "t = 5",
                             "t = 4",
@@ -14520,7 +14520,7 @@ const math_ple = [
                         "question": "Find the value t",
                         "type": "multipleChoice",
                         "answer": "t = 13",
-                        "explanation": "25 + 5 + t - 5 + 3 = 41\n 25 + 5 - 5 + 3 + t = 41\n 28 + t = 41\n 28 - 28 + t = 41 - 28\n t = 13",
+                        "explanation": "25 + 5 + t - 5 + 3 = 41<br> 25 + 5 - 5 + 3 + t = 41<br> 28 + t = 41<br> 28 - 28 + t = 41 - 28<br> t = 13",
                         "options": [
                             "t = 12",
                             "t = 10",
@@ -14550,7 +14550,7 @@ const math_ple = [
                         "question": "If 27 pupils play volleyball altogether, find the value of d",
                         "type": "multipleChoice",
                         "answer": "d = 11",
-                        "explanation": "d + d + 5 = 27\n 2d + 5 = 27\n 2d + 5 - 5 = 27 - 5\n 2d = 22\n d = 11",
+                        "explanation": "d + d + 5 = 27<br> 2d + 5 = 27<br> 2d + 5 - 5 = 27 - 5<br> 2d = 22<br> d = 11",
                         "options": [
                             "d = 11",
                             "d = 11",
@@ -14576,7 +14576,7 @@ const math_ple = [
                         "question": "Find the sum of the values of 3 and 7 in the numbers 3,678",
                         "type": "multipleChoice",
                         "answer": "3070",
-                        "explanation": "3000 + 70\n = 3070",
+                        "explanation": "3000 + 70<br> = 3070",
                         "options": [
                             "37",
                             "3070",
@@ -14595,7 +14595,7 @@ const math_ple = [
                         "question": "Which of the following tables show the complete and correct table",
                         "type": "multipleChoice",
                         "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/21.png",
-                        "explanation": "Soap = 6600/2200 = 3 bars\n Bread = 3400/2 = 1,700\n Salt = (5 x 800)/2\n = 5 x 400\n = 2,000\n Total = 6600 + 3400 + 2000\n = 12,000",
+                        "explanation": "Soap = 6600/2200 = 3 bars<br> Bread = 3400/2 = 1,700<br> Salt = (5 x 800)/2<br> = 5 x 400<br> = 2,000<br> Total = 6600 + 3400 + 2000<br> = 12,000",
                         "options": [
                             "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/21C.png",
                             "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/21W.png",
@@ -14607,7 +14607,7 @@ const math_ple = [
                         "question": "If Musamali paid Sh 10,800, what percentage discount was he given?",
                         "type": "multipleChoice",
                         "answer": "Discount = 10%",
-                        "explanation": "Discount = old price - new price\n = 12,000 - 10,800\n = 1,200\n Percentage discount = (Discount/Total expenditure) x 100\n = 1,200/12,000 x 100\n = 1/10 x 100\n = 10%",
+                        "explanation": "Discount = old price - new price<br> = 12,000 - 10,800<br> = 1,200<br> Percentage discount = (Discount/Total expenditure) x 100<br> = 1,200/12,000 x 100<br> = 1/10 x 100<br> = 10%",
                         "options": [
                             "Discount = 9%",
                             "Discount = 19%",
@@ -14642,7 +14642,7 @@ const math_ple = [
                         "question": "How many pupils ate rice only?",
                         "type": "multipleChoice",
                         "answer": "29 pupils",
-                        "explanation": "First solve for h;\n 23 + 7 + 2h - 7 + 9 = 68\n 2h + 32 = 68\n 2h + 32 - 32 = 68 - 32\n 2h = 36\n h = 36/2\n h = 18\n Pupils who ate only rice = 2h - 7\n = 2 x 18 - 7\n = 29 pupils",
+                        "explanation": "First solve for h;<br> 23 + 7 + 2h - 7 + 9 = 68<br> 2h + 32 = 68<br> 2h + 32 - 32 = 68 - 32<br> 2h = 36<br> h = 36/2<br> h = 18<br> Pupils who ate only rice = 2h - 7<br> = 2 x 18 - 7<br> = 29 pupils",
                         "options": [
                             "25 pupils",
                             "29 pupils",
@@ -14657,7 +14657,7 @@ const math_ple = [
                 "question": "Express 4/15 as a recurring decimal",
                 "type": "multipleChoice",
                 "answer": "0.266...",
-                "explanation": "Perform long division\n You will find that you get 6 as a recurring answer",
+                "explanation": "Perform long division<br> You will find that you get 6 as a recurring answer",
                 "options": [
                     "0.25",
                     "0.26",
@@ -14669,7 +14669,7 @@ const math_ple = [
                         "question": "Simplify: 4/5 x 3/7 ÷ 9/14 + 2<sup>7</sup>/<sub>15</sub>",
                         "type": "multipleChoice",
                         "answer": "= 3",
-                        "explanation": "Change the mixed fraction to improper fraction\n 4/5 x 3/7 ÷ 9/14 + 37/15\n Using BODMAS\n = 4/5 x 3/7 x 14/9 + 37/15\n = 8/15 + 37/15\n = 45/15\n = 3",
+                        "explanation": "Change the mixed fraction to improper fraction<br> 4/5 x 3/7 ÷ 9/14 + 37/15<br> Using BODMAS<br> = 4/5 x 3/7 x 14/9 + 37/15<br> = 8/15 + 37/15<br> = 45/15<br> = 3",
                         "options": [
                             "= 3",
                             "= 4",
@@ -14681,13 +14681,13 @@ const math_ple = [
                 "id": "ple_math_sect_A22_2"
             },
             {
-                "question": "Akot went to the market and bought the following items:\n 3 liters of milk at sh2,400 per liter\n 250g of salt at sh2,000 per kg.\n 18 oranges at sh1,500 for every 6 oranges",
+                "question": "Akot went to the market and bought the following items:<br> 3 liters of milk at sh2,400 per liter<br> 250g of salt at sh2,000 per kg.<br> 18 oranges at sh1,500 for every 6 oranges",
                 "sub_questions": [
                     {
                         "question": "Calculate the total cost of the items",
                         "type": "multipleChoice",
                         "answer": "Total cost = shs 12,200",
-                        "explanation": "Cost of milk = 3 x 2400\n =  shs 7,200\n Cost of salt;\n We first convert the 250 grammes to kilogrammes\n 1 gram = (1/1000) kilogrammes\n 250 g = (250 x 1/1000) kg\n = 1/4 kg\n Cost of salt = 1/4 x 2000\n =  shs 500\n Cost of oranges: \n We first need to find the cost of 1 orange\n 6 oranges = 1500\n 1 orange = 1500/6\n = shs 250\n 18 oranges = 250 x 18\n = shs 4,500\n Total cost = 7,200 + 500 + 4,500\n = 12,200",
+                        "explanation": "Cost of milk = 3 x 2400<br> =  shs 7,200<br> Cost of salt;<br> We first convert the 250 grammes to kilogrammes<br> 1 gram = (1/1000) kilogrammes<br> 250 g = (250 x 1/1000) kg<br> = 1/4 kg<br> Cost of salt = 1/4 x 2000<br> =  shs 500<br> Cost of oranges: <br> We first need to find the cost of 1 orange<br> 6 oranges = 1500<br> 1 orange = 1500/6<br> = shs 250<br> 18 oranges = 250 x 18<br> = shs 4,500<br> Total cost = 7,200 + 500 + 4,500<br> = 12,200",
                         "options": [
                             "Total cost = shs 511,700",
                             "Total cost = shs 12,200",
@@ -14699,7 +14699,7 @@ const math_ple = [
                         "question": "Akot paid sh 12,000 for the items. What discount was she given?",
                         "type": "multipleChoice",
                         "answer": "Discount = sh 200",
-                        "explanation": "Discount = Total cost - Amount Paid\n = 12,200 - 12,000\n = 200",
+                        "explanation": "Discount = Total cost - Amount Paid<br> = 12,200 - 12,000<br> = 200",
                         "options": [
                             "Discount = sh 499,700",
                             "Discount = sh 200",
@@ -14714,14 +14714,14 @@ const math_ple = [
                 "question": "Write 955 in Roman numerals.",
                 "type": "text",
                 "answer": "CMLV",
-                "explanation": "CM represents 900 (1000 - 100)\n LV represents 55 (50 + 5)",
+                "explanation": "CM represents 900 (1000 - 100)<br> LV represents 55 (50 + 5)",
                 "mark": 1,
                 "sub_questions": [
                     {
                         "question": "Find the product of the value of 2 and the value of 8 in the number 4820",
                         "type": "multipleChoice",
                         "answer": "Product = 16000",
-                        "explanation": "8 hundreds = 8 x 100 = 800\n 2 tens = 2 x 10 = 20\n Product = 800 x 20\n = 16000",
+                        "explanation": "8 hundreds = 8 x 100 = 800<br> 2 tens = 2 x 10 = 20<br> Product = 800 x 20<br> = 16000",
                         "options": [
                             "Product = 16000",
                             "Product = 16",
@@ -14733,10 +14733,10 @@ const math_ple = [
                 "id": "ple_math_sect_A22_4"
             },
             {
-                "question": "What number has been expanded below?\n (6x10<sup>3</sup>) + (2x10<sup>1</sup>) + (7x10<sup>0</sup>) + (3x10<sup>-2</sup>).",
+                "question": "What number has been expanded below?<br> (6x10<sup>3</sup>) + (2x10<sup>1</sup>) + (7x10<sup>0</sup>) + (3x10<sup>-2</sup>).",
                 "type": "multipleChoice",
                 "answer": "6027.03",
-                "explanation": "= 6000 + 20 + 7 + 0.03\n = 6027.03",
+                "explanation": "= 6000 + 20 + 7 + 0.03<br> = 6027.03",
                 "options": [
                     "6027.03",
                     "6127.03",
@@ -14748,7 +14748,7 @@ const math_ple = [
                         "question": "Work out (8.5x14) + (8.5x16)",
                         "type": "multipleChoice",
                         "answer": "255",
-                        "explanation": "= 8.5(14 + 16)\n = 8.5 x 30\n = 255",
+                        "explanation": "= 8.5(14 + 16)<br> = 8.5 x 30<br> = 255",
                         "options": [
                             "250",
                             "255.5",
@@ -14778,7 +14778,7 @@ const math_ple = [
                         "question": "Find the value of y",
                         "type": "multipleChoice",
                         "answer": "y = 17",
-                        "explanation": "y + 18 + 29 + y - 5 = 76\n y + y + 18 + 29 - 5 = 76\n 2y + 42 = 76\n 2y + 42 - 42 = 76 - 42\n 2y = 34\n y = 17",
+                        "explanation": "y + 18 + 29 + y - 5 = 76<br> y + y + 18 + 29 - 5 = 76<br> 2y + 42 = 76<br> 2y + 42 - 42 = 76 - 42<br> 2y = 34<br> y = 17",
                         "options": [
                             "y = 14",
                             "y = 12",
@@ -14790,7 +14790,7 @@ const math_ple = [
                         "question": "Find the number of guests who were served with chicken",
                         "type": "multipleChoice",
                         "answer": "35 guests",
-                        "explanation": "Number of guests served with chicken;\n = 18 + y\n = 18 + 17\n = 35",
+                        "explanation": "Number of guests served with chicken;<br> = 18 + y<br> = 18 + 17<br> = 35",
                         "options": [
                             "32 guests",
                             "30 guests",
@@ -14816,7 +14816,7 @@ const math_ple = [
                         "question": "Write 72 as a product of its prime factors",
                         "type": "multipleChoice",
                         "answer": "Prime factors of 72 = 2<sup>3</sup> x3<sup>2</sup>",
-                        "explanation": "72 ÷ 2 = 36\n 36 ÷ 2 = 18\n 18 ÷ 2 = 9\n 9 ÷ 3 = 3\n 3 ÷ 3 = 1\n = 2 x 2 x 2 x 3 x 3\n = 2<sup>3</sup> x3<sup>2</sup>",
+                        "explanation": "72 ÷ 2 = 36<br> 36 ÷ 2 = 18<br> 18 ÷ 2 = 9<br> 9 ÷ 3 = 3<br> 3 ÷ 3 = 1<br> = 2 x 2 x 2 x 3 x 3<br> = 2<sup>3</sup> x3<sup>2</sup>",
                         "options": [
                             "Prime factors of 72 = 2<sup>2</sup> x3<sup>2</sup>",
                             "Prime factors of 72 = 2<sup>3</sup> x3<sup>3</sup>",
@@ -14837,7 +14837,7 @@ const math_ple = [
                 "question": "Work out: (2.4 x 0.5)/0.12",
                 "type": "multipleChoice",
                 "answer": "10",
-                "explanation": "(2.4 x 0.5)/0.12\n = (24/10 x 5/10)/12/100\n = (120/100)/12/100\n = 120/100 ÷ 12/100\n = 120/100 x 100/12\n = 120/12\n = 10",
+                "explanation": "(2.4 x 0.5)/0.12<br> = (24/10 x 5/10)/12/100<br> = (120/100)/12/100<br> = 120/100 ÷ 12/100<br> = 120/100 x 100/12<br> = 120/12<br> = 10",
                 "options": [
                     "10",
                     "20",
@@ -14849,7 +14849,7 @@ const math_ple = [
                         "question": "Simplify: 0.37 - 1.03 + 2.6",
                         "type": "multipleChoice",
                         "answer": "1.94",
-                        "explanation": "Using BODMAS\n = 0.37 + 2.6 - 1.03\n = 2.97 - 1.03\n = 1.94",
+                        "explanation": "Using BODMAS<br> = 0.37 + 2.6 - 1.03<br> = 2.97 - 1.03<br> = 1.94",
                         "options": [
                             "2.97",
                             "1.94",
@@ -14904,7 +14904,7 @@ const math_ple = [
                         "question": "Given that 62 pupils play one game only, find the value of g",
                         "type": "multipleChoice",
                         "answer": "g = 36",
-                        "explanation": "2g - 10 = 62\n 2g - 10 + 10 = 62 + 10\n 2g = 72\n 2g/2 = 72/2\n g = 36",
+                        "explanation": "2g - 10 = 62<br> 2g - 10 + 10 = 62 + 10<br> 2g = 72<br> 2g/2 = 72/2<br> g = 36",
                         "options": [
                             "g = 60",
                             "g = 36",
@@ -14916,7 +14916,7 @@ const math_ple = [
                         "question": "Calculate the number of pupils in the class.",
                         "type": "multipleChoice",
                         "answer": "164 pupils",
-                        "explanation": "(2g - 10) + g + 32 + (g - 2)\n (2 x 36 - 10) + 36 + 32 + (32 - 2)\n 62 + 36 + 32 + 34\n = 164",
+                        "explanation": "(2g - 10) + g + 32 + (g - 2)<br> (2 x 36 - 10) + 36 + 32 + (32 - 2)<br> 62 + 36 + 32 + 34<br> = 164",
                         "options": [
                             "162 pupils",
                             "160 pupils",
@@ -14931,7 +14931,7 @@ const math_ple = [
                 "question": "Simplify: (0.12 x 5.4)/(0.03 x 0.6)",
                 "type": "multipleChoice",
                 "answer": "= 36",
-                "explanation": "(12/100 x 54/10) ÷ (3/100 x 6/10)\n = ((12 x 54)/1000) ÷ ((3 x 6)/1000)\n = ((12 x 54)/1000) x (1000/(3 x 6))\n = (12 x 54)/(3 x 6)\n = 4 x 9\n = 36",
+                "explanation": "(12/100 x 54/10) ÷ (3/100 x 6/10)<br> = ((12 x 54)/1000) ÷ ((3 x 6)/1000)<br> = ((12 x 54)/1000) x (1000/(3 x 6))<br> = (12 x 54)/(3 x 6)<br> = 4 x 9<br> = 36",
                 "options": [
                     "36",
                     "2/9",
@@ -14943,7 +14943,7 @@ const math_ple = [
                         "question": "Express the recurring decimal 0.5454… as a common fraction.",
                         "type": "multipleChoice",
                         "answer": "6/11",
-                        "explanation": "0.5454 = (54 - 0) ÷ (100 - 1)\n = 54/99\n = 6/11",
+                        "explanation": "0.5454 = (54 - 0) ÷ (100 - 1)<br> = 54/99<br> = 6/11",
                         "options": [
                             "2/11",
                             "5/11",
@@ -14962,7 +14962,7 @@ const math_ple = [
                         "question": "How many Euros did Musa get for Ug. Sh. 603,000?",
                         "type": "multipleChoice",
                         "answer": "150 Euros",
-                        "explanation": "Since Musa was buying Euros\n = 603,000/4,020\n = 150",
+                        "explanation": "Since Musa was buying Euros<br> = 603,000/4,020<br> = 150",
                         "options": [
                             "150 Euros",
                             "150.75 Euros",
@@ -14974,7 +14974,7 @@ const math_ple = [
                         "question": "Amina came from Rwanda with 109,500 Rwandese francs and exchanged them for US dollars. How many US dollars did she get from the bank?",
                         "type": "multipleChoice",
                         "answer": "120 US dollars",
-                        "explanation": "Changing Rwandan francs to Ugandan shillings and then to US dollars\n Local currency = foreign currency x buying rate\n 1 Rwandan franc = Ugshs 4\n 10,9500 RF = Ug sh 4 x 109,500\n = Ugshs 438,000\n Foreign currency = local currency/selling rate\n = 438,000/3,650\n = 120 US dollars",
+                        "explanation": "Changing Rwandan francs to Ugandan shillings and then to US dollars<br> Local currency = foreign currency x buying rate<br> 1 Rwandan franc = Ugshs 4<br> 10,9500 RF = Ug sh 4 x 109,500<br> = Ugshs 438,000<br> Foreign currency = local currency/selling rate<br> = 438,000/3,650<br> = 120 US dollars",
                         "options": [
                             "240 US dollars",
                             "120 US dollars",
@@ -14986,10 +14986,10 @@ const math_ple = [
                 "id": "ple_math_sect_A23_5"
             },
             {
-                "question": "Apio bought the following items from a market.\n 2kg of rice at sh 32,00 per kg\n 1½ kg of meat at sh 8,000 per kg\n 500 g of salt at sh 1,400 per kg\n A sacket of cooking oil at sh 1,750.\n How much money did she spend altogether?",
+                "question": "Apio bought the following items from a market.<br> 2kg of rice at sh 32,00 per kg<br> 1½ kg of meat at sh 8,000 per kg<br> 500 g of salt at sh 1,400 per kg<br> A sacket of cooking oil at sh 1,750.<br> How much money did she spend altogether?",
                 "type": "multipleChoice",
                 "answer": "She spent sh 20,850",
-                "explanation": "Rice = 3200 x 2 = 6,400\n Meat = 1½ x 8000\n = 3/2 x 8000\n = 12,000\n Salt, we first convert grammes to kilogrammes\n 1g = 1/1000kg\n 500g = (500 x 1/1000)kg\n = 1/2kg\n = 1/2 x 1400\n = 700\n Cooking oil = 1750\n Total spent = 6,400 + 12,000 + 700 + 1750\n = 20,850",
+                "explanation": "Rice = 3200 x 2 = 6,400<br> Meat = 1½ x 8000<br> = 3/2 x 8000<br> = 12,000<br> Salt, we first convert grammes to kilogrammes<br> 1g = 1/1000kg<br> 500g = (500 x 1/1000)kg<br> = 1/2kg<br> = 1/2 x 1400<br> = 700<br> Cooking oil = 1750<br> Total spent = 6,400 + 12,000 + 700 + 1750<br> = 20,850",
                 "options": [
                     "She spent sh 20,000",
                     "She spent sh 15,850",
@@ -15017,7 +15017,7 @@ const math_ple = [
                         "question": "Find the value of y",
                         "type": "multipleChoice",
                         "answer": "y = 2",
-                        "explanation": "20 - y + y + 25 - y + 3y = 49\n 3y - y + 20 + 25 = 49\n 2y + 45 = 49\n 2y + 45 - 45 = 49 - 45\n 2y = 4\n y = 2",
+                        "explanation": "20 - y + y + 25 - y + 3y = 49<br> 3y - y + 20 + 25 = 49<br> 2y + 45 = 49<br> 2y + 45 - 45 = 49 - 45<br> 2y = 4<br> y = 2",
                         "options": [
                             "y = 2",
                             "y = 3",
@@ -15029,7 +15029,7 @@ const math_ple = [
                         "question": "How many farmers grow neither millet nor beans?",
                         "type": "multipleChoice",
                         "answer": "6 farmers",
-                        "explanation": "Neither millet nor beans = 3 x y\n = 3 x 2\n = 6",
+                        "explanation": "Neither millet nor beans = 3 x y<br> = 3 x 2<br> = 6",
                         "options": [
                             "4 farmers",
                             "8 farmers",
@@ -15054,7 +15054,7 @@ const math_ple = [
                         "question": "Find the size of angle c.",
                         "type": "multipleChoice",
                         "answer": "c = 29°",
-                        "explanation": "Angle ARS\n ∠ARS + 90° + 55° = 180°( interior angle sum of a triangle)\n ∠ARS + 145° = 180°\n ∠ARS + 145°- 145° = 180° - 145°\n ∠ARS = 35°\n c + 35° + 116° = 180° (co-interior angles)\n c + 151° = 180°\n c + 151°- 151° = 180°- 151°\n c = 29°",
+                        "explanation": "Angle ARS<br> ∠ARS + 90° + 55° = 180°( interior angle sum of a triangle)<br> ∠ARS + 145° = 180°<br> ∠ARS + 145°- 145° = 180° - 145°<br> ∠ARS = 35°<br> c + 35° + 116° = 180° (co-interior angles)<br> c + 151° = 180°<br> c + 151°- 151° = 180°- 151°<br> c = 29°",
                         "options": [
                             "c = 39°",
                             "c = 30°",
@@ -15072,7 +15072,7 @@ const math_ple = [
                         "question": "Find the length of edge L",
                         "type": "multipleChoice",
                         "answer": "L = 30cm",
-                        "explanation": "2 x (10 + 8 + L) = 96\n 2 x (18 + L) = 96\n 36 + 2L = 96\n 36 - 36 + 2L = 96 - 36\n 2L = 60\n L = 60/2\n = L = 30",
+                        "explanation": "2 x (10 + 8 + L) = 96<br> 2 x (18 + L) = 96<br> 36 + 2L = 96<br> 36 - 36 + 2L = 96 - 36<br> 2L = 60<br> L = 60/2<br> = L = 30",
                         "options": [
                             "L = 30cm",
                             "L = 78cm",
@@ -15084,7 +15084,7 @@ const math_ple = [
                         "question": "Calculate the volume of the prism",
                         "type": "multipleChoice",
                         "answer": "2400cm<sup>3</sup>",
-                        "explanation": "Volume=Length x Width x Height\n = 10cm x 8cm x 30cm\n = 2400cm<sup>3</sup>",
+                        "explanation": "Volume=Length x Width x Height<br> = 10cm x 8cm x 30cm<br> = 2400cm<sup>3</sup>",
                         "options": [
                             "4800cm<sup>3</sup>",
                             "2400cm<sup>3</sup>",
@@ -15098,7 +15098,7 @@ const math_ple = [
                 "question": "A school bus taking pupils to a Game Park covered 75% of its journey in 1½ hour. The bus travelled at a steady speed of 80 kilometers per hour. Find how far the school is from the Game Park.",
                 "type": "multipleChoice",
                 "answer": "160 km",
-                "explanation": "Let total time be t\n 75% of t = 1½\n 75/100 x t = 3/2\n 75/100t x 100 = 3/2 x 100\n 75t = 150\n t = 2 hours\n Distance = Speed x Time\n = 80 x 2\n = 160 km",
+                "explanation": "Let total time be t<br> 75% of t = 1½<br> 75/100 x t = 3/2<br> 75/100t x 100 = 3/2 x 100<br> 75t = 150<br> t = 2 hours<br> Distance = Speed x Time<br> = 80 x 2<br> = 160 km",
                 "options": [
                     "150 km",
                     "100 km",
@@ -15108,13 +15108,13 @@ const math_ple = [
                 "id": "ple_math_sect_A24_3"
             },
             {
-                "question": "The exchange rates in a bank are as follows;\n 1 US dollar ($) = Ug.Sh 3,400\n 1 British pound Sterling (£) = Ug sh 4,600\n 1 Kenya shilling (K.sh)= Ug. Sh 35.",
+                "question": "The exchange rates in a bank are as follows;<ul><li>1 US dollar ($) = Ug.Sh 3,400</li> <li>1 British pound Sterling (£) = Ug sh 4,600</li><li>1 Kenya shilling (K.sh)= Ug. Sh 35.</li></ul > ",
                 "sub_questions": [
                     {
                         "question": "Convert Ug. Sh 1,840,000 to British pound sterling.",
                         "type": "multipleChoice",
                         "answer": "Ug. Sh 1,840,000 = 400 British pound Sterling",
-                        "explanation": "Since 1 British pound Sterling (£) = Ug sh 4,600\n Ug. Sh 1,840,000 = 1,840,000/4,600\n = 18400/46\n = 9200/23\n = 400",
+                        "explanation": "Since 1 British pound Sterling (£) = Ug sh 4,600<br> Ug. Sh 1,840,000 = 1,840,000/4,600<br> = 18400/46<br> = 9200/23<br> = 400",
                         "options": [
                             "Ug. Sh 1,840,000 = 541.2 British pound Sterling",
                             "Ug. Sh 1,840,000 = 400 British pound Sterling",
@@ -15126,7 +15126,7 @@ const math_ple = [
                         "question": "If a set of chairs costs $700, find the equivalent cost of the chairs in Kenya shillings.",
                         "type": "multipleChoice",
                         "answer": "Cost = K.sh 68,000",
-                        "explanation": "First convert $700 to Ug. sh\n = 700 x 3.400\n = Ug.sh 2,380,000\n Now convert Ug. sh to K. sh\n = 2,380,000/36\n = 68,000",
+                        "explanation": "First convert $700 to Ug. sh<br> = 700 x 3.400<br> = Ug.sh 2,380,000<br> Now convert Ug. sh to K. sh<br> = 2,380,000/36<br> = 68,000",
                         "options": [
                             "Cost = K.sh 2,380,000",
                             "Cost = K.sh 68,000",
@@ -15141,7 +15141,7 @@ const math_ple = [
                 "question": "Betty filled container A below with drinking water. She served visitors with the water using cups of size B shown in the diagram. Find total number of full cups of water she served the visitors (Use π = 22/7)",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/24.png",
                 "answer": "80 cups",
-                "explanation": "Number of cups = Volume of container A/Volume of container B\n Volume of A = πr<sub>2</sub>h\n = 22/7 x (28/2)<sub>2</sub> x 50\n = 22/7 x 14 x 14 x 50\n = 30800 cm<sub>3</sub>\n Volume of B = 22/7 x (7/2)<sub>2</sub> x 10\n = 22/7 x 7/2 x 7/2 x 10\n = 11 x 7 x 5\n = 385 cm<sub>3</sub>\n Number of cups = 30800/385\n = 80 cups",
+                "explanation": "Number of cups = Volume of container A/Volume of container B<br> Volume of A = πr<sub>2</sub>h<br> = 22/7 x (28/2)<sub>2</sub> x 50<br> = 22/7 x 14 x 14 x 50<br> = 30800 cm<sub>3</sub><br> Volume of B = 22/7 x (7/2)<sub>2</sub> x 10<br> = 22/7 x 7/2 x 7/2 x 10<br> = 11 x 7 x 5<br> = 385 cm<sub>3</sub><br> Number of cups = 30800/385<br> = 80 cups",
                 "options": [
                     "80 cups",
                     "100 cups",
@@ -15158,7 +15158,7 @@ const math_ple = [
                         "question": "Calculate the area of the rhombus.",
                         "type": "multipleChoice",
                         "answer": "Area = 120 cm<sup>2</sup>",
-                        "explanation": "Area = 1/2 x PR x QS\n = 1/2 x 24 x 10\n = 1/2 x 240\n = 120",
+                        "explanation": "Area = 1/2 x PR x QS<br> = 1/2 x 24 x 10<br> = 1/2 x 240<br> = 120",
                         "options": [
                             "Area = 120 cm<sup>2</sup>",
                             "Area = 240 cm<sup>2</sup>",
@@ -15170,7 +15170,7 @@ const math_ple = [
                         "question": "Find the perimeter of the rhombus",
                         "type": "multipleChoice",
                         "answer": "Perimeter = 52 cm",
-                        "explanation": "Perimeter = 4 x side\n Side = √[(24/2)<sup>2</sup> + (10/2)<sup>2</sup>]\n = √(12<sup>2</sup> + 5<sup>2</sup>)\n = √(144 + 25)\n = √169\n = 13\n Therefore Perimeter = 4 x 13\n = 52 cm",
+                        "explanation": "Perimeter = 4 x side<br> Side = √[(24/2)<sup>2</sup> + (10/2)<sup>2</sup>]<br> = √(12<sup>2</sup> + 5<sup>2</sup>)<br> = √(144 + 25)<br> = √169<br> = 13<br> Therefore Perimeter = 4 x 13<br> = 52 cm",
                         "options": [
                             "Perimeter = 34 cm",
                             "Perimeter = 52 cm",
@@ -15189,7 +15189,7 @@ const math_ple = [
                         "question": "How many pupils did the test?",
                         "type": "multipleChoice",
                         "answer": "15 pupils",
-                        "explanation": "Number of pupils = 2 + 6 + 3 + 4\n = 15 pupils",
+                        "explanation": "Number of pupils = 2 + 6 + 3 + 4<br> = 15 pupils",
                         "options": [
                             "150 pupils",
                             "15 pupils",
@@ -15201,7 +15201,7 @@ const math_ple = [
                         "question": "Find the value of k if the mean mark was 61.",
                         "type": "multipleChoice",
                         "answer": "k = 60",
-                        "explanation": "sum ÷ number = mean\n ((50x2) + (kx6) + (45 x 3) + (80 x 4)) ÷ 15 = 61\n (6k + 100 + 135 + 320) ÷ 15 = 61\n 15(6k + 555) ÷ 15 = 61 x 15\n 6k + 555 = 915\n 6k + 555 - 555 = 915 - 555\n 6k = 360\n 6k/6 = 360/6\n k = 60",
+                        "explanation": "sum ÷ number = mean<br> ((50x2) + (kx6) + (45 x 3) + (80 x 4)) ÷ 15 = 61<br> (6k + 100 + 135 + 320) ÷ 15 = 61<br> 15(6k + 555) ÷ 15 = 61 x 15<br> 6k + 555 = 915<br> 6k + 555 - 555 = 915 - 555<br> 6k = 360<br> 6k/6 = 360/6<br> k = 60",
                         "options": [
                             "k = 100",
                             "k = 50",
@@ -15213,7 +15213,7 @@ const math_ple = [
                         "question": "What was the range of the marks?",
                         "type": "multipleChoice",
                         "answer": "Range = 35",
-                        "explanation": "Range = Highest - lowest\n = 80 - 45\n = 35",
+                        "explanation": "Range = Highest - lowest<br> = 80 - 45<br> = 35",
                         "options": [
                             "Range = 35",
                             "Range = 30",
@@ -15238,7 +15238,7 @@ const math_ple = [
                         "question": "On a certain day, the shopkeeper sold 15.4 litres of cooking oil. How many such containers of cooking oil were sold that day? (Use π = 22/7)",
                         "type": "multipleChoice",
                         "answer": "20 containers",
-                        "explanation": "Get the volume of the container;\n Volume = π x radius<sup>2</sup> x height\n = 22/7 x (7/2)<sup>2</sup> x 20\n = 22/7 x 7/2 x 7/2 x 20\n = 770 cm<sup>3</sup>\n Convert litres to cm<sup>3</sup>\n 1 litre = 1000 cm<sup>3</sup>\n 15.4 litres = (15.4 x 1000)cm<sup>3</sup>\n = 15400cm<sup>3</sup>\n Number of containers = (Volume of litres sold in cm<sup>3</sup>)/(Volume of the container)\n = 15400/770 = 20 containers",
+                        "explanation": "Get the volume of the container;<br> Volume = π x radius<sup>2</sup> x height<br> = 22/7 x (7/2)<sup>2</sup> x 20<br> = 22/7 x 7/2 x 7/2 x 20<br> = 770 cm<sup>3</sup><br> Convert litres to cm<sup>3</sup><br> 1 litre = 1000 cm<sup>3</sup><br> 15.4 litres = (15.4 x 1000)cm<sup>3</sup><br> = 15400cm<sup>3</sup><br> Number of containers = (Volume of litres sold in cm<sup>3</sup>)/(Volume of the container)<br> = 15400/770 = 20 containers",
                         "options": [
                             "70 containers",
                             "20 containers",
@@ -15253,7 +15253,7 @@ const math_ple = [
                 "question": "Below is Mukasa's shopping table. Select the complete correct table from the given options",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25.png",
                 "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25C.png",
-                "explanation": "Unit cost of sugar = 14400/3\n = 4800\nRice quantity = 5000/2500\n = 2 kg\n Milk total; We first need to convert the ml to litres\n 1 ml = (1/1000)litres\n 250ml = (1/1000 x 250)litres\n = 25/100 litres\n 1/4 litres\n ∴ Milk total = 3000 x 1/4 = 750 shs\n Total for Biscuits = Total Expenditure - (Other expenditures)\n = 29,650 - (14,400 + 2,500 + 750)\n = 12,000\n Unit cost for biscuits = 12000/2\n = 6,000",
+                "explanation": "Unit cost of sugar = 14400/3<br> = 4800<br>Rice quantity = 5000/2500<br> = 2 kg<br> Milk total; We first need to convert the ml to litres<br> 1 ml = (1/1000)litres<br> 250ml = (1/1000 x 250)litres<br> = 25/100 litres<br> 1/4 litres<br> ∴ Milk total = 3000 x 1/4 = 750 shs<br> Total for Biscuits = Total Expenditure - (Other expenditures)<br> = 29,650 - (14,400 + 2,500 + 750)<br> = 12,000<br> Unit cost for biscuits = 12000/2<br> = 6,000",
                 "options": [
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25W.png",
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25W1.png",
@@ -15266,7 +15266,7 @@ const math_ple = [
                 "question": "Solve the equation: 3/5n + 6 = 2 + n",
                 "type": "multipleChoice",
                 "answer": "n = 10",
-                "explanation": "3/5n - n + 6 - 6 = 2 - 6 + n - n\n 3/5n - n = 2 - 6\n (3n - 5n)/5 = -4\n -2n/5 = -4\n Multiply both sides by 5\n -2n/5 x 5 = -4 x 5\n -2n = -20\n -2n/-2 = -20/-2\n n = 10",
+                "explanation": "3/5n - n + 6 - 6 = 2 - 6 + n - n<br> 3/5n - n = 2 - 6<br> (3n - 5n)/5 = -4<br> -2n/5 = -4<br> Multiply both sides by 5<br> -2n/5 x 5 = -4 x 5<br> -2n = -20<br> -2n/-2 = -20/-2<br> n = 10",
                 "options": [
                     "n = 5",
                     "n = 15",
@@ -15278,7 +15278,7 @@ const math_ple = [
                         "question": "Solve the inequality: 9 - 2k > k + 3",
                         "type": "multipleChoice",
                         "answer": "k < 2",
-                        "explanation": "9 - 2k > k + 3\n 9 - 9 - 2k - k > k - k + 3 - 9\n -3k > -6\n -3k/-3 < -6/-3\n k < 2",
+                        "explanation": "9 - 2k > k + 3<br> 9 - 9 - 2k - k > k - k + 3 - 9<br> -3k > -6<br> -3k/-3 < -6/-3<br> k < 2",
                         "options": [
                             "k > 2",
                             "k < 2",
@@ -15297,7 +15297,7 @@ const math_ple = [
                         "question": "Find the value of g",
                         "type": "multipleChoice",
                         "answer": "g = 28",
-                        "explanation": "3g + 6 + g + 30 + 2g - 24 = 180\n 3g + g + 2g - 24 + 6 + 30 = 180\n 6g - 24 + 36 = 180\n 6g + 12 = 180\n 6g + 12 - 12 = 180 - 12\n 6g = 168\n 6g/6 = 168/6\n g = 28",
+                        "explanation": "3g + 6 + g + 30 + 2g - 24 = 180<br> 3g + g + 2g - 24 + 6 + 30 = 180<br> 6g - 24 + 36 = 180<br> 6g + 12 = 180<br> 6g + 12 - 12 = 180 - 12<br> 6g = 168<br> 6g/6 = 168/6<br> g = 28",
                         "options": [
                             "g = 28",
                             "g = 24",
@@ -15309,7 +15309,7 @@ const math_ple = [
                         "question": "Calculate the size of the angle RST",
                         "type": "multipleChoice",
                         "answer": "Angle RST = 58<sup>o</sup>",
-                        "explanation": "Since angle RST = (g+30)\n = 28 + 30\n = 58",
+                        "explanation": "Since angle RST = (g+30)<br> = 28 + 30<br> = 58",
                         "options": [
                             "Angle RST = 58<sup>o</sup>",
                             "Angle RST = 54<sup>o</sup>",
@@ -15321,7 +15321,7 @@ const math_ple = [
                 "id": "ple_math_sect_A25_4"
             },
             {
-                "question": "A fruit seller sold the following number of mangoes in six days.\n 60, 35, 28, 42, and 35",
+                "question": "A fruit seller sold the following number of mangoes in six days.<br> 60, 35, 28, 42, and 35",
                 "sub_questions": [
                     {
                         "question": "What is the modal number of mangoes sold?",
@@ -15339,7 +15339,7 @@ const math_ple = [
                         "question": "Work out the mean number of mangoes sold.",
                         "type": "multipleChoice",
                         "answer": "Mean = 40",
-                        "explanation": "Mean = (60 + 35 + 28 + 42 + 35)/5\n = 200/5\n = 40",
+                        "explanation": "Mean = (60 + 35 + 28 + 42 + 35)/5<br> = 200/5<br> = 40",
                         "optiions": [
                             "Mean = 40",
                             "Mean = 30",
@@ -15351,7 +15351,7 @@ const math_ple = [
                         "question": "By the end of the seventh day, the mean number of mangoes sold was 44. How many mangoes were sold on the seventh day?",
                         "type": "multipleChoice",
                         "answer": "68 mangoes",
-                        "explanation": "Total mangoes sold in 6 days = 60 + 35 + 28 + 42 + 35\n = 240\n Total mangoes sold by the end of the seventh day = 7 x 44\n = 308\n Number of mangoes sold on the seventh day = Total mangoes sold by the end of the seventh day - Total mangoes sold in 6 days\n = 308 - 240\n = 68",
+                        "explanation": "Total mangoes sold in 6 days = 60 + 35 + 28 + 42 + 35<br> = 240<br> Total mangoes sold by the end of the seventh day = 7 x 44<br> = 308<br> Number of mangoes sold on the seventh day = Total mangoes sold by the end of the seventh day - Total mangoes sold in 6 days<br> = 308 - 240<br> = 68",
                         "options": [
                             "60 mangoes",
                             "65 mangoes",
@@ -15366,7 +15366,7 @@ const math_ple = [
                 "question": "Work out: (3.09 + 3.6)/(0.06 x 0.5)",
                 "type": "multipleChoice",
                 "answer": "223",
-                "explanation": "(3.09 + 3.6)/(6/100 x 5/10)\n = 6.69 ÷ 30/1000\n = 6.69 ÷ 3/100\n = 669/100 ÷ 3/100\n = 669/100 x 100/3\n = 223",
+                "explanation": "(3.09 + 3.6)/(6/100 x 5/10)<br> = 6.69 ÷ 30/1000<br> = 6.69 ÷ 3/100<br> = 669/100 ÷ 3/100<br> = 669/100 x 100/3<br> = 223",
                 "options": [
                     "223",
                     "2230",
@@ -15378,7 +15378,7 @@ const math_ple = [
                         "question": "Simplify: 3⅓ ÷ 2½ x 2⅖",
                         "type": "multipleChoice",
                         "answer": "3⅕",
-                        "explanation": "Using BODMAS\n (10/3 ÷ 5/2) x 12/5\n = (10/3 x 2/5) x 12/5\n = 4/3 x 12/5\n = (4 x 4)/ 5\n = 16/5\n = 3⅕",
+                        "explanation": "Using BODMAS<br> (10/3 ÷ 5/2) x 12/5<br> = (10/3 x 2/5) x 12/5<br> = 4/3 x 12/5<br> = (4 x 4)/ 5<br> = 16/5<br> = 3⅕",
                         "options": [
                             "3⅕",
                             "3½",
@@ -15393,7 +15393,7 @@ const math_ple = [
                 "question": "Solve the inequality: 9 ≤ -3(y-1)",
                 "type": "multipleChoice",
                 "answer": "y ≤ -2",
-                "explanation": "9 ≤ -3y + 3\n 9 - 3 ≤ -3y + 3 - 3\n 6 ≤ -3y\n 6/-3 ≤ -3/-3y\n -2 ≥ y (Change sign when dividing with a negative coefficient)\n Therefore y ≤ -2",
+                "explanation": "9 ≤ -3y + 3<br> 9 - 3 ≤ -3y + 3 - 3<br> 6 ≤ -3y<br> 6/-3 ≤ -3/-3y<br> -2 ≥ y (Change sign when dividing with a negative coefficient)<br> Therefore y ≤ -2",
                 "options": [
                     "y ≥ -2",
                     "y ≤ -2",
@@ -15443,7 +15443,7 @@ const math_ple = [
                         "question": "Calculate the size of angle DAC",
                         "type": "multipleChoice",
                         "answer": "Angle DAC = 40°",
-                        "explanation": "Let the angle DAC be a\n Angle FAD = 2a\n 2a + a = 75 + 45\n 3a = 120\n a = 40°",
+                        "explanation": "Let the angle DAC be a<br> Angle FAD = 2a<br> 2a + a = 75 + 45<br> 3a = 120<br> a = 40°",
                         "options": [
                             "Angle DAC = 50°",
                             "Angle DAC = 60°",
@@ -15455,7 +15455,7 @@ const math_ple = [
                                 "question": "Find the size of angle ADC",
                                 "type": "multipleChoice",
                                 "answer": "Angle ADC = 80°",
-                                "explanation": "Angle ADC = 2a°(alternetive angle)\n = 2 x 40\n Angle ADC = 80°",
+                                "explanation": "Angle ADC = 2a°(alternetive angle)<br> = 2 x 40<br> Angle ADC = 80°",
                                 "options": [
                                     "Angle ADC = 60°",
                                     "Angle ADC = 80°",
@@ -15476,7 +15476,7 @@ const math_ple = [
                         "question": "Find the area of the rectangular floor",
                         "type": "multipleChoice",
                         "answer": "Area = 7200 cm<sup>2</sup>",
-                        "explanation": "Since the number of sqaures = 18\n Area of rectangular floor = Area of one square x Number of sqaures\n = 400 x 18\n = 7200",
+                        "explanation": "Since the number of sqaures = 18<br> Area of rectangular floor = Area of one square x Number of sqaures<br> = 400 x 18<br> = 7200",
                         "options": [
                             "Area = 8000 cm<sup>2</sup>",
                             "Area = 7000 cm<sup>2</sup>",
@@ -15488,7 +15488,7 @@ const math_ple = [
                         "question": "Calculate the perimeter of the rectangular floor",
                         "type": "multipleChoice",
                         "answer": "Perimeter = 360 cm",
-                        "explanation": "Perimeter = 2(L + W)\n The length of each side of the squares;\n From Area = S<sup>2</sup>\n 400 = S<sup>2</sup>\n √400 = √S<sup>2</sup>\n S = 20 cm\n Length = (6 x 20) = 120 cm\n Width = (3 x 20) = 60 cm\n ∴ P = 2(L + W)\n = 2(120 + 60)\n = 2 x 180\n = 360",
+                        "explanation": "Perimeter = 2(L + W)<br> The length of each side of the squares;<br> From Area = S<sup>2</sup><br> 400 = S<sup>2</sup><br> √400 = √S<sup>2</sup><br> S = 20 cm<br> Length = (6 x 20) = 120 cm<br> Width = (3 x 20) = 60 cm<br> ∴ P = 2(L + W)<br> = 2(120 + 60)<br> = 2 x 180<br> = 360",
                         "options": [
                             "Perimeter = 360 cm",
                             "Perimeter = 14,400 cm",
@@ -15507,7 +15507,7 @@ const math_ple = [
                         "question": "Find the size of angle k",
                         "type": "multipleChoice",
                         "answer": "k = 80°",
-                        "explanation": "k + 56 + 44 = 180 (Straight line angles)\n k + 100 = 180\n k + 100 - 100 = 180 - 100\n k = 80°",
+                        "explanation": "k + 56 + 44 = 180 (Straight line angles)<br> k + 100 = 180<br> k + 100 - 100 = 180 - 100<br> k = 80°",
                         "options": [
                             "k = 70°",
                             "k = 55°",
@@ -15519,7 +15519,7 @@ const math_ple = [
                         "question": "Find the size of angle g",
                         "type": "multipleChoice",
                         "answer": "g = 136°",
-                        "explanation": "g + 44 = 180 (Co-interior angles add up to 180)\n g + 44 - 44 = 180 - 44\n g = 136°",
+                        "explanation": "g + 44 = 180 (Co-interior angles add up to 180)<br> g + 44 - 44 = 180 - 44<br> g = 136°",
                         "options": [
                             "g = 130°",
                             "g = 126°",
@@ -15546,7 +15546,7 @@ const math_ple = [
                 "question": "A watch loses 5 seconds every hour. How many minutes will it lose in two days?",
                 "type": "multipleChoice",
                 "answer": "4 minutes",
-                "explanation": "1 day =  24hrs\n 2days = (24 x 2) hours\n = 48 hours\n In 1 hour the clock loses 5 second\n In 1 day (24hours) it loses 5 x 24\n =  120 seconds\n  In 2 day (48hours) it loses  5 x 48\n = 240 seconds\n But 60 seconds = 1 minute\n 240 seconds = 240/60 minutes\n = 4 minutes",
+                "explanation": "1 day =  24hrs<br> 2days = (24 x 2) hours<br> = 48 hours<br> In 1 hour the clock loses 5 second<br> In 1 day (24hours) it loses 5 x 24<br> =  120 seconds<br>  In 2 day (48hours) it loses  5 x 48<br> = 240 seconds<br> But 60 seconds = 1 minute<br> 240 seconds = 240/60 minutes<br> = 4 minutes",
                 "options": [
                     "40 minutes",
                     "14 minutes",
@@ -15558,7 +15558,7 @@ const math_ple = [
                         "question": "Express 5m/sec in km/hr",
                         "type": "multipleChoice",
                         "answer": "18 km/hr",
-                        "explanation": "5m/sec = km/hr\n 1000m = 1km\n 5m = 5/1000 km\n 3600 seconds = 1hr\n 1 second = 1/3600 hours\n Speed = Distance ÷ Time\n = 5/1000 ÷ 1/3600\n = 5/1000 x 3600/1\n = 5/10 x 36/1\n = 36/2\n = 18km/hr",
+                        "explanation": "5m/sec = km/hr<br> 1000m = 1km<br> 5m = 5/1000 km<br> 3600 seconds = 1hr<br> 1 second = 1/3600 hours<br> Speed = Distance ÷ Time<br> = 5/1000 ÷ 1/3600<br> = 5/1000 x 3600/1<br> = 5/10 x 36/1<br> = 36/2<br> = 18km/hr",
                         "options": [
                             "18 km/hr",
                             "18 km/hr",
@@ -15582,7 +15582,7 @@ const math_ple = [
                         "question": "Calculate the total distance covered by the bus from town A to town C.",
                         "type": "multipleChoice",
                         "answer": "216 kilometres",
-                        "explanation": "Time from town A to B is 2 hours\n Speed = 60km/hr\n Distance from town A to B = Speed x Time\n = 60 x 2\n = 120km/hr\n Total distance = Distance from town A to B + Distance from town B to C\n = 120km + 96km\n = 216km",
+                        "explanation": "Time from town A to B is 2 hours<br> Speed = 60km/hr<br> Distance from town A to B = Speed x Time<br> = 60 x 2<br> = 120km/hr<br> Total distance = Distance from town A to B + Distance from town B to C<br> = 120km + 96km<br> = 216km",
                         "options": [
                             "200 kilometres",
                             "216 kilometres",
@@ -15594,7 +15594,7 @@ const math_ple = [
                         "question": "At waht time did the bus reach town C?",
                         "type": "multipleChoice",
                         "answer": "1:40 p.m",
-                        "explanation": "Time from B to C\n = Distance/Speed\n = 96/64 hours\n Total Time = Time from A to B+Time at B+Time from B to C\n = 2 hours + 40/60 hours + 96/64 hours\n = 2 hours + 2/3 hours + 3/2 hours\n = 13/6 hours\n Arrival time at town C = 11:30a.m + 13/6 hours\n Convert 13/6 hours to minutes\n = 13/6 x 60 minutes\n = 130 minutes\n = 1:40p.m",
+                        "explanation": "Time from B to C<br> = Distance/Speed<br> = 96/64 hours<br> Total Time = Time from A to B+Time at B+Time from B to C<br> = 2 hours + 40/60 hours + 96/64 hours<br> = 2 hours + 2/3 hours + 3/2 hours<br> = 13/6 hours<br> Arrival time at town C = 11:30a.m + 13/6 hours<br> Convert 13/6 hours to minutes<br> = 13/6 x 60 minutes<br> = 130 minutes<br> = 1:40p.m",
                         "options": [
                             "1:30 p.m",
                             "1:40 p.m",
@@ -15609,7 +15609,7 @@ const math_ple = [
                 "question": "The average weight of four boys is 56kg. When two other boys join the group, the average weight becomes 52kg. The sixth boy is 8kg heavier than the fifth boy. Find the weight of the sixth boy.",
                 "type": "multipleChoice",
                 "answer": "48 kg",
-                "explanation": "Average weight of the four boys;\n (a+b+c+d)/4 = 56\n Multiply both sides by 4\n a+b+c+d = 224'\n Average weight of the six boys;\n (a+b+c+d+e+f)/6 = 52\n Multiply both sides by 6\n a+b+c+d+e+f = 312\n Now we subtract the average weight of the 4 boys from the average weight of the 6 boys to get the weight of the 5th and 6th boys\n (a+b+c+d+e+f = 312) - (a+b+c+d = 224)\n We cancel out whats common on both sides\n e + f = 88\n Since the 6th boy is 8 kg heavier than the 5th boy\n 6th boy's weight = e + 8'\n e + e + 8 = 88\n 2e + 8 = 88\n 2e = 80\n e = 40kg\n ∴ Weight of the 6th boy = e + 8\n = 40 + 8\n = 48kg",
+                "explanation": "Average weight of the four boys;<br> (a+b+c+d)/4 = 56<br> Multiply both sides by 4<br> a+b+c+d = 224'<br> Average weight of the six boys;<br> (a+b+c+d+e+f)/6 = 52<br> Multiply both sides by 6<br> a+b+c+d+e+f = 312<br> Now we subtract the average weight of the 4 boys from the average weight of the 6 boys to get the weight of the 5th and 6th boys<br> (a+b+c+d+e+f = 312) - (a+b+c+d = 224)<br> We cancel out whats common on both sides<br> e + f = 88<br> Since the 6th boy is 8 kg heavier than the 5th boy<br> 6th boy's weight = e + 8'<br> e + e + 8 = 88<br> 2e + 8 = 88<br> 2e = 80<br> e = 40kg<br> ∴ Weight of the 6th boy = e + 8<br> = 40 + 8<br> = 48kg",
                 "options": [
                     "40 kg",
                     "50 kg",
@@ -15622,7 +15622,7 @@ const math_ple = [
                 "question": "Arafat deposited money in a bank which offers a simple interest rate of 2½% per year. After 9 months, his account had an amount of sh 163,000. Calculate the money Arafat deposited in the bank.",
                 "type": "multipleChoice",
                 "answer": "Amount = 160,000",
-                "explanation": "Amount deposited = Principal + Simple interest\n Simple interest = Principal x Rate x Time\n 163,000 = P + P x R x T\n 163,000 = P + P x 2.5/100 x 9/12\n 163,000 = P(1 + 0.025 x 0.75)\n 163,000 = 1.01875P\n P = 160,000",
+                "explanation": "Amount deposited = Principal + Simple interest<br> Simple interest = Principal x Rate x Time<br> 163,000 = P + P x R x T<br> 163,000 = P + P x 2.5/100 x 9/12<br> 163,000 = P(1 + 0.025 x 0.75)<br> 163,000 = 1.01875P<br> P = 160,000",
                 "options": [
                     "Amount = 150,000",
                     "Amount = 160,000",
@@ -15638,7 +15638,7 @@ const math_ple = [
                         "question": "Calculate the time taken by the driver to reach town B",
                         "type": "multipleChoice",
                         "answer": "Time taken = 3 hours and 30 minutes",
-                        "explanation": "Time interval = Arrival time - Departure time\n = 2:00p.m - 10:30a.m\n Convert the time to 24 hour format\n = 14:00 - 10:30\n = (14-10) hours + (0-30) minutes\n = 4hours - 30minutes\n Convert 30 minutes to hours\n = 4 - 30/60\n = 4 - 1/2\n = 3.5\n = 3 hours and 30 minutes",
+                        "explanation": "Time interval = Arrival time - Departure time<br> = 2:00p.m - 10:30a.m<br> Convert the time to 24 hour format<br> = 14:00 - 10:30<br> = (14-10) hours + (0-30) minutes<br> = 4hours - 30minutes<br> Convert 30 minutes to hours<br> = 4 - 30/60<br> = 4 - 1/2<br> = 3.5<br> = 3 hours and 30 minutes",
                         "options": [
                             "Time taken = 3 hours and 30 minutes",
                             "Time taken = 4 hours and 30 minutes",
@@ -15650,7 +15650,7 @@ const math_ple = [
                         "question": "Find the distance between town A and town B",
                         "type": "multipleChoice",
                         "answer": "Distance = 280 km/hr",
-                        "explanation": "Distance = Speed x Time\n = 80 x 3.5\n = 280",
+                        "explanation": "Distance = Speed x Time<br> = 80 x 3.5<br> = 280",
                         "options": [
                             "Distance = 360 km/hr",
                             "Distance = 200 km/hr",
@@ -15669,7 +15669,7 @@ const math_ple = [
                         "question": "How long did the motor cyclist stay at town S?",
                         "type": "multipleChoice",
                         "answer": "35 minutes",
-                        "explanation": "Time taken at S;\n = 11:10 a.m - 10:35 a.m\n = 35 minutes.",
+                        "explanation": "Time taken at S;<br> = 11:10 a.m - 10:35 a.m<br> = 35 minutes.",
                         "options": [
                             "45 minutes",
                             "40 minutes",
@@ -15681,7 +15681,7 @@ const math_ple = [
                         "question": "Find the time the motor cyclist took to travel from town R to town P.",
                         "type": "multipleChoice",
                         "answer": "4 hours and 30 minutes",
-                        "explanation": "12:00 hrs + 1 00\n = 13 30 hrs\n 13 30 - 9 00\n = 4 hours and 30 minutes",
+                        "explanation": "12:00 hrs + 1 00<br> = 13 30 hrs<br> 13 30 - 9 00<br> = 4 hours and 30 minutes",
                         "options": [
                             "4 hours and 30 minutes",
                             "5 hours and 30 minutes",
@@ -15693,7 +15693,7 @@ const math_ple = [
                         "question": "If the distance from town R to P is 180 km, calculate the average speed of the motor cyclist for the whole journey.",
                         "type": "multipleChoice",
                         "answer": "40 km/hr",
-                        "explanation": "Average speed = Total distance/Total time\n = 180 ÷ 4½\n = 180 ÷ 9/2\n = 180 x 2/9\n = 40 km/hr",
+                        "explanation": "Average speed = Total distance/Total time<br> = 180 ÷ 4½<br> = 180 ÷ 9/2<br> = 180 x 2/9<br> = 40 km/hr",
                         "options": [
                             "45 km/hr",
                             "50 km/hr",
@@ -15712,7 +15712,7 @@ const math_ple = [
                         "question": "How long did he take playing?",
                         "type": "multipleChoice",
                         "answer": "1 hour and 30 minutes",
-                        "explanation": "4:30 pm - 3:00 pm\n Hours: (4 - 3) = 1 hour\n Minutes: (30 - 00) = 30 minutes\n = 1 hour and 30 minutes",
+                        "explanation": "4:30 pm - 3:00 pm<br> Hours: (4 - 3) = 1 hour<br> Minutes: (30 - 00) = 30 minutes<br> = 1 hour and 30 minutes",
                         "options": [
                             "30 minutes",
                             "1 hour",
@@ -15724,7 +15724,7 @@ const math_ple = [
                         "question": "If he dug his maize garden at a rate of 2 rows in every 30 minutes, find the number of rows he dug that day.",
                         "type": "multipleChoice",
                         "answer": "18 rows",
-                        "explanation": "Time taken digging = 10:30 a.m - 7:00 a.m\n = 4 hours and 30 minutes\n = 4.5 hours\n Convert to minutes\n = 4.5 x 60\n = 270 minutes\n Number of rows = 270/30 x 2\n = 18 rows",
+                        "explanation": "Time taken digging = 10:30 a.m - 7:00 a.m<br> = 4 hours and 30 minutes<br> = 4.5 hours<br> Convert to minutes<br> = 4.5 x 60<br> = 270 minutes<br> Number of rows = 270/30 x 2<br> = 18 rows",
                         "options": [
                             "9 rows",
                             "20 rows",
@@ -15743,7 +15743,7 @@ const math_ple = [
                         "question": "How many patients were admitted in the hospital on that day?",
                         "type": "multipleChoice",
                         "answer": "120 patients",
-                        "explanation": "Total number of pictures = 3 + 4 + 3½ + 1½\n 1 picture = 10 patients\n 12 pictures = 10 x 12\n = 120 patients",
+                        "explanation": "Total number of pictures = 3 + 4 + 3½ + 1½<br> 1 picture = 10 patients<br> 12 pictures = 10 x 12<br> = 120 patients",
                         "options": [
                             "12 patients",
                             "120 patients",
@@ -15755,7 +15755,7 @@ const math_ple = [
                         "question": "Find the ratio of the patients in the women's ward to those in the children's ward in its simplest form.",
                         "type": "multipleChoice",
                         "answer": "Ratio = 7:8",
-                        "explanation": "Women's ward = 3½\n = 7/2 x 10\n = 7 x 5\n = 35 patients\n Children's ward = 4 x 10\n = 40 patients\n Women ward : Children\n 35 : 40\n Divide each by 5\n = 7 : 8",
+                        "explanation": "Women's ward = 3½<br> = 7/2 x 10<br> = 7 x 5<br> = 35 patients<br> Children's ward = 4 x 10<br> = 40 patients<br> Women ward : Children<br> 35 : 40<br> Divide each by 5<br> = 7 : 8",
                         "options": [
                             "Ratio = 8:7",
                             "Ratio = 5:8",
@@ -15767,7 +15767,7 @@ const math_ple = [
                         "question": "Express the number of patients in the men's ward as a percentage of the total number of patients.",
                         "type": "multipleChoice",
                         "answer": "25%",
-                        "explanation": "Men's ward = 3 x 10\n = 30\n Percentage = (30/120 x 100)%\n = 25%",
+                        "explanation": "Men's ward = 3 x 10<br> = 30<br> Percentage = (30/120 x 100)%<br> = 25%",
                         "options": [
                             "33.33%",
                             "30%",
@@ -15789,7 +15789,7 @@ const math_ple = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/28.png",
                 "type": "multipleChoice",
                 "answer": "m = 600",
-                "explanation": "Mean = (Total marks/Number of pupils)'\n = 55 = (40+m+60+70)/(2+6+3+3)\n 55 = (170 + m)/14\n 770 = 170 + m\n 770 - 170 = 170 - 170 + m\n 600 = m\n m = 600",
+                "explanation": "Mean = (Total marks/Number of pupils)'<br> = 55 = (40+m+60+70)/(2+6+3+3)<br> 55 = (170 + m)/14<br> 770 = 170 + m<br> 770 - 170 = 170 - 170 + m<br> 600 = m<br> m = 600",
                 "options": [
                     "m = 770",
                     "m = 500",
@@ -15802,7 +15802,7 @@ const math_ple = [
                 "question": "The interior angle of a regular polygon is 108<sup>o</sup> more than the exterior angle. How many sides has the polygon?",
                 "type": "multipleChoice",
                 "answer": "10 sides",
-                "explanation": "Let the exterior angle be y\n Exterior = y\n Interior = y + 108°\n  y + y + 108° = 180° (Interior and exterior angles add upto 180°)\n 2y + 108° = 180°\n 2y + 108°- 108° = 180° - 108°\n 2y = 72°\n y = 36°\n Number of sides = sum of exterior angles/one exterior angle\n = 360/60\n = 10 sides",
+                "explanation": "Let the exterior angle be y<br> Exterior = y<br> Interior = y + 108°<br>  y + y + 108° = 180° (Interior and exterior angles add upto 180°)<br> 2y + 108° = 180°<br> 2y + 108°- 108° = 180° - 108°<br> 2y = 72°<br> y = 36°<br> Number of sides = sum of exterior angles/one exterior angle<br> = 360/60<br> = 10 sides",
                 "options": [
                     "8 sides",
                     "10 sides",
@@ -15814,7 +15814,7 @@ const math_ple = [
                         "question": "In the figure below, find the size of angle z.",
                         "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/28.png",
                         "answer": "z = 65<sup>o</sup>",
-                        "explanation": "z + 60 + 55 = 180\n z + 115 = 180\n z + 115 - 115 = 180 - 115\n z = 65",
+                        "explanation": "z + 60 + 55 = 180<br> z + 115 = 180<br> z + 115 - 115 = 180 - 115<br> z = 65",
                         "options": [
                             "z = 65<sup>o</sup>",
                             "z = 60<sup>o</sup>",
@@ -15843,7 +15843,7 @@ const math_ple = [
                         "question": "Find her total interest after 3½ years",
                         "type": "multipleChoice",
                         "answer": "Total interest = 378,000",
-                        "explanation": "Interest = Principal x Rate x Time\n = (3000 x 120) x 30/100 x 3½\n = 360000 x 30/100 x 3.5\n = 3600 x 30 x 35/10\n = 360 x 30 x 35\n = 378,000",
+                        "explanation": "Interest = Principal x Rate x Time<br> = (3000 x 120) x 30/100 x 3½<br> = 360000 x 30/100 x 3.5<br> = 3600 x 30 x 35/10<br> = 360 x 30 x 35<br> = 378,000",
                         "options": [
                             "Total interest = 3,150",
                             "Total interest = 378,000",
@@ -15855,7 +15855,7 @@ const math_ple = [
                         "question": "Calculate the total amount of money Hajat has in the SACCO after the 3½ years.",
                         "type": "multipleChoice",
                         "answer": "Sh 738,000",
-                        "explanation": "Total Amount = P + SI\n = 360,000 + 378,000\n = 738,000",
+                        "explanation": "Total Amount = P + SI<br> = 360,000 + 378,000<br> = 738,000",
                         "options": [
                             "Sh 73,800",
                             "Sh 738,000",
@@ -15873,7 +15873,7 @@ const math_ple = [
                         "question": "Calculate the amount of money Madada paid for the radio.",
                         "type": "multipleChoice",
                         "answer": "Madada paid 70,000",
-                        "explanation": "Madada to aguti selling price = shs 63,000\n new % = 100% - 10%\n = 90% of c.p\n Let cost price be k\n 90/100 of k = 63,000\n 9/10k = 63,000\n 9/10k x 10 = 63,000 x 10\n 9k = 630,000\n k = 70,000",
+                        "explanation": "Madada to aguti selling price = shs 63,000<br> new % = 100% - 10%<br> = 90% of c.p<br> Let cost price be k<br> 90/100 of k = 63,000<br> 9/10k = 63,000<br> 9/10k x 10 = 63,000 x 10<br> 9k = 630,000<br> k = 70,000",
                         "options": [
                             "Madada paid 80,400",
                             "Madada paid 80,000",
@@ -15885,7 +15885,7 @@ const math_ple = [
                         "question": "For how much money did Aguti sell the radio?",
                         "type": "multipleChoice",
                         "answer": "Selling price = 72,450",
-                        "explanation": "Aguti to chebet cost price = sh. 63,000\n New% = 100%+ 15%\n = 115% of cost price\n Selling price = 115/100 x 63000\n = 115 x 630\n = shs 72,450",
+                        "explanation": "Aguti to chebet cost price = sh. 63,000<br> New% = 100%+ 15%<br> = 115% of cost price<br> Selling price = 115/100 x 63000<br> = 115 x 630<br> = shs 72,450",
                         "options": [
                             "Selling price = 72,450",
                             "Selling price = 82,450",
@@ -15897,13 +15897,13 @@ const math_ple = [
                 "id": "ple_math_sect_A28_5"
             },
             {
-                "question": "The exchange rate of Kenya shillings (Ksh) to Uganda shillings (Ug.sh) and the United states dollars (US$) to Uganda shillings are shown below\n 1 Ksh = Ug.sh 30\n US $1 = Ug.shs 2,580",
+                "question": "The exchange rate of Kenya shillings (Ksh) to Uganda shillings (Ug.sh) and the United states dollars (US$) to Uganda shillings are shown below<br> 1 Ksh = Ug.sh 30<br> US $1 = Ug.shs 2,580",
                 "sub_questions": [
                     {
                         "question": "How many United States dollars will one get from 21,500 kenya shillings?",
                         "type": "multipleChoice",
                         "answer": "US$ 250",
-                        "explanation": "Convert Ksh 21,500 to Ug.sh\n Ksh 21,500 = (21,500 x 30)\n = Ug.sh 645,000\n Convert Ug.sh 645,000 to US$\n = 645,000/2,580\n = 64,500/258\n = US$ 250",
+                        "explanation": "Convert Ksh 21,500 to Ug.sh<br> Ksh 21,500 = (21,500 x 30)<br> = Ug.sh 645,000<br> Convert Ug.sh 645,000 to US$<br> = 645,000/2,580<br> = 64,500/258<br> = US$ 250",
                         "options": [
                             "US$ 2500",
                             "US$ 25",
@@ -15915,7 +15915,7 @@ const math_ple = [
                         "question": "If the cost of a new bicycle is 90 United States dollars, how much would this be in Uganda shillings?",
                         "type": "multipleChoice",
                         "answer": "Ug.sh 232,200",
-                        "explanation": "US$ 90 = (90 x 2,580)\n = Ug.sh 232,200",
+                        "explanation": "US$ 90 = (90 x 2,580)<br> = Ug.sh 232,200",
                         "options": [
                             "Ug.sh 28.67",
                             "Ug.sh 232,200",
@@ -15930,7 +15930,7 @@ const math_ple = [
                 "question": "A tank was 2/3 full of water. When ¼ of the water in the tank was drawn, 2,500 litres remained. Find the capacity of the tank when full.",
                 "type": "multipleChoice",
                 "answer": "5000 litres",
-                "explanation": "Fraction in tank = 2/3\n Fraction drown = 1/4 of 2/3\n (1 x 2)/(4 x 3)\n = 1/6\n Remaining fraction = 2/3 - 1/6\n LCM = 6\n ((2 x 2)x(1 x 1))/6\n = (4 - 1)/6\n = 1/2\n Let capacity of full tank be g\n 1/2 of g = 2500\n 1/2g = 2500\n g = 2 x 2500\n = 5000 litres",
+                "explanation": "Fraction in tank = 2/3<br> Fraction drown = 1/4 of 2/3<br> (1 x 2)/(4 x 3)<br> = 1/6<br> Remaining fraction = 2/3 - 1/6<br> LCM = 6<br> ((2 x 2)x(1 x 1))/6<br> = (4 - 1)/6<br> = 1/2<br> Let capacity of full tank be g<br> 1/2 of g = 2500<br> 1/2g = 2500<br> g = 2 x 2500<br> = 5000 litres",
                 "options": [
                     "6000 litres",
                     "5000 litres",
@@ -15949,7 +15949,7 @@ const math_ple = [
                 "question": "The number of goats, cows and sheep on a certain farm are in the ratio of 4:3:5 respectively. There are 40 more sheep than goats on the farm. Find the number of each type of animal on the farm.",
                 "type": "multipleChoice",
                 "answer": "Number of goats = 160, Number of cows = 120, Number of sheep = 200",
-                "explanation": "Use a common multiplier x\n ∴ Goats = 4x, Cows = 3x and Sheep = 5x\n Since there are 40 more sheep than goats\n 5x = 4x + 40\n Solve for x\n 5x - 4x = 4x - 4x + 40\n x = 40\n ∴ Number of goats = 4x = 4 x 40 = 160\n Number of cows  = 3x = 3 x 40 = 120\n Number of sheep = 5x = 5 x 40 = 200",
+                "explanation": "Use a common multiplier x<br> ∴ Goats = 4x, Cows = 3x and Sheep = 5x<br> Since there are 40 more sheep than goats<br> 5x = 4x + 40<br> Solve for x<br> 5x - 4x = 4x - 4x + 40<br> x = 40<br> ∴ Number of goats = 4x = 4 x 40 = 160<br> Number of cows  = 3x = 3 x 40 = 120<br> Number of sheep = 5x = 5 x 40 = 200",
                 "options": [
                     "Number of goats = 120, Number of cows = 200, Number of sheep = 160",
                     "Number of goats = 200, Number of cows = 160, Number of sheep = 120",
@@ -15965,7 +15965,7 @@ const math_ple = [
                         "question": "If Hannah got 12 more pencils than Joyce, how many pencils did they share altogether?",
                         "type": "multipleChoice",
                         "answer": "45 pencils",
-                        "explanation": "Lets use a common multiplier x\n ∴ The ratios are 3x:5x:7x\n Since Hannah got 12 more pencils than Joyce\n 7x = 3x + 12\n 7x - 3x = 3x - 3x + 12\n 4x = 12\n 4x/4 = 12/4\n x = 3\n Now that we have the value of x, we can find the number of pencils each person got\n Joyce: 3x = 3 x 3 = 9 pencils\n Peter: 5x = 5 x 3 = 15 pencils\n Hannah: 7x = 7 x 3 = 21 pencils\n Total number of pencils;\n = 9 + 15 + 21\n = 45",
+                        "explanation": "Lets use a common multiplier x<br> ∴ The ratios are 3x:5x:7x<br> Since Hannah got 12 more pencils than Joyce<br> 7x = 3x + 12<br> 7x - 3x = 3x - 3x + 12<br> 4x = 12<br> 4x/4 = 12/4<br> x = 3<br> Now that we have the value of x, we can find the number of pencils each person got<br> Joyce: 3x = 3 x 3 = 9 pencils<br> Peter: 5x = 5 x 3 = 15 pencils<br> Hannah: 7x = 7 x 3 = 21 pencils<br> Total number of pencils;<br> = 9 + 15 + 21<br> = 45",
                         "options": [
                             "45 pencils",
                             "40 pencils",
@@ -15993,7 +15993,7 @@ const math_ple = [
                 "question": "The total mass of tins of honey in a box is 3.25kg. The mass of each tin is 250g. Find the number of tins in the box.",
                 "type": "multipleChoice",
                 "answer": "13 tins",
-                "explanation": "Total mass = 3.25kg\n Mass of each tin = 250g\n Convert mass of each tin to kg\n Since 1 g = 1/1000 kg\n = (250 x 1/1000)kg\n = 0.25kg\n Number of tins  = 3.25/0.25\n = 13 tins",
+                "explanation": "Total mass = 3.25kg<br> Mass of each tin = 250g<br> Convert mass of each tin to kg<br> Since 1 g = 1/1000 kg<br> = (250 x 1/1000)kg<br> = 0.25kg<br> Number of tins  = 3.25/0.25<br> = 13 tins",
                 "options": [
                     "12 tins",
                     "10 tins",
@@ -16010,7 +16010,7 @@ const math_ple = [
                         "question": "There are 216 pupils in debating club. Find the total number of pupils in the school",
                         "type": "multipleChoice",
                         "answer": "1080 pupils",
-                        "explanation": "p + 2p + 90° + 54° = 360°\n 3p + 144° = 360°\n 3p + 144° - 144° = 360° - 144°\n 3p = 216\n p = 72°\n 72° = 216 pupils\n 1° = 216/72\n 1° = 3\n 360° = 360 x 3\n = 1080 pupils",
+                        "explanation": "p + 2p + 90° + 54° = 360°<br> 3p + 144° = 360°<br> 3p + 144° - 144° = 360° - 144°<br> 3p = 216<br> p = 72°<br> 72° = 216 pupils<br> 1° = 216/72<br> 1° = 3<br> 360° = 360 x 3<br> = 1080 pupils",
                         "options": [
                             "180 pupils",
                             "1080 pupils",
@@ -16022,7 +16022,7 @@ const math_ple = [
                         "question": "Express the number of pupils in the debating club as a percentage of the whole school.",
                         "type": "multipleChoice",
                         "answer": "20%",
-                        "explanation": "Percentage for debating = (72/360 x 100)%\n = (2 x 10)%\n = 20%",
+                        "explanation": "Percentage for debating = (72/360 x 100)%<br> = (2 x 10)%<br> = 20%",
                         "options": [
                             "20%",
                             "30%",
@@ -16041,7 +16041,7 @@ const math_ple = [
                         "question": "Calculate the area of the figure",
                         "type": "multipleChoice",
                         "answer": "Area = 69 cm<sup>2</sup>",
-                        "explanation": "Area of triangle = 1/2 x b x h\n = 1/2 x 3 x 4\n = 6 cm<sup>2</sup>\n Area of rectangle = L x W\n = 7 x 9\n = 63 cm<sup>2</sup>\n Total area = 63 + 6\n = 69 cm<sup>2</sup>",
+                        "explanation": "Area of triangle = 1/2 x b x h<br> = 1/2 x 3 x 4<br> = 6 cm<sup>2</sup><br> Area of rectangle = L x W<br> = 7 x 9<br> = 63 cm<sup>2</sup><br> Total area = 63 + 6<br> = 69 cm<sup>2</sup>",
                         "options": [
                             "Area = 64 cm<sup>2</sup>",
                             "Area = 69 cm<sup>2</sup>",
@@ -16053,7 +16053,7 @@ const math_ple = [
                         "question": "Work out the perimeter of the figure",
                         "type": "multipleChoice",
                         "answer": "Perimeter = 37cm",
-                        "explanation": "Hypotenuse = 3<sup>2</sup> + 4<sup>2</sup>\n = 9 + 16\n = 25 cm\n Perimeter = 10 + 9 + 7 + 5 + 5\n = 37 cm",
+                        "explanation": "Hypotenuse = 3<sup>2</sup> + 4<sup>2</sup><br> = 9 + 16<br> = 25 cm<br> Perimeter = 10 + 9 + 7 + 5 + 5<br> = 37 cm",
                         "options": [
                             "Perimeter = 32cm",
                             "Perimeter = 37cm",
@@ -16068,7 +16068,7 @@ const math_ple = [
                 "question": "At a kampala bus park, buses travelling to Arua and Mbarara leave after every 40 minutes and 50 minutes respectively. The first buses to the two towns leave together at 6:00 am. At what time will buses to the two towns leave Kampala together again?",
                 "type": "multipleChoice",
                 "answer": "9:20 a.m",
-                "explanation": "LCM of 40 and 50\n = 2 x 2 x 2 x 5 x 5\n = 200 minutes\n They will leave together after 200 minutes or 3hrs 20mins\n 200 minutes = 200/60\n = 3⅓ hours\n = 3hrs and 20minutes\n = 6:00 a.m  + 3:20\n = 9:20 a.m",
+                "explanation": "LCM of 40 and 50<br> = 2 x 2 x 2 x 5 x 5<br> = 200 minutes<br> They will leave together after 200 minutes or 3hrs 20mins<br> 200 minutes = 200/60<br> = 3⅓ hours<br> = 3hrs and 20minutes<br> = 6:00 a.m  + 3:20<br> = 9:20 a.m",
                 "options": [
                     "10:20 a.m",
                     "8:20 a.m",
@@ -16084,7 +16084,7 @@ const math_ple = [
                         "question": "How many revolutions does the wheel make to cover the distance? (Take π = 22/7}",
                         "type": "multipleChoice",
                         "answer": "1500 revolutions",
-                        "explanation": "Change km to cm\n 2.97km to cm = 2.97 x 100000\n Distance = 297000 cm\n Circumference of the wheel = πd\n C = 22/7 x 63\n = 22 x 9\n = 198 cm\n Number of revolutions = distance/circumference\n = 297000/198\n = 1500 revolutions",
+                        "explanation": "Change km to cm<br> 2.97km to cm = 2.97 x 100000<br> Distance = 297000 cm<br> Circumference of the wheel = πd<br> C = 22/7 x 63<br> = 22 x 9<br> = 198 cm<br> Number of revolutions = distance/circumference<br> = 297000/198<br> = 1500 revolutions",
                         "options": [
                             "1500 revolutions",
                             "1000 revolutions",
@@ -16096,7 +16096,7 @@ const math_ple = [
                         "question": "If Opoka makes 50 revolutions in one minute, how long does he take to reach the school?",
                         "type": "multipleChoice",
                         "answer": "30 minutes",
-                        "explanation": "50 revolutions = 1 minute\n 1 rev = 1/50 minutes\n 1500 revolutions = 1/50 x 1500\n = 30 minutes",
+                        "explanation": "50 revolutions = 1 minute<br> 1 rev = 1/50 minutes<br> 1500 revolutions = 1/50 x 1500<br> = 30 minutes",
                         "options": [
                             "25 minutes",
                             "40 minutes",
@@ -16121,7 +16121,7 @@ const math_ple = [
                         "question": "Calculate the area of the parallelogram.",
                         "type": "multipleChoice",
                         "answer": "Area = 96cm<sup>2</sup>",
-                        "explanation": "Area = Base x Height\n = AB x DX\n = 16cm x 6cm\n = 96cm<sup>2</sup>",
+                        "explanation": "Area = Base x Height<br> = AB x DX<br> = 16cm x 6cm<br> = 96cm<sup>2</sup>",
                         "options": [
                             "Area = 192cm<sup>2</sup>",
                             "Area = 96cm<sup>2</sup>",
@@ -16133,7 +16133,7 @@ const math_ple = [
                         "question": "Find the length of DY",
                         "type": "multipleChoice",
                         "answer": "DY = 8cm",
-                        "explanation": "B x h = B x h (Find DY by comparing areas using different height)\n 12 x h = 16 x 6\n 12h = 96\n h = 8 cm\n Therefore DY = 8cm",
+                        "explanation": "B x h = B x h (Find DY by comparing areas using different height)<br> 12 x h = 16 x 6<br> 12h = 96<br> h = 8 cm<br> Therefore DY = 8cm",
                         "options": [
                             "DY = 10cm",
                             "DY = 8cm",
@@ -16151,7 +16151,7 @@ const math_ple = [
                         "question": "How many years ago was Kizito three times as old as his sister?",
                         "type": "multipleChoice",
                         "answer": "17 years ago",
-                        "explanation": "∴ x years ago Kizito was 38 - x and his sister 24 - x\n Since x years ago Kizito was three times as old as his sister\n 38 - x = 3(24 - x)\n 38 - x = 72 - 3x\n 38 - 38 - x + 3x = 72 - 38 - 3x + 3x\n - x + 3x = 72 - 34\n 2x = 34\n 2x/2 = 34/2\n x = 17",
+                        "explanation": "∴ x years ago Kizito was 38 - x and his sister 24 - x<br> Since x years ago Kizito was three times as old as his sister<br> 38 - x = 3(24 - x)<br> 38 - x = 72 - 3x<br> 38 - 38 - x + 3x = 72 - 38 - 3x + 3x<br> - x + 3x = 72 - 34<br> 2x = 34<br> 2x/2 = 34/2<br> x = 17",
                         "options": [
                             "19 years ago",
                             "17 years ago",
@@ -16163,7 +16163,7 @@ const math_ple = [
                         "question": "How old was Kizito's sister then?",
                         "type": "multipleChoice",
                         "answer": "7 years old",
-                        "explanation": "From the above explanation\n 24 - x\n = 24 - 17\n = 7",
+                        "explanation": "From the above explanation<br> 24 - x<br> = 24 - 17<br> = 7",
                         "options": [
                             "24 years old",
                             "7 years old",
@@ -16181,7 +16181,7 @@ const math_ple = [
                         "question": "Calculate the area of the circle. (Use π = 22/7)",
                         "type": "multipleChoice",
                         "answer": "Area = 616 cm<sub>2</sub>",
-                        "explanation": "Area = π x (radius)cm<sub>2</sub>\n = 22/7 x 14cm<sub>2</sub>\n = 22/7 x 14 x 14\n = 22 x 2 x 14\n = 616 cm<sub>2</sub>",
+                        "explanation": "Area = π x (radius)cm<sub>2</sub><br> = 22/7 x 14cm<sub>2</sub><br> = 22/7 x 14 x 14<br> = 22 x 2 x 14<br> = 616 cm<sub>2</sub>",
                         "options": [
                             "Area = 88 cm<sub>2</sub>",
                             "Area = 44 cm<sub>2</sub>",
@@ -16193,7 +16193,7 @@ const math_ple = [
                         "question": "Find the area of the shaded part.",
                         "type": "multipleChoice",
                         "answer": "Area of shaded part = 224 cm<sup>2</sup>",
-                        "explanation": "Area of the shaded part  = Area of circle - Area of square area  of square\n Area of square;\n d<sub>1</sub> = 14 + 14\n d<sub>1</sub> = 28 cm\n d<sub>2</sub> = 28 cm\n = 1/2 x d<sub>1</sub> x d<sub>2</sub>\n = 1/2 x 28 x 28\n = 14 x 28\n = 392 cm<sub>2</sub>\n Shaded area = 616 cm<sub>2</sub> - 392 cm<sub>2</sub>\n = 224 cm<sub>2</sub>",
+                        "explanation": "Area of the shaded part  = Area of circle - Area of square area  of square<br> Area of square;<br> d<sub>1</sub> = 14 + 14<br> d<sub>1</sub> = 28 cm<br> d<sub>2</sub> = 28 cm<br> = 1/2 x d<sub>1</sub> x d<sub>2</sub><br> = 1/2 x 28 x 28<br> = 14 x 28<br> = 392 cm<sub>2</sub><br> Shaded area = 616 cm<sub>2</sub> - 392 cm<sub>2</sub><br> = 224 cm<sub>2</sub>",
                         "options": [
                             "Area of shaded part = 124 cm<sup>2</sup>",
                             "Area of shaded part = 224 cm<sup>2</sup>",
@@ -16208,7 +16208,7 @@ const math_ple = [
                 "question": "A cylindrical tank of diameter 70cm contains water to a height of 100 cm. Find in litres the amount of water the tank contains (Use π = 22/7)",
                 "type": "multipleChoice",
                 "answer": "Volume = 11 litres",
-                "explanation": "V = πr<sup>2</sup>h\n = 22/7 x 70/2 x 100\n = 11 x 10 x 100\n = 11000 cm<sup>3</sup>\n Convert cm<sup>3</sup> to litres\n 1 cm<sup>3</sup> = (1/1000) litres\n 11000 cm<sup>3</sup> = (1/1000 x 11000)\n = 11 litres",
+                "explanation": "V = πr<sup>2</sup>h<br> = 22/7 x 70/2 x 100<br> = 11 x 10 x 100<br> = 11000 cm<sup>3</sup><br> Convert cm<sup>3</sup> to litres<br> 1 cm<sup>3</sup> = (1/1000) litres<br> 11000 cm<sup>3</sup> = (1/1000 x 11000)<br> = 11 litres",
                 "options": [
                     "Volume = 11000 litres",
                     "Volume = 110 litres",
@@ -16221,7 +16221,7 @@ const math_ple = [
                 "question": "Two taps F and E are connected to water tank. Tap F can fill the tank in 2 hours while E can empty it in 3 hours. One day when the tank was 1/3 full of water, the taps were opened at the same time. How long did it take to fill the tank?",
                 "type": "multipleChoice",
                 "answer": "4 hours",
-                "explanation": "In one hour;\n Tap F fills = ½ of the tank\n Tap E empties = ⅓ of the tank\n Both taps open;\n 1/2 - 1/3\n LCM = 6\n (3-2)/6\n Whole tank = 1 ÷ 1/6\n = 6\n 6 hours to fill the tank\n = 1/3 x 6\n = 2 hours\n Remaining time to fill the tank = (6-2) hour\n = 4 hours",
+                "explanation": "In one hour;<br> Tap F fills = ½ of the tank<br> Tap E empties = ⅓ of the tank<br> Both taps open;<br> 1/2 - 1/3<br> LCM = 6<br> (3-2)/6<br> Whole tank = 1 ÷ 1/6<br> = 6<br> 6 hours to fill the tank<br> = 1/3 x 6<br> = 2 hours<br> Remaining time to fill the tank = (6-2) hour<br> = 4 hours",
                 "options": [
                     "2 hours",
                     "6 hours",
@@ -16234,7 +16234,7 @@ const math_ple = [
                 "question": "The mean of the numbers 7, 9, 5, x+2 and 6 is 8. Find the value of x.",
                 "type": "multipleChoice",
                 "answer": "x = 11",
-                "explanation": "Mean = (7 + 9 + 5 + x+2 + 6)/5\n 8 = (7 + 9 + 5 + x+2 + 6)/5\n (29 + x)/5 = 8\n 29 + x = 40\n 29 - 29 + x = 40 - 29\n x = 11",
+                "explanation": "Mean = (7 + 9 + 5 + x+2 + 6)/5<br> 8 = (7 + 9 + 5 + x+2 + 6)/5<br> (29 + x)/5 = 8<br> 29 + x = 40<br> 29 - 29 + x = 40 - 29<br> x = 11",
                 "options": [
                     "x = 9",
                     "x = 10",
@@ -16246,7 +16246,7 @@ const math_ple = [
                         "question": "In a bag there are 15 pens. Out of these 4 are red and the rest blue. What is the probability that a pen picked at random from the bag is blue?",
                         "type": "multipleChoice",
                         "answer": "Probability = 11/15",
-                        "explanation": "Blue pens = 15 - 4\n = 11 pens\n Probability = Number of blue pens/Total number of pens\n = 11/15",
+                        "explanation": "Blue pens = 15 - 4<br> = 11 pens<br> Probability = Number of blue pens/Total number of pens<br> = 11/15",
                         "options": [
                             "Probability = 4/15",
                             "Probability = 11/15",
@@ -16265,7 +16265,7 @@ const math_ple = [
                         "question": "Find the size of the angle CEX",
                         "type": "multipleChoice",
                         "answer": "Angle CEX  = 80<sup>o</sup>",
-                        "explanation": "Considering triangle ABC\n a + a + 50 + 70 = 180 (angle sum of a triangle\n 2a + 120 = 180\n 2a = 60\n a = 30\n Using triangle BAE\n a + ∠BEA + 70 = 180\n 30 + ∠BEA + 70 = 180\n ∠BEA = 80<sup>o</sup>\n But ∠BEA = ∠CEX\n Therefore ∠CEX = 80<sup>o</sup>)",
+                        "explanation": "Considering triangle ABC<br> a + a + 50 + 70 = 180 (angle sum of a triangle<br> 2a + 120 = 180<br> 2a = 60<br> a = 30<br> Using triangle BAE<br> a + ∠BEA + 70 = 180<br> 30 + ∠BEA + 70 = 180<br> ∠BEA = 80<sup>o</sup><br> But ∠BEA = ∠CEX<br> Therefore ∠CEX = 80<sup>o</sup>)",
                         "options": [
                             "Angle CEX  = 30<sup>o</sup>",
                             "Angle CEX  = 40<sup>o</sup>",
@@ -16277,7 +16277,7 @@ const math_ple = [
                         "question": "Find the size of the angle DCX",
                         "type": "multipleChoice",
                         "answer": "Angle DCX = 60<sup>o</sup>",
-                        "explanation": " Angel XCA = angle BAC = 70<sup>o</sup> (alternative angles)\n Angle BCA + angle ACX + angle DCX = 180<sup>o</sup> (angle sum on a straight line)\n 50 + 70 + ∠DCX = 180\n ∠DCX = 60<sup>o</sup>",
+                        "explanation": " Angel XCA = angle BAC = 70<sup>o</sup> (alternative angles)<br> Angle BCA + angle ACX + angle DCX = 180<sup>o</sup> (angle sum on a straight line)<br> 50 + 70 + ∠DCX = 180<br> ∠DCX = 60<sup>o</sup>",
                         "options": [
                             "Angle DCX = 30<sup>o</sup>",
                             "Angle DCX = 60<sup>o</sup>",
@@ -16341,7 +16341,7 @@ const math_ple = [
                 "question": "Given that K = {g,m,v,z}, find the numbers of subjects in set K.",
                 "type": "multipleChoice",
                 "answer": "4 subsets",
-                "explanation": "Subsets of K are;\n {g}, {m}, {v} and {z}\n which are 4 in total",
+                "explanation": "Subsets of K are;<br> {g}, {m}, {v} and {z}<br> which are 4 in total",
                 "options": [
                     "9 subsets",
                     "6 subsets",
@@ -16353,7 +16353,7 @@ const math_ple = [
                 "question": "Work out : 1/6 x 3/4",
                 "type": "multipleChoice",
                 "answer": "1/8",
-                "explanation": "= 1/2 x 1/4\n = 1/8",
+                "explanation": "= 1/2 x 1/4<br> = 1/8",
                 "options": [
                     "1/24",
                     "1/8",
@@ -16365,7 +16365,7 @@ const math_ple = [
                 "question": "Given that set P = {1, 2, 3, 5, 7, 9 } and set Q = {2, 3, 5, 7} find n(P∩Q)",
                 "type": "multipleChoice",
                 "answer": "n(P n Q) = 3",
-                "explanation": "P ∩ Q = {2, 3, 5, 7}\n n (P n Q) = 3",
+                "explanation": "P ∩ Q = {2, 3, 5, 7}<br> n (P n Q) = 3",
                 "options": [
                     "n(P n Q) = 4",
                     "n(P n Q) = 6",
@@ -16383,7 +16383,7 @@ const math_ple = [
                 "question": "In a market, the cost of a pawpaw is sh 800 more than the cost of a mango. A mango costs two thirds of the cost of a pineapple. The total cost of the three fruits is sh 4,300. Calculate the cost of a pineapple.",
                 "type": "multipleChoice",
                 "answer": "Cost of a pineapple is sh 1,500",
-                "explanation": "Let cost of a pineapple be k\n Pineapple = k\n Mango = 2/3k\n Pawpaw = 2/3k + 800\n k + 2/3k + 2/3k + 800 = 4300\n k + 2/3k + 2/3k + 800 - 800 = 4300 - 800\n k + 2/3k + 2/3k = 3500\n Multiply through by 3\n 3k + 2k + 2k = 10500\n 7k = 10500\n k = 1500",
+                "explanation": "Let cost of a pineapple be k<br> Pineapple = k<br> Mango = 2/3k<br> Pawpaw = 2/3k + 800<br> k + 2/3k + 2/3k + 800 = 4300<br> k + 2/3k + 2/3k + 800 - 800 = 4300 - 800<br> k + 2/3k + 2/3k = 3500<br> Multiply through by 3<br> 3k + 2k + 2k = 10500<br> 7k = 10500<br> k = 1500",
                 "options": [
                     "Cost of a pineapple is sh 2,500",
                     "Cost of a pineapple is sh 1,500",
@@ -16400,7 +16400,7 @@ const math_ple = [
                         "question": "Find the diameter of the tank formed. (Use π = 22/7)",
                         "type": "multipleChoice",
                         "answer": "Diameter = 70cm",
-                        "explanation": "Circumference = 2 x π x radius\n Since the rectangle was folded to form the cylinder, Length = Circumference\n From C = 2πr\n 220 = 2 x 22/7 x r\n 220 = 44/7 x r\n 220 x 7 = 44/7 x r x 7\n 1540 = 44r\n 1540/44 = 44r/44\n 35 = r\n r = 35\n Diameter = radius x 2\n = 35 x 2\n = 70",
+                        "explanation": "Circumference = 2 x π x radius<br> Since the rectangle was folded to form the cylinder, Length = Circumference<br> From C = 2πr<br> 220 = 2 x 22/7 x r<br> 220 = 44/7 x r<br> 220 x 7 = 44/7 x r x 7<br> 1540 = 44r<br> 1540/44 = 44r/44<br> 35 = r<br> r = 35<br> Diameter = radius x 2<br> = 35 x 2<br> = 70",
                         "options": [
                             "Diameter = 35cm",
                             "Diameter = 70cm",
@@ -16412,7 +16412,7 @@ const math_ple = [
                         "question": "Calculate the area of the sheet needed to cover the base of the tank.",
                         "type": "multipleChoice",
                         "answer": "Area = 3850 cm<sup>2</sup>",
-                        "explanation": "Area of sheet needed to cover = Area of circle that can fit on the cylinder\n = π x radius<sup>2</sup>\n = 22/7 x (70/2)<sup>2</sup>\n = 22/7 x 35<sup>2</sup>\n 22/7 x 1225\n = 3850 cm<sup>2</sup>",
+                        "explanation": "Area of sheet needed to cover = Area of circle that can fit on the cylinder<br> = π x radius<sup>2</sup><br> = 22/7 x (70/2)<sup>2</sup><br> = 22/7 x 35<sup>2</sup><br> 22/7 x 1225<br> = 3850 cm<sup>2</sup>",
                         "options": [
                             "Area = 2250 cm<sup>2</sup>",
                             "Area = 3800 cm<sup>2</sup>",
@@ -16424,7 +16424,7 @@ const math_ple = [
                         "question": "Calculate the capacity of the tank.",
                         "type": "multipleChoice",
                         "answer": "Capacity = 385000cm<sup>3</sup>",
-                        "explanation": "Capacity = Volume\n Volume = π x radiuscm<sup>2</sup> x height\n = π x (70/2)<sup>2</sup> x 100\n = 22/7 x 35 x 35 x 100\n = 385000",
+                        "explanation": "Capacity = Volume<br> Volume = π x radiuscm<sup>2</sup> x height<br> = π x (70/2)<sup>2</sup> x 100<br> = 22/7 x 35 x 35 x 100<br> = 385000",
                         "options": [
                             "Capacity = 38500cm<sup>3</sup>",
                             "Capacity = 385000cm<sup>3</sup>",
@@ -16442,7 +16442,7 @@ const math_ple = [
                         "question": "How many pupils are in the class?",
                         "type": "multipleChoice",
                         "answer": "75 pupils",
-                        "explanation": "Girls = 60% = 60/100\n = 3/5\n Boys = 5/5 - 3/5\n = 2/5\n Boys day scholars = 1/3 of 2/5\n = 1/3 x 2/5\n = 2/15\n Let the total number of pupils be n\n 2/15 x n = 10\n 15 x 2/15n = 10 x 15\n 2n = 150\n n = 75 pupils",
+                        "explanation": "Girls = 60% = 60/100<br> = 3/5<br> Boys = 5/5 - 3/5<br> = 2/5<br> Boys day scholars = 1/3 of 2/5<br> = 1/3 x 2/5<br> = 2/15<br> Let the total number of pupils be n<br> 2/15 x n = 10<br> 15 x 2/15n = 10 x 15<br> 2n = 150<br> n = 75 pupils",
                         "options": [
                             "70 pupils",
                             "65 pupils",
@@ -16454,7 +16454,7 @@ const math_ple = [
                         "question": "Find the number of girls who are borders",
                         "type": "multipleChoice",
                         "answer": "9 girls",
-                        "explanation": "Number of girls = 3/5 x 75\n = 3 x 15\n = 45 girls\n Girls in boarding = 1/5 x 45\n = 9 girls",
+                        "explanation": "Number of girls = 3/5 x 75<br> = 3 x 15<br> = 45 girls<br> Girls in boarding = 1/5 x 45<br> = 9 girls",
                         "options": [
                             "10 girls",
                             "9 girls",
@@ -16469,7 +16469,7 @@ const math_ple = [
                 "question": "Given that m = 3k and k = 5, find the value of 2k + 6m",
                 "type": "multipleChoice",
                 "answer": "100",
-                "explanation": "2k + 6m\n 2 x 5 + 6 x 3k\n 10 + 6 x 3 x 5\n 10 + 90\n = 100",
+                "explanation": "2k + 6m<br> 2 x 5 + 6 x 3k<br> 10 + 6 x 3 x 5<br> 10 + 90<br> = 100",
                 "options": [
                     "10",
                     "100",
@@ -16496,7 +16496,7 @@ const math_ple = [
                 "question": "A geometry set costs half as much as a book. A book costs 600 more than a fountain pen. If the total cost of the three items is sh 6,900, find the cost of the geometry set.",
                 "type": "multipleChoice",
                 "answer": "shs 1,500",
-                "explanation": "Let the cost of fountain pen be y\n Book = y + 600\n Set = 1/2(y + 600)\n y + y + 600 + 1/2(y + 600) = 6900\n 2y + 600 + (y+600)/2 = 6900\n Multiply through by 2\n 4y + 1200 + y + 600 = 13800\n 4y + y + 600 + 1200 = 13800\n 5y + 1800 - 1800 = 13800 - 1800\n 5y = 12000\n y = 2400\n Cost of geometry set\n = 1/2(y+600)\n = 1/2(2400 + 600)\n = 1/2 x 3000\n = shs 1500",
+                "explanation": "Let the cost of fountain pen be y<br> Book = y + 600<br> Set = 1/2(y + 600)<br> y + y + 600 + 1/2(y + 600) = 6900<br> 2y + 600 + (y+600)/2 = 6900<br> Multiply through by 2<br> 4y + 1200 + y + 600 = 13800<br> 4y + y + 600 + 1200 = 13800<br> 5y + 1800 - 1800 = 13800 - 1800<br> 5y = 12000<br> y = 2400<br> Cost of geometry set<br> = 1/2(y+600)<br> = 1/2(2400 + 600)<br> = 1/2 x 3000<br> = shs 1500",
                 "options": [
                     "shs 2,000",
                     "shs 3,000",
@@ -16512,7 +16512,7 @@ const math_ple = [
                         "question": "Find Nanziri's age",
                         "type": "multipleChoice",
                         "answer": "36 years old",
-                        "explanation": "Let Nanziri's age be x\n Son = ½x\n Daughter = ⅓x\n Total age = 30 years\n ½x + ⅓x = 30\n x/2 + x/3 = 30\n (3x + 2x)/6 = 30\n 5x/6 = 30\n 5x = (30x6)\n 5x = 180\n x = 36",
+                        "explanation": "Let Nanziri's age be x<br> Son = ½x<br> Daughter = ⅓x<br> Total age = 30 years<br> ½x + ⅓x = 30<br> x/2 + x/3 = 30<br> (3x + 2x)/6 = 30<br> 5x/6 = 30<br> 5x = (30x6)<br> 5x = 180<br> x = 36",
                         "options": [
                             "30 years old",
                             "25 years old",
@@ -16524,7 +16524,7 @@ const math_ple = [
                         "question": "How old is the daughter?",
                         "type": "multipleChoice",
                         "answer": "12 years old",
-                        "explanation": "Daughter's age  = 1/3 x 36\n = 12 years old",
+                        "explanation": "Daughter's age  = 1/3 x 36<br> = 12 years old",
                         "options": [
                             "10 years old",
                             "18 years old",
@@ -16543,7 +16543,7 @@ const math_ple = [
                         "question": "Find the value of y",
                         "type": "multipleChoice",
                         "answer": "y = 5",
-                        "explanation": "Length = Length\n 2y - 3 = y + 2\n 2y - 3 + 3 = y + 2 + 3\n 2y = y + 5\n 2y - y = y - y + 5\n y = 5",
+                        "explanation": "Length = Length<br> 2y - 3 = y + 2<br> 2y - 3 + 3 = y + 2 + 3<br> 2y = y + 5<br> 2y - y = y - y + 5<br> y = 5",
                         "options": [
                             "y = 6",
                             "y = 5",
@@ -16555,7 +16555,7 @@ const math_ple = [
                         "question": "Find the volume of the cuboid",
                         "type": "multipleChoice",
                         "answer": "Volume = 105 cm<sup>3</sup>",
-                        "explanation": "Length = (y+2)cm\n = 5+2\n = 7 cm\n Width = (y-2)cm\n = y-2\n = 5-2\n = 3 cm\n Height\n y cm = 5 cm\n Volume = L x W x H\n = (7 x 3) x 5\n = 21 x 5\n = 105 cm<sup>3</sup>",
+                        "explanation": "Length = (y+2)cm<br> = 5+2<br> = 7 cm<br> Width = (y-2)cm<br> = y-2<br> = 5-2<br> = 3 cm<br> Height<br> y cm = 5 cm<br> Volume = L x W x H<br> = (7 x 3) x 5<br> = 21 x 5<br> = 105 cm<sup>3</sup>",
                         "options": [
                             "Volume = 100 cm<sup>3</sup>",
                             "Volume = 110 cm<sup>3</sup>",
@@ -16651,7 +16651,7 @@ const math_ple = [
                         "question": "How many poles are needed to fence the flower garden? (Take π = 22/7)",
                         "type": "multipleChoice",
                         "answer": "55 poles",
-                        "explanation": "Circumfrence = π x Diameter\n = 22/7 x 14\n = 44 m\n Convert 44m to cm\n = (44 x 100)\n = 4400 cm\n Number of poles = Circumference/Interval\n = 4400/80\n = 55 poles",
+                        "explanation": "Circumfrence = π x Diameter<br> = 22/7 x 14<br> = 44 m<br> Convert 44m to cm<br> = (44 x 100)<br> = 4400 cm<br> Number of poles = Circumference/Interval<br> = 4400/80<br> = 55 poles",
                         "options": [
                             "20 poles",
                             "50 poles",
@@ -16663,7 +16663,7 @@ const math_ple = [
                         "question": "If each pole costs shs 3,000, how much money will the school spend on poles?",
                         "type": "multipleChoice",
                         "answer": "shs 165,000",
-                        "explanation": "55 x 3,000\n = 165,000",
+                        "explanation": "55 x 3,000<br> = 165,000",
                         "options": [
                             "shs 60,000",
                             "shs 150,000",
@@ -16708,7 +16708,7 @@ const math_ple = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/5.png",
                 "type": "multipleChoice",
                 "answer": "16:50 hours",
-                "explanation": "4:50p.m + 12hours\n = 16:50 or 16 hours 50 minutes",
+                "explanation": "4:50p.m + 12hours<br> = 16:50 or 16 hours 50 minutes",
                 "options": [
                     "04:50 hours",
                     "16:50 hours",
@@ -16720,7 +16720,7 @@ const math_ple = [
                 "question": "Solve the equation: 7n + 2 = 23",
                 "type": "multipleChoice",
                 "answer": "n = 3",
-                "explanation": "7n + 2 = 23\n 7n + 2 - 2 = 23 - 2\n 7n = 21\n 7n/7 = 21/7\n n = 3",
+                "explanation": "7n + 2 = 23<br> 7n + 2 - 2 = 23 - 2<br> 7n = 21<br> 7n/7 = 21/7<br> n = 3",
                 "options": [
                     "n = 7",
                     "n = 4",
@@ -16750,7 +16750,7 @@ const math_ple = [
                 "question": "Simplify: 5ab - 2xy - ab + 7y",
                 "type": "multipleChoice",
                 "answer": "4ab - y(2x - 7)",
-                "explanation": "5ab - ab - 2xy + 7y\n 4ab - y(2x - 7)",
+                "explanation": "5ab - ab - 2xy + 7y<br> 4ab - y(2x - 7)",
                 "options": [
                     "4ab - y(2x - 7)",
                     "4ab - y(2x + 7)",
@@ -16762,7 +16762,7 @@ const math_ple = [
                 "question": "Round off 12,962 onto the nearest thousands",
                 "type": "multipleChoice",
                 "answer": "12,962  is  13,000 to the nearest a thousands",
-                "explanation": "12000 + 1000\n = 13,000",
+                "explanation": "12000 + 1000<br> = 13,000",
                 "options": [
                     "12,999",
                     "13,000",
@@ -16791,7 +16791,7 @@ const math_ple = [
                 "question": "Simplify: 5k - 2(3 - k)",
                 "type": "multipleChoice",
                 "answer": "7k - 6",
-                "explanation": "Use BODMAS\n Open the brackets\n 5k - 6 + 2k\n Collect the like terms\n 5k + 2k - 6\n 7k - 6",
+                "explanation": "Use BODMAS<br> Open the brackets<br> 5k - 6 + 2k<br> Collect the like terms<br> 5k + 2k - 6<br> 7k - 6",
                 "options": [
                     "3k - 6",
                     "7k - 6",
@@ -16825,7 +16825,7 @@ const math_ple = [
                 "question": "Find the sum of the 5<sup>th</sup> and 8<sup>th</sup> prime numbers",
                 "type": "multipleChoice",
                 "answer": "Sum = 30",
-                "explanation": "The 5<sup>th</sup> is 11 and the 8<sup>th</sup> is 19\n So 11 + 19 = 30",
+                "explanation": "The 5<sup>th</sup> is 11 and the 8<sup>th</sup> is 19<br> So 11 + 19 = 30",
                 "options": [
                     "Sum = 34",
                     "Sum = 30",
@@ -16837,7 +16837,7 @@ const math_ple = [
                 "question": "Find the next number in the sequence: 49, 47, 44, 39, .....",
                 "type": "multipleChoice",
                 "answer": "32",
-                "explanation": "By subtracting prime numbers from the given sequence\n 49 - 2 = 47\n 47 - 3 = 44\n 44 - 5 = 39\n 39 - 7 = 32",
+                "explanation": "By subtracting prime numbers from the given sequence<br> 49 - 2 = 47<br> 47 - 3 = 44<br> 44 - 5 = 39<br> 39 - 7 = 32",
                 "options": [
                     "32",
                     "31",
@@ -16850,7 +16850,7 @@ const math_ple = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/6.png",
                 "type": "multipleChoice",
                 "answer": "X = 18°",
-                "explanation": "3x + 90°+ 2x = 180° (angle sum of straight line)\n 5x + 90° = 180°\n 5x + 90 - 90 = 180 - 90\n 5x = 90\n x = 18°",
+                "explanation": "3x + 90°+ 2x = 180° (angle sum of straight line)<br> 5x + 90° = 180°<br> 5x + 90 - 90 = 180 - 90<br> 5x = 90<br> x = 18°",
                 "options": [
                     "X = 18°",
                     "X = 15°",
@@ -16868,7 +16868,7 @@ const math_ple = [
                 "question": "Change 250 grammes into kilogrammes",
                 "type": "multipleChoice",
                 "answer": "0.25 kilogrammes",
-                "explanation": "1 gram = 1/1000 kilogrammes\n 250 grammes = (250 x 1/1000) kilogrammes\n = 0.25 kilogrammes",
+                "explanation": "1 gram = 1/1000 kilogrammes<br> 250 grammes = (250 x 1/1000) kilogrammes<br> = 0.25 kilogrammes",
                 "options": [
                     "0.025 kilogrammes",
                     "0.25 kilogrammes",
@@ -16880,7 +16880,7 @@ const math_ple = [
                 "question": "A car uses 7 litres of petrol to cover 28 kilometres. How many litres of petrol can it use to cover 64 kilometres?",
                 "type": "multipleChoice",
                 "answer": "16 litres",
-                "explanation": "28 kilometres = 7 litres\n 1 km = 7/28 litres\n = 1/4 litres\n 64 km = (64 x 1/4) litres\n = 16 litres",
+                "explanation": "28 kilometres = 7 litres<br> 1 km = 7/28 litres<br> = 1/4 litres<br> 64 km = (64 x 1/4) litres<br> = 16 litres",
                 "options": [
                     "448 litres",
                     "256 litres",
@@ -16892,7 +16892,7 @@ const math_ple = [
                 "question": "Find the number which has been expanded below: (3x10<sup>2</sup>) + (5x10<sup>-1</sup>)",
                 "type": "multipleChoice",
                 "answer": "300.5",
-                "explanation": "(3 x 10 x 10) + (5 x 1/10)\n = 300 + 0.5\n = 300.5",
+                "explanation": "(3 x 10 x 10) + (5 x 1/10)<br> = 300 + 0.5<br> = 300.5",
                 "options": [
                     "30.5",
                     "300.5",
@@ -16904,7 +16904,7 @@ const math_ple = [
                 "question": "A die is tossed once. What is the probability that a number less than 5 will appear on top?",
                 "type": "multipleChoice",
                 "answer": "Probability = 2/3",
-                "explanation": "Probability = Number of favorable outcomes/Total number of possible outcomes\n = 4/6\n Since both the numerator and denominator are divisible by 2\n = (4÷2)/(6÷2)\n = 2/3",
+                "explanation": "Probability = Number of favorable outcomes/Total number of possible outcomes<br> = 4/6<br> Since both the numerator and denominator are divisible by 2<br> = (4÷2)/(6÷2)<br> = 2/3",
                 "options": [
                     "Probability = 5/6",
                     "Probability = 2/3",
@@ -16916,7 +16916,7 @@ const math_ple = [
                 "question": "Work out 14/15 ÷ 2/5",
                 "type": "multipleChoice",
                 "answer": "2⅓",
-                "explanation": "14/15 ÷ 2/5\n = 14/15 x 5/2\n = 7/3\n = 2⅓",
+                "explanation": "14/15 ÷ 2/5<br> = 14/15 x 5/2<br> = 7/3<br> = 2⅓",
                 "options": [
                     "2⅓",
                     "2½",
@@ -16928,7 +16928,7 @@ const math_ple = [
                 "question": "A pupil bought a dozen of exercise books for shs 6,000. He later sold each book at Sh 700. Calculate the profit.",
                 "type": "multipleChoice",
                 "answer": "shs 2,400",
-                "explanation": "Buying price = sh 6,000\n Selling price;\n 1 dozen = 12 books\n 12 books = 12 x 700\n = shs 8400\n Profit = selling price - buying price\n = 8400 - 6000\n = shs 2,400",
+                "explanation": "Buying price = sh 6,000<br> Selling price;<br> 1 dozen = 12 books<br> 12 books = 12 x 700<br> = shs 8400<br> Profit = selling price - buying price<br> = 8400 - 6000<br> = shs 2,400",
                 "options": [
                     "shs 2,400",
                     "shs 4,800",
@@ -16969,7 +16969,7 @@ const math_ple = [
                 "question": "Solve: 3 + m = 2(finite 5)",
                 "type": "multipleChoice",
                 "answer": "m = 7",
-                "explanation": "3 + m = 2 x 5\n 3 + m = 10\n m = 10 - 3\n m = 7",
+                "explanation": "3 + m = 2 x 5<br> 3 + m = 10<br> m = 10 - 3<br> m = 7",
                 "options": [
                     "m = 5",
                     "m = 7",
@@ -16981,7 +16981,7 @@ const math_ple = [
                 "question": "Change 10 square meters into square centimeters",
                 "type": "multipleChoice",
                 "answer": "10 m<sub>2</sub> = 100,000 cm<sub>2</sub>",
-                "explanation": "1 m = 100 cm\n 1 m<sub>2</sub> = 10000 cm<sub>2</sub>\n 10 m<sub>2</sub> = (10 x 10000) cm<sub>2</sub>\n = 100000 cm<sub>2</sub>",
+                "explanation": "1 m = 100 cm<br> 1 m<sub>2</sub> = 10000 cm<sub>2</sub><br> 10 m<sub>2</sub> = (10 x 10000) cm<sub>2</sub><br> = 100000 cm<sub>2</sub>",
                 "options": [
                     "10 m<sub>2</sub> = 100,000 cm<sub>2</sub>",
                     "10 m<sub>2</sub> = 1,000 cm<sub>2</sub>",
@@ -17016,7 +17016,7 @@ const math_ple = [
                 "question": "The mass of a packet of coffee is 1/8kg. what is this mass in grams?",
                 "type": "multipleChoice",
                 "answer": "125 grams",
-                "explanation": "1 kg = 1000 g\n 1/8 kg = (1/8 x 1000)g\n = 1000/8\n = 500/4\n = 250/2\n = 125",
+                "explanation": "1 kg = 1000 g<br> 1/8 kg = (1/8 x 1000)g<br> = 1000/8<br> = 500/4<br> = 250/2<br> = 125",
                 "options": [
                     "0.125 grams",
                     "12.5 grams",
@@ -17041,7 +17041,7 @@ const math_ple = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol 6.png",
                 "type": "multipleChoice",
                 "answer": "b = 50<sup>o</sup>",
-                "explanation": "b + 20 + 110 = 180\n b + 130 = 180\n b + 130 - 130 = 180 - 130\n b = 50",
+                "explanation": "b + 20 + 110 = 180<br> b + 130 = 180<br> b + 130 - 130 = 180 - 130<br> b = 50",
                 "options": [
                     "b = 90<sup>o</sup>",
                     "b = 50<sup>o</sup>",
@@ -17053,7 +17053,7 @@ const math_ple = [
                 "question": "Find the next number in the sequence: 1, 2, 10, 37, .....",
                 "type": "text",
                 "answer": "101",
-                "explanation": "The difference between 2 and 1 is 1\n The difference between 10 and 2 is 8\n The difference between 37 and 10 is 27\n which is gotten from 1<sub>3</sub>, 2<sub>3</sub>, 3<sub>3</sub>\n So the next difference is 4<sub>3</sub> = 64\n 37 + 64 = 101",
+                "explanation": "The difference between 2 and 1 is 1<br> The difference between 10 and 2 is 8<br> The difference between 37 and 10 is 27<br> which is gotten from 1<sub>3</sub>, 2<sub>3</sub>, 3<sub>3</sub><br> So the next difference is 4<sub>3</sub> = 64<br> 37 + 64 = 101",
                 "id": "ple_math_sect_A10_2"
             },
             {
@@ -17068,7 +17068,7 @@ const math_ple = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/10.png",
                 "type": "multipleChoice",
                 "answer": "d = 36<sup>o</sup>",
-                "explanation": "Since its an equilateral triangle, the base angles are equal\n ∴ 2d + 2d + d = 180 (Angle sum of a triangle)\n 5d = 180\n 5d/5 = 180/5\n d = 36",
+                "explanation": "Since its an equilateral triangle, the base angles are equal<br> ∴ 2d + 2d + d = 180 (Angle sum of a triangle)<br> 5d = 180<br> 5d/5 = 180/5<br> d = 36",
                 "options": [
                     "d = 45<sup>o</sup>",
                     "d = 60<sup>o</sup>",
@@ -17080,7 +17080,7 @@ const math_ple = [
                 "question": "A trader sold a pair of shoes at sh 32,800 making a profit of sh 1,200. What was the cost price of the pair of shoes?",
                 "type": "multipleChoice",
                 "answer": "Cost price = 31,600",
-                "explnation": "Cost price = Selling price - Profit\n = 32,800 - 1,200\n = 31,600",
+                "explnation": "Cost price = Selling price - Profit<br> = 32,800 - 1,200<br> = 31,600",
                 "options": [
                     "Cost price = 30,600",
                     "Cost price = 31,000",
@@ -17103,7 +17103,7 @@ const math_ple = [
                 "question": "Work out: 2/3 + 1/4",
                 "type": "multipleChoice",
                 "answer": "11/12",
-                "explanation": "LCM of 3 and 4 = 12\n  = ((4 x 2) + (3 x 1))/12\n = (8 + 3)/12\n = 11/12",
+                "explanation": "LCM of 3 and 4 = 12<br>  = ((4 x 2) + (3 x 1))/12<br> = (8 + 3)/12<br> = 11/12",
                 "options": [
                     "11/12",
                     "1/2",
@@ -23113,7 +23113,7 @@ const sci_ple = [
                             "30g"
                         ],
                         "explanation": [
-                            "volume = 15cc\n Mass = density * volume \n = 2*15 \n =30g"
+                            "volume = 15cc<br> Mass = density * volume <br> = 2*15 <br> =30g"
                         ],
                         "options": [
                             "30g",
@@ -24792,7 +24792,7 @@ const sci_ple = [
                                 "answer": [
                                     "90cm<sup>3</sup>"
                                 ],
-                                "explanations": "Desnsity = mass/volume \n implies that volume = mass/desnity \n = 270/3 \n = 90cm<sup>3</sup>",
+                                "explanations": "Desnsity = mass/volume <br> implies that volume = mass/desnity <br> = 270/3 <br> = 90cm<sup>3</sup>",
                                 "Options": [
                                     "90cm<sup>3</sup>",
                                     "90cm<sup>2</sup>",
@@ -24999,7 +24999,7 @@ const sci_ple = [
                                         "question": "Calculate the density of the irregular object if its mass is 60 g",
                                         "type": "MultipleChoice",
                                         "answer": "3gcm<sup>-3</sup>",
-                                        "Explanation": "Density \n = mass/volume\n = 60/20\n = 3gcm<sup>-3</sup>",
+                                        "Explanation": "Density <br> = mass/volume<br> = 60/20<br> = 3gcm<sup>-3</sup>",
                                         "Options": [
                                             "20",
                                             "30"
@@ -26083,7 +26083,7 @@ const sci_ple = [
                             "250N"
                         ],
                         "Explanation": [
-                            "MA = \n L/E \n = 50/E \n = 2 \n E \n = 50/2 \n= 25kg \n E = 25*10 \n = 250N"
+                            "MA = <br> L/E <br> = 50/E <br> = 2 <br> E <br> = 50/2 <br>= 25kg <br> E = 25*10 <br> = 250N"
                         ],
                         "options": [
                             "250N",
@@ -28220,7 +28220,7 @@ const sci_ple = [
                                             "2"
                                         ],
                                         "explanation": [
-                                            "MA = Load/Effort \n = 80/40 \n = 2"
+                                            "MA = Load/Effort <br> = 80/40 <br> = 2"
                                         ],
                                         "options": [
                                             "2",
@@ -30061,7 +30061,7 @@ const math_ple_ans = [
                 "question_text": "Work out 5/9 ÷ 2/3",
                 "type": "multipleChoice",
                 "answer": "5/6",
-                "explanation": "5/9 x 3/2\n = 5/3 x 1/2\n = 5/6",
+                "explanation": "5/9 x 3/2<br> = 5/3 x 1/2<br> = 5/6",
                 "options": [
                     "5/6",
                     "1",
@@ -30095,7 +30095,7 @@ const math_ple_ans = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/5.png",
                 "type": "multipleChoice",
                 "answer": "16:50 hours",
-                "explanation": "4:50p.m + 12hours\n = 16:50 or 16 hours 50 minutes",
+                "explanation": "4:50p.m + 12hours<br> = 16:50 or 16 hours 50 minutes",
                 "options": [
                     "04:50 hours",
                     "16:50 hours",
@@ -30132,7 +30132,7 @@ const math_ple_ans = [
                 "question_text": "Find the number which has been expanded below: (3x10<sup>2</sup>) + (5x10<sup>-1</sup>)",
                 "type": "multipleChoice",
                 "answer": "300.5",
-                "explanation": "(3 x 10 x 10) + (5 x 1/10)\n = 300 + 0.5\n = 300.5",
+                "explanation": "(3 x 10 x 10) + (5 x 1/10)<br> = 300 + 0.5<br> = 300.5",
                 "options": [
                     "30.5",
                     "300.5",
@@ -30151,7 +30151,7 @@ const math_ple_ans = [
                 "question_text": "Simplify 4t - 2k + 5k - t",
                 "type": "multipleChoice",
                 "answer": "3t + 3k",
-                "explanation": "4t - 2k + 5k - t\n = 4t - t + 5k - 2k\n = 3t + 3k",
+                "explanation": "4t - 2k + 5k - t<br> = 4t - t + 5k - 2k<br> = 3t + 3k",
                 "options": [
                     "4t + 3k",
                     "3t + 2k",
@@ -30189,7 +30189,7 @@ const math_ple_ans = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol 6.png",
                 "type": "multipleChoice",
                 "answer": "b = 50<sup>o</sup>",
-                "explanation": "b + 20 + 110 = 180\n b + 130 = 180\n b + 130 - 130 = 180 - 130\n b = 50",
+                "explanation": "b + 20 + 110 = 180<br> b + 130 = 180<br> b + 130 - 130 = 180 - 130<br> b = 50",
                 "options": [
                     "b = 90<sup>o</sup>",
                     "b = 50<sup>o</sup>",
@@ -30208,7 +30208,7 @@ const math_ple_ans = [
                 "question_text": "The area of a square flower garden is 196m <sub>2</sub> . find the length of each side.",
                 "type": "multipleChoice",
                 "answer": "14 m",
-                "explanation": "Area of a square = Side x Side\n = S<sub>2</sub>\n 196 = S<sub>2</sub>\n √196 = √S<sub>2</sub>\n 14 = S\n ∴ S = 14",
+                "explanation": "Area of a square = Side x Side<br> = S<sub>2</sub><br> 196 = S<sub>2</sub><br> √196 = √S<sub>2</sub><br> 14 = S<br> ∴ S = 14",
                 "options": [
                     "14 m",
                     "49 m",
@@ -30227,7 +30227,7 @@ const math_ple_ans = [
                 "question_text": "Convert 12½% to fraction in its lowest term",
                 "type": "multipleChoice",
                 "answer": "= 1/8",
-                "explanation": "12½/100\n convert 12½ to an improper fraction\n = (25/2)/100\n = 25/2 ÷ 100\n = 25/2 ÷ 100/1\n = 25/2 x 1/100\n = 1/2 x 1/4\n = 1/8",
+                "explanation": "12½/100<br> convert 12½ to an improper fraction<br> = (25/2)/100<br> = 25/2 ÷ 100<br> = 25/2 ÷ 100/1<br> = 25/2 x 1/100<br> = 1/2 x 1/4<br> = 1/8",
                 "options": [
                     "= 1/4",
                     "= 1/2",
@@ -30246,7 +30246,7 @@ const math_ple_ans = [
                 "question_text": "Change 8<sub>ten</sub> to binary system.",
                 "type": "multipleChoice",
                 "answer": "1000",
-                "explanation": "Divide 8 by 2. The quotient is 4 and the remainder is 0\n Divide 4 by 2. The quotient is 2 and the remainder is 0\n Divide 2 by 2. The quotient is 1 and the remainder is 0\n Write down the remainders in reverse order as 0001\n Therefore, 8 in binary is 1000",
+                "explanation": "Divide 8 by 2. The quotient is 4 and the remainder is 0<br> Divide 4 by 2. The quotient is 2 and the remainder is 0<br> Divide 2 by 2. The quotient is 1 and the remainder is 0<br> Write down the remainders in reverse order as 0001<br> Therefore, 8 in binary is 1000",
                 "options": [
                     "100",
                     "1000",
@@ -30265,7 +30265,7 @@ const math_ple_ans = [
                 "question_text": "Write the number whose scientific notation is 9.85 x 10<sup>3</sup>",
                 "type": "multipleChoice",
                 "answer": "9850",
-                "explanation": "9.85 x (10 x 10 x 10)\n = 9.85 x 1000\n = 9850",
+                "explanation": "9.85 x (10 x 10 x 10)<br> = 9.85 x 1000<br> = 9850",
                 "options": [
                     "9850",
                     "985",
@@ -30285,7 +30285,7 @@ const math_ple_ans = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/15.png",
                 "type": "multipleChoice",
                 "answer": "99 cm",
-                "explanation": "From circumference of a circle;\n C = 2πr\n Since we finding the length of the arc\n Length = 2πr/2\n = πr\n = 22/7 x 63/2\n = 99",
+                "explanation": "From circumference of a circle;<br> C = 2πr<br> Since we finding the length of the arc<br> Length = 2πr/2<br> = πr<br> = 22/7 x 63/2<br> = 99",
                 "options": [
                     "99 cm",
                     "126 cm",
@@ -30305,7 +30305,7 @@ const math_ple_ans = [
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/16.png",
                 "type": "multipleChoice",
                 "answer": "Bearing = 245<sup>o</sup>",
-                "explanation": "180 + (90 - 25)\n = 180 + 65\n = 245",
+                "explanation": "180 + (90 - 25)<br> = 180 + 65<br> = 245",
                 "options": [
                     "Bearing = 75<sup>o</sup>",
                     "Bearing = 25<sup>o</sup>",
@@ -30324,7 +30324,7 @@ const math_ple_ans = [
                 "question_text": "A train left station K at 11 38 hours and reached station M at 14 27 hours. How long did the train take to travel from K to M?",
                 "type": "multipleChoice",
                 "answer": "2 hours and 49 minutes",
-                "explanation": "Time taken = Arrival time - Departure time\n = 14:27 - 11:38\n Subtract the minutes first\n 27 - 38 = -11 (carry over 1)\n Now, subtract the hours\n (14 - 1) - 11 = 2",
+                "explanation": "Time taken = Arrival time - Departure time<br> = 14:27 - 11:38<br> Subtract the minutes first<br> 27 - 38 = -11 (carry over 1)<br> Now, subtract the hours<br> (14 - 1) - 11 = 2",
                 "options": [
                     "2 hours and 11 minutes",
                     "1 hours and 49 minutes",
@@ -30343,7 +30343,7 @@ const math_ple_ans = [
                 "question_text": "Gidudu has goats and sheep in the ratio of 3:2. If he has 24 goats, how many sheep does he have?",
                 "type": "multipleChoice",
                 "answer": "16 sheep",
-                "explanation": "Let the total number of animals be x\n Total parts = 3+2 = 5\n 3x/5 = 24\n Multipy both sides by 5\n 3x = 24x5\n x = (24x5)/3\n x = 40 animals\n Number of sheep = Total number of animals - Number of goats\n = 40 - 24\n = 16 sheep",
+                "explanation": "Let the total number of animals be x<br> Total parts = 3+2 = 5<br> 3x/5 = 24<br> Multipy both sides by 5<br> 3x = 24x5<br> x = (24x5)/3<br> x = 40 animals<br> Number of sheep = Total number of animals - Number of goats<br> = 40 - 24<br> = 16 sheep",
                 "options": [
                     "16 sheep",
                     "10 sheep",
@@ -30362,7 +30362,7 @@ const math_ple_ans = [
                 "question_text": "A shopkeeper bought 19 plates at sh 34,200. At what price must the shopkeeper sell each plate in order to raise a profit of sh 3,800?",
                 "type": "multipleChoice",
                 "answer": "2,000",
-                "explanation": "Selling Price per Plate = (Total Cost + Profit)/ Number of plates\n = (34200+3800)/19\n = 38000/19\n = 2000",
+                "explanation": "Selling Price per Plate = (Total Cost + Profit)/ Number of plates<br> = (34200+3800)/19<br> = 38000/19<br> = 2000",
                 "options": [
                     "1,500",
                     "2,000",
@@ -30381,7 +30381,7 @@ const math_ple_ans = [
                 "question_text": "A man got a loan of sh 120,000 from a savings and credit co-operative society at a simple interest rate of 8% per anunm. He paid an interest of sh7,200 on the loan. How long was the loan?",
                 "type": "multipleChoice",
                 "answer": "9 months",
-                "explanation": "Interest = Principal x Rate x Time\n 7200 = 120000 x 8/100 x T\n 7200 = 120000 x 0.08T\n 7200 = 9600T\n T = 7200/9600\n = 3/4\n Convert to months\n = 3/4 x 12\n = 9",
+                "explanation": "Interest = Principal x Rate x Time<br> 7200 = 120000 x 8/100 x T<br> 7200 = 120000 x 0.08T<br> 7200 = 9600T<br> T = 7200/9600<br> = 3/4<br> Convert to months<br> = 3/4 x 12<br> = 9",
                 "options": [
                     "90 months",
                     "9 months",
@@ -30417,7 +30417,7 @@ const math_ple_ans = [
                         "question_text": "Find the value t",
                         "type": "multipleChoice",
                         "answer": "t = 13",
-                        "explanation": "25 + 5 + t - 5 + 3 = 41\n 25 + 5 - 5 + 3 + t = 41\n 28 + t = 41\n 28 - 28 + t = 41 - 28\n t = 13",
+                        "explanation": "25 + 5 + t - 5 + 3 = 41<br> 25 + 5 - 5 + 3 + t = 41<br> 28 + t = 41<br> 28 - 28 + t = 41 - 28<br> t = 13",
                         "options": [
                             "t = 12",
                             "t = 10",
@@ -30438,13 +30438,13 @@ const math_ple_ans = [
         "instruction": null,
         "questions": [
             {
-                "question_text": "Akot went to the market and bought the following items:\n 3 liters of milk at sh2,400 per liter\n 250g of salt at sh2,000 per kg.\n 18 oranges at sh1,500 for every 6 oranges",
+                "question_text": "Akot went to the market and bought the following items:<br> 3 liters of milk at sh2,400 per liter<br> 250g of salt at sh2,000 per kg.<br> 18 oranges at sh1,500 for every 6 oranges",
                 "sub_questions": [
                     {
                         "question_text": "Calculate the total cost of the items",
                         "type": "multipleChoice",
                         "answer": "Total cost = shs 12,200",
-                        "explanation": "Cost of milk = 3 x 2400\n =  shs 7,200\n Cost of salt;\n We first convert the 250 grammes to kilogrammes\n 1 gram = (1/1000) kilogrammes\n 250 g = (250 x 1/1000) kg\n = 1/4 kg\n Cost of salt = 1/4 x 2000\n =  shs 500\n Cost of oranges: \n We first need to find the cost of 1 orange\n 6 oranges = 1500\n 1 orange = 1500/6\n = shs 250\n 18 oranges = 250 x 18\n = shs 4,500\n Total cost = 7,200 + 500 + 4,500\n = 12,200",
+                        "explanation": "Cost of milk = 3 x 2400<br> =  shs 7,200<br> Cost of salt;<br> We first convert the 250 grammes to kilogrammes<br> 1 gram = (1/1000) kilogrammes<br> 250 g = (250 x 1/1000) kg<br> = 1/4 kg<br> Cost of salt = 1/4 x 2000<br> =  shs 500<br> Cost of oranges: <br> We first need to find the cost of 1 orange<br> 6 oranges = 1500<br> 1 orange = 1500/6<br> = shs 250<br> 18 oranges = 250 x 18<br> = shs 4,500<br> Total cost = 7,200 + 500 + 4,500<br> = 12,200",
                         "options": [
                             "Total cost = shs 511,700",
                             "Total cost = shs 12,200",
@@ -30458,7 +30458,7 @@ const math_ple_ans = [
                         "question_text": "Akot paid sh 12,000 for the items. What discount was she given?",
                         "type": "multipleChoice",
                         "answer": "Discount = sh 200",
-                        "explanation": "Discount = Total cost - Amount Paid\n = 12,200 - 12,000\n = 200",
+                        "explanation": "Discount = Total cost - Amount Paid<br> = 12,200 - 12,000<br> = 200",
                         "options": [
                             "Discount = sh 499,700",
                             "Discount = sh 200",
@@ -30482,7 +30482,7 @@ const math_ple_ans = [
                 "question_text": "Work out: (2.4 x 0.5)/0.12",
                 "type": "multipleChoice",
                 "answer": "10",
-                "explanation": "(2.4 x 0.5)/0.12\n = (24/10 x 5/10)/12/100\n = (120/100)/12/100\n = 120/100 ÷ 12/100\n = 120/100 x 100/12\n = 120/12\n = 10",
+                "explanation": "(2.4 x 0.5)/0.12<br> = (24/10 x 5/10)/12/100<br> = (120/100)/12/100<br> = 120/100 ÷ 12/100<br> = 120/100 x 100/12<br> = 120/12<br> = 10",
                 "options": [
                     "10",
                     "20",
@@ -30494,7 +30494,7 @@ const math_ple_ans = [
                         "question_text": "Simplify: 0.37 - 1.03 + 2.6",
                         "type": "multipleChoice",
                         "answer": "1.94",
-                        "explanation": "Using BODMAS\n = 0.37 + 2.6 - 1.03\n = 2.97 - 1.03\n = 1.94",
+                        "explanation": "Using BODMAS<br> = 0.37 + 2.6 - 1.03<br> = 2.97 - 1.03<br> = 1.94",
                         "options": [
                             "2.97",
                             "1.94",
@@ -30522,7 +30522,7 @@ const math_ple_ans = [
                         "question_text": "Find the size of angle c.",
                         "type": "multipleChoice",
                         "answer": "c = 29°",
-                        "explanation": "Angle ARS\n ∠ARS + 90° + 55° = 180°( interior angle sum of a triangle)\n ∠ARS + 145° = 180°\n ∠ARS + 145°- 145° = 180° - 145°\n ∠ARS = 35°\n c + 35° + 116° = 180° (co-interior angles)\n c + 151° = 180°\n c + 151°- 151° = 180°- 151°\n c = 29°",
+                        "explanation": "Angle ARS<br> ∠ARS + 90° + 55° = 180°( interior angle sum of a triangle)<br> ∠ARS + 145° = 180°<br> ∠ARS + 145°- 145° = 180° - 145°<br> ∠ARS = 35°<br> c + 35° + 116° = 180° (co-interior angles)<br> c + 151° = 180°<br> c + 151°- 151° = 180°- 151°<br> c = 29°",
                         "options": [
                             "c = 39°",
                             "c = 30°",
@@ -30549,7 +30549,7 @@ const math_ple_ans = [
                         "question_text": "On a certain day, the shopkeeper sold 15.4 litres of cooking oil. How many such containers of cooking oil were sold that day? (Use π = 22/7)",
                         "type": "multipleChoice",
                         "answer": "20 containers",
-                        "explanation": "Get the volume of the container;\n Volume = π x radius<sup>2</sup> x height\n = 22/7 x (7/2)<sup>2</sup> x 20\n = 22/7 x 7/2 x 7/2 x 20\n = 770 cm<sup>3</sup>\n Convert litres to cm<sup>3</sup>\n 1 litre = 1000 cm<sup>3</sup>\n 15.4 litres = (15.4 x 1000)cm<sup>3</sup>\n = 15400cm<sup>3</sup>\n Number of containers = (Volume of litres sold in cm<sup>3</sup>)/(Volume of the container)\n = 15400/770 = 20 containers",
+                        "explanation": "Get the volume of the container;<br> Volume = π x radius<sup>2</sup> x height<br> = 22/7 x (7/2)<sup>2</sup> x 20<br> = 22/7 x 7/2 x 7/2 x 20<br> = 770 cm<sup>3</sup><br> Convert litres to cm<sup>3</sup><br> 1 litre = 1000 cm<sup>3</sup><br> 15.4 litres = (15.4 x 1000)cm<sup>3</sup><br> = 15400cm<sup>3</sup><br> Number of containers = (Volume of litres sold in cm<sup>3</sup>)/(Volume of the container)<br> = 15400/770 = 20 containers",
                         "options": [
                             "70 containers",
                             "20 containers",
@@ -30573,7 +30573,7 @@ const math_ple_ans = [
                 "question_text": "A watch loses 5 seconds every hour. How many minutes will it lose in two days?",
                 "type": "multipleChoice",
                 "answer": "4 minutes",
-                "explanation": "1 day =  24hrs\n 2days = (24 x 2) hours\n = 48 hours\n In 1 hour the clock loses 5 second\n In 1 day (24hours) it loses 5 x 24\n =  120 seconds\n  In 2 day (48hours) it loses  5 x 48\n = 240 seconds\n But 60 seconds = 1 minute\n 240 seconds = 240/60 minutes\n = 4 minutes",
+                "explanation": "1 day =  24hrs<br> 2days = (24 x 2) hours<br> = 48 hours<br> In 1 hour the clock loses 5 second<br> In 1 day (24hours) it loses 5 x 24<br> =  120 seconds<br>  In 2 day (48hours) it loses  5 x 48<br> = 240 seconds<br> But 60 seconds = 1 minute<br> 240 seconds = 240/60 minutes<br> = 4 minutes",
                 "options": [
                     "40 minutes",
                     "14 minutes",
@@ -30585,7 +30585,7 @@ const math_ple_ans = [
                         "question_text": "Express 5m/sec in km/hr",
                         "type": "multipleChoice",
                         "answer": "18 km/hr",
-                        "explanation": "5m/sec = km/hr\n 1000m = 1km\n 5m = 5/1000 km\n 3600 seconds = 1hr\n 1 second = 1/3600 hours\n Speed = Distance ÷ Time\n = 5/1000 ÷ 1/3600\n = 5/1000 x 3600/1\n = 5/10 x 36/1\n = 36/2\n = 18km/hr",
+                        "explanation": "5m/sec = km/hr<br> 1000m = 1km<br> 5m = 5/1000 km<br> 3600 seconds = 1hr<br> 1 second = 1/3600 hours<br> Speed = Distance ÷ Time<br> = 5/1000 ÷ 1/3600<br> = 5/1000 x 3600/1<br> = 5/10 x 36/1<br> = 36/2<br> = 18km/hr",
                         "options": [
                             "18 km/hr",
                             "18 km/hr",
@@ -30609,7 +30609,7 @@ const math_ple_ans = [
                 "question_text": "Arafat deposited money in a bank which offers a simple interest rate of 2½% per year. After 9 months, his account had an amount of sh 163,000. Calculate the money Arafat deposited in the bank.",
                 "type": "multipleChoice",
                 "answer": "Amount = 160,000",
-                "explanation": "Amount deposited = Principal + Simple interest\n Simple interest = Principal x Rate x Time\n 163,000 = P + P x R x T\n 163,000 = P + P x 2.5/100 x 9/12\n 163,000 = P(1 + 0.025 x 0.75)\n 163,000 = 1.01875P\n P = 160,000",
+                "explanation": "Amount deposited = Principal + Simple interest<br> Simple interest = Principal x Rate x Time<br> 163,000 = P + P x R x T<br> 163,000 = P + P x 2.5/100 x 9/12<br> 163,000 = P(1 + 0.025 x 0.75)<br> 163,000 = 1.01875P<br> P = 160,000",
                 "options": [
                     "Amount = 150,000",
                     "Amount = 160,000",
@@ -30626,13 +30626,13 @@ const math_ple_ans = [
         "instruction": null,
         "questions": [
             {
-                "question_text": "The exchange rate of Kenya shillings (Ksh) to Uganda shillings (Ug.sh) and the United states dollars (US$) to Uganda shillings are shown below\n 1 Ksh = Ug.sh 30\n US $1 = Ug.shs 2,580",
+                "question_text": "The exchange rate of Kenya shillings (Ksh) to Uganda shillings (Ug.sh) and the United states dollars (US$) to Uganda shillings are shown below<br> 1 Ksh = Ug.sh 30<br> US $1 = Ug.shs 2,580",
                 "sub_questions": [
                     {
                         "question_text": "How many United States dollars will one get from 21,500 kenya shillings?",
                         "type": "multipleChoice",
                         "answer": "US$ 250",
-                        "explanation": "Convert Ksh 21,500 to Ug.sh\n Ksh 21,500 = (21,500 x 30)\n = Ug.sh 645,000\n Convert Ug.sh 645,000 to US$\n = 645,000/2,580\n = 64,500/258\n = US$ 250",
+                        "explanation": "Convert Ksh 21,500 to Ug.sh<br> Ksh 21,500 = (21,500 x 30)<br> = Ug.sh 645,000<br> Convert Ug.sh 645,000 to US$<br> = 645,000/2,580<br> = 64,500/258<br> = US$ 250",
                         "options": [
                             "US$ 2500",
                             "US$ 25",
@@ -30646,7 +30646,7 @@ const math_ple_ans = [
                         "question_text": "If the cost of a new bicycle is 90 United States dollars, how much would this be in Uganda shillings?",
                         "type": "multipleChoice",
                         "answer": "Ug.sh 232,200",
-                        "explanation": "US$ 90 = (90 x 2,580)\n = Ug.sh 232,200",
+                        "explanation": "US$ 90 = (90 x 2,580)<br> = Ug.sh 232,200",
                         "options": [
                             "Ug.sh 28.67",
                             "Ug.sh 232,200",
@@ -30673,7 +30673,7 @@ const math_ple_ans = [
                         "question_text": "If Hannah got 12 more pencils than Joyce, how many pencils did they share altogether?",
                         "type": "multipleChoice",
                         "answer": "45 pencils",
-                        "explanation": "Lets use a common multiplier x\n ∴ The ratios are 3x:5x:7x\n Since Hannah got 12 more pencils than Joyce\n 7x = 3x + 12\n 7x - 3x = 3x - 3x + 12\n 4x = 12\n 4x/4 = 12/4\n x = 3\n Now that we have the value of x, we can find the number of pencils each person got\n Joyce: 3x = 3 x 3 = 9 pencils\n Peter: 5x = 5 x 3 = 15 pencils\n Hannah: 7x = 7 x 3 = 21 pencils\n Total number of pencils;\n = 9 + 15 + 21\n = 45",
+                        "explanation": "Lets use a common multiplier x<br> ∴ The ratios are 3x:5x:7x<br> Since Hannah got 12 more pencils than Joyce<br> 7x = 3x + 12<br> 7x - 3x = 3x - 3x + 12<br> 4x = 12<br> 4x/4 = 12/4<br> x = 3<br> Now that we have the value of x, we can find the number of pencils each person got<br> Joyce: 3x = 3 x 3 = 9 pencils<br> Peter: 5x = 5 x 3 = 15 pencils<br> Hannah: 7x = 7 x 3 = 21 pencils<br> Total number of pencils;<br> = 9 + 15 + 21<br> = 45",
                         "options": [
                             "45 pencils",
                             "40 pencils",
@@ -30714,7 +30714,7 @@ const math_ple_ans = [
                         "question_text": "Find the size of the angle CEX",
                         "type": "multipleChoice",
                         "answer": "Angle CEX  = 80<sup>o</sup>",
-                        "explanation": "Considering triangle ABC\n a + a + 50 + 70 = 180 (angle sum of a triangle\n 2a + 120 = 180\n 2a = 60\n a = 30\n Using triangle BAE\n a + ∠BEA + 70 = 180\n 30 + ∠BEA + 70 = 180\n ∠BEA = 80<sup>o</sup>\n But ∠BEA = ∠CEX\n Therefore ∠CEX = 80<sup>o</sup>)",
+                        "explanation": "Considering triangle ABC<br> a + a + 50 + 70 = 180 (angle sum of a triangle<br> 2a + 120 = 180<br> 2a = 60<br> a = 30<br> Using triangle BAE<br> a + ∠BEA + 70 = 180<br> 30 + ∠BEA + 70 = 180<br> ∠BEA = 80<sup>o</sup><br> But ∠BEA = ∠CEX<br> Therefore ∠CEX = 80<sup>o</sup>)",
                         "options": [
                             "Angle CEX  = 30<sup>o</sup>",
                             "Angle CEX  = 40<sup>o</sup>",
@@ -30728,7 +30728,7 @@ const math_ple_ans = [
                         "question_text": "Find the size of the angle DCX",
                         "type": "multipleChoice",
                         "answer": "Angle DCX = 60<sup>o</sup>",
-                        "explanation": " Angel XCA = angle BAC = 70<sup>o</sup> (alternative angles)\n Angle BCA + angle ACX + angle DCX = 180<sup>o</sup> (angle sum on a straight line)\n 50 + 70 + ∠DCX = 180\n ∠DCX = 60<sup>o</sup>",
+                        "explanation": " Angel XCA = angle BAC = 70<sup>o</sup> (alternative angles)<br> Angle BCA + angle ACX + angle DCX = 180<sup>o</sup> (angle sum on a straight line)<br> 50 + 70 + ∠DCX = 180<br> ∠DCX = 60<sup>o</sup>",
                         "options": [
                             "Angle DCX = 30<sup>o</sup>",
                             "Angle DCX = 60<sup>o</sup>",
@@ -30752,7 +30752,7 @@ const math_ple_ans = [
                 "question_text": "Given that m = 3k and k = 5, find the value of 2k + 6m",
                 "type": "multipleChoice",
                 "answer": "100",
-                "explanation": "2k + 6m\n 2 x 5 + 6 x 3k\n 10 + 6 x 3 x 5\n 10 + 90\n = 100",
+                "explanation": "2k + 6m<br> 2 x 5 + 6 x 3k<br> 10 + 6 x 3 x 5<br> 10 + 90<br> = 100",
                 "options": [
                     "10",
                     "100",

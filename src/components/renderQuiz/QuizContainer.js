@@ -70,14 +70,14 @@ const QuizContainer = ({ questionsData, subjectName }) => {
             randomQuestions.sort((a, b) => a.category - b.category);
             setSelectedQuestions(randomQuestions);
         }
-    }, [questionsData, categoriesToInclude, subjectName]); // Dependencies are now stable
+    }, [questionsData, categoriesToInclude, subjectName]);
 
     useEffect(() => {
         const randomQuestions = selectRandomQuestions(questionsData, categoriesToInclude, subjectName);
         // console.log('Random Selected Questions:\n', randomQuestions);
         randomQuestions.sort((a, b) => a.category - b.category);
         setSelectedQuestions(randomQuestions);
-    }, [questionsData, categoriesToInclude, subjectName]); // Dependencies are now stable
+    }, [questionsData, categoriesToInclude, subjectName]);
 
     if (isLoading) {
         return (

@@ -1,6 +1,6 @@
 // AnswerCard.js
 import React, { useState } from 'react';
-import { Card, ListGroup, Badge, ButtonGroup, Button } from 'react-bootstrap';
+import { Card, ListGroup, Badge, ButtonGroup, Button, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { setUserAnswer, setSelectedOption } from '../../redux/actions';
 import { isImageUrl } from './utils';
@@ -148,10 +148,10 @@ const AnswerCard = ({ resultsData, questionIndex, category_Id }) => {
                             as="li"
                             className="d-flex justify-content-between align-items-start"
                         >
-                            <div className="ms-2 me-auto">
+                            <Alert className="ms-2">
                                 <Card.Text className="fw-bold">Score</Card.Text>
                                 <Card.Text>{score}/{maxScore}</Card.Text>
-                            </div>
+                            </Alert>
                         </ListGroup.Item>
                     </ListGroup>
                 )}

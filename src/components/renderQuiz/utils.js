@@ -3,6 +3,11 @@ export const isEitherOrFormat = (question) => {
     return question.hasOwnProperty('either') && question.hasOwnProperty('or');
 };
 
+/*
+TODO:
+- Implement tracking of attempted questions, either save on server-side or database
+- First check whether the user previously attempted quiz and saved in tracker
+*/
 export const selectRandomQuestions = (questionsData, categoryIds, subjectName) => {
     return categoryIds.map(categoryId => {
         const category = questionsData.find(cat => cat.category === categoryId);

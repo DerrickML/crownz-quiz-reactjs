@@ -107,7 +107,8 @@ function Exam({ subject }) {
           return <QuizContainer questionsData={data} subjectName={'sst_ple'} />;
         };
       case "mathematics_ple":
-        return <QuizContainer questionsData={data} subjectName={'math_ple'} />;
+        // return <QuizContainer questionsData={data} subjectName={'math_ple'} />;
+        return <QuizContainer questionsData={math_ple} subjectName={'math_ple'} />;
       case "science_ple":
         return <QuizContainer questionsData={data} subjectName={'sci_ple'} />;
       default:
