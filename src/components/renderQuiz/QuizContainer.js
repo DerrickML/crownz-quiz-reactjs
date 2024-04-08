@@ -5,10 +5,11 @@ import { useDispatch } from 'react-redux';
 import { resetAnswers } from './redux/actions';
 import SaveButton from './SaveButton';
 import QuestionCard from './QuestionCard';
-import { selectRandomQuestions } from './utils';
+import { getAttemptedQuestions, updateQuestionHistory, selectRandomQuestions, selectRandomQuestions2 } from './utils';
 import { Container, Row, Col, Modal, ButtonGroup, Button, Spinner, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from '../../context/AuthContext';
 import Timer from './Timer';
 
 const QuizContainer = ({ questionsData, subjectName }) => {
@@ -18,6 +19,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     const [showTimeUpModal, setShowTimeUpModal] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
+    const { userInfo } = useAuth();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -63,21 +65,47 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     const categoriesToInclude = useMemo(() => questionsData ? questionsData.map(category => category.category) : [], [questionsData]);
 
     useEffect(() => {
-        if (questionsData) {
-            setIsLoading(false);
-            const randomQuestions = selectRandomQuestions(questionsData, categoriesToInclude, subjectName);
-            // console.log('Random Selected Questions:\n', randomQuestions);
-            randomQuestions.sort((a, b) => a.category - b.category);
-            setSelectedQuestions(randomQuestions);
-        }
-    }, [questionsData, categoriesToInclude, subjectName]);
+        const fetchUserHistoryAndSelectQuestions = async () => {
+            if (questionsData) {
+                setIsLoading(true);
+                try {
+                    // const randomQuestions = selectRandomQuestions(questionsData, categoriesToInclude, subjectName);
 
-    useEffect(() => {
-        const randomQuestions = selectRandomQuestions(questionsData, categoriesToInclude, subjectName);
-        // console.log('Random Selected Questions:\n', randomQuestions);
-        randomQuestions.sort((a, b) => a.category - b.category);
-        setSelectedQuestions(randomQuestions);
-    }, [questionsData, categoriesToInclude, subjectName]);
+                    const userHistory = await getAttemptedQuestions(userInfo.userId, subjectName, userInfo.educationLevel);
+
+                    const randomQuestions2 = selectRandomQuestions2(
+                        questionsData,
+                        categoriesToInclude,
+                        subjectName,
+                        userHistory,
+                        userInfo.userId,
+                        userInfo.educationLevel
+                    );
+
+                    randomQuestions2.categoriesWithQuestions.sort((a, b) => a.category - b.category);
+                    setSelectedQuestions(randomQuestions2.categoriesWithQuestions);
+
+                    await updateQuestionHistory(randomQuestions2.updatedUserHistory);
+
+                    // randomQuestions.sort((a, b) => a.category - b.category);
+                    // setSelectedQuestions(randomQuestions);
+                } catch (error) {
+                    console.error('Error fetching user history:', error);
+                    // Handle error as needed
+                }
+                setIsLoading(false);
+            }
+        };
+
+        fetchUserHistoryAndSelectQuestions();
+    }, [questionsData, categoriesToInclude, subjectName, userInfo.userId]);
+
+    // useEffect(() => {
+    //     const randomQuestions = selectRandomQuestions(questionsData, categoriesToInclude, subjectName);
+    //     // console.log('Random Selected Questions:\n', randomQuestions);
+    //     randomQuestions.sort((a, b) => a.category - b.category);
+    //     setSelectedQuestions(randomQuestions);
+    // }, [questionsData, categoriesToInclude, subjectName]);
 
     if (isLoading) {
         return (
