@@ -7,7 +7,7 @@ const AnswerContainer = ({ questionsData, subjectName, totalMarks, attemptDate }
 
     let subject_Name = subjectName === "sst_ple" ? "Social Studies" : (subjectName === "math_ple" ? "Mathematics" : (subjectName === "sci_ple" ? "Science" : subjectName));
 
-    // console.log('Attempted questions', questionsData);
+    console.log('Attempted questions', questionsData);
 
     // Extract category IDs dynamically from questionsData
     const categoriesToInclude = questionsData.map(category => category.category);

@@ -139,7 +139,8 @@ const AnswerCard = ({ resultsData, questionIndex, category_Id }) => {
                                 <div className="ms-2 me-auto">
                                     <Card.Text className="fw-bold">Explanation</Card.Text>
                                     <Card.Text
-                                        dangerouslySetInnerHTML={{ __html: explanation.replace(/\n/g, '<br/>') }}
+                                        // dangerouslySetInnerHTML={{ __html: explanation.replace(/\n/g, '<br/>') }}
+                                        dangerouslySetInnerHTML={{ __html: explanation }}
                                     ></Card.Text>
                                 </div>
                             </ListGroup.Item>

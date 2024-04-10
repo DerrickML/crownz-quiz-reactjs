@@ -1,5 +1,5 @@
 // SaveButton.js
-import React, { useState, forwardRef } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetAnswers } from './redux/actions';
 import { Button, Spinner } from 'react-bootstrap';
@@ -19,7 +19,20 @@ import { useAuth } from '../../context/AuthContext';
 
 const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDisplay, subject_Name }, ref) => {
 
-    // console.log('selectedQuestions on submit', selectedQuestions)
+    const [modifiedSelectedQuestions, setModifiedSelectedQuestions] = useState(selectedQuestions);
+
+    //Assigning IDs to the subquestions of the selected questions
+    useEffect(() => {
+        const assignIds = async () => {
+            await assignSubQuestionIds(selectedQuestions);
+            setModifiedSelectedQuestions(selectedQuestions);
+            // console.log('selectedQuestions on submit', selectedQuestions)
+        };
+
+        assignIds();
+    }, [selectedQuestions]);
+
+
 
     const dispatch = useDispatch();
 
@@ -41,6 +54,24 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
     // console.log('Redux state on submit', reduxState)
 
     const [isLoading, setIsLoading] = useState(false);
+
+    //Function to assign ids to subquestions without ids
+    const assignSubQuestionIds = async (questions) => {
+        questions.forEach(question => {
+            if (question.questions) {
+                question.questions.forEach(mainQuestion => {
+                    // Assign IDs only to subquestions of questions that are not in 'either' or 'or' structure
+                    if (mainQuestion.sub_questions && !mainQuestion.either && !mainQuestion.or) {
+                        mainQuestion.sub_questions.forEach((subQuestion, subIndex) => {
+                            if (!subQuestion.id) {
+                                subQuestion.id = `${mainQuestion.id}_sub_${subIndex}`;
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
 
     //Function to submit data the database
     const createDocument = async (data) => {
@@ -97,6 +128,8 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
     };
 
     const findUserAnswer = (questionId, categoryId, questionType) => {
+        // console.log('CHECK reduxState in findUserAnswer: ', reduxState);
+        // console.log(`other params:\nquestionId: ${questionId} \ncategoryId: ${categoryId} \nquestionType: ${questionType}`);
         const reduxAnswers = reduxState.filter(answer => answer.id === questionId && answer.category === categoryId);
         if (reduxAnswers.length === 0) return null;
 
@@ -135,7 +168,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
 
     const formatAnswersForSaving = () => {
         let totalMarks = 0;
-        const formattedAnswers = selectedQuestions.map(category => ({
+        const formattedAnswers = modifiedSelectedQuestions.map(category => ({
             ...category,
             questions: category.questions.flatMap(question => {
                 if (question.either && question.or) {
@@ -169,7 +202,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
             }).flat(),
         }));
 
-        // console.log('Total Marks:', totalMarks);
+        //// console.log('Total Marks:', totalMarks);
         // console.log('Formatted Answers:', formattedAnswers);
         return { formattedAnswers, totalMarks };
     };
