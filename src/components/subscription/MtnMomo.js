@@ -300,6 +300,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
         setLoaders(true);
         if (!phone || !amount) {
             setMessage('Please enter both phone number and amount.');
+            setLoaders(false);
             return;
         }
 
@@ -308,6 +309,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
 
         if (!isUserPhoneValid) {
             setPhoneError(!isUserPhoneValid);
+            setLoaders(false);
             return;
         }
 

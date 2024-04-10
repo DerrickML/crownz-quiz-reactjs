@@ -128,7 +128,7 @@ function SelectExam() {
                     size="3x"
                     className="text-muted"
                   />
-                  <h5 className="mt-3">No Enrolled for</h5>
+                  <h5 className="mt-3">No Subject Enrolled for</h5>
                   <p>
                     Looks like you haven't enrolled for any subject. Ready to
                     challenge yourself?

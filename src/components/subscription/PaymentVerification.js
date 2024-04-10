@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Row, Col, Card, Form, ButtonGroup, Button, Container, Spinner, Alert } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faTimesCircle, faWarning } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../../context/AuthContext';
 import { printPDF } from "./print/index";
 import {
@@ -34,12 +34,22 @@ const PaymentResult = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
+
     const transactionId = queryParams.get('transaction_id') || parseTransactionIdFromResp(queryParams.get('resp'));
+    const statusForPayment = queryParams.get('status');
+    const tx_ref = queryParams.get('tx_ref');
 
     useEffect(() => {
         const verifyPayment = async () => {
             setMessage('')
-            if (transactionId) {
+            setPaymentStatus(statusForPayment);
+            console.log('Verifying payment status: ', statusForPayment);
+            if (statusForPayment === 'cancelled') {
+                setMessage('Transaction cancelled')
+                setPaymentStatus('Transaction is canceled.');
+                setLoading(false);
+            }
+            else if (transactionId) {
                 try {
                     const response = await fetch(`${serverUrl}/flutterwave/verify-payment/${transactionId}`);
                     const data = await response.json();
@@ -146,8 +156,8 @@ const PaymentResult = () => {
                     setLoading(false);
                 }
             } else {
-                setMessage('Transaction Verification Failed due to absense of transaction ID. Please contact support')
-                setPaymentStatus('No transaction ID provided.');
+                setMessage('An error occured during the transacton verification. Please contact support')
+                setPaymentStatus('Transaction Failed.');
                 setLoading(false);
             }
         };
@@ -260,8 +270,8 @@ const PaymentResult = () => {
         }
     };
 
-    const viewReceipt = (method) => {
-        navigate(`/payment/receipt`, { state: { receiptData: transactionData } });
+    const exitPage = () => {
+        navigate(`/dashboard`);
     };
 
     return (
@@ -289,7 +299,7 @@ const PaymentResult = () => {
                                     <>
                                         {message && (
                                             <Alert
-                                                variant={paymentStatus === "success" ? 'success' : 'danger'}
+                                                variant={paymentStatus === "success" ? 'success' : statusForPayment === 'cancelled' ? 'warning' : 'danger'}
                                                 className="mt-3 text-center"
                                             >
                                                 {message}
@@ -307,13 +317,25 @@ const PaymentResult = () => {
                                                 <Button variant="dark" onClick={() => { printPDF(transactionData) }}>Print Receipt as PDF</Button>
                                             </div>
                                         ) :
-                                            (
+                                            statusForPayment === "cancelled" ? (
+                                                <div className="text-center mt-4">
+                                                    <Alert variant='warning'>
+                                                        <FontAwesomeIcon icon={faWarning} size="3x" className="text-danger" />
+                                                        <p className="mt-2"><b>Transaction cancelled!</b></p>
+                                                    </Alert>
+                                                    <Button variant="dark" onClick={() => exitPage()}>Exit</Button>
+                                                </div>
+                                            ) : (
                                                 <div className="text-center mt-4">
                                                     <Alert variant='danger'>
                                                         <FontAwesomeIcon icon={faTimesCircle} size="3x" className="text-danger" />
                                                         <p className="mt-2"><b>An error occured!</b></p>
+                                                        <p className="mt-2">
+                                                            Share your transaction id below with the support team in case money was deducted from your account.
+                                                        </p>
+                                                        <p>Transaction ID: <b>{tx_ref}</b></p>
                                                     </Alert>
-                                                    <Button variant="dark" onClick={() => { printPDF(transactionData) }}>Print Receipt as PDF</Button>
+                                                    <Button variant="dark" onClick={() => exitPage()}>Exit</Button>
                                                 </div>
                                             )
                                         }

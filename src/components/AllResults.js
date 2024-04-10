@@ -18,6 +18,8 @@ import {
   faGraduationCap,
   faChartLine,
   faBookOpen,
+  faCaretDown,
+  faCaretUp,
 } from "@fortawesome/free-solid-svg-icons";
 import "./AllResults.css";
 import storageUtil from "../utilities/storageUtil";
@@ -33,6 +35,7 @@ const AllResults = () => {
   const [results, setResults] = useState([]);
   const [refreshResults, setRefreshResults] = useState(false);
   const [currentPage, setCurrentPage] = useState({});
+
   const itemsPerPage = 5; // Number of results per page
   const userInfo = storageUtil.getItem("userInfo");
   const navigate = useNavigate();
@@ -161,9 +164,24 @@ const AllResults = () => {
       <Card className="mb-4" key={subjectResults.subject}>
         <Card.Header
           onClick={() => toggleSubject(subjectResults.subject)}
-          style={{ cursor: "pointer" }}
+          style={{ cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}
         >
-          {subjectResults.subject === "sst_ple" ? "Social Studies" : (subjectResults.subject === "math_ple" ? "Mathematics" : (subjectResults.subject === "sci_ple" ? "Science" : subjectResults.subject))}
+          <span>
+            {subjectResults.subject === "sst_ple"
+              ? "Social Studies"
+              : subjectResults.subject === "math_ple"
+                ? "Mathematics"
+                : subjectResults.subject === "sci_ple"
+                  ? "Science"
+                  : subjectResults.subject}
+          </span>
+          <span>
+            {openSubjects[subjectResults.subject] ? (
+              <FontAwesomeIcon icon={faCaretUp} />
+            ) : (
+              <FontAwesomeIcon icon={faCaretDown} />
+            )}
+          </span>
         </Card.Header>
         {openSubjects[subjectResults.subject] && (
           <>
