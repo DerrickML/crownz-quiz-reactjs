@@ -255,7 +255,7 @@ function Login() {
       }
 
       const responseData = await response.json();
-      console.log('User Data: ' + JSON.stringify(responseData));
+      // console.log('User Data: ' + JSON.stringify(responseData));
       return responseData;
     } catch (error) {
       if (!navigator.onLine) {

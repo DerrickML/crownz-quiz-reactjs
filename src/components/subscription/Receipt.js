@@ -10,7 +10,7 @@ import './Receipt.css'; // Import your custom CSS
 const Receipt = ({ propReceiptData }) => {
     const location = useLocation();
     const { receiptData } = location.state || { price: 2000, paymentFor: 'points' }; // Set defaultReceiptData
-    console.log('Receipt Data: ', receiptData)
+    // console.log('Receipt Data: ', receiptData)
     const isCardPayment = receiptData.payment_type === 'card';
 
     const downloadPdf = () => {

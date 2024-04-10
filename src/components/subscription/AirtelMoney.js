@@ -24,10 +24,10 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
     let studentName = isNextOfKin ? studentInfo.name : '';
     let educationLevel = isNextOfKin ? studentInfo.educationLevel : '';
 
-    console.log('Student Information: ', JSON.stringify(studentInfo))
+    // console.log('Student Information: ', JSON.stringify(studentInfo))
 
     useEffect(() => {
-        console.log('Price passed to MTN: ', price)
+        // console.log('Price passed to MTN: ', price)
         if (!price) {
             navigate(-1);
         }
@@ -103,7 +103,7 @@ function AirtelMoney({ propPrice, propPaymentFor, propStudentInfo }) {
             });
 
             const data = await response.json();
-            console.log('Pay response Data:\n', data);
+            // console.log('Pay response Data:\n', data);
             if (data.response.status === 'success' && data.response.meta.authorization.mode === 'redirect') {
                 window.location.href = data.response.meta.authorization.redirect;
                 setPaymentStatus('A page will load shortly requesting you to enter OTP received on your phone')

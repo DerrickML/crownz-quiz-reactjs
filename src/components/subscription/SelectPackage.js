@@ -8,7 +8,7 @@ function SelectPackage() {
   const location = useLocation();
   const { studentInfo } = location.state || { studentInfo: { userId: '', name: '', educationLevel: '' } }; // Set default values accordingly
 
-  console.log('Student Info being payed for: ', studentInfo)
+  // console.log('Student Info being payed for: ', studentInfo)
 
   return (
     <>

@@ -20,7 +20,7 @@ import logo from './partials/logo';
  * @returns {void}
  */
 export function printPDF(printData) {
-    console.log('Data passed to receipt: ', printData);
+    // console.log('Data passed to receipt: ', printData);
     addFontNormal();
     addFontBold();
 
@@ -106,7 +106,7 @@ export function printPDF(printData) {
 
         // <><>><><>><>><><><><><>>><><<><><><><>
         // Invoicenumber, -date and subject
-        console.log('startY: ', startY)
+        // console.log('startY: ', startY)
 
         startY = heading(doc, printData, startY + 20, fontSizes, lineSpacing);
 

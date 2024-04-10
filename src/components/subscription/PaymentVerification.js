@@ -43,7 +43,7 @@ const PaymentResult = () => {
         const verifyPayment = async () => {
             setMessage('')
             setPaymentStatus(statusForPayment);
-            console.log('Verifying payment status: ', statusForPayment);
+            // console.log('Verifying payment status: ', statusForPayment);
             if (statusForPayment === 'cancelled') {
                 setMessage('Transaction cancelled')
                 setPaymentStatus('Transaction is canceled.');
@@ -54,14 +54,14 @@ const PaymentResult = () => {
                     const response = await fetch(`${serverUrl}/flutterwave/verify-payment/${transactionId}`);
                     const data = await response.json();
 
-                    console.log('Verified Data from Flutterwave: ', data);
+                    // console.log('Verified Data from Flutterwave: ', data);
 
                     //Saving to database
                     await saveTransactionData(data.transactionData);
 
-                    console.log('Transaction data - Client side: ', data);
+                    // console.log('Transaction data - Client side: ', data);
                     setPaymentStatus(data.status);
-                    console.log('Payment status - Client side: ', paymentStatus);
+                    // console.log('Payment status - Client side: ', paymentStatus);
 
                     try {
                         // Data to send to receipt
@@ -139,12 +139,12 @@ const PaymentResult = () => {
                                 }
                             }
                         }
-                        console.log('Receipt Data:', receiptData);
-                        console.log('cardOrPhone: Receipt Data:', receiptData.personalInfo.bank.cardOrPhoneNumber);
+                        // console.log('Receipt Data:', receiptData);
+                        // console.log('cardOrPhone: Receipt Data:', receiptData.personalInfo.bank.cardOrPhoneNumber);
                         setTransactionData(receiptData);
                     }
                     catch (e) {
-                        console.log("error in recepit ..", e)
+                        // console.log("error in recepit ..", e)
                         setMessage('Failed to generate receipt')
                         throw new Error
                     }
@@ -180,24 +180,24 @@ const PaymentResult = () => {
     //Function to save transaction data to transaction table
     const saveTransactionData = async (data) => {
         try {
-            console.log('Saving transaction data: ', data);
+            // console.log('Saving transaction data: ', data);
             // Check if transaction already exists
             const existingTransaction = await databases.listDocuments(database_id, transactionTable_id, [Query.equal('transactionId', [`${data.id}`])]);
 
             if (existingTransaction.documents.length > 0) {
-                console.log('Transaction already saved.');
+                // console.log('Transaction already saved.');
                 return;
             }
 
-            console.log('transaction status: ', data.status);
-            console.log('Points purchased: ', data.meta.points);
+            // console.log('transaction status: ', data.status);
+            // console.log('Points purchased: ', data.meta.points);
 
-            console.log('original date: ', data.created_at)
+            // console.log('original date: ', data.created_at)
 
             const created_at_formattedDate = moment(data.created_at, 'DD/MM/YYYY, HH:mm:ss').toDate();
-            console.log('formattedDate - moment: ', created_at_formattedDate);
+            // console.log('formattedDate - moment: ', created_at_formattedDate);
 
-            console.log('Transaction Table - Flutterwave - Purchased points on: ', created_at_formattedDate);
+            // console.log('Transaction Table - Flutterwave - Purchased points on: ', created_at_formattedDate);
 
             try {
 
@@ -218,7 +218,9 @@ const PaymentResult = () => {
                     }
                 )
 
-            } catch (e) { console.log('Update Transaction table error: ', e); throw e; }
+            } catch (e) {
+                // console.log('Update Transaction table error: ', e); throw e;
+            }
 
             /*** ----------- Update Points tables ----------- ***/
             if (data.status === 'successful') {
@@ -247,7 +249,7 @@ const PaymentResult = () => {
 
                         const response = await databases.listDocuments(database_id, pointsTable_id, [Query.equal('UserID', data.meta.studentId)]);
 
-                        console.log('Checking points table: ', response)
+                        // console.log('Checking points table: ', response)
 
                         if (response.documents.length > 0) {
 

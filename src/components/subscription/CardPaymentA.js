@@ -13,7 +13,7 @@ import { serverUrl } from '../../config';
 function CardPayment({ price }) {
     const { userInfo } = useAuth();
 
-    console.log('Price: ', price)
+    // console.log('Price: ', price)
 
     const [phone, setPhone] = useState(userInfo ? userInfo.phone : '');
     // const [email, setEmail] = useState(userInfo.email || 'crownzcom@gmail.com');
@@ -77,7 +77,7 @@ function CardPayment({ price }) {
                 },
             });
 
-            console.log('Card Payment: ', response)
+            // console.log('Card Payment: ', response)
 
         } catch (error) {
             console.error('Error making payment:', error);

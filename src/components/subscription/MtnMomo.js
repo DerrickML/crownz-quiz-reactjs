@@ -40,7 +40,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
 
     //Check if price is not null, or else navigate back
     useEffect(() => {
-        console.log('Price passed to MTN: ', price)
+        // console.log('Price passed to MTN: ', price)
         if (!price) {
             navigate(-1);
         }
@@ -59,7 +59,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
 
     // Create a new MTN MoMo API user
     const createApiUser = async () => {
-        console.log('Creating API user...');
+        // console.log('Creating API user...');
         const response = await fetch(`${serverMomoRoute}/create-api-user`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
@@ -69,14 +69,14 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
 
     // Returns created user details if exists
     const getCreatedUser = async (userId) => {
-        console.log('Retrieving created user...');
+        // console.log('Retrieving created user...');
         const response = await fetch(`${serverMomoRoute}/get-created-user/${userId}`);
         return response.json();
     };
 
     // Retrieve API key for the user used to generate a token
     const retrieveApiKey = async (userId) => {
-        console.log('Retrieving API key...');
+        // console.log('Retrieving API key...');
         const response = await fetch(`${serverMomoRoute}/retrieve-api-key/${userId}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
@@ -86,7 +86,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
 
     //Generates a token required for transaction
     const generateApiToken = async (userId, apiKey) => {
-        console.log('Generating MoMo token...');
+        // console.log('Generating MoMo token...');
         const response = await fetch(`${serverMomoRoute}/generate-api-token`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -97,7 +97,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
 
     // Request to make a payment using the generated token
     const requestToPay = async (phone, amount, momoTokenId) => {
-        console.log('Making payment request...');
+        // console.log('Making payment request...');
         const response = await fetch(`${serverMomoRoute}/request-to-pay`, {
             method: 'POST',
             headers: {
@@ -212,7 +212,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
 
                         const response = await databases.listDocuments(database_id, pointsTable_id, [Query.equal('UserID', studentId)]);
 
-                        console.log('Checking points table: ', response)
+                        // console.log('Checking points table: ', response)
 
                         if (response.documents.length > 0) {
 
@@ -252,7 +252,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
     //Function to save transaction data to transaction database table
     const saveTransactionData = async (data) => {
         try {
-            console.log('Transaction Table - MTNMoMo - Purchased points on: ', data.created_at);
+            // console.log('Transaction Table - MTNMoMo - Purchased points on: ', data.created_at);
 
             // Custom parser for the format 'March 25th 2024, 8:46:48 am'
             let createdDate = moment(data.created_at, 'MMMM Do YYYY, h:mm:ss a', true);
@@ -264,14 +264,14 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
 
             // Final check if the date is valid
             if (!createdDate.isValid()) {
-                console.log('ERROR: Created Date: ', createdDate);
+                // console.log('ERROR: Created Date: ', createdDate);
                 throw new Error('Invalid date format');
             }
 
             // Convert to JavaScript Date object
             createdDate = createdDate.toDate();
 
-            console.log('CONVERTED CREATED-DATE: ', createdDate);
+            // console.log('CONVERTED CREATED-DATE: ', createdDate);
 
             const response = await databases.createDocument(database_id, transactionTable_id, 'unique()',
                 {
@@ -316,26 +316,26 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
         try {
             const userCreationResponse = await createApiUser();
             const userId = userCreationResponse.userId;
-            console.log('User ID: ', userId);
+            // console.log('User ID: ', userId);
 
             // await getCreatedUser(userId);
 
             const apiKeyResponse = await retrieveApiKey(userId);
             const apiKey = apiKeyResponse.apiKey;
-            console.log('API key: ' + apiKey)
+            // console.log('API key: ' + apiKey)
 
             const tokenResponse = await generateApiToken(userId, apiKey);
             const momoTokenId = tokenResponse.access_token;
-            console.log('API token: ' + momoTokenId)
+            // console.log('API token: ' + momoTokenId)
 
             const paymentResponse = await requestToPay(phone, amount, momoTokenId);
 
             if (paymentResponse.success) {
-                console.log('Finshed to make payment...', paymentResponse);
+                // console.log('Finshed to make payment...', paymentResponse);
 
                 // Verify payment status
                 const verificatioStatusResponse = await verifyPaymentStatus(paymentResponse.paymentRefId, paymentResponse.momoTokenId);
-                console.log('Verification status:', verificatioStatusResponse);
+                // console.log('Verification status:', verificatioStatusResponse);
                 setMessage(`Payment successful!`);
             } else {
                 setMessage('Payment failed.');

@@ -5,7 +5,7 @@ import QuestionCard from './QuestionCard';
 import { selectRandomQuestions } from './utils';
 
 const QuizContainer = ({ questionsData, subjectName }) => {
-    console.log("QuizContainer Subject Name:", subjectName + "\nEnd");
+    // console.log("QuizContainer Subject Name:", subjectName + "\nEnd");
     // Extract category IDs dynamically from questionsData
     const categoriesToInclude = questionsData.map(category => category.category);
 
@@ -17,7 +17,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
         setSelectedQuestions(randomQuestions);
     }, []); // Empty dependency array to run only once
 
-    console.log("Selected Questions in Quiz Container:\n", selectedQuestions);
+    // console.log("Selected Questions in Quiz Container:\n", selectedQuestions);
 
     return (
         <div>

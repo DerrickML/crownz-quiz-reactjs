@@ -75,7 +75,7 @@ function SelectExam() {
   const isEnrolled = subjects.some(subject => subject.enrolled === true);
   const notEnrolled = subjects.some(subject => subject.enrolled === false);
 
-  console.log("Subject Data: " + JSON.stringify(subjects));
+  // console.log("Subject Data: " + JSON.stringify(subjects));
   // const storedData = storageUtil.getItem("studentData");
   if (!subjects || !Array.isArray(subjects)) {
     throw new Error("No subjects data found in local storage.");
@@ -96,7 +96,7 @@ function SelectExam() {
   };
 
   const handleEnrollment = async (subject) => {
-    console.log('Enrollment: ', subject);
+    // console.log('Enrollment: ', subject);
     await studentEnrollSubject(userInfo.userDocId, subject.$id);
     setEnrollSubject(null)
   };

@@ -16,7 +16,7 @@ import storageUtil from "./storageUtil"; // Import storageUtil
  */
 export const fetchAndProcessStudentData = async (kinID) => {
   try {
-    console.log('Fetching and processing student data ...')
+    // console.log('Fetching and processing student data ...')
     // Step 1: Fetch students linked to the next-of-kin
     const students = await fetchStudentsLinkedToKin(kinID);
 
@@ -169,7 +169,7 @@ export const fetchAllSubjectsData = async (educationLevel) => {
 
 export const studentSubjectsData = async (enrolledSubjectsData, educationLevel) => {
   try {
-    console.log('Enrolled Subjects Data: ', enrolledSubjectsData);
+    // console.log('Enrolled Subjects Data: ', enrolledSubjectsData);
 
     let allSubjectsData = await fetchAllSubjectsData(educationLevel);
 
@@ -178,7 +178,7 @@ export const studentSubjectsData = async (enrolledSubjectsData, educationLevel) 
       subject.enrolled = enrolledSubjectsData.includes(subject.$id);
     });
 
-    console.log('Updated Subjects Data with Enroll key: ', allSubjectsData)
+    // console.log('Updated Subjects Data with Enroll key: ', allSubjectsData)
 
     //Save to local storage
     return allSubjectsData;

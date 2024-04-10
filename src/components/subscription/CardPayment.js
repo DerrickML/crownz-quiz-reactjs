@@ -24,7 +24,7 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
     let educationLevel = isNextOfKin ? studentInfo.educationLevel : '';
 
     useEffect(() => {
-        console.log('Price passed to MTN: ', price)
+        // console.log('Price passed to MTN: ', price)
         if (!price) {
             navigate(-1);
         }
@@ -76,7 +76,7 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
                 }
             }
 
-            console.log('Data to send to flutterwave: ', dataToSend)
+            // console.log('Data to send to flutterwave: ', dataToSend)
 
             let response
 
@@ -91,13 +91,13 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
                     ),
                 });
             } catch (e) {
-                console.log('Error initiating flutterwave serverside: ', e.message);
+                // console.log('Error initiating flutterwave serverside: ', e.message);
             }
 
 
 
             const data = await response.json();
-            console.log('Data: ', data)
+            // console.log('Data: ', data)
             if (data && data.status === 'success') {
                 window.open(data.data.link, '_blank'); // Open the payment link in a new tab
                 // window.location.href = data.data.link; // Redirect to the payment link without opening new tab

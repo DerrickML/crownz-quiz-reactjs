@@ -78,7 +78,7 @@ const SaveButton = ({ selectedQuestions }) => {
     };
 
     const formatAnswersForSaving = () => {
-        console.log('Redux stored data:', reduxState);
+        // console.log('Redux stored data:', reduxState);
         let totalMarks = 0;
         const formattedAnswers = selectedQuestions.map(category => ({
             ...category,
@@ -114,13 +114,13 @@ const SaveButton = ({ selectedQuestions }) => {
             }).flat(),
         }));
 
-        console.log('Total Marks:', totalMarks);
+        // console.log('Total Marks:', totalMarks);
         return formattedAnswers;
     };
 
     const handleSave = () => {
         const finalDataToSave = formatAnswersForSaving();
-        console.log('Final Data to Save:', finalDataToSave);
+        // console.log('Final Data to Save:', finalDataToSave);
         // Implement the save to backend or other logic here
     };
 

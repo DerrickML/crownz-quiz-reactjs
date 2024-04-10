@@ -103,7 +103,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
       let linkKinResponse;
 
       // Logic to create next of kin if account does not exist, and link next of kin using Appwrite SDK
-      // console.log("Linking with next of kin");
+      //// console.log("Linking with next of kin");
       try {
         let kinExists = await searchForExistingKinAccount(
           activeTab === "link" ? linkKinSignupMethod : createKinSignupMethod,
@@ -118,7 +118,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
 
         let kinIdToUse;
 
-        // console.log("Kin exists? " + kinExists);
+        //// console.log("Kin exists? " + kinExists);
 
         if (kinExists === false) {
           try {
@@ -130,7 +130,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
               nextOfKin.kinLastName
             );
             kinIdToUse = createKin;
-            // console.log("Kin ID on account NOT exist: " + createKin);
+            //// console.log("Kin ID on account NOT exist: " + createKin);
           } catch (error) {
             setSignupLoader(false);
             return; // Stop execution if kin account creation failed
@@ -174,7 +174,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
           ? nextOfKin.kinEmail
           : nextOfKin.kinPhone;
 
-      // console.log("Link Method is: ", linkMethod + ": " + linkKinContact);
+      //// console.log("Link Method is: ", linkMethod + ": " + linkKinContact);
 
       //Check if kin exists
       const checkKin = await searchForExistingKinAccount(
@@ -199,7 +199,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
           kinPhone: checkKin.kinPhone,
         });
       }
-      // console.log("Next of Kin Linked\n", checkKin);
+      //// console.log("Next of Kin Linked\n", checkKin);
       setSignupLoader(false);
       navigate("/profile");
     } catch (e) {
@@ -251,10 +251,10 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // console.log("Kin response details: " + response);
+      //// console.log("Kin response details: " + response);
 
       const responseData = await response.json(); // Parse the JSON response
-      // console.log("Kin Account Details: ", responseData.$id);
+      //// console.log("Kin Account Details: ", responseData.$id);
       return responseData.$id;
     } catch (error) {
       if (!navigator.onLine) {
@@ -291,7 +291,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
 
       if (response.documents.length > 0) {
         // Will return the kinID of the first document found
-        // console.log(
+        //// console.log(
         //   "Next of Kin exists. Proceeding to link with student ...",
         //   response
         // );
@@ -310,7 +310,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
 
         return kinDetails;
       } else {
-        // console.log(
+        //// console.log(
         //   "Kin does not exist. Proceeding to create account, and link with student ...",
         //   response
         // );
@@ -324,7 +324,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
 
   async function linkKinToUser(kinId) {
     //Logic to link next of kin to the user
-    // console.log("Linking next of kin to user");
+    //// console.log("Linking next of kin to user");
 
     try {
       let query = [];
@@ -339,7 +339,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
 
       if (response.documents.length > 0) {
         // Will return the kinID of the first document found
-        // console.log("Student account exists in table...", response);
+        //// console.log("Student account exists in table...", response);
         const linkKinStud = await databases.updateDocument(
           database_id,
           studentTable_id,

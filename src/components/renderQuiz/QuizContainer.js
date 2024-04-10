@@ -13,7 +13,7 @@ import { useAuth } from '../../context/AuthContext';
 import Timer from './Timer';
 
 const QuizContainer = ({ questionsData, subjectName }) => {
-    console.log('All questions data: ', questionsData);
+    // console.log('All questions data: ', questionsData);
     const [selectedQuestions, setSelectedQuestions] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [showExitModal, setShowExitModal] = useState(false);
@@ -84,7 +84,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                     );
 
                     randomQuestions2.categoriesWithQuestions.sort((a, b) => a.category - b.category);
-                    console.log('Student\'s Selected questions', randomQuestions2.categoriesWithQuestions);
+                    // console.log('Student\'s Selected questions', randomQuestions2.categoriesWithQuestions);
                     setSelectedQuestions(randomQuestions2.categoriesWithQuestions);
 
                     await updateQuestionHistory(randomQuestions2.updatedUserHistory);
