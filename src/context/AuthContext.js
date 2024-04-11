@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
         setSessionInfo(sessionDetails);
         storageUtil.setItem("sessionInfo", sessionDetails);
 
-        userData.labels.includes("student") ? console.log('Student subjects: ' + userData.subjects) : console.log('Next of Kin');
+        // userData.labels.includes("student") ? console.log('Student subjects: ' + userData.subjects) : console.log('Next of Kin');
         const userDetails = {
             userId: sessionData.userId,
             userDocId: userData.userDocId,
@@ -101,7 +101,7 @@ export const AuthProvider = ({ children }) => {
     // Fetch userPoints function (example)
     const fetchUserPoints = async (userId, educationLevel) => {
         try {
-            console.log('Fetching userPoints: ', userId + ' ' + educationLevel);
+            // console.log('Fetching userPoints: ', userId + ' ' + educationLevel);
             let pointsData
             const pointsResponse = await databases.listDocuments(database_id, pointsTable_id, [Query.equal('UserID', userId)])
             //Create a new document if user has no document assigned
@@ -109,14 +109,14 @@ export const AuthProvider = ({ children }) => {
                 pointsData = pointsResponse.documents[0].PointsBalance
             }
             else {
-                console.log('No user document assigned, creating a new one for the user')
+                // console.log('No user document assigned, creating a new one for the user')
 
                 var currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
 
-                console.log('CURRENT DATE: ' + currentDateTime)
+                // console.log('CURRENT DATE: ' + currentDateTime)
 
                 let docId = `PT-${userId}`
-                console.log('Unique ID: ', docId)
+                // console.log('Unique ID: ', docId)
 
                 const userDocResponse = await databases.createDocument(
                     database_id,
@@ -147,17 +147,17 @@ export const AuthProvider = ({ children }) => {
             const response = await databases.listDocuments(database_id, pointsTable_id, [
                 Query.equal("UserID", userId),
             ]);
-            console.log('Checking points table: ', response)
+            // console.log('Checking points table: ', response)
             if (response.documents.length > 0) { //TODO: If table user points doesn't exist, create new document
                 const documentId = response.documents[0].$id //Points document id to be updated
                 let currentPoints = response.documents[0].PointsBalance
                 updatedPoints = currentPoints - points
                 if (updatedPoints >= 0) {
-                    console.log('points document id: ', documentId)
+                    // console.log('points document id: ', documentId)
 
                     //update Points table
                     const updateResponse = await databases.updateDocument(database_id, pointsTable_id, documentId, { PointsBalance: updatedPoints })
-                    console.log('update points balance: ', updateResponse)
+                    // console.log('update points balance: ', updateResponse)
 
                     // Update points in context and localStorage
                     setUserPoints(updatedPoints);
@@ -177,12 +177,12 @@ export const AuthProvider = ({ children }) => {
      * @returns {string || null} - return sting or nothing.
      */
     const studentEnrollSubject = async (userDocId, subject) => {
-        console.log("Student Enroll Subject: ", subject);
-        console.log("Student DocuID: ", userDocId)
-        if (!subject) {
-            console.log('Subject is required');
-            return
-        }
+        // console.log("Student Enroll Subject: ", subject);
+        // console.log("Student DocuID: ", userDocId)
+        // if (!subject) {
+        //     console.log('Subject is required');
+        //     return
+        // }
 
         databases.getDocument(database_id, studentTable_id, userDocId)
             .then(document => {
@@ -193,7 +193,7 @@ export const AuthProvider = ({ children }) => {
                 });
             })
             .then(updatedDocument => {
-                console.log('Enrolled Subject Item appended successfully: ', updatedDocument.subjects);
+                // console.log('Enrolled Subject Item appended successfully: ', updatedDocument.subjects);
                 updateUserSubjectData(updatedDocument.subjects, updatedDocument.educationLevel) //Update user subject data on localStorage
             })
             .catch(error => {
@@ -210,7 +210,7 @@ export const AuthProvider = ({ children }) => {
             storageUtil.setItem("userSubjectData", response);
 
         } catch (error) {
-            console.log('Subjects Data Error: ', error);
+            // console.log('Subjects Data Error: ', error);
         };
     }
 

@@ -201,6 +201,7 @@ export const updateQuestionHistory = async (selectedQuestionsJSON) => {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
+        // console.log('Response after updating question history: ', response);
         return await response.json(); // or just return true if the response doesn't include any data
     } catch (error) {
         console.error('Error updating question history:', error);
