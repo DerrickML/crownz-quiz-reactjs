@@ -41,6 +41,7 @@ const IframeComponent = ({ url }) => {
     "http://127.0.0.1:5500/",
     "http://127.0.0.1:5501/",
     "http://127.0.0.1:5500/english_ple/",
+    "https://moodle.servers.crownzcom.tech/english_ple_section_B",
     "https://exams.crownz.derrickml.com/english_ple_section_B",
     // Add other URLs here
   ];
@@ -179,11 +180,11 @@ const IframeComponent = ({ url }) => {
   };
 
   return (
-    <Container fluid="true" className="iframe-container" style={{ marginTop: "100px" }}>
+    <Container fluid="true" className="iframe-container" >
       {canDisplayUrl ? (
         <>
           <Row className="justify-content-center my-1">
-            <Col md={6} lg={4}>
+            <Col md={4} lg={2}>
               <Card className="text-center timer-card">
                 <Card.Body>
                   <FontAwesomeIcon icon={faClock} className="timer-icon" />

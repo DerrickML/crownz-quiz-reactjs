@@ -51,6 +51,7 @@ const PaymentResult = () => {
             }
             else if (transactionId) {
                 try {
+                    console.log('server url - payment verification: ' + serverUrl)
                     const response = await fetch(`${serverUrl}/flutterwave/verify-payment/${transactionId}`);
                     const data = await response.json();
 
@@ -231,9 +232,9 @@ const PaymentResult = () => {
                         created_at: new Date(data.created_at),
                         paymentFor: data.meta.service,
                         transactionID: data.tx_ref, //USED tx_ref because it's unique for all, but transactionId in transaction table can be duplicated
-                        userId: `${isStudent ? userInfo.userId : data.meta.studentId}`,
+                        userId: isStudent ? userInfo.userId : data.meta.studentId,
                         points: data.meta.points,
-                        educationLevel: `${isStudent ? userInfo.userId : data.meta.educationLevel}`,
+                        educationLevel: isStudent ? userInfo.educationLevel : data.meta.educationLevel,
                         message: `Points Purchase with Flutterwave Gateway - PaymentVerification`
                     })
                 } catch (e) { console.error('Update Points table error: ', e); throw e; }
