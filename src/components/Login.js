@@ -39,7 +39,7 @@ import { serverUrl } from "../config.js"
 import "./Login.css";
 
 function Login() {
-  const { handleLogin } = useAuth();
+  const { handleLogin, handleLogout } = useAuth();
   const navigate = useNavigate();
 
   //User ID
@@ -191,13 +191,10 @@ function Login() {
         //Fetch Account Data/Info from server-side
         const userInfo = await userData(session.userId);
 
-        // Check education Level data availability
-        handleLoginSuccess(userInfo);
-
-        // handleLogin(session, userInfo); // Pass the session data to App.js
+        handleLogin(session, userInfo); // Pass the session data to App.js
 
         // Redirect to home page
-        // navigate("/");
+        navigate("/");
 
         // window.location.href = "/";
       }
@@ -212,7 +209,7 @@ function Login() {
     setOtpSubmitLoader(false);
   };
 
-  const handleLoginSuccess = (userInfo) => {
+  const handleLoginSuccess = async (userInfo) => {
     const unavailableEducationLevels = ['UCE', 'UACE']; // Education levels
     console.log('UnavailableEducationLevels', userInfo.educationLevel)
     if (unavailableEducationLevels.includes(userInfo.educationLevel)) {
@@ -223,6 +220,7 @@ function Login() {
         buttonText: 'Close'
       });
       setShowInfoModal(true);
+      await handleLogout();
     } else {
       navigate("/");  // or another appropriate action
     }
