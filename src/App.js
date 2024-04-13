@@ -13,6 +13,7 @@ import { showToast } from "./utilities/toastUtil.js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CustomNavbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
 import ForgetPassword from "./components/ForgetPassword";
@@ -84,7 +85,7 @@ function App() {
 
       <AuthProvider>
         <div
-        // className="App"
+          className="App"
         >
           <CustomNavbar />
           <div
@@ -222,6 +223,7 @@ function App() {
 
             </Routes>
           </div>
+          <Footer />
         </div>
 
       </AuthProvider>

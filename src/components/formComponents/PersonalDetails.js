@@ -72,10 +72,10 @@ const PersonalDetails = ({
         >
           <option value="">Select Education Level</option>
           <option value="PLE">Primary Leaving Examination (PLE)</option>
-          <option value="UCE">Uganda Certificate of Education (UCE)</option>
+          {/* <option value="UCE">Uganda Certificate of Education (UCE)</option>
           <option value="UACE">
             Uganda Advanced Certificate of Education (UACE)
-          </option>
+          </option> */}
           {/* Add other options as needed */}
         </Form.Select>
       </Col>

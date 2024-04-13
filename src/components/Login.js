@@ -12,6 +12,7 @@ import {
   Card,
   Alert,
   Spinner,
+  Modal,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -33,6 +34,7 @@ import {
   subjectsTable_id,
   Query,
 } from "../appwriteConfig.js";
+import InfoCard from './InfoCard';
 import { serverUrl } from "../config.js"
 import "./Login.css";
 
@@ -59,6 +61,16 @@ function Login() {
   const [phoneError, setPhoneError] = useState(false); // Error flag for user's phone
   const [emailError, setEmailError] = useState(""); // New state for email login error
   const [accountCheck, setAccountCheck] = useState(false);
+
+  // Modal control and information display
+  const [showInfoModal, setShowInfoModal] = useState(false);
+  const [infoModalContent, setInfoModalContent] = useState({
+    educationLevel: '',
+    title: '',
+    message: '',
+    buttonText: 'Close'
+  });
+
 
   //Funstion to check for phone number validity
   const validatePhoneNumber = (phoneNumber) => {
@@ -163,8 +175,10 @@ function Login() {
           await fetchAndProcessStudentData(session.userId);
         }
 
+        // Check education Level data availability
+        handleLoginSuccess(userInfo);
         // Redirect to home page
-        navigate("/");
+        // navigate("/");
         // window.location.href = "/";
       } else if (loginMethod === "phone") {
         setOtpSubmitLoader(true);
@@ -177,10 +191,14 @@ function Login() {
         //Fetch Account Data/Info from server-side
         const userInfo = await userData(session.userId);
 
-        handleLogin(session, userInfo); // Pass the session data to App.js
+        // Check education Level data availability
+        handleLoginSuccess(userInfo);
+
+        // handleLogin(session, userInfo); // Pass the session data to App.js
 
         // Redirect to home page
-        navigate("/");
+        // navigate("/");
+
         // window.location.href = "/";
       }
     } catch (error) {
@@ -193,6 +211,23 @@ function Login() {
     setEmailLoginLoader(false);
     setOtpSubmitLoader(false);
   };
+
+  const handleLoginSuccess = (userInfo) => {
+    const unavailableEducationLevels = ['UCE', 'UACE']; // Education levels
+    console.log('UnavailableEducationLevels', userInfo.educationLevel)
+    if (unavailableEducationLevels.includes(userInfo.educationLevel)) {
+      setInfoModalContent({
+        educationLevel: userInfo.educationLevel,
+        title: 'Content Coming Soon',
+        message: `The course material for ${userInfo.educationLevel} is currently being developed. We appreciate your patience and will notify you as soon as it becomes available.`,
+        buttonText: 'Close'
+      });
+      setShowInfoModal(true);
+    } else {
+      navigate("/");  // or another appropriate action
+    }
+  };
+
 
   // Checking for existing account
   async function searchForExistingAccount(value) {
@@ -437,15 +472,39 @@ function Login() {
                   )}
                 </Form>
                 {loginMethod === "email" && (
-                  <div className="text-end mt-3">
-                    Forgot <Link to="/forget-password">password?</Link>
-                  </div>
+                  <Row className="mt-4 justify-content-center">
+                    <Col xs={6} className="text-start">
+                      <Link to="/sign-up">Signup</Link>
+                    </Col>
+                    <Col xs={6} className="text-end">
+                      <Link to="/forget-password">Forgot password?</Link>
+                    </Col>
+                  </Row>
+
                 )}
               </Card.Body>
             </Card>
           </Col>
         </Row>
       </Container>
+      <Modal show={showInfoModal} onHide={() => setShowInfoModal(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Information</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <InfoCard
+            educationLevel={infoModalContent.educationLevel}
+            title={infoModalContent.title}
+            message={infoModalContent.message}
+            buttonText={infoModalContent.buttonText}
+            onButtonClick={() => {
+              setShowInfoModal(false);
+              navigate("/sign-in");  // Navigate back to login or another page
+            }}
+          />
+        </Modal.Body>
+      </Modal>
+
     </div>
   );
 }

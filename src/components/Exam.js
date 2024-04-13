@@ -100,8 +100,8 @@ function Exam({ subject }) {
   const renderQuizContent = () => {
     switch (subject) {
       case "english-language_ple":
-        return <IframeComponent url="https://exams.crownz.derrickml.com/english_ple_section_B" />;
-      // return <IframeComponent url="https://moodle.servers.crownzcom.tech/english_ple_section_B" />;
+        // return <IframeComponent url="https://exams.crownz.derrickml.com/english_ple_section_B" />;
+        return <IframeComponent url="https://exampreptutor.com/english_ple_section_B" />;
       case "social-studies_ple":
         if (data === null) { return null }
         else {

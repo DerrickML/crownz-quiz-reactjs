@@ -19,7 +19,15 @@ const CustomNavbar = () => {
       expanded={expanded}
     >
       <Navbar.Brand as={NavLink} to="/" onClick={() => setExpanded(false)}>
-        CrownzCom
+        <img
+          src="/img/logo.png"
+          width="40"
+          height="40"
+          className="d-inline-block align-top"
+          alt="React Bootstrap logo"
+          style={{ borderRadius: '15px', marginLeft: '5px' }}
+        />
+        {/* CrownzCom */}
       </Navbar.Brand>
       <Navbar.Toggle
         aria-controls="basic-navbar-nav"

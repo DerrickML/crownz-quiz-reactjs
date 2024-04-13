@@ -18,10 +18,10 @@ function ExamPage() {
         Embark on a journey of knowledge. Choose your subject and challenge
         yourself!
       </p>
-      <Button variant="outline-light" className="mt-3">
+      {/* <Button variant="outline-light" className="mt-3">
         <FontAwesomeIcon icon={faSearch} className="me-2" />
         Explore Subjects
-      </Button>
+      </Button> */}
     </HeroHeader>
   );
 
