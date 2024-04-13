@@ -12,7 +12,7 @@ import { Container } from "react-bootstrap";
 import { showToast } from "./utilities/toastUtil.js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CustomNavbar from "./components/Navbar";
+import AppContent from "./components/navbar/AppContent";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
@@ -87,12 +87,10 @@ function App() {
         <div
           className="App"
         >
-          <CustomNavbar />
-          <div
-          // className="main-content"
-          // style={{ marginTop: "60px", width: "100%" }}
-          >
-            {/* <CustomNavbar /> */}
+          {/* Conditionally render Navbar if not on login page */}
+          {/* {location.pathname !== "/sign-in" && <CustomNavbar />} */}
+          <AppContent />
+          <div >
             <Routes>
               <Route
                 exact
