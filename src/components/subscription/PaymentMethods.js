@@ -1,15 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
 import { Container, Row, Col, ButtonGroup, Button, Form, Alert, Card, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt, faCreditCard } from '@fortawesome/free-solid-svg-icons';
+import {
+    databases,
+    database_id,
+    pointsTable_id,
+    Query,
+    ID
+} from "../../appwriteConfig.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { updateStudentDataInLocalStorage } from '../../utilities/fetchStudentData'
+import { useAuth } from '../../context/AuthContext';
+import { updatePointsTable } from '../../utilities/otherUtils'
 import { serverUrl } from '../../config'
 // import OrderSummery2 from './OrderSummery2';
 
 import './PaymentMethods.css';
 
 function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studentInfo }) {
+    const { userInfo, fetchUserPoints } = useAuth();
+    const isStudent = userInfo.labels.includes("student");
+    const isNextOfKin = userInfo.labels.includes("kin");
     const navigate = useNavigate();
     const originalPrice = price;
 
@@ -50,11 +64,11 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
         const discountValue = parseFloat(discountInfo.DiscountValue);
         switch (discountInfo.DiscountType) {
             case 'fixed':
-                return `UGX. ` + Math.max(originalPrice - discountValue, 0);
+                return Math.max(originalPrice - discountValue, 0);
             case 'percentage':
-                return `UGX. ` + originalPrice * (1 - discountValue / 100);
+                return originalPrice * (1 - discountValue / 100);
             default:
-                return `UGX. ` + originalPrice; // No discount applied
+                return originalPrice; // No discount applied
         }
     };
 
@@ -63,9 +77,51 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
         setFinalPrice(calculatePrice());
     }, [discountInfo]);
 
-    const handleNext = () => {
-        if (stage === 'coupon') {
+    const handleNext = async () => {
+        if (stage === 'coupon' && finalPrice > 0) {
             setStage('payment');
+        }
+        if (finalPrice === 0) {
+            console.log('Student Information: ' + JSON.stringify(studentInfo))
+            var currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
+            let data = {
+                created_at: currentDateTime,
+                paymentFor: paymentMadeFor,
+                transactionID: 'DISCOUNT-0000',
+                userId: isStudent ? userInfo.userId : studentInfo.userId,
+                points: points,
+                educationLevel: isStudent ? userInfo.educationLevel : studentInfo.educationLevel,
+                message: `Points Purchase on discount.`
+            }
+            await updatePointsTable(data)
+
+            //UPDATE POINTS
+            //Update student side points
+            if (isStudent) {
+                await fetchUserPoints(userInfo.userId, userInfo.educationLevel);
+            }
+            else { //Update next-of-kin side points
+                let newPointsBalance
+                //Query a Appwrite Database Table for user
+                try {
+
+                    const response = await databases.listDocuments(database_id, pointsTable_id, [Query.equal('UserID', studentInfo.userId)]);
+
+                    // console.log('Checking points table: ', response)
+
+                    if (response.documents.length > 0) {
+
+                        newPointsBalance = response.documents[0].PointsBalance
+
+                        //update Student Points via local storage
+                        await updateStudentDataInLocalStorage(studentInfo.userId, { pointsBalance: newPointsBalance });
+
+                    }
+                } catch (err) {
+                    console.error('Failed to Fetch points from Database for update after Payment verification: ', err);
+                }
+
+            }
         }
     };
 
@@ -117,7 +173,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                         {discountInfo && discountInfo.DiscountType === 'percentage' ? '%' : (discountInfo && discountInfo.DiscountType === 'points' ? 'points' : null)}
                                     </p>
 
-                                    <p>Final Price: {finalPrice}</p>
+                                    <p>Final Price: UGX. {finalPrice}</p>
                                 </div>
 
                             </Card.Body>
@@ -180,7 +236,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                     )}
 
                     {stage === 'coupon' && (
-                        <Button variant="success" onClick={handleNext}>Proceed to Payment</Button>
+                        <Button variant="success" onClick={handleNext}>{finalPrice === 0 ? 'Complete Purchase' : 'Proceed to Payment'}</Button>
                     )}
                 </ButtonGroup>
             </div>

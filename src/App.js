@@ -88,7 +88,6 @@ function App() {
           className="App"
         >
           {/* Conditionally render Navbar if not on login page */}
-          {/* {location.pathname !== "/sign-in" && <CustomNavbar />} */}
           <AppContent />
           <div >
             <Routes>
