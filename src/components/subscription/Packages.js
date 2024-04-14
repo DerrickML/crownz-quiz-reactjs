@@ -18,7 +18,7 @@ const Packages = ({ studentInfo }) => {
             duration: 7,
             features: [
                 '100 points',
-                `Attempt up to 5 quizzes`,
+                `Attempt up to 5 exams`,
                 'Expires in 7 days',
             ]
         },
@@ -27,10 +27,10 @@ const Packages = ({ studentInfo }) => {
             points: 560,
             price: 20000,
             quizzes: 11,
-            duration: 365,
+            duration: 366,
             features: [
                 '560 points',
-                `Attempt up to 28 quizzes`,
+                `Attempt up to 28 exams`,
                 'Expires in 1 year',
             ],
         },
@@ -42,7 +42,7 @@ const Packages = ({ studentInfo }) => {
             duration: 30,
             features: [
                 '340 points',
-                `Attempt up to 11 quizzes`,
+                `Attempt up to 17 exams`,
                 'Expires in 30 days',
             ],
         },

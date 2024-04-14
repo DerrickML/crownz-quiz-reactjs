@@ -108,14 +108,25 @@ function Exam({ subject }) {
           return <QuizContainer questionsData={data} subjectName={'sst_ple'} />;
         };
       case "mathematics_ple":
-        // return <QuizContainer questionsData={data} subjectName={'math_ple'} />;
-        return <QuizContainer questionsData={math_ple} subjectName={'math_ple'} />;
+        return <QuizContainer questionsData={data} subjectName={'math_ple'} />;
+      // return <QuizContainer questionsData={math_ple} subjectName={'math_ple'} />;
       case "science_ple":
         return <QuizContainer questionsData={data} subjectName={'sci_ple'} />;
       default:
         return null;
     }
   };
+
+  const subjectInstructions = () => {
+    console.log('Subject Name: ', subject);
+    return (
+      subject === ('mathematics_ple' || 'mathematics_uce' || 'mathematics_uace') ?
+        <>
+          <li>Have a piece of paper, pen/pencil, and calculator ready for calculations. </li>
+        </>
+        : <></>
+    )
+  }
 
   return (
     <>
@@ -126,10 +137,16 @@ function Exam({ subject }) {
         <Modal.Body>
           <p>Here are the instructions for your exam:</p>
           <ul>
+            {/* Subject based instructions as needed */}
+            {subjectInstructions()}
+            {/* Other General instructions as needed */}
             <li>Read each question carefully.</li>
             <li>Ensure you answer all questions.</li>
+            <li>Answer multiple-choice questions by selecting the best option.</li>
+            <li>Enter text responses for text entry questions in the provided text box.</li>
+            <li>Keep track of the time limit and pace yourself accordingly.</li>
             <li>Do not refresh the page during the exam.</li>
-            {/* Add more instructions as needed */}
+            <li>Upon completion, submit the exam and await feedback on your performance.</li>
           </ul>
         </Modal.Body>
         <Modal.Footer>

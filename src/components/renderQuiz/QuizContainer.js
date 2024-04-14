@@ -122,7 +122,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     }
 
     return (
-        <Container fluid style={{ marginTop: "100px" }}>
+        <Container fluid style={{ marginTop: "" }}>
             <div style={{ position: 'sticky', top: 0, zIndex: 2 }}>
                 <Row>
                     <Col xs={12} className="d-md-none bg-light" >
@@ -182,26 +182,6 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                                     })}
                                 </div>
                             ))}
-                        </Col>
-                    </Row>
-                    <Row >
-                        <Col xs={12} className="d-md-none bg-light fixed-bottom">
-                            <div className="d-flex justify-content-center">
-                                <ButtonGroup className="w-75">
-                                    <Button
-                                        variant="success"
-                                        onClick={handleOpenModal}
-                                    >
-                                        Submit Quiz
-                                    </Button>
-                                    <Button
-                                        variant="danger"
-                                        onClick={handleExitExam}
-                                    >
-                                        Exit Exam
-                                    </Button>
-                                </ButtonGroup>
-                            </div>
                         </Col>
                     </Row>
                 </>}

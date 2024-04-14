@@ -1,6 +1,6 @@
 // AnswerCard.js
 import React, { useState } from 'react';
-import { Card, ListGroup, Badge, ButtonGroup, Button, Alert } from 'react-bootstrap';
+import { Row, Col, Card, ListGroup, Badge, ButtonGroup, Button, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { setUserAnswer, setSelectedOption } from '../../redux/actions';
 import { isImageUrl } from './utils';
