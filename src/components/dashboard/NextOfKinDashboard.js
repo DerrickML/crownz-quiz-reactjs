@@ -39,7 +39,7 @@ const NextOfKinDashboard = () => {
   //To view student results
   function viewResults(resultDetails, subjectName, totalMarks) {
     if (subjectName === "English Language") {
-      navigate("/quiz-results", { state: { results: resultDetails } });
+      navigate("/exam-results", { state: { results: resultDetails } });
     }
     else {
       const questionsData = JSON.parse(resultDetails);
