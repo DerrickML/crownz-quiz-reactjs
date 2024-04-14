@@ -218,34 +218,30 @@ const IframeComponent = ({ url }) => {
                   variant="danger"
                   onClick={handleExitExam}
                   className="w-25"
+                  disabled={isLoading}
                 >
                   Exit Exam
                 </Button>
               </div>
             )
             :
-            <Container fluid style={{}}>
-              <Row >
-                <Col xs={12} className="" style={{ marginBottom: '1.8rem' }}>
-                  <div className="d-flex justify-content-center">
-                    <ButtonGroup className="w-75">
-                      <Button
-                        variant="success"
-                        onClick={() => { navigate('/exam-page') }}
-                      >
-                        Attempt another Exam
-                      </Button>
-                      <Button
-                        variant="info"
-                        onClick={() => { navigate('/') }}
-                      >
-                        Back to Dashboard
-                      </Button>
-                    </ButtonGroup>
-                  </div>
-                </Col>
-              </Row>
-            </Container>}
+            <div className="exam-controls bg-dark">
+              <Button
+                variant="success"
+                onClick={() => { navigate('/exam-page') }}
+                disabled={isLoading}
+                className="w-25"
+              >
+                Attempt Another Exam
+              </Button>
+              <Button
+                variant="danger"
+                onClick={() => { navigate('/') }}
+                className="w-25"
+              >
+                Back to Dashboard
+              </Button>
+            </div>}
 
           {/* Modal for exit confirmation */}
           <Modal
