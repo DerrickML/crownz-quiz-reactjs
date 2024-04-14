@@ -11,7 +11,7 @@ const Answers = () => {
     const { questionsData, subjectName, totalMarks, attemptDate } = location.state || { questionsData: [], subjectName: '', totalMarks: 0, attemptDate: '' };
 
     return (
-        <Container fluid style={{ marginTop: "100px" }}>
+        <Container fluid style={{}}>
             <AnswerContainer questionsData={questionsData} subjectName={subjectName} totalMarks={totalMarks} attemptDate={attemptDate} />
             <Row >
                 <Col xs={12} className="" style={{ marginBottom: '1.8rem' }}>

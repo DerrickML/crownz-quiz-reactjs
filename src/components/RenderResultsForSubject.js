@@ -53,7 +53,7 @@ const RenderResultsForSubject = ({ results = [] }) => {
   };
 
   const viewResults = (resultDetails) => {
-    navigate("/quiz-results", { state: { results: resultDetails } });
+    navigate("/exam-results", { state: { results: resultDetails } });
   };
 
   return (

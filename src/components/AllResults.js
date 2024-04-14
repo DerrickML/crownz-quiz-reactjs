@@ -42,7 +42,7 @@ const AllResults = () => {
 
   const viewResults = (resultDetails, subjectName, totalMarks, attemptDate) => {
     if (subjectName === "English Language") {
-      navigate("/quiz-results", { state: { results: resultDetails } });
+      navigate("/exam-results", { state: { results: resultDetails } });
     }
     else {
       const questionsData = JSON.parse(resultDetails);

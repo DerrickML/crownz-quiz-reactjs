@@ -139,7 +139,7 @@ function App() {
                 }
               />
               <Route
-                path="/quiz-results"
+                path="/exam-results"
                 element={<PrivateRoute>
                   <QuizResults />
                 </PrivateRoute>

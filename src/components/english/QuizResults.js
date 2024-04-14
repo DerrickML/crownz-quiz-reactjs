@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Button, Card, ListGroup } from "react-bootstrap";
+import { Row, Col, Modal, Button, ButtonGroup, Card, ListGroup } from "react-bootstrap";
 import "./iframes.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -80,9 +80,9 @@ const QuizResults = () => {
               <Card.Text>
                 <p
                   className={`mb-1 ${questionResult.userAnswer.toLowerCase() ===
-                      questionResult.correctAnswer.toLowerCase()
-                      ? "text-success"
-                      : "text-danger"
+                    questionResult.correctAnswer.toLowerCase()
+                    ? "text-success"
+                    : "text-danger"
                     }`}
                 >
                   Your answer: {questionResult.userAnswer}
@@ -146,7 +146,7 @@ const QuizResults = () => {
   const percentage = totalMarks > 0 ? (marksObtained / totalMarks) * 100 : 0;
 
   return (
-    <div className="container my-4" style={{ marginTop: "100px" }} >
+    <div className="container my-4" style={{}} >
       <div className="card text-center mb-4">
         <div className="card-header">Exam Results</div>
         <div className="card-body">
@@ -165,6 +165,30 @@ const QuizResults = () => {
         .map((categoryResult) => renderQuizQuestions(categoryResult))}
 
       {renderIframeResults(iframeResults)}
+
+      {/* Navigation Buttons */}
+      {/* <Container fluid style={{}}> */}
+      <Row >
+        <Col xs={12} className="" style={{ marginBottom: '1.8rem' }}>
+          <div className="d-flex justify-content-center">
+            <ButtonGroup className="w-75">
+              <Button
+                variant="success"
+                onClick={() => { navigate('/exam-page') }}
+              >
+                Attempt another Exam
+              </Button>
+              <Button
+                variant="info"
+                onClick={() => { navigate('/') }}
+              >
+                Back to Dashboard
+              </Button>
+            </ButtonGroup>
+          </div>
+        </Col>
+      </Row>
+      {/* </Container> */}
     </div>
   );
 };
