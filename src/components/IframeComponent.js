@@ -3,6 +3,7 @@ import Iframe from "react-iframe";
 import {
   Container,
   Button,
+  ButtonGroup,
   Spinner,
   Card,
   Modal,
@@ -198,29 +199,53 @@ const IframeComponent = ({ url }) => {
             <Iframe src={url} id="myIframe" className="iframe-content" />
           </Card>
 
-          {!isCompleted && (
-            <div className="exam-controls bg-dark">
-              <Button
-                variant="success"
-                onClick={handleConfirmSubmit}
-                disabled={isLoading}
-                className="w-25"
-              >
-                {isLoading ? (
-                  <Spinner as="span" animation="border" size="sm" />
-                ) : (
-                  "Submit Exam"
-                )}
-              </Button>
-              <Button
-                variant="danger"
-                onClick={handleExitExam}
-                className="w-25"
-              >
-                Exit Exam
-              </Button>
-            </div>
-          )}
+          {!isCompleted ?
+            (
+              <div className="exam-controls bg-dark">
+                <Button
+                  variant="success"
+                  onClick={handleConfirmSubmit}
+                  disabled={isLoading}
+                  className="w-25"
+                >
+                  {isLoading ? (
+                    <Spinner as="span" animation="border" size="sm" />
+                  ) : (
+                    "Submit Exam"
+                  )}
+                </Button>
+                <Button
+                  variant="danger"
+                  onClick={handleExitExam}
+                  className="w-25"
+                >
+                  Exit Exam
+                </Button>
+              </div>
+            )
+            :
+            <Container fluid style={{}}>
+              <Row >
+                <Col xs={12} className="" style={{ marginBottom: '1.8rem' }}>
+                  <div className="d-flex justify-content-center">
+                    <ButtonGroup className="w-75">
+                      <Button
+                        variant="success"
+                        onClick={() => { navigate('/exam-page') }}
+                      >
+                        Attempt another Exam
+                      </Button>
+                      <Button
+                        variant="info"
+                        onClick={() => { navigate('/') }}
+                      >
+                        Back to Dashboard
+                      </Button>
+                    </ButtonGroup>
+                  </div>
+                </Col>
+              </Row>
+            </Container>}
 
           {/* Modal for exit confirmation */}
           <Modal
