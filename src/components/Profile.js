@@ -16,6 +16,7 @@ import {
   faUserCircle,
   faEdit,
   faPlusCircle,
+  faInfo
 } from "@fortawesome/free-solid-svg-icons";
 import storageUtil from "../utilities/storageUtil";
 import { fetchAndProcessStudentData } from "../utilities/fetchStudentData";
@@ -121,6 +122,49 @@ const Profile = () => {
       </Card.Body>
     </Card>
   );
+
+  const renderPersonalDetails = () => (
+    <Card className="shadow-sm mb-4 profile-card">
+      <Card.Header>
+        <FontAwesomeIcon icon={faInfo} className="me-2" />
+        User Information
+      </Card.Header>
+      <Card.Body>
+        <ul className="list-group list-group-flush">
+          {userInfo.email ? (
+            <>
+              <li className="list-group-item">
+                <i className="bi bi-building me-2"></i>
+                <strong>Email:</strong> {userInfo.email}
+              </li>
+            </>
+          ) : null}
+
+          {userInfo.phone ? (
+            <>
+              <li className="list-group-item">
+                <i className="bi bi-geo-alt me-2"></i>
+                <strong>Phone:</strong> {userInfo.phone}
+              </li>
+            </>
+          ) : null}
+
+          {isStudent && (
+            userInfo.gender ? (
+              <>
+                <li className="list-group-item">
+                  <i className="bi bi-geo-alt me-2"></i>
+                  <strong>Gender:</strong> {userInfo.gender}
+                </li>
+              </>
+            ) : null
+          )}
+
+          {/* Additional student-specific content */}
+        </ul>
+      </Card.Body>
+    </Card>
+  )
 
   const renderStudentProfile = () => (
     <Card className="shadow-sm mb-4 profile-card">
@@ -288,37 +332,8 @@ const Profile = () => {
           )}
         </Nav>
         <Tab.Content>
-          <div className="tab-pane active" id="personalDetails">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Contact Information</h5>
-                <p className="card-text">
-                  {userInfo.email ? (
-                    <>
-                      <strong>Email:</strong> {userInfo.email}
-                    </>
-                  ) : null}
-                </p>
-                {userInfo.phone && (
-                  <p className="card-text">
-                    {userInfo.phone ? (
-                      <>
-                        <strong>Phone:</strong> {userInfo.phone}
-                      </>
-                    ) : null}
-                  </p>
-                )}
-                {isStudent && (
-                  <p className="card-text">
-                    {userInfo.gender ? (
-                      <>
-                        <strong>Gender:</strong> {userInfo.gender}
-                      </>
-                    ) : null}
-                  </p>
-                )}
-              </div>
-            </div>
+          <div className="tab-pane" id="personalDetails">
+            {renderPersonalDetails()}
           </div>
 
           {isStudent && (
