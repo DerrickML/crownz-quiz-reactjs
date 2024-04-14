@@ -69,6 +69,7 @@ function MobileMoney({ propPrice, propPaymentFor, propStudentInfo }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setPhoneError(false);
         setPaymentStatus(null);
 
         setSubmit(true);
@@ -87,7 +88,7 @@ function MobileMoney({ propPrice, propPaymentFor, propStudentInfo }) {
         const isUserPhoneValid = !validatePhoneNumber(phone);
 
         if (!isUserPhoneValid) {
-            setPhoneError(!isUserPhoneValid);
+            setPhoneError(true);
             setSubmit(false);
             return;
 
