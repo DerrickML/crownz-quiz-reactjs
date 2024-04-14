@@ -119,7 +119,7 @@ const AllResults = () => {
         <Col xs="auto">
           <Button variant="light" onClick={() => navigate("/exam-page")}>
             <FontAwesomeIcon icon={faBookOpen} className="me-2" />
-            Select an Exam
+            Attempt an Exam
           </Button>
         </Col>
         <Col xs="auto">
