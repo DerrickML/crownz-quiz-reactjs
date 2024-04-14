@@ -34,6 +34,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
     const [couponLoader, setCouponLoader] = useState(false)
     const [finalPrice, setFinalPrice] = useState(originalPrice);
     const [paymentMadeFor, setPaymentMadeFor] = useState(paymentFor)
+    const [loader, setLoader] = useState(false);
 
     const handleApplyCoupon = async () => {
         try {
@@ -82,51 +83,59 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
             setStage('payment');
         }
         if (finalPrice === 0) {
-            console.log('Student Information: ' + JSON.stringify(studentInfo))
-            var currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
-            let data = {
-                created_at: currentDateTime,
-                paymentFor: paymentMadeFor,
-                transactionID: 'DISCOUNT-0000',
-                userId: isStudent ? userInfo.userId : studentInfo.userId,
-                points: points,
-                educationLevel: isStudent ? userInfo.educationLevel : studentInfo.educationLevel,
-                message: `Points Purchase on discount.`
-            }
-            await updatePointsTable(data)
-
-            //UPDATE POINTS
-            //Update student side points
-            if (isStudent) {
-                await fetchUserPoints(userInfo.userId, userInfo.educationLevel);
-            }
-            else { //Update next-of-kin side points
-                let newPointsBalance
-                //Query a Appwrite Database Table for user
-                try {
-
-                    const response = await databases.listDocuments(database_id, pointsTable_id, [Query.equal('UserID', studentInfo.userId)]);
-
-                    // console.log('Checking points table: ', response)
-
-                    if (response.documents.length > 0) {
-
-                        newPointsBalance = response.documents[0].PointsBalance
-
-                        //update Student Points via local storage
-                        await updateStudentDataInLocalStorage(studentInfo.userId, { pointsBalance: newPointsBalance });
-
-                    }
-                } catch (err) {
-                    console.error('Failed to Fetch points from Database for update after Payment verification: ', err);
+            try {
+                setLoader(true);
+                console.log('Student Information: ' + JSON.stringify(studentInfo))
+                var currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
+                let data = {
+                    created_at: currentDateTime,
+                    paymentFor: paymentMadeFor,
+                    transactionID: 'DISCOUNT-0000',
+                    userId: isStudent ? userInfo.userId : studentInfo.userId,
+                    points: points,
+                    educationLevel: isStudent ? userInfo.educationLevel : studentInfo.educationLevel,
+                    message: `Points Purchase on discount.`
                 }
+                await updatePointsTable(data)
 
+                //UPDATE POINTS
+                //Update student side points
+                if (isStudent) {
+                    await fetchUserPoints(userInfo.userId, userInfo.educationLevel);
+                }
+                else { //Update next-of-kin side points
+                    let newPointsBalance
+                    //Query a Appwrite Database Table for user
+                    try {
+
+                        const response = await databases.listDocuments(database_id, pointsTable_id, [Query.equal('UserID', studentInfo.userId)]);
+
+                        // console.log('Checking points table: ', response)
+
+                        if (response.documents.length > 0) {
+
+                            newPointsBalance = response.documents[0].PointsBalance
+
+                            //update Student Points via local storage
+                            await updateStudentDataInLocalStorage(studentInfo.userId, { pointsBalance: newPointsBalance });
+
+                        }
+                    } catch (err) {
+                        console.error('Failed to Fetch points from Database for update after Payment verification: ', err);
+                    }
+
+                }
+            } catch (err) {
+                console.error('Failed to top-up points: ', err);
+            } finally {
+                setLoader(false);
+                navigate(-1)
             }
         }
     };
 
-    const handlePaymentSelection = (method) => {
-        navigate(`/payment/${method.toLowerCase()}`, { state: { price: finalPrice, paymentFor: paymentMadeFor, points: points, studentInfo: studentInfo } });
+    const handlePaymentSelection = (method, network) => {
+        navigate(`/payment/${method.toLowerCase()}`, { state: { price: finalPrice, paymentFor: paymentMadeFor, points: points, studentInfo: studentInfo, network: network } });
     };
 
     return (
@@ -189,8 +198,22 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
             {stage === 'payment' && (
                 <Row className="justify-content-center my-5">
                     <h2 className="text-center mb-4 w-100">Select Payment Method</h2>
+
+                    {/* MTN-MoMo */}
+                    {/* <Col lg={4} className="d-flex justify-content-center">
+                        <Card border="warning" className={`text-center package-card shadow-lg`} style={{ width: '18rem' }} onClick={() => handlePaymentSelection('mtn-momo', 'MTN')}>
+                            <Card.Header style={{ backgroundColor: 'orange', color: 'white' }}>
+                                MTN Mobile Money
+                            </Card.Header>
+                            <Card.Body className="justify-content-center">
+                                <Card.Img variant="top" src={`${serverUrl}/images/mtnmomo.png`} className="card-img-centered" />
+                            </Card.Body>
+                        </Card>
+                    </Col> */}
+
+                    {/* Flutterwave: MTN-MoMo */}
                     <Col lg={4} className="d-flex justify-content-center">
-                        <Card border="warning" className={`text-center package-card shadow-lg`} style={{ width: '18rem' }} onClick={() => handlePaymentSelection('mtn-momo')}>
+                        <Card border="warning" className={`text-center package-card shadow-lg`} style={{ width: '18rem' }} onClick={() => handlePaymentSelection('mobile-money', 'MTN')}>
                             <Card.Header style={{ backgroundColor: 'orange', color: 'white' }}>
                                 MTN Mobile Money
                             </Card.Header>
@@ -199,8 +222,11 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                             </Card.Body>
                         </Card>
                     </Col>
+
+                    {/* Flutterwave: Airtel-MoMo */}
                     <Col lg={4} className="d-flex justify-content-center">
-                        <Card border="danger" className={`text-center package-card shadow-lg`} style={{ width: '18rem' }} onClick={() => handlePaymentSelection('airtel-money')}>
+                        {/* <Card border="danger" className={`text-center package-card shadow-lg`} style={{ width: '18rem' }} onClick={() => handlePaymentSelection('airtel-money', 'AIRTEL')}> */}
+                        <Card border="danger" className={`text-center package-card shadow-lg`} style={{ width: '18rem' }} onClick={() => handlePaymentSelection('mobile-money', 'AIRTEL')}>
                             <Card.Header style={{ backgroundColor: 'red', color: 'white' }}>
                                 Airtel Money
                             </Card.Header>
@@ -209,8 +235,10 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                             </Card.Body>
                         </Card>
                     </Col>
+
+                    {/* Flutterwave: Card-MoMo */}
                     <Col lg={4} className="d-flex justify-content-center">
-                        <Card border="info" className={`text-center package-card shadow-lg`} style={{ width: '18rem' }} onClick={() => handlePaymentSelection('card-payment')}>
+                        <Card border="info" className={`text-center package-card shadow-lg`} style={{ width: '18rem' }} onClick={() => handlePaymentSelection('card-payment', 'card')}>
                             <Card.Header style={{ backgroundColor: '#2a9d8f', color: 'white' }}>
                                 Card
                             </Card.Header>
@@ -236,7 +264,19 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                     )}
 
                     {stage === 'coupon' && (
-                        <Button variant="success" onClick={handleNext}>{finalPrice === 0 ? 'Complete Purchase' : 'Proceed to Payment'}</Button>
+                        !loader ?
+                            <Button variant="success" onClick={handleNext}>{finalPrice === 0 ? 'Complete Purchase' : 'Proceed to Payment'}</Button>
+                            :
+                            <Button variant="success" disabled>
+                                <Spinner
+                                    as="span"
+                                    animation="grow"
+                                    size="sm"
+                                    role="status"
+                                    aria-hidden="true"
+                                />
+                                Processing...
+                            </Button>
                     )}
                 </ButtonGroup>
             </div>

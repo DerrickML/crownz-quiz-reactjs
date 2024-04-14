@@ -32,6 +32,7 @@ import Answers from "./components/renderAnswer/Answers";
 import PaymentResult from "./components/subscription/PaymentVerification"
 import MTNMomo from "./components/subscription/MTNMomo";
 import AirtelMoney from "./components/subscription/AirtelMoney";
+import MobileMoney from "./components/subscription/MobileMoney";
 import CardPayment from "./components/subscription/CardPayment";
 import Receipt from "./components/subscription/Receipt.js";
 import SelectPackage from "./components/subscription/SelectPackage";
@@ -185,6 +186,13 @@ function App() {
                 element={
                   <PrivateRoute>
                     <AirtelMoney />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/payment/mobile-money"
+                element={
+                  <PrivateRoute>
+                    <MobileMoney />
                   </PrivateRoute>
                 }
               />
