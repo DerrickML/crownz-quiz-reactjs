@@ -14,7 +14,7 @@ import {
     pointsTable_id,
     Query
 } from "../../appwriteConfig.js";
-import { updatePointsTable } from '../../utilities/otherUtils'
+import { updatePointsTable, couponTrackerUpdate } from '../../utilities/otherUtils'
 import { updateStudentDataInLocalStorage } from '../../utilities/fetchStudentData'
 import './PaymentResult.css'; // Path to your custom CSS file
 import moment from 'moment';
@@ -63,6 +63,15 @@ const PaymentResult = () => {
                     // console.log('Transaction data - Client side: ', data);
                     setPaymentStatus(data.status);
                     // console.log('Payment status - Client side: ', paymentStatus);
+
+
+                    //Checking for coupon usage and update
+                    try {
+                        const couponCode = data.transactionData.meta.couponCode
+                        console.log('Meta data: ', data.transactionData.meta.studentId);
+                        await couponTrackerUpdate({ userId: isNextOfKin ? data.transactionData.meta.studentId : userInfo.userId, couponCode: couponCode });
+                        console.log('FLW-Coupon--UPDATE');
+                    } catch (e) { console.error('Failed to update coupon table:', e) }
 
                     try {
                         // Data to send to receipt
@@ -143,6 +152,7 @@ const PaymentResult = () => {
                         // console.log('Receipt Data:', receiptData);
                         // console.log('cardOrPhone: Receipt Data:', receiptData.personalInfo.bank.cardOrPhoneNumber);
                         setTransactionData(receiptData);
+
                     }
                     catch (e) {
                         // console.log("error in recepit ..", e)
@@ -274,7 +284,7 @@ const PaymentResult = () => {
     };
 
     const exitPage = () => {
-        navigate(`/dashboard`);
+        navigate(`/`);
     };
 
     return (

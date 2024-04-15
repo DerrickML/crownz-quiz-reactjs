@@ -49,7 +49,8 @@ function Home() {
               </Col>
               <div className="d-flex justify-content-center">
 
-                <Card style={{ width: 'auto' }} className="text-center my-4">
+                {/*POINTS TRACKING DISPLAY*/}
+                {/* <Card style={{ width: 'auto' }} className="text-center my-4">
                   <Card.Header as="h5">
                     <FontAwesomeIcon icon={faCoins} className="me-2" /> Points Available
                   </Card.Header>
@@ -60,7 +61,7 @@ function Home() {
                       Top Up Points
                     </Button>
                   </Card.Body>
-                </Card>
+                </Card> */}
               </div>
             </>
           )}

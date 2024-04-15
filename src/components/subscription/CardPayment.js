@@ -15,7 +15,7 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const { price, paymentFor, points, studentInfo } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' } }; // Set default values accordingly
+    const { price, paymentFor, points, studentInfo, couponCode } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' }, couponCode: null }; // Set default values accordingly
 
     //Destructuring student information
     // const { userId: studentId, name: studentName, educationLevel } = studentInfo;
@@ -67,6 +67,7 @@ function CardPayment({ propPrice, propPaymentFor, propStudentInfo }) {
                     description: `Payment for exam/quiz Points${isStudent ? '.' : ` for ${studentName}`}`,
                     service: `${paymentFor}`,
                     points: `${points}`,
+                    couponCode: couponCode,
                     ...(isStudent ? {} : { studentName: studentName, studentId: studentId, educationLevel: educationLevel }), // Conditional spread operator for adding studentInfo
                 },
                 customizations: {

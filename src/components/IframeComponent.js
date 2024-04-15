@@ -105,7 +105,7 @@ const IframeComponent = ({ url }) => {
             });
 
             // Update user Points
-            await updateUserPoints(20, userInfo.userId);
+            await updateUserPoints(1, userInfo.userId);
 
             showToast("Results submitted successfully!", "success");
             if (userInfo.kinEmail) {

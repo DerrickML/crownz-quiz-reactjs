@@ -1,3 +1,7 @@
+/* TODO:
+- Coupon usage tracking: Passing coupon data (couponCode) to enable update via the couponusage table for coupons not giving 100% discount
+
+*/
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import moment from 'moment';
@@ -30,7 +34,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const { price, paymentFor, points, studentInfo } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' } }; // Set default values accordingly
+    const { price, paymentFor, points, studentInfo, couponCode } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' }, couponCode: null }; // Set default values accordingly
 
     //Destructuring student information
     // const { userId: studentId, name: studentName, educationLevel } = studentInfo;

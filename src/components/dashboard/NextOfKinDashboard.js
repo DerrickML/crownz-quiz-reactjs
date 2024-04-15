@@ -79,26 +79,6 @@ const NextOfKinDashboard = () => {
                       <td>{lastExamDateTime}</td>
                       <td>
                         <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                          {/* <ButtonGroup className="buttonGroupFlex">
-                            {results ? (
-                              <Button
-                                variant="primary"
-                                onClick={() => viewResults(results, subjectName, recentScore)}
-                              >
-                                Exam Results
-                              </Button>
-                            ) : null}
-                            <Button
-                              variant="success"
-                              onClick={() =>
-                                navigate("/student-details", {
-                                  state: { student: student },
-                                })
-                              }
-                            >
-                              Student Details
-                            </Button>
-                          </ButtonGroup> */}
                           <ButtonGroup style={{ width: '100%' }}>
                             {results ? (
                               <Button

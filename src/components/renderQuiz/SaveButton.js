@@ -229,7 +229,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
         }
 
         // Update user Points
-        await updateUserPoints(20, userInfo.userId);
+        await updateUserPoints(1, userInfo.userId);
 
         // Update the local storage with user information
         await fetchAndUpdateResults(userInfo.userId);

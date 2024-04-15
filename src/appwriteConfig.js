@@ -23,6 +23,7 @@ const transactionTable_id = "65f05f7989ddbc1b06b7"
 const pointsTable_id = 'UserID'
 const pointsBatchTable_id = '65f2c212c16fa9abe971'
 const subjectsTable_id = '660bb2f8d5d40ba2c2b5'
+const couponUsagesTable_id = '65dc4317b1e6e5bebdb9'
 
 //Localhost - Appwrite
 // const database_id = '651c1d7b8872bb9d837d';
@@ -43,6 +44,7 @@ export {
   pointsTable_id,
   pointsBatchTable_id,
   subjectsTable_id,
+  couponUsagesTable_id,
   Permission,
   Role,
   Query,

@@ -314,7 +314,7 @@ const Profile = () => {
                   href="#nextOfKinDetails"
                   data-bs-toggle="tab"
                 >
-                  Next of Kin Details
+                  Guardian Details
                 </a>
               </li>
             </>

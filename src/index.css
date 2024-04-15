@@ -6,7 +6,7 @@
 
 body {
   background: linear-gradient(135deg, #5f6061 0%, #83b4b6 100%) !important;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   font-weight: 400;
   font-family: 'Fira Sans', sans-serif;

@@ -166,10 +166,10 @@ function SelectExam() {
             <Modal.Title>{selectedSubject?.name} Exam</Modal.Title>
           </Modal.Header>
           {
-            userPoints < 20 ?
+            userPoints < 1 ?
               <>
                 <Modal.Body>
-                  <p>The points are not sufficient enough to attempt an exam. Your require a minimum of 20 points to attempt an exam.</p>
+                  <p>"Oops! Your access has expired. Renew your subscription to unlock this exam.</p>
                 </Modal.Body>
                 <Modal.Footer>
                   <Button

@@ -12,10 +12,10 @@ import {
     ID
 } from "../../appwriteConfig.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { updateStudentDataInLocalStorage } from '../../utilities/fetchStudentData'
-import { useAuth } from '../../context/AuthContext';
-import { updatePointsTable } from '../../utilities/otherUtils'
-import { serverUrl } from '../../config'
+import { updateStudentDataInLocalStorage } from '../../utilities/fetchStudentData.js'
+import { useAuth } from '../../context/AuthContext.js';
+import { updatePointsTable, couponTrackerUpdate } from '../../utilities/otherUtils.js'
+import { serverUrl } from '../../config.js'
 // import OrderSummery2 from './OrderSummery2';
 
 import './PaymentMethods.css';
@@ -26,6 +26,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
     const isNextOfKin = userInfo.labels.includes("kin");
     const navigate = useNavigate();
     const originalPrice = price;
+    const originalPoints = points;
 
     const [stage, setStage] = useState('coupon'); // 'coupon', 'summary', or 'payment'
     const [coupon, setCoupon] = useState(initialCoupon || '');
@@ -33,6 +34,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
     const [couponError, setCouponError] = useState('');
     const [couponLoader, setCouponLoader] = useState(false)
     const [finalPrice, setFinalPrice] = useState(originalPrice);
+    const [finalPoints, setFinalPoints] = useState(originalPoints)
     const [paymentMadeFor, setPaymentMadeFor] = useState(paymentFor)
     const [loader, setLoader] = useState(false);
 
@@ -40,7 +42,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
         try {
             // Make an API call to validate the coupon
             setCouponLoader(true);
-            const response = await fetch(`${serverUrl}/query/validate-coupon?code=${coupon}`);
+            const response = await fetch(`${serverUrl}/query/validate-coupon?code=${coupon}&userId=${isStudent ? userInfo.userId : studentInfo.userId}`);
             const data = await response.json();
 
             if (response.ok && data.couponDetails) {
@@ -62,26 +64,34 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
 
     const calculatePrice = () => {
         if (!discountInfo) return originalPrice;
+        if (discountInfo.DiscountType === 'points') return originalPrice; // No price change if discount is on points
         const discountValue = parseFloat(discountInfo.DiscountValue);
         switch (discountInfo.DiscountType) {
             case 'fixed':
                 return Math.max(originalPrice - discountValue, 0);
             case 'percentage':
                 return originalPrice * (1 - discountValue / 100);
-            case 'points':
-
-                return originalPrice
             default:
                 return originalPrice; // No discount applied
         }
     };
 
-    // Update the final price when discountInfo changes
+    const calculatePoints = () => {
+        if (!discountInfo || discountInfo.DiscountType !== 'points') return originalPoints;
+
+        const discountValue = parseFloat(discountInfo.DiscountValue);
+        return Math.max(originalPoints + discountValue, 0); // Subtract discountValue from points if applicable
+    };
+
+    // useEffect to update finalPrice and finalPoints when discountInfo changes
     useEffect(() => {
         setFinalPrice(calculatePrice());
+        setFinalPoints(calculatePoints()); // Assuming 'setPoints' updates the state for points
     }, [discountInfo]);
 
     const handleNext = async () => {
+        calculatePoints(); //Calculate final points
+
         if (stage === 'coupon' && finalPrice > 0) {
             setStage('payment');
         }
@@ -95,7 +105,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                     paymentFor: paymentMadeFor,
                     transactionID: 'DISCOUNT-0000',
                     userId: isStudent ? userInfo.userId : studentInfo.userId,
-                    points: points,
+                    points: finalPoints,
                     educationLevel: isStudent ? userInfo.educationLevel : studentInfo.educationLevel,
                     message: `Points Purchase on discount.`
                 }
@@ -128,6 +138,10 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                     }
 
                 }
+
+                //Update the points usage table
+                await couponTrackerUpdate({ userId: data.userId, couponCode: coupon });
+
             } catch (err) {
                 console.error('Failed to top-up points: ', err);
             } finally {
@@ -138,7 +152,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
     };
 
     const handlePaymentSelection = (method, network) => {
-        navigate(`/payment/${method.toLowerCase()}`, { state: { price: finalPrice, paymentFor: paymentMadeFor, points: points, studentInfo: studentInfo, network: network } });
+        navigate(`/payment/${method.toLowerCase()}`, { state: { price: finalPrice, paymentFor: paymentMadeFor, points: finalPoints, studentInfo: studentInfo, network: network, couponCode: coupon } });
     };
 
     return (
@@ -151,7 +165,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                             <Card.Header as="h2">Order Summary</Card.Header>
                             <Card.Body>
                                 <Card.Text>
-                                    You are about to purchase {points} points which you can use to attempt quizzes.
+                                    {/* You have selected the {tier} package. */}
                                     <br />
                                     <strong>Package:</strong> {tier}
                                     <br />
@@ -176,17 +190,32 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                     </Form.Group>
                                     {couponError && <Alert variant="danger">{couponError}</Alert>}
                                 </Form>
-                                <div>
-                                    <p>Original Price: UGX. {originalPrice}</p>
-                                    <p>Discount:
-                                        {' '}
-                                        {discountInfo && discountInfo.DiscountType === 'fixed' && 'UGX. '}
-                                        {discountInfo ? discountInfo.DiscountValue : 0}
-                                        {discountInfo && discountInfo.DiscountType === 'percentage' ? '%' : (discountInfo && discountInfo.DiscountType === 'points' ? 'points' : null)}
-                                    </p>
+                                {discountInfo && (
+                                    <ul className="list-group list-group-flush">
+                                        <li className="list-group-item">
+                                            <i className="bi bi-building me-2"></i>
+                                            <strong>Original Price:</strong> UGX. {originalPrice}
+                                        </li>
+                                        <li className="list-group-item">
+                                            <i className="bi bi-building me-2"></i>
+                                            <strong>Description:</strong> {discountInfo.Description}
+                                        </li>
+                                        <li className="list-group-item">
+                                            <i className="bi bi-building me-2"></i>
+                                            <strong>Discount:</strong>
+                                            {' '}
+                                            {(discountInfo.DiscountType === 'fixed' || discountInfo.DiscountType === 'percentage') && 'UGX. '}
+                                            {(discountInfo.DiscountType === 'fixed' || discountInfo.DiscountType === 'percentage') ? discountInfo.DiscountValue : (discountInfo.DiscountType === 'points' ? 'Exam discount' : 0)}
+                                            {' '}
+                                            {discountInfo.DiscountType === 'percentage' ? '%' : (discountInfo.DiscountType === 'points' ? null : null)}
+                                        </li>
+                                        <li className="list-group-item">
+                                            <i className="bi bi-building me-2"></i>
+                                            <strong>Final Price:</strong> {finalPrice}
+                                        </li>
+                                    </ul>
 
-                                    <p>Final Price: UGX. {finalPrice}</p>
-                                </div>
+                                )}
 
                             </Card.Body>
                             <Card.Footer className="text-muted">

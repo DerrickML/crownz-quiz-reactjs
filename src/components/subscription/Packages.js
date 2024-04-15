@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Button, Container, Row, Col, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGem } from '@fortawesome/free-solid-svg-icons';
-import PaymentMethods from './PaymentMethods';
+import PaymentMethods from './PaymentMethods_2';
 import './Packages.css';
 // import OrderSummery2 from './OrderSummery2'
 
@@ -10,40 +10,51 @@ const Packages = ({ studentInfo }) => {
     const [showModal, setShowModal] = useState(false);
     const [selectedPackage, setSelectedPackage] = useState(null);
     const packages = [
-        {
-            tier: 'Starter Pack',
-            points: 100,
-            price: 5000,
-            quizzes: 5,
-            duration: 7,
-            features: [
-                '100 points',
-                `Attempt up to 5 exams`,
-                'Expires in 7 days',
-            ]
-        },
-        {
-            tier: 'Pro Plan',
-            points: 560,
-            price: 20000,
-            quizzes: 11,
-            duration: 366,
-            features: [
-                '560 points',
-                `Attempt up to 28 exams`,
-                'Expires in 1 year',
-            ],
-        },
+        // {
+        //     tier: 'Starter Pack',
+        //     points: 5,
+        //     price: 5000,
+        //     quizzes: 5,
+        //     duration: 7,
+        //     features: [
+        //         // '100 points',
+        //         `Attempt up to 5 exams`,
+        //         'Expires in 7 days',
+        //     ]
+        // },
+        // {
+        //     tier: 'Pro Plan',
+        //     points: 28,
+        //     price: 20000,
+        //     quizzes: 11,
+        //     duration: 366,
+        //     features: [
+        //         // '560 points',
+        //         `Attempt up to 28 exams`,
+        //         'Expires in 1 year',
+        //     ],
+        // },
+        // {
+        //     tier: 'Elite Bundle',
+        //     points: 17,
+        //     price: 15000,
+        //     quizzes: 17,
+        //     duration: 30,
+        //     features: [
+        //         // '340 points',
+        //         `Attempt up to 17 exams`,
+        //         'Expires in 30 days',
+        //     ],
+        // },
         {
             tier: 'Elite Bundle',
-            points: 340,
-            price: 15000,
-            quizzes: 17,
-            duration: 30,
+            points: 1000,
+            price: 75000,
+            quizzes: 1000,
+            duration: 366,
             features: [
-                '340 points',
-                `Attempt up to 17 exams`,
-                'Expires in 30 days',
+                `Attempt up to 1,000`,
+                'Expires after 366 days',
             ],
         },
     ];

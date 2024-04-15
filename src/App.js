@@ -228,11 +228,12 @@ function App() {
 
             </Routes>
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </div>
-
+        {/* <Footer /> */}
       </AuthProvider>
       <ToastContainer position="top-center" />
+      {/* <Footer /> */}
     </Router>
 
   );

@@ -11,6 +11,7 @@ import {
     transactionTable_id,
     pointsTable_id,
     pointsBatchTable_id,
+    couponUsagesTable_id,
     Permission,
     Role,
     Query,
@@ -96,6 +97,21 @@ export const createDocument = async (databaseId, tableId, data, tableUse) => {
     } catch (error) {
         console.error(`Error Creating Document - (${tableUse}):`, error);
         return null;
+    }
+}
+
+/* ----------- Coupon Usage tracking ----------- ***/
+export const couponTrackerUpdate = async (data) => {
+    try {
+        console.log('Updateing coupon usage table: ', data);
+        var currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a z');
+        await createDocument(database_id, couponUsagesTable_id, {
+            UserID: data.userId,
+            CouponCode: data.couponCode,
+            UsageDate: currentDateTime,
+        }, data.message)
+    } catch (e) {
+        console.error('Failed to update coupon usage table: ', e);
     }
 }
 
