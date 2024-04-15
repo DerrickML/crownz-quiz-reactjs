@@ -208,7 +208,7 @@ const Profile = () => {
       <Card.Header>
         {" "}
         <FontAwesomeIcon icon={faUserCircle} className="me-2" />
-        Next of Kin
+        Guardian Details
       </Card.Header>
       <Card.Body>
         <ul className="list-group list-group-flush">
@@ -248,7 +248,7 @@ const Profile = () => {
               onClick={toggleModal}
             >
               <FontAwesomeIcon icon={faPlusCircle} className="me-2" />
-              Add Next of Kin
+              Link to a Guardian
             </Button>
           )}
         </ul>
@@ -356,7 +356,7 @@ const Profile = () => {
       </Container>
       <Modal show={showModal} onHide={toggleModal} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Add Next of Kin</Modal.Title>
+          <Modal.Title>Add Next of Guardian</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <KinSignup />

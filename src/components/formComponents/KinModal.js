@@ -6,7 +6,7 @@ import KinSignup from "../KinSignup";
 const KinModal = ({ show, onHide, newStudentId, firstName, lastName }) => (
   <Modal show={show} onHide={onHide} size="lg">
     <Modal.Header closeButton>
-      <Modal.Title>Next of Kin Details</Modal.Title>
+      <Modal.Title>Guardian Details</Modal.Title>
     </Modal.Header>
     <Modal.Body>
       <KinSignup

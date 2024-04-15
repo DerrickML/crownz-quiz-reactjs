@@ -10,9 +10,9 @@ const ConfirmationModal = ({
 }) => (
   <Modal show={show} onHide={onHide}>
     <Modal.Header closeButton>
-      <Modal.Title>Add Next of Kin</Modal.Title>
+      <Modal.Title>Link to Guardian</Modal.Title>
     </Modal.Header>
-    <Modal.Body>Would you like to add a Next of Kin?</Modal.Body>
+    <Modal.Body>Would you like to add Guardian?</Modal.Body>
     <Modal.Footer>
       <Button variant="secondary" onClick={handleNoNextOfKin}>
         No

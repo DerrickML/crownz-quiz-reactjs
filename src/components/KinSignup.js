@@ -145,12 +145,12 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
           return; // Stop execution if signup failed
         }
       } catch (error) {
-        console.error("Error handling next of kin:", error);
+        console.error("Error handling next of guardian:", error);
         return;
       }
 
       showToast(
-        "Next of Kin linked successfullty.\nThe information will reflect on the next login",
+        "Guardian account linked successfullty.\nThe information will reflect on the next login",
         "success"
       );
 
@@ -158,8 +158,8 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
       // Redirect the user or show a success message
     } catch (error) {
       setSignupLoader(false);
-      showToast("Error Linking next of kin:\n", "error");
-      console.error("Error Linking next of kin:", error);
+      showToast("Error Linking next of guardian:\n", "error");
+      console.error("Error Linking next of guardian:", error);
       return;
     }
   };
@@ -183,7 +183,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
       );
 
       if (!checkKin) {
-        showToast("Kin account not found", "error");
+        showToast("Guardian account not found", "error");
         setSignupLoader(false);
         return;
       }
@@ -204,8 +204,8 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
       navigate("/profile");
     } catch (e) {
       setSignupLoader(false);
-      showToast("Failed to link with kin", "error");
-      console.error("Error Linking next of kin:", e);
+      showToast("Failed to link with Guadian account", "error");
+      console.error("Error Linking nto Guardian account:", e);
     }
   };
 
@@ -237,7 +237,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
       };
 
       const response = await fetch(
-        `${serverUrl}/create-next-of-kin`,
+        `${serverUrl}/create-guardian`,
         {
           method: "POST",
           headers: {
@@ -264,10 +264,10 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
         );
       } else {
         showToast(
-          "Failed to create Next of Kin account. Please try again.",
+          "Failed to create Guardian account. Please try again.",
           "error"
         );
-        console.error("Error creating Next of Kin account:", error);
+        console.error("Error creating Guardian account:", error);
       }
       return;
     }
@@ -296,7 +296,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
         //   response
         // );
         showToast(
-          "Next of kin account already exists, proceeding to link with student",
+          "Guardian account already exists, proceeding to link with student",
           "info"
         );
         // const kinID = response.documents[0].kinID;
@@ -317,7 +317,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
         return false;
       }
     } catch (error) {
-      console.error("Error checking Next of Kin:", error);
+      console.error("Error checking Guardian account:", error);
       return null;
     }
   }
@@ -349,7 +349,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
           }
         );
         showToast(
-          "Next of kin account already exists, proceeding to link with student",
+          "Guardian account already exists, proceeding to link with student",
           "info"
         );
         const kinID = response.documents[0].kinID;
@@ -359,7 +359,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
         return false;
       }
     } catch (error) {
-      console.error("Error checking Next of Kin:", error);
+      console.error("Error checking guardian:", error);
       return null;
     }
   }
@@ -449,7 +449,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
           )}
         </Form.Group>
 
-        {/* Additional fields for creating new Kin */}
+        {/* Additional fields for Guardian */}
         {activeTab === "create" && (
           <>
             <Form.Group className="mb-3">
@@ -486,7 +486,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
               aria-hidden="true"
             />
           ) : null}
-          {activeTab === "link" ? " Link Next of Kin" : " Add Next of Kin"}
+          {activeTab === "link" ? " Link to Guardian" : " Create and Link to New Guardian Account"}
         </Button>
       </Form>
     );
@@ -503,7 +503,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
               ) : (
                 <FontAwesomeIcon icon={faUserPlus} />
               )}{" "}
-              {activeTab === "link" ? "Link Next of Kin" : "Create New Kin"}
+              {activeTab === "link" ? " Link to Guardian" : " Create and Link to New Guardian Account"}
             </Card.Header>
             <Card.Body>
               <ButtonGroup className="mb-3">
@@ -511,7 +511,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
                   variant={activeTab === "link" ? "primary" : "outline-primary"}
                   onClick={() => toggleTab("link")}
                 >
-                  Link to Existing Kin
+                  Link to Existing Guardian Account
                 </Button>
                 <Button
                   variant={
@@ -520,7 +520,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
                   onClick={() => toggleTab("create")}
                   className="ms-2"
                 >
-                  Create New Kin
+                  Create and Link to New Guardian Account
                 </Button>
               </ButtonGroup>
               {renderForm()}
