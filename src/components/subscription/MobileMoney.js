@@ -118,6 +118,8 @@ function MobileMoney({ propPrice, propPaymentFor, propStudentInfo }) {
             console.error('Error making payment:', error);
             setPaymentStatus('Error making payment. Please try again.');
             setSubmit(false);
+        } finally {
+            setMessage(null)
         }
     };
 
