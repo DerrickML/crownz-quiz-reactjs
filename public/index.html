@@ -69,7 +69,26 @@
 
 <body style="background-color: rgb(255, 255, 255);">
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+  <div id="root">
+    <!-- Bootstrap spinner for loading state -->
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+      <div class="spinner-grow text-success" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-danger" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-warning" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-info" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-light" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
