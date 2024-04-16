@@ -47,7 +47,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
   const updateUserInfo = useUpdateUserInfo();
 
   const [linkKinSignupMethod, setLinkKinSignupMethod] = useState("email");
-  const [createKinSignupMethod, setCreateKinSignupMethod] = useState("phone");
+  const [createKinSignupMethod, setCreateKinSignupMethod] = useState("email");
 
   const [nextOfKin, setNextOfKin] = useState({
     kinEmail: "",
@@ -404,49 +404,53 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
                 ? "Email Address"
                 : "Phone Number"}
           </Form.Label>
-          {activeTab === "link" ? (
-            linkKinSignupMethod === "email" ? (
-              <Form.Control
-                type="email"
-                id="linkKinEmail"
-                placeholder="Enter email"
-                value={linkKinContact}
-                onChange={(e) => setLinkKinContact(e.target.value)}
-                required
-              />
-            ) : (
+          {activeTab === "link" ?
+            (
+              linkKinSignupMethod === "email" ? (
+                <Form.Control
+                  type="email"
+                  id="linkKinEmail"
+                  placeholder="Enter email"
+                  value={linkKinContact}
+                  onChange={(e) => setLinkKinContact(e.target.value)}
+                  required
+                />
+              ) :
+                (
+                  <PhoneInput
+                    className="form-control"
+                    id="linkKinPhone"
+                    placeholder="Enter phone number"
+                    value={linkKinContact}
+                    onChange={(value) => setLinkKinContact(value || "")}
+                    required
+                  />
+                )
+            ) :
+            createKinSignupMethod === "phone" ? (
               <PhoneInput
                 className="form-control"
-                id="linkKinPhone"
+                id="kinPhone"
                 placeholder="Enter phone number"
-                value={linkKinContact}
-                onChange={(value) => setLinkKinContact(value || "")}
-                required
+                value={nextOfKin.kinPhone}
+                onChange={(value) =>
+                  setNextOfKin({ ...nextOfKin, kinPhone: value || "" })
+                }
+                required={createKinSignupMethod === "phone"}
               />
-            )
-          ) : createKinSignupMethod === "phone" ? (
-            <PhoneInput
-              className="form-control"
-              id="kinPhone"
-              placeholder="Enter phone number"
-              value={nextOfKin.kinPhone}
-              onChange={(value) =>
-                setNextOfKin({ ...nextOfKin, kinPhone: value || "" })
-              }
-              required={createKinSignupMethod === "phone"}
-            />
-          ) : (
-            <Form.Control
-              type="email"
-              id="kinEmail"
-              placeholder="Enter email"
-              value={nextOfKin.kinEmail}
-              onChange={(e) =>
-                setNextOfKin({ ...nextOfKin, kinEmail: e.target.value })
-              }
-              required={createKinSignupMethod === "email"}
-            />
-          )}
+            ) :
+              (
+                <Form.Control
+                  type="email"
+                  id="kinEmail"
+                  placeholder="Enter email"
+                  value={nextOfKin.kinEmail}
+                  onChange={(e) =>
+                    setNextOfKin({ ...nextOfKin, kinEmail: e.target.value })
+                  }
+                  required={createKinSignupMethod === "email"}
+                />
+              )}
         </Form.Group>
 
         {/* Additional fields for Guardian */}

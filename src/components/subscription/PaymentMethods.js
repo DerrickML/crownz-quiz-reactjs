@@ -32,7 +32,8 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
     const [discountInfo, setDiscountInfo] = useState(null);
     const [couponError, setCouponError] = useState('');
     const [couponLoader, setCouponLoader] = useState(false)
-    const [finalPrice, setFinalPrice] = useState(originalPrice);
+    // const [finalPrice, setFinalPrice] = useState(originalPrice);
+    const finalPrice = price
     const [paymentMadeFor, setPaymentMadeFor] = useState(paymentFor)
     const [loader, setLoader] = useState(false);
 
@@ -40,7 +41,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
         try {
             // Make an API call to validate the coupon
             setCouponLoader(true);
-            const response = await fetch(`${serverUrl}/query/validate-coupon?code=${coupon}`);
+            const response = await fetch(`${serverUrl}/query/validate-coupon?code=${coupon}&userId=${studentInfo.userId}`);
             const data = await response.json();
 
             if (response.ok && data.couponDetails) {
@@ -49,7 +50,8 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
             } else {
                 // Reset discount info and final price to original when the coupon is invalid
                 setDiscountInfo(null);
-                setFinalPrice(originalPrice);
+                // setFinalPrice(originalPrice);
+                finalPrice = price;
                 setCouponError(data.message || 'Invalid coupon code');
             }
             setCouponLoader(false);
@@ -78,10 +80,12 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
 
     // Update the final price when discountInfo changes
     useEffect(() => {
-        setFinalPrice(calculatePrice());
+        // setFinalPrice(calculatePrice());
+        finalPrice = calculatePrice();
     }, [discountInfo]);
 
     const handleNext = async () => {
+        console.log('Fianle Price: ', finalPrice);
         if (stage === 'coupon' && finalPrice > 0) {
             setStage('payment');
         }
@@ -138,6 +142,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
     };
 
     const handlePaymentSelection = (method, network) => {
+        // console.log('Fianle Price: ', finalPrice);
         navigate(`/payment/${method.toLowerCase()}`, { state: { price: finalPrice, paymentFor: paymentMadeFor, points: points, studentInfo: studentInfo, network: network } });
     };
 

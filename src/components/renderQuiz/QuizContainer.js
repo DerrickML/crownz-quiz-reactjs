@@ -142,7 +142,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                 :
                 <>
                     <Row>
-                        <Col xs={12} md={2} className="d-none d-md-block position-fixed bg-light" style={{ height: '100vh', overflowY: 'auto' }}>
+                        <Col xs={12} md={2} className="d-none d-md-block position-fixed bg-light" style={{ height: '50vh', overflowY: 'auto' }}>
                             {/* Timer */}
                             <Timer initialTime={initialTime} onTimeUp={handleTimeUp} />
                             <ButtonGroup>
@@ -151,7 +151,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                                     onClick={handleOpenModal}
                                     className="w-25"
                                 >
-                                    Submit Quiz
+                                    Submit Exam
                                 </Button>
                                 <Button
                                     variant="danger"
@@ -192,7 +192,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                                         variant="success"
                                         onClick={handleOpenModal}
                                     >
-                                        Submit Quiz
+                                        Submit Exam
                                     </Button>
                                     <Button
                                         variant="danger"
@@ -260,7 +260,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                     <Modal.Title>Time's Up!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Your time is up and your quiz has been automatically submitted.
+                    Your time is up and your Exam has been automatically submitted.
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => setShowTimeUpModal(false)}>

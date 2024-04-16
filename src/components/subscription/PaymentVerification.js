@@ -135,16 +135,18 @@ const PaymentResult = () => {
                             invoice: {
                                 number: `${data.transactionData.id}`,
                                 date: `${data.transactionData.customer.created_at}`,
-                                subject: "Points Purchase",
+                                subject: "Exam Prep Tutor Payment Transaction",
                                 total: `${data.transactionData.currency}. ${data.transactionData.amount}`,
-                                text: "Payment for Points rendered in March 2024."
+                                text: "Payment rendered in March 2024."
                             },
                             items: {
                                 1: {
-                                    title: "Points",
-                                    description: `${data.transactionData.meta.points} Points Purchased ${isStudent ? `by ${userInfo.firstName} ${userInfo.lastName}` : ` for ${data.transactionData.customer.name}`}`,
+                                    title: "Examination",
+                                    // description: `${data.transactionData.meta.points} Points Purchased ${isStudent ? `by ${userInfo.firstName} ${userInfo.lastName}` : ` for ${data.transactionData.customer.name}`}`,
+                                    description: `Payment transaction made by ${isStudent ? `by ${userInfo.firstName} ${userInfo.lastName}` : ` for ${data.transactionData.customer.name}`}`,
                                     amount: `${data.transactionData.currency}. ${data.transactionData.amount}`,
-                                    qty: `${data.transactionData.meta.points}`,
+                                    // qty: `${data.transactionData.meta.points}`,
+                                    qty: `-`,
                                     total: `${data.transactionData.currency}. ${data.transactionData.amount}`,
                                 }
                             }
@@ -295,7 +297,7 @@ const PaymentResult = () => {
                         <Card.Header className="payment-card-header">
                             <Card.Title className="text-center mb-4">Flutterwave Online Payment</Card.Title>
                             <Card.Text className="text-center">
-                                Securely complete your payment with Flutterwave.
+                                Transaction Completed.
                             </Card.Text>
                         </Card.Header>
                         <Card.Body>
@@ -324,7 +326,8 @@ const PaymentResult = () => {
                                                 <Alert variant='success'>
                                                     <FontAwesomeIcon icon={faCheckCircle} size="3x" className="text-success" />
                                                     <p className="mt-2"><b>Payment Successful!</b></p>
-                                                    <p className="mt-2"><b>Service:</b> {transactionData.points} points</p>
+                                                    {/* <p className="mt-2"><b>Service:</b> {transactionData.points} points</p> */}
+                                                    <p className="mt-2"><b>Service:</b> Payment for exams</p>
                                                     <p className="mt-2"><b>Price:</b> {transactionData.currency + '. ' + transactionData.charged_amount}</p>
                                                 </Alert>
                                                 <Button variant="dark" onClick={() => { printPDF(transactionData) }}>Print Receipt as PDF</Button>

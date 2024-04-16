@@ -49,7 +49,7 @@ const Packages = ({ studentInfo }) => {
         {
             tier: 'Elite Bundle',
             points: 1000,
-            price: 75000,
+            price: 70000,
             quizzes: 1000,
             duration: 366,
             features: [

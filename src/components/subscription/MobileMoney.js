@@ -17,7 +17,8 @@ function MobileMoney({ propPrice, propPaymentFor, propStudentInfo }) {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const { price, paymentFor, points, studentInfo, network, couponCode } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' }, network: null, couponCode: null }; // Set default values accordingly
+    const { price, paymentFor, points, studentInfo, network, couponCode } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' }, network: null, couponCode: null }; // Set default 
+    console.log('Fianle Price: ', price);
 
     //Destructuring student information
     // const { userId: studentId, name: studentName, educationLevel } = studentInfo;
