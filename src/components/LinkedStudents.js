@@ -51,11 +51,13 @@ const LinkedStudents = () => {
               <Card.Text>
                 Education Level: {student.educationLevel || "N/A"}
               </Card.Text>
-              <Card.Text>
+
+              {/* EXAM CREDITS/POINTS LEFT */}
+              {/* <Card.Text>
                 Points Left:  <Badge bg={student.pointsBalance < 20 ? 'danger' : 'success'} style={{ fontSize: '0.9em' }}>
                   {student.pointsBalance}
                 </Badge>
-              </Card.Text>
+              </Card.Text> */}
 
               <ButtonGroup>
                 <Button
@@ -65,13 +67,15 @@ const LinkedStudents = () => {
                 >
                   View Details
                 </Button>
-                <Button
+
+                {/* EXAM CREDITS/POINTS LEFT */}
+                {/* <Button
                   variant={`outline-${student.pointsBalance < 20 ? 'danger' : 'success'}`}
                   onClick={() => navigateToStudentDetails(student)}
                   style={{ fontSize: '0.8rem' }}
                 >
                   Top Up Points
-                </Button>
+                </Button> */}
               </ButtonGroup>
             </Card.Body>
           </Card>
@@ -86,7 +90,7 @@ const LinkedStudents = () => {
         <tr>
           <th>Name</th>
           <th>Education Level</th>
-          <th>Points Left</th>
+          {/* <th>Points Left</th> */}
           <th>Actions</th>
         </tr>
       </thead>
@@ -95,7 +99,7 @@ const LinkedStudents = () => {
           <tr key={index}>
             <td>{student.studName}</td>
             <td>{student.educationLevel || "N/A"}</td>
-            <td>{student.pointsBalance}</td>
+            {/* <td>{student.pointsBalance}</td> */}
             <td>
               <ButtonGroup >
                 <Button
@@ -105,13 +109,15 @@ const LinkedStudents = () => {
                 >
                   View Details
                 </Button>
-                <Button
+
+                {/* EXAM CREDITS/POINTS LEFT */}
+                {/* <Button
                   variant={`outline-${student.pointsBalance < 20 ? 'danger' : 'success'}`}
                   onClick={() => navigateToStudentDetails(student)}
                   style={{ fontSize: '0.8rem' }}
                 >
                   Top Up Points
-                </Button>
+                </Button> */}
               </ButtonGroup>
             </td>
           </tr>

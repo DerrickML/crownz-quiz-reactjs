@@ -21,28 +21,33 @@ import moment from 'moment';
 import { serverUrl } from '../../config.js';
 
 const PaymentResult = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    //Extract response from url
+    const queryParams = new URLSearchParams(location.search);
 
     const [transactionData, setTransactionData] = useState({});
     const [paymentStatus, setPaymentStatus] = useState('Verifying...');
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [responseData, setResponseData] = useState(null);
 
     const { userInfo, fetchUserPoints } = useAuth();
     const isStudent = userInfo.labels.includes("student");
     const isNextOfKin = userInfo.labels.includes("kin");
 
-    const navigate = useNavigate();
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-
     const transactionId = queryParams.get('transaction_id') || parseTransactionIdFromResp(queryParams.get('resp'));
     const statusForPayment = queryParams.get('status');
     const tx_ref = queryParams.get('tx_ref');
+    const statusMessage = parseMessageFromResp(queryParams.get('resp'))
+
 
     useEffect(() => {
         const verifyPayment = async () => {
-            setMessage('')
+            setMessage(statusMessage)
             setPaymentStatus(statusForPayment);
+
             // console.log('Verifying payment status: ', statusForPayment);
             if (statusForPayment === 'cancelled') {
                 setMessage('Transaction cancelled')
@@ -51,7 +56,7 @@ const PaymentResult = () => {
             }
             else if (transactionId) {
                 try {
-                    console.log('server url - payment verification: ' + serverUrl)
+
                     const response = await fetch(`${serverUrl}/flutterwave/verify-payment/${transactionId}`);
                     const data = await response.json();
 
@@ -66,12 +71,16 @@ const PaymentResult = () => {
 
 
                     //Checking for coupon usage and update
-                    try {
-                        const couponCode = data.transactionData.meta.couponCode
-                        console.log('Meta data: ', data.transactionData.meta.studentId);
-                        await couponTrackerUpdate({ userId: isNextOfKin ? data.transactionData.meta.studentId : userInfo.userId, couponCode: couponCode });
-                        console.log('FLW-Coupon--UPDATE');
-                    } catch (e) { console.error('Failed to update coupon table:', e) }
+                    if (data.transactionData.meta.couponCode) {
+                        try {
+                            const couponCode = data.transactionData.meta.couponCode
+                            console.log('Meta data: ', data.transactionData.meta.studentId);
+                            await couponTrackerUpdate({ userId: isNextOfKin ? data.transactionData.meta.studentId : userInfo.userId, couponCode: couponCode });
+                            console.log('FLW-Coupon--UPDATE');
+                        } catch (e) { console.error('Failed to update coupon table:', e) }
+                    } else {
+                        // console.log('No coupon provided'); 
+                    }
 
                     try {
                         // Data to send to receipt
@@ -155,8 +164,7 @@ const PaymentResult = () => {
                                 }
                             }
                         }
-                        // console.log('Receipt Data:', receiptData);
-                        // console.log('cardOrPhone: Receipt Data:', receiptData.personalInfo.bank.cardOrPhoneNumber);
+
                         setTransactionData(receiptData);
 
                     }
@@ -167,13 +175,13 @@ const PaymentResult = () => {
                     }
 
                 } catch (error) {
-                    setMessage('Transaction Verification Failed')
+                    setMessage(statusMessage)
                     setPaymentStatus('Verification failed. Please contact support.');
                 } finally {
                     setLoading(false);
                 }
             } else {
-                setMessage('An error occured during the transacton verification. Please contact support')
+                setMessage(statusMessage)
                 setPaymentStatus('Transaction Failed.');
                 setLoading(false);
             }
@@ -193,6 +201,20 @@ const PaymentResult = () => {
             return null;
         }
     }
+
+    // Function to parse and extract message from 'resp'
+    function parseMessageFromResp(resp) {
+        if (!resp) return null;
+        try {
+            const decodedResp = JSON.parse(decodeURIComponent(resp));
+            console.log('message respo: ', decodedResp)
+            return JSON.stringify(decodedResp?.message) || null;
+        } catch (error) {
+            console.error('Error parsing resp:', error);
+            return null;
+        }
+    }
+
 
     //Function to save transaction data to transaction table
     const saveTransactionData = async (data) => {
@@ -317,14 +339,14 @@ const PaymentResult = () => {
                                 )
                                     :
                                     <>
-                                        {message && (
+                                        {/* {message && (
                                             <Alert
                                                 variant={paymentStatus === "success" ? 'success' : statusForPayment === 'cancelled' ? 'warning' : 'danger'}
                                                 className="mt-3 text-center"
                                             >
-                                                {message}
+                                                {paymentStatus === 'success' ? 'Payment Processing Successful' : message}
                                             </Alert>
-                                        )}
+                                        )} */}
 
                                         {paymentStatus === "success" ? (
                                             <div className="text-center mt-4">
@@ -348,13 +370,12 @@ const PaymentResult = () => {
                                                 </div>
                                             ) : (
                                                 <div className="text-center mt-4">
-                                                    <Alert variant='danger'>
-                                                        <FontAwesomeIcon icon={faTimesCircle} size="3x" className="text-danger" />
-                                                        <p className="mt-2"><b>An error occured!</b></p>
+                                                    <Alert variant={paymentStatus === 'success' ? 'success' : '-primary'}>
+                                                        <FontAwesomeIcon icon={faTimesCircle} size="3x" className='text-danger' />
+                                                        <p className="mt-2"><b>{message}</b></p>
                                                         <p className="mt-2">
-                                                            Share your transaction id below with the support team in case money was deducted from your account.
+                                                            {paymentStatus}
                                                         </p>
-                                                        <p>Transaction ID: <b>{tx_ref}</b></p>
                                                     </Alert>
                                                     <Button variant="dark" onClick={() => exitPage()}>Exit</Button>
                                                 </div>

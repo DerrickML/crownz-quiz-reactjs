@@ -76,7 +76,7 @@ const Profile = () => {
               <th>No.</th>
               <th>Name</th>
               <th>Education Level</th>
-              <th>Points Available</th>
+              {/* <th>Points Available</th> */}
               <th>Actions</th>
             </tr>
           </thead>
@@ -86,7 +86,7 @@ const Profile = () => {
                 <td>{startIndex + index + 1}</td>
                 <td>{student.studName}</td>
                 <td>{student.educationLevel}</td>
-                <td>{student.pointsBalance}</td>
+                {/* <td>{student.pointsBalance}</td> */}
                 <td>
                   <Button
                     variant="dark"

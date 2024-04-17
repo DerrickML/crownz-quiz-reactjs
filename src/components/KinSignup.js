@@ -91,12 +91,14 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
     event.preventDefault();
     setSignupLoader(true);
 
-    let isKinPhoneValid = !validatePhoneNumber(nextOfKin.kinPhone);
-    setKinPhoneError(!isKinPhoneValid);
+    if (nextOfKin.kinPhone) {
+      let isKinPhoneValid = !validatePhoneNumber(nextOfKin.kinPhone);
+      setKinPhoneError(!isKinPhoneValid);
 
-    if (!isKinPhoneValid) {
-      setSignupLoader(false);
-      return;
+      if (!isKinPhoneValid) {
+        setSignupLoader(false);
+        return;
+      }
     }
 
     try {

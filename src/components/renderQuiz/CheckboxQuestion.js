@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Card } from 'react-bootstrap';
 import { isImageUrl } from './utils';
+import './CheckboxQuestion.css';
 
 const CheckboxQuestion = ({ question, onChange, disabled, userAnswer, displayQuestionText, questionNumber }) => {
     const [selectedOptions, setSelectedOptions] = useState([]);
@@ -40,6 +41,7 @@ const CheckboxQuestion = ({ question, onChange, disabled, userAnswer, displayQue
             }
             {question.options && question.options.map((option, index) => (
                 <Form.Check
+                    className="custom-checkbox" //Giving the button a standout design
                     type="checkbox"
                     label={renderOptionLabel(option)}
                     onChange={() => handleOptionChange(option)}

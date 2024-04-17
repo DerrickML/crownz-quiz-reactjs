@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Card } from 'react-bootstrap';
 import { isImageUrl } from './utils';
+import './MultipleChoiceQuestion.css';
 
 const MultipleChoiceQuestion = ({ question, onChange, disabled, userAnswer, displayQuestionText, questionNumber }) => {
     const options = question.options || [];
@@ -25,23 +26,20 @@ const MultipleChoiceQuestion = ({ question, onChange, disabled, userAnswer, disp
                 <Card.Img variant="top" src={option} style={{ maxWidth: '25rem', maxHeight: '15em', margin: 'auto' }} />
             </Card>
         ) : (
-            <>
-                <div dangerouslySetInnerHTML={{ __html: option.replace(/\n/g, '<br/>') }}></div >
-            </>
+            <div dangerouslySetInnerHTML={{ __html: option.replace(/\n/g, '<br/>') }}></div>
         );
     };
 
     return (
         <Form.Group>
-            {/* {displayQuestionText && <Form.Label questionNumber dangerouslySetInnerHTML={{ __html: question.question }} />} */}
             {displayQuestionText &&
                 <Form.Label>
                     {questionNumber}. <span dangerouslySetInnerHTML={{ __html: question.question }} />
                 </Form.Label>
             }
-
             {options.map((option, index) => (
                 <Form.Check
+                    className="custom-radio" //Giving the button a standout design
                     type="radio"
                     label={renderOptionLabel(option)}
                     name={question.id}

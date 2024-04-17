@@ -184,7 +184,7 @@ function SelectExam() {
                       backgroundColor: selectedSubject?.color || "rgb(6, 63, 90) ",
                     }}
                   >
-                    Purchase Points
+                    Subscibe to Exams
                   </Button>
                 </Modal.Footer>
               </>

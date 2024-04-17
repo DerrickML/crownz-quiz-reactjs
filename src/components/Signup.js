@@ -333,7 +333,9 @@ function SignUp() {
       );
 
       //Add student to points table
-      await addStudentToPointsTable(studID);
+      if (studID) {
+        await addStudentToPointsTable(studID);
+      }
 
       return userDocResponse;
     } catch (error) {

@@ -18,6 +18,7 @@ function Home() {
   // const userInfo = storageUtil.getItem("userInfo");
   const isStudent = userInfo.labels.includes("student");
   const isNextOfKin = userInfo.labels.includes("kin");
+  const isSales = userInfo.labels.includes("sales") || userInfo.labels.includes("admin");
 
   const renderHeroHeader = () => (
     <HeroHeader>
@@ -62,6 +63,17 @@ function Home() {
                     </Button>
                   </Card.Body>
                 </Card> */}
+                {isSales && (
+                  <Card style={{ width: 'auto' }} className="text-center my-4">
+                    <Card.Body>
+                      {/* <Card.Title style={{ fontSize: '2.5rem' }}>{userPoints}</Card.Title> */}
+                      <Button variant="outline-primary" onClick={() => navigate('/select-package')}>
+                        <FontAwesomeIcon icon={faArrowCircleUp} className="me-2" />
+                        Subscribe
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                )}
               </div>
             </>
           )}
