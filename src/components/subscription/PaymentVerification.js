@@ -78,7 +78,8 @@ const PaymentResult = () => {
                         const receiptData = {
                             tx_ref: data.transactionData.tx_ref,
                             id: data.transactionData.id,
-                            charged_amount: data.transactionData.amount,
+                            // charged_amount: data.transactionData.amount,
+                            charged_amount: data.transactionData.meta.price,
                             currency: data.transactionData.currency,
                             payment_type: data.transactionData.payment_type,
                             name: data.transactionData.customer.name,
@@ -136,7 +137,8 @@ const PaymentResult = () => {
                                 number: `${data.transactionData.id}`,
                                 date: `${data.transactionData.customer.created_at}`,
                                 subject: "Exam Prep Tutor Payment Transaction",
-                                total: `${data.transactionData.currency}. ${data.transactionData.amount}`,
+                                // total: `${data.transactionData.currency}. ${data.transactionData.amount}`,
+                                total: `${data.transactionData.currency}. ${data.transactionData.meta.price}`,
                                 text: "Payment rendered in March 2024."
                             },
                             items: {
@@ -144,10 +146,12 @@ const PaymentResult = () => {
                                     title: "Examination",
                                     // description: `${data.transactionData.meta.points} Points Purchased ${isStudent ? `by ${userInfo.firstName} ${userInfo.lastName}` : ` for ${data.transactionData.customer.name}`}`,
                                     description: `Payment transaction made by ${isStudent ? `by ${userInfo.firstName} ${userInfo.lastName}` : ` for ${data.transactionData.customer.name}`}`,
-                                    amount: `${data.transactionData.currency}. ${data.transactionData.amount}`,
+                                    // amount: `${data.transactionData.currency}. ${data.transactionData.amount}`,
+                                    amount: `${data.transactionData.currency}. ${data.transactionData.meta.price}`,
                                     // qty: `${data.transactionData.meta.points}`,
                                     qty: `-`,
-                                    total: `${data.transactionData.currency}. ${data.transactionData.amount}`,
+                                    // total: `${data.transactionData.currency}. ${data.transactionData.amount}`,
+                                    total: `${data.transactionData.currency}. ${data.transactionData.meta.price}`,
                                 }
                             }
                         }
@@ -218,7 +222,8 @@ const PaymentResult = () => {
                     {
                         userID: userInfo.userId,
                         transactionDate: new Date(data.created_at),
-                        transactionAmount: data.amount,
+                        // transactionAmount: data.amount,
+                        transactionAmount: data.meta.price,
                         currency: data.currency,
                         paymentMethod: data.payment_type,
                         paymentGateway: 'Flutterwave Gateway',

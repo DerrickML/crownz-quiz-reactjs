@@ -17,8 +17,14 @@ function MobileMoney({ propPrice, propPaymentFor, propStudentInfo }) {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const { price, paymentFor, points, studentInfo, network, couponCode } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' }, network: null, couponCode: null }; // Set default 
+    let { price, paymentFor, points, studentInfo, network, couponCode } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' }, network: null, couponCode: null }; // Set default 
     console.log('Fianle Price: ', price);
+
+    //TESTING
+    let origPrice = price;
+    price = 50000
+
+    console.log('Fianle Price: ', origPrice);
 
     //Destructuring student information
     // const { userId: studentId, name: studentName, educationLevel } = studentInfo;
@@ -54,6 +60,7 @@ function MobileMoney({ propPrice, propPaymentFor, propStudentInfo }) {
         email: email,
         redirect_url: `${rootURL}/payment/verification`,
         meta: {
+            price: origPrice,
             userId: `${userInfo.userId}`,
             description: `Payment for exam/quiz Points${isStudent ? '.' : ` for ${studentName}`}`,
             service: `${paymentFor}`,
