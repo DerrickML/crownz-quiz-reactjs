@@ -111,7 +111,7 @@ const StudentDetails = () => {
                       <strong>School Address:</strong>{" "}
                       {displayValue(student.schoolAddress)}
                     </ListGroup.Item>
-                    <ListGroup.Item>
+                    {/* <ListGroup.Item>
                       <div style={{ fontSize: '0.9em', paddingBottom: '3px' }} >
                         <FontAwesomeIcon icon={faCoins} className="me-2" />
                         <strong>Points Left:</strong>{" "}
@@ -130,7 +130,7 @@ const StudentDetails = () => {
                         Top Up Points
                       </Button>
 
-                    </ListGroup.Item>
+                    </ListGroup.Item> */}
                   </ListGroup>
                 </Card.Body>
               </Card>
