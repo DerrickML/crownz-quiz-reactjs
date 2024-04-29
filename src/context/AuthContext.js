@@ -9,6 +9,7 @@ import {
     pointsTable_id,
     Query,
 } from "../appwriteConfig.js";
+import db from '../db.js';
 import storageUtil from '../utilities/storageUtil.js';
 import { studentSubjectsData } from "../utilities/fetchStudentData";
 
@@ -23,7 +24,6 @@ export const AuthProvider = ({ children }) => {
     const [userSubjectData, setUserSubjectData] = useState(storageUtil.getItem("userSubjectData") || [])
 
     //LOGOUT FUNCTION
-
     const handleLogout = async () => {
         if (sessionInfo && sessionInfo.$id) {
             try {
@@ -42,6 +42,14 @@ export const AuthProvider = ({ children }) => {
         // Clear userPoints from context and storage
         setUserPoints('');
         storageUtil.removeItem("userPoints");
+
+        // Clear IndexedDB
+        try {
+            await db.delete();  // Clears all data from the Dexie database
+            console.log("IndexedDB cleared successfully");
+        } catch (error) {
+            console.error("Error clearing IndexedDB:", error);
+        }
     };
 
     //LOGIN FUNCTION
@@ -55,7 +63,6 @@ export const AuthProvider = ({ children }) => {
         setSessionInfo(sessionDetails);
         storageUtil.setItem("sessionInfo", sessionDetails);
 
-        // userData.labels.includes("student") ? console.log('Student subjects: ' + userData.subjects) : console.log('Next of Kin');
         const userDetails = {
             userId: sessionData.userId,
             userDocId: userData.userDocId,
@@ -87,6 +94,17 @@ export const AuthProvider = ({ children }) => {
 
             // Fetch userPoints from the database after login
             await fetchUserPoints(userDetails.userId, userDetails.educationLevel);
+
+            // After successful login, trigger the service worker to fetch exams
+            if ('serviceWorker' in navigator) {
+                const registration = await navigator.serviceWorker.ready;
+                registration.active.postMessage({
+                    type: 'FETCH_EXAMS', // Custom event for the service worker
+                    subjects: userDetails.subjects, // Array of subjects
+                    userId: userDetails.userId, // ID of the logged-in user
+                    educationLevel: userDetails.educationLevel, // User's education level
+                });
+            }
 
         }
 
@@ -176,29 +194,51 @@ export const AuthProvider = ({ children }) => {
      * @param {string} subject - Subject string passed.
      * @returns {string || null} - return sting or nothing.
      */
-    const studentEnrollSubject = async (userDocId, subject) => {
-        // console.log("Student Enroll Subject: ", subject);
-        // console.log("Student DocuID: ", userDocId)
-        // if (!subject) {
-        //     console.log('Subject is required');
-        //     return
-        // }
+    const studentEnrollSubject = async (userDocId, newSubject) => {
+        // Ensure 'subjects' is an array
+        const subjects = Array.isArray(userInfo.subjects) ? userInfo.subjects : [];
 
-        databases.getDocument(database_id, studentTable_id, userDocId)
-            .then(document => {
-                const updatedArray = [...document.subjects, subject];
+        // Add new subject if it doesn't exist in the array
+        if (!subjects.includes(newSubject)) {
+            subjects.push(newSubject);
 
-                return databases.updateDocument(database_id, studentTable_id, userDocId, {
-                    subjects: updatedArray
+            // Update the userInfo with the updated 'subjects'
+            const updatedUserInfo = { ...userInfo, subjects };
+
+            // Save to local storage and update the state
+            storageUtil.setItem('userInfo', updatedUserInfo);
+            setUserInfo(updatedUserInfo);
+
+            // Update the database
+            await databases.getDocument(database_id, studentTable_id, userDocId)
+                .then((document) => {
+                    // Update the 'subjects' field in the document
+                    const updatedSubjects = [...document.subjects, newSubject];
+                    return databases.updateDocument(database_id, studentTable_id, userDocId, {
+                        subjects: updatedSubjects,
+                    });
+                }).then(updatedDocument => {
+                    // console.log('Enrolled Subject Item appended successfully: ', updatedDocument.subjects);
+                    updateUserSubjectData(updatedDocument.subjects, updatedDocument.educationLevel) //Update user subject data on localStorage
+                })
+                .catch((error) => {
+                    console.error('Error updating subjects in the database:', error);
                 });
-            })
-            .then(updatedDocument => {
-                // console.log('Enrolled Subject Item appended successfully: ', updatedDocument.subjects);
-                updateUserSubjectData(updatedDocument.subjects, updatedDocument.educationLevel) //Update user subject data on localStorage
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+
+            try {
+                if ('serviceWorker' in navigator) {
+                    const registration = await navigator.serviceWorker.ready;
+                    registration.active.postMessage({
+                        type: 'FETCH_EXAMS', // Custom event for the service worker
+                        subjects: [newSubject], // Array of subjects
+                        userId: userInfo.userId, // ID of the logged-in user
+                        educationLevel: userInfo.educationLevel, // User's education level
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching questions:', error);
+            }
+        }
     };
 
     //Update user subject data on localStorage

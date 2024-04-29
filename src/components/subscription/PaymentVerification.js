@@ -87,8 +87,7 @@ const PaymentResult = () => {
                         const receiptData = {
                             tx_ref: data.transactionData.tx_ref,
                             id: data.transactionData.id,
-                            // charged_amount: data.transactionData.amount,
-                            charged_amount: data.transactionData.meta.price,
+                            charged_amount: data.transactionData.amount,
                             currency: data.transactionData.currency,
                             payment_type: data.transactionData.payment_type,
                             name: data.transactionData.customer.name,
@@ -99,6 +98,7 @@ const PaymentResult = () => {
                             description: data.transactionData.meta.description,
                             paymentFor: data.transactionData.meta.service,
                             points: data.transactionData.meta.points,
+                            duration: data.transactionData.meta.duration,
 
                             //RECEIPT DATA
                             addressSender: {
@@ -146,8 +146,7 @@ const PaymentResult = () => {
                                 number: `${data.transactionData.id}`,
                                 date: `${data.transactionData.customer.created_at}`,
                                 subject: "Exam Prep Tutor Payment Transaction",
-                                // total: `${data.transactionData.currency}. ${data.transactionData.amount}`,
-                                total: `${data.transactionData.currency}. ${data.transactionData.meta.price}`,
+                                total: `${data.transactionData.currency}. ${data.transactionData.amount}`,
                                 text: "Payment rendered in March 2024."
                             },
                             items: {
@@ -155,12 +154,10 @@ const PaymentResult = () => {
                                     title: "Examination",
                                     // description: `${data.transactionData.meta.points} Points Purchased ${isStudent ? `by ${userInfo.firstName} ${userInfo.lastName}` : ` for ${data.transactionData.customer.name}`}`,
                                     description: `Payment transaction made by ${isStudent ? `by ${userInfo.firstName} ${userInfo.lastName}` : ` for ${data.transactionData.customer.name}`}`,
-                                    // amount: `${data.transactionData.currency}. ${data.transactionData.amount}`,
-                                    amount: `${data.transactionData.currency}. ${data.transactionData.meta.price}`,
+                                    amount: `${data.transactionData.currency}. ${data.transactionData.amount}`,
                                     // qty: `${data.transactionData.meta.points}`,
                                     qty: `-`,
-                                    // total: `${data.transactionData.currency}. ${data.transactionData.amount}`,
-                                    total: `${data.transactionData.currency}. ${data.transactionData.meta.price}`,
+                                    total: `${data.transactionData.currency}. ${data.transactionData.amount}`,
                                 }
                             }
                         }
@@ -219,12 +216,10 @@ const PaymentResult = () => {
     //Function to save transaction data to transaction table
     const saveTransactionData = async (data) => {
         try {
-            // console.log('Saving transaction data: ', data);
-            // Check if transaction already exists
+            console.log('Saving transaction data: ', data);
             const existingTransaction = await databases.listDocuments(database_id, transactionTable_id, [Query.equal('transactionId', [`${data.id}`])]);
 
             if (existingTransaction.documents.length > 0) {
-                // console.log('Transaction already saved.');
                 return;
             }
 
@@ -244,8 +239,7 @@ const PaymentResult = () => {
                     {
                         userID: userInfo.userId,
                         transactionDate: new Date(data.created_at),
-                        // transactionAmount: data.amount,
-                        transactionAmount: data.meta.price,
+                        transactionAmount: data.amount,
                         currency: data.currency,
                         paymentMethod: data.payment_type,
                         paymentGateway: 'Flutterwave Gateway',
@@ -273,6 +267,7 @@ const PaymentResult = () => {
                         transactionID: data.tx_ref, //USED tx_ref because it's unique for all, but transactionId in transaction table can be duplicated
                         userId: isStudent ? userInfo.userId : data.meta.studentId,
                         points: data.meta.points,
+                        duration: data.meta.duration,
                         educationLevel: isStudent ? userInfo.educationLevel : data.meta.educationLevel,
                         message: `Points Purchase with Flutterwave Gateway - PaymentVerification`
                     })
@@ -322,9 +317,9 @@ const PaymentResult = () => {
                 <Col md={6}>
                     <Card className="shadow">
                         <Card.Header className="payment-card-header">
-                            <Card.Title className="text-center mb-4">Flutterwave Online Payment</Card.Title>
+                            <Card.Title className="text-center mb-4">Exam Prep Tutor Online Payment</Card.Title>
                             <Card.Text className="text-center">
-                                Transaction Completed.
+                                Transaction Verification Status.
                             </Card.Text>
                         </Card.Header>
                         <Card.Body>

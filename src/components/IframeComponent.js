@@ -13,6 +13,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
+import moment from 'moment';
 import {
   databases,
   database_id,
@@ -22,6 +23,8 @@ import { fetchAndUpdateResults } from "../utilities/resultsUtil";
 import { sendEmailToNextOfKin } from "../utilities/otherUtils.js";
 import { showToast } from "../utilities/toastUtil.js";
 import { useAuth } from '../context/AuthContext';
+import db from '../db.js'
+import useNetworkStatus from '../hooks/useNetworkStatus.js';
 import "./IframeComponent.css";
 
 const IframeComponent = ({ url }) => {
@@ -34,6 +37,7 @@ const IframeComponent = ({ url }) => {
   const [capturedTime, setCapturedTime] = useState(null);
   const timerIntervalRef = useRef(); // Ref for the timer interval
   const navigate = useNavigate();
+  const isOffline = !useNetworkStatus();
 
   const urlWhitelist = [
     window.location.origin,
@@ -94,29 +98,62 @@ const IframeComponent = ({ url }) => {
 
         // Ensure resultsString is not empty and contains valid data
         if (resultsString && resultsString !== "{}") {
-          try {
 
-            // Create a document in Appwrite Collection
-            await createDocument({
-              studID: studentID,
-              marks: marksObtained,
-              subject: "English Language",
-              results: resultsString,
-            });
+          //================================ Check Internet Connection Status ================================
+          if (isOffline) {
+            try {
+              console.log("Offline!");
+              let data = {
+                studID: userInfo.userId,
+                studInfo: {
+                  firstName: userInfo.firstName,
+                  lastName: userInfo.lastName,
+                  otherName: userInfo.otherName,
+                  educationLevel: userInfo.educationLevel,
+                  kinFirstName: userInfo.kinFirstName,
+                  kinLastName: userInfo.kinLastName,
+                  kinEmail: userInfo.kinEmail
+                },
+                subject: 'English Language',
+                marks: marksObtained,
+                results: resultsString,
+                dateTime: moment().format('MMMM Do YYYY, h:mm:ss a'),
+                kinEmail: userInfo.kinEmail ? userInfo.kinEmail : null,
+              }
 
-            // Update user Points
-            await updateUserPoints(1, userInfo.userId);
+              await db.examAnswers.add(data);
 
-            showToast("Results submitted successfully!", "success");
-            if (userInfo.kinEmail) {
-              await sendEmailToNextOfKin(userInfo, "English Language", marksObtained, new Date());
+              console.log('Successfully saved ANSWERS to IndexDB')
+            } catch (e) {
+              console.error('Error saving ANSWERS to index db: ', e)
             }
-            await fetchAndUpdateResults(studentID);
-
-          } catch (e) {
-            showToast("Failed to save results. Contact the support team for guidance", "error")
-            throw e;
           }
+          else {
+            try {
+
+              // Create a document in Appwrite Collection
+              await createDocument({
+                studID: studentID,
+                marks: marksObtained,
+                subject: "English Language",
+                results: resultsString,
+              });
+
+              // Update user Points
+              await updateUserPoints(1, userInfo.userId);
+
+              showToast("Results submitted successfully!", "success");
+              if (userInfo.kinEmail) {
+                await sendEmailToNextOfKin(userInfo, "English Language", marksObtained, new Date());
+              }
+              await fetchAndUpdateResults(studentID);
+
+            } catch (e) {
+              showToast("Failed to save results. Contact the support team for guidance", "error")
+              throw e;
+            }
+          }
+
         }
 
         // Reset buttonClicked after processing

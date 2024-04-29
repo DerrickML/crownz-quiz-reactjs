@@ -5,21 +5,26 @@ import { resetAnswers } from './redux/actions';
 import { Button, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from "react-router-dom";
+import moment from 'moment';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 import {
     databases,
     database_id,
     studentMarksTable_id,
 } from "../../appwriteConfig.js";
+import useNetworkStatus from '../../hooks/useNetworkStatus.js'; // Custom hook to check network status
 import {
     fetchAndUpdateResults, formatDate
 } from "../../utilities/resultsUtil";
 import { sendEmailToNextOfKin } from "../../utilities/otherUtils.js";
 import { useAuth } from '../../context/AuthContext';
+import db from '../../db.js';
 
 const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDisplay, subject_Name }, ref) => {
 
     const [modifiedSelectedQuestions, setModifiedSelectedQuestions] = useState(selectedQuestions);
+
+    const isOffline = !useNetworkStatus(); // Using custom hook to check network status
 
     //Assigning IDs to the subquestions of the selected questions
     useEffect(() => {
@@ -222,19 +227,57 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
             results: resultsString,
         }
 
-        await createDocument(userResultsData);
+        //================================ Check Internet Connection Status ================================
+        if (isOffline) {
+            try {
+                console.log("Offline!");
+                let data = {
+                    studID: userInfo.userId,
+                    studInfo: {
+                        firstName: userInfo.firstName,
+                        lastName: userInfo.lastName,
+                        otherName: userInfo.otherName,
+                        educationLevel: userInfo.educationLevel,
+                        kinFirstName: userInfo.kinFirstName,
+                        kinLastName: userInfo.kinLastName,
+                        kinEmail: userInfo.kinEmail
+                    },
+                    subject: subjectName,
+                    marks: totalMarks,
+                    results: resultsString,
+                    dateTime: moment().format('MMMM Do YYYY, h:mm:ss a'),
+                    kinEmail: userInfo.kinEmail ? userInfo.kinEmail : null,
+                }
 
-        if (userInfo.kinEmail) {
-            await sendEmailToNextOfKin(userInfo, subjectName, totalMarks, formatDate((new Date())));
+                await db.examAnswers.add(data);
+
+                console.log('Successfully saved ANSWERS to IndexDB')
+            } catch (e) {
+                console.error('Error saving ANSWERS to index db: ', e)
+            }
+            //Save to index db
+        }
+        else {
+            try {
+                await createDocument(userResultsData);
+
+                if (userInfo.kinEmail) {
+                    await sendEmailToNextOfKin(userInfo, subjectName, totalMarks, formatDate((new Date())));
+                }
+
+                // Update user Points
+                await updateUserPoints(1, userInfo.userId);
+
+                // Update the local storage with user information
+                let userFetchedResults = await fetchAndUpdateResults(userInfo.userId);
+
+                console.log('Updated user results: ' + JSON.stringify(userFetchedResults));
+            } catch (e) {
+                console.error('Error saving ANSWERS to cloud db');
+            }
         }
 
-        // Update user Points
-        await updateUserPoints(1, userInfo.userId);
-
-        // Update the local storage with user information
-        await fetchAndUpdateResults(userInfo.userId);
-
-        //Rendering user attempts to them
+        //Rendering Answers to User
         const questionsData = formattedAnswers;
 
         // Dispatch the action to reset the answers

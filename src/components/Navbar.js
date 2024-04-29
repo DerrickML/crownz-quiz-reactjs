@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { Badge, Navbar, Nav } from "react-bootstrap";
+import { Alert, Badge, Navbar, Nav } from "react-bootstrap";
 import { useAuth } from '../context/AuthContext'
+import useNetworkStatus from '../hooks/useNetworkStatus'; // Custom hook to check network status
 import './Navbar.css'
 
 const CustomNavbar = () => {
   const navigate = useNavigate()
   const { userInfo, sessionInfo, handleLogout } = useAuth();
+  const isOffline = !useNetworkStatus(); // Using custom hook to check network status
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -15,7 +17,7 @@ const CustomNavbar = () => {
       bg="dark"
       variant="dark"
       expand="lg"
-      className="shadow"
+      className={`shadow ${isOffline ? "offline-border" : ""}`}
       sticky="top"
       expanded={expanded}
     >
@@ -92,6 +94,9 @@ const CustomNavbar = () => {
               </Nav.Link>
             </>
           )}
+          {/* {isOffline && (
+            <Alert variant="warning" className="offline-pill">Offline</Alert> // Display 'offline' pill
+          )} */}
           {/* <Nav.Link
             as={NavLink}
             to="/testing"

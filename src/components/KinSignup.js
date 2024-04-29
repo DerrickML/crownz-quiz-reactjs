@@ -234,7 +234,7 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
         phone: kinPhone || null,
         firstName: kinFirstName,
         lastName: kinLastName || null,
-        signupMethod: createKinSignupMethod, // Replaced kinSignupMethod with createKinSignupMethod
+        signupMethod: createKinSignupMethod,
         studentName: studName,
       };
 
@@ -290,6 +290,8 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
         nextOfKinTable_id,
         query
       );
+
+      console.log('Querrying if kin exists: ', response);
 
       if (response.documents.length > 0) {
         // Will return the kinID of the first document found

@@ -1,3 +1,15 @@
+.offline-border {
+    border-bottom: 4px solid orange;
+    /* Thick orange border */
+}
+
+.offline-pill {
+    padding: 0.5em 0.5em;
+    /* Adjusts padding for a pill */
+    border-radius: 50%;
+    /* Rounded pill shape */
+}
+
 /* CustomNavbar.css */
 @media (max-width: 992px) {
 

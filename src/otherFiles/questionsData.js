@@ -13320,43 +13320,71 @@ const math_ple = [
                 "question": "Work out: 534 - 123",
                 "type": "text",
                 "answer": "411",
+                "mark": 2,
                 "id": "ple_math_sect_A1_1"
             },
             {
                 "question": "Work out: 36 ÷ 3",
                 "type": "text",
                 "answer": "12",
+                "mark": 2,
                 "id": "ple_math_sect_A1_2"
             },
             {
                 "question": "Work out: 32 x 3",
                 "type": "text",
                 "answer": "96",
+                "mark": 2,
                 "id": "ple_math_sect_A1_3"
             },
             {
                 "question": "Work out: 23 + 42",
                 "type": "text",
                 "answer": "65",
+                "mark": 2,
                 "id": "ple_math_sect_A1_4"
             },
             {
                 "question": "Work out: 124 - 45",
                 "type": "text",
                 "answer": "79",
+                "mark": 2,
                 "id": "ple_math_sect_A1_5"
             },
             {
                 "question": "Work out: 14 + 53",
                 "type": "text",
                 "answer": "67",
+                "mark": 2,
                 "id": "ple_math_sect_A1_6"
             },
             {
                 "question": "Work out : 22 x 4",
                 "type": "text",
                 "answer": "88",
+                "mark": 2,
                 "id": "ple_math_sect_A1_7"
+            },
+            {
+                "question": "Work out: 87 - 65",
+                "type": "text",
+                "answer": "22",
+                "mark": 2,
+                "id": "ple_math_sect_A1_8"
+            },
+            {
+                "question": "Subtract: 472 - 361",
+                "type": "text",
+                "answer": "111",
+                "mark": 2,
+                "id": "ple_math_sect_A1_9"
+            },
+            {
+                "question": "Work out: 237 + 120",
+                "type": "text",
+                "answer": "357",
+                "mark": 2,
+                "id": "ple_math_sect_A1_10"
             }
         ],
         "$id": "document_0"
@@ -13368,12 +13396,14 @@ const math_ple = [
                 "question": "Write XCVII IN Hindu Arabic numerals",
                 "type": "text",
                 "answer": "97",
+                "mark": 2,
                 "id": "ple_math_sect_A2_1"
             },
             {
                 "question": "Write in figures: Nine thousand, thirty six",
                 "type": "text",
                 "answer": "9036",
+                "mark": 2,
                 "id": "ple_math_sect_A2_2"
             },
             {
@@ -13385,24 +13415,27 @@ const math_ple = [
                     "Six thousand five hundred nineteen",
                     "Six hundred fifty thousand nineteen"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A2_3"
             },
             {
                 "question": "Simplify: 3a + a - 2a",
                 "type": "multipleChoice",
-                "answer": "= 2a",
+                "answer": "2a",
                 "explanation": "4a - 2a<br> = 2a",
                 "options": [
-                    "= 4a",
-                    "= 2",
-                    "= 2a"
+                    "4a",
+                    "2",
+                    "2a"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A2_4"
             },
             {
                 "question": "Write in figures: Eighty thousand, ten.",
                 "type": "text",
                 "answer": "80010",
+                "mark": 2,
                 "id": "ple_math_sect_A2_5"
             },
             {
@@ -13414,13 +13447,51 @@ const math_ple = [
                     "Ninety nine thousand four",
                     "Ninety nine thousand forty"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A2_6"
             },
             {
                 "question": "What number has been expanded below?<br> 20,000 + 600 + 8",
                 "type": "text",
                 "answer": "20608",
+                "mark": 2,
                 "id": "ple_math_sect_A2_7"
+            },
+            {
+                "question": "Write in words: 55,001",
+                "type": "multipleChoice",
+                "answer": "Fifty five thousand one",
+                "options": [
+                    "Fifty five thousand one",
+                    "Fifty five hundred thousand one",
+                    "Fifty thousand five hundred"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A2_8"
+            },
+            {
+                "question": "Write 93,044 in words",
+                "type": "multipleChoice",
+                "answer": "Ninety three thousand forty four",
+                "options": [
+                    "Nine thousand four",
+                    "Ninety three thousand",
+                    "Ninety three thousand forty four"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A2_9"
+            },
+            {
+                "question": "Write in 5,092 words",
+                "type": "multipleChoice",
+                "answer": "Five thousand ninety two",
+                "options": [
+                    "Five thousand ninety",
+                    "Five hundred ninety two",
+                    "Five thousand ninety two"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A2_10"
             }
         ],
         "$id": "document_1"
@@ -13437,6 +13508,7 @@ const math_ple = [
                     "6",
                     "4"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A11_1"
             },
             {
@@ -13449,22 +13521,24 @@ const math_ple = [
                     "4900",
                     "400"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A11_2"
             },
             {
                 "question": "Work out: 1<sup>1</sup>/<sub>2</sub> - 2/3",
                 "type": "multipleChoice",
-                "answer": "= 5/6",
+                "answer": "5/6",
                 "explanation": "Convert the mixed fraction to improper fraction<br> 3/2 - 2/3<br> Get the LCM<br> (9 - 4)/6<br> = 5/6",
                 "options": [
-                    "= 1/2",
-                    "= 1/6",
-                    "= 5/6"
+                    "1/2",
+                    "1/6",
+                    "5/6"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A11_3"
             },
             {
-                "question": "The area of a square flower garden is 196m <sup>2</sup> . find the length of each side.",
+                "question": "The area of a square flower garden is 196 m<sup>2</sup>. find the length of each side.",
                 "type": "multipleChoice",
                 "answer": "14 m",
                 "explanation": "Area of a square = Side x Side<br> = S<sup>2</sup><br> 196 = S<sup>2</sup><br> √196 = √S<sup>2</sup><br> 14 = S<br> ∴ S = 14",
@@ -13473,6 +13547,7 @@ const math_ple = [
                     "49 m",
                     "98 m"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A11_4"
             },
             {
@@ -13485,6 +13560,7 @@ const math_ple = [
                     "78 cars",
                     "72 cars"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A11_5"
             },
             {
@@ -13497,6 +13573,7 @@ const math_ple = [
                     "1",
                     "1/2"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A11_6"
             },
             {
@@ -13509,7 +13586,33 @@ const math_ple = [
                     "8:25 a.m",
                     "8:45 a.m"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A11_7"
+            },
+            {
+                "question": "Express 36400 in scientific notation",
+                "type": "multipleChoice",
+                "answer": "3.64 x 10<sup>4</sup>",
+                "options": [
+                    "3.64 x 10<sup>3</sup>",
+                    "3.6 x 10<sup>2</sup>",
+                    "3.64 x 10<sup>4</sup>"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A11_8"
+            },
+            {
+                "question": "Express 0.1212… as a common fraction in its simplified form",
+                "type": "multipleChoice",
+                "answer": "4/33",
+                "explanation": "Let the fraction be k<br> k = 0.1212 ......(i)<br> 100 x k = 0.1212 .... x 100<br> 100k = 12.1212 ....(ii)<br> Subtract equation (i) from equation (ii)<br> (100k = 12.1212.....) - (k =  0. 1212.....)<br> 99k = 12<br> 99k/99 = 12/99<br> k = 4/33",
+                "options": [
+                    "5/33",
+                    "6/33",
+                    "4/33"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A11_9"
             }
         ],
         "$id": "document_10"
@@ -13527,6 +13630,7 @@ const math_ple = [
                     "212.5 km/hr",
                     "525 km/hr"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A12_1"
             },
             {
@@ -13539,28 +13643,31 @@ const math_ple = [
                     "800",
                     "795"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A12_2"
             },
             {
-                "question": "Find the value of the digit in the ten thousands place in the number 850634.",
+                "question": "Find the value of the digit in the ten thousand place in the number 850634.",
                 "type": "text",
                 "answer": "5",
+                "mark": 2,
                 "id": "ple_math_sect_A12_3"
             },
             {
-                "question": "Convert 12½% to fraction in its lowest term",
+                "question": "Convert 12½% to a fraction in its lowest term",
                 "type": "multipleChoice",
-                "answer": "= 1/8",
+                "answer": "1/8",
                 "explanation": "12½/100<br> convert 12½ to an improper fraction<br> (25/2)/100<br> 25/2 ÷ 100<br> 25/2 ÷ 100/1<br> 25/2 x 1/100<br> 1/2 x 1/4<br> = 1/8",
                 "options": [
-                    "= 1/4",
-                    "= 1/2",
-                    "= 1/8"
+                    "1/4",
+                    "1/2",
+                    "1/8"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A12_4"
             },
             {
-                "question": "How many packets of 200 grammes can be got from 2.6 kilogrames of salt?",
+                "question": "How many packets of 200 grammes can be got from 2.6 kilogrammes of salt?",
                 "type": "multipleChoice",
                 "answer": "13 packets",
                 "explanation": "First convert 2.6 kg to grammes<br> 1 kg = 1000 g<br> 2.6 kg = (2.6 x 1000)g<br> = 2600 g<br> Number of packets = 2600/200<br> = 26/2<br> = 13 packets",
@@ -13569,6 +13676,7 @@ const math_ple = [
                     "12 packets",
                     "75 packets"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A12_5"
             },
             {
@@ -13581,6 +13689,7 @@ const math_ple = [
                     "10:00 a.m and 11:00 a.m",
                     "7:00 a.m and 110:00 a.m"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A12_6"
             },
             {
@@ -13593,7 +13702,47 @@ const math_ple = [
                     "-10",
                     "10"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A12_7"
+            },
+            {
+                "question": "Write 0.08 as a fraction in its simplest form",
+                "type": "multipleChoice",
+                "answer": "2/25",
+                "explanation": "0.08 = 8/100<br> = 2/25",
+                "options": [
+                    "2/25",
+                    "1/5",
+                    "1/4"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A12_8"
+            },
+            {
+                "question": "Given that a = <sup>-</sup>2 and b = 3. Find the value of a<sup>2</sup> - ab",
+                "type": "multipleChoice",
+                "answer": "10",
+                "explanation": "a<sup>2</sup> ─ ab<br> (axa) - (axb)<br> (<sup>-</sup>2x<sup>-</sup>2) - (<sup>-</sup>2x3)<br> = 4 - (<sup>-</sup>6)<br> = 4 + 6<br> = 10",
+                "options": [
+                    "10",
+                    "8",
+                    "5"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A12_9"
+            },
+            {
+                "question": "The ratio of the interior angle to the exterior angle of a regular polygon is 3:2. Find the size of the exterior angle.",
+                "type": "multipleChoice",
+                "answer": "Exterior angle = 72°",
+                "explanation": "Interior angle = 3k<br> Exterior angle = 2k<br> Total = 180<br> Value of k;<br> 3k + 2k = 180<br> 5k = 180<br> k = 36<br> Exterior angle = 2 x k<br> = 2 x 36<br> = 72°",
+                "options": [
+                    "Exterior angle = 80°",
+                    "Exterior angle = 70°",
+                    "Exterior angle = 72°"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A12_10"
             }
         ],
         "$id": "document_11"
@@ -13611,6 +13760,7 @@ const math_ple = [
                     "1000",
                     "10000"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A13_1"
             },
             {
@@ -13622,6 +13772,7 @@ const math_ple = [
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/13_2.png",
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/13.png"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A13_2"
             },
             {
@@ -13634,6 +13785,7 @@ const math_ple = [
                     "Probability = 7/20",
                     "Probability = 3/20"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A13_3"
             },
             {
@@ -13646,6 +13798,7 @@ const math_ple = [
                     "LCM = 180",
                     "LCM = 360"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A13_4"
             },
             {
@@ -13658,10 +13811,11 @@ const math_ple = [
                     "0",
                     "20"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A13_5"
             },
             {
-                "question": "Today Monday, the workers on farm are paid their salary. What day of the week will the workers' next pay be, 30 days from today?",
+                "question": "Today is Monday, and the workers on the farm are paid their salary. What day of the week will the workers' next pay be, 30 days from today?",
                 "type": "multipleChoice",
                 "answer": "Monday",
                 "explanation": "Monday + 30 days = 30 days<br> Since every week has 7 days<br> 30 = (7 x 4) + 2",
@@ -13670,6 +13824,7 @@ const math_ple = [
                     "Friday",
                     "Monday"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A13_6"
             },
             {
@@ -13682,7 +13837,48 @@ const math_ple = [
                     "10 pupils",
                     "30 pupils"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A13_7"
+            },
+            {
+                "question": "The perimeter of the rectangle below is 36m. Find its width if the length is 12 m.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/13.png",
+                "type": "multipleChoice",
+                "answer": "Width = 6 m",
+                "explanation": "Perimeter =  (2L + 2W)<br> 36 = (2 x 12 + 2W)<br> 36 - 24 = 24- 24 + 2w<br> 12 = 2W<br> 6 = W<br> Therefore Width = 6",
+                "options": [
+                    "Width = 12 m",
+                    "Width = 8 m",
+                    "Width = 6 m"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A13_8"
+            },
+            {
+                "question": "The cost of 2 dozen of exercise books is sh. 30,000. Find the cost of six similar exercise books",
+                "type": "multipleChoice",
+                "answer": "sh.7500",
+                "explanation": "2 dozens = (12 x 2)<br> = 24 books<br> 24 books = sh.30,000<br> 1 book = 30,000/24<br> = sh.1250<br> 6 books = 1250 x 6<br> = sh.7500",
+                "options": [
+                    "sh.7000",
+                    "sh.7500",
+                    "sh.8000"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A13_9"
+            },
+            {
+                "question": "Given that the bearing of A from B is 210° , find the bearing of B from A.",
+                "type": "multipleChoice",
+                "answer": "Bearing of B from A is 30°",
+                "explanation": "Bearing of B from A = 210° - 180°<br> = 30°",
+                "options": [
+                    "Bearing of B from A is 40°",
+                    "Bearing of B from A is 50°",
+                    "Bearing of B from A is 30°"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A13_10"
             }
         ],
         "$id": "document_12"
@@ -13700,6 +13896,7 @@ const math_ple = [
                     "25",
                     "29"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A14_1"
             },
             {
@@ -13712,6 +13909,7 @@ const math_ple = [
                     "Time taken is 1 hour",
                     "Time taken is 1 hour and 15 minutes"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A14_2"
             },
             {
@@ -13725,6 +13923,7 @@ const math_ple = [
                     "Bearing = 77<sup>o</sup>",
                     "Bearing = 283<sup>o</sup>"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A14_3"
             },
             {
@@ -13737,6 +13936,7 @@ const math_ple = [
                     "8 boys",
                     "7 boys"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A14_4"
             },
             {
@@ -13748,6 +13948,7 @@ const math_ple = [
                     "10110<sub>two</sub>",
                     "10100<sub>two</sub>"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A14_5"
             },
             {
@@ -13760,7 +13961,42 @@ const math_ple = [
                     "985",
                     "98500"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A14_6"
+            },
+            {
+                "question": "Work out: 268 x 25",
+                "type": "text",
+                "answer": "6700",
+                "mark": 2,
+                "id": "ple_math_sect_A14_7"
+            },
+            {
+                "question": "Express 2500 metres as kilometres",
+                "type": "multipleChoice",
+                "answer": "2.5 km",
+                "explanation": "1000m = 1 km<br> 2500m = 2500/1000<br> = 25/10<br> = 2.5 km",
+                "options": [
+                    "3.5 km",
+                    "2.5 km",
+                    "4 km"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A14_8"
+            },
+            {
+                "question": "Find the value of k in the figure",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_2/14.png",
+                "type": "multipleChoice",
+                "answer": "k = 70°",
+                "explanation": "2k - 30° = k + 40° (vertically opposite angles)<br> 2k - 30° + 30° = k + 40° + 30°<br> 2k - k = 70°<br> k = 70°",
+                "options": [
+                    "k = 75°",
+                    "k = 70°",
+                    "k = 80°"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A14_9"
             }
         ],
         "$id": "document_13"
@@ -13778,6 +14014,7 @@ const math_ple = [
                     "Rate = 10",
                     "Rate = 5"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A15_1"
             },
             {
@@ -13790,6 +14027,7 @@ const math_ple = [
                     "Median height = 60cm",
                     "Median height = 58.5cm"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A15_2"
             },
             {
@@ -13803,10 +14041,12 @@ const math_ple = [
                     "126 cm",
                     "31.5 cm"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A15_3"
             },
             {
                 "question": "Find the size of angle y in the figure below",
+                "type": "multipleChoice",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/15.png",
                 "answer": "y = 65<sup>o</sup>",
                 "explanation": "y + y + 50 = 180<br> 2y + 50 = 180<br> 2y + 50 - 50 = 180 - 50<br> 2y = 130<br> y = 65",
@@ -13815,6 +14055,7 @@ const math_ple = [
                     "y = 80<sup>o</sup>",
                     "y = 65<sup>o</sup>"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A15_4"
             },
             {
@@ -13827,6 +14068,7 @@ const math_ple = [
                     "Time taken = 45 minutes",
                     "Time taken = 35 minutes"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A15_5"
             },
             {
@@ -13839,7 +14081,46 @@ const math_ple = [
                     "4(mod 7)",
                     "3(mod 7)"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A15_6"
+            },
+            {
+                "question": "Given that k = 2 and p = -3, find the valve 3k + 2p",
+                "type": "multipleChoice",
+                "answer": "0",
+                "explanation": "3k + 2p<br> (3x2) + (2x-3)<br> = 6 + -6<br> = 0",
+                "options": [
+                    "-12",
+                    "0",
+                    "6"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A15_7"
+            },
+            {
+                "question": "Find the highest number of boys that can exactly share 12 or 18 mangoes leaving no remainder",
+                "type": "multipleChoice",
+                "answer": "6 boys",
+                "explanation": "3k + 2p<br> (3x2) + (2x-3)<br> = 6 + -6<br> = 0",
+                "options": [
+                    "4 boys",
+                    "8 boys",
+                    "6 boys"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A15_8"
+            },
+            {
+                "question": "Write 2605 in standard form.",
+                "type": "multipleChoice",
+                "answer": "2.605 x 10<sup>3</sup>",
+                "options": [
+                    "2.605 x 10<sup>2</sup>",
+                    "26.0 x 10<sup>3</sup>",
+                    "2.605 x 10<sup>3</sup>"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A15_9"
             }
         ],
         "$id": "document_14"
@@ -13859,16 +14140,18 @@ const math_ple = [
                             "(2,3)",
                             "(3,-2)",
                             "(3,2)"
-                        ]
+                        ],
+                        "mark": 1
                     },
                     {
-                        "question": "Select the image that shows point H(-3,0) on the coordinate graph",
+                        "question": "Select the image that shows point N(-3,0) on the coordinate graph",
                         "type": "multipleChoice",
                         "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol%208.png",
                         "options": [
                             "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/16.png",
                             "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol%208.png"
-                        ]
+                        ],
+                        "mark": 1
                     }
                 ],
                 "id": "ple_math_sect_A16_1"
@@ -13883,18 +14166,20 @@ const math_ple = [
                     "1 US dollar = 132,192 Kenya shillings",
                     "1 US dollar = 102 Kenya shillings"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A16_2"
             },
             {
-                "question": "Given that a = 3 and b= -2, find the value of a<sub>2</sub> - b<sub>3</sub>",
+                "question": "Given that a = 3 and b= -2, find the value of a<sup>2</sup> - b<sup>3</sup>",
                 "type": "multipleChoice",
                 "answer": "17",
-                "explanation": "3<sub>2</sub> - (-2)<sub>3</sub><br> 9 - (-8)<br> 9 + 8<br> = 17",
+                "explanation": "3<sup>2</sup> - (-2)<sup>2</sup><br> 9 - (-8)<br> 9 + 8<br> = 17",
                 "options": [
                     "1",
                     "17",
                     "5"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A16_3"
             },
             {
@@ -13907,6 +14192,7 @@ const math_ple = [
                     "sh 7,500",
                     "sh 5,000"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A16_4"
             },
             {
@@ -13920,6 +14206,7 @@ const math_ple = [
                     "LCM = 18",
                     "LCM = 36"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A16_5"
             },
             {
@@ -13933,6 +14220,7 @@ const math_ple = [
                     "Bearing = 25<sup>o</sup>",
                     "Bearing = 245<sup>o</sup>"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A16_6"
             },
             {
@@ -13945,7 +14233,48 @@ const math_ple = [
                     "3",
                     "1/2"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A16_7"
+            },
+            {
+                "question": "A gatekeeper's salary was increased from sh 50,000 to sh 60,000. Find the percentage increase",
+                "type": "multipleChoice",
+                "answer": "Percentage increase = 20%",
+                "explanation": "Increase =  New salary - Old salary<br> = 60000 - 50000<br> = 10000<br> Percentage increase = Increase/Old salary x 100<br> = 10000/50000 x 100<br> = 20%",
+                "options": [
+                    "Percentage increase = 30%",
+                    "Percentage increase = 40%",
+                    "Percentage increase = 20%"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A16_8"
+            },
+            {
+                "question": "In the figure below, find the value of r in degrees",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_1/16.png",
+                "type": "multipleChoice",
+                "answer": "r = 55°",
+                "explanation": "x + 50° = 180° (co-interior angles)<br> x + 50° - 50° = 180° - 50°<br> x = 130°<br> 2r + 130° + 120° = 360° (Angle at a point)<br> 2r + 250° = 360°<br> 2r + 250° - 250° = 360° - 250°<br> 2r = 110<br> 2r/2 = 110/2<br> r = 55°",
+                "options": [
+                    "r = 65°",
+                    "r = 60°",
+                    "r = 55°"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A16_9"
+            },
+            {
+                "question": "The price of a shirt is sh. 45,000. After a discount, a customer paid sh.39,000. What was the discount?",
+                "type": "multipleChoice",
+                "answer": "Discount = 6,000",
+                "explanation": "Discount = Old price - New price<br> = 45,000 - 39,000<br> = 6,000",
+                "options": [
+                    "Discount = 5,000",
+                    "Discount = 6,000",
+                    "Discount = 7,000"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A16_10"
             }
         ],
         "$id": "document_15"
@@ -13960,14 +14289,16 @@ const math_ple = [
                 "explanation": "Time taken = Arrival time - Departure time<br> = 14:27 - 11:38<br> Subtract the minutes first<br> 27 - 38 = -11 (carry over 1)<br> Now, subtract the hours<br> (14 - 1) - 11 = 2",
                 "options": [
                     "2 hours and 11 minutes",
-                    "1 hours and 49 minutes",
+                    "1 hour and 49 minutes",
                     "2 hours and 49 minutes"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A17_1"
             },
             {
                 "question": "Find the value of p in degrees in the diagram below.",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/17.png",
+                "type": "multipleChoice",
                 "answer": "p = 30",
                 "explanation": "Exterior angles of a triangle add up to 360<sup>o</sup><br> 5p + 3p + 4p = 360<br> 12p = 360<br> p = 360/12<br> = 30",
                 "options": [
@@ -13975,6 +14306,7 @@ const math_ple = [
                     "p = 30",
                     "p = 180"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A17_2"
             },
             {
@@ -13987,6 +14319,7 @@ const math_ple = [
                     "Length = 660 meters",
                     "Length = 650 meters"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A17_3"
             },
             {
@@ -13999,18 +14332,20 @@ const math_ple = [
                     "Speed = 90 km/hr",
                     "Speed = 96 km/hr"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A17_4"
             },
             {
                 "question": "Find the median of the numbers 8, 10 ,4 ,1 ,6 and 9",
                 "type": "multipleChoice",
                 "answer": "Median = 7",
-                "explanation": "Arrange the number is ascending or descending order<br> 1, 4, 6, 8, 9, 10<br> Median = (6+8)/2<br> = 7",
+                "explanation": "Arrange the number in ascending or descending order<br> 1, 4, 6, 8, 9, 10<br> Median = (6+8)/2<br> = 7",
                 "options": [
                     "Median = 8",
                     "Median = 6.33",
                     "Median = 7"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A17_5"
             },
             {
@@ -14023,18 +14358,61 @@ const math_ple = [
                     "n = 1",
                     "n = 2"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A17_6"
             },
             {
-                "question": "The bar graph below shows the number of eggs laid by chicken in Opio's farm from Monday to Friday. How many eggs were laid on Wednsday and Friday",
+                "question": "The bar graph below shows the number of eggs laid by chicken in Opio's farm from Monday to Friday. How many eggs were laid on Wednesday and Friday",
+                "type": "multipleChoice",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/17.png",
-                "answer": "28 eggs were laid on Wednsday and 42 eggs were laid on Friday",
+                "answer": "28 eggs were laid on Wednesday and 42 eggs were laid on Friday",
                 "options": [
-                    "30 eggs were laid on Wednsday and 45 eggs were laid on Friday",
-                    "28 eggs were laid on Wednsday and 42 eggs were laid on Friday",
-                    "42 eggs were laid on Wednsday and 28 eggs were laid on Friday"
+                    "30 eggs were laid on Wednesday and 45 eggs were laid on Friday",
+                    "28 eggs were laid on Wednesday and 42 eggs were laid on Friday",
+                    "42 eggs were laid on Wednesday and 28 eggs were laid on Friday"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A17_7"
+            },
+            {
+                "question": "The table below shows the goals scored by some teams in a netball competition. How many teams scored less than 20 goals?",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/17.png",
+                "type": "multipleChoice",
+                "answer": "12 teams",
+                "explanation": "Less than 20 goals =  3 + 4 + 5<br> = 12 teams",
+                "options": [
+                    "13 teams",
+                    "12 teams",
+                    "16 teams"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A17_8"
+            },
+            {
+                "question": "A parent went to the bank and paid school fees. If she paid 30 notes of fifty thousand shillings each numbered consecutively from ZA7359981, find the last note.",
+                "type": "multipleChoice",
+                "answer": "ZA73600010",
+                "explanation": "Notes = 30 - 1<br> = 29<br> Last note = ZA73599981 + 29<br> = ZA73600010",
+                "options": [
+                    "ZA73600000",
+                    "ZA73600010",
+                    "ZA7360000"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A17_9"
+            },
+            {
+                "question": "The interior angle sum of a regular polygon is 540°. How many sides has the polygon?",
+                "type": "multipleChoice",
+                "answer": "5 sides",
+                "explanation": "180°(n - 2) = (Interior angle sum)<br> 180°(n - 2) = 540°<br> 180n - 360 = 540<br> 180n - 360 + 360 = 540 + 360<br> 180n = 900<br> n = 5",
+                "options": [
+                    "5 sides",
+                    "6 sides",
+                    "7 sides"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A17_10"
             }
         ],
         "$id": "document_16"
@@ -14052,6 +14430,7 @@ const math_ple = [
                     "k < 4",
                     "k = 4"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A18_1"
             },
             {
@@ -14064,6 +14443,7 @@ const math_ple = [
                     "New Fare = 3,800",
                     "New Fare = 3,500"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A18_2"
             },
             {
@@ -14076,6 +14456,7 @@ const math_ple = [
                     "6 men",
                     "4 men"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A18_3"
             },
             {
@@ -14089,18 +14470,20 @@ const math_ple = [
                     "Volume = 84cm³",
                     "Volume = 36cm³"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A18_4"
             },
             {
                 "question": "Gidudu has goats and sheep in the ratio of 3:2. If he has 24 goats, how many sheep does he have?",
                 "type": "multipleChoice",
                 "answer": "16 sheep",
-                "explanation": "Let the total number of animals be x<br> Total parts = 3+2 = 5<br> 3x/5 = 24<br> Multipy both sides by 5<br> 3x = 24x5<br> x = (24x5)/3<br> x = 40 animals<br> Number of sheep = Total number of animals - Number of goats<br> = 40 - 24<br> = 16 sheep",
+                "explanation": "Let the total number of animals be x<br> Total parts = 3+2 = 5<br> 3x/5 = 24<br> Multiply both sides by 5<br> 3x = 24x5<br> x = (24x5)/3<br> x = 40 animals<br> Number of sheep = Total number of animals - Number of goats<br> = 40 - 24<br> = 16 sheep",
                 "options": [
                     "16 sheep",
                     "10 sheep",
                     "24 sheep"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A18_5"
             },
             {
@@ -14112,6 +14495,7 @@ const math_ple = [
                     "15:45 hours",
                     "15:15 hours"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A18_6"
             },
             {
@@ -14124,7 +14508,47 @@ const math_ple = [
                     "First number = 16",
                     "First number = 20"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A18_7"
+            },
+            {
+                "question": "Find the square root of 3<sup>1</sup>/<sup>16</sup>",
+                "type": "multipleChoice",
+                "answer": "Square root = 1¾",
+                "explanation": "Change to improper fraction<br> = 49/16<br> = √(49/16)<br> = √49/√16<br> = 7/4<br> = 1¾",
+                "options": [
+                    "Square root = 1½",
+                    "Square root = 3/4",
+                    "Square root = 1¾"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A18_8"
+            },
+            {
+                "question": "In the Venn diagram below, describe the unshaded part.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_1/18.png",
+                "type": "multipleChoice",
+                "answer": "(A∩B)<sup|</up>",
+                "options": [
+                    "(AuB)<sup|</up>",
+                    "(A∩B)<sup|</up>",
+                    "(A<sup|</up>∩B)"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A18_9"
+            },
+            {
+                "question": "A dice is tossed once. What is the probability that a composite number appears on top?",
+                "type": "multipleChoice",
+                "answer": "Probability = 1/3",
+                "explanation": "Sample space = {1,2,3,4,5,6}<br> n(Sample space) = 6<br> Events = {4,6}<br> n(Events) = 2<br> Probability = n(Events)/n(Sample space)<br> = 2/6<br> = 1/3",
+                "options": [
+                    "Probability = 2/6",
+                    "Probability = 1/2",
+                    "Probability = 1/3"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A18_10"
             }
         ],
         "$id": "document_17"
@@ -14142,6 +14566,7 @@ const math_ple = [
                     "2,000",
                     "2,500"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A19_1"
             },
             {
@@ -14154,6 +14579,7 @@ const math_ple = [
                     "m > -6",
                     "m > 6"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A19_2"
             },
             {
@@ -14167,6 +14593,7 @@ const math_ple = [
                     "10 pupils",
                     "15 pupils"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A19_3"
             },
             {
@@ -14178,6 +14605,7 @@ const math_ple = [
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/19_2.png",
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/19.png"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A19_4"
             },
             {
@@ -14190,6 +14618,7 @@ const math_ple = [
                     "Capacity = 16 litres",
                     "Capacity = 15 litres"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A19_5"
             },
             {
@@ -14203,19 +14632,60 @@ const math_ple = [
                     "200 acres",
                     "216 acres"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A19_6"
             },
             {
                 "question": "Trees were planted along a straight road 305 meters long. If the trees were planted 5 metres apart, how many trees were planted along the road?",
                 "type": "multipleChoice",
-                "answer": "62 tress",
-                "explanation": "Number of trees in a strainght road = ( Distance ÷ interval)+ 1<br> = (305 ÷ 5) + 1<br> = 61 + 1<br> = 62 trees",
+                "answer": "62 trees",
+                "explanation": "Number of trees in a straight road = ( Distance ÷ interval)+ 1<br> = (305 ÷ 5) + 1<br> = 61 + 1<br> = 62 trees",
                 "options": [
-                    "62 tress",
-                    "61 tress",
-                    "60 tress"
+                    "62 trees",
+                    "61 trees",
+                    "60 trees"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A19_7"
+            },
+            {
+                "question": "The number of subsets in set A is 16. How many elements are in set A?",
+                "type": "multipleChoice",
+                "answer": "4 elements",
+                "explanation": "Number of subsets = 2<sup>n</sup> (where n, is the number of elements in a set)<br> 2<sup>n</sup> = 16<br> 2<sup>n</sup> = 2<sup>4</sup><br> n = 4",
+                "options": [
+                    "8 elements",
+                    "16 elements",
+                    "4 elements"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A19_8"
+            },
+            {
+                "question": "A trader borrowed sh.2,000,000 from a money lender who charges an interest of 20% every after 3 months. How much interest did the trader pay at the end of 3 months?",
+                "type": "multipleChoice",
+                "answer": "sh.400,000",
+                "explanation": "Time = 3/3<br> = 1 interval of 3 months<br> Simple interest = PxRxT<br> = 2,000,000 x 20/100 x 1<br> = 20,000 x 2<br> = 400,000",
+                "options": [
+                    "sh.500,000",
+                    "sh.400,000",
+                    "sh.450,000"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A19_9"
+            },
+            {
+                "question": "Tom was facing North East. If he turned clockwise through an angle of 225°, what is his new direction?",
+                "type": "multipleChoice",
+                "answer": "West",
+                "explanation": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_2/19.png",
+                "options": [
+                    "West",
+                    "East",
+                    "South"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A19_10"
             }
         ],
         "$id": "document_18"
@@ -14233,6 +14703,7 @@ const math_ple = [
                     "30 poles",
                     "44 poles"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A20_1"
             },
             {
@@ -14245,10 +14716,11 @@ const math_ple = [
                     "20 bottles",
                     "40 bottles"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A20_2"
             },
             {
-                "question": "Find the least number of sweets when divided among 8 boys or 6 girls equally, leaves 2 sweets as remainder.",
+                "question": "Find the least number of sweets when divided among 8 boys or 6 girls equally, leaves 2 sweets as the remainder.",
                 "type": "multipleChoice",
                 "answer": "26 sweets",
                 "explanation": "Let's first find the LCM of 8 and 6<br> Prime factorization of 8: 2 x 2 x 2<br> Prime factorization of 6: 2 x 3<br> LCM = 2 x 2 x 2 x 3<br> = 24<br> Least number of sweets that leaves a remainder of 2 = 24 + 6<br> = 26 sweets",
@@ -14257,10 +14729,11 @@ const math_ple = [
                     "26 sweets",
                     "22 sweets"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A20_3"
             },
             {
-                "question": "Hakim is 3 times as old as Lucky. Their total age is 52 year. How old is Lucky?",
+                "question": "Hakim is 3 times as old as Lucky. Their total age is 52 years. How old is Lucky?",
                 "type": "multipleChoice",
                 "answer": "13 years old",
                 "explanation": "Let Hakim's age be H and Lucky's age be L<br> ∴ H = 3L<br> Since H + L = 52<br> 3L + L = 52<br> 4L = 52<br> 4L/4 = 52/4<br> L = 13",
@@ -14269,6 +14742,7 @@ const math_ple = [
                     "12 years old",
                     "39 years old"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A20_4"
             },
             {
@@ -14281,10 +14755,11 @@ const math_ple = [
                     "5 boxes",
                     "6 boxes"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A20_5"
             },
             {
-                "question": "A man got a loan of sh 120,000 from a savings and credit co-operative society at a simple interest rate of 8% per anunm. He paid an interest of sh7,200 on the loan. How long was the loan?",
+                "question": "A man got a loan of shs 120,000 from a savings and credit co-operative society at a simple interest rate of 8% per annunm. He paid an interest of sh7,200 on the loan. How long was the loan?",
                 "type": "multipleChoice",
                 "answer": "9 months",
                 "explanation": "Interest = Principal x Rate x Time<br> 7200 = 120000 x 8/100 x T<br> 7200 = 120000 x 0.08T<br> 7200 = 9600T<br> T = 7200/9600<br> = 3/4<br> Convert to months<br> = 3/4 x 12<br> = 9",
@@ -14293,6 +14768,7 @@ const math_ple = [
                     "9 months",
                     "9 years"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A20_6"
             },
             {
@@ -14305,7 +14781,46 @@ const math_ple = [
                     "40 packets",
                     "50 packets"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A20_7"
+            },
+            {
+                "question": "A bus covered a distance of 280 km in 3 hours and 30 minutes. What was its average speed?",
+                "type": "multipleChoice",
+                "answer": "Speed = 80 km/hr",
+                "explanation": "Speed = Distance/Time<br> = 280/3½<br> = 280/7/2<br> = 280 ÷ 7/2<br> 280 x 2/7<br> = 80 km/hr",
+                "options": [
+                    "Speed = 70 km/hr",
+                    "Speed = 60 km/hr",
+                    "Speed = 80 km/hr"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A20_8"
+            },
+            {
+                "question": "Express 00 40 hrs in 12 hour clock system.",
+                "type": "multipleChoice",
+                "answer": "12:40 a.m",
+                "options": [
+                    "12:40 a.m",
+                    "12:40 p.m",
+                    "6:40 a.m"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A20_9"
+            },
+            {
+                "question": "A car travelled at a speed of 80km/hr for 2½ hours. What distance did the car cover?",
+                "type": "multipleChoice",
+                "answer": "Distance = 200 km",
+                "explanation": "Distance = speed x time<br> = 80 x 5/2<br> = 40 x 5<br> = 200 km",
+                "options": [
+                    "Distance = 100 km",
+                    "Distance = 200 km",
+                    "Distance = 80 km"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A20_10"
             }
         ],
         "$id": "document_19"
@@ -14323,6 +14838,7 @@ const math_ple = [
                     "2p",
                     "p"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A3_1"
             },
             {
@@ -14335,6 +14851,7 @@ const math_ple = [
                     "n(P u Q) = 7",
                     "n(P u Q) = 8"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A3_2"
             },
             {
@@ -14347,6 +14864,7 @@ const math_ple = [
                     "-3",
                     "-21"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A3_3"
             },
             {
@@ -14359,6 +14877,7 @@ const math_ple = [
                     "1",
                     "5/9"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A3_4"
             },
             {
@@ -14371,6 +14890,7 @@ const math_ple = [
                     "3x - 35",
                     "3x + 12"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A3_5"
             },
             {
@@ -14383,6 +14903,7 @@ const math_ple = [
                     "n(K u M) = 7",
                     "n(K u M) = 6"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A3_6"
             },
             {
@@ -14395,7 +14916,34 @@ const math_ple = [
                     "90",
                     "95"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A3_7"
+            },
+            {
+                "question": "Simplify:  <sup>-</sup>6 - <sup>-</sup>4",
+                "type": "multipleChoice",
+                "answer": "<sup>-</sup>2",
+                "explanation": "<sup>-</sup>6 - (<sup>-</sup>4)<br> = <sup>-</sup>6 + 4<br> = <sup>-</sup>2",
+                "options": [
+                    "<sup>-</sup>2",
+                    "2",
+                    "<sup>-</sup>3"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A3_8"
+            },
+            {
+                "question": "Work out: 6÷5 = (finite 7)",
+                "type": "multipleChoice",
+                "answer": "4 (finite 7)",
+                "explanation": "(6 + 7) ÷ 5 = (finite 7)<br> (13 + 7) ÷ 5 = (finite 7)<br> 20 ÷ 5 = 4 (finite 7)",
+                "options": [
+                    "1 (finite 7)",
+                    "4 (finite 7)",
+                    "3 (finite 7)"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A3_9"
             }
         ],
         "$id": "document_2"
@@ -14404,7 +14952,7 @@ const math_ple = [
         "category": 21,
         "questions": [
             {
-                "question": "The diagrams below represent subtraction of two numbers on abacus. Study the diagrams and use them to answer the questions that follow.",
+                "question": "The diagrams below represent the subtraction of two numbers on an abacus. Study the diagrams and use them to answer the questions that follow.",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol 10.png",
                 "sub_questions": [
                     {
@@ -14416,7 +14964,8 @@ const math_ple = [
                             "304 - 23",
                             "304 - 43"
                         ],
-                        "mark": 2
+                        "mark": 2,
+                        "id": "ple_math_sect_B21_1_sub_0"
                     },
                     {
                         "question": "Which diagram represents your answer above on the third abacus?",
@@ -14427,10 +14976,11 @@ const math_ple = [
                             "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/21.png",
                             "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/21B.png"
                         ],
-                        "mark": 3
+                        "mark": 3,
+                        "id": "ple_math_sect_B21_1_sub_1"
                     }
                 ],
-                "id": "ple_math_sect_A21_1"
+                "id": "ple_math_sect_B21_1"
             },
             {
                 "question": "At a party, guests were served with soda (S) and mineral water (W) as shown in the Venn diagram below. Study and use the Venn diagram to answer the questions that follow.",
@@ -14454,9 +15004,9 @@ const math_ple = [
                         "answer": "50 guests",
                         "explanation": "3r + 7 + 13 + r + 6 + 2r<br> Since r = 4<br> (3x4) + 20 + 4 + 6 + (2x4)<br> 12 + 30 + 8<br> = 50",
                         "options": [
-                            "48 people",
-                            "42 people",
-                            "50 people"
+                            "48 guests",
+                            "42 guests",
+                            "50 guests"
                         ],
                         "mark": 2
                     },
@@ -14473,7 +15023,7 @@ const math_ple = [
                         "mark": 1
                     }
                 ],
-                "id": "ple_math_sect_A21_2"
+                "id": "ple_math_sect_B21_2"
             },
             {
                 "question": "Work out: 334<sub>five</sub> + 123<sub>five</sub>",
@@ -14499,14 +15049,14 @@ const math_ple = [
                         "mark": 3
                     }
                 ],
-                "id": "ple_math_sect_A21_3"
+                "id": "ple_math_sect_B21_3"
             },
             {
                 "question": "In a class of 41 pupils, 30 play football (F), t play Netball (N) and 5 play both football and Netball. 3 pupils do not play any of the two games.",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/21.png",
                 "sub_questions": [
                     {
-                        "question": "Which of the following show the complete venn diagram",
+                        "question": "Which of the following shows the complete venn diagram",
                         "type": "multipleChoice",
                         "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/21C.png",
                         "options": [
@@ -14529,7 +15079,7 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A21_4"
+                "id": "ple_math_sect_B21_4"
             },
             {
                 "question": "In a class, 31 pupils play tennis (T) and (d+5) play volley ball (V) only. d pupils play both games while 3 play neither of the games.",
@@ -14552,19 +15102,19 @@ const math_ple = [
                         "answer": "d = 11",
                         "explanation": "d + d + 5 = 27<br> 2d + 5 = 27<br> 2d + 5 - 5 = 27 - 5<br> 2d = 22<br> d = 11",
                         "options": [
-                            "d = 11",
-                            "d = 11",
-                            "d = 11"
+                            "d = 12",
+                            "d = 14",
+                            "d = 15"
                         ],
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A21_5"
+                "id": "ple_math_sect_B21_5"
             },
             {
                 "question": "Which of the following represent 4,502 on the abacus",
                 "type": "multipleChoice",
-                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/21.png",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/21_2.png",
                 "options": [
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/21_1.png",
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/21.png",
@@ -14585,7 +15135,7 @@ const math_ple = [
                         "mark": 3
                     }
                 ],
-                "id": "ple_math_sect_A21_6"
+                "id": "ple_math_sect_B21_6"
             },
             {
                 "question": "Musamali bought the items in the table below from a shop",
@@ -14594,7 +15144,7 @@ const math_ple = [
                     {
                         "question": "Which of the following tables show the complete and correct table",
                         "type": "multipleChoice",
-                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/21.png",
+                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/21C.png",
                         "explanation": "Soap = 6600/2200 = 3 bars<br> Bread = 3400/2 = 1,700<br> Salt = (5 x 800)/2<br> = 5 x 400<br> = 2,000<br> Total = 6600 + 3400 + 2000<br> = 12,000",
                         "options": [
                             "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/21C.png",
@@ -14616,7 +15166,111 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A21_7"
+                "id": "ple_math_sect_B21_7"
+            },
+            {
+                "question": "In a class of 60 pupils, 30 like English (E), y like mathematics (M) only, 10 like both subjects and 5 do not like any of the two subjects.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/21.png",
+                "sub_questions": [
+                    {
+                        "question": "Which of the following diagrams represent a complete venn diagram",
+                        "type": "multipleChoice",
+                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/21C.png",
+                        "options": [
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/21C.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/21_1.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/21_2.png"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question": "Find the valve of y",
+                        "type": "multipleChoice",
+                        "answer": "y = 25",
+                        "explanation": "y + 10 + 20 + 5 = 60<br> y + 35 = 60<br> y + 35 - 35 = 60 - 35<br> y = 25",
+                        "options": [
+                            "y = 25",
+                            "y = 15",
+                            "y = 20"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question": "How many pupils like Mathematics altogether?",
+                        "type": "multipleChoice",
+                        "answer": "35 pupils",
+                        "explanation": "Pupils that like mathematics = y + 10<br> = 25 + 10<br> = 35",
+                        "options": [
+                            "25 pupils",
+                            "30 pupils",
+                            "35 pupils"
+                        ],
+                        "mark": 1
+                    }
+                ],
+                "id": "ple_math_sect_B21_8"
+            },
+            {
+                "question": "The Venn diagram below shows the number of pupils who like meat (M) and beans (B). Use it to answer questions that follow",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_1/21.png",
+                "sub_questions": [
+                    {
+                        "question": "If 34 pupils like either meat or beans, find the value of y.",
+                        "type": "multipleChoice",
+                        "answer": "y = 9",
+                        "explanation": "n(MuB) = 34<br> y + 4 + 2y + y - 2 = 34<br> y + 2y + y + 4 - 2 = 34<br> 4y - 2 = 34<br> 4y - 2 + 2 = 34 + 2<br> 4y = 36<br> y = 9",
+                        "options": [
+                            "y = 6",
+                            "y = 8",
+                            "y = 9"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question": "Find the probability of picking a pupil who likes beans only.",
+                        "type": "multipleChoice",
+                        "answer": "Probability = 7/42",
+                        "explanation": "Beans only = y - 2<br> = 9 - 2<br> = 7<br> Total = y + 4 + (2xy) + y - 2 + y - 5<br> = 9 + 4 +(9 x 2) + 9 - 2 + 9 - 5<br> = 13 + 18 + 7 + 4<br> = 42<br> Probability = 7/42",
+                        "options": [
+                            "Probability = 8/42",
+                            "Probability = 1/3",
+                            "Probability = 7/42"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_B21_9"
+            },
+            {
+                "question": "The Venn diagram below shows the number of pupils who like Hockey (H) and Table tennis (T). Use it to answer questions that follow",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_2/21.png",
+                "sub_questions": [
+                    {
+                        "question": "If 20 pupils don't  like Table tennis, how many pupils like both games?",
+                        "type": "multipleChoice",
+                        "answer": "9 pupils",
+                        "explanation": "3x + 5 + 2x = 20<br> 3x + 2x + 5 = 20<br> 5x + 5 - 5 = 20 - 5<br> 5x = 15<br> x = 3<br> Both games = 3 x 3<br> = 9 pupils",
+                        "options": [
+                            "5 pupils",
+                            "7 pupils",
+                            "9 pupils"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question": "Find the probability of choosing a pupil at random who likes only one game",
+                        "type": "multipleChoice",
+                        "answer": "Probability = 17/32",
+                        "explanation": "(3x +5) + (2x - 3)<br> (3x3) + 5 + (2x3 - 3)<br> (9 + 5) + (6 - 3)<br> = 14 + 3<br> = 17 + 9 + (2 + 3)<br> = 26 + 6<br> = 32<br> = 17/32",
+                        "options": [
+                            "Probability = 7/32",
+                            "Probability = 15/32",
+                            "Probability = 17/32"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_B21_10"
             }
         ],
         "$id": "document_20"
@@ -14636,7 +15290,8 @@ const math_ple = [
                             "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/22B.png",
                             "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/22A.png"
                         ],
-                        "mark": 2
+                        "mark": 2,
+                        "id": "ple_math_sect_B22_1_sub_0"
                     },
                     {
                         "question": "How many pupils ate rice only?",
@@ -14648,10 +15303,11 @@ const math_ple = [
                             "29 pupils",
                             "20 pupils"
                         ],
-                        "mark": 3
+                        "mark": 3,
+                        "id": "ple_math_sect_B22_1_sub_1"
                     }
                 ],
-                "id": "ple_math_sect_A22_1"
+                "id": "ple_math_sect_B22_1"
             },
             {
                 "question": "Express 4/15 as a recurring decimal",
@@ -14668,17 +15324,17 @@ const math_ple = [
                     {
                         "question": "Simplify: 4/5 x 3/7 ÷ 9/14 + 2<sup>7</sup>/<sub>15</sub>",
                         "type": "multipleChoice",
-                        "answer": "= 3",
+                        "answer": "3",
                         "explanation": "Change the mixed fraction to improper fraction<br> 4/5 x 3/7 ÷ 9/14 + 37/15<br> Using BODMAS<br> = 4/5 x 3/7 x 14/9 + 37/15<br> = 8/15 + 37/15<br> = 45/15<br> = 3",
                         "options": [
-                            "= 3",
-                            "= 4",
-                            "= 5/7"
+                            "3",
+                            "4",
+                            "5/7"
                         ],
                         "mark": 3
                     }
                 ],
-                "id": "ple_math_sect_A22_2"
+                "id": "ple_math_sect_B22_2"
             },
             {
                 "question": "Akot went to the market and bought the following items:<br> 3 liters of milk at sh2,400 per liter<br> 250g of salt at sh2,000 per kg.<br> 18 oranges at sh1,500 for every 6 oranges",
@@ -14708,7 +15364,7 @@ const math_ple = [
                         "mark": 1
                     }
                 ],
-                "id": "ple_math_sect_A22_3"
+                "id": "ple_math_sect_B22_3"
             },
             {
                 "question": "Write 955 in Roman numerals.",
@@ -14730,7 +15386,7 @@ const math_ple = [
                         "mark": 4
                     }
                 ],
-                "id": "ple_math_sect_A22_4"
+                "id": "ple_math_sect_B22_4"
             },
             {
                 "question": "What number has been expanded below?<br> (6x10<sup>3</sup>) + (2x10<sup>1</sup>) + (7x10<sup>0</sup>) + (3x10<sup>-2</sup>).",
@@ -14745,7 +15401,7 @@ const math_ple = [
                 "mark": 3,
                 "sub_questions": [
                     {
-                        "question": "Work out (8.5x14) + (8.5x16)",
+                        "question": "Work out: (8.5x14) + (8.5x16)",
                         "type": "multipleChoice",
                         "answer": "255",
                         "explanation": "= 8.5(14 + 16)<br> = 8.5 x 30<br> = 255",
@@ -14757,7 +15413,7 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A22_5"
+                "id": "ple_math_sect_B22_5"
             },
             {
                 "question": "A birthday party attended by 76 guests, 47 were served with beef (B) and 18 were served with both beef and chicken (C). y guests were served with chicken only while (y-5) were not served with any of the two dishes.",
@@ -14799,7 +15455,7 @@ const math_ple = [
                         "mark": 1
                     }
                 ],
-                "id": "ple_math_sect_A22_6"
+                "id": "ple_math_sect_B22_6"
             },
             {
                 "question": "Express 0.406 in standard form",
@@ -14825,7 +15481,72 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A22_7"
+                "id": "ple_math_sect_B22_7"
+            },
+            {
+                "question": "Which of the following shows the accurate diagram of a triangle ABC where line AB = 6.4 cm, angle CAB = 60<sup>o</sup> and angle ABC = 75<sup>o</sup>",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/22.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/22_1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/22.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/22_2.png"
+                ],
+                "mark": 6,
+                "id": "ple_math_sect_B22_8"
+            },
+            {
+                "question": "Represent 24<sub>five</sub> on the abacus",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_1/22C.png",
+                "explanation": "24<sub>five</sub> ------- change to base ten<br> (2x5<sup>1</sup>) + (4x5<sup>0</sup>)<br> (2x5) + (4x1)<br> 10 + 4<br> = 14<sub>ten</sub>",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_1/22W.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_1/22W1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_1/22C.png"
+                ],
+                "mark": 3,
+                "sub_questions": [
+                    {
+                        "question": "Find the value of the unknown base marked k in 32<sub>k</sub> = 26<sub>seven</sub>",
+                        "type": "multipleChoice",
+                        "answer": "k = 6",
+                        "explanation": "32<sub>k</sub> = 26<sub>seven</sub><br> (3xk<sup>1</sup>) + (2xk<sup>0</sup>) = (2x7<sup>1</sup>)+(6x7<sup>0</sup>)<br> (3xk) + (2x1) = (2x7) + (6x1)<br> 3k + 2 = 14 + 6<br> 3k + 2 = 20<br> 3k + 2 - 2 = 20 - 2<br> 3k = 18<br> k = 6",
+                        "options": [
+                            "k = 6",
+                            "k = 7",
+                            "k = 8"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_B22_9"
+            },
+            {
+                "question": "Subtract 1101<sub>two</sub> - 11<sub>two</sub>",
+                "type": "multipleChoice",
+                "answer": "1010<sub>two</sub>",
+                "options": [
+                    "1000<sub>two</sub>",
+                    "1010<sub>two</sub>",
+                    "1011<sub>two</sub>"
+                ],
+                "mark": 2,
+                "sub_questions": [
+                    {
+                        "question": "Given that p<sup>2</sup> + p<sup>2</sup> = 32. Find the value of p",
+                        "type": "multipleChoice",
+                        "answer": "p = 4",
+                        "explanation": "p<sup>2</sup> + p<sup>2</sup> = 32<br> 2p<sup>2</sup> = 32<br> p<sup>2</sup> = 16<br> √(p<sup>2</sup>) = √16<br> p = 4",
+                        "options": [
+                            "p = 2",
+                            "p = 3",
+                            "p = 4"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_B22_10"
             }
         ],
         "$id": "document_21"
@@ -14858,12 +15579,12 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A23_1"
+                "id": "ple_math_sect_B23_1"
             },
             {
                 "question": "What is the place value of 2 and 1 in 201<sub>three</sub>?",
                 "type": "multipleChoice",
-                "answer": "Three threes and ones",
+                "answer": "Threes and ones",
                 "options": [
                     "Threes and ones",
                     "Three and ones",
@@ -14883,7 +15604,7 @@ const math_ple = [
                         "mark": 3
                     }
                 ],
-                "id": "ple_math_sect_A23_2"
+                "id": "ple_math_sect_B23_2"
             },
             {
                 "question": "In a class, 32 pupils play football (F) only, g play both volleyball (V) and football, (2 g - 10) play volley ball but not football while (g -2) play neither of the two games.",
@@ -14898,7 +15619,8 @@ const math_ple = [
                             "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/23W1.png",
                             "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/23C.png"
                         ],
-                        "mark": 2
+                        "mark": 2,
+                        "id": "ple_math_sect_B23_3_sub_0"
                     },
                     {
                         "question": "Given that 62 pupils play one game only, find the value of g",
@@ -14910,7 +15632,8 @@ const math_ple = [
                             "g = 36",
                             "g = 32"
                         ],
-                        "mark": 2
+                        "mark": 2,
+                        "id": "ple_math_sect_B23_3_sub_1"
                     },
                     {
                         "question": "Calculate the number of pupils in the class.",
@@ -14922,15 +15645,16 @@ const math_ple = [
                             "160 pupils",
                             "164 pupils"
                         ],
-                        "mark": 2
+                        "mark": 2,
+                        "id": "ple_math_sect_B23_3_sub_2"
                     }
                 ],
-                "id": "ple_math_sect_A23_3"
+                "id": "ple_math_sect_B23_3"
             },
             {
                 "question": "Simplify: (0.12 x 5.4)/(0.03 x 0.6)",
                 "type": "multipleChoice",
-                "answer": "= 36",
+                "answer": "36",
                 "explanation": "(12/100 x 54/10) ÷ (3/100 x 6/10)<br> = ((12 x 54)/1000) ÷ ((3 x 6)/1000)<br> = ((12 x 54)/1000) x (1000/(3 x 6))<br> = (12 x 54)/(3 x 6)<br> = 4 x 9<br> = 36",
                 "options": [
                     "36",
@@ -14952,7 +15676,7 @@ const math_ple = [
                         "mark": 3
                     }
                 ],
-                "id": "ple_math_sect_A23_4"
+                "id": "ple_math_sect_B23_4"
             },
             {
                 "question": "The table below shows the rate at which different currencies were sold and bought in a commercial bank during the month of September. Use it to answer the questions that follow",
@@ -14983,10 +15707,10 @@ const math_ple = [
                         "mark": 3
                     }
                 ],
-                "id": "ple_math_sect_A23_5"
+                "id": "ple_math_sect_B23_5"
             },
             {
-                "question": "Apio bought the following items from a market.<br> 2kg of rice at sh 32,00 per kg<br> 1½ kg of meat at sh 8,000 per kg<br> 500 g of salt at sh 1,400 per kg<br> A sacket of cooking oil at sh 1,750.<br> How much money did she spend altogether?",
+                "question": "Apio bought the following items from a market.<br> 2kg of rice at sh 3,200 per kg<br> 1½ kg of meat at sh 8,000 per kg<br> 500 g of salt at sh 1,400 per kg<br> A sacket of cooking oil at sh 1,750.<br> How much money did she spend altogether?",
                 "type": "multipleChoice",
                 "answer": "She spent sh 20,850",
                 "explanation": "Rice = 3200 x 2 = 6,400<br> Meat = 1½ x 8000<br> = 3/2 x 8000<br> = 12,000<br> Salt, we first convert grammes to kilogrammes<br> 1g = 1/1000kg<br> 500g = (500 x 1/1000)kg<br> = 1/2kg<br> = 1/2 x 1400<br> = 700<br> Cooking oil = 1750<br> Total spent = 6,400 + 12,000 + 700 + 1750<br> = 20,850",
@@ -14996,7 +15720,7 @@ const math_ple = [
                     "She spent sh 20,850"
                 ],
                 "mark": 5,
-                "id": "ple_math_sect_A23_6"
+                "id": "ple_math_sect_B23_6"
             },
             {
                 "question": "In a village of 49 farmers, 20 grow millet)M), 25 grow beans and y grow both millet and beans. 3y farmers grow neither of the two food crops.",
@@ -15038,7 +15762,80 @@ const math_ple = [
                         "mark": 1
                     }
                 ],
-                "id": "ple_math_sect_A23_7"
+                "id": "ple_math_sect_B23_7"
+            },
+            {
+                "question": "Asiimwe bought the following items from a shop.<br> 3 bars of soap at shs 1,200 per bar<br> 1½ kg of sugar at shs 3,000 per kg<br> ½ kg of salt at shs 1,000 per kg",
+                "sub_questions": [
+                    {
+                        "question": "What was his total expenditure?",
+                        "type": "multipleChoice",
+                        "answer": "Total expenditure = 8,600",
+                        "explanation": "Soap = 1,200 x 3 = 3,600<br> Sugar = 1½ x 3000<br> = 3/2 x 3000<br> = 4,500<br> Salt = ½ x 1000 = 500<br> Total expenditure = 3,600 + 4,500 + 500<br> = 8,600",
+                        "options": [
+                            "Total expenditure = 8,000",
+                            "Total expenditure = 6,600",
+                            "Total expenditure = 8,600"
+                        ],
+                        "mark": 4
+                    },
+                    {
+                        "question": "If he had shs 10,000, how much money did he remain with?",
+                        "type": "multipleChoice",
+                        "answer": "shs 1,400",
+                        "explanation": "Change = shs 10,000 - shs 8,600<br> = shs 1,400",
+                        "options": [
+                            "shs 2,000",
+                            "shs 3,400",
+                            "shs 1,400"
+                        ],
+                        "mark": 1
+                    }
+                ],
+                "id": "ple_math_sect_B23_8"
+            },
+            {
+                "question": "Study Wasswa`s shopping bill table below and answer the questions that follow",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_1/23Q.png",
+                "sub_questions": [
+                    {
+                        "question": "Which of the following tables show the complete correct table",
+                        "type": "multipleChoice",
+                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_1/23C.png",
+                        "explanation": "Rice: 4500 x 3 = 13,500<br> Milk: 1500/3000 = 1/2 litres<br> Apples: 10500/7 = 1500<br> Total Expenditure = 13,500 + 10,500 + 1,500 = 25,500",
+                        "options": [
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_1/23C.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_1/23W.png"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question": "Wasswa was given a discount of sh. 500 on all items. If a shopkeeper was given a fifty-thousand-shilling note, find Wasswa`s change",
+                        "type": "multipleChoice",
+                        "answer": "Change = 28,000",
+                        "explanation": "22,500 - 500 = 22,000<br> 50,000 - 22,000<br> = 28,000",
+                        "options": [
+                            "Change = 22,000",
+                            "Change = 25,000",
+                            "Change = 28,000"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_B23_9"
+            },
+            {
+                "question": "Find the perimeter of a square garden whose area is 81 m<sup>2</sup>",
+                "type": "multipleChoice",
+                "answer": "Perimeter = 36 m",
+                "explanation": "s x s  = Area<br> s<sup>2</sup> = Area<br> s<sup>2</sup> = 81<br> √(s<sup>2</sup>) = √81<br> s = 9m<br> Perimeter = 9 + 9 + 9 + 9<br> = 36 m",
+                "options": [
+                    "Perimeter = 26 m",
+                    "Perimeter = 36 m",
+                    "Perimeter = 30 m"
+                ],
+                "mark": 4,
+                "id": "ple_math_sect_B23_10"
             }
         ],
         "$id": "document_22"
@@ -15059,10 +15856,11 @@ const math_ple = [
                             "c = 39°",
                             "c = 30°",
                             "c = 29°"
-                        ]
+                        ],
+                        "id": "ple_math_sect_B24_1_sub_0"
                     }
                 ],
-                "id": "ple_math_sect_A24_1"
+                "id": "ple_math_sect_B24_1"
             },
             {
                 "question": "The sum of the lengths of all the edges of the prism below is 96cm.",
@@ -15071,28 +15869,28 @@ const math_ple = [
                     {
                         "question": "Find the length of edge L",
                         "type": "multipleChoice",
-                        "answer": "L = 30cm",
+                        "answer": "L = 6 cm",
                         "explanation": "2 x (10 + 8 + L) = 96<br> 2 x (18 + L) = 96<br> 36 + 2L = 96<br> 36 - 36 + 2L = 96 - 36<br> 2L = 60<br> L = 60/2<br> = L = 30",
                         "options": [
-                            "L = 30cm",
-                            "L = 78cm",
-                            "L = 90cm"
+                            "L = 6 cm",
+                            "L = 10 cm",
+                            "L = 90 cm"
                         ],
                         "mark": 3
                     },
                     {
                         "question": "Calculate the volume of the prism",
                         "type": "multipleChoice",
-                        "answer": "2400cm<sup>3</sup>",
+                        "answer": "480 cm<sup>3</sup>",
                         "explanation": "Volume=Length x Width x Height<br> = 10cm x 8cm x 30cm<br> = 2400cm<sup>3</sup>",
                         "options": [
-                            "4800cm<sup>3</sup>",
-                            "2400cm<sup>3</sup>",
-                            "240cm<sup>3</sup>"
+                            "240 cm<sup>3</sup>",
+                            "480 cm<sup>3</sup>",
+                            "240 cm<sup>3</sup>"
                         ]
                     }
                 ],
-                "id": "ple_math_sect_A24_2"
+                "id": "ple_math_sect_B24_2"
             },
             {
                 "question": "A school bus taking pupils to a Game Park covered 75% of its journey in 1½ hour. The bus travelled at a steady speed of 80 kilometers per hour. Find how far the school is from the Game Park.",
@@ -15105,10 +15903,10 @@ const math_ple = [
                     "160 km"
                 ],
                 "mark": 4,
-                "id": "ple_math_sect_A24_3"
+                "id": "ple_math_sect_B24_3"
             },
             {
-                "question": "The exchange rates in a bank are as follows;<ul><li>1 US dollar ($) = Ug.Sh 3,400</li> <li>1 British pound Sterling (£) = Ug sh 4,600</li><li>1 Kenya shilling (K.sh)= Ug. Sh 35.</li></ul > ",
+                "question": "The exchange rates in a bank are as follows;<br> 1 US dollar ($) = Ug.Sh 3,400<br> 1 British pound Sterling (£) = Ug sh 4,600<br> 1 Kenya shilling (K.sh)= Ug. Sh 35.",
                 "sub_questions": [
                     {
                         "question": "Convert Ug. Sh 1,840,000 to British pound sterling.",
@@ -15135,11 +15933,12 @@ const math_ple = [
                         "mark": 3
                     }
                 ],
-                "id": "ple_math_sect_A24_4"
+                "id": "ple_math_sect_B24_4"
             },
             {
-                "question": "Betty filled container A below with drinking water. She served visitors with the water using cups of size B shown in the diagram. Find total number of full cups of water she served the visitors (Use π = 22/7)",
+                "question": "Betty filled container A below with drinking water. She served visitors with the water using cups of size B shown in the diagram. Find the total number of full cups of water she served the visitors (Use π = 22/7)",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/24.png",
+                "type": "multipleChoice",
                 "answer": "80 cups",
                 "explanation": "Number of cups = Volume of container A/Volume of container B<br> Volume of A = πr<sub>2</sub>h<br> = 22/7 x (28/2)<sub>2</sub> x 50<br> = 22/7 x 14 x 14 x 50<br> = 30800 cm<sub>3</sub><br> Volume of B = 22/7 x (7/2)<sub>2</sub> x 10<br> = 22/7 x 7/2 x 7/2 x 10<br> = 11 x 7 x 5<br> = 385 cm<sub>3</sub><br> Number of cups = 30800/385<br> = 80 cups",
                 "options": [
@@ -15148,7 +15947,7 @@ const math_ple = [
                     "20 cups"
                 ],
                 "mark": 6,
-                "id": "ple_math_sect_A24_5"
+                "id": "ple_math_sect_B24_5"
             },
             {
                 "question": "The diagram below shows a rhombus PQRS. The diagonals PR = 24 cm and QS = 10 cm.",
@@ -15179,7 +15978,7 @@ const math_ple = [
                         "mark": 4
                     }
                 ],
-                "id": "ple_math_sect_A24_6"
+                "id": "ple_math_sect_B24_6"
             },
             {
                 "question": "Pupils did a test and scored marks as shown in the table below.",
@@ -15222,7 +16021,67 @@ const math_ple = [
                         "mark": 1
                     }
                 ],
-                "id": "ple_math_sect_A24_7"
+                "id": "ple_math_sect_B24_7"
+            },
+            {
+                "question": "A cylindrical tin of radius 7 cm contains 3080 cm<sup>3</sup> of cooking oil.",
+                "sub_questions": [
+                    {
+                        "question": "Joan used 2156 cm<sup>3</sup> of the cooking oil. What is the height of the cooking oil remaining in the tin? (Take π = 22/7)",
+                        "type": "multipleChoice",
+                        "answer": "Height = 6 cm",
+                        "explanation": "Volume = Base area x height (h)<br> Volume of remaining cooking oil = 924 cm³<br> Base Area x height = volume<br> πr<sup>2</sup>h = volume<br> 22/7 x 7 x 7 x h = 194<br> 154h = 924<br> 154h/154 = 924/154<br> h = 6",
+                        "options": [
+                            "Height = 16 cm",
+                            "Height = 8 cm",
+                            "Height = 6 cm"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question": "Joan poured the remaining cooking oil into a rectangular tin with base area 77 cm<sup>2</sup>. What was the height of the oil in the tin?",
+                        "type": "multipleChoice",
+                        "answer": "Height = 12 cm",
+                        "explanation": "Base Area x height = volume<br> (77 x h)/77 = 924/77<br> h = 12 cm",
+                        "options": [
+                            "Height = 6 cm",
+                            "Height = 18 cm",
+                            "Height = 12 cm"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_B24_8"
+            },
+            {
+                "question": "The table below shows Ammon's shopping bill. Use it to answer the following questions",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_2/24Q.png",
+                "sub_questions": [
+                    {
+                        "question": "Which of the following tables show a complete correct table?",
+                        "type": "multipleChoice",
+                        "explanation": "Beans amount: 3 x 5,000 = 15,000<br> Flour: 12,800/3200 = 4 kg<br> Salt: 600g = 600/1000<br> = 3/5<br> = 900 ÷ 3/5<br> = 900 x 5/3<br> = 300 x 5<br> = 1,500<br> Total = 12,800 + 15,000 + 900<br> = 28,700",
+                        "answer": [
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_2/24W1.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_2/24C.png",
+                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_2/24W.png"
+                        ],
+                        "mark": 4
+                    },
+                    {
+                        "question": "If a man was given a discount of 10%, how much did he pay?",
+                        "type": "multipleChoice",
+                        "answer": "He paid 25,830",
+                        "explanation": " New% = 100% - 10%<br> = 90%<br> = 90/100 x 28,700<br> = 25,830",
+                        "options": [
+                            "He paid 13,680",
+                            "He paid 15,830",
+                            "He paid 25,830"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_B24_9"
             }
         ],
         "$id": "document_23"
@@ -15247,23 +16106,24 @@ const math_ple = [
                         "mark": 5
                     }
                 ],
-                "id": "ple_math_sect_A25_1"
+                "id": "ple_math_sect_B25_1"
             },
             {
                 "question": "Below is Mukasa's shopping table. Select the complete correct table from the given options",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25.png",
+                "type": "multipleChoice",
                 "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25C.png",
                 "explanation": "Unit cost of sugar = 14400/3<br> = 4800<br>Rice quantity = 5000/2500<br> = 2 kg<br> Milk total; We first need to convert the ml to litres<br> 1 ml = (1/1000)litres<br> 250ml = (1/1000 x 250)litres<br> = 25/100 litres<br> 1/4 litres<br> ∴ Milk total = 3000 x 1/4 = 750 shs<br> Total for Biscuits = Total Expenditure - (Other expenditures)<br> = 29,650 - (14,400 + 2,500 + 750)<br> = 12,000<br> Unit cost for biscuits = 12000/2<br> = 6,000",
                 "options": [
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25W.png",
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25W1.png",
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25.png"
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/25C.png"
                 ],
                 "mark": 5,
-                "id": "ple_math_sect_A25_2"
+                "id": "ple_math_sect_B25_2"
             },
             {
-                "question": "Solve the equation: 3/5n + 6 = 2 + n",
+                "question": "Solve the equation: 3n/5 + 6 = 2 + n",
                 "type": "multipleChoice",
                 "answer": "n = 10",
                 "explanation": "3/5n - n + 6 - 6 = 2 - 6 + n - n<br> 3/5n - n = 2 - 6<br> (3n - 5n)/5 = -4<br> -2n/5 = -4<br> Multiply both sides by 5<br> -2n/5 x 5 = -4 x 5<br> -2n = -20<br> -2n/-2 = -20/-2<br> n = 10",
@@ -15287,7 +16147,7 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A25_3"
+                "id": "ple_math_sect_B25_3"
             },
             {
                 "question": "Study the figure below and use it to answer the questions that follow.",
@@ -15303,7 +16163,8 @@ const math_ple = [
                             "g = 24",
                             "g = 30"
                         ],
-                        "mark": 3
+                        "mark": 3,
+                        "id": "ple_math_sect_B25_4_sub_0"
                     },
                     {
                         "question": "Calculate the size of the angle RST",
@@ -15315,10 +16176,11 @@ const math_ple = [
                             "Angle RST = 54<sup>o</sup>",
                             "Angle RST = 60<sup>o</sup>"
                         ],
-                        "mark": 1
+                        "mark": 1,
+                        "id": "ple_math_sect_B25_4_sub_1"
                     }
                 ],
-                "id": "ple_math_sect_A25_4"
+                "id": "ple_math_sect_B25_4"
             },
             {
                 "question": "A fruit seller sold the following number of mangoes in six days.<br> 60, 35, 28, 42, and 35",
@@ -15340,7 +16202,7 @@ const math_ple = [
                         "type": "multipleChoice",
                         "answer": "Mean = 40",
                         "explanation": "Mean = (60 + 35 + 28 + 42 + 35)/5<br> = 200/5<br> = 40",
-                        "optiions": [
+                        "options": [
                             "Mean = 40",
                             "Mean = 30",
                             "Mean = 20"
@@ -15360,7 +16222,7 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A25_5"
+                "id": "ple_math_sect_B25_5"
             },
             {
                 "question": "Work out: (3.09 + 3.6)/(0.06 x 0.5)",
@@ -15387,7 +16249,7 @@ const math_ple = [
                         "mark": 3
                     }
                 ],
-                "id": "ple_math_sect_A25_6"
+                "id": "ple_math_sect_B25_6"
             },
             {
                 "question": "Solve the inequality: 9 ≤ -3(y-1)",
@@ -15413,7 +16275,108 @@ const math_ple = [
                         "mark": 1
                     }
                 ],
-                "id": "ple_math_sect_A25_7"
+                "id": "ple_math_sect_B25_7"
+            },
+            {
+                "question": "Solve: 14p + 4 = 11",
+                "type": "multipleChoice",
+                "answer": "p = 1/2",
+                "explanation": "14p + 4 = 11<br> 14p + 4 - 4 = 11 - 4<br> 14p = 7<br> 14p/14 = 7/14<br> p = 1/2",
+                "options": [
+                    "p = 2",
+                    "p = 1/4",
+                    "p = 1/2"
+                ],
+                "mark": 2,
+                "sub_questions": [
+                    {
+                        "question": "Solve the inequality: 3x + 4 > x + 8",
+                        "type": "multipleChoice",
+                        "answer": "x > 2",
+                        "explanation": "3x + 4 > x + 8<br> 3x - x > 8 - 4<br> 2x > 4<br> x > 2",
+                        "options": [
+                            "x > 2",
+                            "x > -2",
+                            "x < 2"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_B25_8"
+            },
+            {
+                "question": "The table below shows marks scored by a certain group of P.7 pupils in a Mathematics test. Use it to answer questions that follow.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_1/25.png",
+                "sub_questions": [
+                    {
+                        "question": "Find the total number of pupils who scored above 80",
+                        "type": "multipleChoice",
+                        "answer": "Total number = 9",
+                        "explanation": "Above 80 = 4 + 9<br> = 9",
+                        "options": [
+                            "Total number = 6",
+                            "Total number = 9",
+                            "Total number = 11"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question": "Work out the median mark of pupils who scored below 75",
+                        "type": "multipleChoice",
+                        "answer": "Median mark = 52",
+                        "explanation": "Arrange marks below 75 in ascending and descending order<br> 74, 56, 56, 50,50, 50<br> Median = (56+50)/2<br> = 106/2<br> = 53",
+                        "options": [
+                            "Median mark = 50",
+                            "Median mark = 60",
+                            "Median mark = 52"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_B25_9"
+            },
+            {
+                "question": "Use the Venn diagram below to answer questions that follow",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_2/25.png",
+                "sub_questions": [
+                    {
+                        "question": "Find the value of M<sub>1</sub>",
+                        "type": "multipleChoice",
+                        "answer": "M<sub>1</sub> = 5",
+                        "explanation": "(2 x 2) x 3xm = 60<br> 12m = 60<br> 12m/12 = 60/12<br> m = 5",
+                        "options": [
+                            "M<sub>1</sub> = 4",
+                            "M<sub>1</sub> = 5",
+                            "M<sub>1</sub> = 6"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question": "Find the value of Q",
+                        "type": "multipleChoice",
+                        "answer": "Q = 126",
+                        "explanation": "Q = (2 X 3) X ( 3 X 7)<br> = 6 x 21<br> = 126",
+                        "options": [
+                            "Q = 90",
+                            "Q = 126",
+                            "Q = 120"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question": "Find the GCF of F60 and FQ",
+                        "type": "multipleChoice",
+                        "answer": "GCF = 6",
+                        "explanation": "GCF = product of intersection<br> = 2x3<br> = 6",
+                        "options": [
+                            "GCF = 3",
+                            "GCF = 5",
+                            "GCF = 6"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_B25_10"
             }
         ],
         "$id": "document_24"
@@ -15433,10 +16396,10 @@ const math_ple = [
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/26A.png"
                 ],
                 "mark": 6,
-                "id": "ple_math_sect_A26_1"
+                "id": "ple_math_sect_B26_1"
             },
             {
-                "question": "In the diagram below, line DH is parallel to FE. Angle ACB = 75<sub>o</sub> and angle CBE = 135<sub>o</sub>. Angle FAD is twice angle DAC. Study the diagram and use it to answer the questions that follow.",
+                "question": "In the diagram below, line DH is parallel to FE. Angle ACB = 75<sup>o</sup> and angle CBE = 135<sup>o</sup>. Angle FAD is twice angle DAC. Study the diagram and use it to answer the questions that follow.",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/26.png",
                 "sub_questions": [
                     {
@@ -15463,10 +16426,11 @@ const math_ple = [
                                 ],
                                 "mark": 2
                             }
-                        ]
+                        ],
+                        "id": "ple_math_sect_B26_2_sub_0"
                     }
                 ],
-                "id": "ple_math_sect_A26_2"
+                "id": "ple_math_sect_B26_2"
             },
             {
                 "question": "The figure below represents a rectangular floor which is covered by square tiles of area 400 cm<sup>2</sup> each. Use it to answer the questions that follow",
@@ -15497,7 +16461,7 @@ const math_ple = [
                         "mark": 4
                     }
                 ],
-                "id": "ple_math_sect_A26_3"
+                "id": "ple_math_sect_B26_3"
             },
             {
                 "question": "In the figure below, line AB is parallel to CD. Angle CTV = 44<sup>o</sup> and angle TQR =56<sup>o</sup>. Study and use it to answer the questions that follow.",
@@ -15528,7 +16492,7 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A26_4"
+                "id": "ple_math_sect_B26_4"
             },
             {
                 "question": "Which of the following diagrams show an accurate parallelogram ABCD such that line AB = 7 cm, BC = 5 cm and angle ABC = 120<sup>o</sup>, with a perpendicular from D to meet AB at M.",
@@ -15540,7 +16504,7 @@ const math_ple = [
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2014/26_2.png"
                 ],
                 "mark": 6,
-                "id": "ple_math_sect_A26_5"
+                "id": "ple_math_sect_B26_5"
             },
             {
                 "question": "A watch loses 5 seconds every hour. How many minutes will it lose in two days?",
@@ -15560,14 +16524,82 @@ const math_ple = [
                         "answer": "18 km/hr",
                         "explanation": "5m/sec = km/hr<br> 1000m = 1km<br> 5m = 5/1000 km<br> 3600 seconds = 1hr<br> 1 second = 1/3600 hours<br> Speed = Distance ÷ Time<br> = 5/1000 ÷ 1/3600<br> = 5/1000 x 3600/1<br> = 5/10 x 36/1<br> = 36/2<br> = 18km/hr",
                         "options": [
+                            "15 km/hr",
                             "18 km/hr",
-                            "18 km/hr",
-                            "18 km/hr"
+                            "20 km/hr"
                         ],
                         "mark": 3
                     }
                 ],
-                "id": "ple_math_sect_A26_6"
+                "id": "ple_math_sect_B26_6"
+            },
+            {
+                "question": "The interior angle of a regular polygon is 36<sup>o</sup> more than its exterior angle. What is the size of each exterior angle?",
+                "type": "multipleChoice",
+                "answer": "Exterior angle = 72<sup>o</sup>",
+                "explanation": "Let the exterior angle be x<br> The anterior angle = x + 36<br>  x + x + 36  = 180<br> 2x + 36 - 36 = 180 - 36<br> 2x = 144<br> x = 72",
+                "options": [
+                    "Exterior angle = 36<sup>o</sup>",
+                    "Exterior angle = 80<sup>o</sup>",
+                    "Exterior angle = 72<sup>o</sup>"
+                ],
+                "mark": 2,
+                "sub_questions": [
+                    {
+                        "question": "In the figure below DE is parallel to FG, angle ODE = 127<sup>o</sup> and angle OFG = 136<sup>o</sup>. Calculate the size of angle x.",
+                        "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/26.png",
+                        "type": "multipleChoice",
+                        "answer": "x = 97<sup>o</sup>",
+                        "explanation": "x + 127 + 136 = 360 (Angles at a point)<br> x + 263 = 360<br> x + 263 - 263 = 360 - 263<br> x = 97<sup>o</sup>",
+                        "options": [
+                            "x = 94<sup>o</sup>",
+                            "x = 95<sup>o</sup>",
+                            "x = 97<sup>o</sup>"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_B26_7"
+            },
+            {
+                "question": "The number of pupils in a certain school increased by 120 pupils in the ratio of 5/6 : 1/2. Find the new number of pupils in the school.",
+                "type": "multipleChoice",
+                "answer": "300 pupils",
+                "explanation": "Ratio = 5/6 ÷ 1/2<br> = 5/6 x 2/1<br> = 5/3<br> = 5:3<br> Let each ratio be n<br> Value of n: 2n = 120<br> n = 60<br> 5 x n<br> = 5 x 60<br> = 300 pupils",
+                "options": [
+                    "90 pupils",
+                    "150 pupils",
+                    "300 pupils"
+                ],
+                "mark": 5,
+                "id": "ple_math_sect_B26_8"
+            },
+            {
+                "question": "In a library there are 108 books. 4/9 of the books are Maths, 1/6 of the remainder are English and the rest are science books. Find the fraction of the science books.",
+                "type": "multipleChoice",
+                "answer": "Science fraction = 25/54",
+                "explanation": "Math = 4/9<br> Remainder = 9/9 - 4/9<br> = 5/9<br> English = 1/6 x 5/9<br> = 5/54<br> Science fraction = 5/9 - 5/54<br> ((6x5) - (5x1)/54)<br> (30 -5)/54<br> = 25/54",
+                "options": [
+                    "Science fraction = 19/54",
+                    "Science fraction = 1/9",
+                    "Science fraction = 25/54"
+                ],
+                "mark": 3,
+                "sub_questions": [
+                    {
+                        "question": "Express the number of Maths books as a ratio of the total number of books",
+                        "type": "multipleChoice",
+                        "answer": "4:9",
+                        "explanation": "Math books = 4/9 x 108<br> = 4 x 12<br> = 48 books<br> Math:total<br> 48:108<br> = 48/108<br> = 4/9<br> = 4:9",
+                        "options": [
+                            "5:9",
+                            "1:3",
+                            "4:9"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_B26_9"
             }
         ],
         "$id": "document_25"
@@ -15591,7 +16623,7 @@ const math_ple = [
                         "mark": 3
                     },
                     {
-                        "question": "At waht time did the bus reach town C?",
+                        "question": "At what time did the bus reach town C?",
                         "type": "multipleChoice",
                         "answer": "1:40 p.m",
                         "explanation": "Time from B to C<br> = Distance/Speed<br> = 96/64 hours<br> Total Time = Time from A to B+Time at B+Time from B to C<br> = 2 hours + 40/60 hours + 96/64 hours<br> = 2 hours + 2/3 hours + 3/2 hours<br> = 13/6 hours<br> Arrival time at town C = 11:30a.m + 13/6 hours<br> Convert 13/6 hours to minutes<br> = 13/6 x 60 minutes<br> = 130 minutes<br> = 1:40p.m",
@@ -15603,7 +16635,7 @@ const math_ple = [
                         "mark": 3
                     }
                 ],
-                "id": "ple_math_sect_A27_1"
+                "id": "ple_math_sect_B27_1"
             },
             {
                 "question": "The average weight of four boys is 56kg. When two other boys join the group, the average weight becomes 52kg. The sixth boy is 8kg heavier than the fifth boy. Find the weight of the sixth boy.",
@@ -15616,7 +16648,7 @@ const math_ple = [
                     "48kg"
                 ],
                 "mark": 6,
-                "id": "ple_math_sect_A27_2"
+                "id": "ple_math_sect_B27_2"
             },
             {
                 "question": "Arafat deposited money in a bank which offers a simple interest rate of 2½% per year. After 9 months, his account had an amount of sh 163,000. Calculate the money Arafat deposited in the bank.",
@@ -15629,7 +16661,7 @@ const math_ple = [
                     "Amount = 166,000"
                 ],
                 "mark": 5,
-                "id": "ple_math_sect_A27_3"
+                "id": "ple_math_sect_B27_3"
             },
             {
                 "question": "A taxi driver left town A for town B at 10:30am. Driving at a speed of 80 kilometers per hour. The driver reached town B at 2:00 p.m",
@@ -15659,7 +16691,7 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A27_4"
+                "id": "ple_math_sect_B27_4"
             },
             {
                 "question": "The table below shows how a motor cyclist travelled from town R through town Q and S to town P. Study it to answer the questions that follow.",
@@ -15702,7 +16734,7 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A27_5"
+                "id": "ple_math_sect_B27_5"
             },
             {
                 "question": "The time table shows how a pupil spent his time one Saturday. Use it to answer the questions that follow.",
@@ -15723,17 +16755,17 @@ const math_ple = [
                     {
                         "question": "If he dug his maize garden at a rate of 2 rows in every 30 minutes, find the number of rows he dug that day.",
                         "type": "multipleChoice",
-                        "answer": "18 rows",
-                        "explanation": "Time taken digging = 10:30 a.m - 7:00 a.m<br> = 4 hours and 30 minutes<br> = 4.5 hours<br> Convert to minutes<br> = 4.5 x 60<br> = 270 minutes<br> Number of rows = 270/30 x 2<br> = 18 rows",
+                        "answer": "14 rows",
+                        "explanation": "Time taken digging = 10:30 a.m - 7:00 a.m<br> = 3 hours and 30 minutes<br> = 3.5 hours<br> Convert to minutes<br> = 3.5 x 60<br> = 210 minutes<br> Number of rows = 210/30 x 2<br> = 14 rows",
                         "options": [
                             "9 rows",
                             "20 rows",
-                            "18 rows"
+                            "14 rows"
                         ],
                         "mark": 3
                     }
                 ],
-                "id": "ple_math_sect_A27_6"
+                "id": "ple_math_sect_B27_6"
             },
             {
                 "question": "The pictograph below represents the number of patients who were admitted in a hospital on a certain day. Study and use it to answer the questions that follow.",
@@ -15776,7 +16808,34 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A27_7"
+                "id": "ple_math_sect_B27_7"
+            },
+            {
+                "question": "In Jumbo primary school, 1/4 of the pupils in P7 like science, 2/3 of the remainder like mathematics. The rest of the pupils like English. If those who like English are 33, find the total number of pupil in P.7",
+                "type": "multipleChoice",
+                "answer": "132 Pupils",
+                "explanation": "Students that like science = 1/4<br> Remainder = 1 - 1/4<br> = 4/4 - 1/4<br> = 3/4<br> Mathematics = 2/3 of 3/4<br> = 1.2<br> Mathematics and Science = 1/2 + 1/4<br> = (2 + 1)/4<br> = 3/4<br> Rest = 1 - 3/4<br> = (4 - 3)/4<br> = 1/4<br> Let the total number pupils be Q<br> 1/4 of Q = 33<br> 1/4 x Q = 33<br> Multiply through by 4<br> 4 x 1/4Q = 33 x 4<br> Q = 132",
+                "options": [
+                    "130 Pupils",
+                    "120 Pupils",
+                    "132 Pupils"
+                ],
+                "mark": 5,
+                "id": "ple_math_sect_B27_8"
+            },
+            {
+                "question": "In the figure below, A is the centre of the circle of circumference 88 metres. Find the area of the circle that is not shaded (Use π = 22/7)",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_1/27.png",
+                "type": "multipleChoice",
+                "answer": "Area of unshaded part = 420 m<sup>2</sup>",
+                "explanation": "Circumference = 2πr<br> 2πr = 88<br> 2 x 22/7 x r = 88<br> 44r = 88 x 7<br> r = 2 x 7<br> = 14 m<br> Area of triangle = 1/2 x b x h<br> = 1/2 x 28 x 14<br> = 14 x 14<br> = 196 m<sup>2</sup><br> Area of circle = πr<sup>2</sup><br> = 22/7 x 14 x 14<br> = 44 x 14<br> = 616 m<sup>2</sup><br> Area of unshaded = Area of circle - Area of triangle<br> = 616 m<sup>2</sup> - 196 m<sup>2</sup><br> = 420 m<sup>2</sup>",
+                "options": [
+                    "Area of unshaded part = 616 m<sup>2</sup>",
+                    "Area of unshaded part = 420 m<sup>2</sup>",
+                    "Area of unshaded part = 196 m<sup>2</sup>"
+                ],
+                "mark": 6,
+                "id": "ple_math_sect_B27_9"
             }
         ],
         "$id": "document_26"
@@ -15788,21 +16847,21 @@ const math_ple = [
                 "question": "The table below shows the marks obtained by some pupils in a test. If the mean mark of the pupils was 55, find the value of m.",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/28.png",
                 "type": "multipleChoice",
-                "answer": "m = 600",
-                "explanation": "Mean = (Total marks/Number of pupils)'<br> = 55 = (40+m+60+70)/(2+6+3+3)<br> 55 = (170 + m)/14<br> 770 = 170 + m<br> 770 - 170 = 170 - 170 + m<br> 600 = m<br> m = 600",
+                "answer": "m = 50",
+                "explanation": "Mean = Sum/Number<br> ((40x2)+(mx6)+(60x3)+(10x3))/(2+6+3+3) = 55<br> (80+6m+180+210)/14 = 55<br> (6m + 470)/14 = 55<br> 14 x (6m + 470)/14 = 55 x 14<br>  6m + 470 = 770<br> 6m + 470 - 470 = 770 - 470<br> 6m = 300<br> m = 50",
                 "options": [
-                    "m = 770",
-                    "m = 500",
-                    "m = 600"
+                    "m = 77",
+                    "m = 50",
+                    "m = 60"
                 ],
                 "mark": 4,
-                "id": "ple_math_sect_A28_1"
+                "id": "ple_math_sect_B28_1"
             },
             {
                 "question": "The interior angle of a regular polygon is 108<sup>o</sup> more than the exterior angle. How many sides has the polygon?",
                 "type": "multipleChoice",
                 "answer": "10 sides",
-                "explanation": "Let the exterior angle be y<br> Exterior = y<br> Interior = y + 108°<br>  y + y + 108° = 180° (Interior and exterior angles add upto 180°)<br> 2y + 108° = 180°<br> 2y + 108°- 108° = 180° - 108°<br> 2y = 72°<br> y = 36°<br> Number of sides = sum of exterior angles/one exterior angle<br> = 360/60<br> = 10 sides",
+                "explanation": "Let the exterior angle be y<br> Exterior = y<br> Interior = y + 108°<br>  y + y + 108° = 180° (Interior and exterior angles add up to 180°)<br> 2y + 108° = 180°<br> 2y + 108°- 108° = 180° - 108°<br> 2y = 72°<br> y = 36°<br> Number of sides = sum of exterior angles/one exterior angle<br> = 360/60<br> = 10 sides",
                 "options": [
                     "8 sides",
                     "10 sides",
@@ -15813,6 +16872,7 @@ const math_ple = [
                     {
                         "question": "In the figure below, find the size of angle z.",
                         "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/28.png",
+                        "type": "multipleChoice",
                         "answer": "z = 65<sup>o</sup>",
                         "explanation": "z + 60 + 55 = 180<br> z + 115 = 180<br> z + 115 - 115 = 180 - 115<br> z = 65",
                         "options": [
@@ -15823,10 +16883,10 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A28_2"
+                "id": "ple_math_sect_B28_2"
             },
             {
-                "question": "Which of the following diagrams show a quadrilateral ABCD where line AB = 7cm, angle ABC = BAD = 60<sub>o</sub> and AD = BC = 3.5cm",
+                "question": "Which of the following diagrams show a quadrilateral ABCD where line AB = 7cm, angle ABC = BAD = 60<sup>o</sup> and AD = BC = 3.5cm",
                 "type": "multipleChoice",
                 "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/27.png",
                 "options": [
@@ -15834,7 +16894,7 @@ const math_ple = [
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/27.png"
                 ],
                 "mark": 6,
-                "id": "ple_math_sect_A28_3"
+                "id": "ple_math_sect_B28_3"
             },
             {
                 "question": "Hajati bought 120 shares from a village SACCO at a simple interest rate of 30% per year. Each share costs sh 3,000.",
@@ -15864,7 +16924,7 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A28_4"
+                "id": "ple_math_sect_B28_4"
             },
             {
                 "question": "Madada sold his radio to Aguti at 63,000 making a loss of 10%. Aguti later sold the radio to chebet at a profit of 15%.",
@@ -15879,7 +16939,8 @@ const math_ple = [
                             "Madada paid 80,000",
                             "Madada paid 70,000"
                         ],
-                        "mark": 3
+                        "mark": 3,
+                        "id": "ple_math_sect_B28_5_sub_0"
                     },
                     {
                         "question": "For how much money did Aguti sell the radio?",
@@ -15891,10 +16952,11 @@ const math_ple = [
                             "Selling price = 82,450",
                             "Selling price = 80,450"
                         ],
-                        "mark": 2
+                        "mark": 2,
+                        "id": "ple_math_sect_B28_5_sub_1"
                     }
                 ],
-                "id": "ple_math_sect_A28_5"
+                "id": "ple_math_sect_B28_5"
             },
             {
                 "question": "The exchange rate of Kenya shillings (Ksh) to Uganda shillings (Ug.sh) and the United states dollars (US$) to Uganda shillings are shown below<br> 1 Ksh = Ug.sh 30<br> US $1 = Ug.shs 2,580",
@@ -15924,7 +16986,7 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A28_6"
+                "id": "ple_math_sect_B28_6"
             },
             {
                 "question": "A tank was 2/3 full of water. When ¼ of the water in the tank was drawn, 2,500 litres remained. Find the capacity of the tank when full.",
@@ -15937,7 +16999,91 @@ const math_ple = [
                     "10000 litres"
                 ],
                 "mark": 4,
-                "id": "ple_math_sect_A28_7"
+                "id": "ple_math_sect_B28_7"
+            },
+            {
+                "question": "Change13<sub>ten</sub> to base two",
+                "type": "multipleChoice",
+                "answer": "13<sub>ten</sub> = 1101<sub>two</sub>",
+                "explanation": "13 ÷ 2 = 6 remainder 1<br> 6 ÷ 2 = 3 remainder 0<br> 3 ÷ 2 = 1 remainder 1<br> We get the remainders;<br> = 1101<sub>two</sub>",
+                "options": [
+                    "13<sub>ten</sub> = 110<sub>two</sub>",
+                    "13<sub>ten</sub> = 1101<sub>two</sub>",
+                    "13<sub>ten</sub> = 1111<sub>two</sub>"
+                ],
+                "mark": 2,
+                "sub_questions": [
+                    {
+                        "question": "Find the number which has been expanded below<br> (5 x 10<sup>5</sup>) + (4 x10<sup>3</sup>) + (9 x 10<sup>0</sup>)",
+                        "type": "multipleChoice",
+                        "answer": "504,009",
+                        "explanation": "(5 x 100000 + 4 x 1000 + 9)<br> = 504,009",
+                        "options": [
+                            "504,000",
+                            "502,009",
+                            "504,009"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_B28_8"
+            },
+            {
+                "question": "Abdul paid sh. 12,600 for a shirt whose marked price was sh. 14,000.",
+                "sub_questions": [
+                    {
+                        "question": "Calculate the discount he was offered",
+                        "type": "multipleChoice",
+                        "answer": "Discount = 1,400",
+                        "explanation": "Discount = New price - old price<br> = 141,000 - 12,600<br> = 1,400",
+                        "options": [
+                            "Discount = 1,000",
+                            "Discount = 2,400",
+                            "Discount = 1,400"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question": "If Abdul was also offered the same percentage discount on a pair of trousers whose marked price was sh. 20,000, how much did he pay for the pair of trousers?",
+                        "type": "multipleChoice",
+                        "answer": "New price = 18,000",
+                        "explanation": "Percentage discount = Discount/Marked price x 100<br> = 1400/14000 x 100<br> = 10%<br> 100% - 10%<br> = 90%<br> 90/100 x 20,000<br> = 18,000",
+                        "options": [
+                            "New price = 12,000",
+                            "New price = 18,000",
+                            "New price = 20,000"
+                        ],
+                        "mark": 4
+                    }
+                ],
+                "id": "ple_math_sect_B28_9"
+            },
+            {
+                "question": "Mugisha is twice as old as Mugume. In 10 years time, the difference in their age will be 18 years. How old is Mugume?",
+                "type": "multipleChoice",
+                "answer": "18 years old",
+                "explanation": "Mugume's age now: k<br> Mugume's age in 10 years: k + 10<br> Mugisha's age now: 2k<br> Mugisha's age in 10 years: 2k+10<br> Mugisha - Mugume = 18<br> (2k+10) - (k+10) = 18<br> 2k+10-k-10 = 18<br> k = 18",
+                "options": [
+                    "20 years old",
+                    "16 years old",
+                    "18 years old"
+                ],
+                "mark": 2,
+                "sub_questions": [
+                    {
+                        "question": "Find their total age",
+                        "type": "multipleChoice",
+                        "answer": "Total age = 54 years",
+                        "explanation": "Mugisha = 2 x k<br> = 2x18<br> = 36 years<br> Total = 36+18<br> = 54 years",
+                        "options": [
+                            "Total age = 50 years",
+                            "Total age = 44 years",
+                            "Total age = 54 years"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_B28_10"
             }
         ],
         "$id": "document_27"
@@ -15956,7 +17102,7 @@ const math_ple = [
                     "Number of goats = 160, Number of cows = 120, Number of sheep = 200"
                 ],
                 "mark": 5,
-                "id": "ple_math_sect_A29_1"
+                "id": "ple_math_sect_B29_1"
             },
             {
                 "question": "Joyce, Peter and Hannah shared pencils in the ratio 3:5:7 respectively.",
@@ -15987,7 +17133,7 @@ const math_ple = [
                         ]
                     }
                 ],
-                "id": "ple_math_sect_A29_2"
+                "id": "ple_math_sect_B29_2"
             },
             {
                 "question": "The total mass of tins of honey in a box is 3.25kg. The mass of each tin is 250g. Find the number of tins in the box.",
@@ -16000,14 +17146,14 @@ const math_ple = [
                     "13 tins"
                 ],
                 "mark": 4,
-                "id": "ple_math_sect_A29_3"
+                "id": "ple_math_sect_B29_3"
             },
             {
                 "question": "The pie chart below shows how pupils of Mpaata Primary School are distributed in various clubs in the school. Use it to answer the questions that follow",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/29.png",
                 "sub_questions": [
                     {
-                        "question": "There are 216 pupils in debating club. Find the total number of pupils in the school",
+                        "question": "There are 216 pupils in the debating club. Find the total number of pupils in the school",
                         "type": "multipleChoice",
                         "answer": "1080 pupils",
                         "explanation": "p + 2p + 90° + 54° = 360°<br> 3p + 144° = 360°<br> 3p + 144° - 144° = 360° - 144°<br> 3p = 216<br> p = 72°<br> 72° = 216 pupils<br> 1° = 216/72<br> 1° = 3<br> 360° = 360 x 3<br> = 1080 pupils",
@@ -16031,7 +17177,7 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A29_4"
+                "id": "ple_math_sect_B29_4"
             },
             {
                 "question": "Study the figure below and use it to answer the questions that follow",
@@ -16062,7 +17208,7 @@ const math_ple = [
                         "mark": 3
                     }
                 ],
-                "id": "ple_math_sect_A29_5"
+                "id": "ple_math_sect_B29_5"
             },
             {
                 "question": "At a kampala bus park, buses travelling to Arua and Mbarara leave after every 40 minutes and 50 minutes respectively. The first buses to the two towns leave together at 6:00 am. At what time will buses to the two towns leave Kampala together again?",
@@ -16075,7 +17221,7 @@ const math_ple = [
                     "9:20 a.m"
                 ],
                 "mark": 4,
-                "id": "ple_math_sect_A29_6"
+                "id": "ple_math_sect_B29_6"
             },
             {
                 "question": "Opoka rides a distance of 2.97 km from his home to school on a bicycle. The wheel of the bicycle has a diameter of 63 cm.",
@@ -16105,7 +17251,69 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A29_7"
+                "id": "ple_math_sect_B29_7"
+            },
+            {
+                "question": "Carefully study the diagram below and use it to answer the questions that follow. Line AB = OC and AO = OD = BC.",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/29.png",
+                "sub_questions": [
+                    {
+                        "question": "Find the length of arc AD. (Take π = 22/7) ",
+                        "type": "multipleChoice",
+                        "answer": "AD = 11 cm",
+                        "explanation": "Diameter = 7 + 7<br> D = 14cm<br> Length AD = 1/4πD<br> = 1/4 x 22/7 x 14<br> = 11 cm",
+                        "options": [
+                            "AD = 9 cm",
+                            "AD = 10 cm",
+                            "AD = 11 cm"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question": "Work out perimeter of ABCDA",
+                        "type": "multipleChoice",
+                        "answer": "Perimeter = 61 cm",
+                        "explanation": "Perimeter = (11 + 18 + 25 + 7)<br> = 61",
+                        "options": [
+                            "Perimeter = 64 cm",
+                            "Perimeter = 61 cm",
+                            "Perimeter = 60 cm"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_B29_8"
+            },
+            {
+                "question": "The diagrams below represent two different containers which hold the same amount of water when completely full. Container A measures 40cm by 10cm by 30cm",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_1/29.png",
+                "sub_questions": [
+                    {
+                        "question": "Calculate the number of litres of water that fill container A",
+                        "type": "multipleChoice",
+                        "answer": "12 litres",
+                        "explanation": "Volume = L x w x h<br> = (40x10) x 30<br> = 400 x 30<br>  = 12000 cm<sup>3</sup><br> Capacity = Volume/1000<br> = 12000/1000<br> = 12 litres",
+                        "options": [
+                            "8 litres",
+                            "10 litres",
+                            "12 litres"
+                        ],
+                        "mark": 3
+                    },
+                    {
+                        "question": "Calculate the height (h) of container B if it has a base area of 200 cm<sup>2</sup>",
+                        "type": "multipleChoice",
+                        "answer": "Height = 60 cm",
+                        "explanation": "Base area x height = volume<br> 200 x h = 12000<br> 200h = 12000<br> = 60 cm",
+                        "options": [
+                            "Height = 50 cm",
+                            "Height = 60 cm",
+                            "Height = 100 cm"
+                        ],
+                        "mark": 2
+                    }
+                ],
+                "id": "ple_math_sect_B29_9"
             }
         ],
         "$id": "document_28"
@@ -16114,7 +17322,7 @@ const math_ple = [
         "category": 30,
         "questions": [
             {
-                "question": "In the parallelogram ABCD below, lines DX and DY are perpendiculars to AB and BC respectively. Line AB = 16cm, BC = 12cm and DX = 6cm.",
+                "question": "In the parallelogram ABCD below, lines DX and DY are perpendicular to AB and BC respectively. Line AB = 16cm, BC = 12cm and DX = 6cm.",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/30.png",
                 "sub_questions": [
                     {
@@ -16127,22 +17335,24 @@ const math_ple = [
                             "Area = 96cm<sup>2</sup>",
                             "Area = 72cm<sup>2</sup>"
                         ],
-                        "mark": 2
+                        "mark": 2,
+                        "id": "ple_math_sect_B30_1_sub_0"
                     },
                     {
                         "question": "Find the length of DY",
                         "type": "multipleChoice",
                         "answer": "DY = 8cm",
-                        "explanation": "B x h = B x h (Find DY by comparing areas using different height)<br> 12 x h = 16 x 6<br> 12h = 96<br> h = 8 cm<br> Therefore DY = 8cm",
+                        "explanation": "B x h = B x h (Find DY by comparing areas using different heights)<br> 12 x h = 16 x 6<br> 12h = 96<br> h = 8 cm<br> Therefore DY = 8cm",
                         "options": [
                             "DY = 10cm",
                             "DY = 8cm",
                             "DY = 6cm"
                         ],
-                        "mark": 3
+                        "mark": 3,
+                        "id": "ple_math_sect_B30_1_sub_1"
                     }
                 ],
-                "id": "ple_math_sect_A30_1"
+                "id": "ple_math_sect_B30_1"
             },
             {
                 "question": "Kizito is 38 years old and his sister is 24 years old.",
@@ -16171,7 +17381,7 @@ const math_ple = [
                         ]
                     }
                 ],
-                "id": "ple_math_sect_A30_2"
+                "id": "ple_math_sect_B30_2"
             },
             {
                 "question": "The diagram below shows a square BCDE enclosed in a circle with centre O and radius 14cm. Parts of the circle are shaded as shown. Study the diagram and use it to answer the questions that follow.",
@@ -16180,12 +17390,12 @@ const math_ple = [
                     {
                         "question": "Calculate the area of the circle. (Use π = 22/7)",
                         "type": "multipleChoice",
-                        "answer": "Area = 616 cm<sub>2</sub>",
-                        "explanation": "Area = π x (radius)cm<sub>2</sub><br> = 22/7 x 14cm<sub>2</sub><br> = 22/7 x 14 x 14<br> = 22 x 2 x 14<br> = 616 cm<sub>2</sub>",
+                        "answer": "Area = 616 cm<sup>2</sup>",
+                        "explanation": "Area = π x (radius)cm<sup>2</sup><br> = 22/7 x 14cm<sup>2</sup><br> = 22/7 x 14 x 14<br> = 22 x 2 x 14<br> = 616 cm<sup>2</sup>",
                         "options": [
-                            "Area = 88 cm<sub>2</sub>",
-                            "Area = 44 cm<sub>2</sub>",
-                            "Area = 616 cm<sub>2</sub>"
+                            "Area = 88 cm<sup>2</sup>",
+                            "Area = 44 cm<sup>2</sup>",
+                            "Area = 616 cm<sup>2</sup>"
                         ],
                         "mark": 2
                     },
@@ -16202,7 +17412,7 @@ const math_ple = [
                         "mark": 4
                     }
                 ],
-                "id": "ple_math_sect_A30_3"
+                "id": "ple_math_sect_B30_3"
             },
             {
                 "question": "A cylindrical tank of diameter 70cm contains water to a height of 100 cm. Find in litres the amount of water the tank contains (Use π = 22/7)",
@@ -16215,10 +17425,10 @@ const math_ple = [
                     "Volume = 11 litres"
                 ],
                 "mark": 4,
-                "id": "ple_math_sect_A30_4"
+                "id": "ple_math_sect_B30_4"
             },
             {
-                "question": "Two taps F and E are connected to water tank. Tap F can fill the tank in 2 hours while E can empty it in 3 hours. One day when the tank was 1/3 full of water, the taps were opened at the same time. How long did it take to fill the tank?",
+                "question": "Two taps F and E are connected to the water tank. Tap F can fill the tank in 2 hours while E can empty it in 3 hours. One day when the tank was 1/3 full of water, the taps were opened at the same time. How long did it take to fill the tank?",
                 "type": "multipleChoice",
                 "answer": "4 hours",
                 "explanation": "In one hour;<br> Tap F fills = ½ of the tank<br> Tap E empties = ⅓ of the tank<br> Both taps open;<br> 1/2 - 1/3<br> LCM = 6<br> (3-2)/6<br> Whole tank = 1 ÷ 1/6<br> = 6<br> 6 hours to fill the tank<br> = 1/3 x 6<br> = 2 hours<br> Remaining time to fill the tank = (6-2) hour<br> = 4 hours",
@@ -16228,7 +17438,7 @@ const math_ple = [
                     "4 hours"
                 ],
                 "mark": 5,
-                "id": "ple_math_sect_A30_5"
+                "id": "ple_math_sect_B30_5"
             },
             {
                 "question": "The mean of the numbers 7, 9, 5, x+2 and 6 is 8. Find the value of x.",
@@ -16255,7 +17465,7 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A30_6"
+                "id": "ple_math_sect_B30_6"
             },
             {
                 "question": "In the figure below, BCD is a straight line. Line BX bisects angle ABC. Line AB is parallel to line XC. Angle BCE = 50<sup>o</sup> and angle BAC = 70<sup>o</sup>.",
@@ -16286,7 +17496,67 @@ const math_ple = [
                         "mark": 1
                     }
                 ],
-                "id": "ple_math_sect_A30_7"
+                "id": "ple_math_sect_B30_7"
+            },
+            {
+                "question": "Which of the following images show the correct graph with points A(-2, +3); B(+5, +3); C(-2, -1) and D(+1, -1) with the points joined A to B, B to D, D to C and C to A.",
+                "type": "multipleChoice",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/30C.png",
+                "options": [
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/30a_1.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/30W.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/30C.png"
+                ],
+                "mark": 5,
+                "sub_questions": [
+                    {
+                        "question": "Name the quadrilateral formed after joining the points",
+                        "type": "text",
+                        "answer": "Trapezium",
+                        "mark": 1
+                    }
+                ],
+                "id": "ple_math_sect_B30_8"
+            },
+            {
+                "question": "A motorist drove a car for 240 minutes covering a distance of 360 km. Calculate the motorist`s average speed in metres per second",
+                "type": "multipleChoice",
+                "answer": "Speed = 25 m/sec",
+                "explanation": "Time = 240/60<br> = 4 hours<br> Distance:<br> 1 km = 1000 m<br> 360 km = 360 x 1000<br> = 360,000 m<br> Time: 1 hour = 3600 seconds<br> 4 hrs = 3600 x 4<br> = 14400 secs<br> Speed = Distance/Time<br> = 360000/14400<br> = 25m/sec",
+                "options": [
+                    "Speed = 35 m/sec",
+                    "Speed = 30 m/sec",
+                    "Speed = 25 m/sec"
+                ],
+                "mark": 4,
+                "id": "ple_math_sect_B30_9"
+            },
+            {
+                "question": "A teacher gave a test of 20 questions. He awarded 4 marks for every correct question and deducted a mark for every wrong question. If a pupil got 15 correct questions, What mark did the pupil get?",
+                "type": "multipleChoice",
+                "answer": "55 marks",
+                "explanation": "Correct = 15<br> Wrong = (20-15)<br> = 5 questions<br> Mark = correct - wrong<br>  = (15x4) - (5x1)<br> = 60 - 5<br> = 55",
+                "options": [
+                    "35 marks",
+                    "55 marks",
+                    "45 marks"
+                ],
+                "mark": 2,
+                "sub_questions": [
+                    {
+                        "question": "If the pupil got 64 marks, how many questions did he get correct?",
+                        "type": "multipleChoice",
+                        "answer": "14 questions",
+                        "explanation": "Correct = k<br> Wrong = 20 - k<br> correct(5xk) = 5k<br> wrong 1(20-k) =(20-k)<br> correct - wrong = marks<br> 5k - (20-k) = 64<br> 5k - 20 + k = 64<br> 5k + k - 20 = 64<br> 6k - 20 + 20 = 64 + 20<br> 6k = 84<br> k = 14",
+                        "options": [
+                            "12 questions",
+                            "14 questions",
+                            "18 questions"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_B30_10"
             }
         ],
         "$id": "document_29"
@@ -16304,13 +17574,18 @@ const math_ple = [
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/2.png",
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/4.png"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A4_1"
             },
             {
-                "question": "A teacher counted pupils without school uniform in a class and tallied them as follows: How many pupils were withpout unifom?",
+                "question": "A teacher counted pupils without school uniforms in a class and tallied them as follows: How many pupils were without uniform?",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/4.png",
                 "type": "text",
-                "answer": "24 pupils",
+                "answer": [
+                    "24 pupils",
+                    "24"
+                ],
+                "mark": 2,
                 "id": "ple_math_sect_A4_2"
             },
             {
@@ -16323,6 +17598,7 @@ const math_ple = [
                     "-5",
                     "-1"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A4_3"
             },
             {
@@ -16335,10 +17611,11 @@ const math_ple = [
                     "n(P∩Q) = 2",
                     "n(P∩Q) = 3"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A4_4"
             },
             {
-                "question": "Given that K = {g,m,v,z}, find the numbers of subjects in set K.",
+                "question": "Given that K = {g,m,v,z}, find the numbers of subsets in set K.",
                 "type": "multipleChoice",
                 "answer": "4 subsets",
                 "explanation": "Subsets of K are;<br> {g}, {m}, {v} and {z}<br> which are 4 in total",
@@ -16347,6 +17624,7 @@ const math_ple = [
                     "6 subsets",
                     "4 subsets"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A4_5"
             },
             {
@@ -16359,19 +17637,60 @@ const math_ple = [
                     "1/8",
                     "1/4"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A4_6"
             },
             {
                 "question": "Given that set P = {1, 2, 3, 5, 7, 9 } and set Q = {2, 3, 5, 7} find n(P∩Q)",
                 "type": "multipleChoice",
-                "answer": "n(P n Q) = 3",
-                "explanation": "P ∩ Q = {2, 3, 5, 7}<br> n (P n Q) = 3",
+                "answer": "n(P n Q) = 4",
+                "explanation": "P ∩ Q = {2, 3, 5, 7}<br> n (P n Q) = 4",
                 "options": [
-                    "n(P n Q) = 4",
+                    "n(P n Q) = 3",
                     "n(P n Q) = 6",
-                    "n(P n Q) = 3"
+                    "n(P n Q) = 4"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A4_7"
+            },
+            {
+                "question": "Solve 2/5m = 4",
+                "type": "multipleChoice",
+                "answer": "m = 10",
+                "explanation": "2/5m = 4<br> Multiply by 5 on both sides<br> = 5 x 2/5m = 4 x 5<br> 2m = 20<br> m = 10",
+                "options": [
+                    "m = 6",
+                    "m = 10",
+                    "m = 8"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A4_8"
+            },
+            {
+                "question": "Which of the following numbers is divisible by 6 in the list below<br> 3616, 1722, 5814, 6316",
+                "type": "multipleChoice",
+                "answer": "1722 and 5814 are divisible by 6",
+                "explanation": "3616 = 3+6+1+6 = 16 Not divisible by 6<br> 1722 = 1+7+2+2=12 Divisible by 6<br> 5814 = 5+8+1+4=18 Divisible by 6<br> 6316 = 6+3+1+6=16 Not divisible by 6",
+                "options": [
+                    "1722 and 5814 are divisible by 6",
+                    "6316 and 5814 are divisible by 6",
+                    "1722 and 3616 are divisible by 6"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A4_9"
+            },
+            {
+                "question": "Find the lowest common multiple (LCM) of 12 and 18",
+                "type": "multipleChoice",
+                "answer": "LCM = 36",
+                "explanation": "L C M = (2 x 2) x 3 x 3<br>  = 4 X 9<br> = 36",
+                "options": [
+                    "LCM = 30",
+                    "LCM = 36",
+                    "LCM = 18"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A4_10"
             }
         ],
         "$id": "document_3"
@@ -16390,7 +17709,7 @@ const math_ple = [
                     "Cost of a pineapple is sh 1,000"
                 ],
                 "mark": 4,
-                "id": "ple_math_sect_A31_1"
+                "id": "ple_math_sect_B31_1"
             },
             {
                 "question": "The figure below shows a rectangular sheet of metal. The sheet is curved to form the wall of a cylindrical tank whose height is 100cm.",
@@ -16433,7 +17752,7 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A31_2"
+                "id": "ple_math_sect_B31_2"
             },
             {
                 "question": "In a class, 1/5 of the girls are boarders while 1/3 of the boys are day scholars. The percentage of the girls in the class in 60%. The class has 10 boys who are day scholars.",
@@ -16463,7 +17782,7 @@ const math_ple = [
                         "mark": 2
                     }
                 ],
-                "id": "ple_math_sect_A31_3"
+                "id": "ple_math_sect_B31_3"
             },
             {
                 "question": "Given that m = 3k and k = 5, find the value of 2k + 6m",
@@ -16490,7 +17809,7 @@ const math_ple = [
                         "mark": 1
                     }
                 ],
-                "id": "ple_math_sect_A31_4"
+                "id": "ple_math_sect_B31_4"
             },
             {
                 "question": "A geometry set costs half as much as a book. A book costs 600 more than a fountain pen. If the total cost of the three items is sh 6,900, find the cost of the geometry set.",
@@ -16503,7 +17822,7 @@ const math_ple = [
                     "shs 1,500"
                 ],
                 "mark": 4,
-                "id": "ple_math_sect_A31_5"
+                "id": "ple_math_sect_B31_5"
             },
             {
                 "question": "Nanziri has two children, a son and a daughter. If the son is half her age, the daughter a third her age and the total age of the two children is 30 years.",
@@ -16518,7 +17837,8 @@ const math_ple = [
                             "25 years old",
                             "36 years old"
                         ],
-                        "mark": 3
+                        "mark": 3,
+                        "id": "ple_math_sect_B31_6_sub_0"
                     },
                     {
                         "question": "How old is the daughter?",
@@ -16530,10 +17850,11 @@ const math_ple = [
                             "18 years old",
                             "12 years old"
                         ],
-                        "mark": 1
+                        "mark": 1,
+                        "id": "ple_math_sect_B31_6_sub_1"
                     }
                 ],
-                "id": "ple_math_sect_A31_6"
+                "id": "ple_math_sect_B31_6"
             },
             {
                 "question": "The figure below is a cuboid. Study and use it to answer the questions that follow.",
@@ -16564,7 +17885,77 @@ const math_ple = [
                         "mark": 3
                     }
                 ],
-                "id": "ple_math_sect_A31_7"
+                "id": "ple_math_sect_B31_7"
+            },
+            {
+                "question": "A man's salary was increased by 30% at shs 312,000 per month.",
+                "sub_questions": [
+                    {
+                        "question": "What was the man's monthly salary before the increment?",
+                        "type": "multipleChoice",
+                        "answer": "240,000",
+                        "explanation": "Let the previous salary be y<br> New percentage = 100% + 30%'<br> = 130 %<br> 130/100 x y = 31200<br> Mutiply both sides by 100<br> 100 x 130/100y = 31200 x 100<br> 130y/130 = 3120000/130<br> y = 240,000",
+                        "options": [
+                            "240,000",
+                            "360,000",
+                            "200,000"
+                        ],
+                        "mark": 2
+                    },
+                    {
+                        "question": "If 5% of his new salary is subtracted as tax, what is his final salary?",
+                        "type": "multipleChoice",
+                        "answer": "New salary = 296,400",
+                        "explanation": "New   percentage = 100% - 5%<br> = 95%<br> New salary = 95/100 x 312000<br> = 95 x 3120<br> = 296,400",
+                        "options": [
+                            "240,000",
+                            "296,400",
+                            "248,000"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_B31_8"
+            },
+            {
+                "question": "The cost of a book in a shop is (3d) shillings. The cost of a book is twice as much as a pen. If the total cost of two items is sh. 3,600. Calculate the cost of a pen",
+                "type": "multipleChoice",
+                "answer": "Cost of pen = 1,200",
+                "explanation": "Book: 3d<br> Pen: 3d/2<br> Total: sh. 3,600<br> 3d + 3d/2 = 3,600<br> 2 x 3d + 3d/2 x 2 = 3,600 x 2<br> 6d + 3d = 7200<br> 9d = 7200<br> d = 800<br> Cost of pen = 3d/2<br> = (3 x 800)/2<br> = 2400/2<br> = 1200",
+                "options": [
+                    "Cost of pen = 1,000",
+                    "Cost of pen = 500",
+                    "Cost of pen = 1,200"
+                ],
+                "mark": 4,
+                "id": "ple_math_sect_B31_9"
+            },
+            {
+                "question": "At a forex Bureau, one dollar cost Ug. Sh. 3,800 and 1Ksh. = Ug. 35. How much in Uganda shillings will a tourist who has US dollars 500 get?",
+                "type": "multipleChoice",
+                "answer": "Ugsh. 1,900,000",
+                "explanation": "1 dollar = Ugsh. 3800<br> 500 dollars = 3800 x 500<br> = Ugsh. 1,900,000",
+                "options": [
+                    "Ugsh. 1,000,000",
+                    "Ugsh. 1,900,000",
+                    "Ugsh. 3,800,000"
+                ],
+                "mark": 2,
+                "sub_questions": [
+                    {
+                        "question": "If a businessman had Ksh. 17,500, how many US dollars will he get at the same exchange rate?",
+                        "type": "multipleChoice",
+                        "answer": "115.1316 dollars",
+                        "explanation": "1Ksh. = Ugsh. 25<br> Ksh. 17500 = Ugsh. 25x17500<br> = Ugsh. 437,500<br> Ugsh.3800 = 1 dollar<br> = 437,500/3,800<br> = 115.1316 dollars",
+                        "options": [
+                            "53 dollars",
+                            "115.1316 dollars",
+                            "115 dollars"
+                        ],
+                        "mark": 3
+                    }
+                ],
+                "id": "ple_math_sect_B31_10"
             }
         ],
         "$id": "document_30"
@@ -16573,118 +17964,15 @@ const math_ple = [
         "category": 32,
         "questions": [
             {
-                "question": "A boat sailed from island P on a bearing of 300<sup>o</sup> to island Q for a distance of 56 km. The boatman then left island Q and sailed on a bearing of 230<sup>o</sup> to island R for a distance of 40km. Which of the following diagrams represents the accurate journey of the boat using the scale of 1 centimetre to represent 8 kilometres?",
-                "type": "multipleChoice",
-                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/32.png",
+                "question": "Using the equation y = 2x - 1, which of the following tables is the correct and complete of the table below:",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_2/32Q.png",
+                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_2/32C.png",
                 "options": [
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/32W.png",
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/32.png",
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/32W2.png"
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_2/32W.png",
+                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/paper_2/32C.png"
                 ],
-                "mark": 6,
-                "id": "ple_math_sect_A32_1"
-            },
-            {
-                "question": "Town M is 150 km from town G. A motorcyclist started a journey from town M at 10:30am. He was travelling at a speed of 25 km/h for 2 hours. He rested for 30 minutes and then continued at a speed of 50km/h for the rest of the journey to town G.",
-                "type": "multipleChoice",
-                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/32.png",
-                "options": [
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/32_1.png",
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/32_2.png",
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/32.png"
-                ],
-                "mark": 6,
-                "id": "ple_math_sect_A32_2"
-            },
-            {
-                "question": "Study the coordinate graph below and use it to answer the questions that follow.",
-                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/32.png",
-                "sub_questions": [
-                    {
-                        "question": "Write the cordinates of point A",
-                        "type": "text",
-                        "answer": "(-1,4)",
-                        "mark": 1
-                    },
-                    {
-                        "question": "In the following diagrams, which one shows point B(+2,+2) and C(-1,-4) with point D forming a kite.",
-                        "type": "multipleChoice",
-                        "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/32C.png",
-                        "options": [
-                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/32W.png",
-                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/32C.png",
-                            "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2017/32W1.png"
-                        ],
-                        "mark": 4
-                    }
-                ],
-                "id": "ple_math_sect_A32_3"
-            },
-            {
-                "question": "A school library is 70 metres east of the main hall. The staff room is 60 metres from the library on a bearing of 240<sup>o</sup>. Using a scale of 1cm to represent 10 metres, which of the following represent the accurate diagram",
-                "type": "multipleChoice",
-                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/32.png",
-                "options": [
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/32.png",
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/32W.png",
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/32W1.png"
-                ],
-                "mark": 6,
-                "id": "ple_math_sect_A32_4"
-            },
-            {
-                "question": "A plane flew from airport K to airport T on a bearing of 120<sup>o</sup>. The distance between K and T is 600 km. It then left airport T for airport R on a bearing of 210<sup>o</sup>. The distance between T and R is 500 km, Which of the following show the accurate diagram using the scale of 1 cm to represent 100 km.",
-                "type": "multipleChoice",
-                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/32b.png",
-                "options": [
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/32b_1.png",
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/32b_2.png",
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/32b.png"
-                ],
-                "mark": 6,
-                "id": "ple_math_sect_A32_5"
-            },
-            {
-                "question": "A school wants to fence a circular flower garden of diameter 14m using poles placed at intervals of 80cm.",
-                "sub_questions": [
-                    {
-                        "question": "How many poles are needed to fence the flower garden? (Take π = 22/7)",
-                        "type": "multipleChoice",
-                        "answer": "55 poles",
-                        "explanation": "Circumfrence = π x Diameter<br> = 22/7 x 14<br> = 44 m<br> Convert 44m to cm<br> = (44 x 100)<br> = 4400 cm<br> Number of poles = Circumference/Interval<br> = 4400/80<br> = 55 poles",
-                        "options": [
-                            "20 poles",
-                            "50 poles",
-                            "55 poles"
-                        ],
-                        "mark": 3
-                    },
-                    {
-                        "question": "If each pole costs shs 3,000, how much money will the school spend on poles?",
-                        "type": "multipleChoice",
-                        "answer": "shs 165,000",
-                        "explanation": "55 x 3,000<br> = 165,000",
-                        "options": [
-                            "shs 60,000",
-                            "shs 150,000",
-                            "shs 165,000"
-                        ],
-                        "mark": 2
-                    }
-                ],
-                "id": "ple_math_sect_A32_6"
-            },
-            {
-                "question": "A tourist left town A and travelled 55 km westwards to town B. He then turned on a bearing of 215<sup>o</sup> and travelled to town C which is a distance of 65 km. Which of the following the accurate diagram using a scale 1 cm to represent 10 km",
-                "type": "multipleChoice",
-                "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/32b_2.png",
-                "options": [
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/32b_2.png",
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/32b_1.png",
-                    "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2013/32b.png"
-                ],
-                "mark": 6,
-                "id": "ple_math_sect_A32_7"
+                "mark": 5,
+                "id": "ple_math_sect_B32_10"
             }
         ],
         "$id": "document_31"
@@ -16701,19 +17989,21 @@ const math_ple = [
                     "53.9",
                     "53.8"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A5_1"
             },
             {
-                "question": "The clock face shows time in afternoon. What's the time shown in 24-hour clock.",
+                "question": "The clock face shows time in the afternoon. What's the time shown in 24-hour clock.",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2018/5.png",
                 "type": "multipleChoice",
-                "answer": "16:50 hours",
+                "answer": "15:50 hours",
                 "explanation": "4:50p.m + 12hours<br> = 16:50 or 16 hours 50 minutes",
                 "options": [
                     "04:50 hours",
-                    "16:50 hours",
+                    "15:50 hours",
                     "12:50 hours"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A5_2"
             },
             {
@@ -16726,13 +18016,15 @@ const math_ple = [
                     "n = 4",
                     "n = 3"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A5_3"
             },
             {
-                "question": "Without dividing, show which of the numbers 140 and 5070 is divisible by 3",
+                "question": "Without dividing, which of the numbers 140 and 5070 is divisible by 3?",
                 "type": "text",
                 "answer": "5070",
                 "explanation": "We add the sum of the numbers and the sum that is divisible by 3 is the number that can be divided by 3",
+                "mark": 2,
                 "id": "ple_math_sect_A5_4"
             },
             {
@@ -16744,6 +18036,7 @@ const math_ple = [
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/5_2.png",
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/5.png"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A5_5"
             },
             {
@@ -16756,19 +18049,60 @@ const math_ple = [
                     "4ab - y(2x + 7)",
                     "4ab + y(2x - 7)"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A5_6"
             },
             {
-                "question": "Round off 12,962 onto the nearest thousands",
+                "question": "Round off 13.962 to the nearest thousands",
                 "type": "multipleChoice",
-                "answer": "12,962  is  13,000 to the nearest a thousands",
+                "answer": "13.000",
                 "explanation": "12000 + 1000<br> = 13,000",
                 "options": [
                     "12,999",
-                    "13,000",
+                    "13.000",
                     "13,852"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A5_7"
+            },
+            {
+                "question": "Given that set Q = (all prime numbers less than 10), find n(Q)",
+                "type": "multipleChoice",
+                "answer": "n(Q) = 4",
+                "explanation": "Set Q = (2, 3, 5, 7)<br> n(Q) = 4",
+                "options": [
+                    "n(Q) = 9",
+                    "n(Q) = 5",
+                    "n(Q) = 4"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A5_8"
+            },
+            {
+                "question": "Find the radius of a circular ring whose diameter is 28 cm",
+                "type": "multipleChoice",
+                "answer": "Radius = 14 cm",
+                "explanation": "R = D/2<br> = 28/2<br> = 14 cm",
+                "options": [
+                    "Radius = 28 cm",
+                    "Radius = 7 cm",
+                    "Radius = 14 cm"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A5_9"
+            },
+            {
+                "question": "Work out: 2/3 ÷ 2/9",
+                "type": "multipleChoice",
+                "answer": "3",
+                "explanation": "2/3 x 9/3<br> = 18/9<br> = 14 cm",
+                "options": [
+                    "1/3",
+                    "3",
+                    "4"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A5_10"
             }
         ],
         "$id": "document_4"
@@ -16785,6 +18119,7 @@ const math_ple = [
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol 4.png",
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2019/Symbol 3.png"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A6_1"
             },
             {
@@ -16797,6 +18132,7 @@ const math_ple = [
                     "7k - 6",
                     "7k + 6"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A6_2"
             },
             {
@@ -16808,6 +18144,7 @@ const math_ple = [
                     "{c},{t},{p},{c,t},{c,p},{t,p},{c,t,p}",
                     "{c},{t},{p},{c,t},{c,p},{t,p}"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A6_3"
             },
             {
@@ -16819,6 +18156,7 @@ const math_ple = [
                     "10010<sub>two</sub>",
                     "1010<sub>two</sub>"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A6_4"
             },
             {
@@ -16831,6 +18169,7 @@ const math_ple = [
                     "Sum = 30",
                     "Sum = 26"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A6_5"
             },
             {
@@ -16843,6 +18182,7 @@ const math_ple = [
                     "31",
                     "37"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A6_6"
             },
             {
@@ -16856,7 +18196,34 @@ const math_ple = [
                     "X = 15°",
                     "X = 10°"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A6_7"
+            },
+            {
+                "question": "Work out: 3/4 ÷ 1½",
+                "type": "multipleChoice",
+                "answer": "1/2",
+                "explanation": "3/4 ÷ 3/2<br> = 3/4 x 2/3<br> = 1/2",
+                "options": [
+                    "1/3",
+                    "1/2",
+                    "1/4"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A6_8"
+            },
+            {
+                "question": "Simplify: 5<sup>4</sup> ÷ 5<sup>2</sup>",
+                "type": "multipleChoice",
+                "answer": "25",
+                "explanation": "5<sup>4-2</sup><br> = 5<sup>2</sup><br> = 5 x 5<br> = 25",
+                "options": [
+                    "20",
+                    "25",
+                    "30"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A6_9"
             }
         ],
         "$id": "document_5"
@@ -16874,6 +18241,7 @@ const math_ple = [
                     "0.25 kilogrammes",
                     "250000 kilogrammes"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A7_1"
             },
             {
@@ -16886,6 +18254,7 @@ const math_ple = [
                     "256 litres",
                     "16 litres"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A7_2"
             },
             {
@@ -16898,6 +18267,7 @@ const math_ple = [
                     "300.5",
                     "300.2"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A7_3"
             },
             {
@@ -16910,6 +18280,7 @@ const math_ple = [
                     "Probability = 2/3",
                     "Probability = 1/2"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A7_4"
             },
             {
@@ -16922,19 +18293,61 @@ const math_ple = [
                     "2½",
                     "2⅔"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A7_5"
             },
             {
-                "question": "A pupil bought a dozen of exercise books for shs 6,000. He later sold each book at Sh 700. Calculate the profit.",
+                "question": "A pupil bought a dozen of exercise books for Shs. 6,000. He later sold each book at Shs. 700. Calculate the profit.",
                 "type": "multipleChoice",
-                "answer": "shs 2,400",
-                "explanation": "Buying price = sh 6,000<br> Selling price;<br> 1 dozen = 12 books<br> 12 books = 12 x 700<br> = shs 8400<br> Profit = selling price - buying price<br> = 8400 - 6000<br> = shs 2,400",
+                "answer": "Shs. 2,400",
+                "explanation": "Buying price = Shs. 6,000<br> Selling price;<br> 1 dozen = 12 books<br> 12 books = 12 x 700<br> = Shs. 8400<br> Profit = selling price - buying price<br> = 8400 - 6000<br> = Shs. 2,400",
                 "options": [
-                    "shs 2,400",
-                    "shs 4,800",
-                    "shs 3,600"
+                    "Shs. 2,400",
+                    "Shs. 4,800",
+                    "Shs. 3,600"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A7_6"
+            },
+            {
+                "question": "In the diagram below, find the valves of K",
+                "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2012/7.png",
+                "type": "multipleChoice",
+                "answer": "k = 80<sup>o</sup>",
+                "explanation": "50<sup>o</sup> + k + 50<sup>o</sup> = 180<sup>o</sup> (angle sum of a straight line)<br> k + 100 = 180<br> k + 100 - 100 = 180 - 100<br> k = 80<sup>o</sup>",
+                "options": [
+                    "k = 50<sup>o</sup>",
+                    "k = 90<sup>o</sup>",
+                    "k = 80<sup>o</sup>"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A7_7"
+            },
+            {
+                "question": "Simplify: 5k - 7k + 8k",
+                "type": "multipleChoice",
+                "answer": "6k",
+                "explanation": "(5k + 8k) - 7k<br> 13k - 7k<br> = 6k",
+                "options": [
+                    "8k",
+                    "6",
+                    "6k"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A7_8"
+            },
+            {
+                "question": "Subtract: 4p + 3 from 7p - 5",
+                "type": "multipleChoice",
+                "answer": "3p - 8",
+                "explanation": "(7p - 5) - (4p +3)<br> = 7p - 5 - 4p - 3<br> = 7p - 4p - 5 - 3<br> = 3p - 8",
+                "options": [
+                    "-3p + 18",
+                    "3p - 8",
+                    "2p - 4"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A7_9"
             }
         ],
         "$id": "document_6"
@@ -16943,9 +18356,35 @@ const math_ple = [
         "category": 8,
         "questions": [
             {
+                "question": "Okia bought 4 packets of washing powder each weighing 750 grams. Find the weight of the washing powder Okia bought in kilograms.",
+                "type": "multipleChoice",
+                "answer": "3 Kilograms",
+                "explanation": "1 packet = 750 grams<br> 4 packets = (4 x 750) grams<br> = 3000 grams<br> 1 gram = 1/1000 kg<br> 3000 grams = 3000 x 1/1000 <br> = 3000/1000<br> = 3 kg",
+                "options": [
+                    "3 Kilograms",
+                    "2 Kilograms",
+                    "3000 grams"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A8_1"
+            },
+            {
+                "question": "The profit on a shirt sold at sh7,900 was sh2,100. Calculate the cost price of the shirt.",
+                "type": "multipleChoice",
+                "answer": "Cost price = 5,800",
+                "explanation": "Profit = Selling price - Cost price<br> 2100 = 7900 - CP<br> 2100 - 2100 + CP = 7900 - 2100 - CP + CP<br> CP = 5800",
+                "options": [
+                    "Cost price = 6,000",
+                    "Cost price = 5,100",
+                    "Cost price = 5,800"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A8_2"
+            },
+            {
                 "question": "Write the integers represented by letters a and b on the line below",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/8.png",
-                "sub_question": [
+                "sub_questions": [
                     {
                         "question": "a",
                         "type": "text",
@@ -16957,8 +18396,87 @@ const math_ple = [
                         "answer": "-5"
                     }
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A8_3"
             },
+            {
+                "question": "A birthday party started at 4:30 p.m and lasted 2¾ hours . At what time did the party end?",
+                "type": "multipleChoice",
+                "answer": "7:15 p.m",
+                "explanation": "We need to add 2¾ hours to 4:30 p.m<br> First we convert ¾ hours to minutes<br> 3/4 x 60 = 45 minutes<br> 4:30 p.m + 2:45<br> = 7:15 p.m",
+                "options": [
+                    "6:15 p.m",
+                    "7:15 p.m",
+                    "7:00 p.m"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A8_4"
+            },
+            {
+                "question": "A lady bought a dress at 55,000. She later sold it and made a loss of sh 15,000. At what price did she sell the dress?",
+                "type": "multipleChoice",
+                "answer": "40,000",
+                "explanation": "Purchase Price = 55,000 shillings<br> Loss = 15,000 shillings<br> Selling Price = Purchase Price - Loss<br> = 55,000 - 15,000<br> = 40,000",
+                "options": [
+                    "60,000",
+                    "35,000",
+                    "40,000"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A8_5"
+            },
+            {
+                "question": "Simplify 4t - 2k + 5k - t",
+                "type": "multipleChoice",
+                "answer": "3t + 3k",
+                "explanation": "4t - 2k + 5k - t<br> = 4t - t + 5k - 2k<br> = 3t + 3k",
+                "options": [
+                    "4t + 3k",
+                    "3t + 2k",
+                    "3t + 3k"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A8_6"
+            },
+            {
+                "question": "Find the valve of 2<sup>4</sup> + 3<sup>0</sup>",
+                "type": "multipleChoice",
+                "answer": "17",
+                "explanation": "(2 x 2 x 2 x 2) + 1<br> = (4 x 4) + 1<br> = 16 + 1<br> = 17",
+                "options": [
+                    "16",
+                    "8",
+                    "17"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A8_7"
+            },
+            {
+                "question": "A retailer packed 2/3 kg of tea leaves into 1/9 kg packets, how many packets did she obtain?",
+                "type": "multipleChoice",
+                "answer": "6 packets",
+                "explanation": "2/3 ÷ 1/9<br> = 2/3 x 9/1<br> = 2 x 3<br> = 6",
+                "options": [
+                    "6 packets",
+                    "2 packets",
+                    "3 packets"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A8_8"
+            },
+            {
+                "question": "Find the median of 80, 55, 90, 55, 60 and 60",
+                "type": "multipleChoice",
+                "answer": "Median = 60",
+                "explanation": "Arrange in ascending or descending order<br> 55, 55, 60, 60, 80, 90<br> Find the median number<br> = (60+60)/2<br> = 60",
+                "options": [
+                    "Median = 55",
+                    "Median = 90",
+                    "Median = 60"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A8_9"
+            }
         ],
         "$id": "document_7"
     },
@@ -16975,18 +18493,20 @@ const math_ple = [
                     "m = 7",
                     "m = -1"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A9_1"
             },
             {
                 "question": "Change 10 square meters into square centimeters",
                 "type": "multipleChoice",
-                "answer": "10 m<sub>2</sub> = 100,000 cm<sub>2</sub>",
-                "explanation": "1 m = 100 cm<br> 1 m<sub>2</sub> = 10000 cm<sub>2</sub><br> 10 m<sub>2</sub> = (10 x 10000) cm<sub>2</sub><br> = 100000 cm<sub>2</sub>",
+                "answer": "10 m<sup>2</sup> = 100,000 cm<sup>2</sup>",
+                "explanation": "1 m = 100 cm<br> 1 m<sup>2</sup> = 10000 cm<sup>2</sup><br> 10 m<sup>2</sup> = (10 x 10000) cm<sup>2</sup><br> = 100000 cm<sup>2</sup>",
                 "options": [
-                    "10 m<sub>2</sub> = 100,000 cm<sub>2</sub>",
-                    "10 m<sub>2</sub> = 1,000 cm<sub>2</sub>",
-                    "10 m<sub>2</sub> = 100 cm<sub>2</sub>"
+                    "10 m<sup>2</sup> = 100,000 cm<sup>2</sup>",
+                    "10 m<sup>2</sup> = 1,000 cm<sup>2</sup>",
+                    "10 m<sup>2</sup> = 100 cm<sup>2</sup>"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A9_2"
             },
             {
@@ -16998,10 +18518,11 @@ const math_ple = [
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/9_2.png",
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2016/9.png"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A9_3"
             },
             {
-                "question": "Which of the following show all the lines of folding symmetry in the figure below",
+                "question": "Which of the following shows all the lines of folding symmetry in the figure below",
                 "image": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/9Q.png",
                 "type": "multipleChoice",
                 "answer": "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/9.png",
@@ -17010,6 +18531,7 @@ const math_ple = [
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/9_1.png",
                     "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/math/2015/9.png"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A9_4"
             },
             {
@@ -17022,13 +18544,53 @@ const math_ple = [
                     "12.5 grams",
                     "125 grams"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A9_5"
             },
             {
                 "question": "Divide 6363 by 7",
                 "type": "text",
                 "answer": "909",
+                "mark": 2,
                 "id": "ple_math_sect_A9_6"
+            },
+            {
+                "question": "A debate which took 1¼ hours ended at 4:10p.m. What time did it start?",
+                "type": "multipleChoice",
+                "answer": "2:55 p.m",
+                "explanation": "4:10 - 1:15<br> = 2:55",
+                "options": [
+                    "1:55 p.m",
+                    "12:55 p.m",
+                    "2:55 p.m"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A9_7"
+            },
+            {
+                "question": "An examination ended at 11:10 a.m. If it lasted for 2 and 1/2 hours, at what time did it start?",
+                "type": "multipleChoice",
+                "answer": "8:40 a.m",
+                "explanation": "Duration = 2 hrs 30 min<br> Starting time = Ending time - Duration<br> = 11:10 am - 2 30<br> = 8:40 a.m",
+                "options": [
+                    "1:40 a.m",
+                    "8:40 a.m",
+                    "9:40 a.m"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A9_8"
+            },
+            {
+                "question": "Work out: 2 + 4 = ____(finite 7)",
+                "type": "multipleChoice",
+                "answer": "6 (finite 7)",
+                "options": [
+                    "6 (finite 7)",
+                    "8 (finite 7)",
+                    "7 (finite 7)"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A9_9"
             }
         ],
         "$id": "document_8"
@@ -17047,6 +18609,7 @@ const math_ple = [
                     "b = 50<sup>o</sup>",
                     "b = 160<sup>o</sup>"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A10_1"
             },
             {
@@ -17054,13 +18617,15 @@ const math_ple = [
                 "type": "text",
                 "answer": "101",
                 "explanation": "The difference between 2 and 1 is 1<br> The difference between 10 and 2 is 8<br> The difference between 37 and 10 is 27<br> which is gotten from 1<sub>3</sub>, 2<sub>3</sub>, 3<sub>3</sub><br> So the next difference is 4<sub>3</sub> = 64<br> 37 + 64 = 101",
+                "mark": 2,
                 "id": "ple_math_sect_A10_2"
             },
             {
-                "question": "Write 9:30am in the 24 hour clock",
+                "question": "Write 9:30 am in the 24-hour clock",
                 "type": "text",
                 "answer": "09:30 hours",
                 "explanation": "When the time is in a.m, it remains the same but only changes the a.m to hours",
+                "mark": 2,
                 "id": "ple_math_sect_A10_3"
             },
             {
@@ -17074,6 +18639,7 @@ const math_ple = [
                     "d = 60<sup>o</sup>",
                     "d = 36<sup>o</sup>"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A10_4"
             },
             {
@@ -17086,6 +18652,7 @@ const math_ple = [
                     "Cost price = 31,000",
                     "Cost price = 31,600"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A10_5"
             },
             {
@@ -17097,6 +18664,7 @@ const math_ple = [
                     "304<sub>five</sub>",
                     "344<sub>five</sub>"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A10_6"
             },
             {
@@ -17109,7 +18677,21 @@ const math_ple = [
                     "1/2",
                     "1/12"
                 ],
+                "mark": 2,
                 "id": "ple_math_sect_A10_7"
+            },
+            {
+                "question": "Find the Greatest common factor (GCF) of 18 and 24",
+                "type": "multipleChoice",
+                "answer": "GCF = 6",
+                "explanation": "Factors of 18 = {1, 2, 3, 6, 9, 18}<br> Factors of 24 = {1, 2, 4, 6, 8, 12, 24}<br> GCF = 6",
+                "options": [
+                    "GCF = 8",
+                    "GCF = 12",
+                    "GCF = 6"
+                ],
+                "mark": 2,
+                "id": "ple_math_sect_A10_8"
             }
         ],
         "$id": "document_9"

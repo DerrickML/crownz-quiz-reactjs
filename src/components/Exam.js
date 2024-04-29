@@ -6,14 +6,16 @@ import { Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
-  databases,
-  database_id,
+  databasesQ,
+  database_idQ,
   sstTablePLE_id,
   mathPLE_id,
   engTbalePLE_id,
   sciTablePLE_id,
-  Query,
+  QueryQ,
 } from "./renderQuiz/examsAppwriteConfig"; //Data from appwrite database
+import { useAuth } from "../context/AuthContext.js"
+import { getRandomExamBySubject } from "./renderQuiz/utils"
 import { sst_ple, math_ple } from '../otherFiles/questionsData'; //Static data from local files
 
 /**
@@ -27,6 +29,8 @@ function Exam({ subject }) {
   const [showUnavailableModal, setshowUnavailableModal] = useState(true);
   const [data, setData] = useState(null); // Variable to store the fetched questions data
 
+  const { userInfo } = useAuth();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,42 +38,64 @@ function Exam({ subject }) {
     const fetchData = async () => {
       try {
         let collection_id;
+        let subjectName = null;
         switch (subject) {
           case "social-studies_ple":
-            collection_id = sstTablePLE_id;
+            // collection_id = sstTablePLE_id;
+            subjectName = "sst-ple"
             break;
           case "mathematics_ple":
-            collection_id = mathPLE_id;
+            // collection_id = mathPLE_id;
+            subjectName = "mtc-ple"
             break;
           case "english-language_ple":
             collection_id = engTbalePLE_id;
+            subjectName = "eng-ple"
             break;
           case "science_ple":
-            collection_id = sciTablePLE_id;
+            // collection_id = sciTablePLE_id;
+            subjectName = "sci-ple"
             break;
           default:
             // collection_id = null;
             return;
         }
-        const response = await databases.listDocuments(
-          database_id,
-          collection_id,
-          [Query.limit(80), Query.orderAsc("$id")]
-        );
 
-        const questions = response.documents;
-        const questionData = questions;
-        // Convert questions from JSON strings to JSON objects
-        questionData.forEach((obj) => {
-          obj.questions = obj.questions.map((q) => JSON.parse(q));
-          // delete obj.$id
-          delete obj.$createdAt
-          delete obj.$updatedAt
-          delete obj.$permissions
-          delete obj.$databaseId
-          delete obj.$collectionId
-        });
-        setData(questionData); // Assign the fetched data to the variable
+        let questionData = [];
+
+        if (subjectName === "eng-ple") {
+          //quetions picked from appwrite database directly
+          const response = await databasesQ.listDocuments(
+            database_idQ,
+            collection_id,
+            [QueryQ.limit(80), QueryQ.orderAsc("$id")]
+          );
+
+          const questions = response.documents;
+          questionData = questions;
+
+          // Convert questions from JSON strings to JSON objects
+          questionData.forEach((obj) => {
+            obj.questions = obj.questions.map((q) => JSON.parse(q));
+            // delete obj.$id
+            delete obj.$createdAt
+            delete obj.$updatedAt
+            delete obj.$permissions
+            delete obj.$databaseId
+            delete obj.$collectionId
+          });
+
+          console.log((questionData));
+          setData(questionData); // Assign the fetched data to the variable
+
+        }
+        else {
+          // For questions saved in index db
+          questionData = await getRandomExamBySubject(subjectName, { userId: userInfo.userId, educationLevel: userInfo.educationLevel });
+          console.log('Retrieved qtns from dexieDB: ', questionData.examData);
+          setData(questionData.examData); // Assign the fetched data to the variable
+        }
+
       } catch (error) {
         console.error("Error fetching data:", error);
       }

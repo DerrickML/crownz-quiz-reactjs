@@ -20,7 +20,7 @@ import { serverUrl } from '../../config.js'
 
 import './PaymentMethods.css';
 
-function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studentInfo }) {
+function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studentInfo, duration }) {
     const { userInfo, fetchUserPoints } = useAuth();
     const isStudent = userInfo.labels.includes("student");
     const isNextOfKin = userInfo.labels.includes("kin");
@@ -42,7 +42,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
         try {
             // Make an API call to validate the coupon
             setCouponLoader(true);
-            const response = await fetch(`${serverUrl}/query/validate-coupon?code=${coupon}&userId=${isStudent ? userInfo.userId : studentInfo.userId}`);
+            const response = await fetch(`${serverUrl}/query/validate-coupon?code=${coupon}&userId=${isStudent ? userInfo.userId : studentInfo.userId}&userLabel=${userInfo.labels}`);
             const data = await response.json();
 
             if (response.ok && data.couponDetails) {
@@ -107,7 +107,8 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                     userId: isStudent ? userInfo.userId : studentInfo.userId,
                     points: finalPoints,
                     educationLevel: isStudent ? userInfo.educationLevel : studentInfo.educationLevel,
-                    message: `Points Purchase on discount.`
+                    message: `Points Purchase on discount.`,
+                    duration: duration
                 }
                 await updatePointsTable(data)
 
@@ -152,7 +153,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
     };
 
     const handlePaymentSelection = (method, network) => {
-        navigate(`/payment/${method.toLowerCase()}`, { state: { price: finalPrice, paymentFor: paymentMadeFor, points: finalPoints, studentInfo: studentInfo, network: network, couponCode: coupon } });
+        navigate(`/payment/${method.toLowerCase()}`, { state: { price: finalPrice, paymentFor: paymentMadeFor, points: finalPoints, studentInfo: studentInfo, network: network, couponCode: coupon, duration: duration } });
     };
 
     return (
@@ -169,7 +170,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                     <br />
                                     <strong>Package:</strong> {tier}
                                     <br />
-                                    <strong>Price: </strong>{finalPrice}
+                                    <strong>Price: UGX.</strong>{finalPrice}
                                 </Card.Text>
                                 <Card.Title>Apply Coupon</Card.Title>
                                 <Form>
@@ -204,7 +205,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                             <i className="bi bi-building me-2"></i>
                                             <strong>Discount:</strong>
                                             {' '}
-                                            {(discountInfo.DiscountType === 'fixed' || discountInfo.DiscountType === 'percentage') && 'UGX. '}
+                                            {(discountInfo.DiscountType === 'fixed') && 'UGX. '}
                                             {(discountInfo.DiscountType === 'fixed' || discountInfo.DiscountType === 'percentage') ? discountInfo.DiscountValue : (discountInfo.DiscountType === 'points' ? 'Exam discount' : 0)}
                                             {' '}
                                             {discountInfo.DiscountType === 'percentage' ? '%' : (discountInfo.DiscountType === 'points' ? null : null)}
@@ -238,7 +239,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                 MTN Mobile Money
                             </Card.Header>
                             <Card.Body className="justify-content-center">
-                                <Card.Img variant="top" src={`${serverUrl}/images/mtnmomo.png`} className="card-img-centered" />
+                                <Card.Img variant="top" src={img/images/mtnmomo.png`} className="card-img-centered" />
                             </Card.Body>
                         </Card>
                     </Col> */}
@@ -250,7 +251,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                 MTN Mobile Money
                             </Card.Header>
                             <Card.Body className="justify-content-center">
-                                <Card.Img variant="top" src={`${serverUrl}/images/mtnmomo.png`} className="card-img-centered" />
+                                <Card.Img variant="top" src={`img/images/mtnmomo.png`} className="card-img-centered" />
                             </Card.Body>
                         </Card>
                     </Col>
@@ -263,7 +264,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                 Airtel Money
                             </Card.Header>
                             <Card.Body className="justify-content-center">
-                                <Card.Img variant="top" src={`${serverUrl}/images/airtel-money.png`} className="card-img-centered" />
+                                <Card.Img variant="top" src={`img/images/airtel-money.png`} className="card-img-centered" />
                             </Card.Body>
                         </Card>
                     </Col>
@@ -275,7 +276,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                 Card
                             </Card.Header>
                             <Card.Body className="justify-content-center">
-                                <Card.Img variant="top" src={`${serverUrl}/images/credit-card.png`} className="card-img-centered" />
+                                <Card.Img variant="top" src={`img/images/credit-card.png`} className="card-img-centered" />
                             </Card.Body>
                         </Card>
                     </Col>

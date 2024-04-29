@@ -27,7 +27,7 @@ export const sendEmailToNextOfKin = async (userInfo, subjectName, examScore, exa
     const kinEmail = userInfo.kinEmail;
 
     // Send the information to the backend
-    fetch(`${serverUrl}/alert-next-of-kin`, {
+    fetch(`${serverUrl}/alert-guardian`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -91,7 +91,6 @@ export const formatDate = (dateTime) => {
 /*** ----------- Create a document ----------- ***/
 export const createDocument = async (databaseId, tableId, data, tableUse) => {
     try {
-        // console.log('Data passed to createDocument: ', data)
         const response = await databases.createDocument(databaseId, tableId, 'unique()', data)
         return response;
     } catch (error) {
@@ -103,7 +102,6 @@ export const createDocument = async (databaseId, tableId, data, tableUse) => {
 /* ----------- Coupon Usage tracking ----------- ***/
 export const couponTrackerUpdate = async (data) => {
     try {
-        console.log('Updateing coupon usage table: ', data);
         var currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a z');
         await createDocument(database_id, couponUsagesTable_id, {
             UserID: data.userId,
@@ -124,12 +122,12 @@ transactionID: data.externalId,
 userId: userInfo.userId, 
 points: receiptDetails.points, 
 educationLevel: educationLevel, 
-message: message-`createDocument() function`
+message: message-`createDocument() function`,
+duration: duration
 }
 */
 export const updatePointsTable = async (data) => {
     try {
-        // console.log('PointsTableUpdate Data Received: ' + JSON.stringify(data));
         let points = parseInt(data.points);
 
         // Define both expected formats
@@ -138,26 +136,32 @@ export const updatePointsTable = async (data) => {
         // Parse the date using Moment.js with custom and expected formats
         let createdDate = moment(data.created_at, customFormats, true);
 
-        // Check if the parsed date is valid
-        if (!createdDate.isValid()) {
-            throw new Error('Invalid date format');
-        }
+        // let createdDate = moment(); //NOW
 
-        // Convert to JavaScript Date object
-        createdDate = createdDate.toDate();
+        //===
+        // // Check if the parsed date is valid
+        // if (!createdDate.isValid()) {
+        //     throw new Error('Invalid date format');
+        // }
 
-        // Creating a new Date object for expiryDate to avoid modifying createdDate
-        let expiryDate = new Date(createdDate);
-        expiryDate.setFullYear(createdDate.getFullYear() + 1); // Adding 1 year to the expiryDate
+        // // Convert to JavaScript Date object
+        // createdDate = createdDate.toDate();
 
-        // console.log("CREATED Date:", createdDate);
-        // console.log("EXPIRY Date:", expiryDate);
+        // // Creating a new Date object for expiryDate to avoid modifying createdDate
+        // let expiryDate = new Date(createdDate);
+        // expiryDate.setDate(createdDate.getDate() + data.duration); // Adding the days to the expiryDate
         //===
 
+        // Add days to the createdDate
+        let expiryDate = createdDate.add(data.duration, 'days');
+
+        // Format the expiryDate in the specified format 'YYYY-MM-DD HH:mm:ss Z'
+        expiryDate = expiryDate.format('YYYY-MM-DD HH:mm:ss Z');
+
+        console.log(expiryDate);
+
         if (data.paymentFor === 'points') {
-            //createDocument(databaseId, tableId, uniqueId, data, tableUse)
             //Points Batch Table
-            // console.log('POINTS BATCH TABLE: Creating Document')
             await createDocument(database_id, pointsBatchTable_id, {
                 transactionID: data.transactionID,
                 userID: data.userId,
@@ -167,47 +171,52 @@ export const updatePointsTable = async (data) => {
             }, data.message)
 
             //Points Table
+            let currentPoints = 0;
+            let updateResponse;
+
             //Check if user has document assigned to them
-            // console.log('POINTS TABLE: Checking if user has document assigned to them')
             const responseCheck = await databases.listDocuments(database_id, pointsTable_id, [Query.equal('UserID', data.userId)]);
 
             //Create a new document if user has no document assigned
             if (responseCheck.documents.length === 0) {
-                // console.log('POINTS TABLE: No user document assigned, creating a new one for the user')
-
-                // Use Moment.js to get the current date and time
-                const acquisitionDate = moment().format('YYYY-MM-DD HH:mm:ss Z');
-                // console.log('Creating Document inPoints Table: ' + acquisitionDate)
-
-                const userDocResponse = await databases.createDocument(
+                updateResponse = await databases.createDocument(
                     database_id,
                     pointsTable_id,
-                    'unique()',
+                    data.userId,
                     {
                         UserID: data.userId || null,
-                        PurchasedTier: data.educationLevel, //userDetails.classGrade
-                        AcquisitionDate: acquisitionDate,
-                        ExpiryDate: acquisitionDate,
+                        PurchasedTier: data.educationLevel,
+                        AcquisitionDate: createdDate,
+                        ExpiryDate: expiryDate,
+                        PointsBalance: (currentPoints + points)
                     }
                 );
             }
+            else {
+                //================================================================
+                //Check expiry date and either increment the current value or replace it with the new value
 
-            //Proceed to update the points tables
-            //Retrieve user document Id
-            // console.log('UPDATING POINTS TABLE: Creating Document')
-            const response = await databases.listDocuments(database_id, pointsTable_id, [
-                Query.equal("UserID", data.userId),
-            ]);
-            // console.log('Checking points table: ', response)
-            if (response.documents.length > 0) { //TODO: If table user points doesn't exist, create new document
-                const documentId = response.documents[0].$id //Points document id to be updated
-                let currentPoints = response.documents[0].PointsBalance
-                // console.log('points document id: ', documentId)
+                // Convert ExpiryDate to a moment object
+                let currentExpiryDate = moment(responseCheck.documents[0].ExpiryDate);
 
-                //update Points table with purchases points
-                const updateResponse = await databases.updateDocument(database_id, pointsTable_id, documentId, { PointsBalance: (currentPoints + points), ExpiryDate: expiryDate })
-                // console.log('update points balance: ', updateResponse)
+                console.log('Current existing date: ', currentExpiryDate);
+
+                // Only add days if the current ExpiryDate is not older than the current date
+                if (currentExpiryDate.isSameOrAfter(moment())) {
+                    // Add days to the expiryDate
+                    currentExpiryDate.add(data.duration, 'days');
+                    // Update the ExpiryDate in the object
+                    expiryDate = currentExpiryDate.format('YYYY-MM-DDTHH:mm:ss.SSSZ');
+                }
+
+                console.log('Expiry date to use: ', expiryDate);
+                //================================================================
+
+                currentPoints = responseCheck.documents[0].PointsBalance;
+                //Proceed to update the points tables
+                updateResponse = await databases.updateDocument(database_id, pointsTable_id, data.userId, { PointsBalance: (currentPoints + points), ExpiryDate: expiryDate })
             }
+            console.log('Points Table Updated', updateResponse);
         }
     } catch (err) {
         console.error('Error updating points table: ', err)
@@ -215,6 +224,5 @@ export const updatePointsTable = async (data) => {
 }
 
 export const kinPurchasePoints = async (navigate, studentInfo) => {
-    // console.log('kinPurchasePoints studentInfo: ', { state: { studentInfo: studentInfo } })
     navigate(`/select-package/`, { state: { studentInfo: studentInfo } });
 }

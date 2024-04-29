@@ -20,6 +20,18 @@ function Home() {
   const isNextOfKin = userInfo.labels.includes("kin");
   const isSales = userInfo.labels.includes("sales") || userInfo.labels.includes("admin");
 
+  const testFunc = async () => {
+    if ('serviceWorker' in navigator) {
+      const registration = await navigator.serviceWorker.ready;
+      registration.active.postMessage({
+        type: 'FETCH_EXAMS', // Custom event for the service worker
+        subjects: userInfo.subjects, // Array of subjects
+        userId: userInfo.userId, // ID of the logged-in user
+        educationLevel: userInfo.educationLevel, // User's education level
+      });
+    }
+  }
+
   const renderHeroHeader = () => (
     <HeroHeader>
       <Container>
@@ -49,30 +61,30 @@ function Home() {
                 </Button>
               </Col>
               <div className="d-flex justify-content-center">
-
-                {/*POINTS TRACKING DISPLAY*/}
-                {/* <Card style={{ width: 'auto' }} className="text-center my-4">
-                  <Card.Header as="h5">
-                    <FontAwesomeIcon icon={faCoins} className="me-2" /> Points Available
-                  </Card.Header>
-                  <Card.Body>
-                    <Card.Title style={{ fontSize: '2.5rem' }}>{userPoints}</Card.Title>
-                    <Button variant="outline-primary" onClick={() => navigate('/select-package')}>
-                      <FontAwesomeIcon icon={faArrowCircleUp} className="me-2" />
-                      Top Up Points
-                    </Button>
-                  </Card.Body>
-                </Card> */}
                 {isSales && (
-                  <Card style={{ width: 'auto' }} className="text-center my-4">
-                    <Card.Body>
-                      {/* <Card.Title style={{ fontSize: '2.5rem' }}>{userPoints}</Card.Title> */}
-                      <Button variant="outline-primary" onClick={() => navigate('/select-package')}>
-                        <FontAwesomeIcon icon={faArrowCircleUp} className="me-2" />
-                        Subscribe
-                      </Button>
-                    </Card.Body>
-                  </Card>
+                  <>
+                    <Card style={{ width: 'auto' }} className="text-center my-4">
+                      <Card.Body>
+                        <Button variant="outline-primary" onClick={() => testFunc()}>
+                          <FontAwesomeIcon icon={faArrowCircleUp} className="me-2" />
+                          Initiate IndexDB
+                        </Button>
+                      </Card.Body>
+                    </Card>
+                    {/*POINTS TRACKING DISPLAY*/}
+                    <Card style={{ width: 'auto' }} className="text-center my-4">
+                      <Card.Header as="h5">
+                        <FontAwesomeIcon icon={faCoins} className="me-2" /> Points Available
+                      </Card.Header>
+                      <Card.Body>
+                        <Card.Title style={{ fontSize: '2.5rem' }}>{userPoints}</Card.Title>
+                        <Button variant="outline-primary" onClick={() => navigate('/select-package')}>
+                          <FontAwesomeIcon icon={faArrowCircleUp} className="me-2" />
+                          Top Up Points
+                        </Button>
+                      </Card.Body>
+                    </Card>
+                  </>
                 )}
               </div>
             </>

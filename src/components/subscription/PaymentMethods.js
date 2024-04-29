@@ -214,7 +214,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                 MTN Mobile Money
                             </Card.Header>
                             <Card.Body className="justify-content-center">
-                                <Card.Img variant="top" src={`${serverUrl}/images/mtnmomo.png`} className="card-img-centered" />
+                                <Card.Img variant="top" src={`img/images/mtnmomo.png`} className="card-img-centered" />
                             </Card.Body>
                         </Card>
                     </Col> */}
@@ -226,7 +226,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                 MTN Mobile Money
                             </Card.Header>
                             <Card.Body className="justify-content-center">
-                                <Card.Img variant="top" src={`${serverUrl}/images/mtnmomo.png`} className="card-img-centered" />
+                                <Card.Img variant="top" src={`img/images/mtnmomo.png`} className="card-img-centered" />
                             </Card.Body>
                         </Card>
                     </Col>
@@ -239,7 +239,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                 Airtel Money
                             </Card.Header>
                             <Card.Body className="justify-content-center">
-                                <Card.Img variant="top" src={`${serverUrl}/images/airtel-money.png`} className="card-img-centered" />
+                                <Card.Img variant="top" src={`img/images/airtel-money.png`} className="card-img-centered" />
                             </Card.Body>
                         </Card>
                     </Col>
@@ -251,7 +251,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                 Card
                             </Card.Header>
                             <Card.Body className="justify-content-center">
-                                <Card.Img variant="top" src={`${serverUrl}/images/credit-card.png`} className="card-img-centered" />
+                                <Card.Img variant="top" src={`img/images/credit-card.png`} className="card-img-centered" />
                             </Card.Body>
                         </Card>
                     </Col>

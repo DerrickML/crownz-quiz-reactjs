@@ -38,6 +38,7 @@ import Receipt from "./components/subscription/Receipt.js";
 import SelectPackage from "./components/subscription/SelectPackage";
 import NotFoundPage from './components/NotFoundPage.js'
 import { AuthProvider, useAuth } from './context/AuthContext';
+import './serviceWorkerListener.js';  // Service worker listener script
 import "./App.css";
 
 function PrivateRoute({ children }) {
@@ -80,6 +81,22 @@ function App() {
       showToast("You are back online.", "success");
     }
   }, [isOnline]);
+
+  //Send any unsent exam results data to the cloud database
+  useEffect(() => {
+    const triggerSync = async () => {
+      if ('serviceWorker' in navigator) {
+        try {
+          const registration = await navigator.serviceWorker.ready;
+          await registration.sync.register('SYNC_EXAM_ANSWERS');  // Register the sync event
+          // console.log('Sync event registered');
+        } catch (error) {
+          console.error('Error registering sync event:', error);
+        }
+      }
+    };
+    triggerSync();  // Trigger the sync event when the app loads
+  }, []);  // Empty dependency array to ensure it runs once on mount
 
   return (
     <Router>

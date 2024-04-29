@@ -11,52 +11,40 @@ const Packages = ({ studentInfo }) => {
     const [selectedPackage, setSelectedPackage] = useState(null);
     const packages = [
         // {
-        //     tier: 'Starter Pack',
-        //     points: 5,
+        //     tier: 'Weekly Package',
+        //     points: 1000,
         //     price: 5000,
-        //     quizzes: 5,
+        //     // quizzes: 5,
         //     duration: 7,
         //     features: [
         //         // '100 points',
-        //         `Attempt up to 5 exams`,
+        //         // `Attempt up to 5 exams`,
         //         'Expires in 7 days',
         //     ]
         // },
-        // {
-        //     tier: 'Pro Plan',
-        //     points: 28,
-        //     price: 20000,
-        //     quizzes: 11,
-        //     duration: 366,
-        //     features: [
-        //         // '560 points',
-        //         `Attempt up to 28 exams`,
-        //         'Expires in 1 year',
-        //     ],
-        // },
-        // {
-        //     tier: 'Elite Bundle',
-        //     points: 17,
-        //     price: 15000,
-        //     quizzes: 17,
-        //     duration: 30,
-        //     features: [
-        //         // '340 points',
-        //         `Attempt up to 17 exams`,
-        //         'Expires in 30 days',
-        //     ],
-        // },
         {
-            tier: 'Elite Bundle',
+            tier: 'Holiday Package',
             points: 1000,
-            price: 70000,
-            quizzes: 1000,
-            duration: 366,
+            price: 20000,
+            // quizzes: 17,
+            duration: 30,
             features: [
-                `Attempt up to 1,000`,
-                'Expires after 366 days',
+                // '340 points',
+                // `Attempt up to 17 exams`,
+                'Valid till June 5th, 2024',
             ],
         },
+        // {
+        //     tier: 'Annual Pack',
+        //     points: 1000,
+        //     price: 70000,
+        //     // quizzes: 1000,
+        //     duration: 366,
+        //     features: [
+        //         // `Attempt up to 1,000`,
+        //         'Valid for 1 year',
+        //     ],
+        // },
     ];
 
     const handlePurchaseClick = (selectedPkg) => {
@@ -138,6 +126,7 @@ const Packages = ({ studentInfo }) => {
                                 tier={selectedPackage.tier}
                                 paymentFor={'points'}
                                 studentInfo={studentInfo}
+                                duration={selectedPackage.duration}
                             />
                         </>
 

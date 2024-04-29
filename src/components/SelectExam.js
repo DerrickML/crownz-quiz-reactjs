@@ -64,6 +64,7 @@ const iconMapping = {
 
 function SelectExam() {
   const { userInfo, userPoints, userSubjectData, studentEnrollSubject } = useAuth();
+
   const navigate = useNavigate();
 
   const [selectedSubject, setSelectedSubject] = useState(null);
@@ -73,10 +74,7 @@ function SelectExam() {
   const subjects = userSubjectData || [];
 
   const isEnrolled = subjects.some(subject => subject.enrolled === true);
-  const notEnrolled = subjects.some(subject => subject.enrolled === false);
 
-  // console.log("Subject Data: " + JSON.stringify(subjects));
-  // const storedData = storageUtil.getItem("studentData");
   if (!subjects || !Array.isArray(subjects)) {
     throw new Error("No subjects data found in local storage.");
   }
@@ -97,8 +95,8 @@ function SelectExam() {
 
   const handleEnrollment = async (subject) => {
     // console.log('Enrollment: ', subject);
-    await studentEnrollSubject(userInfo.userDocId, subject.$id);
     setEnrollSubject(null)
+    await studentEnrollSubject(userInfo.userDocId, subject.$id);
   };
 
   const purchasePoints = () => {
@@ -141,18 +139,12 @@ function SelectExam() {
         </Row>
 
         {/* Not Enrolled Subjects */}
-        {/* {notEnrolled ?
-          <> */}
         <h3 className="text-center mb-4 subject-header">Select and Enroll</h3>
         <Row className="subject-row">
           {subjects.map((subject, index) => (
             !subject.enrolled && renderSubjectCard(subject, index, handleEnroll)
           ))}
         </Row>
-        {/* </>
-          :
-          null
-        } */}
 
         <Modal
           show={selectedSubject !== null}
@@ -236,7 +228,7 @@ function SelectExam() {
               Close
             </Button>
             <Button
-              onClick={() => handleEnrollment(enrollSubject)}
+              onClick={() => handleEnrollment(enrollSubject) && setEnrollSubject(null)}
               style={{
                 backgroundColor: enrollSubject?.color || "rgb(6, 63, 90) ",
               }}

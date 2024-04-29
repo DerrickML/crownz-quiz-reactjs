@@ -14,43 +14,28 @@ function MobileMoney({ propPrice, propPaymentFor, propStudentInfo }) {
     const { userInfo } = useAuth();
     const isStudent = userInfo.labels.includes("student");
     const isNextOfKin = userInfo.labels.includes("kin");
-
-    const navigate = useNavigate();
-    const location = useLocation();
-    let { price, paymentFor, points, studentInfo, network, couponCode } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' }, network: null, couponCode: null }; // Set default 
-    console.log('Fianle Price: ', price);
-
-    //TESTING
-    let origPrice = price;
-    price = 50000
-
-    console.log('Fianle Price: ', origPrice);
-
-    //Destructuring student information
-    // const { userId: studentId, name: studentName, educationLevel } = studentInfo;
     let studentId = isNextOfKin ? studentInfo.userId : '';
     let studentName = isNextOfKin ? studentInfo.name : '';
     let educationLevel = isNextOfKin ? studentInfo.educationLevel : '';
 
-    // console.log('Student Information: ', JSON.stringify(studentInfo))
+    const navigate = useNavigate();
+    const location = useLocation();
+    let { price, paymentFor, points, studentInfo, network, couponCode, duration } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' }, network: null, couponCode: null, duration: 366 }; // Set default 
 
-    useEffect(() => {
-        // console.log('Price passed to MTN: ', price)
-        if (!price) {
-            navigate(-1);
-        }
-    }, []);
+    // Extract the root URL (protocol + hostname + port)
+    var rootURL = rootUrl;
+
+    //TESTING
+    let origPrice = price;
+    // price = 2000
 
     const [phone, setPhone] = useState(userInfo.phone || '');
     // const [email, setEmail] = useState(userInfo.email || 'crownzcom@gmail.com');
     const [email, setEmail] = useState('crownzcom@gmail.com');
-    const [message, setMessage] = useState('A page will load shortly after requesting you to enter an OTP. The OTP is 123456');
+    const [message, setMessage] = useState('A page will load shortly after, requesting you to enter the  MOMO validation OTP sent to you via SMS and Whatsapp to complete this transaction.');
     const [phoneError, setPhoneError] = useState(false); // Error flag for user's phone
-    const [amount, setAmount] = useState(price ? price : '2000');
+    const [amount, setAmount] = useState(price);
     const [submit, setSubmit] = useState(false);
-
-    // Extract the root URL (protocol + hostname + port)
-    var rootURL = rootUrl;
 
     const [formData, setFormData] = useState({
         phone_number: phone,
@@ -62,25 +47,45 @@ function MobileMoney({ propPrice, propPaymentFor, propStudentInfo }) {
         meta: {
             price: origPrice,
             userId: `${userInfo.userId}`,
-            description: `Payment for exam/quiz Points${isStudent ? '.' : ` for ${studentName}`}`,
+            description: `Exam subscription${isStudent ? '.' : ` for ${studentName}`}`,
             service: `${paymentFor}`,
             points: `${points}`,
             couponCode: `${couponCode}`,
+            duration: `${duration}`,
             ...(isStudent ? {} : { studentName: studentName, studentId: studentId, educationLevel: educationLevel }), // Conditional spread operator for adding studentInfo
         }
     });
+
     const [paymentStatus, setPaymentStatus] = useState(null);
+
+    useEffect(() => {
+        setFormData((prevData) => ({
+            ...prevData,
+            phone_number: phone,
+        }));
+    }, [phone]);
+
+    useEffect(() => {
+        // console.log('Price passed to MTN: ', price)
+        if (!price) {
+            navigate(-1);
+        }
+    }, []);
 
     // Phone number validation function
     const validatePhoneNumber = (phoneNumber) => {
         return phoneNumber && !isValidPhoneNumber(phoneNumber);
     };
 
+    const handlePhoneChange = (value) => {
+        setPhone(value);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         setPhoneError(false);
         setPaymentStatus(null);
-
         setSubmit(true);
 
         setFormData({ ...formData, phone_number: phone });
@@ -117,8 +122,7 @@ function MobileMoney({ propPrice, propPaymentFor, propStudentInfo }) {
             // console.log('Pay response Data:\n', data);
             if (data.response.status === 'success' && data.response.meta.authorization.mode === 'redirect') {
                 window.location.href = data.response.meta.authorization.redirect;
-                setPaymentStatus('A page will load shortly requesting you to enter OTP received on your phone')
-                alert('A page will load shortly requesting you to enter OTP. OTP is 123456');
+                setPaymentStatus('A page will load shortly requesting you to enter the  MOMO validation OTP sent to you via SMS and Whatsapp to complete this transaction.')
             } else {
                 setPaymentStatus(data.response.message);
                 setSubmit(false);
@@ -136,9 +140,9 @@ function MobileMoney({ propPrice, propPaymentFor, propStudentInfo }) {
         <div className='mt-4' style={{ marginTop: "100px", backgroundColor: ' background-color: hsl(236, 72%, 79%), hsl(237, 63%, 64%)' }}>
             <Form onSubmit={handleSubmit}>
                 <Card className="payment-card">
-                    <Card.Header className="payment-card-header">
-                        <h3>Mobile Money Payment</h3>
-                        <p>Securely complete your payment via Mobile Money.</p>
+                    <Card.Header className="payment-card-header" style={{ backgroundColor: `${network === 'AIRTEL' && '#c2ecf3'} ` }}>
+                        <h3 style={{ color: `${network === 'MTN' ? 'yellow' : '#ff0000'} ` }}>{network} Mobile Money Payment</h3>
+                        <p style={{ color: `${network === 'AIRTEL' && '#854a12'} ` }}>Securely complete your payment via Mobile Money.</p>
                     </Card.Header>
 
                     <Card.Body>
@@ -153,7 +157,7 @@ function MobileMoney({ propPrice, propPaymentFor, propStudentInfo }) {
                                 international
                                 defaultCountry='UG'
                                 value={phone}
-                                onChange={setPhone}
+                                onChange={handlePhoneChange}
                                 required
                             />
                             {phoneError && (
