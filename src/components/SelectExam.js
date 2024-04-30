@@ -157,7 +157,7 @@ function SelectExam() {
           <Modal.Header closeButton>
             <Modal.Title>{selectedSubject?.name} Exam</Modal.Title>
           </Modal.Header>
-          {
+          {/* {
             userPoints < 1 ?
               <>
                 <Modal.Body>
@@ -180,29 +180,29 @@ function SelectExam() {
                   </Button>
                 </Modal.Footer>
               </>
-              :
-              <>
-                <Modal.Body>
-                  <p>{selectedSubject?.description}</p>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button
-                    variant="secondary"
-                    onClick={() => setSelectedSubject(null)}
-                  >
-                    Close
-                  </Button>
-                  <Button
-                    onClick={handleStartExam}
-                    style={{
-                      backgroundColor: selectedSubject?.color || "rgb(6, 63, 90) ",
-                    }}
-                  >
-                    Start Exam
-                  </Button>
-                </Modal.Footer>
-              </>
-          }
+              : */}
+          <>
+            <Modal.Body>
+              <p>{selectedSubject?.description}</p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                variant="secondary"
+                onClick={() => setSelectedSubject(null)}
+              >
+                Close
+              </Button>
+              <Button
+                onClick={handleStartExam}
+                style={{
+                  backgroundColor: selectedSubject?.color || "rgb(6, 63, 90) ",
+                }}
+              >
+                Start Exam
+              </Button>
+            </Modal.Footer>
+          </>
+          {/* } */}
         </Modal>
 
         {/* Modal to enroll for a subject */}

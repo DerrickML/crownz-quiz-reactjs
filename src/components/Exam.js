@@ -41,11 +41,11 @@ function Exam({ subject }) {
         let subjectName = null;
         switch (subject) {
           case "social-studies_ple":
-            // collection_id = sstTablePLE_id;
+            collection_id = sstTablePLE_id;
             subjectName = "sst-ple"
             break;
           case "mathematics_ple":
-            // collection_id = mathPLE_id;
+            collection_id = mathPLE_id;
             subjectName = "mtc-ple"
             break;
           case "english-language_ple":
@@ -53,48 +53,48 @@ function Exam({ subject }) {
             subjectName = "eng-ple"
             break;
           case "science_ple":
-            // collection_id = sciTablePLE_id;
+            collection_id = sciTablePLE_id;
             subjectName = "sci-ple"
             break;
           default:
-            // collection_id = null;
+            collection_id = null;
             return;
         }
 
         let questionData = [];
 
-        if (subjectName === "eng-ple") {
-          //quetions picked from appwrite database directly
-          const response = await databasesQ.listDocuments(
-            database_idQ,
-            collection_id,
-            [QueryQ.limit(80), QueryQ.orderAsc("$id")]
-          );
+        // if (subjectName === "eng-ple") {
+        //quetions picked from appwrite database directly
+        const response = await databasesQ.listDocuments(
+          database_idQ,
+          collection_id,
+          [QueryQ.limit(80), QueryQ.orderAsc("$id")]
+        );
 
-          const questions = response.documents;
-          questionData = questions;
+        const questions = response.documents;
+        questionData = questions;
 
-          // Convert questions from JSON strings to JSON objects
-          questionData.forEach((obj) => {
-            obj.questions = obj.questions.map((q) => JSON.parse(q));
-            // delete obj.$id
-            delete obj.$createdAt
-            delete obj.$updatedAt
-            delete obj.$permissions
-            delete obj.$databaseId
-            delete obj.$collectionId
-          });
+        // Convert questions from JSON strings to JSON objects
+        questionData.forEach((obj) => {
+          obj.questions = obj.questions.map((q) => JSON.parse(q));
+          // delete obj.$id
+          delete obj.$createdAt
+          delete obj.$updatedAt
+          delete obj.$permissions
+          delete obj.$databaseId
+          delete obj.$collectionId
+        });
 
-          console.log((questionData));
-          setData(questionData); // Assign the fetched data to the variable
+        console.log('Retrieved Exams: ', questionData);
+        setData(questionData); // Assign the fetched data to the variable
 
-        }
-        else {
-          // For questions saved in index db
-          questionData = await getRandomExamBySubject(subjectName, { userId: userInfo.userId, educationLevel: userInfo.educationLevel });
-          console.log('Retrieved qtns from dexieDB: ', questionData.examData);
-          setData(questionData.examData); // Assign the fetched data to the variable
-        }
+        // }
+        // else {
+        //   // For questions saved in index db
+        //   questionData = await getRandomExamBySubject(subjectName, { userId: userInfo.userId, educationLevel: userInfo.educationLevel });
+        //   console.log('Retrieved qtns from dexieDB: ', questionData.examData);
+        //   setData(questionData.examData); // Assign the fetched data to the variable
+        // }
 
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -127,7 +127,7 @@ function Exam({ subject }) {
     switch (subject) {
       case "english-language_ple":
         // return <IframeComponent url="https://exams.crownz.derrickml.com/english_ple_section_B" />;
-        return <IframeComponent url="https://exampreptutor.com/english_ple_section_B" />;
+        return <IframeComponent url="https://exampreptutor.com/english_ple_section_B/" />;
       case "social-studies_ple":
         if (data === null) { return null }
         else {

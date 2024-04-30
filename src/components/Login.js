@@ -71,13 +71,15 @@ function Login() {
     buttonText: 'Close'
   });
 
-  //Logout user in case they are already logged in on component mount
+  // Logout user in case they are already logged in on component mount
   useEffect(() => {
     const clearSession = async () => {
       await handleLogout();
     };
     clearSession();
   }, []);
+
+  // await handleLogout();
 
   //Funstion to check for phone number validity
   const validatePhoneNumber = (phoneNumber) => {

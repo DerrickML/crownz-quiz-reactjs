@@ -48,7 +48,7 @@ const IframeComponent = ({ url }) => {
     "http://127.0.0.1:5500/english_ple/",
     "https://moodle.servers.crownzcom.tech/english_ple_section_B",
     "https://exams.crownz.derrickml.com/english_ple_section_B",
-    "https://exampreptutor.com/english_ple_section_B"
+    "https://exampreptutor.com/english_ple_section_B/"
     // Add other URLs here
   ];
 

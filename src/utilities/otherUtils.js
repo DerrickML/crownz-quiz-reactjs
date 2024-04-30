@@ -213,6 +213,7 @@ export const updatePointsTable = async (data) => {
                 //================================================================
 
                 currentPoints = responseCheck.documents[0].PointsBalance;
+                console.log('Doc data: ', responseCheck.documents[0])
                 //Proceed to update the points tables
                 updateResponse = await databases.updateDocument(database_id, pointsTable_id, data.userId, { PointsBalance: (currentPoints + points), ExpiryDate: expiryDate })
             }
