@@ -1,7 +1,7 @@
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Use Link from react-router-dom for navigation
 import {
   Container,
@@ -71,6 +71,13 @@ function Login() {
     buttonText: 'Close'
   });
 
+  //Logout user in case they are already logged in on component mount
+  useEffect(() => {
+    const clearSession = async () => {
+      await handleLogout();
+    };
+    clearSession();
+  }, []);
 
   //Funstion to check for phone number validity
   const validatePhoneNumber = (phoneNumber) => {
@@ -222,7 +229,7 @@ function Login() {
       setShowInfoModal(true);
       await handleLogout();
     } else {
-      navigate("/");  // or another appropriate action
+      navigate("/");  // Navigate to home page if data available
     }
   };
 

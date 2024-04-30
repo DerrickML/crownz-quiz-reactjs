@@ -34,17 +34,17 @@ const Packages = ({ studentInfo }) => {
                 'Valid till June 5th, 2024',
             ],
         },
-        // {
-        //     tier: 'Annual Pack',
-        //     points: 1000,
-        //     price: 70000,
-        //     // quizzes: 1000,
-        //     duration: 366,
-        //     features: [
-        //         // `Attempt up to 1,000`,
-        //         'Valid for 1 year',
-        //     ],
-        // },
+        {
+            tier: 'Annual Pack',
+            points: 1000,
+            price: 70000,
+            // quizzes: 1000,
+            duration: 366,
+            features: [
+                // `Attempt up to 1,000`,
+                'Valid until 31st December, 2024',
+            ],
+        },
     ];
 
     const handlePurchaseClick = (selectedPkg) => {
