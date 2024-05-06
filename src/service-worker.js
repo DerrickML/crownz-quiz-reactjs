@@ -5,7 +5,7 @@ import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate, NetworkFirst } from 'workbox-strategies';
-import db from './db.js'; // Your IndexedDB setup
+// import db from './db.js'; // Your IndexedDB setup
 
 clientsClaim();
 
@@ -140,127 +140,127 @@ self.addEventListener('online', async () => {
 //   }
 // });
 
-self.addEventListener('message', async (event) => {
-  if (event.data && event.data.type === 'FETCH_EXAMS') {
-    const { subjects, userId, educationLevel } = event.data;
+// self.addEventListener('message', async (event) => {
+//   if (event.data && event.data.type === 'FETCH_EXAMS') {
+//     const { subjects, userId, educationLevel } = event.data;
 
-    // Array to hold image paths
-    const imagePaths = [];
+//     // Array to hold image paths
+//     const imagePaths = [];
 
-    // Recursive function to extract image paths from exam data
-    async function extractImagePaths(obj) {
-      if (Array.isArray(obj)) {
-        // If it's an array, iterate through its elements
-        obj.forEach((item) => extractImagePaths(item));
-      } else if (typeof obj === 'object' && obj !== null) {
-        // If it's an object, iterate through its properties
-        for (const key in obj) {
-          if (obj.hasOwnProperty(key)) {
-            const value = obj[key];
-            if (typeof value === 'string' && /\.(jpg|jpeg|png|gif|bmp|tiff|webp|svg)$/.test(value.toLowerCase())) {
-              // If it's an image path, add it to the array
-              console.log('Adding image path: ' + value);
-              imagePaths.push(value);
-            } else {
-              // Recurse if it's another object or array
-              extractImagePaths(value);
-            }
-          }
-        }
-      }
-    }
+//     // Recursive function to extract image paths from exam data
+//     async function extractImagePaths(obj) {
+//       if (Array.isArray(obj)) {
+//         // If it's an array, iterate through its elements
+//         obj.forEach((item) => extractImagePaths(item));
+//       } else if (typeof obj === 'object' && obj !== null) {
+//         // If it's an object, iterate through its properties
+//         for (const key in obj) {
+//           if (obj.hasOwnProperty(key)) {
+//             const value = obj[key];
+//             if (typeof value === 'string' && /\.(jpg|jpeg|png|gif|bmp|tiff|webp|svg)$/.test(value.toLowerCase())) {
+//               // If it's an image path, add it to the array
+//               console.log('Adding image path: ' + value);
+//               imagePaths.push(value);
+//             } else {
+//               // Recurse if it's another object or array
+//               extractImagePaths(value);
+//             }
+//           }
+//         }
+//       }
+//     }
 
-    for (const subject of subjects) {
-      try {
-        for (let i = 0; i < 5; i++) {
-          const url = `${serverUrl}/exam/fetch-exam?subjectName=${subject}&userId=${userId}&educationLevel=${educationLevel}`;
-          const response = await fetch(url);
+//     for (const subject of subjects) {
+//       try {
+//         for (let i = 0; i < 5; i++) {
+//           const url = `${serverUrl}/exam/fetch-exam?subjectName=${subject}&userId=${userId}&educationLevel=${educationLevel}`;
+//           const response = await fetch(url);
 
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
+//           if (!response.ok) {
+//             throw new Error(`HTTP error! status: ${response.status}`);
+//           }
 
-          const data = await response.json();
+//           const data = await response.json();
 
-          const exam = {
-            userId,
-            educationLevel,
-            subjectName: subject,
-            examData: data.questions,
-          };
+//           const exam = {
+//             userId,
+//             educationLevel,
+//             subjectName: subject,
+//             examData: data.questions,
+//           };
 
-          // Extract image paths from the fetched exam data
-          // await extractImagePaths(exam.examData);
+//           // Extract image paths from the fetched exam data
+//           // await extractImagePaths(exam.examData);
 
-          // Store the exam in IndexDB
-          await db.exams.add(exam);
+//           // Store the exam in IndexDB
+//           await db.exams.add(exam);
 
-        }
-      } catch (error) {
-        console.error(`Error processing subject ${subject}:`, error);
-      }
-    }
+//         }
+//       } catch (error) {
+//         console.error(`Error processing subject ${subject}:`, error);
+//       }
+//     }
 
-    // Cache the extracted image paths
-    const CACHE_NAME = 'my-app-images-cache-v1';
-    const cache = await caches.open(CACHE_NAME);
+//     // Cache the extracted image paths
+//     const CACHE_NAME = 'my-app-images-cache-v1';
+//     const cache = await caches.open(CACHE_NAME);
 
-    await cache.addAll(imagePaths);
+//     await cache.addAll(imagePaths);
 
-    console.log('Image paths cached:', imagePaths);
-  }
-});
+//     console.log('Image paths cached:', imagePaths);
+//   }
+// });
 
 // Service worker background sync event to check 'examAnswers' when online
-self.addEventListener('sync', async (event) => {
-  if (event.tag === 'SYNC_EXAM_ANSWERS') {
-    // console.log('Sync event triggered to process exam answers');
+// self.addEventListener('sync', async (event) => {
+//   if (event.tag === 'SYNC_EXAM_ANSWERS') {
+//     // console.log('Sync event triggered to process exam answers');
 
-    try {
-      // Check if the 'examAnswers' table has any data
-      const examAnswersCount = await db.examAnswers.count();
+//     try {
+//       // Check if the 'examAnswers' table has any data
+//       const examAnswersCount = await db.examAnswers.count();
 
-      if (examAnswersCount === 0) {
-        // console.log('No exam answers to process');
-        return;  // Exit if there's no data to process
-      }
+//       if (examAnswersCount === 0) {
+//         // console.log('No exam answers to process');
+//         return;  // Exit if there's no data to process
+//       }
 
-      const examAnswers = await db.examAnswers.toArray();  // Fetch all data from the table
+//       const examAnswers = await db.examAnswers.toArray();  // Fetch all data from the table
 
-      for (const answer of examAnswers) {
-        const response = await fetch(`${serverUrl}/exam/submit`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(answer),
-        });
+//       for (const answer of examAnswers) {
+//         const response = await fetch(`${serverUrl}/exam/submit`, {
+//           method: 'POST',
+//           headers: {
+//             'Content-Type': 'application/json',
+//           },
+//           body: JSON.stringify(answer),
+//         });
 
-        if (response.ok) {
-          await db.examAnswers.delete(answer.id);  // Delete successful submissions
+//         if (response.ok) {
+//           await db.examAnswers.delete(answer.id);  // Delete successful submissions
 
-          const serverResponse = await response.json();
+//           const serverResponse = await response.json();
 
-          // Properly define 'clients' before using it
-          const openClients = await self.clients.matchAll();  // Retrieve all open clients
+//           // Properly define 'clients' before using it
+//           const openClients = await self.clients.matchAll();  // Retrieve all open clients
 
-          openClients.forEach((client) => {
-            client.postMessage({
-              type: 'SYNC_RESULTS',
-              points: serverResponse.points,  // Send points
-              allResults: serverResponse.allResults,  // Send allResults
-            });
-          });
+//           openClients.forEach((client) => {
+//             client.postMessage({
+//               type: 'SYNC_RESULTS',
+//               points: serverResponse.points,  // Send points
+//               allResults: serverResponse.allResults,  // Send allResults
+//             });
+//           });
 
-          // console.log(`Exam answer for subject ${answer.subject} submitted and deleted from IndexedDB`);
-        } else {
-          console.error(`Failed to submit exam answer for subject ${answer.subject}`);
-        }
-      }
-    } catch (error) {
-      console.error('Error processing exam answers:', error);
-    }
-  }
-});
+//           // console.log(`Exam answer for subject ${answer.subject} submitted and deleted from IndexedDB`);
+//         } else {
+//           console.error(`Failed to submit exam answer for subject ${answer.subject}`);
+//         }
+//       }
+//     } catch (error) {
+//       console.error('Error processing exam answers:', error);
+//     }
+//   }
+// });
 
 

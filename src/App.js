@@ -36,14 +36,16 @@ import MobileMoney from "./components/subscription/MobileMoney";
 import CardPayment from "./components/subscription/CardPayment";
 import Receipt from "./components/subscription/Receipt.js";
 import SelectPackage from "./components/subscription/SelectPackage";
+import RegisteredStudents from "./pages/RegisteredStudents"
 import NotFoundPage from './components/NotFoundPage.js'
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { fetchStudents } from './utilities/fetchStudentData';
 import './serviceWorkerListener.js';  // Service worker listener script
 import "./App.css";
 
 function PrivateRoute({ children }) {
   // console.log('APP.JS render')
-  const { sessionInfo } = useAuth();
+  const { userInfo, sessionInfo } = useAuth();
   if (!sessionInfo) {
     // User is not logged in, redirect to login page
     return <Navigate to="/sign-in" />;
@@ -65,6 +67,7 @@ function ExamWithSubject(props) {
  * @returns {JSX.Element} The rendered App component.
  */
 function App() {
+
   // Check Network Status
   const isOnline = useNetworkStatus();
   const initialLoad = useRef(true);
@@ -234,6 +237,15 @@ function App() {
                   </PrivateRoute>
                 }
               />
+              {/* ADMIN ROUTES */}
+              <Route path="/registered-students"
+                element={
+                  <PrivateRoute>
+                    <RegisteredStudents />
+                  </PrivateRoute>
+                }
+              />
+              {/* GLOBAL ROUTES */}
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/forget-password" element={<ForgetPassword />} />

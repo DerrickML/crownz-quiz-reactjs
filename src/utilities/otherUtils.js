@@ -158,7 +158,7 @@ export const updatePointsTable = async (data) => {
         // Format the expiryDate in the specified format 'YYYY-MM-DD HH:mm:ss Z'
         expiryDate = expiryDate.format('YYYY-MM-DD HH:mm:ss Z');
 
-        console.log(expiryDate);
+        // console.log(expiryDate);
 
         if (data.paymentFor === 'points') {
             //Points Batch Table
@@ -199,7 +199,7 @@ export const updatePointsTable = async (data) => {
                 // Convert ExpiryDate to a moment object
                 let currentExpiryDate = moment(responseCheck.documents[0].ExpiryDate);
 
-                console.log('Current existing date: ', currentExpiryDate);
+                // console.log('Current existing date: ', currentExpiryDate);
 
                 // Only add days if the current ExpiryDate is not older than the current date
                 if (currentExpiryDate.isSameOrAfter(moment())) {
@@ -209,15 +209,15 @@ export const updatePointsTable = async (data) => {
                     expiryDate = currentExpiryDate.format('YYYY-MM-DDTHH:mm:ss.SSSZ');
                 }
 
-                console.log('Expiry date to use: ', expiryDate);
+                // console.log('Expiry date to use: ', expiryDate);
                 //================================================================
 
                 currentPoints = responseCheck.documents[0].PointsBalance;
-                console.log('Doc data: ', responseCheck.documents[0])
+                // console.log('Doc data: ', responseCheck.documents[0].$id + ' \n Doc ID: ' + pointsTable_id)
                 //Proceed to update the points tables
-                updateResponse = await databases.updateDocument(database_id, pointsTable_id, data.userId, { PointsBalance: (currentPoints + points), ExpiryDate: expiryDate })
+                updateResponse = await databases.updateDocument(database_id, pointsTable_id, responseCheck.documents[0].$id, { PointsBalance: (currentPoints + points), ExpiryDate: expiryDate })
             }
-            console.log('Points Table Updated', updateResponse);
+            // console.log('Points Table Updated', updateResponse);
         }
     } catch (err) {
         console.error('Error updating points table: ', err)

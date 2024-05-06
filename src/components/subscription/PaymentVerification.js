@@ -38,6 +38,7 @@ const PaymentResult = () => {
     const isNextOfKin = userInfo.labels.includes("kin");
 
     const transactionId = queryParams.get('transaction_id') || parseTransactionIdFromResp(queryParams.get('resp'));
+    // console.log('Transaction ID: ' + transactionId);
     const statusForPayment = queryParams.get('status');
     const tx_ref = queryParams.get('tx_ref');
     const statusMessage = parseMessageFromResp(queryParams.get('resp'))
@@ -63,7 +64,9 @@ const PaymentResult = () => {
                     // console.log('Verified Data from Flutterwave: ', data);
 
                     //Saving to database
-                    await saveTransactionData(data.transactionData);
+                    const saveTransaction = await saveTransactionData(data.transactionData);
+                    // console.log('Saved to database in transaction Table: ', saveTransaction);
+
 
                     // console.log('Transaction data - Client side: ', data);
                     setPaymentStatus(data.status);
@@ -74,12 +77,12 @@ const PaymentResult = () => {
                     if (data.transactionData.meta.couponCode) {
                         try {
                             const couponCode = data.transactionData.meta.couponCode
-                            console.log('Meta data: ', data.transactionData.meta.studentId);
+                            // console.log('Meta data: ', data.transactionData.meta.studentId);
                             await couponTrackerUpdate({ userId: isNextOfKin ? data.transactionData.meta.studentId : userInfo.userId, couponCode: couponCode });
-                            console.log('FLW-Coupon--UPDATE');
+                            // console.log('FLW-Coupon--UPDATE');
                         } catch (e) { console.error('Failed to update coupon table:', e) }
                     } else {
-                        // console.log('No coupon provided'); 
+                        // console.log('No coupon provided');
                     }
 
                     try {
@@ -185,7 +188,7 @@ const PaymentResult = () => {
         };
 
         verifyPayment();
-    }, [transactionId]);
+    }, []);
 
     // Function to parse and extract transactionId from 'resp'
     function parseTransactionIdFromResp(resp) {
@@ -204,7 +207,7 @@ const PaymentResult = () => {
         if (!resp) return null;
         try {
             const decodedResp = JSON.parse(decodeURIComponent(resp));
-            console.log('message respo: ', decodedResp)
+            // console.log('message respo: ', decodedResp)
             return JSON.stringify(decodedResp?.message) || null;
         } catch (error) {
             console.error('Error parsing resp:', error);
@@ -213,11 +216,13 @@ const PaymentResult = () => {
     }
 
 
-    //Function to save transaction data to transaction table
+    //Function to save transaction data to transaction table snf points to points table
     const saveTransactionData = async (data) => {
         try {
-            console.log('Saving transaction data: ', data);
+            // console.log('Saving transaction data: ', data);
             const existingTransaction = await databases.listDocuments(database_id, transactionTable_id, [Query.equal('transactionId', [`${data.id}`])]);
+
+            // console.log('Checking existing transaction: ', existingTransaction)
 
             if (existingTransaction.documents.length > 0) {
                 return;
@@ -248,12 +253,12 @@ const PaymentResult = () => {
                         transactionId: `${data.id}`,
                         paymentFor: data.meta.service,
                         description: data.meta.description,
-                        points: data.meta.points
+                        points: parseInt(data.meta.points, 10)
                     }
                 )
 
             } catch (e) {
-                // console.log('Update Transaction table error: ', e); throw e;
+                console.error('Update Transaction table error: ', e); throw e;
             }
 
             /*** ----------- Update Points tables ----------- ***/

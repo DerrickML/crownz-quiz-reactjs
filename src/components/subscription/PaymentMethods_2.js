@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
-import { Container, Row, Col, ButtonGroup, Button, Form, Alert, Card, Spinner } from 'react-bootstrap';
+import { InputGroup, Container, Row, Col, ButtonGroup, Button, Form, Alert, Card, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -98,7 +98,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
         if (finalPrice === 0) {
             try {
                 setLoader(true);
-                console.log('Student Information: ' + JSON.stringify(studentInfo))
+                // console.log('Student Information: ' + JSON.stringify(studentInfo))
                 var currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
                 let data = {
                     created_at: currentDateTime,
@@ -172,22 +172,46 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                                     <br />
                                     <strong>Price: UGX.</strong>{finalPrice}
                                 </Card.Text>
-                                <Card.Title>Apply Coupon</Card.Title>
+                                <Card.Title>Do you have a coupon?</Card.Title>
                                 <Form>
-                                    <Form.Group className="mb-3">
-                                        <Form.Label>Coupon/Token Code</Form.Label>
-                                        <Form.Control type="text" value={coupon} onChange={(e) => setCoupon(e.target.value)} placeholder="Enter coupon code" />
-                                        {
-                                            !couponLoader ? <Button
-                                                className=''
-                                                size='sm'
-                                                variant="outline-primary" onClick={handleApplyCoupon}>Apply</Button> :
-                                                <>
-                                                    <Spinner animation="grow" variant="primary" />
-                                                    <Spinner animation="grow" variant="secondary" />
-                                                    <Spinner animation="grow" variant="success" />
-                                                </>
-                                        }
+                                    <Form.Group className="mb-3" controlId="formCouponCode">
+                                        <Form.Label>Apply Coupon/Token Code</Form.Label>
+                                        <InputGroup>
+                                            <Form.Control
+                                                type="text"
+                                                value={coupon}
+                                                onChange={(e) => setCoupon(e.target.value)}
+                                                placeholder="Enter coupon code"
+                                                aria-describedby="button-apply-coupon"
+                                            />
+                                            <Button
+                                                variant="outline-primary"
+                                                size="sm"
+                                                id="button-apply-coupon"
+                                                onClick={handleApplyCoupon}
+                                                disabled={!coupon || couponLoader}  // Disable button when input is empty or loading
+                                            >
+                                                {couponLoader ? (
+                                                    <>
+                                                        <Spinner
+                                                            as="span"
+                                                            animation="border"
+                                                            size="sm"
+                                                            role="status"
+                                                            aria-hidden="true"
+                                                        />
+                                                        <span className="visually-hidden">Applying...</span>
+                                                    </>
+                                                ) : "Apply"}
+                                            </Button>
+                                        </InputGroup>
+                                        {couponLoader && (
+                                            <div className="mt-2">
+                                                <Spinner animation="grow" variant="primary" size="sm" />
+                                                <Spinner animation="grow" variant="secondary" size="sm" />
+                                                <Spinner animation="grow" variant="success" size="sm" />
+                                            </div>
+                                        )}
                                     </Form.Group>
                                     {couponError && <Alert variant="danger">{couponError}</Alert>}
                                 </Form>

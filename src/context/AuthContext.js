@@ -11,7 +11,7 @@ import {
 } from "../appwriteConfig.js";
 import db from '../db.js';
 import storageUtil from '../utilities/storageUtil.js';
-import { studentSubjectsData } from "../utilities/fetchStudentData";
+import { studentSubjectsData, fetchStudents, getAllStudentsIndexDB } from "../utilities/fetchStudentData";
 
 const AuthContext = createContext(null);
 
@@ -35,10 +35,6 @@ export const AuthProvider = ({ children }) => {
             console.error("No session to logout");
         }
 
-        setSessionInfo(null);
-        setUserInfo(null);
-        storageUtil.clear();
-
         // Clear userPoints from context and storage
         setUserPoints('');
         storageUtil.removeItem("userPoints");
@@ -46,10 +42,18 @@ export const AuthProvider = ({ children }) => {
         // Clear IndexedDB
         try {
             await db.delete();  // Clears all data from the Dexie database
-            console.log("IndexedDB cleared successfully");
+            // console.log("IndexedDB cleared successfully");
         } catch (error) {
             console.error("Error clearing IndexedDB:", error);
         }
+
+        // Clear rest of stored data
+        setSessionInfo(null);
+        setUserInfo(null);
+        storageUtil.clear();
+
+        // Clear session storage
+        sessionStorage.clear();
     };
 
     //LOGIN FUNCTION
@@ -93,7 +97,8 @@ export const AuthProvider = ({ children }) => {
             await updateUserSubjectData(userDetails.subjects, userDetails.educationLevel);
 
             // Fetch userPoints from the database after login
-            await fetchUserPoints(userDetails.userId, userDetails.educationLevel);
+            const fetchingPoints = await fetchUserPoints(userDetails.userId, userDetails.educationLevel);
+            // console.log('Fetching points: ', fetchingPoints)
 
             // After successful login, trigger the service worker to fetch exams
             if ('serviceWorker' in navigator) {
@@ -106,6 +111,20 @@ export const AuthProvider = ({ children }) => {
                 });
             }
 
+        }
+
+        //Fetch all students data
+        // console.log('TESTING 123...');
+        // await getAllStudentsIndexDB(userDetails.labels);
+
+        // console.log("Checking whether user is an admin or staff");
+        if (userDetails.labels.includes("admin") || userDetails.labels.includes("staff")) {
+            // console.log('Fetching student data');
+            await fetchStudents(true).then(data => {
+                // console.log('Students data Fetch successfully');
+            }).catch(error => {
+                console.error('Failed to fetch students');
+            });
         }
 
     };
@@ -225,19 +244,20 @@ export const AuthProvider = ({ children }) => {
                     console.error('Error updating subjects in the database:', error);
                 });
 
-            try {
-                if ('serviceWorker' in navigator) {
-                    const registration = await navigator.serviceWorker.ready;
-                    registration.active.postMessage({
-                        type: 'FETCH_EXAMS', // Custom event for the service worker
-                        subjects: [newSubject], // Array of subjects
-                        userId: userInfo.userId, // ID of the logged-in user
-                        educationLevel: userInfo.educationLevel, // User's education level
-                    });
-                }
-            } catch (error) {
-                console.error('Error fetching questions:', error);
-            }
+            // //SERVICE WORKER
+            // try {
+            //     if ('serviceWorker' in navigator) {
+            //         const registration = await navigator.serviceWorker.ready;
+            //         registration.active.postMessage({
+            //             type: 'FETCH_EXAMS', // Custom event for the service worker
+            //             subjects: [newSubject], // Array of subjects
+            //             userId: userInfo.userId, // ID of the logged-in user
+            //             educationLevel: userInfo.educationLevel, // User's education level
+            //         });
+            //     }
+            // } catch (error) {
+            //     console.error('Error fetching questions:', error);
+            // }
         }
     };
 

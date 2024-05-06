@@ -163,7 +163,7 @@ export const fetchQuestionsForSubject = async (subject) => {
 */
 export const generateRandomExam = async (questionsData, subjectName, userId, educationLevel) => {
 
-    console.log(`userId: ${userId}, educationLevel: ${educationLevel}`);
+    // console.log(`userId: ${userId}, educationLevel: ${educationLevel}`);
 
     if (!questionsData) {
         console.error('questionsData is required');
@@ -370,7 +370,7 @@ export const updateQuestionHistory = async (selectedQuestionsJSON) => {
  */
 export const updateQtnHistoryDb = async (data) => {
     try {
-        console.log('Updating question in DB...', data);
+        // console.log('Updating question in DB...', data);
 
         //First check if student exists in the database
         const response = await databases.listDocuments(database_id, updatedAttemptedQtnsTable_id,
@@ -380,7 +380,7 @@ export const updateQtnHistoryDb = async (data) => {
             ]
         )
 
-        console.log('Retrieving DB history', response)
+        // console.log('Retrieving DB history', response)
 
         if (response.documents.length > 0) {
             // update the history
@@ -399,7 +399,7 @@ export const updateQtnHistoryDb = async (data) => {
                 }
             )
 
-            console.log('Creating tracking record:', createNewTrackingRecord);
+            // console.log('Creating tracking record:', createNewTrackingRecord);
         }
     } catch (error) {
         console.error('Error updating question history: ', error);
@@ -422,7 +422,7 @@ export const retreiveQtnHistoryDb = async (data) => {
             ]
         )
 
-        console.log('Retrieving DB history', data)
+        // console.log('Retrieving DB history', data)
 
         if (response.documents.length > 0) {
             // update the history
@@ -440,7 +440,7 @@ export const retreiveQtnHistoryDb = async (data) => {
                 }
             )
 
-            console.log('Creating tracking record:', createNewTrackingRecord);
+            // console.log('Creating tracking record:', createNewTrackingRecord);
         }
 
         //Return questionsJSON

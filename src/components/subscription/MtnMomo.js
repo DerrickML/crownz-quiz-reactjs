@@ -290,7 +290,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
                     transactionId: `${data.id}`,
                     paymentFor: paymentFor,
                     description: 'Points Purchase',
-                    points: points
+                    points: parseInt(points, 10)
                 }
             )
         } catch (error) {
@@ -338,6 +338,7 @@ const MTNMomo = ({ propPrice, propPaymentFor, propStudentInfo }) => {
                 // console.log('Finshed to make payment...', paymentResponse);
 
                 // Verify payment status
+                // console.log('Verification ID:', paymentResponse.paymentRefId);
                 const verificatioStatusResponse = await verifyPaymentStatus(paymentResponse.paymentRefId, paymentResponse.momoTokenId);
                 // console.log('Verification status:', verificatioStatusResponse);
                 setMessage(`Payment successful!`);

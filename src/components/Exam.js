@@ -85,7 +85,7 @@ function Exam({ subject }) {
           delete obj.$collectionId
         });
 
-        console.log('Retrieved Exams: ', questionData);
+        // console.log('Retrieved Exams: ', questionData);
         setData(questionData); // Assign the fetched data to the variable
 
         // }
@@ -144,7 +144,7 @@ function Exam({ subject }) {
   };
 
   const subjectInstructions = () => {
-    console.log('Subject Name: ', subject);
+    // console.log('Subject Name: ', subject);
     return (
       subject === ('mathematics_ple' || 'mathematics_uce' || 'mathematics_uace') ?
         <>

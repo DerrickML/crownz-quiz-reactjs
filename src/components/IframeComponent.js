@@ -23,7 +23,7 @@ import { fetchAndUpdateResults } from "../utilities/resultsUtil";
 import { sendEmailToNextOfKin } from "../utilities/otherUtils.js";
 import { showToast } from "../utilities/toastUtil.js";
 import { useAuth } from '../context/AuthContext';
-import db from '../db.js'
+// import db from '../db.js'
 import useNetworkStatus from '../hooks/useNetworkStatus.js';
 import "./IframeComponent.css";
 
@@ -121,9 +121,9 @@ const IframeComponent = ({ url }) => {
                 kinEmail: userInfo.kinEmail ? userInfo.kinEmail : null,
               }
 
-              await db.examAnswers.add(data);
+              // await db.examAnswers.add(data);
 
-              console.log('Successfully saved ANSWERS to IndexDB')
+              // console.log('Successfully saved ANSWERS to IndexDB')
             } catch (e) {
               console.error('Error saving ANSWERS to index db: ', e)
             }

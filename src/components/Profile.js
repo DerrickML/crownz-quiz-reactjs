@@ -22,6 +22,8 @@ import storageUtil from "../utilities/storageUtil";
 import { fetchAndProcessStudentData } from "../utilities/fetchStudentData";
 import KinSignup from "./KinSignup";
 import HeroHeader from "./HeroHeader";
+import StudentList from './StudentList';
+
 import "./Home.css";
 
 const Profile = () => {
@@ -31,6 +33,7 @@ const Profile = () => {
   const sessionData = storageUtil.getItem("sessionInfo");
   const navigate = useNavigate();
   const [linkedStudents, setLinkedStudents] = useState([]);
+  const [activeTab, setActiveTab] = useState('personalDetails');
 
   useEffect(() => {
     const studentData = storageUtil.getItem("studentData");
@@ -61,66 +64,81 @@ const Profile = () => {
     startIndex + itemsPerPage
   );
 
+  // Handlers for Tab Navigation
+  const handleSelectTab = (tab) => {
+    setActiveTab(tab);
+  };
+
+  // const renderNextOfKinProfile = () => (
+  //   <Card className="shadow-sm mb-4 profile-card">
+  //     <Card.Header>
+  //       <FontAwesomeIcon icon={faUsers} className="me-2" />
+  //       Linked Students
+  //     </Card.Header>
+  //     <Card.Body>
+  //       <Card.Title>Linked Students</Card.Title>
+  //       {/* <Button onClick={() => { fetchAndProcessStudentData(userInfo.userId) }}>Update Students Data</Button> */}
+  //       <Table hover>
+  //         <thead>
+  //           <tr>
+  //             <th>No.</th>
+  //             <th>Name</th>
+  //             <th>Education Level</th>
+  //             {/* <th>Points Available</th> */}
+  //             <th>Actions</th>
+  //           </tr>
+  //         </thead>
+  //         <tbody>
+  //           {paginatedStudents.map((student, index) => (
+  //             <tr key={student.studID}>
+  //               <td>{startIndex + index + 1}</td>
+  //               <td>{student.studName}</td>
+  //               <td>{student.educationLevel}</td>
+  //               {/* <td>{student.pointsBalance}</td> */}
+  //               <td>
+  //                 <Button
+  //                   variant="dark"
+  //                   onClick={() =>
+  //                     navigate("/student-details", { state: { student } })
+  //                   }
+  //                 >
+  //                   View Details
+  //                 </Button>
+  //               </td>
+  //             </tr>
+  //           ))}
+  //         </tbody>
+  //       </Table>
+  //       <Nav aria-label="Page navigation">
+  //         <ul className="pagination">
+  //           {Array.from(
+  //             { length: Math.ceil(linkedStudents.length / itemsPerPage) },
+  //             (_, i) => (
+  //               <li
+  //                 key={i}
+  //                 className={`page-item ${currentPage === i + 1 ? "active" : ""
+  //                   }`}
+  //               >
+  //                 <Button variant="link" onClick={() => paginate(i + 1)}>
+  //                   {i + 1}
+  //                 </Button>
+  //               </li>
+  //             )
+  //           )}
+  //         </ul>
+  //       </Nav>
+  //     </Card.Body>
+  //   </Card>
+  // );
+
+
   const renderNextOfKinProfile = () => (
-    <Card className="shadow-sm mb-4 profile-card">
-      <Card.Header>
-        <FontAwesomeIcon icon={faUsers} className="me-2" />
-        Linked Students
-      </Card.Header>
-      <Card.Body>
-        <Card.Title>Linked Students</Card.Title>
-        {/* <Button onClick={() => { fetchAndProcessStudentData(userInfo.userId) }}>Update Students Data</Button> */}
-        <Table hover>
-          <thead>
-            <tr>
-              <th>No.</th>
-              <th>Name</th>
-              <th>Education Level</th>
-              {/* <th>Points Available</th> */}
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {paginatedStudents.map((student, index) => (
-              <tr key={student.studID}>
-                <td>{startIndex + index + 1}</td>
-                <td>{student.studName}</td>
-                <td>{student.educationLevel}</td>
-                {/* <td>{student.pointsBalance}</td> */}
-                <td>
-                  <Button
-                    variant="dark"
-                    onClick={() =>
-                      navigate("/student-details", { state: { student } })
-                    }
-                  >
-                    View Details
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-        <Nav aria-label="Page navigation">
-          <ul className="pagination">
-            {Array.from(
-              { length: Math.ceil(linkedStudents.length / itemsPerPage) },
-              (_, i) => (
-                <li
-                  key={i}
-                  className={`page-item ${currentPage === i + 1 ? "active" : ""
-                    }`}
-                >
-                  <Button variant="link" onClick={() => paginate(i + 1)}>
-                    {i + 1}
-                  </Button>
-                </li>
-              )
-            )}
-          </ul>
-        </Nav>
-      </Card.Body>
-    </Card>
+    <StudentList
+      StudentList={linkedStudents}
+      itemsPerPage={itemsPerPage}
+      currentPage={currentPage}
+      paginate={paginate}
+    />
   );
 
   const renderPersonalDetails = () => (
@@ -131,34 +149,44 @@ const Profile = () => {
       </Card.Header>
       <Card.Body>
         <ul className="list-group list-group-flush">
-          {userInfo.email ? (
-            <>
-              <li className="list-group-item">
-                <i className="bi bi-building me-2"></i>
-                <strong>Email:</strong> {userInfo.email}
-              </li>
-            </>
-          ) : null}
+          <li className="list-group-item">
+            <i className="bi me-2"></i>
+            <strong>Name: </strong> {userInfo.firstName} {userInfo.lastName} {userInfo.otherName || ""}
+          </li>
+          {
+            userInfo.email && (
+              <>
+                <li className="list-group-item">
+                  <i className="bi bi-building me-2"></i>
+                  <strong>Email:</strong> {userInfo.email}
+                </li>
+              </>
+            )
+          }
 
-          {userInfo.phone ? (
-            <>
-              <li className="list-group-item">
-                <i className="bi bi-geo-alt me-2"></i>
-                <strong>Phone:</strong> {userInfo.phone}
-              </li>
-            </>
-          ) : null}
-
-          {isStudent && (
-            userInfo.gender ? (
+          {
+            userInfo.phone && (
               <>
                 <li className="list-group-item">
                   <i className="bi bi-geo-alt me-2"></i>
-                  <strong>Gender:</strong> {userInfo.gender}
+                  <strong>Phone:</strong> {userInfo.phone}
                 </li>
               </>
-            ) : null
-          )}
+            )
+          }
+
+          {
+            isStudent && (
+              userInfo.gender && (
+                <>
+                  <li className="list-group-item">
+                    <i className="bi bi-geo-alt me-2"></i>
+                    <strong>Gender:</strong> {userInfo.gender}
+                  </li>
+                </>
+              )
+            )
+          }
 
           {/* Additional student-specific content */}
         </ul>
@@ -257,6 +285,7 @@ const Profile = () => {
   );
 
   // Hero Header
+
   const renderHeroHeader = () => (
     <HeroHeader>
       <div className="text-center">
@@ -287,76 +316,50 @@ const Profile = () => {
     <>
       {renderHeroHeader()}
       <Container>
-        <Nav variant="tabs" defaultActiveKey="personalDetails">
-          <li className="nav-item">
-            <a
-              className="nav-link active"
-              href="#personalDetails"
-              data-bs-toggle="tab"
-            >
-              Personal Details
-            </a>
-          </li>
+        <Nav variant="tabs" activeKey={activeTab} onSelect={handleSelectTab}>
+          <Nav.Item>
+            <Nav.Link eventKey="personalDetails">Personal Details</Nav.Link>
+          </Nav.Item>
           {isStudent && (
             <>
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  href="#educationDetails"
-                  data-bs-toggle="tab"
-                >
-                  Education Details
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  href="#nextOfKinDetails"
-                  data-bs-toggle="tab"
-                >
-                  Guardian Details
-                </a>
-              </li>
+              <Nav.Item>
+                <Nav.Link eventKey="educationDetails">Education Details</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="nextOfKinDetails">Guardian Details</Nav.Link>
+              </Nav.Item>
             </>
           )}
           {isNextOfKin && (
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href="#linkedStudents"
-                data-bs-toggle="tab"
-              >
-                Linked Students
-              </a>
-            </li>
+            <Nav.Item>
+              <Nav.Link eventKey="linkedStudents">Linked Students</Nav.Link>
+            </Nav.Item>
           )}
         </Nav>
         <Tab.Content>
-          <div className="tab-pane" id="personalDetails">
+          <Tab.Pane eventKey="personalDetails" active={activeTab === 'personalDetails'}>
             {renderPersonalDetails()}
-          </div>
-
+          </Tab.Pane>
           {isStudent && (
             <>
-              <div className="tab-pane" id="educationDetails">
+              <Tab.Pane eventKey="educationDetails" active={activeTab === 'educationDetails'}>
                 {renderStudentProfile()}
-              </div>
-              <div className="tab-pane" id="nextOfKinDetails">
+              </Tab.Pane>
+              <Tab.Pane eventKey="nextOfKinDetails" active={activeTab === 'nextOfKinDetails'}>
                 {renderNextOfKinDetails()}
-              </div>
+              </Tab.Pane>
             </>
           )}
-
           {isNextOfKin && (
-            <div className="tab-pane" id="linkedStudents">
+            <Tab.Pane eventKey="linkedStudents" active={activeTab === 'linkedStudents'}>
               {renderNextOfKinProfile()}
-            </div>
+            </Tab.Pane>
           )}
         </Tab.Content>
       </Container>
       <Modal show={showModal} onHide={toggleModal} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Add Next of Guardian</Modal.Title>
+          <Modal.Title>Add Guardian</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <KinSignup />
@@ -365,5 +368,6 @@ const Profile = () => {
     </>
   );
 };
+
 
 export default Profile;

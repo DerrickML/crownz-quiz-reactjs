@@ -225,6 +225,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
             marks: totalMarks,
             subject: subjectName,
             results: resultsString,
+            dateTime: moment().format('MMMM Do YYYY, h:mm:ss a'),
         }
 
         //================================ Check Internet Connection Status ================================
@@ -251,7 +252,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
 
                 await db.examAnswers.add(data);
 
-                console.log('Successfully saved ANSWERS to IndexDB')
+                // console.log('Successfully saved ANSWERS to IndexDB')
             } catch (e) {
                 console.error('Error saving ANSWERS to index db: ', e)
             }
@@ -271,7 +272,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
                 // Update the local storage with user information
                 let userFetchedResults = await fetchAndUpdateResults(userInfo.userId);
 
-                console.log('Updated user results: ' + JSON.stringify(userFetchedResults));
+                // console.log('Updated user results: ' + JSON.stringify(userFetchedResults));
             } catch (e) {
                 console.error('Error saving ANSWERS to cloud db');
             }

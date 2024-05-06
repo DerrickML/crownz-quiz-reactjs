@@ -24,7 +24,7 @@ import {
 import { showToast } from "../utilities/toastUtil.js";
 import { useAuth } from "../context/AuthContext.js";
 import { fetchAndUpdateResults } from "../utilities/resultsUtil";
-import { fetchAndProcessStudentData, studentSubjectsData } from "../utilities/fetchStudentData";
+import { fetchAndProcessStudentData, fetchStudents } from "../utilities/fetchStudentData";
 import {
   account,
   databases,
@@ -77,9 +77,10 @@ function Login() {
       await handleLogout();
     };
     clearSession();
-  }, []);
 
-  // await handleLogout();
+    // Clear session storage
+    sessionStorage.clear();
+  }, []);
 
   //Funstion to check for phone number validity
   const validatePhoneNumber = (phoneNumber) => {
@@ -173,10 +174,6 @@ function Login() {
           //Fetch student(s) results
           await fetchAndUpdateResults(session.userId);
 
-          //Fecth and process subjects data
-          // let enrolledSubjectsData = userInfo.subjects || [];
-          // await studentSubjectsData(enrolledSubjectsData, userInfo.educationLevel)
-
         }
 
         //Fetch all students' results linked to the next-of-kin and save to local storage
@@ -186,9 +183,7 @@ function Login() {
 
         // Check education Level data availability
         handleLoginSuccess(userInfo);
-        // Redirect to home page
-        // navigate("/");
-        // window.location.href = "/";
+
       } else if (loginMethod === "phone") {
         setOtpSubmitLoader(true);
         if (!userId) {
@@ -220,7 +215,7 @@ function Login() {
 
   const handleLoginSuccess = async (userInfo) => {
     const unavailableEducationLevels = ['UCE', 'UACE']; // Education levels
-    console.log('UnavailableEducationLevels', userInfo.educationLevel)
+    // console.log('UnavailableEducationLevels', unavailableEducationLevels)
     if (unavailableEducationLevels.includes(userInfo.educationLevel)) {
       setInfoModalContent({
         educationLevel: userInfo.educationLevel,
@@ -231,8 +226,26 @@ function Login() {
       setShowInfoModal(true);
       await handleLogout();
     } else {
-      navigate("/");  // Navigate to home page if data available
+      //Fetch all students data from server-side and save in indexdb
+      // console.log("LOGIN --- Checking whether user is an admin or staff");
+      if (userInfo.labels.includes("admin")) {
+        // console.log('Fetching student data... ', userInfo.labels);
+        // await fetchStudents().then(data => {
+        //   console.log('Students data Fetch successfully');
+        // }).catch(error => {
+        //   console.error('Failed to fetch students');
+        // });
+      }
+      else {
+        // console.log('Not admin');
+      }
     }
+
+    navigate("/");  // Navigate to home page if data available
+    // window.location.reload(); //Reloads the current window
+
+    // window.location.href = '/'; // Redirect to a specific URL
+
   };
 
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Row, Col, Card, Modal, Button } from "react-bootstrap";
+import { Spinner, Container, Row, Col, Card, Modal, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMicroscope,
@@ -27,10 +27,10 @@ import {
   faSquareRootAlt,
   faPencilRuler,
   faAtom,
+  faWarning,
 } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useAuth } from '../context/AuthContext';
-// import { studentEnrollSubject } from "../utilities/fetchStudentData";
 import storageUtil from "../utilities/storageUtil"; // Import storageUtil
 import "./ExamPage.css"; // Import custom CSS
 
@@ -65,10 +65,13 @@ const iconMapping = {
 function SelectExam() {
   const { userInfo, userPoints, userSubjectData, studentEnrollSubject } = useAuth();
 
+  // console.log('Points: ', userPoints);
+
   const navigate = useNavigate();
 
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [enrollSubject, setEnrollSubject] = useState(null);
+  const [enorll, setEnorll] = useState(false);
 
   // Get the subjects for the user's education level
   const subjects = userSubjectData || [];
@@ -94,152 +97,17 @@ function SelectExam() {
   };
 
   const handleEnrollment = async (subject) => {
-    // console.log('Enrollment: ', subject);
-    setEnrollSubject(null)
-    await studentEnrollSubject(userInfo.userDocId, subject.$id);
+    try {
+      setEnrollSubject(null)
+      await studentEnrollSubject(userInfo.userDocId, subject.$id);
+      setEnorll(true);
+    } catch (e) { console.error('Failed to enroll: ', e); } finally { setEnroll(false); }
   };
 
   const purchasePoints = () => {
     //Navigate to payment page
     navigate(`/select-package`)
   };
-
-  return (
-    <div className="exam-page-bg">
-      <Container className="py-5">
-        <h2 className="text-center mb-4">Select Your Exam Subject</h2>
-
-        {/* Enrolled Subjects */}
-        <h3 className="text-center mb-4 subject-header">Enrolled</h3>
-        <Row className="subject-row">
-          {isEnrolled ?
-            <>
-              {subjects.map((subject, index) => (
-                subject.enrolled && renderSubjectCard(subject, index, handleCardClick)
-              ))}
-            </> :
-            <Card>
-              <Card.Body>
-                <div className="text-center">
-                  <FontAwesomeIcon
-                    icon={faBookOpen}
-                    size="3x"
-                    className="text-muted"
-                  />
-                  <h5 className="mt-3">No Subject Enrolled for</h5>
-                  <p>
-                    Looks like you haven't enrolled for any subject. Ready to
-                    challenge yourself?
-                    Enroll for a subject
-                  </p>
-                </div>
-              </Card.Body>
-            </Card>
-          }
-        </Row>
-
-        {/* Not Enrolled Subjects */}
-        <h3 className="text-center mb-4 subject-header">Select and Enroll</h3>
-        <Row className="subject-row">
-          {subjects.map((subject, index) => (
-            !subject.enrolled && renderSubjectCard(subject, index, handleEnroll)
-          ))}
-        </Row>
-
-        <Modal
-          show={selectedSubject !== null}
-          onHide={() => setSelectedSubject(null)}
-          centered
-          style={{
-            borderColor: selectedSubject?.color || "rgb(6, 63, 90) ",
-          }}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>{selectedSubject?.name} Exam</Modal.Title>
-          </Modal.Header>
-          {/* {
-            userPoints < 1 ?
-              <>
-                <Modal.Body>
-                  <p>"Oops! Your access has expired. Renew your subscription to unlock this exam.</p>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button
-                    variant="secondary"
-                    onClick={() => setSelectedSubject(null)}
-                  >
-                    Close
-                  </Button>
-                  <Button
-                    onClick={purchasePoints}
-                    style={{
-                      backgroundColor: selectedSubject?.color || "rgb(6, 63, 90) ",
-                    }}
-                  >
-                    Subscibe to Exams
-                  </Button>
-                </Modal.Footer>
-              </>
-              : */}
-          <>
-            <Modal.Body>
-              <p>{selectedSubject?.description}</p>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button
-                variant="secondary"
-                onClick={() => setSelectedSubject(null)}
-              >
-                Close
-              </Button>
-              <Button
-                onClick={handleStartExam}
-                style={{
-                  backgroundColor: selectedSubject?.color || "rgb(6, 63, 90) ",
-                }}
-              >
-                Start Exam
-              </Button>
-            </Modal.Footer>
-          </>
-          {/* } */}
-        </Modal>
-
-        {/* Modal to enroll for a subject */}
-        <Modal
-          show={enrollSubject !== null}
-          onHide={() => setEnrollSubject(null)}
-          centered
-          style={{
-            borderColor: enrollSubject?.color || "rgb(6, 63, 90) ",
-          }}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Enroll for  {enrollSubject?.name}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>{enrollSubject?.description}</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button
-              variant="secondary"
-              onClick={() => setEnrollSubject(null)}
-            >
-              Close
-            </Button>
-            <Button
-              onClick={() => handleEnrollment(enrollSubject) && setEnrollSubject(null)}
-              style={{
-                backgroundColor: enrollSubject?.color || "rgb(6, 63, 90) ",
-              }}
-            >
-              Enroll
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </Container>
-    </div>
-  );
 
   function renderSubjectCard(subject, index, onClick) {
     const cardStyle = subject.enrolled
@@ -265,6 +133,172 @@ function SelectExam() {
       </Col>
     );
   }
+
+  const subscriptionNotification = () => {
+    return (
+      <Card className="text-center" border="warning">
+        <Card.Header as="h5" className="bg-warning text-white">
+          <FontAwesomeIcon icon={faWarning} className="me-2" />
+          Subscription Status
+        </Card.Header>
+        <Card.Body>
+          <Card.Title>Access Restricted</Card.Title>
+          <Card.Text>
+            It looks like your subscription has expired or you haven't subscribed yet. Subscribe now to regain access to all exams and continue enhancing your skills.
+          </Card.Text>
+          <Button variant="success" onClick={() => { navigate('/select-package') }}>
+            Subscribe Now
+          </Button>
+        </Card.Body>
+        <Card.Footer className="text-muted">Need help? Contact our support team.</Card.Footer>
+      </Card>
+
+    );
+  }
+
+  return (
+    <div className="exam-page-bg">
+      <Container className="py-5">
+        {
+          userPoints < 1 ?
+            <>{subscriptionNotification()}</>
+            :
+            <>
+              <h2 className="text-center mb-4">Select Your Exam Subject</h2>
+
+              {/* Enrolled Subjects */}
+              <h3 className="text-center mb-4 subject-header">Enrolled</h3>
+              <Row className="subject-row">
+                {isEnrolled ?
+                  <>
+                    {subjects.map((subject, index) => (
+                      subject.enrolled && renderSubjectCard(subject, index, handleCardClick)
+                    ))}
+                  </> :
+                  <Card>
+                    <Card.Body>
+                      <div className="text-center">
+                        <FontAwesomeIcon
+                          icon={faBookOpen}
+                          size="3x"
+                          className="text-muted"
+                        />
+                        <h5 className="mt-3">No Subject Enrolled for</h5>
+                        <p>
+                          Looks like you haven't enrolled for any subject. Ready to
+                          challenge yourself?
+                          Enroll for a subject
+                        </p>
+                      </div>
+                    </Card.Body>
+                  </Card>
+                }
+              </Row>
+
+              {/* Not Enrolled Subjects */}
+              <h3 className="text-center mb-4 subject-header">Select and Enroll</h3>
+              <Row className="subject-row">
+                {subjects.map((subject, index) => (
+                  !subject.enrolled && renderSubjectCard(subject, index, handleEnroll)
+                ))}
+              </Row>
+
+              <Modal
+                show={selectedSubject !== null}
+                onHide={() => setSelectedSubject(null)}
+                centered
+                style={{
+                  borderColor: selectedSubject?.color || "rgb(6, 63, 90) ",
+                }}
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>{selectedSubject?.name} Exam</Modal.Title>
+                </Modal.Header>
+                {
+                  userPoints < 1 ?
+                    <>
+                      <Modal.Body>
+                        <p>"Oops! Your access has expired. Renew your subscription to unlock this exam.</p>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button
+                          variant="secondary"
+                          onClick={() => setSelectedSubject(null)}
+                        >
+                          Close
+                        </Button>
+                        <Button
+                          onClick={purchasePoints}
+                          style={{
+                            backgroundColor: selectedSubject?.color || "rgb(6, 63, 90) ",
+                          }}
+                        >
+                          Subscibe to Exams
+                        </Button>
+                      </Modal.Footer>
+                    </>
+                    :
+                    <>
+                      <Modal.Body>
+                        <p>{selectedSubject?.description}</p>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button
+                          variant="secondary"
+                          onClick={() => setSelectedSubject(null)}
+                        >
+                          Close
+                        </Button>
+                        <Button
+                          onClick={handleStartExam}
+                          style={{
+                            backgroundColor: selectedSubject?.color || "rgb(6, 63, 90) ",
+                          }}
+                        >
+                          Start Exam
+                        </Button>
+                      </Modal.Footer>
+                    </>
+                }
+              </Modal>
+
+              {/* Modal to enroll for a subject */}
+              <Modal
+                show={enrollSubject !== null}
+                onHide={() => setEnrollSubject(null)}
+                centered
+                style={{
+                  borderColor: enrollSubject?.color || "rgb(6, 63, 90) ",
+                }}
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>Enroll for  {enrollSubject?.name}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <p>{enrollSubject?.description}</p>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button
+                    variant="secondary"
+                    onClick={() => setEnrollSubject(null)}
+                  >
+                    Close
+                  </Button>
+                  <Button
+                    onClick={() => handleEnrollment(enrollSubject) && setEnrollSubject(null)}
+                    style={{
+                      backgroundColor: enrollSubject?.color || "rgb(6, 63, 90) ",
+                    }}
+                  >
+                    Enroll
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            </>
+        }
+      </Container>
+    </div>
+  );
 
 }
 

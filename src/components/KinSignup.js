@@ -8,6 +8,7 @@ import {
   Col,
   Card,
   Spinner,
+  Alert
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import useUpdateUserInfo from "../hooks/useUpdateUserInfo.js";
@@ -484,18 +485,38 @@ const KinSignup = ({ userInfoProp, onCompletion, studSignUp }) => {
           </>
         )}
 
-        <Button variant="primary" type="submit" disabled={signupLoader}>
-          {signupLoader ? (
-            <Spinner
-              as="span"
-              animation="border"
-              size="sm"
-              role="status"
-              aria-hidden="true"
-            />
-          ) : null}
-          {activeTab === "link" ? " Link to Guardian" : " Create and Link to New Guardian Account"}
-        </Button>
+        <>
+          <Alert variant="success">
+            <p className="mb-0">
+              <Button variant="primary" type="submit" disabled={signupLoader}>
+                {signupLoader ? (
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />
+                ) : null}
+                {activeTab === "link" ? " Link to Guardian" : " Create and Link to New Guardian Account"}
+              </Button>
+            </p>
+            <hr />
+            {activeTab === "create" ?
+              <>
+                <p>
+                  The login credentials to the guardians account will be sent to their email you provided.
+                </p>
+              </>
+              :
+              <>
+                <p>
+                  An email will be sent to the provided email address notifyng them you've added them as your guardian.
+                </p>
+              </>
+            }
+          </Alert>
+        </>
       </Form>
     );
   };

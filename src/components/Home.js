@@ -11,6 +11,8 @@ import HeroHeader from "./HeroHeader";
 import "./Home.css";
 import StudentDashboard from "./dashboard/StudentDashboard";
 import NextOfKinDashboard from "./dashboard/NextOfKinDashboard";
+import AdminDashboard from "./dashboard/AdminDashboard";
+import { fetchStudents } from "../utilities/fetchStudentData";
 
 function Home() {
   const navigate = useNavigate();
@@ -18,16 +20,18 @@ function Home() {
   // const userInfo = storageUtil.getItem("userInfo");
   const isStudent = userInfo.labels.includes("student");
   const isNextOfKin = userInfo.labels.includes("kin");
+  const isAdmin = userInfo.labels.includes("admin");
   const isSales = userInfo.labels.includes("sales") || userInfo.labels.includes("admin");
 
   const testFunc = async () => {
-    if ('serviceWorker' in navigator) {
-      const registration = await navigator.serviceWorker.ready;
-      registration.active.postMessage({
-        type: 'FETCH_EXAMS', // Custom event for the service worker
-        subjects: userInfo.subjects, // Array of subjects
-        userId: userInfo.userId, // ID of the logged-in user
-        educationLevel: userInfo.educationLevel, // User's education level
+    //Fetch all students data
+    console.log("Checking whether user is an admin or staff");
+    if (userInfo.labels.includes("admin") || userInfo.labels.includes("staff")) {
+      console.log('Fetching student data');
+      await fetchStudents().then(data => {
+        console.log('Students data Fetch successfully');
+      }).catch(error => {
+        console.error('Failed to fetch students');
       });
     }
   }
@@ -98,9 +102,13 @@ function Home() {
     <>
       {renderHeroHeader()}
       <Container fluid>
-        {isStudent && <StudentDashboard />}
-        {isNextOfKin && <NextOfKinDashboard />}
-      </Container>
+        {isAdmin ? <AdminDashboard /> :
+          <>
+            {isStudent && <StudentDashboard />}
+            {isNextOfKin && <NextOfKinDashboard />}
+          </>
+        }
+      </Container >
     </>
   );
 }

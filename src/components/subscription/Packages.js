@@ -10,18 +10,6 @@ const Packages = ({ studentInfo }) => {
     const [showModal, setShowModal] = useState(false);
     const [selectedPackage, setSelectedPackage] = useState(null);
     const packages = [
-        // {
-        //     tier: 'Weekly Package',
-        //     points: 1000,
-        //     price: 5000,
-        //     // quizzes: 5,
-        //     duration: 7,
-        //     features: [
-        //         // '100 points',
-        //         // `Attempt up to 5 exams`,
-        //         'Expires in 7 days',
-        //     ]
-        // },
         {
             tier: 'Holiday Package',
             points: 1000,
@@ -31,7 +19,7 @@ const Packages = ({ studentInfo }) => {
             features: [
                 // '340 points',
                 // `Attempt up to 17 exams`,
-                'Valid till June 5th, 2024',
+                'Valid untill June 5th, 2024',
             ],
         },
         {
@@ -61,7 +49,7 @@ const Packages = ({ studentInfo }) => {
             style={{ backgroundColor: 'hsl(240, 78%, 98%)' }}
         >
             <Row className="justify-content-md-center">
-                <h2 className="text-center" style={{ paddingTop: '30px' }}>Choose Your Pack</h2>
+                <h2 className="text-center" style={{ paddingTop: '30px' }}>Choose Your Package</h2>
                 <div className="packages-container">
                     {packages.map((pkg, idx) => (
                         <Col key={idx} md={3} className="mb-3">

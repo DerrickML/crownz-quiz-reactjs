@@ -127,16 +127,23 @@ function SignUp() {
 
   // Handles the form submission
   const handleSubmit = async (event) => {
+
     event.preventDefault();
+
+    console.log('signup 1')
 
     // Validate phone numbers
     const isUserPhoneValid = !validatePhoneNumber(phone);
     setPhoneError(!isUserPhoneValid);
 
+    console.log('signup 2')
+
     if (!isUserPhoneValid) {
       setSignupLoader(false);
       return;
     }
+
+    console.log('signup 3')
 
     // Check if password is strong enough and matches
     if (signupMethod === 'email' && (passwordStrength < 3 || !passwordMatch)) {
@@ -144,6 +151,8 @@ function SignUp() {
       showToast("Please ensure your password is strong and matches", "error");
       return;
     }
+
+    console.log('signup 4 ')
 
     try {
       setSignupLoader(true);

@@ -8,7 +8,89 @@ import {
   subjectsTable_id,
   Query,
 } from "../appwriteConfig.js";
+import { serverUrl } from "../config.js"
+import db from '../db.js';
 import storageUtil from "./storageUtil"; // Import storageUtil
+
+
+/**
+ * @param {boolean} refresh - refresh state
+*/
+export const fetchStudents = async (refresh = false) => {
+  try {
+    console.log('Initiating fetch process, refresh:', refresh);
+
+    if (refresh) {
+      console.log('Fetching from database due to refresh flag.');
+      const response = await fetch(`${serverUrl}/db/fetch-students`);
+      const data = await response.json();
+      if (response.ok) {
+        console.log('Data fetched successfully: ', data);
+        await updateLocalDatabase(data.data);
+        console.log('Data fetched from database and updated locally.');
+        return data.data;
+      } else {
+        throw new Error(data.message || 'Error fetching data from the database');
+      }
+    } else {
+      console.log('Fetching from local file.');
+      const response = await fetch(`${serverUrl}/query/students`);
+      const data = await response.json();
+      if (response.ok) {
+        console.log('Data fetched successfully: ', data);
+        await updateLocalDatabase(data);
+        console.log('Data fetched from file and saved to local database.');
+        return data;
+      } else {
+        console.warn('Failed to fetch from local file, trying the database refresh.');
+        return fetchStudents(true); // Recursive call with refresh true
+      }
+    }
+  } catch (error) {
+    console.error('Error fetching students:', error);
+    throw error;
+  }
+};
+
+
+//Update Index DB in local database
+async function updateLocalDatabase(studentData) {
+  try {
+    await db.transaction('rw', db.students, async () => {
+      // Clear the existing entries in the students table
+      await db.students.clear();
+
+      // console.log('Saving to IndexDB ... ');
+      // Bulk put the new data after clearing the table
+      const savingToIndexDB = await db.students.bulkPut(studentData.map(student => ({
+        ...student,
+        gender: student.gender.toLowerCase(),
+        firstName: student.firstName.toLowerCase(),
+        lastName: student.lastName.toLowerCase(),
+        otherName: student.otherName ? student.otherName.toLowerCase() : '',
+        studName: toTitleCase(student.studName),
+        schoolName: toTitleCase(student.schoolName),
+        schoolAddress: toTitleCase(student.schoolAddress),
+        Results: JSON.stringify(student.Results.map(result => ({
+          subject: result.subject,
+          score: result.score,
+          resultDetails: result.resultDetails,
+          dateTime: result.dateTime
+        })))
+      })));
+
+      // console.log('IndexDB response: ', savingToIndexDB);
+    });
+  } catch (error) {
+    console.error('Error updating, error:', error);
+  }
+}
+
+
+function toTitleCase(text) {
+  if (!text) return '';
+  return text.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+}
 
 /**
  * Fetches and processes student and their results data.
@@ -59,7 +141,6 @@ export const fetchAndProcessStudentData = async (kinID) => {
     console.error("Error fetching and processing student data:", error);
   }
 };
-
 
 /**
  * Fetches students linked to a specific next-of-kin.
@@ -162,7 +243,7 @@ export const fetchAllSubjectsData = async (educationLevel) => {
       return response.documents
     }
   } catch (error) {
-    console.log('All Subjects Data Error: ', error);
+    // console.log('All Subjects Data Error: ', error);
     throw new Error(`ALL Subjects Data Error: ${error}`);
   };
 };
@@ -184,7 +265,7 @@ export const studentSubjectsData = async (enrolledSubjectsData, educationLevel) 
     return allSubjectsData;
 
   } catch (error) {
-    console.log('Student Subjects Data Error: ', error);
+    // console.log('Student Subjects Data Error: ', error);
     console.error('Student Subjects Data Error: ', error)
   }
 }
@@ -234,3 +315,19 @@ const formatDate = (dateTime) => {
     console.error('Failed to format DATE. ' + err);
   }
 };
+
+/**
+ * Retrive data from index database
+ */
+export const getAllStudentsIndexDB = async (labels) => {
+  //Fetch all students data
+  // console.log("Checking whether user is an admin or staff");
+  if (labels.includes("admin") || labels.includes("staff")) {
+    // console.log('Fetching student data');
+    await fetchStudents().then(data => {
+      // console.log('Students data Fetch successfully');
+    }).catch(error => {
+      console.error('Failed to fetch students');
+    });
+  }
+}
