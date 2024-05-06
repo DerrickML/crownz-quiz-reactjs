@@ -31,7 +31,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useAuth } from '../context/AuthContext';
-import storageUtil from "../utilities/storageUtil"; // Import storageUtil
+import Loader from './Loader';
 import "./ExamPage.css"; // Import custom CSS
 
 // Map the icon string from JSON to the actual FontAwesomeIcon component
@@ -71,7 +71,7 @@ function SelectExam() {
 
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [enrollSubject, setEnrollSubject] = useState(null);
-  const [enorll, setEnorll] = useState(false);
+  const [enroll, setEnroll] = useState(false);
 
   // Get the subjects for the user's education level
   const subjects = userSubjectData || [];
@@ -98,10 +98,12 @@ function SelectExam() {
 
   const handleEnrollment = async (subject) => {
     try {
+      setEnroll(true);
       setEnrollSubject(null)
       await studentEnrollSubject(userInfo.userDocId, subject.$id);
-      setEnorll(true);
-    } catch (e) { console.error('Failed to enroll: ', e); } finally { setEnroll(false); }
+    } catch (e) { console.error('Failed to enroll: ', e); } finally {
+      setEnroll(false);
+    }
   };
 
   const purchasePoints = () => {
@@ -196,13 +198,22 @@ function SelectExam() {
               </Row>
 
               {/* Not Enrolled Subjects */}
-              <h3 className="text-center mb-4 subject-header">Select and Enroll</h3>
-              <Row className="subject-row">
-                {subjects.map((subject, index) => (
-                  !subject.enrolled && renderSubjectCard(subject, index, handleEnroll)
-                ))}
-              </Row>
+              {enroll ?
+                <>
+                  <h3 className="text-center mb-4 subject-header">Enrolling ...</h3>
+                  <Loader />
+                </>
+                :
+                <>
+                  <h3 className="text-center mb-4 subject-header">Select and Enroll</h3>
+                  <Row className="subject-row">
+                    {subjects.map((subject, index) => (
+                      !subject.enrolled && renderSubjectCard(subject, index, handleEnroll)
+                    ))}
+                  </Row>
+                </>}
 
+              {/* Modal to start an exam */}
               <Modal
                 show={selectedSubject !== null}
                 onHide={() => setSelectedSubject(null)}
