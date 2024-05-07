@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, Button, Container, Row, Col, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGem } from '@fortawesome/free-solid-svg-icons';
+import moment from 'moment';
 import PaymentMethods from './PaymentMethods_2';
 import './Packages.css';
 // import OrderSummery2 from './OrderSummery2'
@@ -16,6 +17,7 @@ const Packages = ({ studentInfo }) => {
             price: 20000,
             // quizzes: 17,
             duration: 30,
+            expiryDate: moment.tz('2024-06-05 23:59:59.999', 'YYYY-MM-DD HH:mm:ss.SSS', 'Africa/Nairobi').toDate(),
             features: [
                 // '340 points',
                 // `Attempt up to 17 exams`,
@@ -28,6 +30,7 @@ const Packages = ({ studentInfo }) => {
             price: 70000,
             // quizzes: 1000,
             duration: 366,
+            expiryDate: moment.tz('2024-12-31 23:59:59.999', 'YYYY-MM-DD HH:mm:ss.SSS', 'Africa/Nairobi').toDate(),
             features: [
                 // `Attempt up to 1,000`,
                 'Valid until 31st December, 2024',
