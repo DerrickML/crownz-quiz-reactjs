@@ -115,20 +115,23 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
             .toLowerCase();
 
         let score = 0;
+        let maxScore = 0;
 
         switch (type) {
             case 'multipleChoice':
+                maxScore = mark || 1;
                 if (userAnswer && correctAnswer.map(normalizeGeneral).includes(normalizeGeneral(userAnswer))) {
-                    score = mark || 1; // Use mark if provided, otherwise default to 1
+                    score = mark || 1;
                 }
                 break;
             case 'text':
+                maxScore = mark || 1;
                 if (userAnswer && correctAnswer.map(normalizeText).includes(normalizeText(userAnswer))) {
-                    score = mark || 1; // Use mark if provided, otherwise default to 1
+                    score = mark || 1;
                 }
                 break;
             case 'check_box':
-                const maxScore = mark || correctAnswer.length;
+                maxScore = mark || correctAnswer.length;
                 if (userAnswer && userAnswer.length <= maxScore) {
                     userAnswer.forEach(userOption => {
                         if (correctAnswer.map(normalizeGeneral).includes(normalizeGeneral(userOption))) {
@@ -144,13 +147,14 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
         // Calculate marks for subquestions
         if (sub_questions) {
             sub_questions.forEach(subQ => {
-                score += calculateMarks(subQ, subQ.user_answer);
+                const subResult = calculateMarks(subQ, subQ.user_answer);
+                score += subResult.score;
+                maxScore += subResult.maxScore;
             });
         }
 
-        return score;
+        return { score, maxScore };
     };
-
 
     const findUserAnswer = (questionId, categoryId, questionType) => {
         // console.log('CHECK reduxState in findUserAnswer: ', reduxState);
@@ -193,27 +197,31 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
 
     const formatAnswersForSaving = () => {
         let totalMarks = 0;
+        let totalPossibleMarks = 0;
+
+        console.log(modifiedSelectedQuestions);
         const formattedAnswers = modifiedSelectedQuestions.map(category => ({
             ...category,
             questions: category.questions.flatMap(question => {
                 if (question.either && question.or) {
-                    // Process each part of the either/or question
                     const updatedEither = formatAnswersForEitherOrQuestion(question.either, category.category);
                     const updatedOr = formatAnswersForEitherOrQuestion(question.or, category.category);
 
-                    // Include the part with a user answer, or both if both are answered
                     const partsToInclude = [];
                     if (updatedEither.user_answer !== null) {
+                        const eitherResult = calculateMarks(updatedEither, updatedEither.user_answer);
                         partsToInclude.push(updatedEither);
-                        totalMarks += calculateMarks(updatedEither, updatedEither.user_answer);
+                        totalMarks += eitherResult.score;
+                        totalPossibleMarks += eitherResult.maxScore;
                     }
                     if (updatedOr.user_answer !== null) {
+                        const orResult = calculateMarks(updatedOr, updatedOr.user_answer);
                         partsToInclude.push(updatedOr);
-                        totalMarks += calculateMarks(updatedOr, updatedOr.user_answer);
+                        totalMarks += orResult.score;
+                        totalPossibleMarks += orResult.maxScore;
                     }
                     return partsToInclude;
                 } else {
-                    // Handle normal questions
                     const updatedQuestion = {
                         ...question,
                         user_answer: findUserAnswer(question.id, category.category, question.type),
@@ -221,19 +229,25 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
                             ? appendUserAnswersToSubQuestions(question.sub_questions, category.category)
                             : [],
                     };
-                    totalMarks += calculateMarks(updatedQuestion, updatedQuestion.user_answer);
+                    const result = calculateMarks(updatedQuestion, updatedQuestion.user_answer);
+                    totalMarks += result.score;
+                    totalPossibleMarks += result.maxScore;
                     return [updatedQuestion];
                 }
             }).flat(),
         }));
 
-        //// console.log('Total Marks:', totalMarks);
+        // Logging can be toggled on for debugging
+        // console.log('Total Marks:', totalMarks);
+        // console.log('Total Possible Marks:', totalPossibleMarks);
         // console.log('Formatted Answers:', formattedAnswers);
-        return { formattedAnswers, totalMarks };
+
+        return { formattedAnswers, totalMarks, totalPossibleMarks };
     };
 
+
     const handleSave = async () => {
-        let { formattedAnswers, totalMarks } = formatAnswersForSaving();
+        let { formattedAnswers, totalMarks, totalPossibleMarks } = formatAnswersForSaving();
 
         onSubmit();
 
@@ -245,6 +259,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
             marks: totalMarks,
             subject: subjectName,
             results: resultsString,
+            totalPossibleMarks: totalPossibleMarks,
             dateTime: moment().format('MMMM Do YYYY, h:mm:ss a'),
         }
 
@@ -266,6 +281,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
                     subject: subjectName,
                     marks: totalMarks,
                     results: resultsString,
+                    totalPossibleMarks: totalPossibleMarks ? totalPossibleMarks : null,
                     dateTime: moment().format('MMMM Do YYYY, h:mm:ss a'),
                     kinEmail: userInfo.kinEmail ? userInfo.kinEmail : null,
                 }
@@ -307,7 +323,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
         let attemptDate = formatDate((new Date()));
 
         if (totalMarks === 0) { totalMarks = '0' }
-        navigate('/answers', { state: { questionsData, subjectName, totalMarks, attemptDate } });
+        navigate('/answers', { state: { questionsData, subjectName, totalMarks, totalPossibleMarks, attemptDate } });
     };
 
     return (

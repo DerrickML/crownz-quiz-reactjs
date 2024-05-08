@@ -126,6 +126,7 @@ export const fetchAndProcessStudentData = async (kinID) => {
           Results: results.map((result) => ({
             subject: result.subject,
             score: result.marks,
+            totalPossibleMarks: result.totalPossibleMarks,
             resultDetails: result.results,
             dateTime: formatDate(result.$createdAt),
           })),

@@ -46,7 +46,8 @@ export const getTransformedResults = (studentId) => {
   userResults.forEach((doc) => {
     const subject = doc.subject;
     const dateTime = formatDate(doc.$createdAt);
-    const score = doc.marks + "%";
+    const score = doc.marks;
+    const totalPossibleMarks = doc.totalPossibleMarks;
 
     if (!resultsMap.has(subject)) {
       resultsMap.set(subject, { subject, attempts: [] });
@@ -55,6 +56,7 @@ export const getTransformedResults = (studentId) => {
     resultsMap.get(subject).attempts.push({
       dateTime,
       score,
+      totalPossibleMarks,
       subject,
       resultDetails: doc.results,
     });

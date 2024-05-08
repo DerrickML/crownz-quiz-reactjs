@@ -14,15 +14,26 @@ const StudentDashboard = () => {
   const { userInfo } = useAuth();
   const [results, setResults] = useState([]);
 
-  const viewResults = (resultDetails, subjectName, totalMarks, attemptDate) => {
+  // const viewResults = (resultDetails, subjectName, totalMarks, attemptDate) => {
+  //   if (subjectName === "English Language") {
+  //     navigate("/exam-results", { state: { results: resultDetails } });
+  //   }
+  //   else {
+  //     const questionsData = JSON.parse(resultDetails);
+  //     navigate('/answers', { state: { questionsData, subjectName, totalMarks, attemptDate } });
+  //   }
+  // };
+
+  //To view student results
+  function viewResults(resultDetails, subjectName, totalMarks, totalPossibleMarks, attemptDate) {
+    // console.log(`total marks: ${totalMarks}, possible marks: ${totalPossibleMarks}`);
     if (subjectName === "English Language") {
       navigate("/exam-results", { state: { results: resultDetails } });
-    }
-    else {
+    } else {
       const questionsData = JSON.parse(resultDetails);
-      navigate('/answers', { state: { questionsData, subjectName, totalMarks, attemptDate } });
+      navigate('/answers', { state: { questionsData, subjectName, totalMarks, totalPossibleMarks, attemptDate } }); // questionsData, subjectName, totalMarks, attemptDate, totalPossibleMarks 
     }
-  };
+  }
 
   useEffect(() => {
     const userId = userInfo?.userId;

@@ -1,72 +1,77 @@
-//  AnswerContainer.js
 import React, { useState, useEffect } from 'react';
-import { Col, Row, ButtonGroup, Button, Card, Container, ListGroup, Alert } from 'react-bootstrap';
+import { Container, Card, ListGroup, Alert } from 'react-bootstrap';
 import AnswerCard from './AnswerCard';
 
-const AnswerContainer = ({ questionsData, subjectName, totalMarks, attemptDate }) => {
-
+const AnswerContainer = ({ questionsData, subjectName, totalMarks, totalPossibleMarks, attemptDate }) => {
     let subject_Name = subjectName === "sst_ple" ? "Social Studies" : (subjectName === "math_ple" ? "Mathematics" : (subjectName === "sci_ple" ? "Science" : subjectName));
 
-    // console.log('Attempted questions', questionsData);
-
-    // Extract category IDs dynamically from questionsData
-    const categoriesToInclude = questionsData.map(category => category.category);
-
-    const [resultsData, setResultsData] = useState([]);
+    const [percentageScore, setPercentageScore] = useState('');
 
     useEffect(() => {
-        questionsData.sort((a, b) => a.category - b.category);
-        setResultsData(questionsData);
+        const calculatePercentageScore = () => {
+            let totalScore = parseFloat(totalMarks);
+            let totalPossibleScore = parseFloat(totalPossibleMarks);
+            // console.log(`Total Score: ${totalScore}, Possible Score: ${totalPossibleScore}`);
 
-    }, []); // Empty dependency array to run only once
+            if (isNaN(totalScore)) {
+                // console.log('Invalid score values');
+                return null;
+            }
 
+            if (totalPossibleScore === 0 || isNaN(totalPossibleScore)) {
+                // console.log('Total possible score is 0, cannot calculate percentage');
+                return totalScore;
+            }
+
+            let percentage = (totalScore / totalPossibleScore) * 100;
+            let roundedPercentage = Math.round(percentage * 10) / 10;
+            // console.log('Percentage calculated: ' + roundedPercentage + '%');
+            return `${roundedPercentage} %`;
+        };
+
+        if (totalMarks && totalPossibleMarks) {
+            setPercentageScore(calculatePercentageScore());
+        }
+    }, [totalMarks, totalPossibleMarks]); // Dependency array to re-calculate when marks change
 
     return (
         <Container>
             <Card className="my-4">
-                <Card.Header >Exam Results</Card.Header>
-                <Card.Body >
+                <Card.Header>Exam Results</Card.Header>
+                <Card.Body>
                     <Card.Subtitle>
                         <ListGroup as="ol">
-                            {subject_Name ? (<ListGroup.Item as="li">Subject: <span style={{ fontStyle: 'normal !important', fontSize: 'medium' }}>{subject_Name}</span></ListGroup.Item>) : null}
-                            {totalMarks ? (<ListGroup.Item as="li">Score: <span style={{ fontStyle: 'normal !important', fontSize: 'medium' }}>{totalMarks}</span></ListGroup.Item>) : null}
-                            {attemptDate ? (<ListGroup.Item as="li">Date of Exam Submission: <span style={{ fontStyle: 'normal !important', fontSize: 'medium' }}>{attemptDate}</span></ListGroup.Item>) : null}
+                            {subject_Name && (
+                                <ListGroup.Item as="li">Subject: <span>{subject_Name}</span></ListGroup.Item>
+                            )}
+                            {percentageScore && (
+                                <ListGroup.Item as="li">Score: <span>{percentageScore}</span></ListGroup.Item>
+                            )}
+                            {attemptDate && (
+                                <ListGroup.Item as="li">Date of Exam Submission: <span>{attemptDate}</span></ListGroup.Item>
+                            )}
                         </ListGroup>
                     </Card.Subtitle>
                 </Card.Body>
             </Card>
-            {resultsData.map((category, index) => (
+            {questionsData.map((category, index) => (
                 <Card key={index} style={{ margin: "5px" }}>
-                    {/* <h2>{category.category}</h2> */}
                     <h3>{category.instructions}</h3>
-
-                    {/* {
-                        subjectName === 'Social Studies' && (category.category === 36 || category.category === 51) ? <p>Answered questions: {category.questions.length}/5</p> : null
-                    } */}
-
-                    {
-                        category.questions.length === 0 ? <Alert>No questions attempted</Alert> : subjectName === 'Social Studies' && (category.category === 36 || category.category === 51) ? <Alert>Attempted questions: {category.questions.length}/5</Alert> : null
-                    }
-
-                    {category.questions.map((question, questionIndex) => {
-                        // Check if the question format is 'either' or 'or', otherwise just pass the question
-                        let questionProps = question.hasOwnProperty('either') && question.hasOwnProperty('or')
-                            ? question
-                            : question;
-                        // Add category ID to questionProps
-                        questionProps = { ...questionProps, categoryId: category.category };
-                        return (
-                            <>
+                    {category.questions.length === 0 ? (
+                        <Alert>No questions attempted</Alert>
+                    ) : (
+                        category.questions.map((question, questionIndex) => (
+                            <React.Fragment key={questionIndex}>
                                 <div>{category.category + questionIndex}</div>
                                 <AnswerCard
                                     key={question.id || `${category.$id}_${questionIndex}`}
                                     category_Id={category.category}
                                     questionIndex={questionIndex}
-                                    resultsData={questionProps}
+                                    resultsData={question}
                                 />
-                            </>);
-
-                    })}
+                            </React.Fragment>
+                        ))
+                    )}
                 </Card>
             ))}
         </Container>

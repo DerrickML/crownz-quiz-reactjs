@@ -12,6 +12,27 @@ const RecentResults = ({ results, onViewResults }) => {
     .sort((a, b) => new Date(b.dateTime) - new Date(a.dateTime)) // Use dateTime instead of date
     .slice(0, 5);
 
+  const calculatePercentageScore = (totalMarks, totalPossibleMarks) => {
+    let totalScore = parseFloat(totalMarks);
+    let totalPossibleScore = parseFloat(totalPossibleMarks);
+    // console.log(`Total Score: ${totalScore}, Possible Score: ${totalPossibleScore}`);
+
+    if (isNaN(totalScore)) {
+      // console.log('Invalid score values');
+      return null;
+    }
+
+    if (totalPossibleScore === 0 || isNaN(totalPossibleScore)) {
+      // console.log('Total possible score is 0, cannot calculate percentage');
+      return totalScore;
+    }
+
+    let percentage = (totalScore / totalPossibleScore) * 100;
+    let roundedPercentage = Math.round(percentage * 10) / 10;
+    // console.log('Percentage calculated: ' + roundedPercentage + '%');
+    return `${roundedPercentage} %`;
+  };
+
   return (
     <Card className="mb-4">
       <Card.Header>Most Recent Results</Card.Header>
@@ -30,20 +51,14 @@ const RecentResults = ({ results, onViewResults }) => {
               <tr key={idx}>
                 <td>{attempt.subject === "sst_ple" ? "Social Studies" : (attempt.subject === "math_ple" ? "Mathematics" : (attempt.subject === "sci_ple" ? "Science" : attempt.subject))}</td>
                 <td>{attempt.dateTime}</td>
-                <td>{attempt.score}</td>
+                {/* <td>{attempt.score}</td> */}
+                <td>{calculatePercentageScore(attempt.score, attempt.totalPossibleScore)}</td>
                 <td>
                   {attempt.resultDetails ? (
-                    // <Button
-                    //   variant="primary"
-                    //   onClick={() => onViewResults(attempt.resultDetails, attempt.subject, attempt.score, attempt.dateTime)}
-                    // >
-                    //   <FontAwesomeIcon icon={faEye} className="me-2" />
-                    //   View Exam
-                    // </Button>
                     <Button
                       className='btn-cancel'
                       variant="dark"
-                      onClick={() => onViewResults(attempt.resultDetails, attempt.subject, attempt.score, attempt.dateTime)}
+                      onClick={() => onViewResults(attempt.resultDetails, attempt.subject, attempt.score, attempt.totalPossibleScore, attempt.dateTime)}
                     >
                       <FontAwesomeIcon icon={faEye} className="me-2" />
                       Exam Results

@@ -14,11 +14,13 @@ const Answers = () => {
     const isAdmin = userInfo.labels.includes("admin");
     const isNextOfKin = userInfo.labels.includes("kin");
     const navigate = useNavigate();
-    const { questionsData, subjectName, totalMarks, attemptDate } = location.state || { questionsData: [], subjectName: '', totalMarks: 0, attemptDate: '' };
+    const { questionsData, subjectName, totalMarks, attemptDate, totalPossibleMarks } = location.state || { questionsData: [], subjectName: '', totalMarks: 0, totalPossibleMarks: null, attemptDate: '' };
+
+    console.log(`subjectName: ${subjectName}\ntotalMarks: ${totalMarks}\ntotalPossibleMarks: ${totalPossibleMarks}\nattemptDate: ${attemptDate}`);
 
     return (
         <Container fluid style={{}}>
-            <AnswerContainer questionsData={questionsData} subjectName={subjectName} totalMarks={totalMarks} attemptDate={attemptDate} />
+            <AnswerContainer questionsData={questionsData} subjectName={subjectName} totalMarks={totalMarks} attemptDate={attemptDate} totalPossibleMarks={totalPossibleMarks} />
             <Row >
                 <Col xs={12} className="" style={{ marginBottom: '1.8rem' }}>
                     <div className="d-flex justify-content-center">
