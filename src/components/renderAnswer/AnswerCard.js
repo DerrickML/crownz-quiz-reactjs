@@ -41,25 +41,47 @@ const AnswerCard = ({ resultsData, questionIndex, category_Id }) => {
     // Define renderQuestionText function here
     const renderQuestionText = (data, questionText, questionImage, explanation, answer, user_answer, questionType, mark) => {
 
+        /**
+         * Checking Answer, and Scoring.
+         * Normalization to answers (bothe user-answers and given answer options) before comparison
+         * Removes special characters (all question types) and extra spaces (only text-type).)
+        */
         const checkAnswer = (answer, user_answer, questionType, mark) => {
-            // Helper function to normalize answers for comparison
-            const normalize = value => typeof value === 'string' ? value.trim().toLowerCase() : value;
+            // General normalize function for non-text questions
+            const normalizeGeneral = value => typeof value === 'string' ? value.trim().toLowerCase() : value;
 
-            // Normalize user_answer and answer
-            user_answer = Array.isArray(user_answer) ? user_answer.map(normalize) : normalize(user_answer);
-            answer = Array.isArray(answer) ? answer.map(normalize) : normalize(answer);
+            // Specialized normalize function for text questions
+            const normalizeText = value => typeof value === 'string' ?
+                value.replace(/[\s\.,\-_!@#$%^&*()=+{}[\]\\;:'"<>/?|`~]+/g, '') // Remove special characters
+                    .replace(/\s+/g, ' ') // Replace multiple spaces with a single space
+                    .trim() // Remove leading and trailing spaces
+                    .toLowerCase() // Convert to lowercase to make comparison case-insensitive
+                : value;
+
+            // Decide which normalization to use based on question type
+            if (questionType === 'text') {
+                user_answer = Array.isArray(user_answer) ? user_answer.map(normalizeText) : normalizeText(user_answer);
+                answer = Array.isArray(answer) ? answer.map(normalizeText) : normalizeText(answer);
+            } else {
+                user_answer = Array.isArray(user_answer) ? user_answer.map(normalizeGeneral) : normalizeGeneral(user_answer);
+                answer = Array.isArray(answer) ? answer.map(normalizeGeneral) : normalizeGeneral(answer);
+            }
 
             let score = 0;
             let maxScore = 0;
 
-            if (questionType === 'multipleChoice' || questionType === 'text') {
-                maxScore = mark || 1; //Assign the max score to mark if available, otherwise 1
-                // Single mark for multipleChoice and text, check if answer matches
+            if (questionType === 'multipleChoice') {
+                maxScore = mark || 1; // Assign the max score to mark if available, otherwise 1
+                if (answer === user_answer || (Array.isArray(answer) && answer.includes(user_answer))) {
+                    score = mark || 1; // Use provided mark or default to 1
+                }
+            } else if (questionType === 'text') {
+                maxScore = mark || 1; // Assign the max score to mark if available, otherwise 1
+                // Single mark for text, check if answer matches
                 if (answer === user_answer || (Array.isArray(answer) && answer.includes(user_answer))) {
                     score = mark || 1; // Use provided mark or default to 1
                 }
             } else if (questionType === 'check_box') {
-                // Checkbox question type
                 maxScore = mark || (Array.isArray(answer) ? answer.length : 1);
                 if (Array.isArray(user_answer)) {
                     user_answer.forEach(val => {

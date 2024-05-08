@@ -95,16 +95,35 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
         }
     };
 
-    //Calculating marks
+    /**
+     * Calculating marks.
+     * Normalization to answers (bothe user-answers and given answer options) before comparison
+     * Removes special characters (all question types) and extra spaces (only text-type).)
+    */
     const calculateMarks = (question, userAnswer) => {
         const { type, answer, mark, sub_questions } = question;
         const correctAnswer = Array.isArray(answer) ? answer : [answer];
+
+        // General normalize function for non-text questions
+        const normalizeGeneral = value => value.trim().toLowerCase();
+
+        // Specialized normalize function for text questions
+        const normalizeText = value => value
+            .replace(/[\s\.,\-_!@#$%^&*()=+{}[\]\\;:'"<>/?|`~]+/g, '') // Remove special characters
+            .replace(/\s+/g, ' ') // Replace multiple spaces with a single space
+            .trim()
+            .toLowerCase();
+
         let score = 0;
 
         switch (type) {
             case 'multipleChoice':
+                if (userAnswer && correctAnswer.map(normalizeGeneral).includes(normalizeGeneral(userAnswer))) {
+                    score = mark || 1; // Use mark if provided, otherwise default to 1
+                }
+                break;
             case 'text':
-                if (userAnswer && correctAnswer.map(a => a.trim().toLowerCase()).includes(userAnswer.trim().toLowerCase())) {
+                if (userAnswer && correctAnswer.map(normalizeText).includes(normalizeText(userAnswer))) {
                     score = mark || 1; // Use mark if provided, otherwise default to 1
                 }
                 break;
@@ -112,7 +131,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
                 const maxScore = mark || correctAnswer.length;
                 if (userAnswer && userAnswer.length <= maxScore) {
                     userAnswer.forEach(userOption => {
-                        if (correctAnswer.map(a => a.trim().toLowerCase()).includes(userOption.trim().toLowerCase())) {
+                        if (correctAnswer.map(normalizeGeneral).includes(normalizeGeneral(userOption))) {
                             score += 1;
                         }
                     });
@@ -131,6 +150,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
 
         return score;
     };
+
 
     const findUserAnswer = (questionId, categoryId, questionType) => {
         // console.log('CHECK reduxState in findUserAnswer: ', reduxState);
