@@ -338,6 +338,7 @@ function SignUp() {
           schoolName: schoolName || null,
           schoolAddress: schoolAddress || null,
           accountStatus: "Active",
+          createdDate: new Date()
         }
       );
 

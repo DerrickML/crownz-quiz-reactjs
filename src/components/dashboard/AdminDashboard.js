@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import NavigationCard from './NavigationCard'; // Import the NavigationCard component
 import { faUsers, faUserCheck, faUserPlus, faUserSlash } from '@fortawesome/free-solid-svg-icons';
 import { fetchStudents } from '../../utilities/fetchStudentData';
 import { useAuth } from "../../context/AuthContext";
+import db from '../../db';
 
 const AdminDashboard = () => {
     const { userInfo } = useAuth();
+    const [registeredCount, setRegisteredCount] = useState(0);
+    const [subscribedCount, setSubscribedCount] = useState(0);
+    const [activeCount, setActiveCount] = useState(0);
+    const [inactiveCount, setInactiveCount] = useState(0);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const registeredStudents = await db.students.count();
+            const subscribedStudents = await db.students.where('pointsBalance').belowOrEqual(1).count();
+            const activeStudents = await db.students.where('accountStatus').equals('Active').count();
+            const inactiveStudents = await db.students.where('accountStatus').equals('Inactive').count();
+
+            setRegisteredCount(registeredStudents);
+            setSubscribedCount(subscribedStudents);
+            setActiveCount(activeStudents);
+            setInactiveCount(inactiveStudents);
+        };
+
+        fetchData();
+    }, []);
 
     //Fetch all students data
     const logRegistered = async () => {
@@ -31,7 +52,7 @@ const AdminDashboard = () => {
                         icon={faUsers}
                         borderColor="#FF6347"
                         link="/registered-students"
-                        number="320"
+                        number={registeredCount}
                         action={logRegistered}
                     />
                 </Col>
@@ -41,7 +62,7 @@ const AdminDashboard = () => {
                         icon={faUserCheck}
                         borderColor="#FF4500"
                         link="/subscribed"
-                        number="245"
+                        number={subscribedCount}
                         action={logSubscribed}
                     />
                 </Col>
@@ -51,7 +72,7 @@ const AdminDashboard = () => {
                         icon={faUserPlus}
                         borderColor="#32CD32"
                         link="/active"
-                        number="198"
+                        number={activeCount}
                         action={logActive}
                     />
                 </Col>
@@ -61,7 +82,7 @@ const AdminDashboard = () => {
                         icon={faUserSlash}
                         borderColor="#20B2AA"
                         link="/inactive"
-                        number="122"
+                        number={inactiveCount}
                         action={logInactive}
                     />
                 </Col>

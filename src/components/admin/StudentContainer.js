@@ -19,7 +19,7 @@ import { saveAs } from 'file-saver'; // You may need to install with `npm instal
 
 async function downloadCSV(students, fileName = "students_data.csv") {
     const headers = [
-        "studID", "studName", "firstName", "lastName", "otherName", "gender", "phone", "email", "educationLevel", "schoolName", "schoolAddress", "pointsBalance", "NumberOfExams"
+        "studID", "studName", "firstName", "lastName", "otherName", "gender", "phone", "email", "educationLevel", "schoolName", "schoolAddress", "pointsBalance", "NumberOfExams", "accountCreationDate", "accountStatus"
     ];
     const rows = students.map(student => [
         `"${student.studID}"`,
@@ -34,7 +34,9 @@ async function downloadCSV(students, fileName = "students_data.csv") {
         `"${student.schoolName}"`,
         `"${student.schoolAddress}"`,
         `"${student.pointsBalance}"`,
-        `${student.Results ? student.Results.length : 0}` // No need for quotes, it's a number
+        `${student.Results ? student.Results.length : 0}`, // No need for quotes, it's a number
+        `"${student.accountCreatedDate}"`,
+        `"${student.accountStatus}"`,
     ]);
 
     // Convert array of arrays into CSV string
