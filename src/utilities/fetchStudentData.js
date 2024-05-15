@@ -18,43 +18,64 @@ import storageUtil from "./storageUtil"; // Import storageUtil
 */
 export const fetchStudents = async (refresh = false) => {
   try {
-    console.log('Initiating fetch process, refresh:', refresh);
+    console.log('Initiating students data fetch process, refresh:', refresh);
 
     if (refresh) {
-      console.log('Fetching from database due to refresh flag.');
+      console.log('Fetching students data from database due to refresh flag.');
       const response = await fetch(`${serverUrl}/db/fetch-students`);
       const data = await response.json();
       if (response.ok) {
-        console.log('Data fetched successfully: ', data);
-        await updateLocalDatabase(data.data);
-        console.log('Data fetched from database and updated locally.');
+        console.log('Students Data fetched successfully: ', data);
+        await updateStudentsLocalDatabase(data.data);
+        console.log('Students Data fetched from database and updated locally.');
         return data.data;
       } else {
-        throw new Error(data.message || 'Error fetching data from the database');
+        throw new Error(data.message || 'Error fetching students data from the database');
       }
     } else {
-      console.log('Fetching from local file.');
+      console.log('Fetching students data from local file.');
       const response = await fetch(`${serverUrl}/query/students`);
       const data = await response.json();
       if (response.ok) {
-        console.log('Data fetched successfully: ', data);
-        await updateLocalDatabase(data);
-        console.log('Data fetched from file and saved to local database.');
+        console.log('Students Data fetched successfully: ', data);
+        await updateStudentsLocalDatabase(data);
+        console.log('Students Data fetched from file and saved to local database.');
         return data;
       } else {
-        console.warn('Failed to fetch from local file, trying the database refresh.');
+        console.warn('Failed to fetch students datas from local file, trying the database refresh.');
         return fetchStudents(true); // Recursive call with refresh true
       }
     }
   } catch (error) {
-    console.error('Error fetching students:', error);
+    console.error('Error fetching students data:', error);
     throw error;
   }
 };
 
+//Fetch transactions
+export const fetchTransactions = async () => {
+  try {
+    console.log('Initiating transaction fetch process, refresh:');
 
-//Update Index DB in local database
-async function updateLocalDatabase(studentData) {
+    const response = await fetch(`${serverUrl}/flutterwave/transactions`);
+
+    const data = await response.json();
+    if (response.ok) {
+      console.log('Transaction Data fetched successfully: ', data);
+      await updateTransactionsLocalDatabase(data.data);
+      console.log('Transaction Data fetched from database and updated locally.');
+      return data.data;
+    } else {
+      throw new Error(data.message || 'Error  transaction data from the database');
+    }
+  } catch (error) {
+    console.error('Error fetching transaction data:', error);
+    throw error;
+  }
+};
+
+//Update students data in Index DB in local database
+async function updateStudentsLocalDatabase(studentData) {
   try {
     await db.transaction('rw', db.students, async () => {
       // Clear the existing entries in the students table
@@ -71,6 +92,8 @@ async function updateLocalDatabase(studentData) {
         studName: toTitleCase(student.studName),
         schoolName: toTitleCase(student.schoolName),
         schoolAddress: toTitleCase(student.schoolAddress),
+        // label: JSON.stringify(student.label),
+        label: student.label,
         Results: JSON.stringify(student.Results.map(result => ({
           subject: result.subject,
           score: result.score,
@@ -97,6 +120,35 @@ async function updateLocalDatabase(studentData) {
   }
 }
 
+//Update transactions data in Index DB in local database
+async function updateTransactionsLocalDatabase(transactionData) {
+  try {
+    await db.transaction('rw', db.transactions, async () => {
+      // Clear the existing entries in the students table
+      await db.transactions.clear();
+
+      // console.log('Saving to IndexDB ... ');
+      // Bulk put the new data after clearing the table
+      const savingToIndexDB = await db.transactions.bulkPut(transactionData.map(transaction => ({
+        ...transaction,
+        createdAt: new Date(transaction.createdAt).toLocaleString("en-US", {
+          timeZone: "Africa/Nairobi",
+          hour12: false,
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        })
+      })));
+
+      // console.log('IndexDB response: ', savingToIndexDB);
+    });
+  } catch (error) {
+    console.error('Error updating, error:', error);
+  }
+}
 
 function toTitleCase(text) {
   if (!text) return '';
@@ -283,7 +335,7 @@ export const studentSubjectsData = async (enrolledSubjectsData, educationLevel) 
 }
 
 /**
-    * Formats the date string into a more readable format.
+    * Handles student enrollment.
     * @param {string} userDocId - Document id string.
     * @param {string} subject - Subject string passed.
     * @returns {string || null} - return sting or nothing.
@@ -331,15 +383,19 @@ const formatDate = (dateTime) => {
 /**
  * Retrive data from index database
  */
-export const getAllStudentsIndexDB = async (labels) => {
+export const initiateIndexDB = async (labels) => {
   //Fetch all students data
-  // console.log("Checking whether user is an admin or staff");
+  console.log("Checking whether user is an admin or staff");
   if (labels.includes("admin") || labels.includes("staff")) {
     // console.log('Fetching student data');
-    await fetchStudents().then(data => {
+    await fetchStudents(true).then(data => {
       // console.log('Students data Fetch successfully');
     }).catch(error => {
       console.error('Failed to fetch students');
+    });
+
+    await fetchTransactions().then(data => { }).catch(error => {
+      console.error('Failed to fetch transactions');
     });
   }
 }

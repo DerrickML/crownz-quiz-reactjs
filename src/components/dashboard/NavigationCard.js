@@ -3,45 +3,48 @@ import { Card, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
 
-const NavigationCard = ({ title, icon, borderColor, link, number, action }) => {
+const NavigationCard = ({ title, icon, borderColor, link, number, action, gradient }) => {
     const navigate = useNavigate();
 
     const handleButtonClick = () => {
         if (action) {
             action();
         }
-        // navigate(link);
-        window.location.href = link;
-
+        navigate(link);
     };
 
     return (
         <Card
             style={{
-                borderColor: borderColor,
-                borderWidth: '2px',
-                borderStyle: 'solid',
-                backgroundColor: '#FFFFFF',
+                background: gradient,
+                borderWidth: '0',
+                color: '#fff',
                 marginBottom: '20px',
-                borderRadius: '15px',
-                boxShadow: '0px 4px 10px rgba(0,0,0,0.1)',
-                transition: 'transform 0.2s',
+                borderRadius: '20px',
+                boxShadow: '0px 5px 15px rgba(0,0,0,0.2)',
+                transition: 'transform 0.3s, box-shadow 0.3s',
                 cursor: 'pointer'
             }}
             className="text-center h-100 p-4"
-            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
-            onMouseOut={(e) => e.currentTarget.style.transform = 'none'}
+            onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'scale(1.05)';
+                e.currentTarget.style.boxShadow = '0px 10px 20px rgba(0,0,0,0.3)';
+            }}
+            onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0px 5px 15px rgba(0,0,0,0.2)';
+            }}
         >
             <Card.Body>
-                <FontAwesomeIcon icon={icon} size="2x" color={borderColor} />
+                <FontAwesomeIcon icon={icon} size="3x" style={{ color: '#fff', marginBottom: '10px' }} />
                 <Card.Title className="mt-3">{title}</Card.Title>
                 <Card.Text>
-                    Number of Entries: {number}
+                    <strong>{number}</strong> Entries
                 </Card.Text>
-                <Button variant="outline-dark" onClick={handleButtonClick}>View Details</Button>
+                <Button variant="light" onClick={handleButtonClick}>View Details</Button>
             </Card.Body>
         </Card>
     );
 };
 
-export default NavigationCard
+export default NavigationCard;

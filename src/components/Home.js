@@ -12,7 +12,7 @@ import "./Home.css";
 import StudentDashboard from "./dashboard/StudentDashboard";
 import NextOfKinDashboard from "./dashboard/NextOfKinDashboard";
 import AdminDashboard from "./dashboard/AdminDashboard";
-import { fetchStudents } from "../utilities/fetchStudentData";
+import { fetchStudents, fetchTransactions } from "../utilities/fetchStudentData";
 
 function Home() {
   const navigate = useNavigate();
@@ -32,6 +32,13 @@ function Home() {
         console.log('Students data Fetch successfully');
       }).catch(error => {
         console.error('Failed to fetch students');
+      });
+
+      console.log('Fetching transactions data');
+      await fetchTransactions().then(data => {
+        console.log('Transactions data Fetch successfully');
+      }).catch(error => {
+        console.error('Failed to fetch transactions data');
       });
     }
   }

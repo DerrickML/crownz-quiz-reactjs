@@ -47,7 +47,11 @@ export async function getStudentById(studID) {
  */
 export async function getStudentsByEducationLevel(educationLevel) {
     try {
-        const students = await db.students.where({ educationLevel }).toArray();
+        const students = await db.students.where({ educationLevel }).filter(student => {
+            const labels = student.label;
+            return labels.includes('student') && !labels.includes('staff') && !labels.includes('admin') && !labels.includes('sales');
+        }).toArray(); //Returns only student user types
+
         return students.map(student => ({
             ...student,
             Results: JSON.parse(student.Results)  // Deserialize the Results
@@ -115,7 +119,11 @@ export async function getStudentsByOtherName(otherName) {
 export async function getStudentsByGender(gender) {
     try {
         const normalizedGender = gender.toLowerCase();
-        const students = await db.students.where('gender').equalsIgnoreCase(normalizedGender).toArray();
+        const students = await db.students.where('gender').equalsIgnoreCase(normalizedGender).filter(student => {
+            const labels = student.label;
+            return labels.includes('student') && !labels.includes('staff') && !labels.includes('admin') && !labels.includes('sales');
+        }).toArray(); //Returns only student user types
+
         return students.map(student => ({
             ...student,
             Results: JSON.parse(student.Results)
@@ -132,7 +140,11 @@ export async function getStudentsByGender(gender) {
 export async function getStudentsBySchoolName(schoolName) {
     try {
         const normalizedSchoolName = schoolName.toLowerCase();
-        const students = await db.students.where('schoolName').equalsIgnoreCase(normalizedSchoolName).toArray();
+        const students = await db.students.where('schoolName').equalsIgnoreCase(normalizedSchoolName).filter(student => {
+            const labels = student.label;
+            return labels.includes('student') && !labels.includes('staff') && !labels.includes('admin') && !labels.includes('sales');
+        }).toArray(); //Returns only student user types
+
         return students.map(student => ({
             ...student,
             Results: student.Results // Already parsed in services
@@ -143,4 +155,29 @@ export async function getStudentsBySchoolName(schoolName) {
     }
 }
 
+/**
+ * RETRIEVES STUDENTS BY USER-TYPE
+ */
+export async function getStudentsByUserType(userType) {
+    try {
+        const students = await db.students
+            .filter(student => {
+                const labels = student.label;
+                if (userType === 'student') {
+                    return labels.includes('student') && !labels.includes('staff') && !labels.includes('admin') && !labels.includes('sales');
+                } else {
+                    return labels.includes(userType);
+                }
+            })
+            .toArray();
+
+        return students.map(student => ({
+            ...student,
+            Results: JSON.parse(student.Results)  // Deserialize the Results from JSON string
+        }));
+    } catch (error) {
+        console.error('Error retrieving students by user type:', error);
+        return [];
+    }
+}
 

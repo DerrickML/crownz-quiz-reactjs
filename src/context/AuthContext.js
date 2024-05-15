@@ -11,7 +11,7 @@ import {
 } from "../appwriteConfig.js";
 import db from '../db.js';
 import storageUtil from '../utilities/storageUtil.js';
-import { studentSubjectsData, fetchStudents, getAllStudentsIndexDB } from "../utilities/fetchStudentData";
+import { studentSubjectsData } from "../utilities/fetchStudentData";
 
 const AuthContext = createContext(null);
 
@@ -111,20 +111,6 @@ export const AuthProvider = ({ children }) => {
                 });
             }
 
-        }
-
-        //Fetch all students data
-        // console.log('TESTING 123...');
-        // await getAllStudentsIndexDB(userDetails.labels);
-
-        // console.log("Checking whether user is an admin or staff");
-        if (userDetails.labels.includes("admin") || userDetails.labels.includes("staff")) {
-            // console.log('Fetching student data');
-            await fetchStudents(true).then(data => {
-                // console.log('Students data Fetch successfully');
-            }).catch(error => {
-                console.error('Failed to fetch students');
-            });
         }
 
     };

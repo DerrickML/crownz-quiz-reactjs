@@ -8,7 +8,8 @@ import {
     getStudentsByLastName,
     getStudentsByOtherName,
     getStudentsByGender,
-    getStudentsBySchoolName
+    getStudentsBySchoolName,
+    getStudentsByUserType,
 } from './studentService';
 import { Container, Form, Row, Col, ButtonGroup, Button, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,9 +18,11 @@ import { useAuth } from "../../context/AuthContext";
 import { fetchStudents } from '../../utilities/fetchStudentData';
 import { saveAs } from 'file-saver'; // You may need to install with `npm install file-saver`
 
+await fetchStudents();
+
 async function downloadCSV(students, fileName = "students_data.csv") {
     const headers = [
-        "studID", "studName", "firstName", "lastName", "otherName", "gender", "phone", "email", "educationLevel", "schoolName", "schoolAddress", "pointsBalance", "NumberOfExams", "accountCreationDate", "accountStatus"
+        "studID", "studName", "firstName", "lastName", "otherName", "gender", "phone", "email", "educationLevel", "schoolName", "schoolAddress", "pointsBalance", "NumberOfExams", "accountCreationDate", "accountStatus", "userType"
     ];
     const rows = students.map(student => [
         `"${student.studID}"`,
@@ -37,6 +40,7 @@ async function downloadCSV(students, fileName = "students_data.csv") {
         `${student.Results ? student.Results.length : 0}`, // No need for quotes, it's a number
         `"${student.accountCreatedDate}"`,
         `"${student.accountStatus}"`,
+        `"${student.userType}"`,
     ]);
 
     // Convert array of arrays into CSV string
@@ -49,10 +53,7 @@ async function downloadCSV(students, fileName = "students_data.csv") {
     saveAs(blob, fileName);
 }
 
-
-
 const StudentContainer = () => {
-
     const { userInfo } = useAuth();
     const [students, setStudents] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -64,33 +65,28 @@ const StudentContainer = () => {
 
     const itemsPerPage = 10;
 
-    //Fetches all students' data
     useEffect(() => {
         async function InitialloadStudents() {
-            //Fetch all students data from server-side and save in indexdb
-            // console.log("Checking whether user is an admin or staff");
             if (userInfo.labels.includes("admin") || userInfo.labels.includes("staff")) {
-                // console.log('Fetching student data');
-                await fetchStudents().then(data => {
-                    // console.log('Students data Fetch successfully');
-                }).catch(error => {
-                    console.error('Failed to fetch students');
-                });
+                try {
+                    // await fetchStudents();
+                } catch (error) {
+                    console.error('Failed to fetch students:', error);
+                }
             }
         }
-
         InitialloadStudents();
-
-    }, [])
+    }, [userInfo]);
 
     useEffect(() => {
         const loadStudents = async () => {
             try {
-                setLoader(true); // Start loading before the operation
-                let loadedStudents = await getAllStudents() || [];
+                setLoader(true);
+                let loadedStudents;
                 switch (filter) {
                     case 'id':
-                        loadedStudents = [await getStudentById(filterValue)].filter(student => student);
+                        const student = await getStudentById(filterValue);
+                        loadedStudents = student ? [student] : [];
                         break;
                     case 'educationLevel':
                         loadedStudents = await getStudentsByEducationLevel(filterValue);
@@ -104,10 +100,15 @@ const StudentContainer = () => {
                     case 'otherName':
                         loadedStudents = await getStudentsByOtherName(filterValue);
                         break;
-                    case `schoolName`:
+                    case 'schoolName':
                         loadedStudents = await getStudentsBySchoolName(filterValue);
+                        break;
                     case 'gender':
-                        loadStudents = await getStudentsByGender(filterValue);
+                        loadedStudents = await getStudentsByGender(filterValue);
+                        break;
+                    case 'userType':
+                        loadedStudents = await getStudentsByUserType(filterValue);
+                        break;
                     case 'all':
                     default:
                         loadedStudents = await getAllStudents();
@@ -115,16 +116,15 @@ const StudentContainer = () => {
                 }
                 setStudents(loadedStudents);
             } catch (err) {
-                console.error(err);
+                console.error('Error loading students:', err);
             } finally {
-                setLoader(false); // Stop loading after operation completes
+                setLoader(false);
             }
         };
 
         if (filter !== 'all' && filterValue === '') {
             setStudents([]);
-            setLoader(false); // Also make sure to handle the loader when clearing students
-
+            setLoader(false);
         } else {
             loadStudents();
         }
@@ -133,20 +133,13 @@ const StudentContainer = () => {
     const refreshStudentsData = async () => {
         try {
             setRefreshResults(true);
-
-            //Fetch all students data from server-side and save in indexdb
-            // console.log("Checking whether user is an admin or staff");
-            if (userInfo.labels.includes("admin") || userInfo.labels.includes("staff")) {
-                // console.log('Fetching student data');
-                await fetchStudents(true).then(data => {
-                    // console.log('Students data Fetch successfully');
-                }).catch(error => {
-                    console.error('Failed to fetch students');
-                });
+            if (userInfo.labels.includes("admin") || userInfo.labels.includes("staff") || userInfo.labels.includes("sales")) {
+                await fetchStudents(true);
             }
-        } catch (e) { console.error('Failed to fetch students: ' + e); } finally {
+        } catch (e) {
+            console.error('Failed to fetch students:', e);
+        } finally {
             setRefreshResults(false);
-            // window.location.reload();
         }
     }
 
@@ -154,14 +147,11 @@ const StudentContainer = () => {
         setDownload(true);
         let studentsToDownload = [];
         try {
-            // Check if there is a specific filter applied and fetch data accordingly
             if (filter !== 'all' && filterValue !== '') {
                 switch (filter) {
                     case 'id':
                         const student = await getStudentById(filterValue);
-                        if (student) {
-                            studentsToDownload = [student];
-                        }
+                        if (student) studentsToDownload = [student];
                         break;
                     case 'educationLevel':
                         studentsToDownload = await getStudentsByEducationLevel(filterValue);
@@ -181,11 +171,13 @@ const StudentContainer = () => {
                     case 'schoolName':
                         studentsToDownload = await getStudentsBySchoolName(filterValue);
                         break;
+                    case 'userType':
+                        studentsToDownload = await getStudentsByUserType(filterValue);
+                        break;
                     default:
                         break;
                 }
             } else {
-                // If no specific filter is applied or the filter value is empty, download all students
                 studentsToDownload = await getAllStudents();
             }
 
@@ -200,7 +192,6 @@ const StudentContainer = () => {
             setDownload(false);
         }
     };
-
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -223,8 +214,9 @@ const StudentContainer = () => {
                             <option value="otherName">By Other Name</option>
                             <option value="schoolName">By School Name</option>
                             <option value="gender">By Gender</option>
+                            <option value="userType">By User Type</option>
                         </Form.Select>
-                        {filter !== 'all' && (
+                        {(filter !== 'all' && filter !== 'gender' && filter !== 'userType') && (
                             <Form.Control
                                 type="text"
                                 value={filterValue}
@@ -232,6 +224,47 @@ const StudentContainer = () => {
                                 placeholder={`Enter ${filter}`}
                                 className="mb-3"
                             />
+                        )}
+                        {filter === 'educationLevel' && (
+                            <Form.Select
+                                value={filterValue}
+                                onChange={e => setFilterValue(e.target.value)}
+                                aria-label="Gender selection"
+                                className="mb-3"
+                            >
+                                <option value="">Select education Level</option>
+                                <option value="PLE">PLE</option>
+                                <option value="UCE">UCE</option>
+                                <option value="UACE">UACE</option>
+                            </Form.Select>
+                        )}
+                        {filter === 'gender' && (
+                            <Form.Select
+                                value={filterValue}
+                                onChange={e => setFilterValue(e.target.value)}
+                                aria-label="Gender selection"
+                                className="mb-3"
+                            >
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </Form.Select>
+                        )}
+                        {filter === 'userType' && (
+                            <Form.Select
+                                value={filterValue}
+                                onChange={e => setFilterValue(e.target.value)}
+                                aria-label="User Type selection"
+                                className="mb-3"
+                            >
+                                <option value="">Select User Type</option>
+                                <option value="student">Student</option>
+                                <option value="staff">Staff</option>
+                                <option value="admin">Admin</option>
+                                <option value="sales">Sales</option>
+                                <option value="subscriber">Subscriber</option>
+                            </Form.Select>
                         )}
                     </Col>
                     <Col>

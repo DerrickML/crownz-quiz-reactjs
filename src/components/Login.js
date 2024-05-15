@@ -24,7 +24,7 @@ import {
 import { showToast } from "../utilities/toastUtil.js";
 import { useAuth } from "../context/AuthContext.js";
 import { fetchAndUpdateResults } from "../utilities/resultsUtil";
-import { fetchAndProcessStudentData, fetchStudents } from "../utilities/fetchStudentData";
+import { fetchAndProcessStudentData, fetchStudents, initiateIndexDB } from "../utilities/fetchStudentData";
 import {
   account,
   databases,
@@ -158,6 +158,8 @@ function Login() {
     // Reset error messages
     setEmailError("");
 
+    let userDetails
+
     try {
       if (loginMethod === "email") {
         setEmailLoginLoader(true);
@@ -165,6 +167,7 @@ function Login() {
 
         //Fetch Account Data/Info from server-side
         const userInfo = await userData(session.userId);
+        userDetails = userInfo
 
         handleLogin(session, userInfo); // Pass the session data to App.js
 
@@ -195,22 +198,28 @@ function Login() {
         //Fetch Account Data/Info from server-side
         const userInfo = await userData(session.userId);
 
+        userDetails = userInfo
+
         handleLogin(session, userInfo); // Pass the session data to App.js
-
-        // Redirect to home page
-        navigate("/");
-
-        // window.location.href = "/";
       }
+
+      //Initiate index db and populate with data
+      await initiateIndexDB(userDetails.labels);
+
+      // Redirect to home page
+      window.location.href = '/';
+      // navigate("/");
+
     } catch (error) {
       console.error("Login failed:", error.message);
       if (loginMethod === "email") {
         setEmailError(error.message);
       }
       // TODO: Handle errors such as showing an error message to the user
+    } finally {
+      setEmailLoginLoader(false);
+      setOtpSubmitLoader(false);
     }
-    setEmailLoginLoader(false);
-    setOtpSubmitLoader(false);
   };
 
   const handleLoginSuccess = async (userInfo) => {
@@ -225,27 +234,7 @@ function Login() {
       });
       setShowInfoModal(true);
       await handleLogout();
-    } else {
-      //Fetch all students data from server-side and save in indexdb
-      // console.log("LOGIN --- Checking whether user is an admin or staff");
-      if (userInfo.labels.includes("admin")) {
-        // console.log('Fetching student data... ', userInfo.labels);
-        // await fetchStudents().then(data => {
-        //   console.log('Students data Fetch successfully');
-        // }).catch(error => {
-        //   console.error('Failed to fetch students');
-        // });
-      }
-      else {
-        // console.log('Not admin');
-      }
     }
-
-    navigate("/");  // Navigate to home page if data available
-    // window.location.reload(); //Reloads the current window
-
-    // window.location.href = '/'; // Redirect to a specific URL
-
   };
 
 

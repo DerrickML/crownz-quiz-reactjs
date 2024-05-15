@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Card, Button, Container, Row, Col, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGem } from '@fortawesome/free-solid-svg-icons';
-import moment from 'moment';
+// import moment from 'moment';
+import moment from 'moment-timezone';
 import PaymentMethods from './PaymentMethods_2';
 import './Packages.css';
 // import OrderSummery2 from './OrderSummery2'
