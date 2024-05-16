@@ -16,7 +16,7 @@ const Answers = () => {
     const navigate = useNavigate();
     const { questionsData, subjectName, totalMarks, attemptDate, totalPossibleMarks } = location.state || { questionsData: [], subjectName: '', totalMarks: 0, totalPossibleMarks: null, attemptDate: '' };
 
-    console.log(`subjectName: ${subjectName}\ntotalMarks: ${totalMarks}\ntotalPossibleMarks: ${totalPossibleMarks}\nattemptDate: ${attemptDate}`);
+    // console.log(`subjectName: ${subjectName}\ntotalMarks: ${totalMarks}\ntotalPossibleMarks: ${totalPossibleMarks}\nattemptDate: ${attemptDate}`);
 
     return (
         <Container fluid style={{}}>

@@ -263,6 +263,7 @@ const StudentContainer = () => {
                                 <option value="staff">Staff</option>
                                 <option value="admin">Admin</option>
                                 <option value="sales">Sales</option>
+                                <option value="tester">Tester</option>
                                 <option value="subscriber">Subscriber</option>
                             </Form.Select>
                         )}

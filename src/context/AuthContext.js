@@ -97,7 +97,7 @@ export const AuthProvider = ({ children }) => {
             await updateUserSubjectData(userDetails.subjects, userDetails.educationLevel);
 
             // Fetch userPoints from the database after login
-            const fetchingPoints = await fetchUserPoints(userDetails.userId, userDetails.educationLevel);
+            // const fetchingPoints = await fetchUserPoints(userDetails.userId, userDetails.educationLevel);
             // console.log('Fetching points: ', fetchingPoints)
 
             // After successful login, trigger the service worker to fetch exams
@@ -130,9 +130,10 @@ export const AuthProvider = ({ children }) => {
             //Create a new document if user has no document assigned
             if (pointsResponse.documents.length !== 0) {
                 pointsData = pointsResponse.documents[0].PointsBalance
+
             }
             else {
-                // console.log('No user document assigned, creating a new one for the user')
+                console.log('No user document assigned, creating a new one for the user')
 
                 var currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
 
@@ -157,6 +158,7 @@ export const AuthProvider = ({ children }) => {
 
             setUserPoints(pointsData);
             storageUtil.setItem("userPoints", pointsData);
+            // console.log('Fetched points: ', pointsData)
         } catch (error) {
             console.error("Error fetching user points:", error);
         }

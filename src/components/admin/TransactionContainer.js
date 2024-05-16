@@ -16,7 +16,7 @@ import { useAuth } from "../../context/AuthContext";
 import { fetchTransactions } from '../../utilities/fetchStudentData';
 import { saveAs } from 'file-saver'; // You may need to install with `npm install file-saver`
 
-await fetchTransactions();
+// await fetchTransactions();
 
 async function downloadCSV(transactions, fileName = "transactions_data.csv") {
     const headers = [

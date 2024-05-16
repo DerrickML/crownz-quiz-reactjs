@@ -24,7 +24,7 @@ import {
 import { showToast } from "../utilities/toastUtil.js";
 import { useAuth } from "../context/AuthContext.js";
 import { fetchAndUpdateResults } from "../utilities/resultsUtil";
-import { fetchAndProcessStudentData, fetchStudents, initiateIndexDB } from "../utilities/fetchStudentData";
+import { fetchAndProcessStudentData, fetchStudents, fetchTransactions, initiateIndexDB } from "../utilities/fetchStudentData";
 import {
   account,
   databases,
@@ -39,7 +39,7 @@ import { serverUrl } from "../config.js"
 import "./Login.css";
 
 function Login() {
-  const { handleLogin, handleLogout } = useAuth();
+  const { handleLogin, handleLogout, fetchUserPoints } = useAuth();
   const navigate = useNavigate();
 
   //User ID
@@ -177,6 +177,17 @@ function Login() {
           //Fetch student(s) results
           await fetchAndUpdateResults(session.userId);
 
+          //Fetch user points
+          await fetchUserPoints(session.userId, userInfo.educationLevel);
+
+        }
+
+        //Check if admin and fetch the required data
+        if (userInfo.labels.includes("admin")) {
+          try {
+            console.log("Is admin");
+            await fetchTransactions();
+          } catch (e) { console.log('Failed to retrieve transaction data', e); }
         }
 
         //Fetch all students' results linked to the next-of-kin and save to local storage

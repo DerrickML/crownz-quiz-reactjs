@@ -1,7 +1,7 @@
 // src/db.js
 import Dexie from 'dexie';
 
-const dbVersion = 5.7;
+const dbVersion = 5.8;
 
 // Initialize the database with the exams store
 const db = new Dexie('examAppDB');

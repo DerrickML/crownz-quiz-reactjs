@@ -22,11 +22,12 @@ function Home() {
   const isNextOfKin = userInfo.labels.includes("kin");
   const isAdmin = userInfo.labels.includes("admin");
   const isSales = userInfo.labels.includes("sales") || userInfo.labels.includes("admin");
+  const isDev = userInfo.labels.includes("dev")
 
   const testFunc = async () => {
     //Fetch all students data
     console.log("Checking whether user is an admin or staff");
-    if (userInfo.labels.includes("admin") || userInfo.labels.includes("staff")) {
+    if (userInfo.labels.includes("admin") || userInfo.labels.includes("staff") || userInfo.labels.includes("dev")) {
       console.log('Fetching student data');
       await fetchStudents().then(data => {
         console.log('Students data Fetch successfully');
@@ -71,33 +72,54 @@ function Home() {
                   <FontAwesomeIcon icon={faEdit} /> Attempt Exam
                 </Button>
               </Col>
-              <div className="d-flex justify-content-center">
-                {isSales && (
+              <div className="container mt-4">
+                {isDev && (
                   <>
-                    <Card style={{ width: 'auto' }} className="text-center my-4">
-                      <Card.Body>
-                        <Button variant="outline-primary" onClick={() => testFunc()}>
-                          <FontAwesomeIcon icon={faArrowCircleUp} className="me-2" />
-                          Initiate IndexDB
-                        </Button>
-                      </Card.Body>
-                    </Card>
-                    {/*POINTS TRACKING DISPLAY*/}
-                    <Card style={{ width: 'auto' }} className="text-center my-4">
-                      <Card.Header as="h5">
-                        <FontAwesomeIcon icon={faCoins} className="me-2" /> Points Available
-                      </Card.Header>
-                      <Card.Body>
-                        <Card.Title style={{ fontSize: '2.5rem' }}>{userPoints}</Card.Title>
-                        <Button variant="outline-primary" onClick={() => navigate('/select-package')}>
-                          <FontAwesomeIcon icon={faArrowCircleUp} className="me-2" />
-                          Top Up Points
-                        </Button>
-                      </Card.Body>
-                    </Card>
+                    <h3 className="mb-4 text-center">Developer Mode</h3>
+                    <div className="row justify-content-center">
+                      <div className="col-md-4 mb-4">
+                        <Card className="text-center">
+                          <Card.Body>
+                            <Button variant="outline-primary" onClick={() => testFunc()}>
+                              <FontAwesomeIcon icon={faArrowCircleUp} className="me-2" />
+                              Initiate IndexDB
+                            </Button>
+                          </Card.Body>
+                        </Card>
+                      </div>
+
+                      <div className="col-md-4 mb-4">
+                        <Card className="text-center">
+                          <Card.Header as="h5">
+                            <FontAwesomeIcon icon={faCoins} className="me-2" />
+                            Points Available
+                          </Card.Header>
+                          <Card.Body>
+                            <Card.Title className="display-4">{userPoints}</Card.Title>
+                            <Button variant="outline-primary" onClick={() => navigate('/select-package')}>
+                              <FontAwesomeIcon icon={faArrowCircleUp} className="me-2" />
+                              Top Up Points
+                            </Button>
+                          </Card.Body>
+                        </Card>
+                      </div>
+
+                      {/* Additional cards can be added here following the same pattern */}
+                      {/* Example additional card */}
+                      <div className="col-md-4 mb-4">
+                        <Card className="text-center">
+                          <Card.Header as="h5">Additional Feature</Card.Header>
+                          <Card.Body>
+                            <Card.Text>More developer features here.</Card.Text>
+                            <Button variant="outline-secondary">Activate Feature</Button>
+                          </Card.Body>
+                        </Card>
+                      </div>
+                    </div>
                   </>
                 )}
               </div>
+
             </>
           )}
         </Row>

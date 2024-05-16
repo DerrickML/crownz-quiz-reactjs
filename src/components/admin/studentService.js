@@ -49,7 +49,7 @@ export async function getStudentsByEducationLevel(educationLevel) {
     try {
         const students = await db.students.where({ educationLevel }).filter(student => {
             const labels = student.label;
-            return labels.includes('student') && !labels.includes('staff') && !labels.includes('admin') && !labels.includes('sales');
+            return labels.includes('student') && !labels.includes('staff') && !labels.includes('admin') && !labels.includes('sales') && !labels.includes('tester');
         }).toArray(); //Returns only student user types
 
         return students.map(student => ({
@@ -114,14 +114,14 @@ export async function getStudentsByOtherName(otherName) {
 }
 
 /**
- * RETRIEVES STUDENTS BY OTHER NAME
+ * RETRIEVES STUDENTS BY GENDER
  */
 export async function getStudentsByGender(gender) {
     try {
         const normalizedGender = gender.toLowerCase();
         const students = await db.students.where('gender').equalsIgnoreCase(normalizedGender).filter(student => {
             const labels = student.label;
-            return labels.includes('student') && !labels.includes('staff') && !labels.includes('admin') && !labels.includes('sales');
+            return labels.includes('student') && !labels.includes('staff') && !labels.includes('admin') && !labels.includes('sales') && !labels.includes('tester');
         }).toArray(); //Returns only student user types
 
         return students.map(student => ({
@@ -135,14 +135,14 @@ export async function getStudentsByGender(gender) {
 }
 
 /**
- * RETRIEVES STUDENTS BY OTHER NAME
+ * RETRIEVES STUDENTS BY SCHOOL NAME
  */
 export async function getStudentsBySchoolName(schoolName) {
     try {
         const normalizedSchoolName = schoolName.toLowerCase();
         const students = await db.students.where('schoolName').equalsIgnoreCase(normalizedSchoolName).filter(student => {
             const labels = student.label;
-            return labels.includes('student') && !labels.includes('staff') && !labels.includes('admin') && !labels.includes('sales');
+            return labels.includes('student') && !labels.includes('staff') && !labels.includes('admin') && !labels.includes('sales') && !labels.includes('tester');
         }).toArray(); //Returns only student user types
 
         return students.map(student => ({
@@ -164,7 +164,7 @@ export async function getStudentsByUserType(userType) {
             .filter(student => {
                 const labels = student.label;
                 if (userType === 'student') {
-                    return labels.includes('student') && !labels.includes('staff') && !labels.includes('admin') && !labels.includes('sales');
+                    return labels.includes('student') && !labels.includes('staff') && !labels.includes('admin') && !labels.includes('sales') && !labels.includes('tester');
                 } else {
                     return labels.includes(userType);
                 }

@@ -18,28 +18,26 @@ import storageUtil from "./storageUtil"; // Import storageUtil
 */
 export const fetchStudents = async (refresh = false) => {
   try {
-    console.log('Initiating students data fetch process, refresh:', refresh);
+    // console.log('Initiating students data fetch process, refresh:', refresh);
 
     if (refresh) {
-      console.log('Fetching students data from database due to refresh flag.');
+      // console.log('Fetching students data from database due to refresh flag.');
       const response = await fetch(`${serverUrl}/db/fetch-students`);
       const data = await response.json();
       if (response.ok) {
-        console.log('Students Data fetched successfully: ', data);
         await updateStudentsLocalDatabase(data.data);
-        console.log('Students Data fetched from database and updated locally.');
         return data.data;
       } else {
         throw new Error(data.message || 'Error fetching students data from the database');
       }
     } else {
-      console.log('Fetching students data from local file.');
+      // console.log('Fetching students data from local file.');
       const response = await fetch(`${serverUrl}/query/students`);
       const data = await response.json();
       if (response.ok) {
-        console.log('Students Data fetched successfully: ', data);
+        // console.log('Students Data fetched successfully: ', data);
         await updateStudentsLocalDatabase(data);
-        console.log('Students Data fetched from file and saved to local database.');
+        // console.log('Students Data fetched from file and saved to local database.');
         return data;
       } else {
         console.warn('Failed to fetch students datas from local file, trying the database refresh.');
@@ -55,15 +53,15 @@ export const fetchStudents = async (refresh = false) => {
 //Fetch transactions
 export const fetchTransactions = async () => {
   try {
-    console.log('Initiating transaction fetch process, refresh:');
+    // console.log('Initiating transaction fetch process, refresh:');
 
     const response = await fetch(`${serverUrl}/flutterwave/transactions`);
 
     const data = await response.json();
     if (response.ok) {
-      console.log('Transaction Data fetched successfully: ', data);
+      // console.log('Transaction Data fetched successfully: ', data);
       await updateTransactionsLocalDatabase(data.data);
-      console.log('Transaction Data fetched from database and updated locally.');
+      // console.log('Transaction Data fetched from database and updated locally.');
       return data.data;
     } else {
       throw new Error(data.message || 'Error  transaction data from the database');
@@ -385,7 +383,7 @@ const formatDate = (dateTime) => {
  */
 export const initiateIndexDB = async (labels) => {
   //Fetch all students data
-  console.log("Checking whether user is an admin or staff");
+  // console.log("Checking whether user is an admin or staff");
   if (labels.includes("admin") || labels.includes("staff")) {
     // console.log('Fetching student data');
     await fetchStudents(true).then(data => {

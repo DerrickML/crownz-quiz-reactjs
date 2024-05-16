@@ -199,7 +199,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
         let totalMarks = 0;
         let totalPossibleMarks = 0;
 
-        console.log(modifiedSelectedQuestions);
+        // console.log(modifiedSelectedQuestions);
         const formattedAnswers = modifiedSelectedQuestions.map(category => ({
             ...category,
             questions: category.questions.flatMap(question => {
