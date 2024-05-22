@@ -39,7 +39,7 @@ import Transactions from "./pages/Transactions";
 import TransactionDetailsPage from "./pages/TransactionDetailsPage";
 import NotFoundPage from './components/NotFoundPage';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import './serviceWorkerListener.js';  // Service worker listener script
+// import './serviceWorkerListener.js';  // Service worker listener script
 import "./App.css";
 
 function PrivateRoute({ children }) {

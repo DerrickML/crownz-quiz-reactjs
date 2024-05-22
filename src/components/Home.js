@@ -1,5 +1,5 @@
 // Home.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faUserCircle, faCoins, faArrowUp, faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
@@ -16,13 +16,25 @@ import { fetchStudents, fetchTransactions } from "../utilities/fetchStudentData"
 
 function Home() {
   const navigate = useNavigate();
-  const { userInfo, userPoints, updateUserPoints, fetchUserPoints, } = useAuth();
+  const { userInfo, userPoints, updateUserPoints, fetchUserPoints, updateQuestionSubjectData } = useAuth();
   // const userInfo = storageUtil.getItem("userInfo");
   const isStudent = userInfo.labels.includes("student");
   const isNextOfKin = userInfo.labels.includes("kin");
   const isAdmin = userInfo.labels.includes("admin");
   const isSales = userInfo.labels.includes("sales") || userInfo.labels.includes("admin");
   const isDev = userInfo.labels.includes("dev")
+
+  //FETCH EXAMS AND SAVE IN INDEX DB
+  useEffect(() => {
+    const fetchExams = async () => {
+      try {
+        // await updateQuestionSubjectData(userInfo.subjects, userInfo.userId, userInfo.educationLevel)
+      } catch (error) {
+        console.error('Failed to save qtns to index db: ', error);
+      }
+    };
+    fetchExams();
+  }, []);
 
   const testFunc = async () => {
     //Fetch all students data
@@ -41,6 +53,17 @@ function Home() {
       }).catch(error => {
         console.error('Failed to fetch transactions data');
       });
+    }
+  }
+
+  const testFunc2 = async () => {
+    //saving qtns to db
+    if (userInfo.labels.includes('student')) {
+      try {
+        await updateQuestionSubjectData(userInfo.subjects, userInfo.userId, userInfo.educationLevel)
+      } catch (error) {
+        console.error('Failed to save qtns to index db: ', error);
+      }
     }
   }
 
@@ -111,7 +134,7 @@ function Home() {
                           <Card.Header as="h5">Additional Feature</Card.Header>
                           <Card.Body>
                             <Card.Text>More developer features here.</Card.Text>
-                            <Button variant="outline-secondary">Activate Feature</Button>
+                            <Button variant="outline-secondary" onClick={testFunc2}>Activate Feature</Button>
                           </Card.Body>
                         </Card>
                       </div>

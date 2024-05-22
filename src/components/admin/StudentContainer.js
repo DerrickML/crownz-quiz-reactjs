@@ -18,8 +18,6 @@ import { useAuth } from "../../context/AuthContext";
 import { fetchStudents } from '../../utilities/fetchStudentData';
 import { saveAs } from 'file-saver'; // You may need to install with `npm install file-saver`
 
-await fetchStudents();
-
 async function downloadCSV(students, fileName = "students_data.csv") {
     const headers = [
         "studID", "studName", "firstName", "lastName", "otherName", "gender", "phone", "email", "educationLevel", "schoolName", "schoolAddress", "pointsBalance", "NumberOfExams", "accountCreationDate", "accountStatus", "userType"

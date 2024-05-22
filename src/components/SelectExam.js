@@ -65,7 +65,7 @@ const iconMapping = {
 function SelectExam() {
   const { userInfo, userPoints, userSubjectData, studentEnrollSubject } = useAuth();
 
-  console.log(`${userPoints}`);
+  // console.log(`${userPoints}`);
 
   const navigate = useNavigate();
 

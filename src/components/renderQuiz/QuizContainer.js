@@ -35,6 +35,14 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                 } else {
                     console.error('Failed to fetch random questions');
                 }
+
+                // if (questionsData) {
+                //     console.log('QuizContainer: passing questions data', questionsData);
+                //     setSelectedQuestions(questionsData);
+                // } else {
+                //     console.error('Failed to populate questions');
+                // }
+
             } catch (error) {
                 console.error('Error fetching questions:', error);
             }

@@ -165,7 +165,7 @@ const TransactionContainer = () => {
             if (transactionsToDownload.length > 0) {
                 await downloadCSV(transactionsToDownload);
             } else {
-                console.log('No data to download for the selected filter.');
+                // console.log('No data to download for the selected filter.');
             }
         } catch (error) {
             console.error('Error downloading CSV:', error);

@@ -228,6 +228,7 @@ export const selectRandomQuestions = (questionsData, categoryIds, subjectName, u
             console.warn(`Category ${categoryId} not found`);
             return null;
         }
+        // console.log(`Category ${categoryId} found`);
 
         // Retrieve attempted question IDs for this category from userHistory
         let attemptedQuestionIds = userHistory?.questionsJSON?.[categoryId] || [];
@@ -283,7 +284,7 @@ export const selectRandomQuestions = (questionsData, categoryIds, subjectName, u
             const updatedQuestion = { ...question };
 
             if (isEitherOrFormat(question)) {
-                updatedQuestion.id = `${category.questions.indexOf(question)}`;
+                updatedQuestion.id = `${categoryId}_${category.questions.indexOf(question)}`;
             }
 
             // Handling 'either' and 'or' questions

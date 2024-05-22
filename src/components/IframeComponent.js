@@ -42,12 +42,14 @@ const IframeComponent = ({ url }) => {
   const urlWhitelist = [
     window.location.origin,
     "http://localhost:5173/",
+    "http://192.168.100.12:5173/",
     "https://derrickml.com",
     "http://127.0.0.1:5500/",
     "http://127.0.0.1:5501/",
     "http://127.0.0.1:5500/english_ple/",
     "https://moodle.servers.crownzcom.tech/english_ple_section_B",
-    "https://exampreptutor.com/english_ple_section_B/"
+    "https://exampreptutor.com/english_ple_section_B/",
+    "https://www.exampreptutor.com/english_ple_section_B"
     // Add other URLs here
   ];
 
@@ -56,107 +58,104 @@ const IframeComponent = ({ url }) => {
 
   const canDisplayUrl = urlWhitelist.includes(url);
 
-  // Modified sendMessageToIframe to only send message after confirmation
+  //sendMessageToIframe to only send message after confirmation
   const sendMessageToIframe = () => {
+    try { } catch (e) { }
     stopAndCaptureTimer();
     const iframe = document.getElementById("myIframe");
     if (iframe && iframe.contentWindow) {
-      iframe.contentWindow.postMessage("callEvaluateAllAnswers", "*");
       setButtonClicked(true);
+      console.log("Sending message to iframe");
+      iframe.contentWindow.postMessage("callEvaluateAllAnswers", "*");
+    } else {
+      console.log("Iframe or its contentWindow is not accessible");
     }
   };
 
   const createDocument = async (data) => {
     try {
-      setIsLoading(true); // Start loading
+      setIsLoading(true);
       const result = await databases.createDocument(
         database_id,
         studentMarksTable_id,
         "unique()",
         data
       );
-      setIsCompleted(true); // Set completion to true on success
+      setIsCompleted(true);
     } catch (error) {
       console.error("Error creating document:", error);
     } finally {
-      setIsLoading(false); // Stop loading regardless of success or error
+      setIsLoading(false);
     }
   };
 
-  // Event listener to receive messages from the iframe
   useEffect(() => {
     const receiveMessage = async (event) => {
-      // Perform checks on event.origin here if needed for security
+      try {
+        if (buttonClicked && event.data && typeof event.data === "object") {
+          const { marksObtained, results } = event.data;
 
-      // Check if the message is received after the button click
-      if (buttonClicked && event.data && typeof event.data === "object") {
-        const { marksObtained, results } = event.data;
+          console.log("Received message. Marks obtained: ", marksObtained);
 
-        // Convert results to a JSON string before sending
-        const resultsString = JSON.stringify(results);
+          const resultsString = JSON.stringify(results);
 
-        // Ensure resultsString is not empty and contains valid data
-        if (resultsString && resultsString !== "{}") {
+          if (resultsString && resultsString !== "{}") {
+            if (isOffline) {
+              try {
+                console.log("Offline!");
+                let data = {
+                  studID: userInfo.userId,
+                  studInfo: {
+                    firstName: userInfo.firstName,
+                    lastName: userInfo.lastName,
+                    otherName: userInfo.otherName,
+                    educationLevel: userInfo.educationLevel,
+                    kinFirstName: userInfo.kinFirstName,
+                    kinLastName: userInfo.kinLastName,
+                    kinEmail: userInfo.kinEmail
+                  },
+                  subject: 'English Language',
+                  marks: marksObtained,
+                  results: resultsString,
+                  dateTime: moment().format('MMMM Do YYYY, h:mm:ss a'),
+                  kinEmail: userInfo.kinEmail ? userInfo.kinEmail : null,
+                }
 
-          //================================ Check Internet Connection Status ================================
-          if (isOffline) {
-            try {
-              console.log("Offline!");
-              let data = {
-                studID: userInfo.userId,
-                studInfo: {
-                  firstName: userInfo.firstName,
-                  lastName: userInfo.lastName,
-                  otherName: userInfo.otherName,
-                  educationLevel: userInfo.educationLevel,
-                  kinFirstName: userInfo.kinFirstName,
-                  kinLastName: userInfo.kinLastName,
-                  kinEmail: userInfo.kinEmail
-                },
-                subject: 'English Language',
-                marks: marksObtained,
-                results: resultsString,
-                dateTime: moment().format('MMMM Do YYYY, h:mm:ss a'),
-                kinEmail: userInfo.kinEmail ? userInfo.kinEmail : null,
+                // await db.examAnswers.add(data);
+
+                console.log('Successfully saved ANSWERS to IndexDB')
+              } catch (e) {
+                console.error('Error saving ANSWERS to index db: ', e)
               }
+            } else {
+              try {
+                await createDocument({
+                  studID: studentID,
+                  marks: marksObtained,
+                  subject: "English Language",
+                  results: resultsString,
+                });
 
-              // await db.examAnswers.add(data);
+                await updateUserPoints(1, userInfo.userId);
 
-              // console.log('Successfully saved ANSWERS to IndexDB')
-            } catch (e) {
-              console.error('Error saving ANSWERS to index db: ', e)
+                showToast("Results submitted successfully!", "success");
+                if (userInfo.kinEmail) {
+                  await sendEmailToNextOfKin(userInfo, "English Language", marksObtained, new Date());
+                }
+                await fetchAndUpdateResults(studentID);
+              } catch (e) {
+                showToast("Failed to save results. Contact the support team for guidance", "error")
+                throw e;
+              }
             }
           }
-          else {
-            try {
-
-              // Create a document in Appwrite Collection
-              await createDocument({
-                studID: studentID,
-                marks: marksObtained,
-                subject: "English Language",
-                results: resultsString,
-              });
-
-              // Update user Points
-              await updateUserPoints(1, userInfo.userId);
-
-              showToast("Results submitted successfully!", "success");
-              if (userInfo.kinEmail) {
-                await sendEmailToNextOfKin(userInfo, "English Language", marksObtained, new Date());
-              }
-              await fetchAndUpdateResults(studentID);
-
-            } catch (e) {
-              showToast("Failed to save results. Contact the support team for guidance", "error")
-              throw e;
-            }
-          }
-
+          setButtonClicked(false);
+        } else {
+          console.log("No response from iFrame or button not clicked");
         }
-
-        // Reset buttonClicked after processing
-        setButtonClicked(false);
+      } catch (e) {
+        console.log("Error encountered while communicating with iFrame");
+        console.error("Error encountered while communicating with iFrame\n", e);
       }
     };
 
@@ -180,11 +179,11 @@ const IframeComponent = ({ url }) => {
   };
 
   const confirmSubmit = async () => {
+    console.log("Submit confirmed");
     sendMessageToIframe();
     setShowSubmitModal(false);
   };
 
-  // Timer controler
   useEffect(() => {
     timerIntervalRef.current = setInterval(() => {
       setTimer((prevTime) => prevTime - 1);
@@ -202,7 +201,7 @@ const IframeComponent = ({ url }) => {
       stopAndCaptureTimer();
       confirmSubmit();
     } else if (timer < 0) {
-      setTimer(0); // Ensure timer doesn't go below zero
+      setTimer(0);
     }
   }, [timer]);
 
@@ -213,8 +212,8 @@ const IframeComponent = ({ url }) => {
   };
 
   const stopAndCaptureTimer = () => {
-    clearInterval(timerIntervalRef.current); // Stop the timer
-    setCapturedTime(timer); // Capture the current time
+    clearInterval(timerIntervalRef.current);
+    setCapturedTime(timer);
   };
 
   return (

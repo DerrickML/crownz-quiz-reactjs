@@ -70,15 +70,17 @@ const ForgetPassword = () => {
                       required
                     />
                   </Form.Group>
+                  {!submitted && (
+                    <Button
+                      variant="primary"
+                      type="submit"
+                      className="w-100"
+                      hidden={hideButton}
+                    >
+                      Send Reset Link
+                    </Button>
+                  )}
 
-                  <Button
-                    variant="primary"
-                    type="submit"
-                    className="w-100"
-                    hidden={hideButton}
-                  >
-                    Send Reset Link
-                  </Button>
                 </Form>
 
                 {submitted && (

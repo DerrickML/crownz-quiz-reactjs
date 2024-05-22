@@ -187,7 +187,7 @@ function Login() {
           try {
             console.log("Is admin");
             await fetchTransactions();
-          } catch (e) { console.log('Failed to retrieve transaction data', e); }
+          } catch (e) { console.error('Failed to retrieve transaction data', e); }
         }
 
         //Fetch all students' results linked to the next-of-kin and save to local storage
@@ -215,7 +215,7 @@ function Login() {
       }
 
       //Initiate index db and populate with data
-      await initiateIndexDB(userDetails.labels);
+      // await initiateIndexDB(userDetails.labels);
 
       // Redirect to home page
       window.location.href = '/';

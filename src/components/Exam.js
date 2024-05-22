@@ -127,7 +127,10 @@ function Exam({ subject }) {
     switch (subject) {
       case "english-language_ple":
         // return <IframeComponent url="https://exams.crownz.derrickml.com/english_ple_section_B" />;
+        // return <IframeComponent url="https://www.exampreptutor.com/english_ple_section_B/" />;
         return <IframeComponent url="https://exampreptutor.com/english_ple_section_B/" />;
+      // return <IframeComponent url="http://http://192.168.100.12:5173/" />;
+      // return <IframeComponent url="http://localhost:5173/" />;
       case "social-studies_ple":
         if (data === null) { return null }
         else {

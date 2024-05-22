@@ -9,6 +9,7 @@ import {
     pointsTable_id,
     Query,
 } from "../appwriteConfig.js";
+import { serverUrl } from "../config.js"
 import db from '../db.js';
 import storageUtil from '../utilities/storageUtil.js';
 import { studentSubjectsData } from "../utilities/fetchStudentData";
@@ -100,16 +101,29 @@ export const AuthProvider = ({ children }) => {
             // const fetchingPoints = await fetchUserPoints(userDetails.userId, userDetails.educationLevel);
             // console.log('Fetching points: ', fetchingPoints)
 
+
+            //=======================SERVIVSE WORKER - FETCH EXAMS/=======================
             // After successful login, trigger the service worker to fetch exams
-            if ('serviceWorker' in navigator) {
-                const registration = await navigator.serviceWorker.ready;
-                registration.active.postMessage({
-                    type: 'FETCH_EXAMS', // Custom event for the service worker
-                    subjects: userDetails.subjects, // Array of subjects
-                    userId: userDetails.userId, // ID of the logged-in user
-                    educationLevel: userDetails.educationLevel, // User's education level
-                });
+            // if ('serviceWorker' in navigator) {
+            //     const registration = await navigator.serviceWorker.ready;
+            //     registration.active.postMessage({
+            //         type: 'FETCH_EXAMS', // Custom event for the service worker
+            //         subjects: userDetails.subjects, // Array of subjects
+            //         userId: userDetails.userId, // ID of the logged-in user
+            //         educationLevel: userDetails.educationLevel, // User's education level
+            //     });
+            // }
+
+            //Without Service Worker
+            try {
+                // console.log('Fetching exams and saving to index db');
+                // await updateQuestionSubjectData(userDetails.subjects, userDetails.userId, userDetails.educationLevel); // subjects, userId, educationLevel 
+                // console.log('Finished fetching exams and saving to index db');
+            } catch (err) {
+                console.error('NON-SERVICE WORKER: Failed to fetch exams: ', err);
             }
+            // ==============================================
+
 
         }
 
@@ -262,6 +276,90 @@ export const AuthProvider = ({ children }) => {
         };
     }
 
+    //Fetch questions and save in localStorage
+    // const updateQuestionSubjectData = async (subjects, userId, educationLevel) => {
+    //     for (const subject of subjects) {
+    //         try {
+    //             for (let i = 0; i < 5; i++) {
+    //                 try {
+    //                     const url = `${serverUrl}/exam/fetch-exam?subjectName=${subject}&userId=${userId}&educationLevel=${educationLevel}`;
+    //                     const response = await fetch(url);
+
+    //                     if (!response.ok) {
+    //                         throw new Error(`HTTP error! status: ${response.status}`);
+    //                     }
+
+    //                     const data = await response.json();
+
+    //                     const exam = {
+    //                         userId,
+    //                         educationLevel,
+    //                         subjectName: subject,
+    //                         examData: data.questions,
+    //                     };
+
+    //                     // Store the exam immediately and await completion
+    //                     await db.exams.add(exam);
+
+    //                     // console.log(`Exam - ${i} for subject ${subject} stored successfully`);
+
+    //                 } catch (error) {
+    //                     console.error(`Error fetching exam data for subject ${subject}:`, error);
+    //                     break;  // Exit loop on error
+    //                 }
+    //             }
+    //         } catch (error) {
+    //             console.error(`Error processing subject ${subject}:`, error);
+    //         }
+    //     }
+    // }
+    const updateQuestionSubjectData = async (subjects, userId, educationLevel) => {
+        for (const subject of subjects) {
+            try {
+                // Check if there are already exams for the given subject
+                const existingExams = await db.exams.where({ userId, subjectName: subject, educationLevel }).count();
+
+                // If exams exist for the subject, skip fetching
+                if (existingExams > 0) {
+                    console.log(`Exams for subject ${subject} already exist, skipping fetch.`);
+                    continue;
+                }
+
+                // If no exams exist for the subject, fetch up to 5 exams
+                for (let i = 0; i < 5; i++) {
+                    try {
+                        const url = `${serverUrl}/exam/fetch-exam?subjectName=${subject}&userId=${userId}&educationLevel=${educationLevel}`;
+                        const response = await fetch(url);
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        const data = await response.json();
+
+                        const exam = {
+                            userId,
+                            educationLevel,
+                            subjectName: subject,
+                            examData: data.questions,
+                        };
+
+                        // Store the exam immediately and await completion
+                        await db.exams.add(exam);
+
+                        // console.log(`Exam - ${i} for subject ${subject} stored successfully`);
+
+                    } catch (error) {
+                        console.error(`Error fetching exam data for subject ${subject}:`, error);
+                        break;  // Exit loop on error
+                    }
+                }
+            } catch (error) {
+                console.error(`Error processing subject ${subject}:`, error);
+            }
+        }
+    }
+
     return (
         <AuthContext.Provider value={{
             sessionInfo,
@@ -273,6 +371,7 @@ export const AuthProvider = ({ children }) => {
             fetchUserPoints,
             updateUserPoints,
             studentEnrollSubject,
+            updateQuestionSubjectData
         }}>
             {children}
         </AuthContext.Provider>

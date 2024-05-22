@@ -263,6 +263,8 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
             dateTime: moment().format('MMMM Do YYYY, h:mm:ss a'),
         }
 
+        // console.log('Submitted results:', userResultsData.results);
+
         //================================ Check Internet Connection Status ================================
         if (isOffline) {
             try {
