@@ -84,6 +84,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                     );
 
                     randomQuestions.categoriesWithQuestions.sort((a, b) => a.category - b.category);
+                    // console.log("Selected questions2: " + randomQuestions.categoriesWithQuestions);
                     setSelectedQuestions(randomQuestions.categoriesWithQuestions);
 
                     await updateQuestionHistory(randomQuestions.updatedUserHistory);

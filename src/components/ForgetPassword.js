@@ -1,3 +1,4 @@
+// src/components/ForgetPassword.js
 import React, { useState } from "react";
 import { showToast } from "../utilities/toastUtil.js";
 import {
@@ -13,22 +14,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { account } from "../appwriteConfig.js";
 import { rootUrl } from "../config.js";
-import "./PasswordReset.css"; // Make sure this CSS file contains your desired styles
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [hideButton, setHideButton] = useState(false);
 
-  const resetLink = `${rootUrl}/password-reset`; // Adjust accordingly
+  // Adjust the reset link as needed
+  const resetLink = `${rootUrl}/password-reset`;
 
-  const handleSubmit = (e) => {
+  // Handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
 
     try {
       setHideButton(true);
-      const promise = account.createRecovery(email, resetLink);
+      console.log("resetting password");
+      const promise = await account.createRecovery(email, resetLink);
+      console.log("Reset Password Response: " + promise);
       showToast(
         "Email reset link sent successfully. Please check your email",
         "success"
@@ -37,13 +41,13 @@ const ForgetPassword = () => {
     } catch (error) {
       console.error(error);
       setHideButton(false);
-      throw new Error();
+      showToast("Failed to send reset link. Please try again.", "error");
     }
   };
 
   return (
     <div className="passFgt-background">
-      <Container className="mt-5 resetPassword">
+      <Container className="mt-7">
         <Row className="justify-content-center">
           <Col md={6}>
             <Card className="border-0 rounded-lg shadow">
@@ -68,13 +72,14 @@ const ForgetPassword = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
+                      className="py-2"
                     />
                   </Form.Group>
                   {!submitted && (
                     <Button
                       variant="primary"
                       type="submit"
-                      className="w-100"
+                      className="w-100 py-2"
                       hidden={hideButton}
                     >
                       Send Reset Link

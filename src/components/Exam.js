@@ -74,6 +74,8 @@ function Exam({ subject }) {
         const questions = response.documents;
         questionData = questions;
 
+        // console.log('Questions: ', questionData);
+
         // Convert questions from JSON strings to JSON objects
         questionData.forEach((obj) => {
           obj.questions = obj.questions.map((q) => JSON.parse(q));

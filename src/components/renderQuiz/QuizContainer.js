@@ -32,6 +32,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
 
                 if (randomQuestions) {
                     setSelectedQuestions(randomQuestions);
+                    // console.log("Selected questions: ", randomQuestions);
                 } else {
                     console.error('Failed to fetch random questions');
                 }
