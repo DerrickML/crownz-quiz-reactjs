@@ -8,6 +8,11 @@ export const setUserAnswer = (questionId, answer, categoryId, isEitherOr, questi
         payload.answer = answer.reduce((acc, curr) => ({ ...acc, [curr]: true }), {});
     }
 
+    // If the question type is drag and drop, ensure the answer is an array
+    if (questionType === 'dragAndDrop') {
+        payload.answer = Array.isArray(answer) ? answer : answer.split(' ');
+    }
+
     return {
         type: 'SET_USER_ANSWER',
         payload

@@ -1,3 +1,4 @@
+// CheckboxQuestion.js
 import React, { useState, useEffect } from 'react';
 import { Form, Card } from 'react-bootstrap';
 import { isImageUrl } from './utils';

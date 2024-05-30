@@ -16,7 +16,7 @@ import {
 } from "./renderQuiz/examsAppwriteConfig"; //Data from appwrite database
 import { useAuth } from "../context/AuthContext.js"
 import { getRandomExamBySubject } from "./renderQuiz/utils"
-import { sst_ple, math_ple } from '../otherFiles/questionsData'; //Static data from local files
+import { sst_ple, math_ple, eng_ple } from '../otherFiles/questionsData'; //Static data from local files
 
 /**
  * Represents an Exam component.
@@ -130,21 +130,32 @@ function Exam({ subject }) {
       case "english-language_ple":
         // return <IframeComponent url="https://exams.crownz.derrickml.com/english_ple_section_B" />;
         // return <IframeComponent url="https://www.exampreptutor.com/english_ple_section_B/" />;
-        return <IframeComponent url="https://exampreptutor.com/english_ple_section_B/" />;
-      // return <IframeComponent url="http://http://192.168.100.12:5173/" />;
-      // return <IframeComponent url="http://localhost:5173/" />;
+        // return <IframeComponent url="http://http://192.168.100.12:5173/" />;
+        // return <IframeComponent url="http://localhost:5173/" />;
+
+        // return <IframeComponent url="https://exampreptutor.com/english_ple_section_B/" />;
+
+        if (data === null) { return null }
+        else {
+          return <QuizContainer questionsData={eng_ple} subjectName={'eng_ple'} />;
+        };
+
       case "social-studies_ple":
         if (data === null) { return null }
         else {
           return <QuizContainer questionsData={data} subjectName={'sst_ple'} />;
         };
+
       case "mathematics_ple":
+        // return <QuizContainer questionsData={math_ple} subjectName={'math_ple'} />;
         return <QuizContainer questionsData={data} subjectName={'math_ple'} />;
-      // return <QuizContainer questionsData={math_ple} subjectName={'math_ple'} />;
+
       case "science_ple":
         return <QuizContainer questionsData={data} subjectName={'sci_ple'} />;
+
       default:
         return null;
+
     }
   };
 

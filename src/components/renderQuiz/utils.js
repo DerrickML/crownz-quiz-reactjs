@@ -253,6 +253,24 @@ export const selectRandomQuestions = (questionsData, categoryIds, subjectName, u
             }
         }
 
+        if (subjectName === 'eng_ple') {
+            if (categoryId === 31) {
+                numQuestions = 20;
+            }
+            if (categoryId === 1 || categoryId === 6) {
+                numQuestions = 5;
+            }
+            if (categoryId === 18) {
+                numQuestions = 3;
+            }
+            if (categoryId === 6 || categoryId === 16 || categoryId === 21 || categoryId === 23 || categoryId === 25 || categoryId === 27 || categoryId === 29) {
+                numQuestions = 2;
+            }
+            if (categoryId === 51 || categoryId === 52 || categoryId === 53 || categoryId === 54 || categoryId === 55) {
+                numQuestions = 0;
+            }
+        }
+
         // Randomly select questions
         let selectedQuestions = [...availableQuestions].sort(() => 0.5 - Math.random()).slice(0, numQuestions);
 

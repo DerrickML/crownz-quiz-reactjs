@@ -14,8 +14,11 @@ import { isImageUrl } from './utils';
  */
 const AnswerCard = ({ resultsData, questionIndex, category_Id }) => {
 
-    const renderValue = (value) => {
-        if (Array.isArray(value)) {
+    const renderValue = (value, questionType) => {
+        if (questionType === 'dragAndDrop' && Array.isArray(value)) {
+            // console.log('Is Drag and Drop: ', value);
+            return value.join(' ');
+        } else if (Array.isArray(value)) {
             return (
                 <ul>
                     {value.map((answer, index) => (
@@ -67,6 +70,12 @@ const AnswerCard = ({ resultsData, questionIndex, category_Id }) => {
                 answer = Array.isArray(answer) ? answer.map(normalizeGeneral) : normalizeGeneral(answer);
             }
 
+            if (questionType === 'text') {
+                console.log('dragAndDrop checking');
+                console.log('user_answer', user_answer);
+                console.log('answer', answer);
+            }
+
             let score = 0;
             let maxScore = 0;
 
@@ -91,6 +100,12 @@ const AnswerCard = ({ resultsData, questionIndex, category_Id }) => {
                     });
                     score = Math.min(score, maxScore); // Limit score to maxScore
                 }
+            } else if (questionType === 'dragAndDrop') {
+                maxScore = mark || 1; // Assign the max score to mark if available, otherwise 1
+                // Single mark for text, check if answer matches
+                if (answer === user_answer || (Array.isArray(answer) && answer.includes(user_answer))) {
+                    score = mark || 1; // Use provided mark or default to 1
+                }
             }
 
             return { score, maxScore };
@@ -103,7 +118,16 @@ const AnswerCard = ({ resultsData, questionIndex, category_Id }) => {
             <>
                 <p>
                     {/* {questionIndex + category_Id}.  */}
-                    <span dangerouslySetInnerHTML={{ __html: questionText }}></span>
+                    {
+                        questionType === 'dragAndDrop' ?
+                            <>
+                                <span>{questionText.join(' ')}</span>
+                            </>
+                            :
+                            <>
+                                <span dangerouslySetInnerHTML={{ __html: questionText }}></span>
+                            </>
+                    }
                 </p>
                 {questionImage && isImageUrl(questionImage) && (
                     <Card.Img src={questionImage} alt="Question" style={{ maxWidth: '25rem', maxHeight: '15rem' }} />
@@ -117,7 +141,7 @@ const AnswerCard = ({ resultsData, questionIndex, category_Id }) => {
                         >
                             <div className="ms-2 me-auto">
                                 <div className="fw-bold">Your Answer</div>
-                                {user_answer ? renderValue(user_answer) : "Not Answered"}
+                                {user_answer ? renderValue(user_answer, questionType) : "Not Answered"}
                             </div>
 
                             {
@@ -150,7 +174,7 @@ const AnswerCard = ({ resultsData, questionIndex, category_Id }) => {
                         >
                             <div className="ms-2 me-auto">
                                 <div className="fw-bold">Correct Answer</div>
-                                {renderValue(answer)}
+                                {renderValue(answer, questionType)}
                             </div>
                         </ListGroup.Item>
                         {explanation && (

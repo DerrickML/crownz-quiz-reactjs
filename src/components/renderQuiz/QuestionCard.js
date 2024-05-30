@@ -16,7 +16,6 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
         return roman[index];
     }
 
-    // Adjusted to handle the new structure
     const getUserAnswer = (questionId) => {
         const key = `${categoryId}-${questionId}`;
         return answers[key];
@@ -41,21 +40,56 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
         }
     };
 
-    const renderQuestionText = (questionText, questionImage) => (
+    const renderQuestionText = (questionText, questionImage, questionType) => (
         <>
-            <p>{questionIndex + categoryId}. <span dangerouslySetInnerHTML={{ __html: questionText }}></span></p>
+            <p>
+                {
+                    questionType === 'dragAndDrop' ?
+                        <>
+                            {questionIndex + categoryId}.  <span>{questionText.join(' ')}</span>
+                        </>
+                        :
+                        <>
+                            {questionIndex + categoryId}.  <span dangerouslySetInnerHTML={{ __html: questionText }}></span>
+                        </>
+                }
+            </p>
             {questionImage && isImageUrl(questionImage) && (
                 <Card style={{ alignItems: 'flex-start', textAlign: 'center', margin: '10px 0' }}>
                     <Card.Img src={questionImage} alt="Question" style={{ maxWidth: '20rem', height: 'auto' }} />
-                    {/* <Card.Img src={questionImage} alt="Question" style={{ width: 'auto', height: 'auto' }} /> */}
                 </Card>
             )}
         </>
     );
 
-    const renderQuestion = (currentQuestion, disabled) => (
-        <>
-            {renderQuestionText(currentQuestion.question, currentQuestion.image)}
+    const renderQuestion = (currentQuestion, disabled) => {
+        // if (currentQuestion.type === 'dragAndDrop') {
+        //     console.log('drag and drop: ', currentQuestion)
+        //     return <>
+        //         {/* Drag and drop elements go here - renderDragAndDropElements() function, or edit the renderQuestionText() to also support drag and drop elements which can be dragged in the answer input section*/}
+        //         <AnswerInput
+        //             question={currentQuestion}
+        //             onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, currentQuestion.type)}
+        //             getUserAnswer={getUserAnswer}
+        //             disabled={disabled}
+        //             displayQuestionText={false}
+        //         />
+        //         {currentQuestion.sub_questions && currentQuestion.sub_questions.map((subQ, index) => (
+        //             <AnswerInput
+        //                 key={`${currentQuestion.id}_sub_${index}`}
+        //                 question={subQ}
+        //                 onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, subQ.type, index)}
+        //                 getUserAnswer={() => getUserAnswer(`${currentQuestion.id}_sub_${index}`)}
+        //                 disabled={false}
+        //                 displayQuestionText={true}
+        //                 questionNumber={indexToRoman(index)}
+        //             />
+        //         ))}
+        //     </>
+        // }
+        // else {
+        return <>
+            {renderQuestionText(currentQuestion.question, currentQuestion.image, currentQuestion.type)}
             <AnswerInput
                 question={currentQuestion}
                 onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, currentQuestion.type)}
@@ -75,7 +109,8 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
                 />
             ))}
         </>
-    );
+        // }
+    };
 
     return (
         <ListGroup>

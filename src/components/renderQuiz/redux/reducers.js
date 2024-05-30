@@ -27,6 +27,12 @@ const quizReducer = (state = initialState, action) => {
                         user_answer: { ...newAnswers[answerIndex].user_answer, ...answer },
                         type: questionType
                     };
+                } else if (questionType === 'dragAndDrop') {
+                    newAnswers[answerIndex] = {
+                        ...newAnswers[answerIndex],
+                        user_answer: answer, // Store as an array
+                        type: questionType
+                    };
                 } else {
                     newAnswers[answerIndex] = { ...newAnswers[answerIndex], user_answer: answer, type: questionType };
                 }

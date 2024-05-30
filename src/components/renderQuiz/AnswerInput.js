@@ -3,9 +3,9 @@ import React from 'react';
 import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 import CheckboxQuestion from './CheckboxQuestion';
 import TextInputQuestion from './TextInputQuestion';
+import DragAndDropQuestion from './DragAndDropQuestion';
 
 const AnswerInput = ({ question, onChange, disabled, getUserAnswer, displayQuestionText, questionNumber }) => {
-
     const userAnswer = getUserAnswer(question.id);
 
     //Case to display different question types
@@ -38,6 +38,16 @@ const AnswerInput = ({ question, onChange, disabled, getUserAnswer, displayQuest
                     question={question}
                     onChange={onChange}
                     disabled={disabled}
+                    userAnswer={userAnswer}
+                    displayQuestionText={displayQuestionText}
+                    questionNumber={questionNumber}
+                />
+            );
+        case 'dragAndDrop':
+            return (
+                <DragAndDropQuestion
+                    question={question}
+                    onChange={onChange}
                     userAnswer={userAnswer}
                     displayQuestionText={displayQuestionText}
                     questionNumber={questionNumber}
