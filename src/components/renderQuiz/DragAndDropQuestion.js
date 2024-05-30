@@ -55,13 +55,13 @@ const DragAndDropQuestion = ({ question, onChange, userAnswer, displayQuestionTe
                 </Form.Label>
             }
             <DragDropContext onDragEnd={handleDragEnd}>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch', gap: '16px' }}>
                     <DeferredDroppable droppableId="dragItems" direction="horizontal">
                         {(provided) => (
                             <div
                                 {...provided.droppableProps}
                                 ref={provided.innerRef}
-                                style={{ display: 'flex', padding: '8px', border: '1px solid #ccc', minHeight: '50px', marginRight: '10px', flex: 1 }}
+                                style={{ display: 'flex', padding: '8px', border: '1px solid #ccc', minHeight: '50px', flex: 1 }}
                             >
                                 {dragItems.map((item, index) => (
                                     <Draggable key={item} draggableId={item} index={index}>

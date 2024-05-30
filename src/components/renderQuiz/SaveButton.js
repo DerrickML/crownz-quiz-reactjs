@@ -135,13 +135,18 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
                 }
                 break;
             case 'dragAndDrop':
-                maxScore = mark || correctAnswer.length;
-                if (userAnswer && userAnswer.length <= maxScore) {
-                    userAnswer.forEach((userOption, index) => {
-                        if (correctAnswer[index] && normalizeGeneral(correctAnswer[index]) === normalizeGeneral(userOption)) {
-                            score += 1;
+                maxScore = mark || 1; // Assign the max score to mark if available, otherwise 1
+                if (Array.isArray(userAnswer) && Array.isArray(correctAnswer) && userAnswer.length === correctAnswer.length) {
+                    let isCorrect = true;
+                    for (let i = 0; i < correctAnswer.length; i++) {
+                        if (normalizeGeneral(userAnswer[i]) !== normalizeGeneral(correctAnswer[i])) {
+                            isCorrect = false;
+                            break;
                         }
-                    });
+                    }
+                    if (isCorrect) {
+                        score = mark || 1;
+                    }
                 }
                 break;
             default:

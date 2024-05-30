@@ -70,12 +70,6 @@ const AnswerCard = ({ resultsData, questionIndex, category_Id }) => {
                 answer = Array.isArray(answer) ? answer.map(normalizeGeneral) : normalizeGeneral(answer);
             }
 
-            if (questionType === 'text') {
-                console.log('dragAndDrop checking');
-                console.log('user_answer', user_answer);
-                console.log('answer', answer);
-            }
-
             let score = 0;
             let maxScore = 0;
 
@@ -102,16 +96,23 @@ const AnswerCard = ({ resultsData, questionIndex, category_Id }) => {
                 }
             } else if (questionType === 'dragAndDrop') {
                 maxScore = mark || 1; // Assign the max score to mark if available, otherwise 1
-                // Single mark for text, check if answer matches
-                if (answer === user_answer || (Array.isArray(answer) && answer.includes(user_answer))) {
-                    score = mark || 1; // Use provided mark or default to 1
+                if (Array.isArray(user_answer) && Array.isArray(answer) && user_answer.length === answer.length) {
+                    let isCorrect = true;
+                    for (let i = 0; i < answer.length; i++) {
+                        if (normalizeGeneral(user_answer[i]) !== normalizeGeneral(answer[i])) {
+                            isCorrect = false;
+                            break;
+                        }
+                    }
+                    if (isCorrect) {
+                        score = mark || 1;
+                    }
                 }
             }
 
             return { score, maxScore };
         };
 
-        const isAnswerCorrect = checkAnswer(answer, user_answer, questionType, mark);
         const { score, maxScore } = checkAnswer(answer, user_answer, questionType, mark);
 
         return (
