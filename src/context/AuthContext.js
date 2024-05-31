@@ -68,6 +68,8 @@ export const AuthProvider = ({ children }) => {
         setSessionInfo(sessionDetails);
         storageUtil.setItem("sessionInfo", sessionDetails);
 
+        console.log('userData: ', userData);
+
         const userDetails = {
             userId: sessionData.userId,
             userDocId: userData.userDocId,

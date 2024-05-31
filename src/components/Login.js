@@ -36,10 +36,12 @@ import {
 } from "../appwriteConfig.js";
 import InfoCard from './InfoCard';
 import { serverUrl } from "../config.js"
+import storageUtil from '../utilities/storageUtil.js';
+import db from '../db.js';
 import "./Login.css";
 
 function Login() {
-  const { handleLogin, handleLogout, fetchUserPoints } = useAuth();
+  const { handleLogin, fetchUserPoints } = useAuth();
   const navigate = useNavigate();
 
   //User ID
@@ -71,8 +73,41 @@ function Login() {
     buttonText: 'Close'
   });
 
+  //LOGOUT FUNCTION
+  const handleLogout = async () => {
+    const sessionInfo = storageUtil.getItem("sessionInfo")
+    const userPoints = storageUtil.getItem("userPoints")
+    if (sessionInfo && sessionInfo.$id) {
+      try {
+        await account.deleteSession(sessionInfo.$id); //Clears the session on Client's and Appwrite's side
+      } catch (error) {
+        console.error("Logout failed", error);
+      }
+    } else {
+      console.error("No session to logout");
+    }
+
+    // Clear userPoints from context and storage
+    storageUtil.removeItem("userPoints");
+
+    // Clear IndexedDB
+    try {
+      await db.delete();  // Clears all data from the Dexie database
+      // console.log("IndexedDB cleared successfully");
+    } catch (error) {
+      console.error("Error clearing IndexedDB:", error);
+    }
+
+    // Clear rest of stored data
+    storageUtil.clear();
+
+    // Clear session storage
+    sessionStorage.clear();
+  };
+
   // Logout user in case they are already logged in on component mount
   useEffect(() => {
+
     const clearSession = async () => {
       await handleLogout();
     };
