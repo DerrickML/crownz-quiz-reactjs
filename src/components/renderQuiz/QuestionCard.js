@@ -88,27 +88,42 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
         //     </>
         // }
         // else {
-        return <>
-            {renderQuestionText(currentQuestion.question, currentQuestion.image, currentQuestion.type)}
-            <AnswerInput
-                question={currentQuestion}
-                onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, currentQuestion.type)}
-                getUserAnswer={getUserAnswer}
-                disabled={disabled}
-                displayQuestionText={false}
-            />
-            {currentQuestion.sub_questions && currentQuestion.sub_questions.map((subQ, index) => (
+        // if (currentQuestion.type === 'iframe') {
+        //     // return (
+        //     //     <AnswerInput
+        //     //         question={currentQuestion}
+        //     //         onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, currentQuestion.type)}
+        //     //         getUserAnswer={getUserAnswer}
+        //     //         disabled={disabled}
+        //     //         displayQuestionText={false}
+        //     //     />
+        //     // );
+        //     return
+        // } else {
+        return (
+            <>
+                {renderQuestionText(currentQuestion.question, currentQuestion.image, currentQuestion.type)}
                 <AnswerInput
-                    key={`${currentQuestion.id}_sub_${index}`}
-                    question={subQ}
-                    onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, subQ.type, index)}
-                    getUserAnswer={() => getUserAnswer(`${currentQuestion.id}_sub_${index}`)}
-                    disabled={false}
-                    displayQuestionText={true}
-                    questionNumber={indexToRoman(index)}
+                    question={currentQuestion}
+                    onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, currentQuestion.type)}
+                    getUserAnswer={getUserAnswer}
+                    disabled={disabled}
+                    displayQuestionText={false}
                 />
-            ))}
-        </>
+                {currentQuestion.sub_questions && currentQuestion.sub_questions.map((subQ, index) => (
+                    <AnswerInput
+                        key={`${currentQuestion.id}_sub_${index}`}
+                        question={subQ}
+                        onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, subQ.type, index)}
+                        getUserAnswer={() => getUserAnswer(`${currentQuestion.id}_sub_${index}`)}
+                        disabled={false}
+                        displayQuestionText={true}
+                        questionNumber={indexToRoman(index)}
+                    />
+                ))}
+            </>
+        );
+        // }
         // }
     };
 

@@ -12,7 +12,7 @@ import {
     database_id,
     studentMarksTable_id,
 } from "../../appwriteConfig.js";
-import useNetworkStatus from '../../hooks/useNetworkStatus.js';
+import useNetworkStatus from '../../hooks/useNetworkStatus.js'; // Custom hook to check network status
 import {
     fetchAndUpdateResults, formatDate
 } from "../../utilities/resultsUtil";
@@ -20,24 +20,13 @@ import { sendEmailToNextOfKin } from "../../utilities/otherUtils.js";
 import { useAuth } from '../../context/AuthContext';
 import db from '../../db.js';
 
-const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDisplay, subject_Name, sendBooleanValue, data }, ref) => {
+const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDisplay, subject_Name }, ref) => {
+
     const [modifiedSelectedQuestions, setModifiedSelectedQuestions] = useState(selectedQuestions);
-    const isOffline = !useNetworkStatus();
-    const dispatch = useDispatch();
-    const { userInfo, updateUserPoints, fetchUserPoints } = useAuth();
-    let studentID = userInfo.userId;
 
-    let subjectName;
-    if (userInfo.educationLevel === 'PLE') {
-        subjectName = subject_Name === 'sst_ple' ? 'Social Studies' : (subject_Name === 'math_ple' ? 'Mathematics' : (subject_Name === 'sci_ple' ? 'Science' : 'English-Language'));
-    } else {
-        subjectName = subject_Name;
-    }
+    const isOffline = !useNetworkStatus(); // Using custom hook to check network status
 
-    const navigate = useNavigate();
-    const reduxState = useSelector(state => state.answers);
-    const [isLoading, setIsLoading] = useState(false);
-
+    // Assigning IDs to the subquestions of the selected questions
     useEffect(() => {
         const assignIds = async () => {
             await assignSubQuestionIds(selectedQuestions);
@@ -47,10 +36,30 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
         assignIds();
     }, [selectedQuestions]);
 
+    const dispatch = useDispatch();
+
+    const { userInfo, updateUserPoints, fetchUserPoints } = useAuth();
+    let studentID = userInfo.userId;
+
+    let subjectName;
+    if (userInfo.educationLevel === 'PLE') {
+        subjectName = subject_Name === 'sst_ple' ? 'Social Studies' : (subject_Name === 'math_ple' ? 'Mathematics' : (subject_Name === 'sci_ple' ? 'Science' : 'English Language'));
+    } else {
+        subjectName = subject_Name;
+    }
+
+    const navigate = useNavigate();
+
+    const reduxState = useSelector(state => state.answers);
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    // Function to assign ids to subquestions without ids
     const assignSubQuestionIds = async (questions) => {
         questions.forEach(question => {
             if (question.questions) {
                 question.questions.forEach(mainQuestion => {
+                    // Assign IDs only to subquestions of questions that are not in 'either' or 'or' structure
                     if (mainQuestion.sub_questions && !mainQuestion.either && !mainQuestion.or) {
                         mainQuestion.sub_questions.forEach((subQuestion, subIndex) => {
                             if (!subQuestion.id) {
@@ -63,9 +72,10 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
         });
     };
 
+    // Function to submit data to the database
     const createDocument = async (data) => {
         try {
-            setIsLoading(true);
+            setIsLoading(true); // Start loading
             const result = await databases.createDocument(
                 database_id,
                 studentMarksTable_id,
@@ -75,17 +85,26 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
         } catch (error) {
             console.error("Error creating document:", error);
         } finally {
-            setIsLoading(false);
+            setIsLoading(false); // Stop loading regardless of success or error
         }
     };
 
+    /**
+     * Calculating marks.
+     * Normalization to answers (both user-answers and given answer options) before comparison
+     * Removes special characters (all question types) and extra spaces (only text-type).
+     */
     const calculateMarks = (question, userAnswer) => {
         const { type, answer, mark, sub_questions } = question;
         const correctAnswer = Array.isArray(answer) ? answer : [answer];
+
+        // General normalize function for non-text questions
         const normalizeGeneral = value => value.trim().toLowerCase();
+
+        // Specialized normalize function for text questions
         const normalizeText = value => value
-            .replace(/[\s\.,\-_!@#$%^&*()=+{}[\]\\;:'"<>/?|`~]+/g, '')
-            .replace(/\s+/g, ' ')
+            .replace(/[\s\.,\-_!@#$%^&*()=+{}[\]\\;:'"<>/?|`~]+/g, '') // Remove special characters
+            .replace(/\s+/g, ' ') // Replace multiple spaces with a single space
             .trim()
             .toLowerCase();
 
@@ -116,7 +135,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
                 }
                 break;
             case 'dragAndDrop':
-                maxScore = mark || 1;
+                maxScore = mark || 1; // Assign the max score to mark if available, otherwise 1
                 if (Array.isArray(userAnswer) && Array.isArray(correctAnswer) && userAnswer.length === correctAnswer.length) {
                     let isCorrect = true;
                     for (let i = 0; i < correctAnswer.length; i++) {
@@ -126,7 +145,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
                         }
                     }
                     if (isCorrect) {
-                        score = maxScore;
+                        score = mark || 1;
                     }
                 }
                 break;
@@ -134,6 +153,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
                 break;
         }
 
+        // Calculate marks for subquestions
         if (sub_questions) {
             sub_questions.forEach(subQ => {
                 const subResult = calculateMarks(subQ, subQ.user_answer);
@@ -149,15 +169,19 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
         const reduxAnswers = reduxState.filter(answer => answer.id === questionId && answer.category === categoryId);
         if (reduxAnswers.length === 0) return null;
 
+        // Handle different types of questions
         switch (questionType) {
             case 'multipleChoice':
             case 'text':
+                // For multiple choice and text questions, return the last user answer
                 return reduxAnswers[reduxAnswers.length - 1].user_answer;
             case 'check_box':
+                // For checkbox questions, return the options that are checked
                 const userAnswer = reduxAnswers[reduxAnswers.length - 1].user_answer;
                 const checkedOptions = Object.keys(userAnswer).filter(option => userAnswer[option]);
                 return checkedOptions;
             case 'dragAndDrop':
+                // For drag and drop questions, return the array of dropped items
                 return reduxAnswers[reduxAnswers.length - 1].user_answer;
             default:
                 return null;
@@ -226,11 +250,11 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
     };
 
     const handleSave = async () => {
-
         let { formattedAnswers, totalMarks, totalPossibleMarks } = formatAnswersForSaving();
 
         onSubmit();
 
+        // Create a document in Appwrite Collection
         const resultsString = JSON.stringify(formattedAnswers);
 
         const userResultsData = {
@@ -244,6 +268,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
 
         if (isOffline) {
             try {
+                console.log("Offline!");
                 let data = {
                     studID: userInfo.userId,
                     studInfo: {

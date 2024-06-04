@@ -4,11 +4,12 @@ import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 import CheckboxQuestion from './CheckboxQuestion';
 import TextInputQuestion from './TextInputQuestion';
 import DragAndDropQuestion from './DragAndDropQuestion';
+import IframeQuestion from './IframeQuestion';
 
 const AnswerInput = ({ question, onChange, disabled, getUserAnswer, displayQuestionText, questionNumber }) => {
     const userAnswer = getUserAnswer(question.id);
 
-    //Case to display different question types
+    // Case to display different question types
     switch (question.type) {
         case 'multipleChoice':
             return (
@@ -53,6 +54,16 @@ const AnswerInput = ({ question, onChange, disabled, getUserAnswer, displayQuest
                     questionNumber={questionNumber}
                 />
             );
+        // case 'iframe':
+        //     return (
+        //         <IframeQuestion
+        //             question={question.question}
+        //             onChange={onChange}
+        //             displayQuestionText={displayQuestionText}
+        //             questionNumber={questionNumber}
+        //             iframeId={question.id}
+        //         />
+        //     );
         default:
             return null;
     }

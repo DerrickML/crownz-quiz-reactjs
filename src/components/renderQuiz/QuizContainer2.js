@@ -1,30 +1,64 @@
-// QuizContainer.js
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { resetAnswers } from './redux/actions';
-import SaveButton from './SaveButton';
-import QuestionCard from './QuestionCard';
-import { getAttemptedQuestions, updateQuestionHistory, selectRandomQuestions, generateRandomExam } from './utils';
 import { Container, Row, Col, Modal, ButtonGroup, Button, Spinner, Card } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../../context/AuthContext';
+import { generateRandomExam } from './utils'; // Import your function
+import SaveButton from './SaveButton';
+import IframeComponent from './IframeComponent';
+import QuestionCard from './QuestionCard';
 import Timer from './Timer';
 
 const QuizContainer = ({ questionsData, subjectName }) => {
-    // console.log('All questions data: ', questionsData);
     const [selectedQuestions, setSelectedQuestions] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [showExitModal, setShowExitModal] = useState(false);
     const [showTimeUpModal, setShowTimeUpModal] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const { userInfo } = useAuth();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    //===SUBMISSION MODAL========================
+    const saveButtonRef = useRef(null);
+
+    useEffect(() => {
+        console.log('Questions Data: ', questionsData)
+        const fetchAndSetQuestions = async () => {
+            setIsLoading(true);
+
+            try {
+                const randomQuestions = await generateRandomExam(questionsData, subjectName, userInfo.userId, userInfo.educationLevel);
+
+                if (randomQuestions) {
+                    setSelectedQuestions(randomQuestions);
+                    // console.log("Selected questions: ", randomQuestions);
+                } else {
+                    console.error('Failed to fetch random questions');
+                }
+
+                // if (questionsData) {
+                //     console.log('QuizContainer: passing questions data', questionsData);
+                //     setSelectedQuestions(questionsData);
+                // } else {
+                //     console.error('Failed to populate questions');
+                // }
+
+            } catch (error) {
+                console.error('Error fetching questions:', error);
+            }
+
+            setIsLoading(false);
+        };
+
+        if (questionsData && subjectName) {
+            fetchAndSetQuestions();
+        }
+
+    }, [questionsData, subjectName, userInfo.userId, userInfo.educationLevel]);
+
     const handleOpenModal = () => {
         setShowModal(true);
     };
@@ -32,74 +66,30 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     const handleCloseModal = () => {
         setShowModal(false);
     };
-    //===END SUBMISSION MODAL====================
 
-    //===EXIT/CANCEL EXAM MODAL==================
     const handleExitExam = () => {
         setShowExitModal(true);
     };
 
     const confirmExit = () => {
-        dispatch(resetAnswers()); // Dispatch the action
+        dispatch(resetAnswers());
         navigate("/exam-page");
     };
-    //===END EXIT/CANCEL EXAM MODAL==============
+
+    const handleSubmit = () => {
+        setIsSubmitted(true);
+        setShowModal(false);
+    };
 
     // ===TIMER =================================
-    const [isSubmitted, setIsSubmitted] = useState(false);
     const initialTime = 90 * 60; // 1 hour 30 minutes in seconds
-    const saveButtonRef = useRef(null); // Reference to the SaveButton
 
     const handleTimeUp = () => {
         setIsSubmitted(true);
         saveButtonRef.current.click();
         setShowTimeUpModal(true);
     };
-
-    const handleSubmit = () => {
-        setIsSubmitted(true);
-    };
-
     // ===END TIMER ==============================
-
-    // Extract category IDs dynamically from questionsData
-    const categoriesToInclude = useMemo(() => questionsData ? questionsData.map(category => category.category) : [], [questionsData]);
-    // const categoriesToInclude = questionsData.map(category => category.category);
-
-    useEffect(() => {
-        const fetchUserHistoryAndSelectQuestions = async () => {
-            if (questionsData) {
-                setIsLoading(true);
-                try {
-
-                    const userHistory = await getAttemptedQuestions(userInfo.userId, subjectName, userInfo.educationLevel);
-
-                    const randomQuestions = selectRandomQuestions(
-                        questionsData,
-                        categoriesToInclude,
-                        subjectName,
-                        userHistory,
-                        userInfo.userId,
-                        userInfo.educationLevel
-                    );
-
-                    randomQuestions.categoriesWithQuestions.sort((a, b) => a.category - b.category);
-                    // console.log("Selected questions2: " + randomQuestions.categoriesWithQuestions);
-                    setSelectedQuestions(randomQuestions.categoriesWithQuestions);
-
-                    await updateQuestionHistory(randomQuestions.updatedUserHistory);
-
-                } catch (error) {
-                    console.error('Error fetching user history:', error);
-                    // Handle error as needed
-                }
-                setIsLoading(false);
-            }
-
-        };
-
-        fetchUserHistoryAndSelectQuestions();
-    }, [questionsData, categoriesToInclude, subjectName, userInfo.userId, userInfo.educationLevel]);
 
     if (isLoading) {
         return (
@@ -157,8 +147,11 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                         <Col xs={12} md={{ span: 9, offset: 3 }}>
                             {selectedQuestions.map((category, index) => (
                                 <div key={category.$id}>
-                                    {/* <h2>Question {category.category}</h2> */}
-                                    {subjectName === 'sst_ple' && category.category === 36 || category.category === 51 ? (<Card.Title style={{ marginTop: '20px', border: '2px solid #000', borderColor: 'red' }}>{category.instructions}</Card.Title>) : null}
+                                    {category.instructions &&
+                                        < Card.Title style={{ marginTop: '20px', border: '', borderColor: '' }}>
+                                            {category.instructions}
+                                        </Card.Title>
+                                    }
                                     {category.questions.map((question, index) => {
                                         // Pass the question as is, with an additional property to indicate "either/or" type
                                         const isEitherOr = question.hasOwnProperty('either') && question.hasOwnProperty('or');
@@ -174,6 +167,10 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                                     })}
                                 </div>
                             ))}
+                            <div>
+                                SECTION B
+                                <IframeComponent url={'http://localhost:5173/'} />
+                            </div>
                         </Col>
                     </Row>
                     <Row >

@@ -1,11 +1,13 @@
+// QuizContainer.js
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { resetAnswers } from './redux/actions';
 import { Container, Row, Col, Modal, ButtonGroup, Button, Spinner, Card } from 'react-bootstrap';
 import { useAuth } from '../../context/AuthContext';
-import { generateRandomExam } from './utils'; // Import your function
+import { generateRandomExam } from './utils';
 import SaveButton from './SaveButton';
+import IframeComponent from './IframeComponent';
 import QuestionCard from './QuestionCard';
 import Timer from './Timer';
 
@@ -16,6 +18,8 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     const [showTimeUpModal, setShowTimeUpModal] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [iframeData, setIframeData] = useState(null);
+    const [iframeDataStatus, setIframeDataStatus] = useState(false); // State to store iframe data
 
     const { userInfo } = useAuth();
     const dispatch = useDispatch();
@@ -24,7 +28,6 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     const saveButtonRef = useRef(null);
 
     useEffect(() => {
-        console.log('Questions Data: ', questionsData)
         const fetchAndSetQuestions = async () => {
             setIsLoading(true);
 
@@ -33,18 +36,9 @@ const QuizContainer = ({ questionsData, subjectName }) => {
 
                 if (randomQuestions) {
                     setSelectedQuestions(randomQuestions);
-                    // console.log("Selected questions: ", randomQuestions);
                 } else {
                     console.error('Failed to fetch random questions');
                 }
-
-                // if (questionsData) {
-                //     console.log('QuizContainer: passing questions data', questionsData);
-                //     setSelectedQuestions(questionsData);
-                // } else {
-                //     console.error('Failed to populate questions');
-                // }
-
             } catch (error) {
                 console.error('Error fetching questions:', error);
             }
@@ -75,20 +69,35 @@ const QuizContainer = ({ questionsData, subjectName }) => {
         navigate("/exam-page");
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+        await completeSubmit();
+    };
+
+    const completeSubmit = async () => {
+        console.log("Confirmed to submit Submit");
+        setIsLoading(true)
         setIsSubmitted(true);
         setShowModal(false);
+        setIsLoading(false)
     };
 
-    // ===TIMER =================================
-    const initialTime = 90 * 60; // 1 hour 30 minutes in seconds
+    const handleIframeDataStatus = async (data) => {
+        console.log("Received boolean value from ButtonComponent:", data);
+        setIframeDataStatus(data);
+    };
+
+    const handleIframeData = async (data) => {
+        console.log("Received data from DataComponent:", data);
+        setIframeData(data);
+    }
+
+    const initialTime = 90 * 60;
+    // const initialTime = 5;
 
     const handleTimeUp = () => {
-        setIsSubmitted(true);
-        saveButtonRef.current.click();
+        handleSubmit();
         setShowTimeUpModal(true);
     };
-    // ===END TIMER ==============================
 
     if (isLoading) {
         return (
@@ -103,11 +112,10 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     }
 
     return (
-        <Container fluid style={{ marginTop: "" }}>
+        <Container fluid>
             <div style={{ position: 'sticky', top: 0, zIndex: 2 }}>
                 <Row>
-                    <Col xs={12} className="d-md-none bg-light" >
-                        {/* Timer */}
+                    <Col xs={12} className="d-md-none bg-light">
                         <Timer initialTime={initialTime} onTimeUp={handleTimeUp} />
                     </Col>
                 </Row>
@@ -124,21 +132,12 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                 <>
                     <Row>
                         <Col xs={12} md={2} className="d-none d-md-block position-fixed bg-light" style={{ height: '50vh', overflowY: 'auto' }}>
-                            {/* Timer */}
                             <Timer initialTime={initialTime} onTimeUp={handleTimeUp} />
                             <ButtonGroup>
-                                <Button
-                                    variant="success"
-                                    onClick={handleOpenModal}
-                                    className="w-25"
-                                >
+                                <Button variant="success" onClick={handleOpenModal} className="w-25">
                                     Submit Exam
                                 </Button>
-                                <Button
-                                    variant="danger"
-                                    onClick={handleExitExam}
-                                    className="w-25"
-                                >
+                                <Button variant="danger" onClick={handleExitExam} className="w-25">
                                     Exit Exam
                                 </Button>
                             </ButtonGroup>
@@ -146,31 +145,12 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                         <Col xs={12} md={{ span: 9, offset: 3 }}>
                             {selectedQuestions.map((category, index) => (
                                 <div key={category.$id}>
-                                    {/* <h2>Question {category.category}</h2> */}
-                                    {/* {
-                                        subjectName === 'sst_ple' && category.category === 36 || category.category === 51
-                                            ?
-                                            (
-                                                <Card.Title style={{ marginTop: '20px', border: '2px solid #000', borderColor: 'black' }}>{category.instructions}</Card.Title>
-                                            )
-                                            :
-                                            (
-                                                subjectName === 'eng_ple'
-                                                    ?
-                                                    (
-                                                        <Card.Title style={{ marginTop: '20px', border: '', borderColor: '' }}>{category.instructions && category.instructions}</Card.Title>
-                                                    )
-                                                    :
-                                                    null
-                                            )
-                                    } */}
                                     {category.instructions &&
-                                        < Card.Title style={{ marginTop: '20px', border: '', borderColor: '' }}>
+                                        <Card.Title style={{ marginTop: '20px', border: '', borderColor: '' }}>
                                             {category.instructions}
                                         </Card.Title>
                                     }
                                     {category.questions.map((question, index) => {
-                                        // Pass the question as is, with an additional property to indicate "either/or" type
                                         const isEitherOr = question.hasOwnProperty('either') && question.hasOwnProperty('or');
                                         return (
                                             <QuestionCard
@@ -184,22 +164,20 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                                     })}
                                 </div>
                             ))}
+                            {/* <div>
+                                SECTION B
+                                <IframeComponent url={'http://localhost:5173/'} />
+                            </div> */}
                         </Col>
                     </Row>
-                    <Row >
+                    <Row>
                         <Col xs={12} className="d-md-none bg-light fixed-bottom">
                             <div className="d-flex justify-content-center">
                                 <ButtonGroup className="w-75">
-                                    <Button
-                                        variant="success"
-                                        onClick={handleOpenModal}
-                                    >
+                                    <Button variant="success" onClick={handleOpenModal}>
                                         Submit Exam
                                     </Button>
-                                    <Button
-                                        variant="danger"
-                                        onClick={handleExitExam}
-                                    >
+                                    <Button variant="danger" onClick={handleExitExam}>
                                         Exit Exam
                                     </Button>
                                 </ButtonGroup>
@@ -207,24 +185,15 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                         </Col>
                     </Row>
                 </>}
-            {/* Modal for exit confirmation */}
-            <Modal
-                show={showExitModal}
-                onHide={() => setShowExitModal(false)}
-                centered
-            >
+            <Modal show={showExitModal} onHide={() => setShowExitModal(false)} centered>
                 <Modal.Header closeButton>
                     <Modal.Title>Confirm Exit</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Are you sure you want to exit the exam? Your progress may not be
-                    saved.
+                    Are you sure you want to exit the exam? Your progress may not be saved.
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button
-                        variant="secondary"
-                        onClick={() => setShowExitModal(false)}
-                    >
+                    <Button variant="secondary" onClick={() => setShowExitModal(false)}>
                         Cancel
                     </Button>
                     <Button variant="primary" onClick={confirmExit}>
@@ -233,7 +202,6 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                 </Modal.Footer>
             </Modal>
 
-            {/* Modal for submit confirmation */}
             <Modal show={showModal} onHide={handleCloseModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Confirm Submission</Modal.Title>
@@ -256,7 +224,6 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                 </Modal.Footer>
             </Modal>
 
-            {/* Modal displayed to the user when time is up */}
             <Modal show={showTimeUpModal} onHide={() => setShowTimeUpModal(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Time's Up!</Modal.Title>
@@ -271,7 +238,6 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                 </Modal.Footer>
             </Modal>
 
-            {/* Activated by the automatic saving when the timer countdown is finished */}
             <SaveButton
                 ref={saveButtonRef}
                 selectedQuestions={selectedQuestions}
