@@ -39,7 +39,7 @@ const Packages = ({ studentInfo }) => {
 
     const packages = [
         {
-            tier: 'Starter Package',
+            tier: 'Starter Pack',
             points: 1000,
             price: 20000,
             staticDate: false,

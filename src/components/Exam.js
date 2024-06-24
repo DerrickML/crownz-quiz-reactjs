@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { resetAnswers } from './renderQuiz/redux/actions';
-import IframeComponent from "./renderQuiz/IframeComponent";
-// import QuizContainer from "./sst_ple/QuizContainer";
+// import IframeComponent from "./renderQuiz/IframeComponent";
 import QuizContainer from "./renderQuiz/QuizContainer";
 import { Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  databasesQ,
-  database_idQ,
-  sstTablePLE_id,
-  mathPLE_id,
-  engTbalePLE_id,
-  sciTablePLE_id,
-  QueryQ,
-} from "./renderQuiz/examsAppwriteConfig"; //Data from appwrite database
+// import {
+//   databasesQ,
+//   database_idQ,
+//   sstTablePLE_id,
+//   mathPLE_id,
+//   engTbalePLE_id,
+//   sciTablePLE_id,
+//   QueryQ,
+// } from "./renderQuiz/examsAppwriteConfig"; //Data from appwrite database
 import { useAuth } from "../context/AuthContext.js"
-import { getRandomExamBySubject } from "./renderQuiz/utils"
-import { sst_ple, math_ple, eng_ple, sci_ple } from '../otherFiles/questionsData'; //Static data from local files
+// import { sst_ple, math_ple, eng_ple, sci_ple } from '../otherFiles/questionsData'; //Static data from local files
 import { serverUrl } from '../config.js';
 
 /**
@@ -37,7 +35,7 @@ function Exam({ subject }) {
 
   const navigate = useNavigate();
 
-  //================================================================
+  /*================================================================*/
   /* FETCH EXAM FROM SERVER-SIDE */
   const fetchExam = async (subjectName, userId, educationLevel) => {
     const url = `${serverUrl}/exam2/fetch-exam?userId=${userId}&subjectName=${subjectName}&educationLevel=${educationLevel}`;
@@ -54,7 +52,7 @@ function Exam({ subject }) {
       return null; // or handle the error as you see fit
     }
   };
-  //================================================================
+  /*================================================================*/
   useEffect(() => {
     // Clear user answers when this component mounts
     dispatch(resetAnswers());
@@ -63,24 +61,19 @@ function Exam({ subject }) {
   useEffect(() => {
     // Fetch data from your cloud Appwrite database
     const fetchData = async () => {
-      //testing fetch from server-side
-      const serverExam = await fetchExam(subject, userInfo.userId, userInfo.educationLevel)
-      console.log('exam fetched from server side: ', serverExam.questions);
-      let questionData = []
-      questionData = serverExam.questions;
-
-      console.log('Questions Client-side: ', questionData);
-
-      // // Convert questions from JSON strings to JSON objects
-      // questionData.forEach((obj) => {
-      //   obj.questions = obj.questions.map((q) => JSON.parse(q));
-      // });
-
-      setData(questionData); // Assign the fetched data to the variable
-
-      //////////////////////////
 
       try {
+
+        /*================================================================*/
+        // fetch from server-side
+        const serverExam = await fetchExam(subject, userInfo.userId, userInfo.educationLevel)
+        // console.log('exam fetched from server side: ', serverExam.questions);
+        let questionData = []
+        questionData = serverExam.questions;
+        setData(questionData); // Assign the fetched data to the variable
+
+        /*================================================================*/
+
         // let collection_id;
         // let subjectName = null;
         // switch (subject) {
