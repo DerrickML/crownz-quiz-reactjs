@@ -267,7 +267,7 @@ export const selectRandomQuestions = (questionsData, categoryIds, subjectName, u
                 numQuestions = 2;
             }
             if (categoryId === 51 || categoryId === 52 || categoryId === 53 || categoryId === 54 || categoryId === 55) {
-                numQuestions = 0;
+                numQuestions = 5;
             }
         }
 

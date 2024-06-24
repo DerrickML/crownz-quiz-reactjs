@@ -6,7 +6,7 @@ This component will use the useState and useEffect hooks to control the renderin
 import React, { useState, useEffect } from "react";
 import { Droppable } from "react-beautiful-dnd";
 
-const DeferredDroppable = ({ droppableId, direction, children }) => {
+const DeferredDroppable = ({ droppableId, direction = 'vertical', children }) => {
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {

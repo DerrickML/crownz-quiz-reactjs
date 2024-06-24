@@ -128,100 +128,138 @@ duration: duration
 */
 export const updatePointsTable = async (data) => {
     try {
-        let points = parseInt(data.points);
+        // console.log('updatePointsTable: ', data);
 
-        // Define both expected formats
-        const customFormats = ['MMMM Do YYYY, h:mm:ss a', 'ddd MMM DD YYYY HH:mm:ss [GMT]ZZ [(]ZZZ[)]', moment.ISO_8601];
+        // Get the current date and time in 'Africa/Nairobi' timezone
+        const currentDate = moment().tz('Africa/Nairobi').format('YYYY-MM-DD HH:mm:ss.SSS Z');
+        // console.log('currentDate: ', currentDate);
 
-        // Parse the date using Moment.js with custom and expected formats
-        let createdDate = moment(data.created_at, customFormats, true);
+        // Determine expiry date based on static or dynamic date
+        let expiryDate = determineExpiryDate(data);
+        // console.log('Expiry date: ', expiryDate);
 
-        // let createdDate = moment(); //NOW
+        const points = parseInt(data.points, 10);
+        // console.log('points being purchased: ', points);
 
-        //===
-        // // Check if the parsed date is valid
-        // if (!createdDate.isValid()) {
-        //     throw new Error('Invalid date format');
-        // }
-
-        // // Convert to JavaScript Date object
-        // createdDate = createdDate.toDate();
-
-        // // Creating a new Date object for expiryDate to avoid modifying createdDate
-        // let expiryDate = new Date(createdDate);
-        // expiryDate.setDate(createdDate.getDate() + data.duration); // Adding the days to the expiryDate
-        //===
-
-        // Add days to the createdDate
-        let expiryDate = createdDate.add(data.duration, 'days');
-
-        // Format the expiryDate in the specified format 'YYYY-MM-DD HH:mm:ss Z'
-        expiryDate = expiryDate.format('YYYY-MM-DD HH:mm:ss Z');
-
-        // console.log(expiryDate);
-
-        if (data.paymentFor === 'points') {
-            //Points Batch Table
-            await createDocument(database_id, pointsBatchTable_id, {
-                transactionID: data.transactionID,
-                userID: data.userId,
-                points: points,
-                purchaseDate: createdDate,
-                expiryDate: expiryDate,
-            }, data.message)
-
-            //Points Table
-            let currentPoints = 0;
-            let updateResponse;
-
-            //Check if user has document assigned to them
-            const responseCheck = await databases.listDocuments(database_id, pointsTable_id, [Query.equal('UserID', data.userId)]);
-
-            //Create a new document if user has no document assigned
-            if (responseCheck.documents.length === 0) {
-                updateResponse = await databases.createDocument(
-                    database_id,
-                    pointsTable_id,
-                    data.userId,
-                    {
-                        UserID: data.userId || null,
-                        PurchasedTier: data.educationLevel,
-                        AcquisitionDate: createdDate,
-                        ExpiryDate: expiryDate,
-                        PointsBalance: (currentPoints + points)
-                    }
-                );
-            }
-            else {
-                //================================================================
-                //Check expiry date and either increment the current value or replace it with the new value
-
-                // Convert ExpiryDate to a moment object
-                let currentExpiryDate = moment(responseCheck.documents[0].ExpiryDate);
-
-                // console.log('Current existing date: ', currentExpiryDate);
-
-                // Only add days if the current ExpiryDate is not older than the current date
-                if (currentExpiryDate.isSameOrAfter(moment())) {
-                    // Add days to the expiryDate
-                    currentExpiryDate.add(data.duration, 'days');
-                    // Update the ExpiryDate in the object
-                    expiryDate = currentExpiryDate.format('YYYY-MM-DDTHH:mm:ss.SSSZ');
-                }
-
-                // console.log('Expiry date to use: ', expiryDate);
-                //================================================================
-
-                currentPoints = responseCheck.documents[0].PointsBalance;
-                // console.log('Doc data: ', responseCheck.documents[0].$id + ' \n Doc ID: ' + pointsTable_id)
-                //Proceed to update the points tables
-                updateResponse = await databases.updateDocument(database_id, pointsTable_id, responseCheck.documents[0].$id, { PointsBalance: (currentPoints + points), ExpiryDate: expiryDate })
-            }
-            // console.log('Points Table Updated', updateResponse);
+        if (data.paymentFor !== 'points') {
+            console.error('Not a Points Service');
+            return;
         }
+
+        // Add a new document to the Points Batch Table
+        await addPointsBatch(data, currentDate, expiryDate, points);
+
+        // Check if the user already has a document in the Points Table
+        const responseCheck = await databases.listDocuments(
+            database_id,
+            pointsTable_id,
+            [Query.equal('UserID', data.userId)]
+        );
+        // console.log('Checking user in PointsTable: ', responseCheck);
+
+        // Update the Cumulative Points Table
+        let updateResponse;
+        if (responseCheck.documents.length === 0) {
+            // Create a new document if the user has no document assigned
+            updateResponse = await createNewPointsDocument(data, currentDate, expiryDate, points);
+        } else {
+            // Update the existing document if the user is found in the Points Table
+            updateResponse = await updateExistingPointsDocument(data, responseCheck.documents[0], currentDate, points);
+        }
+        console.log('Points Table Updated: ', updateResponse);
+
     } catch (err) {
-        console.error('Error updating points table: ', err)
+        console.error('Error updating points table: ', err);
+        throw new Error('Error updating points table: ', err);
     }
+}
+
+const determineExpiryDate = (data) => {
+    let expiryDate;
+    const currentMoment = moment.tz('Africa/Nairobi');
+
+    if (data.staticDate && moment(data.expiryDate).isBefore(currentMoment)) {
+        expiryDate = moment.tz(data.expiryDate, 'Africa/Nairobi').toDate();
+        // console.log('Static Set Expiry date to use: ', expiryDate);
+    } else if (!data.staticDate) {
+        expiryDate = currentMoment.add(data.duration, 'days').toDate();
+        // console.log('Dynamic Expiry date to use: ', expiryDate);
+    } else {
+        expiryDate = moment.tz(data.expiryDate, 'Africa/Nairobi').toDate();
+        // console.log('Expiry date set: ', expiryDate);
+    }
+
+    return expiryDate;
+}
+
+const addPointsBatch = async (data, currentDate, expiryDate, points) => {
+    const response = await createDocument(
+        database_id,
+        pointsBatchTable_id,
+        {
+            transactionID: data.transactionID,
+            userID: data.userId,
+            points: points,
+            purchaseDate: currentDate,
+            expiryDate: expiryDate,
+        },
+        data.message
+    );
+    // console.log('Points Batch Table - Data sent: ', response);
+}
+
+const createNewPointsDocument = async (data, currentDate, expiryDate, points) => {
+    console.log('User not found in PointsTable');
+    return await databases.createDocument(
+        database_id,
+        pointsTable_id,
+        data.userId,
+        {
+            UserID: data.userId || null,
+            PurchasedTier: data.educationLevel,
+            AcquisitionDate: currentDate,
+            ExpiryDate: expiryDate,
+            PointsBalance: points,
+        }
+    );
+}
+
+const updateExistingPointsDocument = async (data, currentDocument, currentDate, points) => {
+    console.log('User found in PointsTable');
+    let expiryDate = determineExpiryDateForExistingDocument(data, currentDocument);
+
+    // Proceed to update the points table
+    return await databases.updateDocument(
+        database_id,
+        pointsTable_id,
+        currentDocument.$id,
+        {
+            PointsBalance: currentDocument.PointsBalance + points,
+            AcquisitionDate: currentDate,
+            ExpiryDate: expiryDate.toISOString(),
+        }
+    );
+}
+
+const determineExpiryDateForExistingDocument = (data, currentDocument) => {
+    const currentExpiryDate = moment.tz(currentDocument.ExpiryDate, 'Africa/Nairobi');
+    let expiryDate;
+
+    if (data.staticDate && moment(data.expiryDate).isBefore(currentExpiryDate)) {
+        expiryDate = currentExpiryDate.toDate();
+        console.log('Maintaining current expiry date: ', expiryDate);
+    } else if (data.staticDate && moment(data.expiryDate).isAfter(currentExpiryDate)) {
+        expiryDate = moment.tz(data.expiryDate, 'Africa/Nairobi').toDate();
+        console.log('Static Set Expiry date to use: ', expiryDate);
+    } else if (!data.staticDate && currentExpiryDate.isAfter(moment())) {
+        expiryDate = currentExpiryDate.add(data.duration, 'days').toDate();
+        console.log('Expiry date extended: ', expiryDate);
+    } else {
+        expiryDate = moment().tz('Africa/Nairobi').add(data.duration, 'days').toDate();
+        console.log('New Expiry date set: ', expiryDate);
+    }
+
+    return expiryDate;
 }
 
 export const kinPurchasePoints = async (navigate, studentInfo) => {

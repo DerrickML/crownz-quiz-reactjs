@@ -54,7 +54,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
                     if (mainQuestion.sub_questions && !mainQuestion.either && !mainQuestion.or) {
                         mainQuestion.sub_questions.forEach((subQuestion, subIndex) => {
                             if (!subQuestion.id) {
-                                subQuestion.id = `${mainQuestion.id}_sub_${subIndex + 1}`;
+                                subQuestion.id = `${mainQuestion.id}_sub_${subIndex}`;
                             }
                         });
                     }

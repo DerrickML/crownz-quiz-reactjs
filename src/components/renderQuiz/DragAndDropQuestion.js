@@ -67,6 +67,7 @@ const DragAndDropQuestion = ({ question, onChange, userAnswer, displayQuestionTe
                                     <Draggable key={item} draggableId={item} index={index}>
                                         {(provided) => (
                                             <div
+                                                key={index}
                                                 ref={provided.innerRef}
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}

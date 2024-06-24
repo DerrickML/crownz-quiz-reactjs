@@ -33,6 +33,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
 
             try {
                 const randomQuestions = await generateRandomExam(questionsData, subjectName, userInfo.userId, userInfo.educationLevel);
+                // console.log('randomQuestions', JSON.stringify(randomQuestions))
 
                 if (randomQuestions) {
                     setSelectedQuestions(randomQuestions);
@@ -74,7 +75,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     };
 
     const completeSubmit = async () => {
-        console.log("Confirmed to submit Submit");
+        // console.log("Confirmed to submit Submit");
         setIsLoading(true)
         setIsSubmitted(true);
         setShowModal(false);
@@ -82,12 +83,12 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     };
 
     const handleIframeDataStatus = async (data) => {
-        console.log("Received boolean value from ButtonComponent:", data);
+        // console.log("Received boolean value from ButtonComponent:", data);
         setIframeDataStatus(data);
     };
 
     const handleIframeData = async (data) => {
-        console.log("Received data from DataComponent:", data);
+        // console.log("Received data from DataComponent:", data);
         setIframeData(data);
     }
 
@@ -144,7 +145,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                         </Col>
                         <Col xs={12} md={{ span: 9, offset: 3 }}>
                             {selectedQuestions.map((category, index) => (
-                                <div key={category.$id}>
+                                <div key={index}>
                                     {category.instructions &&
                                         <Card.Title style={{ marginTop: '20px', border: '', borderColor: '' }}>
                                             {category.instructions}

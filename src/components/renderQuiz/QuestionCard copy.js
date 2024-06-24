@@ -1,5 +1,4 @@
-// QuestionCard.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, ButtonGroup, Button, ListGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import AnswerInput from './AnswerInput';
@@ -7,8 +6,22 @@ import { setUserAnswer, setSelectedOption } from './redux/actions';
 import { isImageUrl } from './utils';
 
 const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUserAnswer, setSelectedOption, answers }) => {
-
     const [selectedOption, setSelectedOptionState] = useState('');
+
+    useEffect(() => {
+        // Assign IDs to sub-questions if they don't already have one
+        assignSubQuestionIds(question);
+    }, [question]);
+
+    const assignSubQuestionIds = (currentQuestion) => {
+        if (currentQuestion.sub_questions) {
+            currentQuestion.sub_questions.forEach((subQuestion, subIndex) => {
+                if (!subQuestion.id) {
+                    subQuestion.id = `${currentQuestion.id}_sub_${subIndex}`;
+                }
+            });
+        }
+    };
 
     // Helper function to convert index to roman numeral
     function indexToRoman(index) {
@@ -21,26 +34,10 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
         return answers[key];
     };
 
-    const handleAnswerChange = (questionId, answer, questionType, subQuestionIndex = null, subQId = null) => {
-        // console.log('handling answer change');
-
-        // if (subQuestionIndex != null) {
-        //     console.log('subQuestionIndex: ', subQuestionIndex);
-        //     console.log("subQid: ", subQId);
-        // }
-
-        let uniqueId
-
-        if (subQuestionIndex != null && subQId === null) {
-            uniqueId = `${questionId}_sub_${subQuestionIndex + 1}`
-        }
-        else if (subQId != null) {
-            uniqueId = subQId
-        }
-        else {
-            uniqueId = questionId
-        }
+    const handleAnswerChange = (questionId, answer, questionType, subQuestionIndex = null) => {
+        let uniqueId = subQuestionIndex !== null ? `${questionId}_sub_${subQuestionIndex}` : questionId;
         setUserAnswer(uniqueId, answer, categoryId, isEitherOr, questionType);
+        console.log(`Answer changed for ID: ${uniqueId}, Answer:`, answer);
     };
 
     const handleOptionSelection = (option) => {
@@ -49,26 +46,25 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
         let id;
         if (isEitherOr) {
             id = option === 'either' ? question.either.id : question.or.id;
-            // For either/or questions, update the selected option with the isEitherOr flag
             setSelectedOption(`${id}-selectedOption`, option, categoryId, true);
         } else {
-            id = question.id; // For standard questions
+            id = question.id;
             setSelectedOption(`${id}-selectedOption`, option, categoryId, false);
         }
+        console.log(`Option selected: ${option}, ID: ${id}`);
     };
 
     const renderQuestionText = (questionText, questionImage, questionType) => (
         <>
             <p>
-                {
-                    questionType === 'dragAndDrop' ?
-                        <>
-                            {questionIndex + categoryId}.  <span>{questionText.join(' ')}</span>
-                        </>
-                        :
-                        <>
-                            {questionIndex + categoryId}.  <span dangerouslySetInnerHTML={{ __html: questionText }}></span>
-                        </>
+                {questionType === 'dragAndDrop' ?
+                    <>
+                        {questionIndex + categoryId}. <span>{questionText.join(' ')}</span>
+                    </>
+                    :
+                    <>
+                        {questionIndex + categoryId}. <span dangerouslySetInnerHTML={{ __html: questionText }}></span>
+                    </>
                 }
             </p>
             {questionImage && isImageUrl(questionImage) && (
@@ -80,43 +76,6 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
     );
 
     const renderQuestion = (currentQuestion, disabled) => {
-        // if (currentQuestion.type === 'dragAndDrop') {
-        //     console.log('drag and drop: ', currentQuestion)
-        //     return <>
-        //         {/* Drag and drop elements go here - renderDragAndDropElements() function, or edit the renderQuestionText() to also support drag and drop elements which can be dragged in the answer input section*/}
-        //         <AnswerInput
-        //             question={currentQuestion}
-        //             onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, currentQuestion.type)}
-        //             getUserAnswer={getUserAnswer}
-        //             disabled={disabled}
-        //             displayQuestionText={false}
-        //         />
-        //         {currentQuestion.sub_questions && currentQuestion.sub_questions.map((subQ, index) => (
-        //             <AnswerInput
-        //                 key={`${currentQuestion.id}_sub_${index}`}
-        //                 question={subQ}
-        //                 onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, subQ.type, index)}
-        //                 getUserAnswer={() => getUserAnswer(`${currentQuestion.id}_sub_${index}`)}
-        //                 disabled={false}
-        //                 displayQuestionText={true}
-        //                 questionNumber={indexToRoman(index)}
-        //             />
-        //         ))}
-        //     </>
-        // }
-        // else {
-        // if (currentQuestion.type === 'iframe') {
-        //     // return (
-        //     //     <AnswerInput
-        //     //         question={currentQuestion}
-        //     //         onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, currentQuestion.type)}
-        //     //         getUserAnswer={getUserAnswer}
-        //     //         disabled={disabled}
-        //     //         displayQuestionText={false}
-        //     //     />
-        //     // );
-        //     return
-        // } else {
         return (
             <>
                 {renderQuestionText(currentQuestion.question, currentQuestion.image, currentQuestion.type)}
@@ -131,7 +90,7 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
                     <AnswerInput
                         key={`${currentQuestion.id}_sub_${index}`}
                         question={subQ}
-                        onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, subQ.type, index, subQ.id)}
+                        onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, subQ.type, index)}
                         getUserAnswer={() => getUserAnswer(`${currentQuestion.id}_sub_${index}`)}
                         disabled={false}
                         displayQuestionText={true}
@@ -140,8 +99,6 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
                 ))}
             </>
         );
-        // }
-        // }
     };
 
     return (
@@ -156,7 +113,7 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
                         {selectedOption === 'either' ? renderQuestion(question.either, selectedOption !== 'either') : renderQuestion(question.or, selectedOption !== 'or')}
                     </>
                 ) : (
-                    renderQuestion(question, false) // Non either/or question
+                    renderQuestion(question, false)
                 )}
             </ListGroup.Item>
         </ListGroup>

@@ -44,6 +44,7 @@ import "./App.css";
 
 function PrivateRoute({ children }) {
   const { userInfo, sessionInfo } = useAuth();
+  // console.log('APP.JS session info: ', sessionInfo);
   if (!sessionInfo) {
     return <Navigate to="/sign-in" />;
   }

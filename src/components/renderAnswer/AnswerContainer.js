@@ -9,7 +9,7 @@ const AnswerContainer = ({ questionsData, subjectName, totalMarks, totalPossible
 
     useEffect(() => {
         const calculatePercentageScore = () => {
-            console.log('Answers: ', questionsData)
+            // console.log('Answers: ', questionsData)
             let totalScore = parseFloat(totalMarks);
             let totalPossibleScore = parseFloat(totalPossibleMarks);
             // console.log(`Total Score: ${totalScore}, Possible Score: ${totalPossibleScore}`);

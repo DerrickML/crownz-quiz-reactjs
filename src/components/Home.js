@@ -58,7 +58,7 @@ function Home() {
 
   const testFunc2 = async () => {
     //saving qtns to db
-    if (userInfo.labels.includes('student')) {
+    if (userInfo.userType === 'student') {
       try {
         await updateQuestionSubjectData(userInfo.subjects, userInfo.userId, userInfo.educationLevel)
       } catch (error) {
@@ -134,7 +134,7 @@ function Home() {
                           <Card.Header as="h5">Additional Feature</Card.Header>
                           <Card.Body>
                             <Card.Text>More developer features here.</Card.Text>
-                            <Button variant="outline-secondary" onClick={testFunc2}>Activate Feature</Button>
+                            <Button variant="outline-secondary" onClick={() => { navigate(-1) }}>Activate Feature</Button>
                           </Card.Body>
                         </Card>
                       </div>

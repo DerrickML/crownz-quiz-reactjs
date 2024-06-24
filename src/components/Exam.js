@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import IframeComponent from "./IframeComponent";
+import { useDispatch } from 'react-redux';
+import { resetAnswers } from './renderQuiz/redux/actions';
+import IframeComponent from "./renderQuiz/IframeComponent";
 // import QuizContainer from "./sst_ple/QuizContainer";
 import QuizContainer from "./renderQuiz/QuizContainer";
 import { Modal, Button } from "react-bootstrap";
@@ -16,7 +18,7 @@ import {
 } from "./renderQuiz/examsAppwriteConfig"; //Data from appwrite database
 import { useAuth } from "../context/AuthContext.js"
 import { getRandomExamBySubject } from "./renderQuiz/utils"
-import { sst_ple, math_ple, eng_ple } from '../otherFiles/questionsData'; //Static data from local files
+import { sst_ple, math_ple, eng_ple, sci_ple } from '../otherFiles/questionsData'; //Static data from local files
 
 /**
  * Represents an Exam component.
@@ -25,6 +27,7 @@ import { sst_ple, math_ple, eng_ple } from '../otherFiles/questionsData'; //Stat
  * @returns {JSX.Element} The Exam component.
  */
 function Exam({ subject }) {
+  const dispatch = useDispatch();
   const [showInstructionsModal, setShowInstructionsModal] = useState(true);
   const [showUnavailableModal, setshowUnavailableModal] = useState(true);
   const [data, setData] = useState(null); // Variable to store the fetched questions data
@@ -32,6 +35,11 @@ function Exam({ subject }) {
   const { userInfo } = useAuth();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Clear user answers when this component mounts
+    dispatch(resetAnswers());
+  }, [dispatch]);
 
   useEffect(() => {
     // Fetch data from your cloud Appwrite database
@@ -74,7 +82,7 @@ function Exam({ subject }) {
         const questions = response.documents;
         questionData = questions;
 
-        // console.log('Questions: ', questionData);
+        console.log('Questions: ', questionData);
 
         // Convert questions from JSON strings to JSON objects
         questionData.forEach((obj) => {
@@ -126,6 +134,7 @@ function Exam({ subject }) {
   };
 
   const renderQuizContent = () => {
+
     switch (subject) {
       case "english-language_ple":
         // return <IframeComponent url="https://exams.crownz.derrickml.com/english_ple_section_B" />;

@@ -25,6 +25,18 @@ const account = new Account(client);
 const databases = new Databases(client);
 
 //DERRICK Cloud - Appwrite
+//----
+// let database_id;
+// const response = await fetch(`http://localhost:3001/database-id`)
+// const data = await response.json();
+// if (response.ok) {
+//   console.log("Database ID retreived: ", data.DATABASE_ID);
+//   database_id = data.DATABASE_ID
+// } else {
+//   console.log('Failed to retrieve databse id: ', data.message);
+//   database_id = "655f5a677fcf3b1d8b79";
+// }
+//----
 const database_id = "655f5a677fcf3b1d8b79";
 const studentTable_id = "657065f7dddd996bf19b";
 const nextOfKinTable_id = "65706739032c0962d0a9";

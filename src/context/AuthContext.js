@@ -68,7 +68,7 @@ export const AuthProvider = ({ children }) => {
         setSessionInfo(sessionDetails);
         storageUtil.setItem("sessionInfo", sessionDetails);
 
-        console.log('userData: ', userData);
+        // console.log('userData: ', userData);
 
         const userDetails = {
             userId: sessionData.userId,
@@ -323,7 +323,7 @@ export const AuthProvider = ({ children }) => {
 
                 // If exams exist for the subject, skip fetching
                 if (existingExams > 0) {
-                    console.log(`Exams for subject ${subject} already exist, skipping fetch.`);
+                    // console.log(`Exams for subject ${subject} already exist, skipping fetch.`);
                     continue;
                 }
 

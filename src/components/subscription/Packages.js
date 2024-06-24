@@ -11,30 +11,69 @@ import './Packages.css';
 const Packages = ({ studentInfo }) => {
     const [showModal, setShowModal] = useState(false);
     const [selectedPackage, setSelectedPackage] = useState(null);
+
+    // Calculate the date 30 days from now
+    const currentDatePlus30Days = moment().add(30, 'days').tz('Africa/Nairobi').format('YYYY-MM-DD HH:mm:ss.SSS');
+
+    // Convert to a Date object
+    const expiryDate = moment.tz(currentDatePlus30Days, 'YYYY-MM-DD HH:mm:ss.SSS', 'Africa/Nairobi').toDate();
+
+    // console.log(`Expiry date: ${expiryDate}`);
+
+
+
+    const calculateDaysLeft = (endDate) => {
+        // Parse the end date
+        const endMoment = moment.tz(endDate, 'YYYY-MM-DDTHH:mm:ss.SSSZ', 'Africa/Nairobi');
+
+        // Get the current date in the same timezone
+        const currentMoment = moment.tz('Africa/Nairobi');
+
+        // Calculate the difference in days
+        const daysLeft = endMoment.diff(currentMoment, 'days');
+
+        // console.log('Days left:', daysLeft);
+
+        return daysLeft;
+    }
+
     const packages = [
         {
-            tier: 'Holiday Package',
+            tier: 'Starter Pack',
             points: 1000,
             price: 20000,
+            staticDate: false,
             // quizzes: 17,
             duration: 30,
-            expiryDate: moment.tz('2024-06-05 23:59:59.999', 'YYYY-MM-DD HH:mm:ss.SSS', 'Africa/Nairobi').toDate(),
+            expiryDate: expiryDate,
             features: [
                 // '340 points',
                 // `Attempt up to 17 exams`,
-                'Valid untill June 5th, 2024',
+                'Valid for 30 days',
+            ],
+        },
+        {
+            tier: 'Limited Pack',
+            points: 1000,
+            price: 70000,
+            staticDate: true,
+            duration: calculateDaysLeft('2024-12-31T23:59:59.999+03:00'),
+            expiryDate: moment('2024-12-31T23:59:59.999+03:00').toISOString(),
+            features: [
+                'Valid until 31st December, 2024',
             ],
         },
         {
             tier: 'Annual Pack',
-            points: 1000,
-            price: 70000,
-            // quizzes: 1000,
+            points: 10000,
+            price: 100000,
+            staticDate: false,
+            // quizzes: 'unlimited',
             duration: 366,
-            expiryDate: moment.tz('2024-12-31 23:59:59.999', 'YYYY-MM-DD HH:mm:ss.SSS', 'Africa/Nairobi').toDate(),
+            expiryDate: moment().tz('Africa/Nairobi').add(366, 'days').toDate(),
             features: [
-                // `Attempt up to 1,000`,
-                'Valid until 31st December, 2024',
+                // `Attempt up unlimited exams`,
+                'Valid for a year - 366 Days',
             ],
         },
     ];
@@ -119,6 +158,8 @@ const Packages = ({ studentInfo }) => {
                                 paymentFor={'points'}
                                 studentInfo={studentInfo}
                                 duration={selectedPackage.duration}
+                                expiryDate={selectedPackage.expiryDate}
+                                staticDate={selectedPackage.staticDate}
                             />
                         </>
 

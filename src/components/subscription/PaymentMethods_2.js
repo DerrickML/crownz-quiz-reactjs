@@ -20,7 +20,7 @@ import { serverUrl } from '../../config.js'
 
 import './PaymentMethods.css';
 
-function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studentInfo, duration }) {
+function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studentInfo, duration, expiryDate, staticDate }) {
     const { userInfo, fetchUserPoints } = useAuth();
     const isStudent = userInfo.labels.includes("student");
     const isNextOfKin = userInfo.labels.includes("kin");
@@ -101,15 +101,17 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                 // console.log('Student Information: ' + JSON.stringify(studentInfo))
                 var currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
                 let data = {
+                    staticDate: staticDate,
                     created_at: currentDateTime,
                     paymentFor: paymentMadeFor,
                     transactionID: 'DISCOUNT-0000',
                     userId: isStudent ? userInfo.userId : studentInfo.userId,
-                    points: finalPoints,
+                    points: points,
                     educationLevel: isStudent ? userInfo.educationLevel : studentInfo.educationLevel,
-                    message: `Points Purchase on discount.`,
-                    duration: duration
+                    expiryDate: expiryDate ? expiryDate : null,
+                    message: `Points Purchase on discount.`
                 }
+
                 await updatePointsTable(data)
 
                 //UPDATE POINTS
