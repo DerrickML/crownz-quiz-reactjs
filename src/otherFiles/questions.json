@@ -1,7 +1,636 @@
-{
-    "question": "What number has been expanded below?<br> 20,000 + 600 + 8",
-    "type": "text",
-    "answer": "20608",
-    "mark": 2,
-    "id": "ple_math_sect_A2_7"
-}
+[
+  {
+    "id": "ple_sst_sect_A1_4",
+    "user_answer": ["By fighting corruption"],
+    "isEitherOr": false,
+    "category": 1
+  },
+  {
+    "id": "ple_sst_sect_A2_9",
+    "user_answer": ["The black color represents the sun."],
+    "isEitherOr": false,
+    "category": 2
+  },
+  {
+    "id": "ple_sst_sect_A3_16",
+    "user_answer": ["It may lead to soil erosion"],
+    "isEitherOr": false,
+    "category": 3
+  },
+  {
+    "id": "ple_sst_sect_A4_14",
+    "user_answer": ["South Sudan"],
+    "isEitherOr": false,
+    "category": 4
+  },
+  {
+    "id": "ple_sst_sect_A5_7",
+    "user_answer": ["Aluminium"],
+    "isEitherOr": false,
+    "category": 5
+  },
+  {
+    "id": "ple_sst_sect_A6_15",
+    "user_answer": ["Upe"],
+    "isEitherOr": false,
+    "category": 6
+  },
+  {
+    "id": "ple_sst_sect_A7_17",
+    "user_answer": [
+      "Kalangala receives convection rainfall because it is near the equator"
+    ],
+    "isEitherOr": false,
+    "category": 7
+  },
+  {
+    "id": "ple_sst_sect_A8_4",
+    "user_answer": [
+      "It is the number of people living in an area per square kilometer"
+    ],
+    "isEitherOr": false,
+    "category": 8
+  },
+  {
+    "id": "ple_sst_sect_A9_13",
+    "user_answer": ["They promoted trade"],
+    "isEitherOr": false,
+    "category": 9
+  },
+  {
+    "id": "ple_sst_sect_A10_8",
+    "user_answer": [
+      "https://v1q1.c10.e2-4.dev/exam-prep/primaryseven/images/sst/2017_10B.png"
+    ],
+    "isEitherOr": false,
+    "category": 10
+  },
+  {
+    "id": "ple_sst_sect_A11_15",
+    "user_answer": ["To measure the direction of wind"],
+    "isEitherOr": false,
+    "category": 11
+  },
+  {
+    "id": "ple_sst_sect_A12_20",
+    "user_answer": ["Mombasa is at a lower altitude compared to Kampala"],
+    "isEitherOr": false,
+    "category": 12
+  },
+  {
+    "id": "ple_sst_sect_A13_2",
+    "user_answer": ["A tributary is a small river that joins the main river"],
+    "isEitherOr": false,
+    "category": 13
+  },
+  {
+    "id": "ple_sst_sect_A14_11",
+    "user_answer": ["It acts as a border between Kenya and Tanzania"],
+    "isEitherOr": false,
+    "category": 14
+  },
+  {
+    "id": "ple_sst_sect_A15_13",
+    "user_answer": ["Fishing"],
+    "isEitherOr": false,
+    "category": 15
+  },
+  {
+    "id": "ple_sst_sect_A16_3",
+    "user_answer": ["It leads to shortage of labour"],
+    "isEitherOr": false,
+    "category": 16
+  },
+  {
+    "id": "ple_sst_sect_A17_16",
+    "user_answer": ["Because they want to look good"],
+    "isEitherOr": false,
+    "category": 17
+  },
+  {
+    "id": "ple_sst_sect_A18_9",
+    "user_answer": ["Traded with them peacefully"],
+    "isEitherOr": false,
+    "category": 18
+  },
+  {
+    "id": "ple_sst_sect_A19_3",
+    "user_answer": ["It spells out on how it should be respected or handled"],
+    "isEitherOr": false,
+    "category": 19
+  },
+  {
+    "id": "ple_sst_sect_A20_6",
+    "user_answer": ["It helps to prevent land and water pollution"],
+    "isEitherOr": false,
+    "category": 20
+  },
+  {
+    "id": "ple_sst_sect_A21_9",
+    "user_answer": ["Banyankole"],
+    "isEitherOr": false,
+    "category": 21
+  },
+  {
+    "id": "ple_sst_sect_A22_9",
+    "user_answer": ["It leads to cattle rustling"],
+    "isEitherOr": false,
+    "category": 22
+  },
+  {
+    "id": "ple_sst_sect_A23_6",
+    "user_answer": ["It causes the country to lose revenue"],
+    "isEitherOr": false,
+    "category": 23
+  },
+  {
+    "id": "ple_sst_sect_A24_6",
+    "user_answer": ["They can use valley dams"],
+    "isEitherOr": false,
+    "category": 24
+  },
+  {
+    "id": "ple_sst_sect_A25_5",
+    "user_answer": ["They face a challenge of floods"],
+    "isEitherOr": false,
+    "category": 25
+  },
+  {
+    "id": "ple_sst_sect_A26_1",
+    "user_answer": ["A pedestrian is a person who walks along the road"],
+    "isEitherOr": false,
+    "category": 26
+  },
+  {
+    "id": "ple_sst_sect_A27_2",
+    "user_answer": ["One must be eighteen years and above"],
+    "isEitherOr": false,
+    "category": 27
+  },
+  {
+    "id": "ple_sst_sect_A28_2",
+    "user_answer": ["By teaching the cultural values"],
+    "isEitherOr": false,
+    "category": 28
+  },
+  {
+    "id": "ple_sst_sect_A29_3",
+    "user_answer": ["They promote environmental conservation"],
+    "isEitherOr": false,
+    "category": 29
+  },
+  {
+    "id": "ple_sst_sect_A30_2",
+    "user_answer": ["Because its far south"],
+    "isEitherOr": false,
+    "category": 30
+  },
+  {
+    "id": "ple_sst_sect_A31_1",
+    "user_answer": ["Dense Vegetation"],
+    "isEitherOr": false,
+    "category": 31
+  },
+  {
+    "id": "ple_sst_sect_A32_4",
+    "user_answer": ["They got new slave markets"],
+    "isEitherOr": false,
+    "category": 32
+  },
+  {
+    "id": "ple_sst_sect_A33_1",
+    "user_answer": ["He stopped slave trade in Tanzania"],
+    "isEitherOr": false,
+    "category": 33
+  },
+  {
+    "id": "ple_sst_sect_A34_2",
+    "user_answer": [
+      "The oldest human skull of early man was discovered in East Africa"
+    ],
+    "isEitherOr": false,
+    "category": 34
+  },
+  {
+    "id": "ple_sst_sect_A35_1",
+    "user_answer": ["They face a problem of high taxes"],
+    "isEitherOr": false,
+    "category": 35
+  },
+  {
+    "id": "ple_sst_sectA_either_23",
+    "user_answer": ["Luke"],
+    "isEitherOr": true,
+    "category": 36
+  },
+  {
+    "id": "ple_sst_sectA_or_26",
+    "user_answer": ["Lent"],
+    "isEitherOr": true,
+    "category": 36
+  },
+  {
+    "id": "ple_sst_sectA_either_2",
+    "user_answer": ["Mount Nebo"],
+    "isEitherOr": true,
+    "category": 36
+  },
+  {
+    "id": "ple_sst_sectA_or_1",
+    "user_answer": ["Salat"],
+    "isEitherOr": true,
+    "category": 36
+  },
+  {
+    "id": "ple_sst_sectA_either_10",
+    "user_answer": ["By going to church"],
+    "isEitherOr": true,
+    "category": 36
+  },
+  {
+    "id": "ple_sst_sect_B41_11_sub_0",
+    "user_answer": ["The Nile Hamites"],
+    "isEitherOr": false,
+    "category": 41
+  },
+  {
+    "id": "ple_sst_sect_B41_11_sub_1",
+    "user_answer": [
+      "They migrated to look for pasture and water for their cattle"
+    ],
+    "isEitherOr": false,
+    "category": 41
+  },
+  {
+    "id": "ple_sst_sect_B41_11_sub_1",
+    "user_answer": [
+      "They migrated to look for pasture and water for their cattle",
+      "They left to look for fertile areas"
+    ],
+    "isEitherOr": false,
+    "category": 41
+  },
+  {
+    "id": "ple_sst_sect_B42_5_sub_0",
+    "user_answer": ["Bantu"],
+    "isEitherOr": false,
+    "category": 42
+  },
+  {
+    "id": "ple_sst_sect_B42_5_sub_1",
+    "user_answer": ["Zanzibar Stone Age site"],
+    "isEitherOr": false,
+    "category": 42
+  },
+  {
+    "id": "ple_sst_sect_B42_5_sub_2",
+    "user_answer": ["To find out where it ends"],
+    "isEitherOr": false,
+    "category": 42
+  },
+  {
+    "id": "ple_sst_sect_B42_5_sub_2",
+    "user_answer": [
+      "To find out where it ends",
+      "To strengthen their position in Egypt"
+    ],
+    "isEitherOr": false,
+    "category": 42
+  },
+  {
+    "id": "ple_sst_sect_B43_10",
+    "user_answer": ["To establish educational level of citizens"],
+    "isEitherOr": false,
+    "category": 43
+  },
+  {
+    "id": "ple_sst_sect_B43_10",
+    "user_answer": [
+      "To establish educational level of citizens",
+      "To distribute land to the people"
+    ],
+    "isEitherOr": false,
+    "category": 43
+  },
+  {
+    "id": "ple_sst_sect_B43_10_sub_0",
+    "user_answer": [
+      "Because the slopes of mountain Elgon receives reliable rainfall"
+    ],
+    "isEitherOr": false,
+    "category": 43
+  },
+  {
+    "id": "ple_sst_sect_B43_10_sub_0",
+    "user_answer": [
+      "Because the slopes of mountain Elgon receives reliable rainfall",
+      "Because of the presence of volcanic fertile soils"
+    ],
+    "isEitherOr": false,
+    "category": 43
+  },
+  {
+    "id": "ple_sst_sect_B44_9",
+    "user_answer": ["Ocean Conditions"],
+    "isEitherOr": false,
+    "category": 44
+  },
+  {
+    "id": "ple_sst_sect_B44_9",
+    "user_answer": ["Ocean Conditions", "Air Quality"],
+    "isEitherOr": false,
+    "category": 44
+  },
+  {
+    "id": "ple_sst_sect_B44_9_sub_0",
+    "user_answer": [
+      "They were used to sail the boats/dhows of early traders to and from the coast of East Africa"
+    ],
+    "isEitherOr": false,
+    "category": 44
+  },
+  {
+    "id": "ple_sst_sect_B44_9_sub_1",
+    "user_answer": ["Because they come from a semi-desert"],
+    "isEitherOr": false,
+    "category": 44
+  },
+  {
+    "id": "ple_sst_sect_B45_14",
+    "user_answer": ["Kenya"],
+    "isEitherOr": false,
+    "category": 45
+  },
+  {
+    "id": "ple_sst_sect_B45_14",
+    "user_answer": ["Kenya", "Uganda"],
+    "isEitherOr": false,
+    "category": 45
+  },
+  {
+    "id": "ple_sst_sect_B45_14_sub_0",
+    "user_answer": ["It helps to prevent electoral violence in Uganda"],
+    "isEitherOr": false,
+    "category": 45
+  },
+  {
+    "id": "ple_sst_sect_B45_14_sub_0",
+    "user_answer": [
+      "It helps to prevent electoral violence in Uganda",
+      "It helps to promote trade with Uganda's  neighbouring countries"
+    ],
+    "isEitherOr": false,
+    "category": 45
+  },
+  {
+    "id": "ple_sst_sect_B46_5",
+    "user_answer": ["Papyrus"],
+    "isEitherOr": false,
+    "category": 46
+  },
+  {
+    "id": "ple_sst_sect_B46_5",
+    "user_answer": ["Papyrus", "Sisal"],
+    "isEitherOr": false,
+    "category": 46
+  },
+  {
+    "id": "ple_sst_sect_B46_5_sub_0",
+    "user_answer": ["Brooms"],
+    "isEitherOr": false,
+    "category": 46
+  },
+  {
+    "id": "ple_sst_sect_B46_5_sub_0",
+    "user_answer": ["Brooms", "Salt"],
+    "isEitherOr": false,
+    "category": 46
+  },
+  {
+    "id": "ple_sst_sect_B47_3_sub_0",
+    "user_answer": ["January"],
+    "isEitherOr": false,
+    "category": 47
+  },
+  {
+    "id": "ple_sst_sect_B47_3_sub_1",
+    "user_answer": ["Desert climate"],
+    "isEitherOr": false,
+    "category": 47
+  },
+  {
+    "id": "ple_sst_sect_B47_3_sub_2",
+    "user_answer": ["6<sup>o</sup>c"],
+    "isEitherOr": false,
+    "category": 47
+  },
+  {
+    "id": "ple_sst_sect_B47_3_sub_3",
+    "user_answer": ["Dry winds"],
+    "isEitherOr": false,
+    "category": 47
+  },
+  {
+    "id": "ple_sst_sect_B48_1_sub_0",
+    "user_answer": ["Nairobi national park"],
+    "isEitherOr": false,
+    "category": 48
+  },
+  {
+    "id": "ple_sst_sect_B48_1_sub_1",
+    "user_answer": ["Serengeti National park"],
+    "isEitherOr": false,
+    "category": 48
+  },
+  {
+    "id": "ple_sst_sect_B48_1_sub_2",
+    "user_answer": ["Because its peak crosses the snowline"],
+    "isEitherOr": false,
+    "category": 48
+  },
+  {
+    "id": "ple_sst_sect_B49_6_sub_0",
+    "user_answer": ["Ballot stuffing"],
+    "isEitherOr": false,
+    "category": 49
+  },
+  {
+    "id": "ple_sst_sect_B49_6_sub_1",
+    "user_answer": ["It helps to know the people in an area"],
+    "isEitherOr": false,
+    "category": 49
+  },
+  {
+    "id": "ple_sst_sect_B49_6",
+    "user_answer": [
+      "A national election is a democratic way of choosing leaders in a country"
+    ],
+    "isEitherOr": false,
+    "category": 49
+  },
+  {
+    "id": "ple_sst_sect_B50_3",
+    "user_answer": ["Dam"],
+    "isEitherOr": false,
+    "category": 50
+  },
+  {
+    "id": "ple_sst_sect_B50_3_sub_0",
+    "user_answer": ["The Sun"],
+    "isEitherOr": false,
+    "category": 50
+  },
+  {
+    "id": "ple_sst_sect_B50_3_sub_1",
+    "user_answer": ["It controls rural-urban migration"],
+    "isEitherOr": false,
+    "category": 50
+  },
+  {
+    "id": "ple_sst_sectB_either_12",
+    "user_answer": ["Through arbitration"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_either_12_sub_0",
+    "user_answer": ["Through going to church"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_either_12_sub_0",
+    "user_answer": ["Through going to church", "Through fighting corruption"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_either_12_sub_1",
+    "user_answer": ["It helps to fight corruption"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_or_6",
+    "user_answer": ["To get blessings from Allah"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_or_6_sub_0",
+    "user_answer": ["By going to school"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_or_6_sub_0",
+    "user_answer": ["By going to school", "By reading the Quran"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_or_6",
+    "user_answer": [
+      "To get blessings from Allah",
+      "To give respect to their parents"
+    ],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_either_22",
+    "user_answer": ["Ash Wednesday"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_either_22_sub_0",
+    "user_answer": ["He performed miracles"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_either_22_sub_0",
+    "user_answer": ["He performed miracles", "He performed the Hegira"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_either_22_sub_0",
+    "user_answer": ["He performed miracles"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_either_22_sub_0",
+    "user_answer": [
+      "He performed miracles",
+      "Angel Gabriel brought the good news about His birth to Mary"
+    ],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_either_22_sub_0",
+    "user_answer": [
+      "He performed miracles",
+      "Angel Gabriel brought the good news about His birth to Mary",
+      "He performed the Hegira"
+    ],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_or_9",
+    "user_answer": ["Zakah refers to the journey made by a Muslim to Mecca"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_or_9_sub_0",
+    "user_answer": [
+      "Hijjah refers to the money and other items given by Muslims to the mosque to help the needy"
+    ],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_or_9_sub_1",
+    "user_answer": ["One has to be a muslim"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_or_9_sub_1",
+    "user_answer": ["One has to be a muslim", "One must be honest"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_either_24",
+    "user_answer": ["Kabaka Chwa II"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_either_24_sub_0",
+    "user_answer": ["It has led to the fighting of corruption"],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_either_24_sub_0",
+    "user_answer": [
+      "It has led to the fighting of corruption",
+      "It has led to the building of hospitals"
+    ],
+    "isEitherOr": true,
+    "category": 51
+  },
+  {
+    "id": "ple_sst_sectB_either_24_sub_1",
+    "user_answer": ["Both built roads"],
+    "isEitherOr": true,
+    "category": 51
+  }
+]

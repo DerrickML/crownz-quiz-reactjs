@@ -164,6 +164,7 @@ export const fetchQuestionsForSubject = async (subject) => {
 export const generateRandomExam = async (questionsData, subjectName, userId, educationLevel) => {
 
     // console.log(`userId: ${userId}, educationLevel: ${educationLevel}`);
+    // console.log('Original Questions data: ', questionsData);
 
     if (!questionsData) {
         console.error('questionsData is required');

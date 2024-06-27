@@ -8,6 +8,8 @@ import { isImageUrl } from './utils';
 
 const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUserAnswer, setSelectedOption, answers }) => {
 
+    // let a = categoryId === 16 || categoryId === 17 ? console.log(question) : null
+
     const [selectedOption, setSelectedOptionState] = useState('');
 
     // Helper function to convert index to roman numeral
@@ -21,25 +23,8 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
         return answers[key];
     };
 
-    const handleAnswerChange = (questionId, answer, questionType, subQuestionIndex = null, subQId = null) => {
-        // console.log('handling answer change');
-
-        // if (subQuestionIndex != null) {
-        //     console.log('subQuestionIndex: ', subQuestionIndex);
-        //     console.log("subQid: ", subQId);
-        // }
-
-        let uniqueId
-
-        if (subQuestionIndex != null && subQId === null) {
-            uniqueId = `${questionId}_sub_${subQuestionIndex + 1}`
-        }
-        else if (subQId != null) {
-            uniqueId = subQId
-        }
-        else {
-            uniqueId = questionId
-        }
+    const handleAnswerChange = (questionId, answer, questionType, subQuestionIndex = null) => {
+        let uniqueId = subQuestionIndex !== null ? `${questionId}_sub_${subQuestionIndex}` : questionId;
         setUserAnswer(uniqueId, answer, categoryId, isEitherOr, questionType);
     };
 
@@ -80,43 +65,6 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
     );
 
     const renderQuestion = (currentQuestion, disabled) => {
-        // if (currentQuestion.type === 'dragAndDrop') {
-        //     console.log('drag and drop: ', currentQuestion)
-        //     return <>
-        //         {/* Drag and drop elements go here - renderDragAndDropElements() function, or edit the renderQuestionText() to also support drag and drop elements which can be dragged in the answer input section*/}
-        //         <AnswerInput
-        //             question={currentQuestion}
-        //             onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, currentQuestion.type)}
-        //             getUserAnswer={getUserAnswer}
-        //             disabled={disabled}
-        //             displayQuestionText={false}
-        //         />
-        //         {currentQuestion.sub_questions && currentQuestion.sub_questions.map((subQ, index) => (
-        //             <AnswerInput
-        //                 key={`${currentQuestion.id}_sub_${index}`}
-        //                 question={subQ}
-        //                 onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, subQ.type, index)}
-        //                 getUserAnswer={() => getUserAnswer(`${currentQuestion.id}_sub_${index}`)}
-        //                 disabled={false}
-        //                 displayQuestionText={true}
-        //                 questionNumber={indexToRoman(index)}
-        //             />
-        //         ))}
-        //     </>
-        // }
-        // else {
-        // if (currentQuestion.type === 'iframe') {
-        //     // return (
-        //     //     <AnswerInput
-        //     //         question={currentQuestion}
-        //     //         onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, currentQuestion.type)}
-        //     //         getUserAnswer={getUserAnswer}
-        //     //         disabled={disabled}
-        //     //         displayQuestionText={false}
-        //     //     />
-        //     // );
-        //     return
-        // } else {
         return (
             <>
                 {renderQuestionText(currentQuestion.question, currentQuestion.image, currentQuestion.type)}
@@ -129,10 +77,10 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
                 />
                 {currentQuestion.sub_questions && currentQuestion.sub_questions.map((subQ, index) => (
                     <AnswerInput
-                        key={`${currentQuestion.id}_sub_${index}`}
+                        key={subQ.id ? subQ.id : `${currentQuestion.id}_sub_${index}`}
                         question={subQ}
-                        onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, subQ.type, index, subQ.id)}
-                        getUserAnswer={() => getUserAnswer(`${currentQuestion.id}_sub_${index}`)}
+                        onChange={(answer) => handleAnswerChange((subQ.id ? subQ.id : currentQuestion.id), answer, subQ.type, (subQ.id ? null : index))} //if subquestion has id assigned, pass it, or else pass the main question id and the subquestion index itself
+                        getUserAnswer={() => getUserAnswer(subQ.id ? subQ.id : `${currentQuestion.id}_sub_${index}`)}
                         disabled={false}
                         displayQuestionText={true}
                         questionNumber={indexToRoman(index)}
@@ -140,8 +88,6 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
                 ))}
             </>
         );
-        // }
-        // }
     };
 
     return (

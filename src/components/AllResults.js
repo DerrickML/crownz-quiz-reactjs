@@ -40,15 +40,37 @@ const AllResults = () => {
   const userInfo = storageUtil.getItem("userInfo");
   const navigate = useNavigate();
 
-  const viewResults = (resultDetails, subjectName, totalMarks, attemptDate) => {
+  const viewResults = (resultDetails, subjectName, totalMarks, attemptDate, totalPossibleMarks) => {
     if (subjectName === "English Language") {
       navigate("/exam-results", { state: { results: resultDetails } });
     }
     else {
       const questionsData = JSON.parse(resultDetails);
-      navigate('/answers', { state: { questionsData, subjectName, totalMarks, attemptDate } });
+      navigate('/answers', { state: { questionsData, subjectName, totalMarks, totalPossibleMarks, attemptDate } });
     }
   };
+
+  const calculatePercentageScore = (totalMarks, totalPossibleMarks) => {
+    let totalScore = parseFloat(totalMarks);
+    let totalPossibleScore = parseFloat(totalPossibleMarks);
+    // console.log(`Total Score: ${totalScore}, Possible Score: ${totalPossibleScore}`);
+
+    if (isNaN(totalScore)) {
+      // console.log('Invalid score values');
+      return null;
+    }
+
+    if (totalPossibleScore === 0 || isNaN(totalPossibleScore)) {
+      // console.log('Total possible score is 0, cannot calculate percentage');
+      return totalScore;
+    }
+
+    let percentage = (totalScore / totalPossibleScore) * 100;
+    let roundedPercentage = Math.round(percentage * 10) / 10;
+    // console.log('Percentage calculated: ' + roundedPercentage + '%');
+    return `${roundedPercentage}`;
+  };
+
 
   useEffect(() => {
     const userId = userInfo?.userId;
@@ -190,7 +212,7 @@ const AllResults = () => {
                 <tr>
                   <th>No.</th>
                   <th>Date</th>
-                  <th>Score</th>
+                  <th>Score (%)</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -202,13 +224,13 @@ const AllResults = () => {
                     <tr key={idx}>
                       <td>{absoluteNumber}</td>
                       <td>{attempt.dateTime}</td>
-                      <td>{attempt.score}</td>
+                      <td>{calculatePercentageScore(attempt.score, attempt.totalPossibleMarks)}</td>
                       <td>
                         {attempt.resultDetails ? (
                           <Button
                             // className='btn-cancel'
                             variant="dark"
-                            onClick={() => viewResults(attempt.resultDetails, subjectResults.subject, attempt.score, attempt.dateTime)}
+                            onClick={() => viewResults(attempt.resultDetails, subjectResults.subject, attempt.score, attempt.dateTime, attempt.totalPossibleMarks)} //resultDetails, subjectName, totalMarks, attemptDate, totalPossibleMarks
                           >
                             <FontAwesomeIcon icon={faEye} className="me-2" />
                             Exam Results
