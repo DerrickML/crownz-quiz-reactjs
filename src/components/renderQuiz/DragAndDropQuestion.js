@@ -1,4 +1,3 @@
-// DragAndDropQuestion.js
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Draggable } from 'react-beautiful-dnd';
 import DeferredDroppable from '../DeferredDroppable';
@@ -61,7 +60,7 @@ const DragAndDropQuestion = ({ question, onChange, userAnswer, displayQuestionTe
                             <div
                                 {...provided.droppableProps}
                                 ref={provided.innerRef}
-                                style={{ display: 'flex', padding: '8px', border: '1px solid #ccc', minHeight: '50px', flex: 1 }}
+                                className="droppable-container"
                             >
                                 {dragItems.map((item, index) => (
                                     <Draggable key={item} draggableId={item} index={index}>
@@ -71,12 +70,8 @@ const DragAndDropQuestion = ({ question, onChange, userAnswer, displayQuestionTe
                                                 ref={provided.innerRef}
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
+                                                className="draggable-item"
                                                 style={{
-                                                    userSelect: 'none',
-                                                    padding: '8px',
-                                                    margin: '0 8px 0 0',
-                                                    backgroundColor: '#456C86',
-                                                    color: 'white',
                                                     ...provided.draggableProps.style
                                                 }}
                                             >
@@ -95,7 +90,7 @@ const DragAndDropQuestion = ({ question, onChange, userAnswer, displayQuestionTe
                             <div
                                 {...provided.droppableProps}
                                 ref={provided.innerRef}
-                                style={{ display: 'flex', padding: '8px', border: '1px solid #ccc', minHeight: '50px', flex: 1 }}
+                                className="droppable-container"
                             >
                                 {droppedItems.map((item, index) => (
                                     <Draggable key={item} draggableId={item} index={index}>
@@ -104,11 +99,8 @@ const DragAndDropQuestion = ({ question, onChange, userAnswer, displayQuestionTe
                                                 ref={provided.innerRef}
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
+                                                className="dropped-item"
                                                 style={{
-                                                    userSelect: 'none',
-                                                    padding: '8px',
-                                                    margin: '0 8px 0 0',
-                                                    backgroundColor: '#D3D3D3',
                                                     ...provided.draggableProps.style
                                                 }}
                                             >

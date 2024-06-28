@@ -48,7 +48,7 @@ function Exam({ subject }) {
       const data = await response.json();
       return data;
     } catch (error) {
-      console.error('Error fetching user history:', error);
+      console.error('Error fetching user exam:', error);
       return null; // or handle the error as you see fit
     }
   };
@@ -67,7 +67,8 @@ function Exam({ subject }) {
         /*================================================================*/
         // fetch from server-side
         const serverExam = await fetchExam(subject, userInfo.userId, userInfo.educationLevel)
-        // console.log('exam fetched from server side: ', serverExam.questions);
+        // console.log('ORIG - exam fetched from server side: ', serverExam.allquestions);
+        // console.log('SORTED - exam fetched from server side: ', serverExam.questions);
         let questionData = []
         questionData = serverExam.questions;
         setData(questionData); // Assign the fetched data to the variable

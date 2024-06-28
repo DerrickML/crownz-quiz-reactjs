@@ -36,6 +36,7 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
 
     const navigate = useNavigate();
     const reduxState = useSelector(state => state.answers);
+    // console.log('transformed results:', reduxState)
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {

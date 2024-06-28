@@ -32,6 +32,7 @@ const QuizContainer = ({ questionsData, subjectName }) => {
             setIsLoading(true);
 
             try {
+                // console.log('Questions : ', questionData)
                 const randomQuestions = await generateRandomExam(questionsData, subjectName, userInfo.userId, userInfo.educationLevel);
                 // console.log('randomQuestions', JSON.stringify(randomQuestions))
 
@@ -114,13 +115,6 @@ const QuizContainer = ({ questionsData, subjectName }) => {
 
     return (
         <Container fluid>
-            <div style={{ position: 'sticky', top: 0, zIndex: 2 }}>
-                <Row>
-                    <Col xs={12} className="d-md-none bg-light">
-                        <Timer initialTime={initialTime} onTimeUp={handleTimeUp} />
-                    </Col>
-                </Row>
-            </div>
             {isSubmitted ?
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
                     <Spinner animation="grow" variant="primary" />
@@ -131,6 +125,13 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                 </div>
                 :
                 <>
+                    <div style={{ position: 'sticky', top: 0, zIndex: 2 }}>
+                        <Row>
+                            <Col xs={12} className="d-md-none bg-light">
+                                <Timer initialTime={initialTime} onTimeUp={handleTimeUp} />
+                            </Col>
+                        </Row>
+                    </div>
                     <Row>
                         <Col xs={12} md={2} className="d-none d-md-block position-fixed bg-light" style={{ height: '50vh', overflowY: 'auto' }}>
                             <Timer initialTime={initialTime} onTimeUp={handleTimeUp} />

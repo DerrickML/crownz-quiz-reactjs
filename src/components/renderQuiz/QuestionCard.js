@@ -8,8 +8,6 @@ import { isImageUrl } from './utils';
 
 const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUserAnswer, setSelectedOption, answers }) => {
 
-    // let a = categoryId === 16 || categoryId === 17 ? console.log(question) : null
-
     const [selectedOption, setSelectedOptionState] = useState('');
 
     // Helper function to convert index to roman numeral
@@ -65,29 +63,29 @@ const QuestionCard = ({ questionIndex, question, isEitherOr, categoryId, setUser
     );
 
     const renderQuestion = (currentQuestion, disabled) => {
-        return (
-            <>
-                {renderQuestionText(currentQuestion.question, currentQuestion.image, currentQuestion.type)}
+        // currentQuestion.sub_questions && console.log('subQ', currentQuestion.sub_questions);
+        return <>
+            {renderQuestionText(currentQuestion.question, currentQuestion.image, currentQuestion.type)}
+            <AnswerInput
+                question={currentQuestion}
+                onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, currentQuestion.type)}
+                getUserAnswer={getUserAnswer}
+                disabled={disabled}
+                displayQuestionText={false}
+            />
+            {currentQuestion.sub_questions && currentQuestion.sub_questions.map((subQ, index) => (
                 <AnswerInput
-                    question={currentQuestion}
-                    onChange={(answer) => handleAnswerChange(currentQuestion.id, answer, currentQuestion.type)}
-                    getUserAnswer={getUserAnswer}
-                    disabled={disabled}
-                    displayQuestionText={false}
+                    key={subQ.id ? subQ.id : `${currentQuestion.id}_sub_${index}`}
+                    question={subQ}
+                    onChange={(answer) => handleAnswerChange((subQ.id ? subQ.id : currentQuestion.id), answer, subQ.type, (subQ.id ? null : index))} //if subquestion has id assigned, pass it, or else pass the main question id and the subquestion index itself
+                    getUserAnswer={() => getUserAnswer(subQ.id ? subQ.id : `${currentQuestion.id}_sub_${index}`)}
+                    disabled={false}
+                    displayQuestionText={true}
+                    questionNumber={indexToRoman(index)}
                 />
-                {currentQuestion.sub_questions && currentQuestion.sub_questions.map((subQ, index) => (
-                    <AnswerInput
-                        key={subQ.id ? subQ.id : `${currentQuestion.id}_sub_${index}`}
-                        question={subQ}
-                        onChange={(answer) => handleAnswerChange((subQ.id ? subQ.id : currentQuestion.id), answer, subQ.type, (subQ.id ? null : index))} //if subquestion has id assigned, pass it, or else pass the main question id and the subquestion index itself
-                        getUserAnswer={() => getUserAnswer(subQ.id ? subQ.id : `${currentQuestion.id}_sub_${index}`)}
-                        disabled={false}
-                        displayQuestionText={true}
-                        questionNumber={indexToRoman(index)}
-                    />
-                ))}
-            </>
-        );
+            ))}
+        </>
+        // }
     };
 
     return (
