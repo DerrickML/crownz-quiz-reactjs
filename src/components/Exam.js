@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { resetAnswers } from './renderQuiz/redux/actions';
-// import IframeComponent from "./renderQuiz/IframeComponent";
 import QuizContainer from "./renderQuiz/QuizContainer";
 import { Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import {
-//   databasesQ,
-//   database_idQ,
-//   sstTablePLE_id,
-//   mathPLE_id,
-//   engTbalePLE_id,
-//   sciTablePLE_id,
-//   QueryQ,
-// } from "./renderQuiz/examsAppwriteConfig"; //Data from appwrite database
 import { useAuth } from "../context/AuthContext.js"
-// import { sst_ple, math_ple, eng_ple, sci_ple } from '../otherFiles/questionsData'; //Static data from local files
 import { serverUrl } from '../config.js';
 
 /**
@@ -73,60 +62,6 @@ function Exam({ subject }) {
         questionData = serverExam.questions;
         setData(questionData); // Assign the fetched data to the variable
 
-        /*================================================================*/
-
-        // let collection_id;
-        // let subjectName = null;
-        // switch (subject) {
-        //   case "social-studies_ple":
-        //     collection_id = sstTablePLE_id;
-        //     subjectName = "sst-ple"
-        //     break;
-        //   case "mathematics_ple":
-        //     collection_id = mathPLE_id;
-        //     subjectName = "mtc-ple"
-        //     break;
-        //   case "english-language_ple":
-        //     collection_id = engTbalePLE_id;
-        //     subjectName = "eng-ple"
-        //     break;
-        //   case "science_ple":
-        //     collection_id = sciTablePLE_id;
-        //     subjectName = "sci-ple"
-        //     break;
-        //   default:
-        //     collection_id = null;
-        //     return;
-        // }
-
-        // let questionData = [];
-
-        // const response = await databasesQ.listDocuments(
-        //   database_idQ,
-        //   collection_id,
-        //   [QueryQ.limit(80), QueryQ.orderAsc("$id")]
-        // );
-
-        // const questions = response.documents;
-        // questionData = questions;
-
-        // console.log('Questions Client-side: ', questionData);
-
-        // // Convert questions from JSON strings to JSON objects
-        // questionData.forEach((obj) => {
-        //   obj.questions = obj.questions.map((q) => JSON.parse(q));
-        //   // delete obj.$id
-        //   delete obj.$createdAt
-        //   delete obj.$updatedAt
-        //   delete obj.$permissions
-        //   delete obj.$databaseId
-        //   delete obj.$collectionId
-        // });
-
-        // console.log('Parsed questions: ', questionData);
-
-        // setData(questionData); // Assign the fetched data to the variable
-
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -158,16 +93,8 @@ function Exam({ subject }) {
 
     switch (subject) {
       case "english-language_ple":
-        // return <IframeComponent url="https://exams.crownz.derrickml.com/english_ple_section_B" />;
-        // return <IframeComponent url="https://www.exampreptutor.com/english_ple_section_B/" />;
-        // return <IframeComponent url="http://http://192.168.100.12:5173/" />;
-        // return <IframeComponent url="http://localhost:5173/" />;
-
-        // return <IframeComponent url="https://exampreptutor.com/english_ple_section_B/" />;
-
         if (data === null) { return null }
         else {
-          // return <QuizContainer questionsData={eng_ple} subjectName={'eng_ple'} />;
           return <QuizContainer questionsData={data} subjectName={'eng_ple'} />;
         };
 
@@ -178,7 +105,6 @@ function Exam({ subject }) {
         };
 
       case "mathematics_ple":
-        // return <QuizContainer questionsData={math_ple} subjectName={'math_ple'} />;
         return <QuizContainer questionsData={data} subjectName={'math_ple'} />;
 
       case "science_ple":

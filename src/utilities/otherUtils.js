@@ -166,7 +166,7 @@ export const updatePointsTable = async (data) => {
             // Update the existing document if the user is found in the Points Table
             updateResponse = await updateExistingPointsDocument(data, responseCheck.documents[0], currentDate, points);
         }
-        console.log('Points Table Updated: ', updateResponse);
+        // console.log('Points Table Updated: ', updateResponse);
 
     } catch (err) {
         console.error('Error updating points table: ', err);
@@ -209,7 +209,7 @@ const addPointsBatch = async (data, currentDate, expiryDate, points) => {
 }
 
 const createNewPointsDocument = async (data, currentDate, expiryDate, points) => {
-    console.log('User not found in PointsTable');
+    // console.log('User not found in PointsTable');
     return await databases.createDocument(
         database_id,
         pointsTable_id,
@@ -225,7 +225,7 @@ const createNewPointsDocument = async (data, currentDate, expiryDate, points) =>
 }
 
 const updateExistingPointsDocument = async (data, currentDocument, currentDate, points) => {
-    console.log('User found in PointsTable');
+    // console.log('User found in PointsTable');
     let expiryDate = determineExpiryDateForExistingDocument(data, currentDocument);
 
     // Proceed to update the points table
@@ -247,16 +247,16 @@ const determineExpiryDateForExistingDocument = (data, currentDocument) => {
 
     if (data.staticDate && moment(data.expiryDate).isBefore(currentExpiryDate)) {
         expiryDate = currentExpiryDate.toDate();
-        console.log('Maintaining current expiry date: ', expiryDate);
+        // console.log('Maintaining current expiry date: ', expiryDate);
     } else if (data.staticDate && moment(data.expiryDate).isAfter(currentExpiryDate)) {
         expiryDate = moment.tz(data.expiryDate, 'Africa/Nairobi').toDate();
-        console.log('Static Set Expiry date to use: ', expiryDate);
+        // console.log('Static Set Expiry date to use: ', expiryDate);
     } else if (!data.staticDate && currentExpiryDate.isAfter(moment())) {
         expiryDate = currentExpiryDate.add(data.duration, 'days').toDate();
-        console.log('Expiry date extended: ', expiryDate);
+        // console.log('Expiry date extended: ', expiryDate);
     } else {
         expiryDate = moment().tz('Africa/Nairobi').add(data.duration, 'days').toDate();
-        console.log('New Expiry date set: ', expiryDate);
+        // console.log('New Expiry date set: ', expiryDate);
     }
 
     return expiryDate;

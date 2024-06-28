@@ -7,7 +7,6 @@ import { Container, Row, Col, Modal, ButtonGroup, Button, Spinner, Card } from '
 import { useAuth } from '../../context/AuthContext';
 import { generateRandomExam } from './utils';
 import SaveButton from './SaveButton';
-import IframeComponent from './IframeComponent';
 import QuestionCard from './QuestionCard';
 import Timer from './Timer';
 
@@ -18,8 +17,6 @@ const QuizContainer = ({ questionsData, subjectName }) => {
     const [showTimeUpModal, setShowTimeUpModal] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [iframeData, setIframeData] = useState(null);
-    const [iframeDataStatus, setIframeDataStatus] = useState(false); // State to store iframe data
 
     const { userInfo } = useAuth();
     const dispatch = useDispatch();
@@ -33,14 +30,22 @@ const QuizContainer = ({ questionsData, subjectName }) => {
 
             try {
                 // console.log('Questions : ', questionData)
-                const randomQuestions = await generateRandomExam(questionsData, subjectName, userInfo.userId, userInfo.educationLevel);
+                // const randomQuestions = await generateRandomExam(questionsData, subjectName, userInfo.userId, userInfo.educationLevel);
                 // console.log('randomQuestions', JSON.stringify(randomQuestions))
 
-                if (randomQuestions) {
-                    setSelectedQuestions(randomQuestions);
+                // if (randomQuestions) {
+                //     setSelectedQuestions(randomQuestions);
+                // } else {
+                //     console.error('Failed to fetch random questions');
+                // }
+
+                if (questionsData) {
+                    setSelectedQuestions(questionsData);
                 } else {
-                    console.error('Failed to fetch random questions');
+                    console.error('Questions not available');
+                    throw new Error('Questions not available');
                 }
+
             } catch (error) {
                 console.error('Error fetching questions:', error);
             }
@@ -82,16 +87,6 @@ const QuizContainer = ({ questionsData, subjectName }) => {
         setShowModal(false);
         setIsLoading(false)
     };
-
-    const handleIframeDataStatus = async (data) => {
-        // console.log("Received boolean value from ButtonComponent:", data);
-        setIframeDataStatus(data);
-    };
-
-    const handleIframeData = async (data) => {
-        // console.log("Received data from DataComponent:", data);
-        setIframeData(data);
-    }
 
     const initialTime = 90 * 60;
     // const initialTime = 5;
@@ -166,10 +161,6 @@ const QuizContainer = ({ questionsData, subjectName }) => {
                                     })}
                                 </div>
                             ))}
-                            {/* <div>
-                                SECTION B
-                                <IframeComponent url={'http://localhost:5173/'} />
-                            </div> */}
                         </Col>
                     </Row>
                     <Row>
