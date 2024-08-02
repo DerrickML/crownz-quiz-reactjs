@@ -1,21 +1,10 @@
 import {
-    client,
-    account,
     databases,
     database_id,
-    studentTable_id,
-    nextOfKinTable_id,
-    studentMarksTable_id,
-    sstTablePLE_id,
-    couponTable_id,
-    transactionTable_id,
     pointsTable_id,
     pointsBatchTable_id,
     couponUsagesTable_id,
-    Permission,
-    Role,
     Query,
-    ID
 } from "../appwriteConfig.js";
 import moment from 'moment';
 import { serverUrl } from "../config.js";

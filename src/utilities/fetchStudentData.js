@@ -189,6 +189,7 @@ export const fetchAndProcessStudentData = async (kinID) => {
             score: result.marks,
             totalPossibleMarks: result.totalPossibleMarks,
             resultDetails: result.results,
+            qtnId: result.$id,
             dateTime: formatDate(result.$createdAt),
           })),
         };
@@ -198,6 +199,8 @@ export const fetchAndProcessStudentData = async (kinID) => {
 
 
     // Step 3: Save the processed data to local storage using storageUtil
+    // console.log('Saving data to local storage')
+    storageUtil.removeItem('studentData');
     storageUtil.setItem("studentData", processedData);
   } catch (error) {
     console.error("Error fetching and processing student data:", error);

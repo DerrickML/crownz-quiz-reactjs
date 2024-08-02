@@ -2,15 +2,44 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Modal, Button, ButtonGroup, Card, ListGroup } from "react-bootstrap";
 import "./iframes.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import {
+  databases,
+  database_id,
+  studentMarksTable_id,
+  Query,
+} from "../../appwriteConfig";
 
 const QuizResults = () => {
   const [showModal, setShowModal] = useState(false);
+  const [results, setResults] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
-  let results = location.state?.results;
+  // let results = location.state?.results;
+  let qtnId = location.state?.qtnId;
   if (typeof results === "string") {
     results = JSON.parse(results);
   }
+
+  useEffect(() => {
+    const resultData = async (id) => {
+      try {
+        const response = await databases.listDocuments(
+          database_id,
+          studentMarksTable_id,
+          [Query.equal("$id", id)]
+        );
+        const fetchedData = response.documents[0].results;
+        setResults(JSON.parse(fetchedData))
+        return response.documents.results;
+      } catch (error) {
+        console.error("Failed to retrieve student results:", error);
+        return null;
+      }
+    }
+
+    resultData(qtnId);
+
+  }, []); // Only re-run the effect if userInfo or results change
 
   useEffect(() => {
     if (!results) {

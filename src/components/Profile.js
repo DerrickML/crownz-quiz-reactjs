@@ -23,12 +23,13 @@ import { fetchAndProcessStudentData } from "../utilities/fetchStudentData";
 import KinSignup from "./KinSignup";
 import HeroHeader from "./HeroHeader";
 import StudentList from './StudentList';
+import { useAuth } from "../context/AuthContext";
 
 import "./Home.css";
 
 const Profile = () => {
-  //Fetch sessionInfo from localStorage
-  const userInfo = storageUtil.getItem("userInfo");
+  const { userInfo } = useAuth();
+  console.log(userInfo);
 
   const sessionData = storageUtil.getItem("sessionInfo");
   const navigate = useNavigate();
@@ -68,68 +69,6 @@ const Profile = () => {
   const handleSelectTab = (tab) => {
     setActiveTab(tab);
   };
-
-  // const renderNextOfKinProfile = () => (
-  //   <Card className="shadow-sm mb-4 profile-card">
-  //     <Card.Header>
-  //       <FontAwesomeIcon icon={faUsers} className="me-2" />
-  //       Linked Students
-  //     </Card.Header>
-  //     <Card.Body>
-  //       <Card.Title>Linked Students</Card.Title>
-  //       {/* <Button onClick={() => { fetchAndProcessStudentData(userInfo.userId) }}>Update Students Data</Button> */}
-  //       <Table hover>
-  //         <thead>
-  //           <tr>
-  //             <th>No.</th>
-  //             <th>Name</th>
-  //             <th>Education Level</th>
-  //             {/* <th>Points Available</th> */}
-  //             <th>Actions</th>
-  //           </tr>
-  //         </thead>
-  //         <tbody>
-  //           {paginatedStudents.map((student, index) => (
-  //             <tr key={student.studID}>
-  //               <td>{startIndex + index + 1}</td>
-  //               <td>{student.studName}</td>
-  //               <td>{student.educationLevel}</td>
-  //               {/* <td>{student.pointsBalance}</td> */}
-  //               <td>
-  //                 <Button
-  //                   variant="dark"
-  //                   onClick={() =>
-  //                     navigate("/student-details", { state: { student } })
-  //                   }
-  //                 >
-  //                   View Details
-  //                 </Button>
-  //               </td>
-  //             </tr>
-  //           ))}
-  //         </tbody>
-  //       </Table>
-  //       <Nav aria-label="Page navigation">
-  //         <ul className="pagination">
-  //           {Array.from(
-  //             { length: Math.ceil(linkedStudents.length / itemsPerPage) },
-  //             (_, i) => (
-  //               <li
-  //                 key={i}
-  //                 className={`page-item ${currentPage === i + 1 ? "active" : ""
-  //                   }`}
-  //               >
-  //                 <Button variant="link" onClick={() => paginate(i + 1)}>
-  //                   {i + 1}
-  //                 </Button>
-  //               </li>
-  //             )
-  //           )}
-  //         </ul>
-  //       </Nav>
-  //     </Card.Body>
-  //   </Card>
-  // );
 
 
   const renderNextOfKinProfile = () => (

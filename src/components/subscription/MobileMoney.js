@@ -12,15 +12,16 @@ import './MobileMoney.css'
 
 function MobileMoney({ propPrice, propPaymentFor, propStudentInfo }) {
     const { userInfo } = useAuth();
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    let { price, paymentFor, points, studentInfo, network, couponCode, duration } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' }, network: null, couponCode: null, duration: 366 }; // Set default 
+
     const isStudent = userInfo.labels.includes("student");
     const isNextOfKin = userInfo.labels.includes("kin");
     let studentId = isNextOfKin ? studentInfo.userId : '';
     let studentName = isNextOfKin ? studentInfo.name : '';
     let educationLevel = isNextOfKin ? studentInfo.educationLevel : '';
-
-    const navigate = useNavigate();
-    const location = useLocation();
-    let { price, paymentFor, points, studentInfo, network, couponCode, duration } = location.state || { price: null, paymentFor: 'points', points: 0, studentInfo: { userId: '', name: '', educationLevel: '' }, network: null, couponCode: null, duration: 366 }; // Set default 
 
     // Extract the root URL (protocol + hostname + port)
     var rootURL = rootUrl;

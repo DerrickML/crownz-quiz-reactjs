@@ -40,13 +40,13 @@ const AllResults = () => {
   const userInfo = storageUtil.getItem("userInfo");
   const navigate = useNavigate();
 
-  const viewResults = (resultDetails, subjectName, totalMarks, attemptDate, totalPossibleMarks) => {
+  const viewResults = (subjectName, totalMarks, attemptDate, totalPossibleMarks, qtnId) => {
+    console.log('qtnId: ' + qtnId);
     if (subjectName === "English Language") {
-      navigate("/exam-results", { state: { results: resultDetails } });
+      navigate("/exam-results", { state: { qtnId } });
     }
     else {
-      const questionsData = JSON.parse(resultDetails);
-      navigate('/answers', { state: { questionsData, subjectName, totalMarks, totalPossibleMarks, attemptDate } });
+      navigate('/answers', { state: { subjectName, totalMarks, totalPossibleMarks, attemptDate, qtnId } });
     }
   };
 
@@ -173,6 +173,7 @@ const AllResults = () => {
 
   // Function to render results for each subject
   const renderResultsForSubject = (subjectResults) => {
+    // console.log(JSON.stringify(subjectResults));
     const totalResults = subjectResults.attempts.length;
     const indexOfLastResult =
       (currentPage[subjectResults.subject] || 1) * itemsPerPage;
@@ -230,7 +231,7 @@ const AllResults = () => {
                           <Button
                             // className='btn-cancel'
                             variant="dark"
-                            onClick={() => viewResults(attempt.resultDetails, subjectResults.subject, attempt.score, attempt.dateTime, attempt.totalPossibleMarks)} //resultDetails, subjectName, totalMarks, attemptDate, totalPossibleMarks
+                            onClick={() => viewResults(subjectResults.subject, attempt.score, attempt.dateTime, attempt.totalPossibleMarks, attempt.qtnId)} //subjectName, totalMarks, attemptDate, totalPossibleMarks, qtnId
                           >
                             <FontAwesomeIcon icon={faEye} className="me-2" />
                             Exam Results

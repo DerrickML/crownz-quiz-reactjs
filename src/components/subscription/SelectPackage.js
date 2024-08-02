@@ -18,10 +18,7 @@ function SelectPackage() {
     <>
 
       {
-        isAdmin ?
-          <PackagesTest studentInfo={studentInfo}></PackagesTest>
-          :
-          <Packages studentInfo={studentInfo}></Packages>
+        <Packages studentInfo={studentInfo}></Packages>
       }
     </>
   );

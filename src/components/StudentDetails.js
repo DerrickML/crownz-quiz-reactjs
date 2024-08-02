@@ -29,12 +29,26 @@ import {
   faPen,
   faCircleArrowUp
 } from "@fortawesome/free-solid-svg-icons";
+import storageUtil from "../utilities/storageUtil";
 import { kinPurchasePoints } from '../utilities/otherUtils'
 
 const StudentDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const student = location.state?.student;
+
+  const studentDataReceived = location.state?.student;
+  console.log(studentDataReceived)
+  const studentID = studentDataReceived.studID;
+  const allStudentsData = storageUtil.getItem("studentData") || [];
+  console.log('All stud data: ', allStudentsData)
+  const student = getStudentById(studentID, allStudentsData)
+  console.log(student);
+  console.log(student);
+
+  function getStudentById(studentId, studentsArray) {
+    return studentsArray.find(student => student.studID === studentId);
+  }
+
   const [key, setKey] = useState("details"); // State to manage active tab key
 
   if (!student) {
@@ -111,26 +125,33 @@ const StudentDetails = () => {
                       <strong>School Address:</strong>{" "}
                       {displayValue(student.schoolAddress)}
                     </ListGroup.Item>
-                    {/* <ListGroup.Item>
+                    <ListGroup.Item>
                       <div style={{ fontSize: '0.9em', paddingBottom: '3px' }} >
                         <FontAwesomeIcon icon={faCoins} className="me-2" />
-                        <strong>Points Left:</strong>{" "}
-                        <Badge bg={student.pointsBalance < 20 ? 'danger' : 'success'} style={{ fontSize: '0.9em' }}>
-                          {student.pointsBalance}
-                        </Badge>
+                        <strong>Subscription Status:</strong>{" "}
+                        {
+                          student.pointsBalance < 1 ?
+                            <Badge bg='danger' style={{ fontSize: '0.9em' }}>
+                              Expired
+                            </Badge>
+                            :
+                            <Badge bg='success' style={{ fontSize: '0.9em' }}>
+                              Active
+                            </Badge>
+                        }
                       </div>
+                      {student.pointsBalance < 1 &&
+                        <Button
+                          variant={`outline-${student.pointsBalance < 20 ? 'danger' : 'success'}`}
+                          onClick={() => {
+                            kinPurchasePoints(navigate, { userId: student.studID, name: student.studName, educationLevel: student.educationLevel })
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faCircleArrowUp} />
+                          Subscribe For Student
+                        </Button>}
 
-                      <Button
-                        variant={`outline-${student.pointsBalance < 20 ? 'danger' : 'success'}`}
-                        onClick={() => {
-                          kinPurchasePoints(navigate, { userId: student.studID, name: student.studName, educationLevel: student.educationLevel })
-                        }}
-                      >
-                        <FontAwesomeIcon icon={faCircleArrowUp} />
-                        Top Up Points
-                      </Button>
-
-                    </ListGroup.Item> */}
+                    </ListGroup.Item>
                   </ListGroup>
                 </Card.Body>
               </Card>

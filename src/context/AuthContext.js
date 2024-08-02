@@ -99,34 +99,6 @@ export const AuthProvider = ({ children }) => {
             //Setting up subjects data
             await updateUserSubjectData(userDetails.subjects, userDetails.educationLevel);
 
-            // Fetch userPoints from the database after login
-            // const fetchingPoints = await fetchUserPoints(userDetails.userId, userDetails.educationLevel);
-            // console.log('Fetching points: ', fetchingPoints)
-
-
-            //=======================SERVIVSE WORKER - FETCH EXAMS/=======================
-            // After successful login, trigger the service worker to fetch exams
-            // if ('serviceWorker' in navigator) {
-            //     const registration = await navigator.serviceWorker.ready;
-            //     registration.active.postMessage({
-            //         type: 'FETCH_EXAMS', // Custom event for the service worker
-            //         subjects: userDetails.subjects, // Array of subjects
-            //         userId: userDetails.userId, // ID of the logged-in user
-            //         educationLevel: userDetails.educationLevel, // User's education level
-            //     });
-            // }
-
-            //Without Service Worker
-            try {
-                // console.log('Fetching exams and saving to index db');
-                // await updateQuestionSubjectData(userDetails.subjects, userDetails.userId, userDetails.educationLevel); // subjects, userId, educationLevel 
-                // console.log('Finished fetching exams and saving to index db');
-            } catch (err) {
-                console.error('NON-SERVICE WORKER: Failed to fetch exams: ', err);
-            }
-            // ==============================================
-
-
         }
 
     };
@@ -228,10 +200,6 @@ export const AuthProvider = ({ children }) => {
             // Update the userInfo with the updated 'subjects'
             const updatedUserInfo = { ...userInfo, subjects };
 
-            // Save to local storage and update the state
-            storageUtil.setItem('userInfo', updatedUserInfo);
-            setUserInfo(updatedUserInfo);
-
             // Update the database
             await databases.getDocument(database_id, studentTable_id, userDocId)
                 .then((document) => {
@@ -248,20 +216,9 @@ export const AuthProvider = ({ children }) => {
                     console.error('Error updating subjects in the database:', error);
                 });
 
-            // //SERVICE WORKER
-            // try {
-            //     if ('serviceWorker' in navigator) {
-            //         const registration = await navigator.serviceWorker.ready;
-            //         registration.active.postMessage({
-            //             type: 'FETCH_EXAMS', // Custom event for the service worker
-            //             subjects: [newSubject], // Array of subjects
-            //             userId: userInfo.userId, // ID of the logged-in user
-            //             educationLevel: userInfo.educationLevel, // User's education level
-            //         });
-            //     }
-            // } catch (error) {
-            //     console.error('Error fetching questions:', error);
-            // }
+            // Save to local storage and update the state
+            storageUtil.setItem('userInfo', updatedUserInfo);
+            setUserInfo(updatedUserInfo);
         }
     };
 
@@ -278,43 +235,6 @@ export const AuthProvider = ({ children }) => {
         };
     }
 
-    //Fetch questions and save in localStorage
-    // const updateQuestionSubjectData = async (subjects, userId, educationLevel) => {
-    //     for (const subject of subjects) {
-    //         try {
-    //             for (let i = 0; i < 5; i++) {
-    //                 try {
-    //                     const url = `${serverUrl}/exam/fetch-exam?subjectName=${subject}&userId=${userId}&educationLevel=${educationLevel}`;
-    //                     const response = await fetch(url);
-
-    //                     if (!response.ok) {
-    //                         throw new Error(`HTTP error! status: ${response.status}`);
-    //                     }
-
-    //                     const data = await response.json();
-
-    //                     const exam = {
-    //                         userId,
-    //                         educationLevel,
-    //                         subjectName: subject,
-    //                         examData: data.questions,
-    //                     };
-
-    //                     // Store the exam immediately and await completion
-    //                     await db.exams.add(exam);
-
-    //                     // console.log(`Exam - ${i} for subject ${subject} stored successfully`);
-
-    //                 } catch (error) {
-    //                     console.error(`Error fetching exam data for subject ${subject}:`, error);
-    //                     break;  // Exit loop on error
-    //                 }
-    //             }
-    //         } catch (error) {
-    //             console.error(`Error processing subject ${subject}:`, error);
-    //         }
-    //     }
-    // }
     const updateQuestionSubjectData = async (subjects, userId, educationLevel) => {
         for (const subject of subjects) {
             try {

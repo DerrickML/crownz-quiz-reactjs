@@ -12,7 +12,7 @@ import {
     ID
 } from "../../appwriteConfig.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { updateStudentDataInLocalStorage } from '../../utilities/fetchStudentData'
+import { updateStudentDataInLocalStorage, fetchAndProcessStudentData } from '../../utilities/fetchStudentData'
 import { useAuth } from '../../context/AuthContext';
 import { updatePointsTable } from '../../utilities/otherUtils'
 import { serverUrl } from '../../config'
@@ -39,6 +39,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
 
     const handleApplyCoupon = async () => {
         try {
+
             // Make an API call to validate the coupon
             setCouponLoader(true);
             const response = await fetch(`${serverUrl}/query/validate-coupon?code=${coupon}&userId=${studentInfo.userId}`);
@@ -91,6 +92,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
         }
         if (finalPrice === 0) {
             try {
+                console.log('Processing 0 payment')
                 setLoader(true);
                 console.log('Student Information: ' + JSON.stringify(studentInfo))
                 var currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
@@ -107,7 +109,15 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                     message: `Points Purchase on discount.`
                 }
 
+                // console.log('Updating points table');
                 await updatePointsTable(data)
+
+                console.log('Updating Guadian side student information');
+                if (isNextOfKin) {
+                    console.log('...Processing');
+                    await fetchAndProcessStudentData(userInfo.userId);
+                    console.log('Finished Updating Guadian side student information');
+                }
 
                 //UPDATE POINTS
                 //Update student side points

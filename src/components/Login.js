@@ -378,6 +378,10 @@ function Login() {
     }
   }
 
+  const reFreshPage = () => {
+    window.location.href = '/sign-in';
+  }
+
   return (
     <div className="login-background login-container">
       <Container className="my-5">
@@ -433,20 +437,33 @@ function Login() {
                           required
                         />
                       </Form.Group>
-                      {emailError && (
+                      {
+                        emailError === 'Creation of a session is prohibited when a session is active.' ?
+                          (
+                            <>
+                              <Alert variant="danger">{emailError}</Alert>
+                              <Button variant='primary' onClick={reFreshPage}>Click to Refresh and Sign in again.</Button>
+                            </>
+                          )
+                          :
+                          <>
+                            {emailError && <Alert variant="danger">{emailError}</Alert>}
+                            <Button
+                              variant="primary"
+                              type="submit"
+                              disabled={emailLoginLoader || loginMethod === "phone"}
+                            >
+                              {emailLoginLoader ? (
+                                <Spinner as="span" animation="border" size="sm" />
+                              ) : (
+                                "Login"
+                              )}
+                            </Button>
+                          </>
+                      }
+                      {/* {emailError === 'Creation of a session is prohibited when a session is active.' && (
                         <Alert variant="danger">{emailError}</Alert>
-                      )}
-                      <Button
-                        variant="primary"
-                        type="submit"
-                        disabled={emailLoginLoader || loginMethod === "phone"}
-                      >
-                        {emailLoginLoader ? (
-                          <Spinner as="span" animation="border" size="sm" />
-                        ) : (
-                          "Login"
-                        )}
-                      </Button>
+                      )} */}
                     </>
                   ) : (
                     loginMethod === "phone" && (

@@ -58,7 +58,7 @@ const RecentResults = ({ results, onViewResults }) => {
                     <Button
                       className='btn-cancel'
                       variant="dark"
-                      onClick={() => onViewResults(attempt.resultDetails, attempt.subject, attempt.score, attempt.totalPossibleScore, attempt.dateTime)}
+                      onClick={() => onViewResults(attempt.subject, attempt.score, attempt.totalPossibleScore, attempt.dateTime, attempt.qtnId)}
                     >
                       <FontAwesomeIcon icon={faEye} className="me-2" />
                       Exam Results

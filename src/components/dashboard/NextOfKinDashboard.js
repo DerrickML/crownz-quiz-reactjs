@@ -71,13 +71,13 @@ const NextOfKinDashboard = () => {
   };
 
   //To view student results
-  function viewResults(resultDetails, subjectName, totalMarks, totalPossibleMarks, attemptDate) {
+  function viewResults(resultDetails, subjectName, totalMarks, totalPossibleMarks, attemptDate, qtnId) {
     // console.log(`total marks: ${totalMarks}, possible marks: ${totalPossibleMarks}`);
     if (subjectName === "English Language") {
       navigate("/exam-results", { state: { results: resultDetails } });
     } else {
       const questionsData = JSON.parse(resultDetails);
-      navigate('/answers', { state: { questionsData, subjectName, totalMarks, totalPossibleMarks, attemptDate } }); // questionsData, subjectName, totalMarks, attemptDate, totalPossibleMarks 
+      navigate('/answers', { state: { questionsData, subjectName, totalMarks, totalPossibleMarks, attemptDate, qtnId } }); // questionsData, subjectName, totalMarks, attemptDate, totalPossibleMarks 
     }
   }
 

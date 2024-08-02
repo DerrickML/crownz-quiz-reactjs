@@ -8,6 +8,22 @@ import {
 } from "../appwriteConfig";
 import storageUtil from "./storageUtil";
 
+// export async function fetchAndUpdateResults(userId) {
+//   try {
+//     const response = await databases.listDocuments(
+//       database_id,
+//       studentMarksTable_id,
+//       [Query.equal("studID", userId), Query.limit(500)]
+//     );
+//     // Update local storage with new results
+//     storageUtil.setItem("examResults", "");
+//     storageUtil.setItem("examResults", response.documents);
+//     return response.documents;
+//   } catch (error) {
+//     console.error("Failed to retrieve student results:", error);
+//     return null;
+//   }
+// }
 export async function fetchAndUpdateResults(userId) {
   try {
     const response = await databases.listDocuments(
@@ -15,15 +31,24 @@ export async function fetchAndUpdateResults(userId) {
       studentMarksTable_id,
       [Query.equal("studID", userId), Query.limit(500)]
     );
+
+    // Update the results key to an empty array for each document
+    const updatedDocuments = response.documents.map(doc => ({
+      ...doc,
+      results: []
+    }));
+
     // Update local storage with new results
     storageUtil.setItem("examResults", "");
-    storageUtil.setItem("examResults", response.documents);
-    return response.documents;
+    storageUtil.setItem("examResults", updatedDocuments);
+
+    return updatedDocuments;
   } catch (error) {
     console.error("Failed to retrieve student results:", error);
     return null;
   }
 }
+
 /*=========END FETCH DATA FROM DB TO UPDATE LOCALSTORAGE=========*/
 
 /*=========TRANSFORMS THE RESULTS=========*/
@@ -41,24 +66,31 @@ export const formatDate = (dateTime) => {
 
 export const getTransformedResults = (studentId) => {
   const userResults = storageUtil.getItem("examResults") || [];
+
+  console.log('Saved Results: ', userResults);
   const resultsMap = new Map();
 
   userResults.forEach((doc) => {
+    const qtnId = doc.$id
     const subject = doc.subject;
     const dateTime = formatDate(doc.$createdAt);
     const score = doc.marks;
     const totalPossibleMarks = doc.totalPossibleMarks;
+
+    // console.log(qtnId)
 
     if (!resultsMap.has(subject)) {
       resultsMap.set(subject, { subject, attempts: [] });
     }
 
     resultsMap.get(subject).attempts.push({
+      qtnId,
       dateTime,
       score,
       totalPossibleMarks,
       subject,
       resultDetails: doc.results,
+      // resultDetails: []
     });
   });
 

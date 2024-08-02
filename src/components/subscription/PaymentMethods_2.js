@@ -12,7 +12,7 @@ import {
     ID
 } from "../../appwriteConfig.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { updateStudentDataInLocalStorage } from '../../utilities/fetchStudentData.js'
+import { updateStudentDataInLocalStorage, fetchAndProcessStudentData } from '../../utilities/fetchStudentData.js'
 import { useAuth } from '../../context/AuthContext.js';
 import { updatePointsTable, couponTrackerUpdate } from '../../utilities/otherUtils.js'
 import { serverUrl } from '../../config.js'
@@ -98,7 +98,7 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
         if (finalPrice === 0) {
             try {
                 setLoader(true);
-                // console.log('Student Information: ' + JSON.stringify(studentInfo))
+                console.log('Student Information: ' + JSON.stringify(studentInfo))
                 var currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
                 let data = {
                     staticDate: staticDate,
@@ -113,6 +113,13 @@ function PaymentMethods({ initialCoupon, price, paymentFor, points, tier, studen
                 }
 
                 await updatePointsTable(data)
+
+                console.log('Updating Guadian side student information');
+                if (isNextOfKin) {
+                    console.log('...Processing');
+                    await fetchAndProcessStudentData(userInfo.userId);
+                    console.log('Finished Updating Guadian side student information');
+                }
 
                 //UPDATE POINTS
                 //Update student side points

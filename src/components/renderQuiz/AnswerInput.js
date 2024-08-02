@@ -54,16 +54,6 @@ const AnswerInput = ({ question, onChange, disabled, getUserAnswer, displayQuest
                     questionNumber={questionNumber}
                 />
             );
-        // case 'iframe':
-        //     return (
-        //         <IframeQuestion
-        //             question={question.question}
-        //             onChange={onChange}
-        //             displayQuestionText={displayQuestionText}
-        //             questionNumber={questionNumber}
-        //             iframeId={question.id}
-        //         />
-        //     );
         default:
             return null;
     }

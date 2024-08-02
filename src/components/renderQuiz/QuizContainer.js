@@ -29,15 +29,6 @@ const QuizContainer = ({ questionsData, subjectName }) => {
             setIsLoading(true);
 
             try {
-                // console.log('Questions : ', questionData)
-                // const randomQuestions = await generateRandomExam(questionsData, subjectName, userInfo.userId, userInfo.educationLevel);
-                // console.log('randomQuestions', JSON.stringify(randomQuestions))
-
-                // if (randomQuestions) {
-                //     setSelectedQuestions(randomQuestions);
-                // } else {
-                //     console.error('Failed to fetch random questions');
-                // }
 
                 if (questionsData) {
                     setSelectedQuestions(questionsData);

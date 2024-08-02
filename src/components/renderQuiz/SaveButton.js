@@ -224,6 +224,8 @@ const SaveButton = forwardRef(({ selectedQuestions, onSubmit, disabled, buttonDi
             }).flat(),
         }));
 
+        console.log('Questions: ', formattedAnswers)
+
         return { formattedAnswers, totalMarks, totalPossibleMarks };
     };
 
